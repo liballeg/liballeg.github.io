@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title></title>
+  <title>Allegro changelog for 5.1.x series</title>
   <style type="text/css">code{white-space: pre;}</style>
   <link rel="stylesheet" href="web_style.css" type="text/css" />
   <link rel="alternate" type="application/atom+xml"
@@ -14,25 +14,33 @@
 <body>
 <table id="header" width="100%">
 <tr>
+
 <td>
 <img id="logo" src="images/logo.png" alt="Allegro" height="58" width="186" />
 </td>
+
 <td id="title">
 A game programming library
 </td>
+
 <td align="right">
+
 <!-- Hide language choices until at least one other translation is complete.
 <div class="sellang">
 [English](index.html)
 [español](es/index.html)
 </div>
 -->
+
 <form id="search" action="http://alleg.sourceforge.net/search/search.py" method="get">
+    
 <input name="query" value="" type="text"/> <select name="where"> <option selected="selected" value="api">A4 API</option> <option value="mail">Mail</option> <option value="site">Site</option> <option value="forum">Forum</option> </select> <input name="submit" value="Search" type="submit"/>
 </form>
 </td>
+
 </tr>
 </table>
+
 <div id="left">
 <div id="sidebar">
 <ul>
@@ -83,19 +91,248 @@ A game programming library
 <!-- keep blank line for correct HTML -->
 </div>
 <!-- sidebar -->
+
 <div id="hosting">
-<p><a href="http://sourceforge.net/donate/index.php?group_id=5665"> <img src="http://images.sourceforge.net/images/project-support.jpg"
+<a href="http://sourceforge.net/donate/index.php?group_id=5665"> <img src="http://images.sourceforge.net/images/project-support.jpg"
     alt="Support This Project" border="0" height="32" width="88"
     id="support" /> </a> <br/> Hosted by: <br/> <a href="http://sourceforge.net/projects/alleg"> <img src="http://sflogo.sourceforge.net/sflogo.php?group_id=5665&amp;type=13"
     width="120" height="30" border="0"
-    alt="Get Allegro game programming library at SourceForge.net. Fast, secure and Free Open Source software downloads" /> </a> <br/> <a href="http://sourceforge.net/projects/alleg/">Project page</a></p>
+    alt="Get Allegro game programming library at SourceForge.net. Fast, secure and Free Open Source software downloads" /> </a> <br/> <a href="http://sourceforge.net/projects/alleg/">Project page</a>
 </div>
 <!-- hosting -->
 </div>
 <!-- left -->
+
 <div id="content">
-<h1 id="allegro-changelog-for-5.1.x-series">Allegro changelog for 5.1.x series</h1>
-<p>See <code>changes-5.0.txt</code> for changes in Allegro 5.0.x. These lists serve as summaries; the full histories are in the Subversion repository.</p>
+<div id="header">
+<h1 class="title">Allegro changelog for 5.1.x series</h1>
+</div>
+<p>See <code>changes-5.0.txt</code> for changes in Allegro 5.0.x. These lists serve as summaries; the full histories are in the git repository.</p>
+<h1 id="changes-from-5.1.10-to-5.1.11-june-2015">Changes from 5.1.10 to 5.1.11 (June 2015)</h1>
+<p>The main developers this time were: SiegeLord, Trent Gamblin.</p>
+<p>Input:</p>
+<ul>
+<li><p>Rename <code>al_get_haptic_active</code> to <code>al_is_haptic_active</code> for consistency.</p></li>
+<li><p>Rename <code>al_get_num_haptic_effects</code> to <code>al_get_max_haptic_effects</code>.</p></li>
+<li><p>Implement the missing <code>al_is_touch_input_haptic</code> function.</p></li>
+<li><p>Move the loops parameter of <code>al_upload_and_play_haptic_effect</code> after the id to be consistent with <code>al_play_haptic_effect</code>.</p></li>
+</ul>
+<p>OSX port:</p>
+<ul>
+<li><p>Fix mouse warping in OSX.</p></li>
+<li><p>Add retina display support to OSX.</p></li>
+</ul>
+<p>Windows port:</p>
+<ul>
+<li><p>Fix querying display modes before creating a display.</p></li>
+<li><p>Make the Windows joystick implementation more fault tolerant.</p></li>
+<li><p>Initialize display callbacks when creating faux fullscreen (Edgar Reynaldo).</p></li>
+</ul>
+<p>Build system:</p>
+<ul>
+<li><p>Fix the conditional compilation of sal.h (Edgar Reynaldo).</p></li>
+<li><p>Don't look at WinSDK when we're not on MSVC, fixing MinGW builds when MSVC is installed as well.</p></li>
+<li><p>Fix the static FLAC compile tests on Android and Windows.</p></li>
+<li><p>Make the OSX frameworks install in the proper location again.</p></li>
+<li><p>Add <code>WANT_STATIC_RUNTIME</code> CMake build option (currently MSVC-only).</p></li>
+</ul>
+<p>Documentation:</p>
+<ul>
+<li>Various documentation improvements.</li>
+</ul>
+<p>Other:</p>
+<ul>
+<li><p>Return a valid configuration from <code>al_get_system_config</code> before Allegro is installed. This allows you to override the various configuration options without using an on-disk <code>allegro5.cfg</code>.</p></li>
+<li><p>Compile in the logging support in release modes by default. Now logging can be turned on in release builds without recompiling the program by editing the system configuration.</p></li>
+<li><p>Detect file-overruns when saving configuration files (Bruce Pascoe).</p></li>
+</ul>
+<p>Color addon:</p>
+<ul>
+<li>When converting from YUV to RGB, clamp the returned values between 0 and 1.</li>
+</ul>
+<p>Video addon:</p>
+<ul>
+<li>Use an enum in place of magic numbers for <code>al_get_video_position</code> constants.</li>
+</ul>
+<h1 id="changes-from-5.1.9-to-5.1.10-may-2015">Changes from 5.1.9 to 5.1.10 (May 2015)</h1>
+<p>The main developers this time were: SiegeLord, Elias Pschernig, Trent Gamblin, Polybios.</p>
+<p>Input:</p>
+<ul>
+<li>Add <code>al_set_mouse_wheel_precision</code> and <code>al_get_mouse_wheel_precision</code>.</li>
+</ul>
+<p>Graphics:</p>
+<ul>
+<li><p>Added <code>al_transform_coordinates_3d</code>.</p></li>
+<li><p>Added <code>al_build_camera_transform</code>.</p></li>
+<li><p>Make the projection transform a bitmap local state. This removes <code>al_set_projection_transform</code> and <code>al_get_projection_transform</code>, and replaces them with <code>al_use_projection_transform</code> and <code>al_get_current_projection_transform</code> with similar semantics to the regular transforms.</p></li>
+</ul>
+<p>OSX port:</p>
+<ul>
+<li>Improved joystick axis layouts on Mac OS X, and added support for some dpards (Max Savenkov).</li>
+</ul>
+<p>X11 port:</p>
+<ul>
+<li><p>Fix some memory leaks (ElectricSolstice).</p></li>
+<li><p>Make the XInput2 check more accurate (we require a specific version).</p></li>
+</ul>
+<p>Windows port:</p>
+<ul>
+<li><p>Remove taskbar hiding on Windows.</p></li>
+<li><p>Fix high precision mice on Windows.</p></li>
+<li><p>Fix some D3D conflicts with the OpenGL backend.</p></li>
+<li><p>Remove the prohibition of building OpenGL-only DLLs.</p></li>
+<li><p>Added LRESULT argument to WindowProc callback, fixing <code>al_win_add_window_callback</code> for some event types (Aaron Bolyard).</p></li>
+</ul>
+<p>Android port:</p>
+<ul>
+<li><p>Fix some memory leaks.</p></li>
+<li><p>Make it possible to specify the Android target during building.</p></li>
+</ul>
+<p>iOS port:</p>
+<ul>
+<li><p>Add an XCode project to help build Allegro when CMake support fails.</p></li>
+<li><p>Restore the CMake support.</p></li>
+<li><p>Makes the examples run on the iOS simulator out of the box.</p></li>
+<li><p>Various small fixes (Trent Gamblin, jmasterx).</p></li>
+<li><p>Remove <code>al_iphone_get_last_shake_time</code> and a<code>l_iphone_get_battery_level</code>.</p></li>
+<li><p>Hack around iOS not creating mipmaps (jmasterx).</p></li>
+<li><p>If the supported orientation is <code>ALLEGRO_DISPLAY_ORIENTATION_UNKNOWN</code>, default to supporting all orientations.</p></li>
+<li><p>Get Cosmic Protector to compile again.</p></li>
+</ul>
+<p>Build system:</p>
+<ul>
+<li><p>Revamp the detection of DirectX dependencies. Now it should work out of the box for at least MSVC and mingw-w64.</p></li>
+<li><p>Fix GDIPlus finding script (pkrcel).</p></li>
+<li><p>Bump the minimum version of CMake to 2.8.5.</p></li>
+</ul>
+<p>Documentation:</p>
+<ul>
+<li><p>Many documentation improvements, as always (special thanks to Polybios).</p></li>
+<li><p>Make the PDF output prettier with better fonts and an up-to-date version number.</p></li>
+<li><p>Make the Javascript search for online documentation support partial matches.</p></li>
+<li><p>Make [section] links work in HTML.</p></li>
+<li><p>Allow the docs to have more than 1024 entries (Allegro is getting huge!).</p></li>
+</ul>
+<p>Other:</p>
+<ul>
+<li><p>Make the test driver a little more resistant to failure.</p></li>
+<li><p>Various fixes to the experimental SDL backend.</p></li>
+<li><p>Update the CONTRIBUTORS.txt.</p></li>
+</ul>
+<p>Audio addon:</p>
+<ul>
+<li><p>Fix deadlock when destroying an audio stream soon after its creation.</p></li>
+<li><p>Add VOC file support (pkrcel).</p></li>
+<li><p>Disable processing of the XM zero-speed event.</p></li>
+<li><p>Disable processing of module loop points if <code>ALLEGRO_PLAYMODE_ONCE</code> is set.</p></li>
+<li><p>Fix a buffer overflow bug.</p></li>
+</ul>
+<p>Image addon:</p>
+<ul>
+<li>Fix loading of indexed + transparent PNGs with the libpng backend.</li>
+</ul>
+<p>Dialog addon:</p>
+<ul>
+<li><p>Fix some style issues with the Windows file dialog.</p></li>
+<li><p>Fix a bug with multiple filenames with the Windows file dialog.</p></li>
+<li><p>Change the semantics of the patterns in <code>al_create_native_file_dialog</code> to support future expansion of the patterns to support both AND and OR style filtering.</p></li>
+<li><p>Make the GTK file selection dialog look like it's from 2004 (as opposed to mid-1990s).</p></li>
+</ul>
+<p>TTF addon:</p>
+<ul>
+<li><p>Fix some warnings.</p></li>
+<li><p>Make the page size dynamic, allowing for fonts with up to 8192x8192 glyphs by default.</p></li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>New examples: ex_camera, ex_projection2.</li>
+</ul>
+<h1 id="changes-from-5.1.8-to-5.1.9-january-2015">Changes from 5.1.8 to 5.1.9 (January 2015)</h1>
+<p>The main developers this time were: Trent Gamblin, SiegeLord, Elias Pschernig.</p>
+<p>Core:</p>
+<ul>
+<li><p>Fix OSX backend on OSX 10.10 (lordnoriyuki).</p></li>
+<li><p>Simplify how sub-bitmaps interact with their parent bitmaps. You can now destroy a sub-bitmap at any time (not only before the parent is destroyed). Additionally, when the parent is converted using <code>al_convert_bitmap</code>, all the sub-bitmaps are also automatically converted.</p></li>
+<li><p>Switch to using unicode Win32 (e.g. this fixes using <code>al_set_window_title</code> with unicode strings).</p></li>
+<li><p>Add some Linux WM hints so make Allegro windows work more smoothly (especially with Unity).</p></li>
+</ul>
+<p>Filesystem:</p>
+<ul>
+<li><p>Add <code>al_fprintf</code> (DanielH and Tobias Scheuer).</p></li>
+<li><p>Add <code>al_for_each_fs_entry</code>, a convenience function that helps enumerating the contents of a directory more easily using a callback function (Beoran).</p></li>
+<li><p>Fix for <code>al_get_standard_path</code> with Unicode (vkensou).</p></li>
+</ul>
+<p>Input:</p>
+<ul>
+<li><p>Add X11 touch driver (Ryan Gumbs).</p></li>
+<li><p>Emulate mouse pressure for backends that don't support pressure.</p></li>
+<li><p>Added Windows haptics driver, XInput joystick driver (Beoran).</p></li>
+<li><p>Fix OSX joystick deinitialization.</p></li>
+</ul>
+<p>Graphics:</p>
+<ul>
+<li><p>Add block compression pixel formats (ALLEGRO_PIXEL_FORMAT_COMPRESSED_RGBA_DXT1/DXT3/DXT5) for compressed video bitmaps. This includes an API to fetch compressed block size (<code>al_get_pixel_block_width/height/size</code>) as well as API to load and unload compressed bitmap data without paying a runtime compression cost (<code>al_lock_bitmap_blocked</code>). Unfortunately, due to patent concerns this last feature is disabled for OpenGL (if you thinks those concerns don't apply to you, you can enable it by passing <code>-DWANT_OPENGL_S3TC_LOCKING=1</code> to cmake).</p></li>
+<li><p>Make real fullscreen modes work on OS X again. May not be perfect still. (thanks to SDL).</p></li>
+</ul>
+<p>Shaders:</p>
+<ul>
+<li>Don't clobber the 0'th texture unit in OpenGL and Direct3D. This simplifies working with shaders.</li>
+</ul>
+<p>Android port:</p>
+<ul>
+<li><p>Bump minimum Android API level from 10 to 12 (aka version 3.1).</p></li>
+<li><p>Add controller support to the Android port. An accelerometer 'joystick' is still the first joystick. Supports two analog sticks and 10 buttons (A B X Y L1 R1 DPAD_L DPAD_R DPAD_U DPAD_D). Supports hotplugging and theoretically multiple joysticks (needs testing).</p></li>
+<li><p>Set correct orientation at startup on Android (thanks to Aikei_c).</p></li>
+</ul>
+<p>Build system:</p>
+<ul>
+<li>Various CMake fixes.</li>
+</ul>
+<p>Other:</p>
+<ul>
+<li><p>Add Travis and AppVeyor continuous integration support.</p></li>
+<li><p>Fix a lot of memory leaks.</p></li>
+<li><p>Many documentation improvements.</p></li>
+</ul>
+<p>Audio addon:</p>
+<ul>
+<li><p>Disallow attaching a mixer to itself.</p></li>
+<li><p>Fix uni- and bi-directional looping of zero-length samples.</p></li>
+<li><p>Fix/avoid all sound examples freezing on OSX with the aqueue driver.</p></li>
+</ul>
+<p>Image addon:</p>
+<ul>
+<li>Add functionality to load Direct Draw Surface files (.dds). Only compressed pixel formats are supported (DXT1, DXT3 and DXT5).</li>
+</ul>
+<p>Dialog addon:</p>
+<ul>
+<li><p>Fix native file dialog default paths on Windows (Edgar Reynaldo).</p></li>
+<li><p>Fix unintended behaviour in <code>al_set_menu_item_flags</code> (Malcolm Harrow).</p></li>
+<li><p>Fix some bugs with native menus in OSX.</p></li>
+</ul>
+<p>Video addon:</p>
+<ul>
+<li>Fix for now undefined AVCODEC_MAX_AUDIO_FRAME_SIZE (Dennis Busch).</li>
+</ul>
+<p>TTF addon:</p>
+<ul>
+<li><p>Fix a crashing bug in the TTF addon.</p></li>
+<li><p>Make <code>al_load_ttf_font_stretch</code> return NULL if invalid width/height are passed.</p></li>
+</ul>
+<p>Font addon:</p>
+<ul>
+<li>Add multi line text output for the font addon (<code>al_draw_multiline_text</code>, <code>al_draw_multiline_textf</code> and <code>al_draw_multiline_ustr</code>).</li>
+</ul>
+<p>Primitives addon:</p>
+<ul>
+<li>Fix some sharp-angle polyline drawing bugs.</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li><p>New examples: ex_compressed, ex_font_multiline.</p></li>
+<li><p>ex_dir: demonstrate <code>al_for_each_fs_entry</code>.</p></li>
+<li><p>ex_haptic2: demonstrate hotplugging.</p></li>
+</ul>
 <h1 id="changes-from-5.1.7-to-5.1.8-january-2014">Changes from 5.1.7 to 5.1.8 (January 2014)</h1>
 <p>The main developers this time were: Beoran, SiegeLord, Trent Gamblin, Markus Henschel, Peter Wang.</p>
 <p>Core:</p>
@@ -110,7 +347,7 @@ A game programming library
 <li><p>Fix bug which meant ALLEGRO_INVERSE_SRC_COLOR and ALLEGRO_INVERSE_DEST_COLOR never actually worked on D3D.</p></li>
 <li><p>Fix horizontal and vertical shears which were not composing with translations correctly.</p></li>
 <li><p>Optimise al_restore_state if saved target display/bitmap are unchanged.</p></li>
-<li><p>Fix _al_display_settings_sorter ordering of indexes when scores are equal.</p></li>
+<li><p>Fix <em>al</em>display_settings_sorter ordering of indexes when scores are equal.</p></li>
 <li><p>Use a minimum 16x16 texture workaround even on desktop OpenGL.</p></li>
 <li><p>Propagate errors up OpenGL lock bitmap implementations.</p></li>
 <li><p>Use proxy bitmap when locking writable backbuffer regions on GLES.</p></li>
@@ -438,7 +675,7 @@ A game programming library
 <p>Graphics:</p>
 <ul>
 <li><p>Avoid null pointer dereference when setting a target bitmap after its video_texture has already been released (D3D).</p></li>
-<li><p>Make d3d_lock_region fail immediately if _al_d3d_sync_bitmap failed, likely because the device was lost.</p></li>
+<li><p>Make d3d_lock_region fail immediately if <em>al</em>d3d_sync_bitmap failed, likely because the device was lost.</p></li>
 <li><p>Set device_lost flag immediately when d3d_display_thread_proc finds the device is lost.</p></li>
 <li><p>Fix OpenGL extensions being completely ignored on OS X.</p></li>
 <li><p>Added a quick hack to fix bitmap locking on desktop OpenGL when using shaders.</p></li>
@@ -966,12 +1203,13 @@ A game programming library
 <!-- vi: set sts=3 sw=3 et: -->
 </div>
 <!-- content -->
+
 <div id="footer">
 <a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
     height="33" width="88" vspace="1" hspace="1" /> </a> <a href="http://www.anybrowser.org/campaign/"> <img src="images/anyb.png" border="0" alt="Viewable with any browser"
     height="31" width="88" vspace="1" hspace="1" /> </a>
 <div id="contact">
-<p><a href="webmasters.html">Contact the webmasters</a></p>
+<a href="webmasters.html">Contact the webmasters</a>
 </div>
 <!-- contact -->
 </div>
