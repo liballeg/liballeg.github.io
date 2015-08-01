@@ -3,8 +3,15 @@
 <title>Allegro news</title>
 <link href="http://alleg.sourceforge.net/"/>
 <link rel="self" href="http://alleg.sourceforge.net/feed_atom.xml"/>
-<updated>2015-07-28T22:02:14-04:00</updated>
+<updated>2015-08-01T00:37:42-04:00</updated>
 <id>urn:uuid:661257c2-82a0-4510-b2be-0f6b010807b9</id>
+<entry>
+<title>Allegro's GIT repository is now hosted at GitHub.</title>
+<author><name>Allegro developers</name></author>
+<link href="http://alleg.sourceforge.net/"/>
+<id>urn:uuid:3a1ad4ed-4a50-46c2-8800-9a05a7043fd8</id>
+<updated>2015-07-31T20:55:20-07:00</updated>
+</entry>
 <entry>
 <title>Allegro 5.1.11 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
