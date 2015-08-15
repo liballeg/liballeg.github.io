@@ -202,10 +202,9 @@ table#header td {
 #footer {
     clear: both;
     margin-top: 3em;
-    padding-top: 1em;
     padding-left: 1em;
     padding-right: 2em;
-    padding-bottom: 0.8em;
+    padding-bottom: 0.2em;
     background: #eee;
     border-top: solid 1px #ccc;
 }

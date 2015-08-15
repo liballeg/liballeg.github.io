@@ -14,25 +14,33 @@
 <body>
 <table id="header" width="100%">
 <tr>
+
 <td>
 <img id="logo" src="images/logo.png" alt="Allegro" height="58" width="186" />
 </td>
+
 <td id="title">
 A game programming library
 </td>
+
 <td align="right">
+
 <!-- Hide language choices until at least one other translation is complete.
 <div class="sellang">
 [English](index.html)
 [español](es/index.html)
 </div>
 -->
+
 <form id="search" action="http://alleg.sourceforge.net/search/search.py" method="get">
+  
 <input name="query" value="" type="text"/> <select name="where"> <option selected="selected" value="api">A4 API</option> <option value="mail">Mail</option> <option value="site">Site</option> <option value="forum">Forum</option> </select> <input name="submit" value="Search" type="submit"/>
 </form>
 </td>
+
 </tr>
 </table>
+
 <div id="left">
 <div id="sidebar">
 <ul>
@@ -60,7 +68,7 @@ A game programming library
 <ul>
 <li><a href="http://www.allegro.cc/forums/">Forums</a></li>
 <li><a href="maillist.html">Mailing lists</a></li>
-<li><a href="http://sourceforge.net/tracker2/?group_id=5665&amp;atid=105665">Bug tracker</a></li>
+<li><a href="https://github.com/liballeg/allegro5/issues">Bug tracker</a></li>
 <li><a href="irc.html">IRC</a></li>
 </ul></li>
 <li>Community
@@ -77,22 +85,16 @@ A game programming library
 <li><a href="mirrors.html">Mirrors</a></li>
 <li><a href="webmasters.html">Webmasters</a></li>
 <li><a href="humor.html">Humor</a></li>
-<li><a href="donations.html">Donations</a></li>
 </ul></li>
 </ul>
 <!-- keep blank line for correct HTML -->
-</div>
-<!-- sidebar -->
+</div><!-- sidebar -->
+
 <div id="hosting">
-<p><a href="http://sourceforge.net/donate/index.php?group_id=5665"> <img src="http://images.sourceforge.net/images/project-support.jpg"
-    alt="Support This Project" border="0" height="32" width="88"
-    id="support" /> </a> <br/> Hosted by: <br/> <a href="http://sourceforge.net/projects/alleg"> <img src="http://sflogo.sourceforge.net/sflogo.php?group_id=5665&amp;type=13"
-    width="120" height="30" border="0"
-    alt="Get Allegro game programming library at SourceForge.net. Fast, secure and Free Open Source software downloads" /> </a> <br/> <a href="http://sourceforge.net/projects/alleg/">Project page</a></p>
-</div>
-<!-- hosting -->
-</div>
-<!-- left -->
+<a href="https://github.com/liballeg">GitHub project</a> <br/> <br/> <a href="http://gna.org/projects/allegro">Gna project</a>
+</div><!-- hosting -->
+</div><!-- left -->
+
 <div id="content">
 <h1 id="midi-patch-sets">MIDI patch sets</h1>
 <p>The DIGMID wavetable music driver needs a set of instrument samples, which can either be in the GUS patch or SoundFont 2.0 formats. GUS patches can be read directly from disk or converted into a single patches.dat file with the pat2dat utility. SoundFont banks must be converted prior to use.</p>
@@ -101,11 +103,9 @@ A game programming library
 <p>It is very easy to customise a GUS format patch set. You can either just copy new instruments over the top of the existing .pat files, or edit the default.cfg index to use different patches. If you want to modify a SoundFont bank, you must first convert it into the patches.dat format, which can be edited using the grabber. Each instrument is stored as a seperate object, so you can export them to .pat files, import from other files, move them around, rename them, etc. The patches.dat also contains a default_cfg index object in the standard GUS format, so you can edit this to use different samples (in particular you can list a single instrument for multiple program numbers, so for example you could use a single brass sample for the trumpet/trombone/tuba/horn/etc, if you are trying to reduce the size of your sample set).</p>
 <p>I am no lawyer, and I didn't make any of the patch sets listed below, so I can't tell you what the copyright situation with these samples is. Apart from the Emu bank, I think you are probably quite safe to redistribute them with a freeware game, but I would be very careful about using them in commercial products. It may be possible, but check the details first. I can't give any guarantee about the legality of these files...</p>
 <table>
-<colgroup>
 <col width="16%" />
 <col width="13%" />
 <col width="69%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Name</th>
@@ -122,7 +122,7 @@ A game programming library
 <tr class="even">
 <td align="left"><a href="ftp://ftp.gravis.com/Public/Sound/Patches/">Gravis Pro Patches FTP archive</a></td>
 <td align="left">Various patches</td>
-<td align="left">The install program doesn't work on my machine, and the distribution doesn't include a default.cfg file, so you will need <a href="http://alleg.sourceforge.net/files/propat.zip">this one</a> that I made. A pretty good sample set, with some nice powerful sounds, but there are a few tuning problems (eg. the panflute), and most of the instruments have very long release phases, which makes some music sound too muddy. I'm not sure what the legal situation with these patches is, because many of the sounds are based on the original GUS set (copyrighted by Eye&amp;I).</td>
+<td align="left">The install program doesn't work on my machine, and the distribution doesn't include a default.cfg file, so you will need <a href="http://download.gna.org/allegro/files/propat.zip">this one</a> that I made. A pretty good sample set, with some nice powerful sounds, but there are a few tuning problems (eg. the panflute), and most of the instruments have very long release phases, which makes some music sound too muddy. I'm not sure what the legal situation with these patches is, because many of the sounds are based on the original GUS set (copyrighted by Eye&amp;I).</td>
 </tr>
 <tr class="odd">
 <td align="left"><a href="http://freepats.opensrc.org/">Freepats</a></td>
@@ -161,17 +161,15 @@ A game programming library
 </tr>
 </tbody>
 </table>
-</div>
-<!-- content -->
+</div><!-- content -->
+
 <div id="footer">
+<div id="contact">
+<a href="webmasters.html">Contact the webmasters</a>
+</div><!-- contact -->
 <a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
     height="33" width="88" vspace="1" hspace="1" /> </a> <a href="http://www.anybrowser.org/campaign/"> <img src="images/anyb.png" border="0" alt="Viewable with any browser"
     height="31" width="88" vspace="1" hspace="1" /> </a>
-<div id="contact">
-<p><a href="webmasters.html">Contact the webmasters</a></p>
-</div>
-<!-- contact -->
-</div>
-<!-- footer -->
+</div><!-- footer -->
 </body>
 </html>

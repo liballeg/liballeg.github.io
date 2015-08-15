@@ -1,161 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>Allegro news</title>
-<link href="http://alleg.sourceforge.net/"/>
-<link rel="self" href="http://alleg.sourceforge.net/feed_atom.xml"/>
-<updated>2015-08-01T00:54:50-04:00</updated>
+<link href="http://liballeg.org/"/>
+<link rel="self" href="http://liballeg.org/feed_atom.xml"/>
+<updated>2015-08-14T22:09:31-07:00</updated>
 <id>urn:uuid:661257c2-82a0-4510-b2be-0f6b010807b9</id>
+<entry>
+<title>Allegro on Gna!</title>
+<author><name>Allegro developers</name></author>
+<link href="http://liballeg.org/"/>
+<id>urn:uuid:f61a2465-7528-4fd6-8fce-909400e1e037</id>
+<updated>2015-08-15T11:54:16+10:00</updated>
+</entry>
 <entry>
 <title>Allegro's GIT repository is now hosted at GitHub.</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:3a1ad4ed-4a50-46c2-8800-9a05a7043fd8</id>
 <updated>2015-07-31T20:55:20-07:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.11 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:3d0ec9cc-fc39-4a15-96d1-9602a37175ef</id>
 <updated>2015-06-21T14:47:57-07:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.10 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:7ad536c6-4c1f-419d-8294-7d657eab2e0d</id>
 <updated>2015-05-05T23:04:17-07:00</updated>
 </entry>
 <entry>
 <title>Ubuntu PPAs now available.</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:3a912943-7a4e-4b6e-9f91-fc7daaef222c</id>
 <updated>2015-04-12T20:49:49-07:00</updated>
 </entry>
 <entry>
 <title>A new book about Allegro has been published!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:35d32c86-c1f0-4415-8c5d-2d4d928db1cb</id>
 <updated>2015-04-07T19:55:09-07:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.0.11 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:b9aa2584-5c6f-4ffc-bd82-f9d3a5e0df0b</id>
 <updated>2015-01-11T18:32:51-08:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.9 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:ce995be3-85ce-4262-abfd-349b038e124b</id>
 <updated>2015-01-03T18:42:59-08:00</updated>
 </entry>
 <entry>
 <title>Go bindings to Allegro created!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:48ea0ade-d141-46c8-adf3-3136aab3a3a5</id>
 <updated>2014-05-31T12:08:54-04:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.8 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:11f718d9-b8d4-4c5d-9df7-7c0a6be5a798</id>
 <updated>2014-01-12T14:49:29+11:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.0.10 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:f382dc6c-58a4-40ff-a3f7-3347ecd3dfe6</id>
 <updated>2013-06-16T13:31:51+10:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.7 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:1e9fa567-f729-4cf9-8a8a-3fcb289955c1</id>
 <updated>2013-05-12T11:55:19+10:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.6 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:7ba7305c-c48d-4a07-a692-d79d49ca4686</id>
 <updated>2013-03-24T16:15:15+11:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.0.9 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:fb7361ab-45d6-47aa-ab92-ff9f72035414</id>
 <updated>2013-02-17T11:04:30+11:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.5 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:bb0a914d-f6d1-4d6c-a662-c13d8c17d1a7</id>
 <updated>2013-01-13T14:10:29+11:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.0.8 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:ade917e3-3731-4b02-9a76-8067f7355a14</id>
 <updated>2012-11-18T17:25:45+11:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.4 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:83cc2f5b-c87f-4f9d-b8b9-25ee29ffce18</id>
 <updated>2012-10-14T14:14:53+11:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.3 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:dbbfb3d7-5f1b-41ff-82be-aefb39a1f6e4</id>
 <updated>2012-08-12T14:03:12+10:00</updated>
 </entry>
 <entry>
 <title>Switched to GIT!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:3a312a6f-211b-4fd0-9ccc-c9bde83b51f4</id>
 <updated>2012-07-04T13:22:12+02:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.0.7 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:d45fcb40-ee59-405e-be2a-7bce7e770707</id>
 <updated>2012-06-24T16:36:38+10:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.2 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:0e3a2368-736a-4ebc-89ff-acd2ca5b363b</id>
 <updated>2012-05-27T16:24:01+10:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.0.6 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:979baf10-de9e-44b2-8530-f0de8e82a202</id>
 <updated>2012-03-04T12:24:37+11:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.1 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://alleg.sourceforge.net/"/>
+<link href="http://liballeg.org/"/>
 <id>urn:uuid:36ee5353-4d14-46e4-8f9e-f12e830e254d</id>
 <updated>2012-02-12T15:06:37+11:00</updated>
 </entry>

@@ -14,25 +14,33 @@
 <body>
 <table id="header" width="100%">
 <tr>
+
 <td>
 <img id="logo" src="images/logo.png" alt="Allegro" height="58" width="186" />
 </td>
+
 <td id="title">
 A game programming library
 </td>
+
 <td align="right">
+
 <!-- Hide language choices until at least one other translation is complete.
 <div class="sellang">
 [English](index.html)
 [español](es/index.html)
 </div>
 -->
+
 <form id="search" action="http://alleg.sourceforge.net/search/search.py" method="get">
+  
 <input name="query" value="" type="text"/> <select name="where"> <option selected="selected" value="api">A4 API</option> <option value="mail">Mail</option> <option value="site">Site</option> <option value="forum">Forum</option> </select> <input name="submit" value="Search" type="submit"/>
 </form>
 </td>
+
 </tr>
 </table>
+
 <div id="left">
 <div id="sidebar">
 <ul>
@@ -60,7 +68,7 @@ A game programming library
 <ul>
 <li><a href="http://www.allegro.cc/forums/">Forums</a></li>
 <li><a href="maillist.html">Mailing lists</a></li>
-<li><a href="http://sourceforge.net/tracker2/?group_id=5665&amp;atid=105665">Bug tracker</a></li>
+<li><a href="https://github.com/liballeg/allegro5/issues">Bug tracker</a></li>
 <li><a href="irc.html">IRC</a></li>
 </ul></li>
 <li>Community
@@ -77,22 +85,16 @@ A game programming library
 <li><a href="mirrors.html">Mirrors</a></li>
 <li><a href="webmasters.html">Webmasters</a></li>
 <li><a href="humor.html">Humor</a></li>
-<li><a href="donations.html">Donations</a></li>
 </ul></li>
 </ul>
 <!-- keep blank line for correct HTML -->
-</div>
-<!-- sidebar -->
+</div><!-- sidebar -->
+
 <div id="hosting">
-<p><a href="http://sourceforge.net/donate/index.php?group_id=5665"> <img src="http://images.sourceforge.net/images/project-support.jpg"
-    alt="Support This Project" border="0" height="32" width="88"
-    id="support" /> </a> <br/> Hosted by: <br/> <a href="http://sourceforge.net/projects/alleg"> <img src="http://sflogo.sourceforge.net/sflogo.php?group_id=5665&amp;type=13"
-    width="120" height="30" border="0"
-    alt="Get Allegro game programming library at SourceForge.net. Fast, secure and Free Open Source software downloads" /> </a> <br/> <a href="http://sourceforge.net/projects/alleg/">Project page</a></p>
-</div>
-<!-- hosting -->
-</div>
-<!-- left -->
+<a href="https://github.com/liballeg">GitHub project</a> <br/> <br/> <a href="http://gna.org/projects/allegro">Gna project</a>
+</div><!-- hosting -->
+</div><!-- left -->
+
 <div id="content">
 <div id="header">
 <h1 class="title">Allegro changelog for 5.1.x series</h1>
@@ -337,7 +339,7 @@ A game programming library
 <li><p>Fix bug which meant ALLEGRO_INVERSE_SRC_COLOR and ALLEGRO_INVERSE_DEST_COLOR never actually worked on D3D.</p></li>
 <li><p>Fix horizontal and vertical shears which were not composing with translations correctly.</p></li>
 <li><p>Optimise al_restore_state if saved target display/bitmap are unchanged.</p></li>
-<li><p>Fix _al_display_settings_sorter ordering of indexes when scores are equal.</p></li>
+<li><p>Fix <em>al</em>display_settings_sorter ordering of indexes when scores are equal.</p></li>
 <li><p>Use a minimum 16x16 texture workaround even on desktop OpenGL.</p></li>
 <li><p>Propagate errors up OpenGL lock bitmap implementations.</p></li>
 <li><p>Use proxy bitmap when locking writable backbuffer regions on GLES.</p></li>
@@ -665,7 +667,7 @@ A game programming library
 <p>Graphics:</p>
 <ul>
 <li><p>Avoid null pointer dereference when setting a target bitmap after its video_texture has already been released (D3D).</p></li>
-<li><p>Make d3d_lock_region fail immediately if _al_d3d_sync_bitmap failed, likely because the device was lost.</p></li>
+<li><p>Make d3d_lock_region fail immediately if <em>al</em>d3d_sync_bitmap failed, likely because the device was lost.</p></li>
 <li><p>Set device_lost flag immediately when d3d_display_thread_proc finds the device is lost.</p></li>
 <li><p>Fix OpenGL extensions being completely ignored on OS X.</p></li>
 <li><p>Added a quick hack to fix bitmap locking on desktop OpenGL when using shaders.</p></li>
@@ -1191,17 +1193,15 @@ A game programming library
 <li><p>Added skater demo ported from Allegro 4.4.</p></li>
 </ul>
 <!-- vi: set sts=3 sw=3 et: -->
-</div>
-<!-- content -->
+</div><!-- content -->
+
 <div id="footer">
+<div id="contact">
+<a href="webmasters.html">Contact the webmasters</a>
+</div><!-- contact -->
 <a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
     height="33" width="88" vspace="1" hspace="1" /> </a> <a href="http://www.anybrowser.org/campaign/"> <img src="images/anyb.png" border="0" alt="Viewable with any browser"
     height="31" width="88" vspace="1" hspace="1" /> </a>
-<div id="contact">
-<p><a href="webmasters.html">Contact the webmasters</a></p>
-</div>
-<!-- contact -->
-</div>
-<!-- footer -->
+</div><!-- footer -->
 </body>
 </html>
