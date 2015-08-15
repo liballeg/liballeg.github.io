@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+   <head>
+      <title>Allegro/STL Tutorial: chapter 1</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+      <meta name="author" content="Ove K&aring;ven">
+   </head>
+   <body text="#000000" bgcolor="#FFFFFF" link="#0000EF" vlink="#51188E" alink="#FF0000">
+<H1>Chapter 1</H1>
+<H2>1. Basics</H2>
+<H3>1.1 Using RHIDE to write our first C++ program</H3>
+First, you should create a new directory for this tutorial. When you
+have done so, start RHIDE from within it. The RHIDE startup screen should
+appear if it was installed properly.
+<P>
+At the top, there are some menus. We want to create a new
+project for our game. Hit Alt-P to open the <CODE>Project</CODE> menu.
+Choose <CODE>"Open project"</CODE>. Give your new project a name, e.g.
+<CODE>tutorial</CODE>. Set up your environment according to your preferences
+in the <CODE>Options</CODE> menu (Alt-O), if you wish (e.g. I prefer 80x50
+screen mode). Be sure to check <CODE>-Wall</CODE> in the <CODE>Warnings</CODE>
+box in the <CODE>Compilers</CODE> menu, as this will enable many helpful
+warnings. Beginners and experts alike will benefit from having the compiler
+spot a lot of potential bugs this way.
+<P>
+It is now time to write your first C++ program to check that the compiler
+actually works. In the <CODE>Project</CODE> menu, select
+<CODE>Add item</CODE>. In the dialog box that pops up, type
+<CODE>tut1.cc</CODE> and hit Enter. The name will appear in the Project
+Window at the bottom of the screen. Hit Esc to return. Then hit Enter again
+to select this project entry. Since the file does already not exist, an
+empty window should now pop up. In it, type:
+<PRE>
+#include &lt;iostream.h&gt;
+
+int main()
+{
+ cout &lt;&lt; "Hello world." &lt;&lt; endl;
+ return 0;
+}
+</PRE>
+This is the classical first C++ program, it does not do anything
+particularly useful, but we want to make sure the compiler works. Hit F9 to
+make it. If there are no error messages, DJGPP is properly set up. If there
+are problems, re-read <CODE>README.1ST</CODE> that accompanies the DJGPP
+distribution. To run our first program, hit Ctrl-F9. The screen will flash
+briefly while the program does its deed. If you want to see what it did, now
+hit Alt-F5 to view the <CODE>User Screen</CODE>.
+<P>
+The curious reader will note that the .EXE file that our exercise has
+produced is very large (almost 200K). This is normal and nothing to worry
+about, you should remember that DJGPP is a feature-rich 32-bit
+protected-mode compiler. The DJGPP startup and library code detects and
+starts up a DPMI host, enters protected mode, takes care of a lot of memory
+management, reads, parses, and expands command-line arguments, loads
+environment variables, sets up protected-mode exception handlers, and so on.
+Of course, all this is wasted on a program that just prints a few characters
+and exits. If you really are concerned about executable size, consult the
+DJGPP FAQ about how to reduce its size, but once we write bigger programs
+this overhead will soon be negligible anyway.
+<H3>1.2 Introducing Allegro</H3>
+I will not waste too much time introducing the theory behind C++,
+for this the reader may want to consult a dedicated C++ tutorial for more
+information, and I assume the reader to be at least vaguely familiar with C
+syntax. I will explain what else we need to know once we need it.
+And what we need to know right now, is how to start using Allegro. Most
+concepts concerning the use of Allegro is covered in its own examples, you
+may want to take a look at them also.
+<P>
+So, in our tut1.cc, we add some code, to make it look like this:
+<PRE>
+#include &lt;iostream.h&gt;
+#include &lt;allegro.h&gt;
+
+int main()
+{
+ allegro_init();
+ cout &lt;&lt; "Ready. Beep." &lt;&lt; endl;
+ return 0;
+}
+</PRE>
+Since we are now using the Allegro library, the linker is going to complain
+if we compile this right away. In the <CODE>Options</CODE> menu, choose
+<CODE>Libraries</CODE>. Type <CODE>alleg</CODE> there and check the box
+beside it. Our program will now link with Allegro if Allegro was properly
+installed. If it doesn't, read the Allegro FAQ. If run, this program will
+obviously say "Ready. Beep." instead of "Hello world.", but otherwise not
+do very much interesting.
+<H3>1.3 Using Allegro</H3>
+We will now add even more code to our little introductory program, and
+this time use Allegro for the output.
+<PRE>
+#include &lt;allegro.h&gt;
+
+int main()
+{
+ allegro_init();
+ install_keyboard();
+ set_gfx_mode(GFX_VGA,320,200,0,0);
+ textout_centre(screen,font,"Ready. Beep.",160,100,255);
+ readkey();
+ return 0;
+}
+</PRE>
+Hit Ctrl-F9 to run it.
+This program does not use the C++ iostream routines to output its text, so
+we have removed any references to it. Instead, it enters graphics mode,
+writes "Ready. Beep." at the center of the screen, and waits for you to
+press a key before it exits. For more details about the functions used
+here, refer to the Allegro documentation.
+<P>
+Exit RHIDE and proceed to the <A HREF="tut2.html">next chapter</A>
+
+</body>
+</html>

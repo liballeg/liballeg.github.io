@@ -1,0 +1,1257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >Display</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta name="generator" content="pandoc"
+     /><script type="text/javascript" src="autosuggest.js"></script>
+<script type="text/javascript" src="search_index.js"></script>
+<link rel="stylesheet" href="pandoc.css" type="text/css" media="all" />
+</head
+  ><body
+  ><table class="white">
+<tr>
+<td valign="top" class="sidebar">
+
+<div class="sidebar">
+<ul
+><li
+  ><strong
+    ><a href="index.html"
+      >Contents</a
+      ></strong
+    ></li
+  ><li
+  ><a href="config.html"
+    >Configuration files</a
+    ></li
+  ><li
+  ><a href="display.html"
+    >Display</a
+    ></li
+  ><li
+  ><a href="events.html"
+    >Events</a
+    ></li
+  ><li
+  ><a href="file.html"
+    >File I/O</a
+    ></li
+  ><li
+  ><a href="fshook.html"
+    >Filesystem hooks</a
+    ></li
+  ><li
+  ><a href="graphics.html"
+    >Graphics</a
+    ></li
+  ><li
+  ><a href="joystick.html"
+    >Joystick</a
+    ></li
+  ><li
+  ><a href="keyboard.html"
+    >Keyboard</a
+    ></li
+  ><li
+  ><a href="memory.html"
+    >Memory</a
+    ></li
+  ><li
+  ><a href="misc.html"
+    >Miscellaneous</a
+    ></li
+  ><li
+  ><a href="mouse.html"
+    >Mouse</a
+    ></li
+  ><li
+  ><a href="opengl.html"
+    >OpenGL</a
+    ></li
+  ><li
+  ><a href="path.html"
+    >Path</a
+    ></li
+  ><li
+  ><a href="platform.html"
+    >Platform-specific</a
+    ></li
+  ><li
+  ><a href="state.html"
+    >State</a
+    ></li
+  ><li
+  ><a href="system.html"
+    >System</a
+    ></li
+  ><li
+  ><a href="threads.html"
+    >Threads</a
+    ></li
+  ><li
+  ><a href="time.html"
+    >Time</a
+    ></li
+  ><li
+  ><a href="timer.html"
+    >Timer</a
+    ></li
+  ><li
+  ><a href="utf8.html"
+    >UTF-8</a
+    ></li
+  ><li
+  ><strong
+    ><a href="index.html#addons"
+      >Addons</a
+      ></strong
+    ></li
+  ><li
+  ><a href="kcm_audio.html"
+    >Audio addon</a
+    ></li
+  ><li
+  ><a href="acodec.html"
+    >Audio codecs</a
+    ></li
+  ><li
+  ><a href="color.html"
+    >Color addon</a
+    ></li
+  ><li
+  ><a href="font.html"
+    >Font addons</a
+    ></li
+  ><li
+  ><a href="iio.html"
+    >Image I/O addon</a
+    ></li
+  ><li
+  ><a href="native_dialog.html"
+    >Native dialogs addon</a
+    ></li
+  ><li
+  ><a href="physfs.html"
+    >PhysicsFS addon</a
+    ></li
+  ><li
+  ><a href="primitives.html"
+    >Primitives addon</a
+    ></li
+  ></ul
+><!-- keep blank line for correct HTML -->
+</div>
+
+<div class="searchbox">
+<script type="text/javascript">
+function onSubmit(form) {
+    for (i = 0; i < search_index.length; i++) {
+        if (search_index[i] == form.q.value) {
+            form.action = search_urls[i];
+            form.method = "POST";
+            return true;
+        }
+    }
+    // Search-term is not in the index.
+    // We could add an URL here which does a fulltext search - for
+    // now we simply do nothing by return false to the form.
+    return false;
+}
+</script>
+<form id="search" action="search.py" onsubmit="return onSubmit(this);"><input type="text" name="q" id="q" size="15" autocomplete="off" /><br /> <input type="submit" value="Search" /><script type="text/javascript">actb = new actb("q", search_index);</script>
+</form>
+</div>
+
+
+</td>
+<td class="content">
+
+
+<h1 class="title"
+    >Display</h1
+    ><div id="toc"
+    ><ul
+      ><li
+	><a href="#display-creation" id="TOC-display-creation"
+	  >Display creation</a
+	  ><ul
+	  ><li
+	    ><a href="#allegro_display" id="TOC-allegro_display"
+	      >ALLEGRO_DISPLAY</a
+	      ></li
+	    ><li
+	    ><a href="#al_create_display" id="TOC-al_create_display"
+	      >al_create_display</a
+	      ></li
+	    ><li
+	    ><a href="#al_destroy_display" id="TOC-al_destroy_display"
+	      >al_destroy_display</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_num_display_formats" id="TOC-al_get_num_display_formats"
+	      >al_get_num_display_formats</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_display_format_option" id="TOC-al_get_display_format_option"
+	      >al_get_display_format_option</a
+	      ></li
+	    ><li
+	    ><a href="#al_set_new_display_format" id="TOC-al_set_new_display_format"
+	      >al_set_new_display_format</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_new_display_flags" id="TOC-al_get_new_display_flags"
+	      >al_get_new_display_flags</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_new_display_refresh_rate" id="TOC-al_get_new_display_refresh_rate"
+	      >al_get_new_display_refresh_rate</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_new_window_position" id="TOC-al_get_new_window_position"
+	      >al_get_new_window_position</a
+	      ></li
+	    ><li
+	    ><a href="#al_set_new_display_option" id="TOC-al_set_new_display_option"
+	      >al_set_new_display_option</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_new_display_option" id="TOC-al_get_new_display_option"
+	      >al_get_new_display_option</a
+	      ></li
+	    ><li
+	    ><a href="#al_reset_new_display_options" id="TOC-al_reset_new_display_options"
+	      >al_reset_new_display_options</a
+	      ></li
+	    ><li
+	    ><a href="#al_set_new_display_flags" id="TOC-al_set_new_display_flags"
+	      >al_set_new_display_flags</a
+	      ></li
+	    ><li
+	    ><a href="#al_set_new_display_refresh_rate" id="TOC-al_set_new_display_refresh_rate"
+	      >al_set_new_display_refresh_rate</a
+	      ></li
+	    ><li
+	    ><a href="#al_set_new_window_position" id="TOC-al_set_new_window_position"
+	      >al_set_new_window_position</a
+	      ></li
+	    ></ul
+	  ></li
+	><li
+	><a href="#display-operations" id="TOC-display-operations"
+	  >Display operations</a
+	  ><ul
+	  ><li
+	    ><a href="#al_acknowledge_resize" id="TOC-al_acknowledge_resize"
+	      >al_acknowledge_resize</a
+	      ></li
+	    ><li
+	    ><a href="#al_flip_display" id="TOC-al_flip_display"
+	      >al_flip_display</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_backbuffer" id="TOC-al_get_backbuffer"
+	      >al_get_backbuffer</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_current_display" id="TOC-al_get_current_display"
+	      >al_get_current_display</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_display_flags" id="TOC-al_get_display_flags"
+	      >al_get_display_flags</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_display_format" id="TOC-al_get_display_format"
+	      >al_get_display_format</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_display_height" id="TOC-al_get_display_height"
+	      >al_get_display_height</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_display_refresh_rate" id="TOC-al_get_display_refresh_rate"
+	      >al_get_display_refresh_rate</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_display_width" id="TOC-al_get_display_width"
+	      >al_get_display_width</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_frontbuffer" id="TOC-al_get_frontbuffer"
+	      >al_get_frontbuffer</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_window_position" id="TOC-al_get_window_position"
+	      >al_get_window_position</a
+	      ></li
+	    ><li
+	    ><a href="#al_inhibit_screensaver" id="TOC-al_inhibit_screensaver"
+	      >al_inhibit_screensaver</a
+	      ></li
+	    ><li
+	    ><a href="#al_resize_display" id="TOC-al_resize_display"
+	      >al_resize_display</a
+	      ></li
+	    ><li
+	    ><a href="#al_set_current_display" id="TOC-al_set_current_display"
+	      >al_set_current_display</a
+	      ></li
+	    ><li
+	    ><a href="#al_set_display_icon" id="TOC-al_set_display_icon"
+	      >al_set_display_icon</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_display_option" id="TOC-al_get_display_option"
+	      >al_get_display_option</a
+	      ></li
+	    ><li
+	    ><a href="#al_set_window_position" id="TOC-al_set_window_position"
+	      >al_set_window_position</a
+	      ></li
+	    ><li
+	    ><a href="#al_set_window_title" id="TOC-al_set_window_title"
+	      >al_set_window_title</a
+	      ></li
+	    ><li
+	    ><a href="#al_toggle_window_frame" id="TOC-al_toggle_window_frame"
+	      >al_toggle_window_frame</a
+	      ></li
+	    ><li
+	    ><a href="#al_update_display_region" id="TOC-al_update_display_region"
+	      >al_update_display_region</a
+	      ></li
+	    ><li
+	    ><a href="#al_wait_for_vsync" id="TOC-al_wait_for_vsync"
+	      >al_wait_for_vsync</a
+	      ></li
+	    ></ul
+	  ></li
+	><li
+	><a href="#fullscreen-display-modes" id="TOC-fullscreen-display-modes"
+	  >Fullscreen display modes</a
+	  ><ul
+	  ><li
+	    ><a href="#allegro_display_mode" id="TOC-allegro_display_mode"
+	      >ALLEGRO_DISPLAY_MODE</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_display_mode" id="TOC-al_get_display_mode"
+	      >al_get_display_mode</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_num_display_modes" id="TOC-al_get_num_display_modes"
+	      >al_get_num_display_modes</a
+	      ></li
+	    ></ul
+	  ></li
+	><li
+	><a href="#monitors" id="TOC-monitors"
+	  >Monitors</a
+	  ><ul
+	  ><li
+	    ><a href="#allegro_monitor_info" id="TOC-allegro_monitor_info"
+	      >ALLEGRO_MONITOR_INFO</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_current_video_adapter" id="TOC-al_get_current_video_adapter"
+	      >al_get_current_video_adapter</a
+	      ></li
+	    ><li
+	    ><a href="#al_set_current_video_adapter" id="TOC-al_set_current_video_adapter"
+	      >al_set_current_video_adapter</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_monitor_info" id="TOC-al_get_monitor_info"
+	      >al_get_monitor_info</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_num_video_adapters" id="TOC-al_get_num_video_adapters"
+	      >al_get_num_video_adapters</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_display_event_source" id="TOC-al_get_display_event_source"
+	      >al_get_display_event_source</a
+	      ></li
+	    ></ul
+	  ></li
+	></ul
+      ></div
+    ><h1 id="display-creation"
+    ><a href="#TOC-display-creation"
+      >Display creation</a
+      ></h1
+    ><h2 id="allegro_display"
+    ><a href="#TOC-allegro_display"
+      >ALLEGRO_DISPLAY</a
+      ></h2
+    ><pre
+    ><code
+      >typedef struct ALLEGRO_DISPLAY ALLEGRO_DISPLAY;
+</code
+      ></pre
+    ><p
+    >An opaque type representing an open display or window.</p
+    ><h2 id="al_create_display"
+    ><a href="#TOC-al_create_display"
+      >al_create_display</a
+      ></h2
+    ><pre
+    ><code
+      >ALLEGRO_DISPLAY *al_create_display(int w, int h)
+</code
+      ></pre
+    ><p
+    >Create a display, or window, with the specified dimensions. The parameters of the display are determined by the last calls to al_set_new_display_*. Default parameters are used if none are set explicitly. Creating a new display will automatically make it the active one, with the backbuffer selected for drawing.</p
+    ><p
+    >Returns NULL on error.</p
+    ><p
+    >See also: <a href="display.html#al_set_new_display_flags"
+      >al_set_new_display_flags</a
+      >, <a href="display.html#al_set_new_display_option"
+      >al_set_new_display_option</a
+      >, <a href="display.html#al_set_new_display_format"
+      >al_set_new_display_format</a
+      >, <a href="display.html#al_set_new_display_refresh_rate"
+      >al_set_new_display_refresh_rate</a
+      ></p
+    ><h2 id="al_destroy_display"
+    ><a href="#TOC-al_destroy_display"
+      >al_destroy_display</a
+      ></h2
+    ><pre
+    ><code
+      >void al_destroy_display(ALLEGRO_DISPLAY *display)
+</code
+      ></pre
+    ><p
+    >Destroy a display.</p
+    ><h2 id="al_get_num_display_formats"
+    ><a href="#TOC-al_get_num_display_formats"
+      >al_get_num_display_formats</a
+      ></h2
+    ><pre
+    ><code
+      >int al_get_num_display_formats(void)
+</code
+      ></pre
+    ><p
+    >Returns the number of available display formats.</p
+    ><p
+    >Note that on some platforms this may return 0 unless there is a current display already. In that case, first create a small window using Allegro's standard settings to query the available formats and create your actual display later.</p
+    ><p
+    >In pseudo-code:</p
+    ><pre
+    ><code
+      >display = al_create_display();
+n = al_get_num_display_formats();
+for (i = 0; i &lt; n; i++) {
+   /* Use al_get_display_format_option to inspect each available
+    * format and select the one you want.
+    */
+}
+al_destroy_display(display); 
+
+/* Now create the real display. */
+al_set_new_display_format(i);
+real_display = al_create_display();
+</code
+      ></pre
+    ><p
+    >See also: <a href="display.html#al_get_display_format_option"
+      >al_get_display_format_option</a
+      ></p
+    ><h2 id="al_get_display_format_option"
+    ><a href="#TOC-al_get_display_format_option"
+      >al_get_display_format_option</a
+      ></h2
+    ><pre
+    ><code
+      >int al_get_display_format_option(int i, int option)
+</code
+      ></pre
+    ><p
+    >Queries information about one of the available display formats. The parameter must be between 0 and <a href="display.html#al_get_num_display_formats"
+      >al_get_num_display_formats</a
+      > - 1. The same options as with <a href="display.html#al_set_new_display_option"
+      >al_set_new_display_option</a
+      > are supported.</p
+    ><h2 id="al_set_new_display_format"
+    ><a href="#TOC-al_set_new_display_format"
+      >al_set_new_display_format</a
+      ></h2
+    ><pre
+    ><code
+      >void al_set_new_display_format(int i)
+</code
+      ></pre
+    ><p
+    >Sets one of the available display formats. The index must be between 0 and <a href="display.html#al_get_num_display_formats"
+      >al_get_num_display_formats</a
+      > - 1. Calling this functions is equivalent to calling <a href="display.html#al_set_new_display_option"
+      >al_set_new_display_option</a
+      > with all of the available display format options.</p
+    ><h2 id="al_get_new_display_flags"
+    ><a href="#TOC-al_get_new_display_flags"
+      >al_get_new_display_flags</a
+      ></h2
+    ><pre
+    ><code
+      >int al_get_new_display_flags(void)
+</code
+      ></pre
+    ><p
+    >Gets the current flags used for newly created displays.</p
+    ><p
+    >See also: <a href="display.html#al_set_new_display_flags"
+      >al_set_new_display_flags</a
+      ></p
+    ><h2 id="al_get_new_display_refresh_rate"
+    ><a href="#TOC-al_get_new_display_refresh_rate"
+      >al_get_new_display_refresh_rate</a
+      ></h2
+    ><pre
+    ><code
+      >int al_get_new_display_refresh_rate(void)
+</code
+      ></pre
+    ><p
+    >Gets the current refresh rate used for newly created displays.</p
+    ><p
+    >See also: <a href="display.html#al_set_new_display_refresh_rate"
+      >al_set_new_display_refresh_rate</a
+      ></p
+    ><h2 id="al_get_new_window_position"
+    ><a href="#TOC-al_get_new_window_position"
+      >al_get_new_window_position</a
+      ></h2
+    ><pre
+    ><code
+      >void al_get_new_window_position(int *x, int *y)
+</code
+      ></pre
+    ><p
+    >Gets the position where newly created non-fullscreen displays will be placed.</p
+    ><p
+    >See also: <a href="display.html#al_set_new_window_position"
+      >al_set_new_window_position</a
+      ></p
+    ><h2 id="al_set_new_display_option"
+    ><a href="#TOC-al_set_new_display_option"
+      >al_set_new_display_option</a
+      ></h2
+    ><pre
+    ><code
+      >void al_set_new_display_option(int option, int value, int importance)
+</code
+      ></pre
+    ><p
+    >Sets an extra display option. Allegro itself will not care about those options itself, but you may want to specify them, for example if you want to use multisampling.</p
+    ><p
+    >The 'importance' parameter can be either:</p
+    ><ul
+    ><li
+      >ALLEGRO_REQUIRE - The display will not be created if the setting can not be met.</li
+      ><li
+      >ALLEGRO_SUGGEST - If the setting is not available, the display will be created anyway. FIXME: We need a way to query the settings back from a created display.</li
+      ><li
+      >ALLEGRO_DONTCARE - If you added a display option with one of the above two settings before, it will be removed again. Else this does nothing.</li
+      ></ul
+    ><p
+    >The supported options are:</p
+    ><ul
+    ><li
+      >ALLEGRO_RED_SIZE</li
+      ><li
+      >ALLEGRO_GREEN_SIZE</li
+      ><li
+      >ALLEGRO_BLUE_SIZE</li
+      ><li
+      >ALLEGRO_ALPHA_SIZE</li
+      ><li
+      >ALLEGRO_COLOR_SIZE</li
+      ><li
+      >ALLEGRO_RED_SHIFT</li
+      ><li
+      >ALLEGRO_GREEN_SHIFT</li
+      ><li
+      >ALLEGRO_BLUE_SHIFT</li
+      ><li
+      >ALLEGRO_ALPHA_SHIFT: These settings can be used to specify the pixel layout the display should use.</li
+      ><li
+      >ALLEGRO_ACC_RED_SIZE</li
+      ><li
+      >ALLEGRO_ACC_GREEN_SIZE</li
+      ><li
+      >ALLEGRO_ACC_BLUE_SIZE</li
+      ><li
+      >ALLEGRO_ACC_ALPHA_SIZE: This and the preceding three settings can be used to define the required accumulation buffer size.</li
+      ><li
+      >ALLEGRO_STEREO: Whether the display is a stereo display.</li
+      ><li
+      >ALLEGRO_AUX_BUFFERS: Number of auxiliary buffers the display should have.</li
+      ><li
+      >ALLEGRO_DEPTH_SIZE: How many depth buffer (z-buffer) bits to use.</li
+      ><li
+      >ALLEGRO_STENCIL_SIZE: How many bits to use for the stencil buffer.</li
+      ><li
+      >ALLEGRO_SAMPLE_BUFFERS: Whether to use multisampling (1) or not (0).</li
+      ><li
+      >ALLEGRO_SAMPLES: If the above is 1, the number of samples to use per pixel. Else 0.</li
+      ><li
+      >ALLEGRO_RENDER_METHOD: 0 if hardware acceleration is not used with this display.</li
+      ><li
+      >ALLEGRO_FLOAT_COLOR: Whether to use floating point color components.</li
+      ><li
+      >ALLEGRO_FLOAT_DEPTH: Whether to use a floating point depth buffer.</li
+      ><li
+      >ALLEGRO_SINGLE_BUFFER: Whether the display uses a single buffer (1) or another update method (0).</li
+      ><li
+      >ALLEGRO_SWAP_METHOD: If the above is 0, this is set to 1 to indicate the display is using a copying method to make the next buffer in the flip chain available, or to 2 to indicate a flipping or other method.</li
+      ><li
+      >ALLEGRO_COMPATIBLE_DISPLAY: Indicates if Allegro's graphics functions can use this display. If you request a display not useable by Allegro, you can still use for example OpenGL to draw graphics.</li
+      ><li
+      >ALLEGRO_UPDATE_DISPLAY_REGION: Set to 1 if the current display is capable of updating just a region, and 0 if calling <a href="display.html#al_update_display_region"
+	>al_update_display_region</a
+	> is equivalent to <a href="display.html#al_flip_display"
+	>al_flip_display</a
+	>.</li
+      ><li
+      >ALLEGRO_VSYNC: Set to 1 to tell the driver to wait for vsync in <a href="display.html#al_flip_display"
+	>al_flip_display</a
+	>, or to 2 to force vsync off.</li
+      ></ul
+    ><p
+    >FIXME: document them all in detail</p
+    ><p
+    >See also: <a href="display.html#al_set_new_display_flags"
+      >al_set_new_display_flags</a
+      >, <a href="display.html#al_set_new_display_format"
+      >al_set_new_display_format</a
+      ></p
+    ><h2 id="al_get_new_display_option"
+    ><a href="#TOC-al_get_new_display_option"
+      >al_get_new_display_option</a
+      ></h2
+    ><pre
+    ><code
+      >int al_get_new_display_option(int option, int *importance)
+</code
+      ></pre
+    ><p
+    >Retrieve an extra display setting which was previously set with <a href="display.html#al_set_new_display_option"
+      >al_set_new_display_option</a
+      >.</p
+    ><h2 id="al_reset_new_display_options"
+    ><a href="#TOC-al_reset_new_display_options"
+      >al_reset_new_display_options</a
+      ></h2
+    ><pre
+    ><code
+      >void al_reset_new_display_options(void)
+</code
+      ></pre
+    ><p
+    >This undoes any previous calls to <a href="display.html#al_set_new_display_option"
+      >al_set_new_display_option</a
+      >.</p
+    ><h2 id="al_set_new_display_flags"
+    ><a href="#TOC-al_set_new_display_flags"
+      >al_set_new_display_flags</a
+      ></h2
+    ><pre
+    ><code
+      >void al_set_new_display_flags(int flags)
+</code
+      ></pre
+    ><p
+    >Sets various flags for display creation. flags is a bitfield containing any reasonable combination of the following:</p
+    ><ul
+    ><li
+      ><p
+	>ALLEGRO_WINDOWED - prefer a windowed mode</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_FULLSCREEN - prefer a fullscreen mode</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_RESIZABLE - the display is resizable (only applicable if combined with ALLEGRO_WINDOWED)</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_OPENGL - require the driver to provide an initialized opengl context after returning successfully</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_DIRECT3D - require the driver to do rendering with Direct3D and provide a Direct3D device</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_NOFRAME - Try to create a window without a frame (i.e. no border or titlebar). This usualy does nothing for fullscreen modes, and even in windowed moded it depends on the underlying platform whether it is supported or not.</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_GENERATE_EXPOSE_EVENTS - Let the display generate expose events.</p
+	></li
+      ></ul
+    ><p
+    >0 can be used for default values.</p
+    ><p
+    >See also: <a href="display.html#al_set_new_display_option"
+      >al_set_new_display_option</a
+      ></p
+    ><h2 id="al_set_new_display_refresh_rate"
+    ><a href="#TOC-al_set_new_display_refresh_rate"
+      >al_set_new_display_refresh_rate</a
+      ></h2
+    ><pre
+    ><code
+      >void al_set_new_display_refresh_rate(int refresh_rate)
+</code
+      ></pre
+    ><p
+    >Sets the refresh rate to use for newly created displays. If the refresh rate is not available, al_create_display will fail. A list of modes with refresh rates can be found with <a href="display.html#al_get_num_display_modes"
+      >al_get_num_display_modes</a
+      > and <a href="display.html#al_get_display_mode"
+      >al_get_display_mode</a
+      >.</p
+    ><h2 id="al_set_new_window_position"
+    ><a href="#TOC-al_set_new_window_position"
+      >al_set_new_window_position</a
+      ></h2
+    ><pre
+    ><code
+      >void al_set_new_window_position(int x, int y)
+</code
+      ></pre
+    ><p
+    >Sets where the top left pixel of the client area of newly created windows (non-fullscreen) will be on screen. Negative values allowed on some multihead systems.</p
+    ><p
+    >See also: <a href="display.html#al_get_new_window_position"
+      >al_get_new_window_position</a
+      ></p
+    ><h1 id="display-operations"
+    ><a href="#TOC-display-operations"
+      >Display operations</a
+      ></h1
+    ><h2 id="al_acknowledge_resize"
+    ><a href="#TOC-al_acknowledge_resize"
+      >al_acknowledge_resize</a
+      ></h2
+    ><pre
+    ><code
+      >bool al_acknowledge_resize(ALLEGRO_DISPLAY *display)
+</code
+      ></pre
+    ><p
+    >When the user receives a resize event from a resizable display, if they wish the display to be resized they must call this function to let the graphics driver know that it can now resize the display. Returns true on success.</p
+    ><p
+    >Adjusts the clipping rectangle to the full size of the backbuffer.</p
+    ><p
+    >See also: <a href="display.html#al_resize_display"
+      >al_resize_display</a
+      ></p
+    ><h2 id="al_flip_display"
+    ><a href="#TOC-al_flip_display"
+      >al_flip_display</a
+      ></h2
+    ><pre
+    ><code
+      >void al_flip_display(void)
+</code
+      ></pre
+    ><p
+    >Copies or updates the front and back buffers so that what has been drawn previously on the currently selected display becomes visible on screen. Pointers to the special back and front buffer bitmaps remain valid and retain their semantics as back and front buffers respectively, although their contents may have changed.</p
+    ><p
+    >Several display options change how this function behaves:</p
+    ><p
+    >With ALLEGRO_SINGLE_BUFFER, no flipping is done. You still have to call this function to display graphics, depending on how the used graphics system works.</p
+    ><p
+    >The ALLEGRO_SWAP_METHOD option may have additional information about what kind of operation is used internally to flip the front and back buffers.</p
+    ><p
+    >If ALLEGRO_VSYNC is 1, this function will force waiting for vsync. If ALLEGRO_VSYNC is 2, this function will not wait for vsync. With many drivers the vsync behavior is controlled by the user and not the application, and ALLEGRO_VSYNC will not be set; in this case <a href="display.html#al_flip_display"
+      >al_flip_display</a
+      > will wait for vsync depending on the settings set in the system's graphics preferences.</p
+    ><p
+    >See also: <a href="display.html#al_set_new_display_flags"
+      >al_set_new_display_flags</a
+      >, <a href="display.html#al_set_new_display_option"
+      >al_set_new_display_option</a
+      ></p
+    ><h2 id="al_get_backbuffer"
+    ><a href="#TOC-al_get_backbuffer"
+      >al_get_backbuffer</a
+      ></h2
+    ><pre
+    ><code
+      >ALLEGRO_BITMAP *al_get_backbuffer(void)
+</code
+      ></pre
+    ><p
+    >Return a special bitmap representing the back-buffer of the current display.</p
+    ><p
+    >See also: <a href="display.html#al_get_frontbuffer"
+      >al_get_frontbuffer</a
+      ></p
+    ><h2 id="al_get_current_display"
+    ><a href="#TOC-al_get_current_display"
+      >al_get_current_display</a
+      ></h2
+    ><pre
+    ><code
+      >ALLEGRO_DISPLAY *al_get_current_display(void)
+</code
+      ></pre
+    ><p
+    >Query for the current display in the calling thread.</p
+    ><p
+    >See also: <a href="display.html#al_set_current_display"
+      >al_set_current_display</a
+      ></p
+    ><h2 id="al_get_display_flags"
+    ><a href="#TOC-al_get_display_flags"
+      >al_get_display_flags</a
+      ></h2
+    ><pre
+    ><code
+      >int al_get_display_flags(void)
+</code
+      ></pre
+    ><p
+    >Gets the flags of the current display.</p
+    ><p
+    >See also: <a href="display.html#al_set_new_display_flags"
+      >al_set_new_display_flags</a
+      ></p
+    ><h2 id="al_get_display_format"
+    ><a href="#TOC-al_get_display_format"
+      >al_get_display_format</a
+      ></h2
+    ><pre
+    ><code
+      >int al_get_display_format(void)
+</code
+      ></pre
+    ><p
+    >Gets the pixel format of the current display.</p
+    ><p
+    >See also: <a href="graphics.html#allegro_pixel_format"
+      >ALLEGRO_PIXEL_FORMAT</a
+      ></p
+    ><h2 id="al_get_display_height"
+    ><a href="#TOC-al_get_display_height"
+      >al_get_display_height</a
+      ></h2
+    ><pre
+    ><code
+      >int al_get_display_height(void)
+</code
+      ></pre
+    ><p
+    >Gets the height of the current display. This is like SCREEN_H in Allegro 4.x.</p
+    ><p
+    >See also: <a href="display.html#al_get_display_width"
+      >al_get_display_width</a
+      ></p
+    ><h2 id="al_get_display_refresh_rate"
+    ><a href="#TOC-al_get_display_refresh_rate"
+      >al_get_display_refresh_rate</a
+      ></h2
+    ><pre
+    ><code
+      >int al_get_display_refresh_rate(void)
+</code
+      ></pre
+    ><p
+    >Gets the refresh rate of the current display.</p
+    ><p
+    >See also: [al_set_display_refresh_rate]</p
+    ><h2 id="al_get_display_width"
+    ><a href="#TOC-al_get_display_width"
+      >al_get_display_width</a
+      ></h2
+    ><pre
+    ><code
+      >int al_get_display_width(void)
+</code
+      ></pre
+    ><p
+    >Gets the width of the current display. This is like SCREEN_W in Allegro 4.x.</p
+    ><p
+    >See also: <a href="display.html#al_get_display_height"
+      >al_get_display_height</a
+      ></p
+    ><h2 id="al_get_frontbuffer"
+    ><a href="#TOC-al_get_frontbuffer"
+      >al_get_frontbuffer</a
+      ></h2
+    ><pre
+    ><code
+      >ALLEGRO_BITMAP *al_get_frontbuffer(void)
+</code
+      ></pre
+    ><p
+    >Return a special bitmap representing the front-buffer of the current display. This may not be supported by the driver; returns NULL in that case.</p
+    ><p
+    >See also: <a href="display.html#al_get_backbuffer"
+      >al_get_backbuffer</a
+      ></p
+    ><h2 id="al_get_window_position"
+    ><a href="#TOC-al_get_window_position"
+      >al_get_window_position</a
+      ></h2
+    ><pre
+    ><code
+      >void al_get_window_position(ALLEGRO_DISPLAY *display, int *x, int *y)
+</code
+      ></pre
+    ><p
+    >Gets the position of a non-fullscreen display.</p
+    ><p
+    >See also: <a href="display.html#al_set_window_position"
+      >al_set_window_position</a
+      ></p
+    ><h2 id="al_inhibit_screensaver"
+    ><a href="#TOC-al_inhibit_screensaver"
+      >al_inhibit_screensaver</a
+      ></h2
+    ><pre
+    ><code
+      >bool al_inhibit_screensaver(bool inhibit)
+</code
+      ></pre
+    ><p
+    >This function allows the user to stop the system screensaver from starting up if true is passed, or resets the system back to the default state (the state at program start) if false is passed. It returns true if the state was set successfully, otherwise false.</p
+    ><h2 id="al_resize_display"
+    ><a href="#TOC-al_resize_display"
+      >al_resize_display</a
+      ></h2
+    ><pre
+    ><code
+      >bool al_resize_display(int width, int height)
+</code
+      ></pre
+    ><p
+    >Resize the current display. Returns true on success, or false on error. This works on both fullscreen and windowed displays, regardless of the ALLEGRO_RESIZABLE flag.</p
+    ><p
+    >Adjusts the clipping rectangle to the full size of the backbuffer.</p
+    ><p
+    >See also: <a href="display.html#al_acknowledge_resize"
+      >al_acknowledge_resize</a
+      ></p
+    ><h2 id="al_set_current_display"
+    ><a href="#TOC-al_set_current_display"
+      >al_set_current_display</a
+      ></h2
+    ><pre
+    ><code
+      >bool al_set_current_display(ALLEGRO_DISPLAY *display)
+</code
+      ></pre
+    ><p
+    >Change the current display for the calling thread. Also sets the target bitmap to the display's backbuffer. Returns true on success.</p
+    ><p
+    >See also: <a href="display.html#al_get_current_display"
+      >al_get_current_display</a
+      ></p
+    ><h2 id="al_set_display_icon"
+    ><a href="#TOC-al_set_display_icon"
+      >al_set_display_icon</a
+      ></h2
+    ><pre
+    ><code
+      >void al_set_display_icon(ALLEGRO_BITMAP *icon)
+</code
+      ></pre
+    ><p
+    >Changes the icon associated with the current display (window).</p
+    ><p
+    >Note: If the underlying OS can not use an icon with the size of the provided bitmap, it will be scaled.</p
+    ><p
+    >TODO: Describe best practice for the size? TODO: Allow providing multiple icons in differet sizes?</p
+    ><h2 id="al_get_display_option"
+    ><a href="#TOC-al_get_display_option"
+      >al_get_display_option</a
+      ></h2
+    ><pre
+    ><code
+      >int al_get_display_option(int option)
+</code
+      ></pre
+    ><p
+    >Return an extra display setting of the current display.</p
+    ><p
+    >See also: <a href="display.html#al_set_new_display_option"
+      >al_set_new_display_option</a
+      ></p
+    ><h2 id="al_set_window_position"
+    ><a href="#TOC-al_set_window_position"
+      >al_set_window_position</a
+      ></h2
+    ><pre
+    ><code
+      >void al_set_window_position(ALLEGRO_DISPLAY *display, int x, int y)
+</code
+      ></pre
+    ><p
+    >Sets the position on screen of a non-fullscreen display.</p
+    ><p
+    >See also: <a href="display.html#al_get_window_position"
+      >al_get_window_position</a
+      ></p
+    ><h2 id="al_set_window_title"
+    ><a href="#TOC-al_set_window_title"
+      >al_set_window_title</a
+      ></h2
+    ><pre
+    ><code
+      >void al_set_window_title(AL_CONST char *title)
+</code
+      ></pre
+    ><p
+    >Set the title on a display.</p
+    ><h2 id="al_toggle_window_frame"
+    ><a href="#TOC-al_toggle_window_frame"
+      >al_toggle_window_frame</a
+      ></h2
+    ><pre
+    ><code
+      >void al_toggle_window_frame(ALLEGRO_DISPLAY *display, bool onoff)
+</code
+      ></pre
+    ><p
+    >Enable or disable the decorations around a windowed display.</p
+    ><h2 id="al_update_display_region"
+    ><a href="#TOC-al_update_display_region"
+      >al_update_display_region</a
+      ></h2
+    ><pre
+    ><code
+      >void al_update_display_region(int x, int y, int width, int height)
+</code
+      ></pre
+    ><p
+    >Does the same as <a href="display.html#al_flip_display"
+      >al_flip_display</a
+      >, but tries to update only the specified region. With many drivers this is not possible, but for some it can improve performance.</p
+    ><p
+    >The ALLEGRO_UPDATE_DISPLAY_REGION option (see <a href="display.html#al_get_display_option"
+      >al_get_display_option</a
+      >) will specify the behavior of this function in the current display.</p
+    ><p
+    >See also: <a href="display.html#al_flip_display"
+      >al_flip_display</a
+      >, <a href="display.html#al_get_display_option"
+      >al_get_display_option</a
+      ></p
+    ><h2 id="al_wait_for_vsync"
+    ><a href="#TOC-al_wait_for_vsync"
+      >al_wait_for_vsync</a
+      ></h2
+    ><pre
+    ><code
+      >bool al_wait_for_vsync(void)
+</code
+      ></pre
+    ><p
+    >Wait for the beginning of a vertical retrace. Some driver/card/monitor combinations may not be capable of this.</p
+    ><p
+    >Note how <a href="display.html#al_flip_display"
+      >al_flip_display</a
+      > usually already waits for the vertical retrace, so unless you are doing something special, there is no reason to call this function.</p
+    ><p
+    >Returns false if not possible, true if successful.</p
+    ><p
+    >See also: <a href="display.html#al_flip_display"
+      >al_flip_display</a
+      ></p
+    ><h1 id="fullscreen-display-modes"
+    ><a href="#TOC-fullscreen-display-modes"
+      >Fullscreen display modes</a
+      ></h1
+    ><h2 id="allegro_display_mode"
+    ><a href="#TOC-allegro_display_mode"
+      >ALLEGRO_DISPLAY_MODE</a
+      ></h2
+    ><pre
+    ><code
+      >typedef struct ALLEGRO_DISPLAY_MODE
+</code
+      ></pre
+    ><p
+    >Used for display mode queries. Contains information about a supported fullscreen display mode.</p
+    ><pre
+    ><code
+      >typedef struct ALLEGRO_DISPLAY_MODE {
+   int width;          // Screen width
+   int height;         // Screen height
+   int format;         // The pixel format of the mode
+   int refresh_rate;   // The refresh rate of the mode
+} ALLEGRO_DISPLAY_MODE;
+</code
+      ></pre
+    ><p
+    >See also: <a href="display.html#al_get_display_mode"
+      >al_get_display_mode</a
+      ></p
+    ><h2 id="al_get_display_mode"
+    ><a href="#TOC-al_get_display_mode"
+      >al_get_display_mode</a
+      ></h2
+    ><pre
+    ><code
+      >ALLEGRO_DISPLAY_MODE *al_get_display_mode(int index, ALLEGRO_DISPLAY_MODE *mode)
+</code
+      ></pre
+    ><p
+    >Retrieves a display mode. Display parameters should not be changed between a call of <a href="display.html#al_get_num_display_modes"
+      >al_get_num_display_modes</a
+      > and <a href="display.html#al_get_display_mode"
+      >al_get_display_mode</a
+      >. index must be between 0 and the number returned from al_get_num_display_modes-1. mode must be an allocated ALLEGRO_DISPLAY_MODE structure. This function will return NULL on failure, and the mode parameter that was passed in on success.</p
+    ><p
+    >See also: <a href="display.html#allegro_display_mode"
+      >ALLEGRO_DISPLAY_MODE</a
+      >, <a href="display.html#al_get_num_display_modes"
+      >al_get_num_display_modes</a
+      ></p
+    ><h2 id="al_get_num_display_modes"
+    ><a href="#TOC-al_get_num_display_modes"
+      >al_get_num_display_modes</a
+      ></h2
+    ><pre
+    ><code
+      >int al_get_num_display_modes(void)
+</code
+      ></pre
+    ><p
+    >Get the number of available fullscreen display modes for the current set of display parameters. This will use the values set with <a href="display.html#al_set_new_display_refresh_rate"
+      >al_set_new_display_refresh_rate</a
+      >, and <a href="display.html#al_set_new_display_flags"
+      >al_set_new_display_flags</a
+      > to find the number of modes that match. Settings the new display parameters to zero will give a list of all modes for the default driver.</p
+    ><p
+    >See also: <a href="display.html#al_get_display_mode"
+      >al_get_display_mode</a
+      ></p
+    ><h1 id="monitors"
+    ><a href="#TOC-monitors"
+      >Monitors</a
+      ></h1
+    ><h2 id="allegro_monitor_info"
+    ><a href="#TOC-allegro_monitor_info"
+      >ALLEGRO_MONITOR_INFO</a
+      ></h2
+    ><pre
+    ><code
+      >typedef struct ALLEGRO_MONITOR_INFO
+</code
+      ></pre
+    ><p
+    >Describes a monitors size and position relative to other monitors. x1, y1 will be 0, 0 on the primary display. Other monitors can have negative values if they are to the left or above the primary display.</p
+    ><pre
+    ><code
+      >typedef struct ALLEGRO_MONITOR_INFO
+{
+   int x1;
+   int y1;
+   int x2;
+   int y2;
+} ALLEGRO_MONITOR_INFO;
+</code
+      ></pre
+    ><p
+    >See also: <a href="display.html#al_get_monitor_info"
+      >al_get_monitor_info</a
+      ></p
+    ><h2 id="al_get_current_video_adapter"
+    ><a href="#TOC-al_get_current_video_adapter"
+      >al_get_current_video_adapter</a
+      ></h2
+    ><pre
+    ><code
+      >int al_get_current_video_adapter(void)
+</code
+      ></pre
+    ><p
+    >Gets the video adapter index where new displays will be created.</p
+    ><p
+    >See also: <a href="display.html#al_set_current_video_adapter"
+      >al_set_current_video_adapter</a
+      ></p
+    ><h2 id="al_set_current_video_adapter"
+    ><a href="#TOC-al_set_current_video_adapter"
+      >al_set_current_video_adapter</a
+      ></h2
+    ><pre
+    ><code
+      >void al_set_current_video_adapter(int adapter)
+</code
+      ></pre
+    ><p
+    >Sets the adapter to use for newly created displays. The adapter has a monitor attached to it. Information about the monitor can be gotten using al_get_num_video_adapters and al_get_monitor_info.</p
+    ><p
+    >See also: <a href="display.html#al_get_num_video_adapters"
+      >al_get_num_video_adapters</a
+      >, <a href="display.html#al_get_monitor_info"
+      >al_get_monitor_info</a
+      ></p
+    ><h2 id="al_get_monitor_info"
+    ><a href="#TOC-al_get_monitor_info"
+      >al_get_monitor_info</a
+      ></h2
+    ><pre
+    ><code
+      >void al_get_monitor_info(int adapter, ALLEGRO_MONITOR_INFO *info)
+</code
+      ></pre
+    ><p
+    >Get information about a monitor's position on the desktop. adapter is a number from 0 to al_get_num_video_adapters()-1.</p
+    ><p
+    >See also: <a href="display.html#allegro_monitor_info"
+      >ALLEGRO_MONITOR_INFO</a
+      >, <a href="display.html#al_get_num_video_adapters"
+      >al_get_num_video_adapters</a
+      ></p
+    ><h2 id="al_get_num_video_adapters"
+    ><a href="#TOC-al_get_num_video_adapters"
+      >al_get_num_video_adapters</a
+      ></h2
+    ><pre
+    ><code
+      >int al_get_num_video_adapters(void)
+</code
+      ></pre
+    ><p
+    >Get the number of video &quot;adapters&quot; attached to the computer. Each video card attached to the computer counts as one or more adapters. An adapter is thus really a video port that can have a monitor connected to it.</p
+    ><p
+    >See also: <a href="display.html#al_get_monitor_info"
+      >al_get_monitor_info</a
+      ></p
+    ><h2 id="al_get_display_event_source"
+    ><a href="#TOC-al_get_display_event_source"
+      >al_get_display_event_source</a
+      ></h2
+    ><pre
+    ><code
+      >ALLEGRO_EVENT_SOURCE *al_get_display_event_source(ALLEGRO_DISPLAY *display)
+</code
+      ></pre
+    ><p
+    >Retrieve the associated event source.</p
+    ></td>
+</tr>
+</table>
+
+
+<p>
+Last updated: 2009-08-09 08:22:32 UTC
+</p>
+</body
+  ></html
+>
+

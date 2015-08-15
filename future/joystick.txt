@@ -1,0 +1,244 @@
+# date: 2003 - 03 - 04
+# This file documents the joystick API which is now considered
+# finalised for milestone 1.
+
+
+Allegro 5 API: Joysticks
+
+Status: Finalised for milestone 1 around 2003-01-10.
+
+
+
+Pertinent Threads & Brief Change History:
+
+   * "Joystick interface" 2002-12-14:
+
+      - Scrapped the notion of "sticks". (pw, bob)
+
+      - Added joystate type and related functions. (pw, bob)
+        Also, al_joystick_buttons() was removed, since the only
+        purpose it served has been replaced and generalised by
+        joystates.
+
+   * "Events and inputs, slight overhaul?" 2002-12-19
+
+
+
+- Type: AL_JOYSTICK
+
+   This is an abstract data type representing a physical joystick.
+   Joystick objects are also event sources.
+
+
+
+- Function: int al_num_joysticks(void)
+
+   Return the number of joystick devices that are available on the
+   system.
+
+   The system driver must be installed before this function is called.
+
+
+
+- Function: AL_JOYSTICK *al_install_joystick(int joyn)
+
+   Install joystick device number JOYN and return a pointer to a new
+   joystick object, or NULL on error.
+
+   JOYN must be non-negative.
+
+   The system driver must be installed before this function can be
+   called.
+
+
+
+- Function: void al_uninstall_joystick(AL_JOYSTICK *joystick)
+
+   Uninstall the joystick device specified.  This will automatically
+   unregister the joystick with any event queues.
+
+   JOYSTICK may not be NULL.
+
+
+
+- Function: int al_joystick_num_axes(AL_JOYSTICK *joystick)
+
+   Returns the number of axes on a joystick.
+
+   Historical note: Unlike Allegro 4, Allegro 5 does not group axes
+   into "sticks".
+
+
+
+- Function: unsigned int al_joystick_axis_flags(AL_JOYSTICK *joystick,
+                int axis)
+
+   Returns a bitfield containing information about a joystick axis.
+   The following flags are currently defined:
+
+      AL_JOYFLAG_ANALOGUE -- the axis inherently outputs analogue
+        data, e.g. the directional controls on a joystick.
+
+      AL_JOYFLAG_DIGITAL -- the axis inherently outputs digital data,
+        e.g. the POV hats on a joystick, or the directional controls
+        on a gamepad.
+
+   AXIS must be non-negative.  If the axis specified doesn't actually
+   exist on the device, this function returns 0.
+
+
+
+- Function: const char *al_joystick_axis_name(AL_JOYSTICK *joystick, int axis)
+
+   Returns the name of a joystick axis as a string.  This string is
+   not to be freed or modified.
+
+   AXIS must be non-negative.  If the axis specified doesn't actually
+   exist on the device, this function returns NULL.
+
+
+
+- Function: int al_joystick_num_buttons(AL_JOYSTICK *joystick)
+
+   Return the number of buttons on a joystick device.
+
+
+
+- Function: const char *al_joystick_button_name(AL_JOYSTICK *joystick, int button)
+
+   Returns the name of a joystick button as a string.  This string is
+   not to be freed or modified.
+
+   BUTTON must be non-negative.  If the button specified doesn't
+   actually exist on the device, this function returns NULL.
+
+
+
+- Type: AL_JOYSTATE
+
+   This is a structure that is used to hold a "snapshot" of a
+   joystick's axes and buttons at a particular instant.  It contains
+   the following publically readable fields:
+
+      typedef struct AL_JOYSTATE
+      {
+         int axis[0 ... number_of_axes-1];
+         int axis_digital[0 ... number_of_axes-1];
+         unsigned int buttons;
+      } AL_JOYSTATE;
+
+   The `axis[i]' values are always in the range -32767 to 32767.
+
+   The `axis_digital[i]' values are always -1, 0 or +1.
+
+   `buttons' is a bitfield holding the state of each button on the
+   joystick.  A set bit means the button is held down.  The first
+   button is numbered 0.
+
+
+
+- Function: void al_get_joystick_state(AL_JOYSTICK *joystick,
+        AL_JOYSTATE *ret_state)
+
+   Save the state of the joystick specified at the time the function
+   is called into the joystate pointed to by RET_STATE.  The previous
+   state stored in RET_STATE is clobbered.
+
+   RET_STATE may not be NULL.
+
+
+
+- Function: bool al_joystick_button_down(AL_JOYSTATE *joystate, int buttonn)
+
+   Helper for accessing the `buttons' field in a joystick state
+   structure.  Returns true if the button specified is held down.
+
+   It can be defined thus:
+
+      bool al_joystick_button_down(AL_JOYSTATE *joystate, int buttonn)
+      {
+         return !! (joystate->buttons & (1 << buttonn));
+      }
+
+
+
+- Event: AL_EVENT_JOYSTICK_AXIS
+
+   Event packets of this type are generated when a joystick axis
+   changes.
+
+   Common fields:
+
+      (long)          e->joystick.type
+      (AL_JOYSTICK *) e->joystick.source
+      (unsigned long) e->joystick.timestamp
+
+   Fields specific to this event type:
+
+      (int) e->joystick.axis
+
+         The axis that changed.
+
+      (int) e->joystick.pos
+
+         The new value of the axis.
+
+      (int) e->joystick.digital_pos
+
+         The "digitised" value of the axis.  One of: -1, 0, +1.
+
+
+
+- Event: AL_EVENT_JOYSTICK_BUTTON_DOWN
+- Event: AL_EVENT_JOYSTICK_BUTTON_UP
+
+   Event packets of this type are generated when a joystick button is
+   pressed or released.
+
+   Fields specific to this event type:
+
+      (int) e->joystick.button
+
+         The button that was pressed or released.
+
+
+
+----------------------------------------------------------------------
+
+
+
+Missing functionality / Issues:
+
+
+- Calibration routines
+
+  Maybe something like this:
+    bool al_joystick_needs_calibration(AL_JOYSTICK *)
+
+    (for OS-standard joystick calibration dialogues)
+    bool al_joystick_has_external_calibrator(AL_JOYSTICK *)
+    bool al_calibrate_joystick_externally(AL_JOYSTICK *)
+         - True on success
+
+    (for a4-style calibration)
+    AL_JOYSTICK_CALIB *al_calibrate_joystick(AL_JOYSTICK *)
+    const char *al_joystick_calibration_name(AL_JOYSTICK_CALIB *)
+    bool al_joystick_advance_calibration(AL_JOYSTICK_CALIB *)
+         - Returns false when no more calibration to be done
+
+    void al_save_joystick_calibration(AL_JOYSTICK *, AL_FILE_THINGY *)
+    void al_load_joystick_calibration(AL_JOYSTICK *, AL_FILE_THINGY *)
+
+
+
+- The joystick interface's AXIS event is different to the pointer
+  interface's AXES event.  It only reports information about one axis,
+  so the user would need to manually track axes.  Maybe this is not as
+  much of a problem as for joysticks?
+
+  Similar thing with the button events, which don't say anything about
+  the state of axes when the button was pressed/released.
+
+  The reason for both these is because of "sticks".  If axes were put
+  in a flat array, rather than grouping into sticks, then we could do
+  the same things as is done in pointers.  Maybe scrap sticks?

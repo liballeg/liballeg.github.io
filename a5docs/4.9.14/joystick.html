@@ -1,0 +1,498 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >Joystick</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta name="generator" content="pandoc"
+     /><script type="text/javascript" src="autosuggest.js"></script>
+<script type="text/javascript" src="search_index.js"></script>
+<link rel="stylesheet" href="pandoc.css" type="text/css" media="all" />
+</head
+  ><body
+  ><table class="white">
+<tr>
+<td valign="top" class="sidebar">
+
+<div class="sidebar">
+<ul
+><li
+  ><a href="index.html"
+    ><strong
+      >Contents</strong
+      ></a
+    ></li
+  ><li
+  ><a href="config.html"
+    >Configuration files</a
+    ></li
+  ><li
+  ><a href="display.html"
+    >Display</a
+    ></li
+  ><li
+  ><a href="events.html"
+    >Events</a
+    ></li
+  ><li
+  ><a href="file.html"
+    >File I/O</a
+    ></li
+  ><li
+  ><a href="fshook.html"
+    >Filesystem</a
+    ></li
+  ><li
+  ><a href="fixed.html"
+    >Fixed</a
+    ></li
+  ><li
+  ><a href="graphics.html"
+    >Graphics</a
+    ></li
+  ><li
+  ><a href="joystick.html"
+    >Joystick</a
+    ></li
+  ><li
+  ><a href="keyboard.html"
+    >Keyboard</a
+    ></li
+  ><li
+  ><a href="memory.html"
+    >Memory</a
+    ></li
+  ><li
+  ><a href="misc.html"
+    >Miscellaneous</a
+    ></li
+  ><li
+  ><a href="mouse.html"
+    >Mouse</a
+    ></li
+  ><li
+  ><a href="opengl.html"
+    >OpenGL</a
+    ></li
+  ><li
+  ><a href="path.html"
+    >Path</a
+    ></li
+  ><li
+  ><a href="platform.html"
+    >Platform-specific</a
+    ></li
+  ><li
+  ><a href="state.html"
+    >State</a
+    ></li
+  ><li
+  ><a href="system.html"
+    >System</a
+    ></li
+  ><li
+  ><a href="threads.html"
+    >Threads</a
+    ></li
+  ><li
+  ><a href="time.html"
+    >Time</a
+    ></li
+  ><li
+  ><a href="timer.html"
+    >Timer</a
+    ></li
+  ><li
+  ><a href="utf8.html"
+    >UTF-8</a
+    ></li
+  ><li
+  ><a href="index.html#addons"
+    ><strong
+      >Addons</strong
+      ></a
+    ></li
+  ><li
+  ><a href="audio.html"
+    >Audio addon</a
+    ></li
+  ><li
+  ><a href="acodec.html"
+    >Audio codecs</a
+    ></li
+  ><li
+  ><a href="color.html"
+    >Color addon</a
+    ></li
+  ><li
+  ><a href="font.html"
+    >Font addons</a
+    ></li
+  ><li
+  ><a href="image.html"
+    >Image I/O addon</a
+    ></li
+  ><li
+  ><a href="native_dialog.html"
+    >Native dialogs addon</a
+    ></li
+  ><li
+  ><a href="physfs.html"
+    >PhysicsFS addon</a
+    ></li
+  ><li
+  ><a href="primitives.html"
+    >Primitives addon</a
+    ></li
+  ></ul
+><!-- keep blank line for correct HTML -->
+</div>
+
+<div class="searchbox">
+<script type="text/javascript">
+function onSubmit(form) {
+    for (i = 0; i < search_index.length; i++) {
+        if (search_index[i] == form.q.value) {
+            form.action = search_urls[i];
+            form.method = "POST";
+            return true;
+        }
+    }
+    // Search-term is not in the index.
+    // We could add an URL here which does a fulltext search - for
+    // now we simply do nothing by return false to the form.
+    return false;
+}
+</script>
+<form id="search" action="search.py" onsubmit="return onSubmit(this);"><input type="text" name="q" id="q" size="15" autocomplete="off" /><br /> <input type="submit" value="Search" /><script type="text/javascript">actb = new actb("q", search_index);</script>
+</form>
+</div>
+
+
+</td>
+<td class="content">
+
+
+<h1 class="title"
+    >Joystick</h1
+    ><div id="toc"
+    ><ul
+      ><li
+	><a href="#allegro_joystick" id="TOC-allegro_joystick"
+	  >ALLEGRO_JOYSTICK</a
+	  ></li
+	><li
+	><a href="#allegro_joystick_state" id="TOC-allegro_joystick_state"
+	  >ALLEGRO_JOYSTICK_STATE</a
+	  ></li
+	><li
+	><a href="#allegro_joyflags" id="TOC-allegro_joyflags"
+	  >ALLEGRO_JOYFLAGS</a
+	  ></li
+	><li
+	><a href="#al_get_joystick" id="TOC-al_get_joystick"
+	  >al_get_joystick</a
+	  ></li
+	><li
+	><a href="#al_get_joystick_axis_name" id="TOC-al_get_joystick_axis_name"
+	  >al_get_joystick_axis_name</a
+	  ></li
+	><li
+	><a href="#al_get_joystick_button_name" id="TOC-al_get_joystick_button_name"
+	  >al_get_joystick_button_name</a
+	  ></li
+	><li
+	><a href="#al_get_joystick_name" id="TOC-al_get_joystick_name"
+	  >al_get_joystick_name</a
+	  ></li
+	><li
+	><a href="#al_get_joystick_number" id="TOC-al_get_joystick_number"
+	  >al_get_joystick_number</a
+	  ></li
+	><li
+	><a href="#al_get_joystick_state" id="TOC-al_get_joystick_state"
+	  >al_get_joystick_state</a
+	  ></li
+	><li
+	><a href="#al_get_joystick_stick_flags" id="TOC-al_get_joystick_stick_flags"
+	  >al_get_joystick_stick_flags</a
+	  ></li
+	><li
+	><a href="#al_get_joystick_stick_name" id="TOC-al_get_joystick_stick_name"
+	  >al_get_joystick_stick_name</a
+	  ></li
+	><li
+	><a href="#al_get_joystick_num_axes" id="TOC-al_get_joystick_num_axes"
+	  >al_get_joystick_num_axes</a
+	  ></li
+	><li
+	><a href="#al_get_joystick_num_buttons" id="TOC-al_get_joystick_num_buttons"
+	  >al_get_joystick_num_buttons</a
+	  ></li
+	><li
+	><a href="#al_get_joystick_num_sticks" id="TOC-al_get_joystick_num_sticks"
+	  >al_get_joystick_num_sticks</a
+	  ></li
+	><li
+	><a href="#al_install_joystick" id="TOC-al_install_joystick"
+	  >al_install_joystick</a
+	  ></li
+	><li
+	><a href="#al_get_num_joysticks" id="TOC-al_get_num_joysticks"
+	  >al_get_num_joysticks</a
+	  ></li
+	><li
+	><a href="#al_release_joystick" id="TOC-al_release_joystick"
+	  >al_release_joystick</a
+	  ></li
+	><li
+	><a href="#al_uninstall_joystick" id="TOC-al_uninstall_joystick"
+	  >al_uninstall_joystick</a
+	  ></li
+	><li
+	><a href="#al_get_joystick_event_source" id="TOC-al_get_joystick_event_source"
+	  >al_get_joystick_event_source</a
+	  ></li
+	></ul
+      ></div
+    ><h1 id="allegro_joystick"
+    ><a href="#TOC-allegro_joystick"
+      >ALLEGRO_JOYSTICK</a
+      ></h1
+    ><pre
+    ><code
+      >typedef struct ALLEGRO_JOYSTICK ALLEGRO_JOYSTICK;
+</code
+      ></pre
+    ><p
+    >This is an abstract data type representing a physical joystick.</p
+    ><h1 id="allegro_joystick_state"
+    ><a href="#TOC-allegro_joystick_state"
+      >ALLEGRO_JOYSTICK_STATE</a
+      ></h1
+    ><pre
+    ><code
+      >typedef struct ALLEGRO_JOYSTICK_STATE ALLEGRO_JOYSTICK_STATE;
+</code
+      ></pre
+    ><p
+    >This is a structure that is used to hold a &quot;snapshot&quot; of a joystick's axes and buttons at a particular instant. All fields public and read-only.</p
+    ><pre
+    ><code
+      >struct {
+      float axis[num_axes];             // -1.0 to 1.0 
+} stick[num_sticks];
+int button[num_buttons];                // 0 to 32767
+</code
+      ></pre
+    ><h1 id="allegro_joyflags"
+    ><a href="#TOC-allegro_joyflags"
+      >ALLEGRO_JOYFLAGS</a
+      ></h1
+    ><pre
+    ><code
+      >enum
+</code
+      ></pre
+    ><ul
+    ><li
+      >ALLEGRO_JOYFLAG_DIGITAL - the stick provides digital input</li
+      ><li
+      >ALLEGRO_JOYFLAG_ANALOGUE - the stick provides analogue input</li
+      ></ul
+    ><p
+    >(this enum is a holdover from the old API and may be removed)</p
+    ><h1 id="al_get_joystick"
+    ><a href="#TOC-al_get_joystick"
+      >al_get_joystick</a
+      ></h1
+    ><pre
+    ><code
+      >ALLEGRO_JOYSTICK *al_get_joystick(int num)
+</code
+      ></pre
+    ><p
+    >Get a handle for joystick number NUM on the system. If successful a pointer to a joystick object is returned. Otherwise NULL is returned.</p
+    ><p
+    >If the joystick was previously 'gotten' (and not yet released) then the returned pointer will be the same as in previous calls.</p
+    ><h1 id="al_get_joystick_axis_name"
+    ><a href="#TOC-al_get_joystick_axis_name"
+      >al_get_joystick_axis_name</a
+      ></h1
+    ><pre
+    ><code
+      >const char *al_get_joystick_axis_name(const ALLEGRO_JOYSTICK *joy, int stick, int axis)
+</code
+      ></pre
+    ><p
+    >Return the name of the given axis. If the axis doesn't exist, NULL is returned.</p
+    ><h1 id="al_get_joystick_button_name"
+    ><a href="#TOC-al_get_joystick_button_name"
+      >al_get_joystick_button_name</a
+      ></h1
+    ><pre
+    ><code
+      >const char *al_get_joystick_button_name(const ALLEGRO_JOYSTICK *joy, int button)
+</code
+      ></pre
+    ><p
+    >Return the name of the given button. If the button doesn't exist, NULL is returned.</p
+    ><h1 id="al_get_joystick_name"
+    ><a href="#TOC-al_get_joystick_name"
+      >al_get_joystick_name</a
+      ></h1
+    ><pre
+    ><code
+      >const char *al_get_joystick_name(ALLEGRO_JOYSTICK *joy)
+</code
+      ></pre
+    ><p
+    >Return the name of the given joystick.</p
+    ><h1 id="al_get_joystick_number"
+    ><a href="#TOC-al_get_joystick_number"
+      >al_get_joystick_number</a
+      ></h1
+    ><pre
+    ><code
+      >int al_get_joystick_number(ALLEGRO_JOYSTICK *joy)
+</code
+      ></pre
+    ><p
+    >Return the joystick number, i.e. 'i' such that <code
+      >al_get_joystick(i)</code
+      > returns the same joystick object.</p
+    ><h1 id="al_get_joystick_state"
+    ><a href="#TOC-al_get_joystick_state"
+      >al_get_joystick_state</a
+      ></h1
+    ><pre
+    ><code
+      >void al_get_joystick_state(ALLEGRO_JOYSTICK *joy, ALLEGRO_JOYSTICK_STATE *ret_state)
+</code
+      ></pre
+    ><p
+    >Get the current joystick state.</p
+    ><h1 id="al_get_joystick_stick_flags"
+    ><a href="#TOC-al_get_joystick_stick_flags"
+      >al_get_joystick_stick_flags</a
+      ></h1
+    ><pre
+    ><code
+      >int al_get_joystick_stick_flags(const ALLEGRO_JOYSTICK *joy, int stick)
+</code
+      ></pre
+    ><p
+    >Return the flags of the given &quot;stick&quot;. If the stick doesn't exist, NULL is returned.</p
+    ><h1 id="al_get_joystick_stick_name"
+    ><a href="#TOC-al_get_joystick_stick_name"
+      >al_get_joystick_stick_name</a
+      ></h1
+    ><pre
+    ><code
+      >const char *al_get_joystick_stick_name(const ALLEGRO_JOYSTICK *joy, int stick)
+</code
+      ></pre
+    ><p
+    >Return the name of the given &quot;stick&quot;. If the stick doesn't exist, NULL is returned.</p
+    ><h1 id="al_get_joystick_num_axes"
+    ><a href="#TOC-al_get_joystick_num_axes"
+      >al_get_joystick_num_axes</a
+      ></h1
+    ><pre
+    ><code
+      >int al_get_joystick_num_axes(const ALLEGRO_JOYSTICK *joy, int stick)
+</code
+      ></pre
+    ><p
+    >Return the number of axes on the given &quot;stick&quot;. If the stick doesn't exist, 0 is returned.</p
+    ><h1 id="al_get_joystick_num_buttons"
+    ><a href="#TOC-al_get_joystick_num_buttons"
+      >al_get_joystick_num_buttons</a
+      ></h1
+    ><pre
+    ><code
+      >int al_get_joystick_num_buttons(const ALLEGRO_JOYSTICK *joy)
+</code
+      ></pre
+    ><p
+    >Return the number of buttons on the joystick.</p
+    ><h1 id="al_get_joystick_num_sticks"
+    ><a href="#TOC-al_get_joystick_num_sticks"
+      >al_get_joystick_num_sticks</a
+      ></h1
+    ><pre
+    ><code
+      >int al_get_joystick_num_sticks(const ALLEGRO_JOYSTICK *joy)
+</code
+      ></pre
+    ><p
+    >Return the number of &quot;sticks&quot; on the given joystick.</p
+    ><h1 id="al_install_joystick"
+    ><a href="#TOC-al_install_joystick"
+      >al_install_joystick</a
+      ></h1
+    ><pre
+    ><code
+      >bool al_install_joystick(void)
+</code
+      ></pre
+    ><p
+    >Install a joystick driver, returning true if successful. If a joystick driver was already installed, returns true immediately.</p
+    ><h1 id="al_get_num_joysticks"
+    ><a href="#TOC-al_get_num_joysticks"
+      >al_get_num_joysticks</a
+      ></h1
+    ><pre
+    ><code
+      >int al_get_num_joysticks(void)
+</code
+      ></pre
+    ><p
+    >Return the number of joysticks on the system (depending on the OS this may not be accurate). Returns 0 if there is no joystick driver installed.</p
+    ><h1 id="al_release_joystick"
+    ><a href="#TOC-al_release_joystick"
+      >al_release_joystick</a
+      ></h1
+    ><pre
+    ><code
+      >void al_release_joystick(ALLEGRO_JOYSTICK *joy)
+</code
+      ></pre
+    ><p
+    >Release a previously 'gotten' joystick object.</p
+    ><h1 id="al_uninstall_joystick"
+    ><a href="#TOC-al_uninstall_joystick"
+      >al_uninstall_joystick</a
+      ></h1
+    ><pre
+    ><code
+      >void al_uninstall_joystick(void)
+</code
+      ></pre
+    ><p
+    >Uninstalls the active joystick driver. All outstanding ALLEGRO_JOYSTICKs are automatically released. If no joystick driver was active, this function does nothing.</p
+    ><p
+    >This function is automatically called when Allegro is shut down.</p
+    ><h1 id="al_get_joystick_event_source"
+    ><a href="#TOC-al_get_joystick_event_source"
+      >al_get_joystick_event_source</a
+      ></h1
+    ><pre
+    ><code
+      >ALLEGRO_EVENT_SOURCE *al_get_joystick_event_source(ALLEGRO_JOYSTICK *joystick)
+</code
+      ></pre
+    ><p
+    >Retrieve the associated event source.</p
+    ></td>
+</tr>
+</table>
+
+
+<p>
+Last updated: 2009-09-13 09:23:28 UTC
+</p>
+</body
+  ></html
+>
+

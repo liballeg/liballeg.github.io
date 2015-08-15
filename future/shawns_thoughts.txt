@@ -1,0 +1,976 @@
+# date: 2001 - 12 - 13
+                                Assorted Random Rantings, Dec 13, 2001
+                                --------------------------------------
+
+
+
+Although I'm not actively involved in Allegro development these days, I've 
+been following (off and on) some of the proposals for the next version, and 
+am far too opinionated not to take this opportunity to stick my oar in :-)
+
+Sorry for the length of this post: it's basically just a braindump of my 
+current thoughts and opinions. Feel free to read or ignore as you see fit.
+
+
+
+My Involvement
+--------------
+
+First off, I'm not planning on doing any work on Allegro any time in the 
+foreseeable future. I'm too busy with my day job, and with other real life 
+interests.
+
+This means that, as I'm not going to be writing any code, it is really none 
+of my business what the aforementioned code might turn out to be. The people 
+doing the work have absolute authority to decide what they want to do and 
+how they want to do it (incidentally, it has been great to watch you all 
+doing such a fine job of getting the 4.0 release finished off, and to relax 
+in the warm glow of feeling that I've left my baby in good hands :-)
+
+That said, I do have plenty of opinions, and happen to feel like writing 
+some of them down. After this braindump I'll be reading the mailing list, 
+but probably won't have time to join in many of the discussions. I'd be 
+happy to act in a sort of advisory role if anyone has questions, though 
+(whether design issues, or just "what on earth does this bit of code do, and 
+why was it written like that?"). If you come across anything that could do 
+with a bit of explanation or historical perspective about why it was done 
+that way, feel free to drop me a line by private email (either to 
+shawn@talula.demon.co.uk or shawnh@climax.co.uk).
+
+We are very lucky to have so many great people working on Allegro. But I do 
+think it would be a good idea to arrange some slightly more formal system of:
+
+
+
+Leadership
+----------
+
+It is nice when everyone agrees. Unfortunately, this isn't always the case 
+(and especially during a major API redesign, there are sure to be heated 
+debates flying all over the place :-)
+
+Debate is a good thing, and often results in finding a better or compromise 
+solution, but sometimes there really are just two opposite points of view, 
+in which case the discussion eventually tends to stagnate into opposing 
+camps, after which it goes nowhere. When this happens, projects tend to 
+either stagnate or fork, which is a bad thing.
+
+When a discussion has run its course without reaching agreement, it hardly 
+actually matters what you end up deciding. The important thing is to be able 
+to make some decision and go with it, so you keep moving forwards. I would 
+advise you decide now (while everyone is still on speaking terms :-) how 
+that decision will be made, rather than postponing the issue until this 
+risks becoming a problem. A few suggestions:
+
+- Choose someone to be the dictator.
+
+- Choose half a dozen people who will form a voting "council of elders".
+
+- Choose half a dozen people who will each be in absolute charge of 
+  different areas of the project.
+
+- Choose half a dozen people who will rotate being the dictator (like on the 
+  Apache project).
+
+- Use dice.
+
+The most important thing is to make sure that decisions can always be made 
+in a timely manner, without any ambiguity about who is in charge, and 
+involving only a fairly small number of experienced developers who all do 
+know what they are talking about (obviously everyone should be involved in 
+the discussions that precede a decision, but with the net being what it is, 
+nothing would ever get done if too many people were involved too far up the 
+chain).
+
+
+
+Breaking Backwards Compatibility
+--------------------------------
+
+Well, it looks like this is going to happen. I don't think I would have done 
+it if I'd still been in charge, but this isn't my call any more, and there 
+are some strong arguments for doing it. Please be aware that this is a very 
+dangerous thing to do, though. If I had to list a handful of reasons why 
+Allegro has been a success, excellent compatibility across versions would be 
+right up there with the best of them. Sure, this has caused a lot of 
+uglinesses in both the API and the implementation, and pissed a lot of 
+people off, and required me to be a totally unflexible stubborn anal 
+retentive dictator for several years, but it is also a major reason why so 
+many thousands of people are using Allegro today.
+
+The trick is how to introduce a compatibility break without losing too many 
+of those users.
+
+- Get it right the first time. Change things once, and most people will 
+  probably be happy to update there programs. Change things again, and they 
+  will be annoyed. Change once more, and most of them will probably leave. 
+  This means that you only have one chance to do this, so make sure you do 
+  it properly. Get rid of everything bad, and keep everything good. Plan it 
+  out in excruciating detail before anyone starts implementing. Work on the 
+  assumption that the 5.0 demo game will still be expected to compile and 
+  run flawlessly on the 2006 version of Allegro, so anything you are likely 
+  to want to change over the next half a decade, better do it now. I reckon 
+  one API breakage every five years is about right...
+
+- Design the API in such a way that new features and platforms can be added 
+  in a graceful manner, so that it can continue to grow without requiring 
+  another compatibility breakage. Examples: scroll_screen() is a bad API for 
+  page flipping (makes too big an assumption about how underlying hardware 
+  is working), whereas create_video_bitmap() / show_video_bitmap() is a good 
+  one (can be implemented on all sorts of weird hardware, as it maps 
+  directly onto what the program is trying to do rather than onto how the 
+  hardware is actually doing it).
+
+- Once you release the new API, go right back to being just as anal as I 
+  ever was about not breaking it any more. Don't let this degenerate into 
+  the first step towards compatibility chaos. Even if it risks upsetting 
+  people and making yourself unpopular, don't be afraid to say "no" (see 
+  above section about the need for a few clear leaders who will be able to 
+  do this).
+
+- Make it as easy as possible for people to upgrade existing Allegro 
+  programs to the new API. Automated scripts or a compatibility wrapper 
+  might go some way towards this, but also risk just postponing the moment 
+  when people do need to change their code, and limiting the sort of changes
+  that are possible. I think a better strategy would be to make every
+  change in such a way that code written to the old API will not compile 
+  using the new one (ie. remove functions, or add functions, or change the 
+  number of parameters to a function, but never just change the meaning of a 
+  parameter or the underlying semantics of what the function does, as this 
+  would still allow old code to compile but it would then fail to do what 
+  the programmer is expecting). If you follow this rule, every single API 
+  change will then produce a different compiler error when a program tries 
+  to use the old API. From this, it is a small step to generate a document 
+  listing all those errors, and how to fix them (this file could be 
+  generated by listing all the errors that are found while converting the 
+  tests and examples across to the new API). This way people would have to 
+  manually update their code, but it would be a fairly simple cycle of 
+  "compile / look up error / do what help file says about it / repeat until 
+  no more errors".
+  
+  For it to be any use, this deliberate compiler error would need to be more 
+  than just adding the "al_" prefix. Most people will start by just doing 
+  massive search+replace to correct all their symbol names. It would be nice 
+  if we could tell them to do this first, then anything that is still a 
+  compiler error, means something that has changed in more far reaching ways 
+  so it actually needs to be rewritten.
+
+
+
+A Few Random Comments
+---------------------
+
+This will probably be obvious to most of you, but I've seen a couple of 
+rather scary suggestions recently, so I thought I'd better just mention a 
+few things about how open source works (when it is working), and how it can 
+fail (I've been involved in several failed projects as well as with Allegro, 
+so I've had first hand experience of both sides).
+
+The number one rule is that programmers tend to do whatever the hell they 
+want. They don't follow schedules. They don't go through task lists and 
+finish jobs in a nice tidy order. They mostly just come along, pick a task 
+at random (most often something that you never even thought of, but that 
+makes sense to them), and do it. So, don't make todo lists and expect people 
+to work on what you write in them. It will never get done, and you'll just 
+end up with a big mess of unfinished code (there are already way too many 
+such projects scattered over the net). If you want something doing, the only 
+way to make sure it gets done is to do it yourself (which proves that this 
+entire document is a giant waste of my time, but hey, I never claimed to be 
+internally-consistent :-) Other people will simultaneously be working on the 
+things that are important to them, but it seems to be a universal rule that 
+the successful projects are the ones where multiple people have been able to
+work on different areas that they selected for themselves, while anything 
+that required specific tasks to be done according to a specific design tends 
+to end up dead within a matter of months.
+
+Incremental improvement is good. Big rewrites that leave the codebase in a 
+non-working state for long periods of time are bad, as it is almost 
+impossible for multiple coders to cooperate as long as this is the case. 
+Even when doing a huge restructuring of the entire thing, break it up into 
+bits that can each be tackled by a single person over a short period of 
+time, and make sure you have a working version at the end of each phase. 
+Quite apart from anything else, that insulates you from key developers 
+losing interest and wandering off in the middle of the project, which 
+happens all the time. Example: Stefan Schimanski, who started the Windows 
+port, got it mostly running, and then went off to do his national service, 
+so other people stepped in and finished it. Had he not left me with a 
+version that complied and ran (although lacking key features), it is far 
+less likely that anyone else would have been interested enough in it to 
+become developers themselves.
+
+Another good example is the initial transition from DOS only to a portable 
+code base with drivers and vtables all over the place. After lots of 
+discussion about how this should be structured, I took a week off work, did 
+a string of 16 hour days, ripped the whole thing apart, split off the DOS 
+code from the portable sections, added drivers for everything, and also 
+Unicodified it all while I was there. At the end of the week I had a fully 
+working DOS version again, and Unix/Windows versions that compiled without 
+errors, but didn't do anything because they had no drivers of any kind. At 
+this point people like Stefan and George Foot and Michael Bukin were able to 
+get involved again, adding all the non-DOS ports, but there was a period 
+during the middle of the redesign when only one person could reasonably be 
+working on the codebase, because it was in a non-functional state.
+
+A week is about the longest I think a project can survive being broken 
+before both developers and users will start to lose interest. Design your 
+changes so they can be done as a series of fairly short-term break+fix 
+cycles, and never break anything more than you are confident you personally 
+will be able to repair within a matter of days.
+
+Also, don't trust what people say they will do. On the net, everyone is an 
+expert. Everyone is always right, too, and they are all enthusiastic and 
+planning to do lots of great work. Some of them truly do turn out to be 
+great coders with good ideas who are willing to spend many weeks churning 
+out code, but most lose interest and vanish never to be seen again, and some 
+just aren't as smart or experienced as they think they are. On a mailing 
+list, it can be surprisingly hard to tell the difference between an expert 
+coder with a dozen degrees and 20 years experience, or someone who just got 
+their first C compiler and fancied having a go at making a game. So take 
+care to always judge people by what they do rather than what they say. Don't 
+plan major new features just because someone says they will implement it for 
+you (in my 5+ years of experience, 95% of the time that never actually 
+happens). Accept ideas from anyone, but don't let yourself be swayed by too 
+many opinions unless people either back them up with code (diff files speak 
+louder than a thousand emails), or have proven themselves by doing major 
+work on the previous version of the software.
+
+I'd feel totally happy to trust the future of Allegro to any of the people 
+who did such good work to make the 4.0 release happen, but would be 
+terrified to think of crucial, long term design decisions being made as a 
+result of random debates or public votes on a mailing list or webboard. 
+Use the public forums to collect ideas and get a sense of what sort of 
+things people are wanting, but then make sure the final choices rest with 
+developers who have proven that they do actually know what they are talking 
+about...
+
+Random comment #1: be very careful about throwing away code just because it 
+isn't beautiful. There sometimes turn out to be good reasons behind the 
+cruft, and it is often easier to turn something ok into something beautiful, 
+than to ditch it, start again, and then find out that even your new version 
+for some reason didn't turn out quite as beautiful as you had hoped. Have a 
+read of http://www.joelonsoftware.com/articles/fog0000000069.html, if you 
+haven't already (actually a lot of the stuff on his site is worth reading, 
+even if you don't agree with all of it: I reckon he's about half right).
+
+Random comment #2: never try to maintain two different codebases where one 
+will do. This is always a nightmare, and a sign of poor design.
+
+
+
+That Old Bugbear, The 3d Issue
+------------------------------
+
+Perhaps the #1 feature request for a new version.
+
+"Improve the 3D routines"
+"Make it use OpenGL for graphics"
+"Make it use D3D"
+"Make it use the hardware acceleration on my new SuperFastPowerful card"
+"This would allow cool alpha blending effects and filtering and stuff"
+
+This is a REALLY BAD IDEA.
+
+Not just a slightly bad idea. A really, really, terrible one. It makes a 
+certain kind of superficial sense, but when you actually look at what 
+Allegro is, and what OpenGL is, and what 3D hardware is, there's just no way 
+that this would ever be a sensible thing to do.
+
+The purpose of an API is to make things easier to program. If it is a good 
+API, it will fit nicely onto the sort of things you are trying to do. It 
+will also fit well onto the underlying hardware, because if it doesn't do 
+that, it will run too slowly to be useful. A successful API is one that does 
+a good job of translating what you are trying to do into what the hardware 
+does, ie. something that makes it easier to get that hardware to do what you 
+want. The details depend a lot on your goal (eg. for something like Curses or 
+Java, portability is the most important thing), but for games and graphics, 
+speed is usually pretty high on the list of goals.
+
+The Allegro graphics system makes a few basic assumptions about how the 
+universe is. The most basic of these is that images are made up of pixels. 
+Pixels are arranged in a 2d grid. The CPU is used to read and write pixels, 
+which has the effect of modifying the image. Some images are stored in 
+memory, but one of them is the screen. Writing pixels to this image causes 
+them to be displayed on your monitor.
+
+This set of assumptions maps well onto the sort of things you need to do to 
+write a 2d game. It also maps well onto how 2d graphics hardware actually 
+works, which is a very lucky thing because if it did a bad job of either of 
+these two mappings, nobody would ever have wanted to use Allegro.
+
+Along the way Allegro manages to abstract away loads of cases where this 
+simple view of reality doesn't quite match up with the way things actually 
+are. For instance on banked graphics cards, video memory isn't actually a 2d 
+grid. In X Windows, the CPU actually writes to a backbuffer and then copy 
+that to the screen, rather than going directly to the screen. With DirectX, 
+you can't write straight to the screen without doing a special operation to 
+lock it first. On many platforms, you can do certain types of operations 
+using a hardware blitter rather than by modifying pixels directly from the 
+CPU, which can be much faster.
+
+The Allegro API takes care of all these details, so that you don't need to 
+worry about them in your program. This is a large part of what makes Allegro 
+useful, but it is only possible because these things are only a very minor 
+deviation from the simple worldview that Allegro presents to the user. If 
+the reality did not match so closely to how Allegro expects things to be, it 
+would be much harder for it to hide these differences. The harder that job 
+becomes, the more complex and unreliable and (most importantly) slow Allegro 
+would become. If it gets any more than very slightly slower than it 
+absolutely needs to be, it would no longer be a good solution for writing 
+games, so people would abandon it in favour of something that did a better 
+job of mapping their game onto how the hardware actually worked.
+
+3D hardware is not a good map onto how Allegro works. In fact it is almost 
+an impossible map: they hardly share any of the basic concepts at all! The 
+worldview of a typical 3D card looks more like:
+
+Textures are loaded at the start of the program, and not modified from that 
+point on. Geometry is defined by vertices, which are also not modified 
+unless absolutely necessary (you can change them on the fly if you like, 
+but things will run slower if you do). Textures are mapped onto the 
+geometry using sets of u/v coordinates. The CPU builds up a 4x4 transform 
+matrix describing where on the screen that geometry should be placed, and 
+maybe also sets up some lights and u/v transform matrices, and passes these 
+to the card. The 3D card then reads these settings, reads the geometry data, 
+and reads the textures. It draws triangles to the screen, mapping the 
+textures across them. It can do this very quickly, and can do all sorts of 
+cool alpha blend and multitexture operations while it does it, but it can do 
+nothing other than this. The screen is a special place. Nobody but the 3D 
+card can access it.
+
+Sure, it is theoretically possible to write an Allegro driver that will run 
+on top of a device built to that set of assumptions, but that is a very 
+non-trivial thing. It will run extremely slowly because Allegro is asking it 
+to do things that are not easy for the 3D card, and will be unable to take 
+advantage of many of the cool 3D hardware features because Allegro doesn't 
+ask it to do any of the things that the 3D card is good at. Everybody loses.
+
+The only way that Allegro graphics could work well over the top of OpenGL is 
+if we changed the API so that it did map well onto that set of assumptions. 
+But this is a _huge_ change. Not just a few modifications. For starters, 
+we'd get rid of the screen object. And get rid of the BITMAP structure. And 
+get rid of functions like blit() and draw_sprite(). Add a load of different 
+things to take advantage of what 3D cards can do, like set transform matrix, 
+set texture, set source and dest alphablend factors. But guess what? The 
+resulting API wouldn't look anything like Allegro any more. But it would 
+look a hell of a lot like OpenGL (which already has glLoadMatrix(), 
+glTexImage2D(), and glBlendFunc()).
+
+Allegro is (in my biased opinion at least) a very nice API for working with 
+2D graphics. If you are writing 2D software (either because you like 2D 
+games, or you are working with hardware that doesn't include a 3D 
+accelerator, or for whatever other reason), Allegro is currently one of the 
+best ways to get good results. It can also be handy for the setup phase of a 
+3D engine: not even setting an Allegro graphics mode, but using the BITMAP 
+objects to load and adjust textures before passing them across to some 
+completely different 3D API which will then use them as textures (for 
+instance I do this at work in several different programs).
+
+If you are writing a 3D program, though, the Allegro graphics system is an 
+extremely poor choice. Use the timers. Use the sound. Use the input system, 
+and datafiles, and the bitmap loaders, and all the stuff that is good at 
+what you are asking it to do, but don't take a good 2D API and then complain 
+that it isn't good at 3D. Of course it isn't! The right tool for the job, 
+and all that.
+
+We could change Allegro to make it into a good 3D API, but only at the cost 
+of it no longer being a good 2D API, which I think would be a great shame. 
+And also pretty stupid, because there is nothing else as good as Allegro at 
+doing 2D, so it has a valid and important reason to exist in that arena, but 
+there are already loads of perfectly good 3D graphics systems, so why bother 
+adding yet another to an already crowded marketplace?
+
+If you do turn Allegro into a 3D library, you will instantly lose all the 
+people who currently use it for 2D graphics. You will also lose most of the 
+intelligent people who want to do 3D graphics, because they will look at 
+Allegro, and look at GL, and notice that whatever new Allegro 3D graphics 
+API you might come up with doesn't really add much of any significance over 
+the top of standard GL, so they might as well just use that directly. All 
+you will be left with is the people who are too dumb to make the switch to a 
+different API, or so attached to a brand name that they will stay using it 
+just because it happens to be called "Allegro", without noticing that it 
+really isn't any more. To me at least, that would be a terrible shame.
+
+OpenGL is really very nice and very easy to program. If you are at all 
+interested in doing some 3D stuff, I highly recommend that you take a look 
+at it. Keep Allegro around for the other areas of your program, and to 
+handle the 2D stuff. The AllegroGL package does a great job of making the 
+other parts of Allegro sit nicely alongside using GL for the main 3D 
+graphics rendering.
+
+I've been debating this point with a seemingly endless stream of people for 
+several years now, and for some reason never seem to get very far convincing 
+anyone to believe me that a) the existing Allegro API is not well suited for 
+implementing on 3D accelerator hardware, and b) there is no point designing 
+a new, better suited API, because OpenGL already does this perfectly well. 
+The above is my final comment on the matter. Allegro isn't mine any more, so 
+it is up to the new developers to carry on arguing about it, or to switch it 
+over to using a 3D API if they decide that would be better.
+
+One final thought for anyone who is about to spring back with yet another 
+"but couldn't Allegro be extended to use XXX"...
+
+Have you ever written a 3D program using OpenGL? If not, don't you think 
+you'd better try it? Or at least find someone who has, and see if they agree 
+with you that Allegro would benefit from being extended into 3D?
+
+My personal experience covers:
+
+    2D API: VESA, VBE/AF, Linux fbcon, Allegro, Windows GDI, DirectDraw
+
+    2D hardware direct access: VGA, ModeX, banked mode SVGA (Cirrus, Tseng),
+                               hardware accelerated SVGA (Matrox, NVidia TnT)
+
+    3D API: OpenGL, D3D versions 5-8, across a wide range of cards
+
+    3D hardware direct access: N64, PS2, NVidia GeForce (Xbox)
+
+I challenge you to find a single person who has done extensive work across a 
+comparable range of different systems, and still thinks it would be the 
+slightest bit useful to either implement the existing Allegro API over the 
+top of a 3D system, or change it to be more 3D friendly.
+
+It is not a failing in Allegro for it not to support everything. Rather the 
+opposite, in fact. I think it is a sign of strength to be able to say "use 
+this for X, Y, and Z, because we do them better than anybody else. If you 
+want to do Q, use that thing from over there instead, because they do it 
+better than we ever could".
+
+That's what I think, anyway :-)
+
+
+
+Technical Stuff
+---------------
+
+Random observation: Allegro carefully avoids using floats anywhere in the 
+API, because they didn't exist on a majority of computers back when I first 
+started it. That is clearly no longer the case :-)
+
+Name prefixing, no globals, etc, been discussed by other people. Good ideas.
+
+The CPU detection stuff is a mess: unclear what a lot of it means, not 
+portable to non-Intel machines, not particularly useful anyway. Get rid of 
+it (keep only a very stripped down version for internal use in deciding 
+whether to use MMX/SSE code).
+
+Hmm, this is going to get silly if I write it all in one big section. Better 
+include some chapter headings...
+
+
+
+Config Files
+------------
+
+The config file API is potentially very nice (and in fact capable of far 
+more than it is currently being used for), but not perfect. If this was 
+extended, the section hook facility could become a very nice way of 
+implementing per-platform or per-addon optional parameters and mode 
+settings, both for things that are set by the user (refresh rate, 
+three_finger_flag, set_color_conversion(), reserve_voices(), 
+gui_mouse_focus), and for things that are returned by the library (OS type, 
+MMX support, gfx_capabilities, retrace_count, potentially even mouse, 
+keyboard, and joystick state).
+
+A major extension of the config system could collapse down a huge number of 
+API entry points, and make it very easy for individual platforms and even 
+drivers to expose specific settings that only they have a use for, while 
+allowing those settings to gracefully do nothing on platforms where they are 
+irrelevant.
+
+This would only work after substantial improvements (verging on total 
+rewrite) of the config system, but I think could be a very interesting way 
+to take the lib. In particular it would require:
+
+- Not be totally string based (at the moment everything is stored as text, 
+  and the int/float/bool versions convert to and from strings at a fairly 
+  high level). To be efficient enough for widespread use, other data types 
+  would need to be supported directly, so integer settings can be passed 
+  around purely as integers and only get converted to a string when someone 
+  tries to read them in that format.
+
+- Much better data structures. At the moment it is just a flat list of lines 
+  (linear access time). I think string based section and variable names 
+  would still be plenty fast enough, as long as it used some sort of smarter 
+  layout. Hash tables spring to mind.
+
+- Get rid of the dual section+name format. With a good hash function, 
+  lookups can work directly off a single string. It could be split into 
+  sections using / directory separator characters, but this would be purely 
+  an organisational convenience for the user (and maybe could be reflected 
+  somehow in the syntax of the config files in their disk versions).
+
+- Lose the push/pop and override functions: these are hard to understand and 
+  inflexible. A better system would support reading arbitrary files at any 
+  point, and give the user more direct control over when things are written. 
+  For instance:
+  
+    al_load_config("", "allegro.cfg");    // read to root of config system
+    al_load_config("dir", "x.cfg");       // prefix variable names with "dir/"
+    al_set_int("dir/var1", 10);           // add a new variable
+    al_save_config("dir", "x.cfg");       // write changes
+    al_unload_config("dir");              // remove from memory
+
+  Q: maybe need more specific control than just saving contents of an entire 
+  directory? (although probably the only thing that wants that is the setup 
+  program, which could use more specialised code). Q: one really nice thing 
+  about the current system is how it preserves human edited comments, 
+  spacing, ordering, etc, across a read/modify/write on a file: would be 
+  good to preserve that but an interesting implementation problem :-)
+
+- Far more flexible hook functions would be needed. Some things would want 
+  to just set a variable (the same way as if the user set it, or it was set 
+  after being loaded from a config file, so the value is stored internally 
+  to the config system), but to flag this as read-only so callers cannot 
+  modify it. Others will want to be called when a value is to be read, so 
+  they can generate on-the-fly values. Others want calls when a value is to 
+  be written. Should support all of read, write, or read/write hooks. Also 
+  it should be possible to hook both single variables or entire 
+  subdirectories (so eg. the keyboard routines could install a handler for 
+  the "key/state" directory, which would be called when the user asks for 
+  "key/state/shift", and passed "shift" as a parameter.
+
+- Given that these functions would now be used for far more than just 
+  config files, give them nice short names that don't contain 'config'.
+
+Just imagine being able to write:
+
+    al_set_bool("keyboard/three_finger_flag", true);
+
+or:
+
+    if (al_get_int("gfx/capabilities") & AL_GFX_CAN_TRIPLE_BUFFER) {
+        ...
+    }
+
+Given that some of these variables could end up being accessed a hell of a 
+lot, it would probably be worth #defining constants for some of the standard 
+settings:
+
+    if (al_get_bool(AL_KEY_SPACE)) {
+        ...
+    }
+
+
+
+Input
+-----
+
+The current input system is a mess: too many different options and modes and 
+too much overlapping functionality. Strip it right down to bare bones.
+
+All input should be polled. It is trivial to support polling even on 
+platforms that don't require it, but much harder to pretend the API doesn't 
+need polling on platforms that do. Joystick input is already polled, and the 
+keyboard/mouse code could be vastly simplified on some platforms if they 
+were as well. In fact, if input switches to query functions rather than 
+global states, or even a smart-config infrastructure as described above, the 
+polling would be implicit in the user calling these functions.
+
+Switching to a poll-only system would vastly simplify not only the drivers 
+on some platforms, but also the generic framework code that currently jumps 
+through some nightmare hoops to support various combinations of drivers and 
+apps that use obscure mixtures of polling and interrupts and global 
+variables and who knows what else.
+
+This is where someone is sure to say "message based", to which I reply 
+"no!!!!!". Message based input systems can be nice, but they aren't low 
+level. No hardware works by putting messages into a queue. You can't do a 
+message based system without doing memory management, which IMHO puts it 
+into the level where the app should be worrying about it, not the lib. And 
+most importantly, it is trivial to write a clean message based system as a 
+wrapper on top of an underlying polling API, but much harder and hackier to 
+sit a polling system over the top of a message queue, so given that some 
+people are always going to want one or the other, better for Allegro to 
+support the lowest level option and then an addon can build more 
+sophisticated systems over this for those who want it.
+
+Get rid of the mouse and keyboard input callbacks. They don't do anything 
+that polling cannot, and on the only current platform that is truly non-poll 
+based (DOS), they are very dangerous as can hard crash your machine if used 
+wrongly. Also this sort of single-entry API isn't a good player when 
+multiple clients are trying to use input (eg. a GUI lib alongside other 
+code). Much better to stick to an API where the design gracefully allows 
+multiple people to access different bits of the input, rather than only one 
+being able to hog the whole thing at a time.
+
+The return value from readkey() is weird and hard to interpret. Get rid of 
+it. Make al_readkey() be the same as the current ureadkey().
+
+Not strictly input related, but it is silly for the timer API to use units 
+based on the PIT hardware clock rate! Use something more sensible 
+(microseconds, or even seconds passed in a float datatype). This wouldn't 
+even break much code as most games calculate these values via BPS_TO_TIMER() 
+or MSEC_TO_TIMER(), so just change those macros to use the new units. 
+This would also remove the need for the install_int() / install_int_ex() 
+split.
+
+Timer callbacks are a pain to write and not an especially good programming 
+model for most things. They are needed for many internal things (mouse 
+cursor display, MIDI player), but it is ok for them to be a pain internally, 
+as the library code only needs to be written once, and can be done very 
+carefully. For user programs, though, very few tasks actually require true 
+async operation. The retrace_count variable is almost enough for 99% of 
+timing requirements in games. Perhaps add a better way to query elapsed 
+time? (nicer syntax, more precise, adjustable speed), so that regular people 
+rarely need to install actual callbacks of their own?
+
+
+
+Graphics
+--------
+
+Color depth and refresh rate should be passed as parameters to 
+al_set_gfx_mode() (or possibly refresh rate could be set using the config 
+API, as it isn't used very often). There is still a need for a separate 
+al_set_color_depth(), though, as it can be useful to modify the global color 
+depth setting without being in a video mode, or to something other than the 
+current screen color depth.
+
+I toyed with getting rid of the concept of a global color depth, but think 
+that is actually quite useful when writing programs that support multiple 
+color depths, but only one at a time, as it lets you only set this once and 
+then pretty much forget about it from then on.
+
+Remove all support for wide virtual screens and hardware scrolling: use the 
+video bitmap create/show API for all page flipping. This would get rid of 
+the current nasty need for video bitmaps to be allocated separately from 
+screen, as you could always just use screen for your first page, and create 
+more as required (which is how it should have always worked, except for the 
+need to be compatible with the old large virtual screen method). Dropping 
+the scroll support doesn't strike me as a major loss as this isn't actually 
+terribly useful (not possible in most modern graphics API's, and even though 
+DOS can do it, most VESA drivers are too buggy for it to ever work 
+correctly, and most cards can only scroll in nasty large multiples in any 
+case).
+
+Get rid of create_bitmap(). Make al_create_bitmap() be like the current 
+create_bitmap_ex(), with a zero color depth meaning to use the current 
+global setting.
+
+There are far too many variants on the rotate/pivot/scaled/flip sprite 
+functions: rationalise these into just one that takes a few more parameters.
+
+Rotation angles in radians? Would make sense (the performance benefits of 
+256 angles to the circle are a thing of the past), but this could be a nasty 
+subtle change that would trip up people updating old programs.
+
+Drop compiled sprites? Not sure: they aren't useful on modern hardware, but 
+extremely handy on older systems, and the code already exists so why not 
+leave it in there.
+
+There are too many text output functions: have just one that takes 
+left/center/right alignment as a parameter (justifying is still a different 
+routine as it needs an additional width value for the region to be drawn, 
+and I've been irritated in the past by API's that made me pass left and 
+right limits for the common case where I just want to left align some text).
+
+
+
+Misc
+----
+
+Get rid of all the 3d functions (except the simple 2d triangle/polygon 
+filler). Or should I say, move them to an addon lib. These are inadequate 
+for writing performance 3d graphics, and not an especially nice API to use 
+(D3D or OpenGL are both faster, more full featured, and easier to code for).
+
+Move the FLIC player to an addon lib. It has no need to be tied into the 
+rest of Allegro.
+
+Remove unused sound functions (echo/tremolo/vibrato).
+
+Get rid of the old play_sample(), stop_sample(), and adjust_sample() 
+functions. These are very limiting and date way back to my first attempts at 
+writing sound code. These days they are implemented as simple wrappers over 
+the top of the much more powerful voice_* family of functions, but are 
+hampered by bad design of the original API.
+
+There is still a need for a simple sample trigger routine (to simplify the 
+common case of one-shot fire and forget sound effects), but this should use 
+the same pitch parameter format as the voice routines. No need for any 
+equivalent to stop_sample() or adjust_sample() - anyone using those should 
+be doing it with the voice routines in any case.
+
+Making the packfile system more modular has been mentioned a few times, and 
+I think this could be really nice. Have chainable plugins for different 
+underlying device types (disk, memory, or whatever addon packages can come 
+up with), which can then feed through a compression layer, and other layers 
+that could do things like implementing datafile access inside another file. 
+So you could open "data.dat" using just the raw disk access module, and 
+would see compressed bytes. Or you could open it by chaining the disk access 
+into the decompressor, and would see uncompressed data. Or you could chain 
+disk access into decompressor into datafile accessor to see the directory 
+structure inside the datafile, and be able to open specific objects from 
+inside it. Or if the datafile had been compressed as specific objects rather 
+than globally over the whole file, you'd just reverse the order of these 
+plugins and chain disk access into datafile accessor into decompressor 
+instead.
+
+I've actually implemented something exactly like this here at work recently 
+(used for compression, archive access, console memory card access, and 
+various obscure caching schemes involving the Xbox hard drive), but 
+unfortunately aren't allowed to release the code for it :-) It has turned 
+out to be quite a nice and flexible approach, but I must warn you that it 
+isn't totally trivial to get working: there are some nasty design problems 
+and it took me a lot longer than I initially expected!
+
+Get rid of compiled datafiles and the dat2s utility. This is unportable, 
+Intel-specific, and also doesn't work well with truecolor graphics (where 
+nasty things are needed to fix up the bit pattern at startup, and even 
+worse, it is impossible to convert between 16, 24, or 32 bit modes, which is 
+frequently required). Rewriting to generate C would fix the portability 
+problems, but not the truecolor fixup issues. Also, both MSVC and GCC take 
+forever (ie, many hours sometimes :-) to compile files containing really big 
+initialised arrays, and often crash with stack overflows. Plus, it has been 
+a pain maintaining dat2s in sync with the datafile format. And there's no 
+need for it! The exedat method can do effectively the same thing, but more 
+flexibly, with compression support, far less code, and more portably.
+
+Fixed point math is still useful on modern machines (at least internally, 
+for things like sprite rotation), but split the 3d math off into an addon. 
+This is something that is just crying out for a nice clean implementation as 
+it can so easily be done totally portably and without ties to any support 
+code at all. Also, fixed point versions of these routines are stupid 
+(useless for anything these days), and this is one area where C++ operator 
+overloading makes like _so_ much nicer that I find it really hard to be at 
+all interested in a C version of a vector/matrix lib!
+
+Random comment about code layout: Allegro uses 3 space indentation because 
+that's what I used to prefer, but almost nobody else uses that so it is a 
+bit perverse. Maybe convert to something a bit more normal? (4 space is 
+probably the most common). Perhaps even get an indent script set up well 
+enough that everything can routinely be run through it before a commit.
+
+
+
+Time To Get Radical
+-------------------
+
+You may have noticed me suggesting that several of the less used and more 
+independent parts of the lib be moved out into addon packages. Those of you 
+who've been around for a while may be surprised by this, as I previously 
+spent several years resisting that very suggestion. I didn't want to do this 
+because it would break compatibility, but now that this is going to be 
+broken anyway, let's move things. Move as much as possible. Allegro is 
+already too big, and there are constant pressures to make it bigger: if it 
+gets too fat, it will explode and die.
+
+I agree with everything I've written up until now, and if I was in charge, I 
+would do it all. From here on I'm going to start throwing out a few more 
+'experimental' suggestions. I tend to think that these might be true 
+(otherwise I wouldn't be mentioning them :-) but I'm not at all sure of 
+that, and wouldn't rush into actually implementing them without a lot more 
+careful consideration. An API redesign seems like the right time to be 
+daring, though...
+
+FLIC players and 3D rendering are obvious candidates to split off, as they 
+are fairly well split already (it would only take 10 mins to move them into 
+an addon). Sound could go too. And maybe the GUI. Then, how about graphics? 
+And input? And timers? Hey, why not turn the whole thing into a set of 
+interconnected but separate modules? (not my idea, but I think it could be a 
+good one).
+
+There are many problems with going modular:
+
+    1: The fundamental interconnectedness of all things. Mouse display needs 
+       mice, and graphics, and timers. GUI needs graphics, and input. 
+       Things like the grabber tend to need pretty much everything else in 
+       order to stand a chance of working (in fact, the grabber is the only 
+       reason that the GUI had to exist in the first place).
+
+    2: The need to know. It isn't as simple as just writing one module, and 
+       then another module calling functions from it. In the real world one 
+       area of the lib will often need to get down and dirty with private 
+       little secrets belonging to another (the support for hardware mouse 
+       cursors being a prime example: mouse.c directly calls private 
+       internal methods of the graphics driver). And the datafile system
+       knows a lot about the internal structures of pretty much the entire 
+       rest of the lib (it is hard to see how it could work without that 
+       knowledge, too).
+
+    3: Poor little confused users "If it isn't in Allegro, then how will 
+       anyone know that it exists?"
+
+    4: Maintenance. "It doesn't work. Allegro works. If it was in Allegro, 
+       then surely it would work, too."
+
+But there are also some solutions and advantages:
+
+    1: Dependency checking. A requires B. B requires C and D. The "standard" 
+       install could be defined as all the examples and tools, plus all the 
+       code modules required to build those tools. If someone doesn't want 
+       to download the mouse package, fair enough, but they won't be able to 
+       use the GUI or compile the grabber without it. This will only not be 
+       a nightmare if these dependencies are accurate, and there are smart 
+       websites and makefiles and things that will give useful warnings if 
+       people are missing necessary components.
+
+    2: Some modules will always need to expose their dirty underwear in 
+       order that specific other modules can mess around with it. Overall, 
+       though, I think that splitting them up would make people think harder 
+       about this sort of dependency, and probably more often find ways to 
+       make the API describe what the other module needs (which makes it 
+       generally available to everyone in a clean way), so although there 
+       would still be hacks, probably fewer and less ugly ones than at 
+       present.
+
+    3: At the moment there is a big gulf between things that are "Allegro" 
+       and things that are not. One solution is to put everything into 
+       Allegro, but that causes bloat (and lets face it, some things are 
+       really obscure and only 1 person in the whole world thinks they 
+       belong there). The other option is to put nothing in Allegro at all. 
+       If everything is a module, then everything is equal. Some things will 
+       be downloaded by pretty much everyone, and some by almost none, but 
+       this can be decided purely on merit by the users, without there being 
+       any big wall between "official" and "non-official" components. In the 
+       end I think this could actually end up benefiting the sense of 
+       community. It would depend on good and well maintained websites so 
+       that people can see what exists, but just look at Perl's CPAN for a 
+       model of this being done successfully...
+
+    4: People work on what they want to work on. If nobody wants to work on 
+       it, moving the code somewhere else hardly strikes me as the best way 
+       to fix that :-) People often cite portability as a reason why things 
+       should be merged, but that is total nonsense: in fact the exact 
+       opposite is the case! Not all code is or should be portable. Rather 
+       than not adding something because it doesn't work on all 50 
+       platforms, surely it is far better if it can be added because it does 
+       work on one. Then, if it is useful enough, someone might decide to 
+       port it to another. Perhaps it can never be ported to a third for 
+       technical reasons, but that is no reason why people should be 
+       prevented from enjoying it on the platforms that it does support. I 
+       think there is a lot to be gained from having a module list that 
+       reads something like:
+       
+       Timer System   - Linux, Windows, DOS, BeOS, Mac, Dreamcast, Gameboy
+       Graphics Core  - Linux, Windows, DOS, BeOS, Mac, Dreamcast, Gameboy
+       Keyboard Input - Linux, Windows, DOS, BeOS, Mac
+       Networking     - Linux, Windows, BeOS
+       ModeX Graphics - Linux, DOS
+       GDI Interface  - Windows
+
+       (in the example above, networking could also be implemented on the 
+        Mac, but nobody has implemented that yet. In the meantime it has 
+        been released so people can start using it on Linux and Windows. As 
+        soon as a Mac developer cares to port it, it will work there as 
+        well, but in the meantime networking works on other platforms, and 
+        other features work on the Mac. Far more flexible than if everything 
+        was all in one big mess, and clearer for users, too, as long as 
+        there is good documentation about which modules work on what 
+        platforms)
+
+While writing the above, I've pretty much convinced myself that extreme 
+modularisation is a good idea. I think. Probably.
+
+
+
+What Is Video Memory, Anyway?
+-----------------------------
+
+Dropping DOS support (one of the more popular radical suggestions at the 
+moment, it would seem), strikes me as a terrible idea. The code already 
+exists, and works well. Getting rid of it gains nothing, and loses all the 
+users who will be annoyed if their platform is suddenly no longer supported 
+(telling them to stick with an older version is not a good solution, because 
+what if they want to user the new API with all the nice new features?)
+
+Rather than ditching the whole thing in a fit of pique, I think it would be 
+more productive to look at technical areas where DOS may be limiting the 
+potential of other platforms, and find good technical solutions to them.
+
+One of the main current bugbears seems to be the user of farptrs to access 
+video memory. Fair point. So why not just turn on djgpp's fat-DS selector 
+method? This doesn't work in an NT or w2k DOS box, but DOS Allegro doesn't 
+work well there anyway. Use the Windows port for running under Windows, and 
+keep DOS Allegro (with the fat-DS hack if that makes life easier) for people 
+who are still using true DOS for whatever reason).
+
+Granting direct pointer access to video memory would vastly simplify writing 
+drawing routines in C, but it also loses one nice ability: at the moment, 
+all access to vram is done through a set of macros, which could be extremely 
+handy if you ever want to port to a platform where video memory is not 
+directly accessible (small embedded LCD display type devices being the 
+examples that immediately spring to mind). Such a port would be trivial at 
+the moment (just define bmp_write8() appropriately), and it would be a shame 
+to lose this flexibility without getting something good in exchange for it. 
+But then, direct C access to vram is certainly a nice thing to have. I 
+really don't know what to suggest on this one.
+
+One thing to consider is that, on platforms where the CPU can't directly 
+access video memory (Dreamcast and PS2 being the ones I am most familiar 
+with), the best way to get Allegro graphics working might well just be to 
+CPU render to main memory, and then copy the whole result across to vram 
+(like how the GDI and X Windows drivers work). In this case, direct video 
+memory access wouldn't be required anyway (double buffering like this would 
+be the fastest possible approach on such hardware).
+
+Change the bank switch routines to use standard C calling convention. But 
+this could lose performance over the current register based approach: do 
+some profiling before you commit to this (there's no point making the code 
+more elegant if you lose 10% performance in the process :-)
+
+Or, are the bank switchers even needed any more? No modern hardware uses 
+banked video modes. Even for the most limited cases (DOS, or similar types 
+of OS running in embedded systems), video memory is pretty much always 
+linear. Losing the bank switchers entirely would simplify life a great deal, 
+and open up a lot of new optimisation possibilities.
+
+Problem: bank switchers are used for more than just bank switching. They 
+also provide the automatic surface locking in Windows, and can collect stats 
+about dirty screen areas for windowed mode drivers, to avoid redundant 
+refreshes. So it can never be safe to just go "bmp->line[y][x] = c" on any 
+platform. But maybe some coarser locking mechanism could be used, eg. 
+locking a 2d region and then releasing it at the end of drawing a primitive, 
+rather than doing this line-by-line.
+
+Not sure if the performance gains of that would outweigh the loss of 
+flexibility. In some ways a per-primitive rectangular lock would actually be 
+more flexible (as it is able to express thin vertical dirty areas), but it 
+is also easier for people to get wrong (passing the wrong dirty area by 
+mistake, or forgetting to lock the surface at all, which would only cause 
+problems on platforms that did need the lock system, whereas with the current 
+bank switch mechanism, people are unlikely to lock the wrong areas because 
+if you lock the wrong line, you'll get back the wrong pointer so you'll 
+instantly notice that you are writing to the wrong place).
+
+And, removing banked mode support would greatly annoy anyone who is still 
+using it. I've no idea if there are enough of them for that to be a problem.
+
+
+
+Goodnight And Good Luck
+-----------------------
+
+Wow, that took much longer than I was planning! Thinking about how it could 
+all work and how everything could fit together and what not, I'm getting 
+quite excited by the whole thing and find myself wishing I was still 
+involved in coding it all. I had some wonderful times working on Allegro: a 
+chance to write a lot of very interesting code and solve fun problems and 
+meet some great people. But things change, and now I have a job that needs 
+my time far more than Allegro does (I was supposed to be sorting out the 
+particle system this evening :-) so I'll just have to restrain myself and 
+leave this to the people who have enough time to do it properly. I'm sure 
+you'll do a great job.
+
+Good luck! This is going to be very interesting to watch, and I can't wait 
+to see what you all come up with...
+
+
+
+A Historical Note
+-----------------
+
+http://groups.google.com/groups?selm=Pine.SGI.3.91.951102014149.2316A-100000%40tower.york.ac.uk&output=gplain
+http://groups.google.com/groups?selm=Pine.SGI.3.91.960314222202.29279A-100000%40tower.york.ac.uk&output=gplain
+http://groups.google.com/groups?selm=Pine.SGI.3.91.960620100906.12968A-100000%40tower.york.ac.uk&output=gplain
+
+For some reason I can't find any of the posts about the 2.0 beta version: 
+somewhere there should be a huge thread from comp.os.msdos.djgpp about me 
+first playing around with SVGA support, asking for people to test out 
+drivers on different cards, and generally being totally clueless about how 
+PC graphics cards worked :-)
+
+
+
+-- 
+Shawn Hargreaves

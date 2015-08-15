@@ -1,0 +1,399 @@
+# date: 2003 - 01 - 06
+# Draft 2 for discussion of API style.
+# Written by Grzegorz Adam Hankiewicz.
+# The concepts/reasons contained here are proposed to be included
+# in the future Allegro documentation, like chapter `2.3 GL Command
+# Syntax' of OpenGL, to let programmers know why the API uses this
+# or that style convention. Maybe appended to the ahack guide?
+
+The current API of Allegro is quite bad. Through the years it has
+been extended without a set of rules, and now it's inconsistent,
+more difficult to learn that it could be, and starts to give problems
+if you want to mix it with other libraries. For this reason, the
+next big version of Allegro (5) will feature a complete API rewrite.
+
+The problem is, of course, which set of rules will be used to define
+the API. Here many people jump in with strange unreasoned requests,
+and this kind of discussions quickly degenerates in flame wars. IMHO
+most of this happens because we programmers are stubborn people,
+and always think that we are right.
+
+Having worked more than five years with C/C++, and written code
+in practically all the proposed styles because of job constraints,
+I would like to give my opinion on why this or that style is good
+or not, trying to reason it farther than "I like it". Please do not
+consider my opinion like something set in stone, I can change my
+mind, but it will depend on the quality of your arguments, which
+you can send to gradha@users.sourceforge.net.
+
+Anyway, let's start with the immediate outlook of the API. The
+current API looks `something_like_this', all lower case with
+underscores separating each word, similar to Glib (g_print,
+g_list_append, g_malloc, g_signal_connect) or GTK (gtk_init,
+gtk_window_new, gtk_container_set_border_width, gtk_widget_show). GTK
+also features names like GtkWidget, they are only used to
+`objects'. This is the same OO terminology you see in C++, and
+that's why they borrowed their style for data types' names.
+
+At the moment of writing this, http://allegro.cc/ shows
+that the other favored proposition is one variant of the
+MixedCaseWithoutSeparation style, very similar to DirectX
+(IDirectDrawSurface2_BltFast, IDirectDrawSurface2_GetDC,
+IDirectSoundCapture_Release, IDirectInputDevice_SetProperty), SDL
+(SDL_Init, SDL_InitSubSystem, SDL_QuitSubSystem, SDL_WasInit),
+or OpenGL (GetConvultionParameter, DrawRangeElements,
+CopyTexSubImage3D).
+
+Before I begin ranting, let me sound patronizing and remember that
+machines only understand bits, machine code, and programing languages
+were created for human use to make programing easier. While obvious
+in hindsight, many programmers like to favor styles which seem to
+enforce the contrary. I don't, and that's why you will see that
+I prefer styles which look closer to natural language rather than
+machine code, I prefer not having to learn mnemonics to remember
+what's the correct name of a function, I prefer not having to learn
+exotic rules when common sense is enough.
+
+Let's analyze where does the Hungarian notation come
+from, it isn't featured in any of the examples I've
+brought so far, but it's the root of all evil which has
+lead to the current state of poor API designs. Hungarian
+notation was created by Charles Simony, working for Microsoft
+(http://cm-solutions.com/cms/technical/guide/hungarian_naming_convention.htm,
+search Google for more documentation), with the purpose of embedding
+extra information in function names.
+
+Note that this was somewhere around 1972, when compilers weren't
+that good at type checking of variables. So, this notation was
+invented to embed in function names the required knowledge to
+avoid passing by mistake for example a short instead of an int,
+making the binary crash, or behave wildly. This helped building
+better code... at that time.  Nowadays your compiler is simply not
+worth it if it can't check your code against a function prototype
+and point out if you are using incorrect types.
+
+Names look like lpszFile, rdParam or hwndItem,
+each lowercase prefix meant something different
+(http://www4.ncsu.edu:8030/~moriedl/projects/hungarian/) The
+problem with this style is that it is weak in terms of forward
+compatibility. If the API is changed to use another type of
+parameter, you have to change the function name too. You can avoid
+this by using opaque types, but you end up casting everything.
+
+An API which exposes this problem is the windows API with it's
+wParam, a variable which changed from a 16-bit value (w stands for
+word), to a 32-bit value (which should have been dwParam). Many
+names are old and most importantly, give wrong information about
+the type. Useless, just like outdated comments in source code.
+
+The only reason why you would choose this style today is because
+you have written a C API which has multiple functions doing the
+same operations on/with different kinds of parameters. The OpenGL
+API shows this, with names like Vertex3f, Vertex2sv, Normal3f,
+Normal3d, etc, showing a variation of Hungarian notation, used as
+suffix for parameter types. In fact, C++ wrappers hide the embedded
+type information of the API through function overloading. Here's an
+excerpt of the OpenGL 1.2 documentation, chapter `GL command syntax':
+
+ "A common declaration has the form
+ 
+ rtype Name{e1234}{e b s i f d ub us ui}{ev}([args] T arg1, ... T argN);
+ 
+ rtype is the return type of the function. The braces enclose a series
+ of characters (or character pairs) of which one is selected. e
+ indicates no character. The N arguments arg1 through argN have
+ type T, which corresponds to one of the type letters or letter
+ pairs as indicated in table 2.1 (b=byte, s=short, i=int, f=float,
+ d=double, ub=ubyte, us=ushort, ui=uint). If the final character is
+ not v, then..."
+
+The Allegro API has few places where functions representing
+the concept use different types of parameters (draw_sprite,
+draw_rle_sprite, draw_compiled_sprite, draw_gouraud_sprite),
+but it would be a shame to over complicate function names only
+because a little percent of the library would benefit. In fact,
+if you shorten names like OpenGL, you would end up with something
+like drawNSprite, drawRsprite, drawCsprite, drawGsprite, much less
+readable and meaningful.
+
+Now we will inspect a similar style: Hungarian notation
+without type information, or commonly called mixed case notation
+(http://geosoft.no/style.html). This style is used mainly in C++
+libraries, like DirectX, Clanlib or the OO language Java. If we had
+a class for joystick input, it would be named JoystickInput, and it
+could have methods like getHorizontalRange, fakeSecondaryButton, etc.
+
+Here you can see a pattern: ignoring the rest of the word, classes
+(and hence their constructors too) begin with upper case, methods
+are lower case. This helps to differentiate between constructor/objects
+and methods/variables (methods are always preceded by `->'). If
+the name consists of several words, they always start upper case
+to differentiate one word from the other.
+
+Other than the first letter, would it be much different if
+words were lower case and separated with underscores? Let's
+see the previous examples: Joystick_input, get_horizontal_range,
+push_secondary_button. Thanks to the underscore everything is much
+more readable. Why, do you ask.
+
+Well, when we are children and learn reading, our brain patterns
+adapt to recognize easier the space (or here underscore, which
+is similar graphically) as word separator. For somebody who has
+_learned_ to read the mixed case convention, using underscores
+to separate words may seem unnecessary. ButTheresTheKeyPoint:
+HeHasLearnedIt, ItsNotNatural (did you like that? yuck!). Instead,
+newcomers to programming find it easier when words are separated
+with underscores. Now we could argue if Allegro is aimed at novice
+or veteran programmers, but it's a pointless discussion: Allegro
+should be designed to be easiest to learn, easiest to use.
+
+Returning back to the analysis: mixed case style helps to differentiate
+constructors (or objects) from methods. It's case concatenation
+only serves to make programmers using Hungarian style more at home,
+it doesn't help readability. And in fact, if we try to apply this
+to Allegro, a C library, we loose the only benefit of this style,
+so why worsen the API with this?
+
+Yet another problem of the mixed case style is where to use the
+capitalized letters.  As simple as it sounds, not everybody thinks
+of words with the same lexemes: take the word suboptimal. Applying
+the mixed case style, would you capitalize the `o'?  Depending on
+your cultural background you are going to say yes or no. This
+problem happens with other style conventions too. However, with
+separation underscores, the newcomer learns easily what lexemes
+are used by the API because they are clearly separated, committing
+less mistakes during development time, because they stick around
+in your head. If the lexemes are separated through capitalization,
+it's harder to remember at which parts of the hole world.
+
+Finally, if you use mixed case, you are using capitalization for word
+separation, so you loose the value of capitalization for names and
+abbreviations, which is what it is used for in natural language (when
+we talk about English, German for example uses capitalization for
+normal substantives too, like house, dog, book). Using mixed case,
+you are lowering the richness of the English language. (Off topic
+rant: music suffers from case style abuse too, it's stupid to
+have titles like "The Way We Wanted To Go", yet the music industry
+seems to enforce this for every song. Maybe the commercial target
+is uneducated people who never learned when to capitalize and they
+try to make it easier for them to read or write? Pffff...)
+
+Other possible arguments I've heard in favor of the mixed case
+style are: it's shorter to type and everybody else is doing it,
+so why can't we?
+
+The first argument doesn't have much weight. The development of a
+program using Allegro consists of more than writing code. In fact,
+the more experimented you are, the less you code and the more you
+plan and design your code. Besides, even if we talk about function
+names of four words, you only add three keystrokes, a good price for
+overall easier code readability, and no, your code is hardly going
+to call Allegro functions at every line, unless you are writing the
+source of Allegro's examples (which you are encouraged anyway). Just
+think in the hours you will spend as a programmer looking at your
+source code trying to debug that which doesn't do what you want. Are
+you typing then? No. Will lower case be easier to read? Yes.
+
+The second argument is stupid on it's own: if we used things only
+because most people do, were would mac/linux/beos users be? Would we
+all be still driving beetle cars, or wear ties at work? Yuck! And
+taken seriously, all the examples come from C++ libraries, or C
+wrappers of C++ designs. Besides, Allegro is plain C, there is no
+real reason to use any mixed case style, because it doesn't improve
+it's readability, there are no constructors to differentiate (and
+here I want to note that yes, Allegro 4 and previous include little
+C++ code, but this is very probably going to be dropped in the next
+version).
+
+Finally we can take a look at the current style, underscore
+separated lower case words. This is the best option: it continues
+the current style, not looking awkward to veteran Allegro coders,
+individual words are easier to read in the API, and the use of
+lowercase helps to differentiate acronyms (if they are needed) from
+normal words. Compare generateRASForNPC to generate_RAS_for_NPC,
+where acronym stands for random attribute seed and non player
+character. Abbreviations are evil anyway, but there are times where
+you can't avoid them or their use improves overall readability.
+Using a style which doesn't bury them between words is a plus.
+
+Whatever the style is chose, one thing is clear: Allegro will be
+prefixed.  For the lower case style this would be `al_'. For the
+other styles it could be `AlWhatever' (ala DirectX) or `Al_Whatever'
+(ala SDL). This is required because C doesn't support C++ features
+like name spaces or function overloading to help the compiler
+differentiate equal function names with different parameters. At
+the moment Ncurses's clear clashes with Allegro's clear. It can
+only get worse.
+
+So far, so good. Once we have settled the exterior outlook, we
+have to concentrate on the contents. How do we structure function
+names? It's certain that they will include a verb, representing
+an action, and possibly one or more substantives. Again the big
+question is the placement of such names, but whatever it is, it has
+to be consistent. We can't choose one to later create exceptions,
+because each exception is a non-natural rule which breaks the logic,
+and which will have to be learned by the programmer. The less there
+is to memorize, the better.
+
+There are two main possibilities with some little superficial
+combinations: either verb+subject or subject+verb. Of course I'm
+against the subject+verb style, because we read from left to right
+and are not stack machines.  In fact, the stack machine comparison
+is good enough to show why this looks bad: you have to read all
+the (probably lengthy) function name to understand it's meaning.
+You probably are thinking how pedantic am I, but it also shows how
+illogical the subject+verb convention is. Do you sentences in that
+ever write ? Like Yoda look? Once I read in a Slashdot comment
+by volsung(#387): "True is this. Unimportant word order is to the
+Jedi. Through the Force, all syntax is made unambiguous".
+
+Unsurprisingly the comment got a moderation of 4, funny. But it's
+partly funny because it's not what we should be doing, and we know
+it. Yet, why do APIs continue to use stack like notation? Well,
+there are excuses. Let's take a look at how SDL structures words
+(note, by this time you might believe I hate SDL. I don't, I just
+feel pity for them to clone Microsoft's DirectX yet poorer API):
+
+   SDL_AudioInit        SDL_CDPause    TTF_RenderUTF8_Solid
+   SDL_AudioQuit        SDL_CDResume   TTF_RenderUNICODE_Solid
+   SDL_OpenAudio        SDL_CDEject    TTF_RenderGlyph_Shaded
+   SDL_GetAudioStatus   SDL_CDClose    TTF_RenderGlyph_Blended
+   
+   IMG_isBMP         SDL_CreateSemaphore
+   IMG_isPNM         SDL_SemWait
+   IMG_isGIF         SDL_CreateCond
+   IMG_LoadTGA_RW    SDL_CondBroadcast
+   IMG_LoadLBM_RW    SDL_CondWait
+
+From left to right, top to bottom, the functions are grouped in audio,
+cdrom, font rendering, image handling and event functions. Ignore
+the fact that font and image handling don't start with SDL_. That's
+probably because they decided they aren't part of the `core'
+of SDL, and hence got a different prefix (deciding what is core
+or not requires yet another rant).  The word CD, could it be Cd
+instead? Here you see the problem of abbreviations, this time for
+compact disc, they are confusing in mixed case style.
+
+Then, you would think they follow the rule verb+subject,
+but, how is then that they have SDL_AudioInit, SD_SemWait or
+SDL_CondWait? They would be much better inversed so the API would
+be coherent everywhere.  You could argue that in the function name
+`SDL_AudioInit', the Audio is a prefix much like SDL_. But then,
+why the other functions don't use the same prefix? Why SDL_OpenAudio,
+but SDL_CDResume instead of SDL_ResumeCD?
+
+Note here too my previous point about random capitalization of
+lexemes: why IMG_isBMP and not IMG_IsBMP? Is the `is' it less
+important? Yet it's the main and only verb which gives meaning to the
+function. So why the lower case?  Why not SDL_getAudioStatus? It's
+also a very small word, no? Is it more important to `get' than to
+ask if something `is' this or that? Confusing.
+
+But in the end one thing is clear: with the exception of some
+mistakes, the norm is verb+subject. I could bring more examples from
+other libraries, but at this point it's not necessary. The only
+reason I can imagine why the CD functions got a different naming
+convention style is that at the moment of writing them, the author
+thought that having SDL_CDxxxx would list better in documentation
+function indexes, because they would all group nicely alphabetically.
+The Allegro documentation is going to be written by humans, and
+they already have grouped functions together, so there's no need to use
+prefixes for function names.
+
+Allegro developers seem to contradict themselves too in their
+API propositions: I might be looking at an outdated version
+of Peter Wang's timer routines, but he has al_timer_set_speed,
+al_uninstall_timer, al_timer_set_count practically in a row. Does
+it look right? Should be al_set_timer_speed, al_uninstall_timer
+and all_set_timer_count, no?
+
+Well, it's very easy to forget
+about style rules, in fact, take a look at
+http://alleg.sourceforge.net/future/allegro_renamed_api_draft_four.txt,
+the very same document I proposed practically a year ago. It has some
+incoherences, but that's because it was written when I thought that
+for Allegro 5 only the API would be rewritten, and tried to keep
+possibly close to the original, hence the preservation of names like
+al_findfirst, al_strcpy, etc. Now, it seems that a5 will really be a
+(partial at least) rewrite, so the API can be completely new too,
+and that proposed document partially ignored.
+
+So let's say that we all merrily agree on verb+subject. Yet there
+is still confusion for longer function names, and here's an example:
+
+ al_joystick_get_axis_value  versus  al_get_joystick_axis_value
+ al_joystick_is_button_down          al_is_joystick_button_down
+
+Thanks to Hein Zelle for reminding me of this. Here the problem is
+the word joystick either being used as part of the active function
+name, or as a simple prefix. Against the former case you could say
+that nobody told you of a verb+noun+noun... rule. But that's because
+you are thinking of noun == lexeme, when you should be thinking
+of verb+subject, where subject linguistically means one of the two
+main constituents of a sentence; the grammatical constituent about
+which something is predicated.
+
+Putting joystick before the verb is thus breaking two rules. First,
+part of the subject is not after the verb, yet many people don't
+consider this bad at all, because they understand the word joystick
+as a grouping mechanism.  But that breaks the second implicit
+rule of prefixes, and that is that they should be short. Why did
+we choose al? Because it's a prefix, everybody is going to have to
+deal with it, and everybody will know that 'al_' actually stands for
+'allegro_'.
+
+Now, joystick? Why not joy? or j, much shorter:
+
+  alj_get_axis_value
+  alj_is_button_down
+
+While tempting to most of us lazy guys, this is really BAD. You
+should be getting it by know, but just try to pronounce that aloud:
+no way to pronounce 'alj' together, unless you say 'al_joystick'
+or 'allegro_joystick'...  which shows that it's a bad prefix.
+
+Besides, if you are building a library and need to start sub
+grouping it's functions, you should really consider splitting that
+functional group, maybe you are trying to force it somewhere where
+it doesn't belong?
+
+The final reasoning: if Allegro really needs to start using
+'al_something', it means that it's too big and should be split
+in different libraries. Other than that, verb+subject is the only
+coherent solution to all the previous reasonings.
+
+I wish I could say more about favoring verb+subject, but, the fact
+is that I don't find any reason why subject+verb would be better,
+and I don't know of an API using this weird convention heavily,
+so I will leave this for another time if somebody comes up with a
+real reason (other than alphabetically grouping).
+
+This is the end. Hopefully you are switching now to lower case and
+underscore style for your code, or you have learned some good points
+in defending your style. You might wonder why every once and there I
+say things like "human language", "natural", "common sense". That's
+partly because I've read the book "The design of everyday things",
+formerly known as "The psychology of everyday things". This book
+doesn't talk about API design, but it does about objects' physical
+design, and most of the principles are perfect to decide which API
+style is better. One of the conclusions you learn from the book is
+that if your everyday design needs an instruction manual, even as
+tiny as the word "pull/push" written on a door, it means that it's
+not good, because it requires exterior learned knowledge to be used
+correctly. A recommended read, for all engineers, of every field.
+
+Anyway, the goal of this document is to point out that while
+most styles are a propagation of what people have been exposed
+to while learning programming, for Allegro to have the perfect
+API you only need to analyze every function name, every global
+variable to discover that there is always a logical design decision.
+It's boring, it's tedious, but it will hopefully avoid another API
+rewrite for more than the eight years Allegro has been alive and
+kicking so far. This means that at least once before the final
+release, all the involved developers and any voluntaries should
+revise _each_ API entry exported by Allegro, judge it's design
+and purpose in it's use context, and correct if necessary.
+
+I don't consider myself a developer, since I rarely contribute code,
+but I will happily join in the flame fest of criticizing others
+(as I always do). Muahahahaha... bring it on!

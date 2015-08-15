@@ -1,0 +1,124 @@
+# date: 2002 - 08 - 24
+# Draft 2 for custom memory management functions.
+# Written by Grzegorz Adam Hankiewicz.
+# Proposed for implementation into the 4.2 branch or later.
+
+The first part would be the official user documentation:
+
+void al_memory_management_functions(
+   void *(*malloc)(void *opaque, size_t size),
+   void *(*free)(void *opaque, void *ptr),
+   void *(*realloc)(void *opaque, void *ptr, size_t size),
+   void *(*debug_malloc)(int line, const char *file, const char *func,
+      void *opaque, size_t size),
+   void *(*debug_free)(int line, const char *file, const char *func,
+      void *opaque, void *ptr),
+   void *(*debug_realloc)(int line, const char *file, const char *func,
+      void *opaque, void *ptr, size_t size),
+   void *use_opaque);
+
+By default Allegro will call libc's malloc/free/realloc for it's
+memory operations. With this function you can tell Allegro to call
+the custom version you provide. This can be useful to implement
+caches, use garbage collectors and behave better with them or just
+for debugging reasons. You can call this function at any moment,
+it's more useful to do this at the beginning of your program before
+calling other allegro functions. Note that this is an optional hook,
+you don't have to use it if you have no need for it.
+
+If one of the parameters is NULL, this means that Allegro will use the
+libc version. The first three functions will be used only in release
+builds of Allegro. The second set of functions will be used only in
+debug builds of Allegro, and add useful data for debugging. The last
+opaque parameter is some data which Allegro will pass to all the memory
+management functions. The library itself attaches no meaning to this
+variable, and will pass NULL by default.
+
+The behaviour of your custom memory management functions must conform
+to the ANSI standard, which means malloc should return a pointer to the
+reserved block or NULL if the block can't be allocated. free should
+release the block, and with a NULL parameter it should do nothing.
+realloc has to be able to accept NULL as ptr, in which case it will
+behave like a normal malloc call, and when size is 0, it should behave
+like a normal free call (hence realloc(0, 0, 0) would be perfectly legal,
+albeit pointless).
+
+--- possible Allegro internal implementation ---
+
+   blah blah
+   p = _AL_MALLOC(30);
+   blah blah
+   t = _AL_REALLOC(p, 456);
+   blah blah
+   _AL_FREE(t);
+
+...with the following macro definition...
+
+#ifdef RELEASE_LIB
+   #define _AL_ALLOC(SIZE)  _al_malloc(_al_memory_opaque, SIZE)
+   ...other defines
+#else
+   #define _AL_MALLOC(SIZE)  _al_debug_malloc(_al_memory_opaque, \
+      __LINE__, __FILE__, __FUNCTION__, SIZE)
+   ...other defines
+#endif
+
+I know that __FUNCTION__ is only defined by gcc, but that could be
+detected with configure for unix, and fixed in stone in other platform
+specific headers for ports where configure is not usable/preferred.
+Laurence says __func__ can be used in ISO C99.
+
+Since opaque is used by the caller, your memory function knows who is
+asking for the memory block, which is the interesting thing:
+
+The simplest thing you can do is point opaque at a static text string,
+and in your logs you can print "xxxx requested block of m bytes at file
+y.c, line i". This helps to filter a big debug log into several ones
+which are specific for each module/library.  Additionally, it can be
+used for the memory cache system I explained in another mail: you would
+pass opaque as NULL for noncacheable memory chunks (usually Allegro
+wouldn't cache things), and any other value for things you don't want
+freed immediately when you call free on them.
+
+Finally you can do devil things like faking random memory failures
+if the key is some value you know, nice when you test if the
+program/library can back up without leaving a mess. Very similar
+in spirit to the "Gremlins" option in a palm emulator, which feeds
+bogus user input data to the application in order to test it.
+
+With this new functionality you can also integrate garbage collectors
+in your programs. Nothing prevents you from using them with the
+current Allegro library, but the garbage collector won't be aware of
+the memory reserved by Allegro or any other library. Without this
+knowledge, the garbage collector will run suboptimally because it
+doesn't know if it should already be freeing resources due to heavy
+use of memory by Allegro.
+
+The situation is even worse if you for heavily use the garbage
+collector. Imagine that you embed python (http://www.python.org/)
+into your program: all memory operations made from python will
+use python's memory manager. Now, imagine that the memory manager
+consumes all the available memory, and it's Allegro's turn to
+reserve a memory bitmap or do some internal string operation
+which requires allocating memory. If Allegro could ask politely
+the memory manager for the memory it requires, the manager would
+collect some garbage and give the new free memory to Allegro. At
+the moment, Allegro will either make the OS swap memory, notably
+degradating performance, or simply fail/crash inside the function
+call, when it should not.
+
+The other way round (using python as the main language and trying to
+call Allegro) suffers from the same problem. At the moment, if the
+PyAllegro project (http://pyallegro.sourceforge.net/) wanted to solve
+this memory management problem correctly, the only viable solution
+would be to patch the whole Allegro source to make calls to Python's
+memory manager, which practically means forking and maintaining a
+new Allegro version.  For more python specific information check
+http://www.python.org/doc/current/api/memoryOverview.html.
+
+All the point of opaque is to remain flexible without the need
+to recompile Allegro.  Allegro newcomers will possibly ignore
+these memory management functions, and veteran users surely would
+know how to hack Allegro's source to get what they want. Finally,
+cooperation between Allegro and other libraries or scripted languages
+using garbage collection is not possible at the moment.

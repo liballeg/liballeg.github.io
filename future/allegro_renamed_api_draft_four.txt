@@ -1,0 +1,2886 @@
+# date: 2002 - 01 - 15
+# Written by Grzegorz Adam Hankiewicz, this document features a
+# possible API rewrite from a4 to a5. 
+
+API rename
+==========
+
+This is a proposal to change Allegro's API. As decided on the mailing
+lists, the new Allegro version following 4.0.0 will break the API to
+clean some design mistakes/problems. This change might be quite drastic in
+some places, since people have already started to discuss whether things
+should be added to Allegro or removed. However, the first step towards
+this is a simple and boring function/variable rename process. My idea
+is that this renamed API should be discussed ASAP to proceed to more
+interesting "slaughters" (ie: 3d functions in or out).
+
+I've taken the decission to be agressive and follow to the limit the style
+description of the ahack document: function names will be lower case,
+each word separated by underline characters. Functions containing a verb
+should have it as the first word (ie: al_draw_sprite). Numbers in function
+names or variables should remain separated as words (ie: al_char_404),
+except when the numbers appear near an abbreviation (ie: al_get_r16).
+
+All of the above rules can be broken if the name representing a function
+is some sort of emulation of another external library. Here, names are
+preserved in their original form to avoid confusing users from those
+libs. Examples: al_ustrcpy, al_findfirst, al_fix_atan2, etc.
+
+The following list has been extracted from the allegro info documentation,
+and I've just gone through each function changing names, _not_
+functionality (which should come soon). Functionality includes changing
+parameter order, adding or removing too, so al_blit will keep to have
+it's reversed notation for the moment. Note that this doesn't cover
+Allegro's internal functions.
+
+If you would like to see something of this changed, please post
+your message to the Allegro mailing list, or to the forums at
+http://www.allegro.cc. Feel free to propose your own version, which you
+could do in a form of differential file from this document, or the whole
+document if there are many changes.
+
+Disclaimer: I've surely missed out things, the API is BIG, so don't
+hesitate to contact me pointing out mistakes.
+
+==========================================================================
+
+void acquire_bitmap(BITMAP *bmp);
+void al_acquire_bitmap(AL_BITMAP *bmp);
+
+void acquire_screen();
+void al_acquire_screen();
+
+extern DIALOG *active_dialog;
+extern AL_DIALOG *al_active_dialog;
+
+extern MENU *active_menu;
+extern AL_MENU *al_active_menu;
+
+void adjust_sample(const SAMPLE *spl, int vol, int pan, int freq, int loop);
+void al_adjust_sample(const AL_SAMPLE *spl, int vol, int pan, int freq, int loop);
+
+void al_findclose(struct al_ffblk *info);
+void al_findclose(struct al_ffblk *info);
+
+int al_findfirst(const char *pattern, struct al_ffblk *info, int attrib);
+int al_findfirst(const char *pattern, struct al_ffblk *info, int attrib);
+
+int al_findnext(struct al_ffblk *info);
+int al_findnext(struct al_ffblk *info);
+
+int alert(const char *s1, *s2, *s3, const char *b1, *b2, int c1, c2);
+int al_show_alert(const char *s1, *s2, *s3, const char *b1, *b2, int c1, c2);
+
+int alert3(const char *s1, *s2, *s3, const char *b1, *b2, *b3, int c1, c2, c3);
+int al_show_alert_3(const char *s1, *s2, *s3, const char *b1, *b2, *b3, int c1, c2, c3);
+
+extern int allegro_404_char;
+extern int al_char_404;
+
+extern char allegro_error[ALLEGRO_ERROR_SIZE];
+extern char al_error[AL_ERROR_SIZE];
+
+void allegro_exit();
+void remove_allegro(void);
+
+extern char allegro_id[];
+extern char al_id[];
+
+int allegro_init();
+REMOVED, or kept as a macro for convenience, more like init_allegro()
+
+void allegro_message(char *msg, ...);
+void al_show_message(char *msg, ...);
+
+int allocate_voice(const SAMPLE *spl);
+int al_allocate_voice(const AL_SAMPLE *spl);
+
+char *append_filename(char *dest, const char *path,  const char *filename, int size);
+char *al_append_filename(char *dest, const char *path,  const char *filename, int size);
+
+void apply_matrix(const MATRIX *m, fixed x, y, z, *xout, *yout, *zout);
+void al_apply_matrix(const AL_MATRIX *m, fixed x, y, z, *xout, *yout, *zout);
+
+void apply_matrix_f(const MATRIX_f *m, float x, y, z, *xout, *yout, *zout);
+void al_apply_matrix_f(const AL_MATRIX_f *m, float x, y, z, *xout, *yout, *zout);
+
+void apply_quat(const QUAT *q, float x, y, z, *xout, *yout, *zout);
+void al_apply_quat(const AL_QUAT *q, float x, y, z, *xout, *yout, *zout);
+
+void arc(BITMAP *bmp, int x, y, fixed ang1, ang2, int r, int color);
+void al_draw_arc(AL_BITMAP *bmp, int x, y, fixed ang1, ang2, int r, int color);
+
+void ASSERT(condition);
+void AL_ASSERT(condition);
+
+int bestfit_color(const PALETTE pal, int r, int g, int b);
+int al_bestfit_color(const AL_PALETTE pal, int r, int g, int b);
+
+int bitmap_color_depth(BITMAP *bmp);
+int al_bitmap_color_depth(AL_BITMAP *bmp);
+
+int bitmap_mask_color(BITMAP *bmp);
+int al_bitmap_mask_color(AL_BITMAP *bmp);
+
+extern PALETTE black_palette;
+extern AL_PALETTE al_black_palette;
+
+void blit(BITMAP *source, BITMAP *dest, int source_x, int source_y, int dest_x, int dest_y, int width, int height);
+void al_blit(AL_BITMAP *src, AL_BITMAP *dest, int src_x, int src_y, int dest_x, int dest_y, int width, int height);
+
+void blit_from_hdc(HDC hdc, BITMAP *bitmap, int sx, sy, dx, dy, w, h);
+void alwin_blit_from_hdc(HDC hdc, AL_BITMAP *bitmap, int sx, sy, dx, dy, w, h);
+
+void blit_to_hdc(BITMAP *bitmap, HDC dc, int sx, sy, dx, dy, w, h);
+void alwin_blit_to_hdc(AL_BITMAP *bitmap, HDC dc, int sx, sy, dx, dy, w, h);
+
+int broadcast_dialog_message(int msg, int c);
+int al_broadcast_dialog_message(int msg, int c);
+
+void calc_spline(int points[8], int npts, int *x, int *y);
+void al_calc_spline(int points[8], int npts, int *x, int *y);
+
+int calibrate_joystick(int n);
+int al_calibrate_joystick(int n);
+
+char *calibrate_joystick_name(int n);
+char *al_calibrate_joystick_text(int n);
+
+void centre_dialog(DIALOG *dialog);
+void al_centre_dialog(AL_DIALOG *dialog);
+
+void check_cpu();
+void al_check_cpu();
+
+void circle(BITMAP *bmp, int x, int y, int radius, int color);
+void al_draw_circle(AL_BITMAP *bmp, int x, int y, int radius, int color);
+
+void circlefill(BITMAP *bmp, int x, int y, int radius, int color);
+void al_draw_circle_fill(BITMAP *bmp, int x, int y, int radius, int color);
+
+void clear(BITMAP *bitmap);
+REMOVED
+
+void clear_bitmap(BITMAP *bitmap);
+void al_clear_bitmap(AL_BITMAP *bitmap);
+
+void clear_keybuf();
+void al_clear_keybuf();
+
+void clear_scene(BITMAP *bmp);
+void al_clear_scene(AL_BITMAP *bmp);
+
+void clear_to_color(BITMAP *bitmap, int color);
+void al_clear_to_color(AL_BITMAP *bitmap, int color);
+
+void clear_zbuffer(ZBUFFER *zbuf, float z);
+void al_clear_zbuffer(AL_ZBUFFER *zbuf, float z);
+
+int clip3d(int type, fixed min_z, fixed max_z, int vc, V3D *vtx[], V3D *vout[], V3D *vtmp[], int out[]);
+int al_clip_3d(int type, fixed min_z, fixed max_z, int vc, AL_V3D *vtx[], AL_V3D *vout[], AL_V3D *vtmp[], int out[]);
+
+int clip3d_f(int type, float min_z, float max_z, int vc, V3D_f *vtx[], V3D_f *vout[], V3D_f *vtmp[], int out[]);
+int al_clip_3d_f(int type, float min_z, float max_z, int vc, AL_V3D_F *vtx[], AL_V3D_F *vout[], AL_V3D_F *vtmp[], int out[]);
+
+void close_fli();
+void al_close_fli();
+
+extern COLOR_MAP *color_map;
+extern AL_COLOR_MAP *al_color_map;
+
+int config_is_hooked(const char *section);
+int al_config_is_hooked(const char *section);
+
+HBITMAP convert_bitmap_to_hbitmap(BITMAP *bitmap);
+HBITMAP alwin_convert_bitmap_to_hbitmap(AL_BITMAP *bitmap);
+
+BITMAP *convert_hbitmap_to_bitmap(HBITMAP bitmap);
+AL_BITMAP *alwin_convert_hbitmap_to_bitmap(HBITMAP bitmap);
+
+void convert_hpalette_to_palette(HPALETTE hpal, PALETTE pal);
+void alwin_convert_hpalette_to_palette(HPALETTE hpal, AL_PALETTE pal);
+
+HPALETTE convert_palette_to_hpalette(PALETTE pal);
+HPALETTE alwin_convert_palette_to_hpalette(AL_PALETTE pal);
+
+extern int cpu_capabilities;
+extern int al_cpu_capabilities;
+
+extern int cpu_family;
+extern int al_cpu_family;
+
+extern int cpu_model;
+extern int al_cpu_model;
+
+extern char cpu_vendor[];
+extern char al_cpu_vendor[];
+
+BITMAP *create_bitmap(int width, int height);
+AL_BITMAP *al_create_bitmap(int width, int height);
+
+BITMAP *create_bitmap_ex(int color_depth, int width, int height);
+AL_BITMAP *al_create_bitmap_ex(int color_depth, int width, int height);
+
+void create_blender_table(COLOR_MAP *table, const PALETTE pal, void (*callback)(int pos));
+void al_create_blender_table(AL_COLOR_MAP *table, const AL_PALETTE pal, void (*callback)(int pos));
+
+void create_color_table(COLOR_MAP *table, const PALETTE pal, void (*blend)(PALETTE pal, int x, int y, RGB *rgb), void (*callback)(int pos));
+void al_create_color_table(AL_COLOR_MAP *table, const AL_PALETTE pal, void (*blend)(AL_PALETTE pal, int x, int y, AL_RGB *rgb), void (*callback)(int pos));
+
+void create_light_table(COLOR_MAP *table, const PALETTE pal, int r, g, b, void (*callback)(int pos));
+void al_create_light_table(AL_COLOR_MAP *table, const AL_PALETTE pal, int r, g, b, void (*callback)(int pos));
+
+void create_rgb_table(RGB_MAP *table, const PALETTE pal, void (*callback)(int pos));
+void al_create_rgb_table(AL_RGB_MAP *table, const AL_PALETTE pal, void (*callback)(int pos));
+
+SAMPLE *create_sample(int bits, int stereo, int freq, int len);
+AL_SAMPLE *al_create_sample(int bits, int stereo, int freq, int len);
+
+int create_scene(int nedge, int npoly);
+int al_create_scene(int nedge, int npoly);
+
+BITMAP *create_sub_bitmap(BITMAP *parent, int x, y, width, height);
+AL_BITMAP *al_create_sub_bitmap(AL_BITMAP *parent, int x, y, width, height);
+
+ZBUFFER *create_sub_zbuffer(ZBUFFER *parent, int x, int y, int width, int height);
+AL_ZBUFFER *al_create_sub_zbuffer(AL_ZBUFFER *parent, int x, int y, int width, int height);
+
+BITMAP *create_system_bitmap(int width, int height);
+AL_BITMAP *al_create_system_bitmap(int width, int height);
+
+void create_trans_table(COLOR_MAP *table, const PALETTE pal, int r, g, b, void (*callback)(int pos));
+void al_create_trans_table(AL_COLOR_MAP *table, const AL_PALETTE pal, int r, g, b, void (*callback)(int pos));
+
+BITMAP *create_video_bitmap(int width, int height);
+AL_BITMAP *al_create_video_bitmap(int width, int height);
+
+ZBUFFER *create_zbuffer(BITMAP *bmp);
+AL_ZBUFFER *al_create_zbuffer(AL_BITMAP *bmp);
+
+void cross_product(fixed x1, y1, z1, x2, y2, z2, *xout, *yout, *zout);
+void al_cross_product(fixed x1, y1, z1, x2, y2, z2, *xout, *yout, *zout);
+
+void cross_product_f(float x1, y1, z1, x2, y2, z2, *xout, *yout, *zout);
+void al_cross_product_f(float x1, y1, z1, x2, y2, z2, *xout, *yout, *zout);
+
+int d_bitmap_proc(int msg, DIALOG *d, int c);
+int al_dialog_bitmap_proc(int msg, AL_DIALOG *d, int c);
+
+int d_box_proc(int msg, DIALOG *d, int c);
+int al_dialog_box_proc(int msg, AL_DIALOG *d, int c);
+
+int d_shadow_box_proc(int msg, DIALOG *d, int c);
+int al_dialog_shadow_box_proc(int msg, AL_DIALOG *d, int c);
+
+int d_button_proc(int msg, DIALOG *d, int c);
+int al_dialog_button_proc(int msg, AL_DIALOG *d, int c);
+
+int d_check_proc(int msg, DIALOG *d, int c);
+int al_dialog_check_proc(int msg, AL_DIALOG *d, int c);
+
+int d_clear_proc(int msg, DIALOG *d, int c);
+int al_dialog_clear_proc(int msg, AL_DIALOG *d, int c);
+
+int d_edit_proc(int msg, DIALOG *d, int c);
+int al_dialog_edit_proc(int msg, AL_DIALOG *d, int c);
+
+int d_icon_proc(int msg, DIALOG *d, int c);
+int al_dialog_icon_proc(int msg, AL_DIALOG *d, int c);
+
+int d_keyboard_proc(int msg, DIALOG *d, int c);
+int al_dialog_keyboard_proc(int msg, AL_DIALOG *d, int c);
+
+int d_list_proc(int msg, DIALOG *d, int c);
+int al_dialog_list_proc(int msg, AL_DIALOG *d, int c);
+
+int d_menu_proc(int msg, DIALOG *d, int c);
+int al_dialog_menu_proc(int msg, AL_DIALOG *d, int c);
+
+int d_radio_proc(int msg, DIALOG *d, int c);
+int al_dialog_radio_proc(int msg, AL_DIALOG *d, int c);
+
+int d_slider_proc(int msg, DIALOG *d, int c);
+int al_dialog_slider_proc(int msg, AL_DIALOG *d, int c);
+
+int d_text_list_proc(int msg, DIALOG *d, int c);
+int al_dialog_text_list_proc(int msg, AL_DIALOG *d, int c);
+
+int d_text_proc(int msg, DIALOG *d, int c);
+int al_dialog_text_proc(int msg, AL_DIALOG *d, int c);
+
+int d_ctext_proc(int msg, DIALOG *d, int c);
+int al_dialog_ctext_proc(int msg, AL_DIALOG *d, int c);
+
+int d_rtext_proc(int msg, DIALOG *d, int c);
+int al_dialog_rtext_proc(int msg, AL_DIALOG *d, int c);
+
+int d_textbox_proc(int msg, DIALOG *d, int c);
+int al_dialog_textbox_proc(int msg, AL_DIALOG *d, int c);
+
+int d_yield_proc(int msg, DIALOG *d, int c);
+int al_dialog_yield_proc(int msg, AL_DIALOG *d, int c);
+
+void deallocate_voice(int voice);
+void al_deallocate_voice(int voice);
+
+extern PALETTE default_palette;
+extern AL_PALETTE al_default_palette;
+
+int delete_file(const char *filename);
+int al_delete_file(const char *filename);
+
+int desktop_color_depth();
+int al_desktop_color_depth();
+
+extern PALETTE desktop_palette;
+extern AL_PALETTE al_desktop_palette;
+
+void destroy_bitmap(BITMAP *bitmap);
+void al_destroy_bitmap(AL_BITMAP *bitmap);
+
+void destroy_compiled_sprite(COMPILED_SPRITE *sprite);
+void al_destroy_compiled_sprite(AL_COMPILED_SPRITE *sprite);
+
+void destroy_font(FONT *f);
+void al_destroy_font(AL_FONT *f);
+
+void destroy_gfx_mode_list(GFX_MODE_LIST *mode_list);
+void al_destroy_gfx_mode_list(AL_GFX_MODE_LIST *mode_list);
+
+void destroy_midi(MIDI *midi);
+void al_destroy_midi(AL_MIDI *midi);
+
+void destroy_rle_sprite(RLE_SPRITE *sprite);
+void al_destroy_rle_sprite(AL_RLE_SPRITE *sprite);
+
+void destroy_sample(SAMPLE *spl);
+void al_destroy_sample(AL_SAMPLE *spl);
+
+void destroy_scene();
+void al_destroy_scene();
+
+void destroy_zbuffer(ZBUFFER *zbuf);
+void al_destroy_zbuffer(AL_ZBUFFER *zbuf);
+
+int detect_digi_driver(int driver_id);
+int al_detect_digi_driver(int driver_id);
+
+int detect_midi_driver(int driver_id);
+int al_detect_midi_driver(int driver_id);
+
+int dialog_message(DIALOG *dialog, int msg, int c, int *obj);
+int al_send_dialog_message(AL_DIALOG *dialog, int msg, int c, int *obj);
+
+extern void (*digi_recorder)();
+extern void (*al_digi_recorder)();
+
+void do_arc(BITMAP *bmp, int x, y, fixed a1, a2, int r, d, void (*proc)());
+void al_do_arc(AL_BITMAP *bmp, int x, y, fixed a1, a2, int r, d, void (*proc)());
+
+void do_circle(BITMAP *bmp, int x, int y, int radius, int d, void (*proc)());
+void al_do_circle(AL_BITMAP *bmp, int x, int y, int radius, int d, void (*proc)());
+
+int do_dialog(DIALOG *dialog, int focus_obj);
+int al_do_dialog(AL_DIALOG *dialog, int focus_obj);
+
+void do_ellipse(BITMAP *bmp, int x, y, int rx, ry, int d, void (*proc)());
+void al_do_ellipse(AL_BITMAP *bmp, int x, y, int rx, ry, int d, void (*proc)());
+
+void do_line(BITMAP *bmp, int x1, y1, x2, y2, int d, void (*proc)());
+void al_do_line(AL_BITMAP *bmp, int x1, y1, x2, y2, int d, void (*proc)());
+
+int do_menu(MENU *menu, int x, int y)
+int al_do_menu(AL_MENU *menu, int x, int y)
+
+void do_uconvert(const char *s, int type, char *buf, int newtype, int size);
+void al_uconvert(const char *s, int type, char *buf, int newtype, int size);
+
+fixed dot_product(fixed x1, y1, z1, x2, y2, z2);
+fixed al_dot_product(fixed x1, y1, z1, x2, y2, z2);
+
+float dot_product_f(float x1, y1, z1, x2, y2, z2);
+float al_dot_product_f(float x1, y1, z1, x2, y2, z2);
+
+void draw_character(BITMAP *bmp, BITMAP *sprite, int x, int y, int color);
+void al_draw_character(AL_BITMAP *bmp, AL_BITMAP *sprite, int x, int y, int color);
+
+void draw_compiled_sprite(BITMAP *bmp, const COMPILED_SPRITE *sprite, int x, int y);
+void al_draw_compiled_sprite(AL_BITMAP *bmp, const AL_COMPILED_SPRITE *sprite, int x, int y);
+
+void draw_gouraud_sprite(BITMAP *bmp, BITMAP *sprite, int x, int y, int c1, int c2, int c3, int c4);
+void al_draw_gouraud_sprite(AL_BITMAP *bmp, AL_BITMAP *sprite, int x, int y, int c1, int c2, int c3, int c4);
+
+void draw_lit_rle_sprite(BITMAP *bmp, const RLE_SPRITE *sprite, int x, y, color);
+void al_draw_lit_rle_sprite(AL_BITMAP *bmp, const AL_RLE_SPRITE *sprite, int x, y, color);
+
+void draw_lit_sprite(BITMAP *bmp, BITMAP *sprite, int x, int y, int color);
+void al_draw_lit_sprite(AL_BITMAP *bmp, AL_BITMAP *sprite, int x, int y, int color);
+
+void draw_rle_sprite(BITMAP *bmp, const RLE_SPRITE *sprite, int x, int y);
+void al_draw_rle_sprite(AL_BITMAP *bmp, const AL_RLE_SPRITE *sprite, int x, int y);
+
+void draw_sprite(BITMAP *bmp, BITMAP *sprite, int x, int y);
+void al_draw_sprite(AL_BITMAP *bmp, AL_BITMAP *sprite, int x, int y);
+
+void draw_sprite_v_flip(BITMAP *bmp, BITMAP *sprite, int x, int y);
+void al_draw_sprite_v_flip(AL_BITMAP *bmp, AL_BITMAP *sprite, int x, int y);
+
+void draw_sprite_h_flip(BITMAP *bmp, BITMAP *sprite, int x, int y);
+void al_draw_sprite_h_flip(AL_BITMAP *bmp, AL_BITMAP *sprite, int x, int y);
+
+void draw_sprite_vh_flip(BITMAP *bmp, BITMAP *sprite, int x, int y);
+void al_draw_sprite_vh_flip(AL_BITMAP *bmp, AL_BITMAP *sprite, int x, int y);
+
+void draw_to_hdc(HDC dc, BITMAP *bitmap, int x, int y);
+void alwin_draw_sprite(HDC dc, AL_BITMAP *bitmap, int x, int y);
+
+void draw_trans_rle_sprite(BITMAP *bmp, const RLE_SPRITE *sprite, int x, int y);
+void al_draw_trans_rle_sprite(AL_BITMAP *bmp, const AL_RLE_SPRITE *sprite, int x, int y);
+
+void draw_trans_sprite(BITMAP *bmp, BITMAP *sprite, int x, int y);
+void al_draw_trans_sprite(AL_BITMAP *bmp, AL_BITMAP *sprite, int x, int y);
+
+void drawing_mode(int mode, BITMAP *pattern, int x_anchor, int y_anchor);
+void al_drawing_mode(int mode, AL_BITMAP *pattern, int x_anchor, int y_anchor);
+
+void ellipse(BITMAP *bmp, int x, int y, int rx, int ry, int color);
+void al_draw_ellipse(AL_BITMAP *bmp, int x, int y, int rx, int ry, int color);
+
+void ellipsefill(BITMAP *bmp, int x, int y, int rx, int ry, int color);
+void al_draw_ellipse_fill(AL_BITMAP *bmp, int x, int y, int rx, int ry, int color);
+
+extern char empty_string[];
+extern char al_empty_string[];
+
+int enable_triple_buffer();
+int al_enable_triple_buffer(void);
+
+int exists(const char *filename);
+REMOVED. Maybe kept as macro?
+
+void fade_from(const PALETTE source, const PALETTE dest, int speed);
+void al_fade_from(const AL_PALETTE source, const AL_PALETTE dest, int speed);
+
+void fade_from_range(const PALETTE source, const PALETTE dest, int speed, int from, to);
+void al_fade_from_range(const AL_PALETTE source, const AL_PALETTE dest, int speed, int from, to);
+
+void fade_in(const PALETTE p, int speed);
+void al_fade_in(const AL_PALETTE p, int speed);
+
+void fade_in_range(const PALETTE p, int speed, int from, to);
+void al_fade_in_range(const AL_PALETTE p, int speed, int from, to);
+
+void fade_interpolate(const PALETTE source, const PALETTE dest, PALETTE output, int pos, int from, to);
+void al_fade_interpolate(const AL_PALETTE source, const AL_PALETTE dest, AL_PALETTE output, int pos, int from, to);
+
+void fade_out(int speed);
+void al_fade_out(int speed);
+
+void fade_out_range(int speed, int from, to);
+void al_fade_out_range(int speed, int from, to);
+
+int file_exists(const char *filename, int attrib, int *aret);
+int al_file_exists(const char *filename, int attrib, int *aret);
+
+int file_select(const char *message, char *path, const char *ext);
+REMOVED
+
+int file_select_ex(const char *message, char *path, const char *ext, int size, int w, int h);
+int al_select_file(const char *message, char *path, const char *ext, int size, int w, int h);
+
+long file_size(const char *filename);
+long al_file_size(const char *filename);
+
+time_t file_time(const char *filename);
+time_t al_file_time(const char *filename);
+
+int find_allegro_resource(char *dest, const char *resource,  const char *ext, const char *datafile,  const char *objectname, const char *envvar,  const char *subdir, int size);
+int al_find_resource_file(char *dest, const char *resource,  const char *ext, const char *datafile,  const char *objectname, const char *envvar,  const char *subdir, int size);
+other suggestions: al_find_resource
+
+DATAFILE *find_datafile_object(DATAFILE *dat, const char *objectname);
+AL_DATAFILE *al_find_datafile_object(AL_DATAFILE *dat, const char *objectname);
+
+int find_dialog_focus(DIALOG *dialog);
+int al_find_dialog_focus(AL_DIALOG *dialog);
+
+char *fix_filename_case(char *path);
+char *al_fix_filename_case(char *path);
+
+char *fix_filename_path(char *dest, const char *path, int size);
+char *al_fix_filename_path(char *dest, const char *path, int size);
+
+char *fix_filename_slashes(char *path);
+char *al_fix_filename_slashes(char *path);
+
+fixed fixacos(fixed x);
+al_fixed al_fix_acos(al_fixed x);
+
+fixed fixacos(fixed x);
+al_fixed al_fix_acos(al_fixed x);
+
+fixed fixadd(fixed x, fixed y);
+al_fixed al_fix_add(al_fixed x, al_fixed y);
+
+fixed fixasin(fixed x);
+al_fixed al_fix_asin(al_fixed x);
+
+fixed fixatan(fixed x);
+al_fixed al_fix_atan(al_fixed x);
+
+fixed fixatan2(fixed y, fixed x);
+al_fixed al_fix_atan2(al_fixed y, al_fixed x);
+
+int fixceil(fixed x);
+int al_fix_ceil(al_fixed x);
+
+fixed fixcos(fixed x);
+al_fixed al_fix_cos(al_fixed x);
+
+fixed fixdiv(fixed x, fixed y);
+al_fixed al_fix_div(al_fixed x, al_fixed y);
+
+int fixfloor(fixed x);
+int al_fix_floor(al_fixed x);
+
+fixed fixhypot(fixed x, fixed y);
+al_fixed al_fix_hypot(al_fixed x, al_fixed y);
+
+fixed fixmul(fixed x, fixed y);
+al_fixed al_fix_mul(al_fixed x, al_fixed y);
+
+fixed fixsin(fixed x);
+al_fixed al_fix_sin(al_fixed x);
+
+fixed fixsqrt(fixed x);
+al_fixed al_fix_sqrt(al_fixed x);
+
+fixed fixsub(fixed x, fixed y);
+al_fixed al_fix_sub(al_fixed x, al_fixed y);
+
+fixed fixtan(fixed x);
+al_fixed al_fix_tan(al_fixed x);
+
+float fixtof(fixed x);
+float al_fix_to_float(al_fixed x);
+
+int fixtoi(fixed x);
+int al_fix_to_int(al_fixed x);
+
+void fixup_datafile(DATAFILE *data);
+void al_fixup_datafile(AL_DATAFILE *data);
+
+extern BITMAP *fli_bitmap;
+extern AL_BITMAP *al_fli_bitmap;
+
+extern int fli_bmp_dirty_from;
+extern int al_fli_bmp_dirty_from;
+
+extern int fli_bmp_dirty_to;
+extern int al_fli_bmp_dirty_to;
+
+extern int fli_frame;
+extern int al_fli_frame;
+
+extern int fli_pal_dirty_from;
+extern int al_fli_pal_dirty_from;
+
+extern int fli_pal_dirty_to;
+extern int al_fli_pal_dirty_to;
+
+extern PALETTE fli_palette;
+extern AL_PALETTE al_fli_palette;
+
+extern volatile int fli_timer;
+extern volatile int al_fli_timer;
+
+void floodfill(BITMAP *bmp, int x, int y, int color);
+void al_floodfill(AL_BITMAP *bmp, int x, int y, int color);
+other suggestions: al_do_floodfill, al_flood_fill, al_fill_area, al_fill_at,
+   al_flood_area, al_flood_at
+
+void flush_config_file();
+void al_flush_config_file();
+
+extern FONT *font;
+extern AL_FONT *al_font_8x8;
+
+int for_each_file(const char *name, int attrib, void (*callback)(const char *filename, int attrib, int param), int param);
+int al_for_each_file(const char *name, int attrib, void (*callback)(const char *filename, int attrib, int param), int param);
+
+void free_audio_stream_buffer(AUDIOSTREAM *stream);
+void al_free_audio_stream_buffer(AL_AUDIOSTREAM *stream);
+
+extern volatile int freeze_mouse_flag;
+extern volatile int al_freeze_mouse_flag;
+
+fixed ftofix(float x);
+fixed al_float_to_fix(float x);
+
+void generate_332_palette(PALETTE pal);
+void al_generate_332_palette(AL_PALETTE pal);
+
+int generate_optimized_palette(BITMAP *bmp, PALETTE pal, const char rsvd[256]);
+int al_generate_optimized_palette(AL_BITMAP *bmp, AL_PALETTE pal, const char rsvd[256]);
+
+void get_align_matrix(MATRIX *m, fixed xfront, yfront, zfront,  fixed xup, fixed yup, fixed zup);
+void al_get_align_matrix(AL_MATRIX *m, fixed xfront, yfront, zfront,  fixed xup, fixed yup, fixed zup);
+
+void get_align_matrix_f(MATRIX *m, float xfront, yfront, zfront,  float xup, yup, zup);
+void al_get_align_matrix_f(AL_MATRIX *m, float xfront, yfront, zfront,  float xup, yup, zup);
+
+void *get_audio_stream_buffer(AUDIOSTREAM *stream);
+void *al_get_audio_stream_buffer(AL_AUDIOSTREAM *stream);
+
+void get_camera_matrix(MATRIX *m, fixed x, y, z, xfront, yfront, zfront, fixed xup, yup, zup, fov, aspect);
+void al_get_camera_matrix(AL_MATRIX *m, fixed x, y, z, xfront, yfront, zfront, fixed xup, yup, zup, fov, aspect);
+
+void get_camera_matrix_f(MATRIX_f *m, float x, y, z, xfront, yfront, zfront, float xup, yup, zup, fov, aspect);
+void al_get_camera_matrix_f(AL_MATRIX_f *m, float x, y, z, xfront, yfront, zfront, float xup, yup, zup, fov, aspect);
+
+void get_color(int index, RGB *p);
+void al_get_color(int index, AL_RGB *p);
+
+COMPILED_SPRITE *get_compiled_sprite(BITMAP *bitmap, int planar);
+AL_COMPILED_SPRITE *al_create_compiled_sprite(AL_BITMAP *bitmap, int planar);
+
+char **get_config_argv(const char *section, const char *name, int *argc);
+char **al_get_config_argv(const char *section, const char *name, int *argc);
+
+float get_config_float(const char *section, const char *name, float def);
+float al_get_config_float(const char *section, const char *name, float def);
+
+int get_config_hex(const char *section, const char *name, int def);
+int al_get_config_hex(const char *section, const char *name, int def);
+
+int get_config_id(const char *section, const char *name, int def);
+int al_get_config_id(const char *section, const char *name, int def);
+
+int get_config_int(const char *section, const char *name, int def);
+int al_get_config_int(const char *section, const char *name, int def);
+
+const char *get_config_string(const char *section, const char *name, const char *def);
+const char *al_get_config_string(const char *section, const char *name, const char *def);
+
+const char *get_config_text(const char *msg);
+const char *al_get_config_text(const char *msg);
+
+char *get_datafile_property(DATAFILE *dat, int type);
+char *al_get_datafile_property(AL_DATAFILE *dat, int type);
+
+int get_desktop_resolution(int *width, int *height);
+int al_get_desktop_resolution(int *width, int *height);
+
+int get_display_switch_mode();
+int al_get_display_switch_mode(void);
+
+void get_executable_name(char *buf, int size);
+void al_get_executable_name(char *buf, int size);
+
+char *get_extension(const char *filename);
+   This will be split in two
+char *al_get_extension(char *filename);
+const char *al_get_extension_const(const char *filename);
+
+char *get_filename(const char *path);
+   This will be split in two:
+char *al_get_filename(char *path);
+const char *al_get_filename_const(const char *path);
+
+GFX_MODE_LIST *get_gfx_mode_list(int card);
+AL_GFX_MODE_LIST *al_get_gfx_mode_list(int card);
+
+void get_mouse_mickeys(int *mickeyx, int *mickeyy);
+void al_get_mouse_mickeys(int *mickeyx, int *mickeyy);
+
+void get_palette(PALETTE p);
+void al_get_palette(AL_PALETTE p);
+
+void get_palette_range(PALETTE p, int from, int to);
+void al_get_palette_range(AL_PALETTE p, int from, int to);
+
+int get_refresh_rate(void);
+int al_get_refresh_rate(void);
+
+RLE_SPRITE *get_rle_sprite(BITMAP *bitmap);
+AL_RLE_SPRITE *al_create_rle_sprite(AL_BITMAP *bitmap);
+
+void get_rotation_matrix(MATRIX *m, fixed x, fixed y, fixed z);
+void al_get_rotation_matrix(AL_MATRIX *m, fixed x, fixed y, fixed z);
+
+void get_rotation_matrix_f(MATRIX_f *m, float x, float y, float z);
+void al_get_rotation_matrix_f(AL_MATRIX_f *m, float x, float y, float z);
+
+void get_rotation_quat(QUAT *q, float x, float y, float z);
+void al_get_rotation_quat(AL_QUAT *q, float x, float y, float z);
+
+void get_scaling_matrix(MATRIX *m, fixed x, fixed y, fixed z);
+void al_get_scaling_matrix(AL_MATRIX *m, fixed x, fixed y, fixed z);
+
+void get_scaling_matrix_f(MATRIX_f *m, float x, float y, float z);
+void al_get_scaling_matrix_f(AL_MATRIX_f *m, float x, float y, float z);
+
+int get_sound_input_cap_bits();
+int al_get_sound_input_cap_bits(void);
+
+int get_sound_input_cap_parm(int rate, int bits, int stereo);
+int al_get_sound_input_cap_parm(int rate, int bits, int stereo);
+
+int get_sound_input_cap_rate(int bits, int stereo);
+int al_get_sound_input_cap_rate(int bits, int stereo);
+
+int get_sound_input_cap_stereo();
+int al_get_sound_input_cap_stereo(void);
+
+void get_transformation_matrix(MATRIX *m, fixed scale, fixed xrot, yrot, zrot, x, y, z);
+void al_get_transformation_matrix(AL_MATRIX *m, fixed scale, fixed xrot, yrot, zrot, x, y, z);
+
+void get_transformation_matrix_f(MATRIX_f *m, float scale, float xrot, yrot, zrot, x, y, z);
+void al_get_transformation_matrix_f(AL_MATRIX_f *m, float scale, float xrot, yrot, zrot, x, y, z);
+
+void get_translation_matrix(MATRIX *m, fixed x, fixed y, fixed z);
+void al_get_translation_matrix(AL_MATRIX *m, fixed x, fixed y, fixed z);
+
+void get_translation_matrix_f(MATRIX_f *m, float x, float y, float z);
+void al_get_translation_matrix_f(AL_MATRIX_f *m, float x, float y, float z);
+
+int get_uformat(void);
+int al_get_uformat(void);
+
+void get_vector_rotation_matrix(MATRIX *m, fixed x, y, z, fixed a);
+void al_get_vector_rotation_matrix(AL_MATRIX *m, fixed x, y, z, fixed a);
+
+void get_vector_rotation_matrix_f(MATRIX_f *m, float x, y, z, float a);
+void al_get_vector_rotation_matrix_f(AL_MATRIX_f *m, float x, y, z, float a);
+
+void get_vector_rotation_quat(QUAT *q, float x, y, z, float a);
+void al_get_vector_rotation_quat(AL_QUAT *q, float x, y, z, float a);
+
+void get_x_rotate_matrix(MATRIX *m, fixed r);
+void al_get_x_rotate_matrix(AL_MATRIX *m, fixed r);
+
+void get_x_rotate_matrix_f(MATRIX_f *m, float r);
+void al_get_x_rotate_matrix_f(AL_MATRIX_f *m, float r);
+
+void get_x_rotate_quat(QUAT *q, float r);
+void al_get_x_rotate_quat(AL_QUAT *q, float r);
+
+void get_y_rotate_quat(QUAT *q, float r);
+void al_get_y_rotate_quat(AL_QUAT *q, float r);
+
+void get_z_rotate_quat(QUAT *q, float r);
+void al_get_z_rotate_quat(AL_QUAT *q, float r);
+
+void get_y_rotate_matrix(MATRIX *m, fixed r);
+void al_get_y_rotate_matrix(AL_MATRIX *m, fixed r);
+
+void get_y_rotate_matrix_f(MATRIX_f *m, float r);
+void al_get_y_rotate_matrix_f(AL_MATRIX_f *m, float r);
+
+void get_z_rotate_matrix(MATRIX *m, fixed r);
+void al_get_z_rotate_matrix(AL_MATRIX *m, fixed r);
+
+void get_z_rotate_matrix_f(MATRIX_f *m, float r);
+void al_get_z_rotate_matrix_f(AL_MATRIX_f *m, float r);
+
+int getpixel(BITMAP *bmp, int x, int y);
+int al_get_pixel(BITMAP *bmp, int x, int y);
+
+int _getpixel(BITMAP *bmp, int x, int y);
+int al_get_pixel_8(AL_BITMAP *bmp, int x, int y);
+
+int _getpixel15(BITMAP *bmp, int x, int y);
+int al_get_pixel_15(AL_BITMAP *bmp, int x, int y);
+
+int _getpixel16(BITMAP *bmp, int x, int y);
+int al_get_pixel_16(AL_BITMAP *bmp, int x, int y);
+
+int _getpixel24(BITMAP *bmp, int x, int y);
+int al_get_pixel_24(AL_BITMAP *bmp, int x, int y);
+
+int _getpixel32(BITMAP *bmp, int x, int y);
+int al_get_pixel_32(AL_BITMAP *bmp, int x, int y);
+
+int getr(int c);     int al_get_r(int c);
+int getg(int c);     int al_get_g(int c);
+int getb(int c);     int al_get_b(int c);
+int geta(int c);     int al_get_a(int c);
+int getr8(int c);    int al_get_r8(int c);
+int getg8(int c);    int al_get_g8(int c);
+int getb8(int c);    int al_get_b8(int c);
+int getr15(int c);   int al_get_r15(int c);
+int getg15(int c);   int al_get_g15(int c);
+int getb15(int c);   int al_get_b15(int c);
+int getr16(int c);   int al_get_r16(int c);
+int getg16(int c);   int al_get_g16(int c);
+int getb16(int c);   int al_get_b16(int c);
+int getr24(int c);   int al_get_r24(int c);
+int getg24(int c);   int al_get_g24(int c);
+int getb24(int c);   int al_get_b24(int c);
+int getr32(int c);   int al_get_r32(int c);
+int getg32(int c);   int al_get_g32(int c);
+int getb32(int c);   int al_get_b32(int c);
+int geta32(int c);   int al_get_a32(int c);
+
+int getr_depth(int color_depth, int c);  int al_get_r_depth(int color_depth, int c);
+int getg_depth(int color_depth, int c);  int al_get_g_depth(int color_depth, int c);
+int getb_depth(int color_depth, int c);  int al_get_b_depth(int color_depth, int c);
+
+extern int gfx_capabilities;
+extern int al_gfx_capabilities;
+
+int gfx_mode_select(int *card, int *w, int *h);
+REMOVED, next function can do the same with color_depth == NULL.
+
+int gfx_mode_select_ex(int *card, int *w, int *h, int *color_depth);
+int al_select_gfx_mode(int *card, int *w, int *h, int *color_depth);
+
+extern int gui_fg_color;
+extern int al_gui_fg_color;
+
+extern int gui_bg_color;
+extern int al_gui_bg_color;
+
+extern int gui_font_baseline;
+extern int al_gui_font_baseline;
+
+extern void (*gui_menu_draw_menu)(int x, int y, int w, int h);
+extern void (*al_gui_menu_draw_menu)(int x, int y, int w, int h);
+
+extern void (*gui_menu_draw_menu_item)(MENU *m, int x, int y, int w, int h, int bar, int sel);
+extern void (*al_gui_menu_draw_menu_item)(AL_MENU *m, int x, int y, int w, int h, int bar, int sel);
+
+extern int gui_mg_color;
+extern int al_gui_mg_color;
+
+extern int gui_mouse_focus;
+extern int al_gui_mouse_focus;
+
+extern int (*gui_mouse_x)();
+extern int (*al_gui_mouse_x)();
+
+extern int (*gui_mouse_y)();
+extern int (*al_gui_mouse_y)();
+
+extern int (*gui_mouse_z)();
+extern int (*al_gui_mouse_z)();
+
+extern int (*gui_mouse_b)();
+extern int (*al_gui_mouse_b)();
+
+extern int (*gui_shadow_box_proc)(int msg, struct DIALOG *d, int c);
+extern int (*al_gui_shadow_box_proc)(int msg, struct AL_DIALOG *d, int c);
+
+extern int (*gui_ctext_proc)(int msg, struct DIALOG *d, int c);
+extern int (*al_gui_ctext_proc)(int msg, struct AL_DIALOG *d, int c);
+
+extern int (*gui_button_proc)(int msg, struct DIALOG *d, int c);
+extern int (*al_gui_button_proc)(int msg, struct AL_DIALOG *d, int c);
+
+extern int (*gui_edit_proc)(int msg, struct DIALOG *d, int c);
+extern int (*al_gui_edit_proc)(int msg, struct AL_DIALOG *d, int c);
+
+extern int (*gui_list_proc)(int msg, struct DIALOG *d, int c);
+extern int (*al_gui_list_proc)(int msg, struct AL_DIALOG *d, int c);
+
+extern int (*gui_text_list_proc)(int msg, struct DIALOG *d, int c);
+extern int (*al_gui_text_list_proc)(int msg, struct AL_DIALOG *d, int c);
+
+int gui_strlen(const char *s);
+int al_gui_strlen(const char *s);
+
+int gui_textout(BITMAP *bmp, const char *s, int x, y, color, centre);
+int al_gui_put_text(AL_BITMAP *bmp, const char *s, int x, y, color, centre);
+   Don't we need an al_gui_printf_text?
+
+void hline(BITMAP *bmp, int x1, int y, int x2, int color);
+void al_draw_hline(AL_BITMAP *bmp, int x1, int y, int x2, int color);
+
+void hook_config_section(const char *section, int (*intgetter)(const char *name, int def), const char *(*stringgetter)(const char *name, const char *def), void (*stringsetter)(const char *name, const char *value));
+void al_hook_config_section(const char *section, int (*intgetter)(const char *name, int def), const char *(*stringgetter)(const char *name, const char *def), void (*stringsetter)(const char *name, const char *value));
+
+void hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b);
+void al_hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b);
+
+void rgb_to_hsv(int r, int g, int b, float *h, float *s, float *v);
+void al_rgb_to_hsv(int r, int g, int b, float *h, float *s, float *v);
+
+extern int i_love_bill;
+extern int al_i_love_bill;
+
+extern MATRIX identity_matrix;
+extern AL_MATRIX al_identity_matrix;
+
+extern MATRIX_F identity_matrix_f;
+extern AL_MATRIX_F al_identity_matrix_f;
+
+extern QUAT identity_quat;
+extern AL_QUAT al_identity_quat;
+
+DIALOG_PLAYER *init_dialog(DIALOG *dialog, int focus_obj);
+AL_DIALOG_PLAYER *al_init_dialog(AL_DIALOG *dialog, int focus_obj);
+
+int initialise_joystick();
+REMOVED
+
+int install_allegro(int system_id, int *errno_ptr, int (*atexit_ptr)());
+int install_allegro(int system_id, int *errno_ptr, int (*atexit_ptr)());
+other suggestions al_install_core, al_install_system, al_init
+
+int install_int(void (*proc)(), int speed);
+REMOVED, next function does practically the same
+
+int install_int_ex(void (*proc)(), int speed);
+int al_create_timer(void (*proc)(), int speed);
+
+int install_joystick(int type);
+int al_install_joystick(int type);
+
+int install_keyboard();
+int al_install_keyboard();
+
+void install_keyboard_hooks(int (*keypressed)(), int (*readkey)());
+void al_install_keyboard_hooks(int (*keypressed)(), int (*readkey)());
+
+int install_mouse();
+int al_install_mouse();
+
+int install_param_int(void (*proc)(void *), void *param, int speed);
+REMOVED, next function does practically the same
+
+int install_param_int_ex(void (*proc)(void *), void *param, int speed);
+int al_create_param_timer(void (*proc)(void *), void *param, int speed);
+
+int install_sound(int digi, int midi, const char *cfg_path);
+int al_install_sound(int digi, int midi, const char *cfg_path);
+
+int install_sound_input(int digi, int midi);
+int al_install_sound_input(int digi, int midi);
+
+int install_timer();
+int al_install_timer();
+
+int is_linear_bitmap(BITMAP *bmp);
+int al_is_linear_bitmap(AL_BITMAP *bmp);
+
+int is_memory_bitmap(BITMAP *bmp);
+int al_is_memory_bitmap(AL_BITMAP *bmp);
+
+int is_planar_bitmap(BITMAP *bmp);
+int al_is_planar_bitmap(AL_BITMAP *bmp);
+
+int is_same_bitmap(BITMAP *bmp1, BITMAP *bmp2);
+int al_is_same_bitmap(AL_BITMAP *bmp1, AL_BITMAP *bmp2);
+
+int is_screen_bitmap(BITMAP *bmp);
+int al_is_screen_bitmap(AL_BITMAP *bmp);
+
+int is_sub_bitmap(BITMAP *bmp);
+int al_is_sub_bitmap(AL_BITMAP *bmp);
+
+int is_system_bitmap(BITMAP *bmp);
+int al_is_system_bitmap(AL_BITMAP *bmp);
+
+int is_video_bitmap(BITMAP *bmp);
+int al_is_video_bitmap(AL_BITMAP *bmp);
+
+fixed itofix(int x);
+fixed al_int_to_fix(int x);
+
+extern JOYSTICK_INFO joy[n];
+extern AL_JOYSTICK_INFO al_joy[n];
+
+extern volatile char key[KEY_MAX];
+extern volatile char al_key[AL_KEY_MAX];
+
+extern int key_led_flag;
+extern int al_key_led_flag;
+
+extern volatile int key_shifts;
+extern volatile int al_key_shifts;
+
+extern int (*keyboard_callback)(int key);
+extern int (*al_keyboard_callback)(int key);
+
+extern void (*keyboard_lowlevel_callback)(int scancode);
+extern void (*al_keyboard_lowlevel_callback)(int scancode);
+
+int keyboard_needs_poll();
+int al_keyboard_needs_poll();
+
+extern int (*keyboard_ucallback)(int key, int *scancode);
+extern int (*al_keyboard_ucallback)(int key, int *scancode);
+
+int keypressed();
+int al_key_pressed();
+
+void line(BITMAP *bmp, int x1, int y1, int x2, int y2, int color);
+void al_draw_line(AL_BITMAP *bmp, int x1, int y1, int x2, int y2, int color);
+
+BITMAP *load_bitmap(const char *filename, RGB *pal);
+AL_BITMAP *al_load_bitmap(const char *filename, AL_RGB *pal);
+
+BITMAP *load_bmp(const char *filename, RGB *pal);
+AL_BITMAP *al_load_bmp(const char *filename, AL_RGB *pal);
+
+DATAFILE *load_datafile(const char *filename);
+AL_DATAFILE *al_load_datafile(const char *filename);
+
+DATAFILE *load_datafile_callback(const char *filename, void (*callback)(DATAFILE *d));
+AL_DATAFILE *al_load_datafile_callback(const char *filename, void (*callback)(AL_DATAFILE *d));
+
+DATAFILE *load_datafile_object(const char *filename,  const char *objectname);
+AL_DATAFILE *al_load_datafile_object(const char *filename,  const char *objectname);
+
+int load_ibk(char *filename, int drums);
+int al_load_ibk(char *filename, int drums);
+
+int load_joystick_data(const char *filename);
+int al_load_joystick_data(const char *filename);
+
+BITMAP *load_lbm(const char *filename, RGB *pal);
+AL_BITMAP *al_load_lbm(const char *filename, RGB *pal);
+
+MIDI *load_midi(const char *filename);
+AL_MIDI *al_load_midi(const char *filename);
+
+int load_midi_patches();
+int al_load_midi_patches();
+
+BITMAP *load_pcx(const char *filename, RGB *pal);
+AL_BITMAP *al_load_pcx(const char *filename, AL_RGB *pal);
+
+SAMPLE *load_sample(const char *filename);
+AL_SAMPLE *al_load_sample(const char *filename);
+
+BITMAP *load_tga(const char *filename, RGB *pal);
+AL_BITMAP *al_load_tga(const char *filename, AL_RGB *pal);
+
+SAMPLE *load_voc(const char *filename);
+AL_SAMPLE *al_load_voc(const char *filename);
+
+SAMPLE *load_wav(const char *filename);
+AL_SAMPLE *al_load_wav(const char *filename);
+
+void lock_bitmap(BITMAP *bitmap);
+void al_lock_bitmap(AL_BITMAP *bitmap);
+
+void lock_midi(MIDI *midi);
+void al_lock_midi(AL_MIDI *midi);
+
+void lock_sample(SAMPLE *spl);
+void al_lock_sample(AL_SAMPLE *spl);
+
+int makeacol(int r, int g, int b, int a);
+int al_make_acolor(int r, int g, int b, int a);
+other suggestions: al_acolor
+
+int makeacol_depth(int color_depth, int r, int g, int b, int a);
+int al_make_acolor_depth(int color_depth, int r, int g, int b, int a);
+
+int makeacol32(int r, int g, int b, int a);
+int al_make_acolor_32(int r, int g, int b, int a);
+
+int makecol(int r, int g, int b);
+int al_make_color(int r, int g, int b);
+other suggestions: al_color
+
+int makecol15_dither(int r, int g, int b, int x, int y);
+int al_make_color_15_dither(int r, int g, int b, int x, int y);
+other suggestions: al_color_15_dither
+
+int makecol16_dither(int r, int g, int b, int x, int y);
+int al_make_color_16_dither(int r, int g, int b, int x, int y);
+
+int makecol8(int r, int g, int b);   int al_make_color_8(int r, int g, int b);
+int makecol15(int r, int g, int b);  int al_make_color_15(int r, int g, int b);
+int makecol16(int r, int g, int b);  int al_make_color_16(int r, int g, int b);
+int makecol24(int r, int g, int b);  int al_make_color_24(int r, int g, int b);
+int makecol32(int r, int g, int b);  int al_make_color_32(int r, int g, int b);
+
+int makecol_depth(int color_depth, int r, int g, int b);
+int al_make_color_depth(int color_depth, int r, int g, int b);
+
+#define MASK_COLOR_8       AL_MASK_COLOR_8
+#define MASK_COLOR_15      AL_MASK_COLOR_15
+#define MASK_COLOR_16      AL_MASK_COLOR_16
+#define MASK_COLOR_24      AL_MASK_COLOR_24
+#define MASK_COLOR_32      AL_MASK_COLOR_32
+
+void masked_blit(BITMAP *source, BITMAP *dest, int source_x, int source_y, int dest_x, int dest_y, int width, int height);
+void al_blit_masked(AL_BITMAP *source, AL_BITMAP *dest, int source_x, int source_y, int dest_x, int dest_y, int width, int height);
+
+void masked_stretch_blit(BITMAP *source, BITMAP *dest, int source_x, source_y, source_w, source_h, int dest_x, dest_y, dest_w, dest_h);
+void al_stretch_masked(AL_BITMAP *source, AL_BITMAP *dest, int source_x, source_y, source_w, source_h, int dest_x, dest_y, dest_w, dest_h);
+
+void matrix_mul(const MATRIX *m1, *m2, MATRIX *out);
+void al_matrix_mul(const AL_MATRIX *m1, *m2, AL_MATRIX *out);
+
+void matrix_mul_f(const MATRIX_f *m1, *m2, MATRIX_f *out);
+void al_matrix_mul_f(const AL_MATRIX_f *m1, *m2, AL_MATRIX_f *out);
+
+void matrix_to_quat(const MATRIX_f *m, QUAT *q);
+void al_matrix_to_quat(const AL_MATRIX_f *m, AL_QUAT *q);
+
+extern long midi_loop_start;
+extern long al_midi_loop_start;
+
+extern long midi_loop_end;
+extern long al_midi_loop_end;
+
+extern void (*midi_msg_callback)(int msg, int byte1, int byte2);
+extern void (*al_midi_msg_callback)(int msg, int byte1, int byte2);
+
+extern void (*midi_meta_callback)(int type, const unsigned char *data, int length);
+extern void (*al_midi_meta_callback)(int type, const unsigned char *data, int length);
+
+extern void (*midi_sysex_callback)(const unsigned char *data, int length);
+extern void (*al_midi_sysex_callback)(const unsigned char *data, int length);
+
+void midi_out(unsigned char *data, int length);
+void al_stream_midi(unsigned char *data, int length);
+
+void midi_pause();
+void al_pause_midi();
+
+extern volatile long midi_pos;
+extern volatile long al_midi_pos;
+
+extern void (*midi_recorder)(unsigned char data);
+extern void (*al_midi_recorder)(unsigned char data);
+
+void midi_resume();
+void al_resume_midi();
+
+int midi_seek(int target);
+int al_seek_midi(int target);
+
+extern void (*mouse_callback)(int flags);
+extern void (*al_mouse_callback)(int flags);
+
+int mouse_needs_poll();
+int al_mouse_needs_poll();
+
+extern BITMAP *mouse_sprite;
+extern AL_BITMAP *al_mouse_sprite;
+
+extern int mouse_x_focus;
+extern int al_mouse_x_focus;
+
+exterm int mouse_y_focus;
+exterm int al_mouse_y_focus;
+
+extern volatile int mouse_x;
+extern volatile int al_mouse_x;
+
+extern volatile int mouse_y;
+extern volatile int al_mouse_y;
+
+exterm volatile int mouse_z;
+exterm volatile int al_mouse_z;
+
+extern volatile int mouse_b;
+extern volatile int al_mouse_b;
+
+extern volatile int mouse_pos;
+extern volatile int al_mouse_pos;
+
+int need_uconvert(const char *s, int type, int newtype);
+int al_need_uconvert(const char *s, int type, int newtype);
+
+int next_fli_frame(int loop);
+int al_next_fli_frame(int loop);
+
+void normalize_vector(fixed *x, fixed *y, fixed *z);
+void al_normalize_vector(al_fixed *x, al_fixed *y, al_fixed *z);
+
+void normalize_vector_f(float *x, float *y, float *z);
+void al_normalize_vector_f(float *x, float *y, float *z);
+
+extern int num_joysticks;
+extern int al_num_joysticks;
+
+int object_message(DIALOG *dialog, int msg, int c);
+int al_object_message(AL_DIALOG *dialog, int msg, int c);
+
+int offer_focus(DIALOG *d, int obj, int *focus_obj, int force);
+int al_offer_focus(AL_DIALOG *d, int obj, int *focus_obj, int force);
+
+int open_fli(const char *filename);
+int al_open_fli(const char *filename);
+
+int open_memory_fli(const void *fli_data);
+int al_open_memory_fli(const void *fli_data);
+
+extern int os_multitasking;
+extern int al_os_is_multitasking;
+
+extern int os_type;
+extern int al_os_type;
+
+extern int os_version;
+extern int al_os_version;
+
+extern int os_revision;
+extern int al_os_revision;
+
+void override_config_data(const char *data, int length);
+void al_override_config_data(const char *data, int length);
+
+void override_config_file(const char *filename);
+void al_override_config_file(const char *filename);
+
+PACKFILE *pack_fclose_chunk(PACKFILE *f);
+AL_PACKFILE *al_pack_fclose_chunk(AL_PACKFILE *f);
+
+PACKFILE *pack_fopen(const char *filename, const char *mode);
+AL_PACKFILE *al_pack_fopen(const char *filename, const char *mode);
+
+PACKFILE *pack_fopen_chunk(PACKFILE *f, int pack);
+AL_PACKFILE *al_pack_fopen_chunk(AL_PACKFILE *f, int pack);
+
+void packfile_password(const char *password);
+void al_packfile_password(const char *password);
+
+extern int palette_color[256];
+extern int al_palette_color[256];
+
+void persp_project(fixed x, y, z, *xout, *yout);
+void al_persp_project(al_fixed x, y, z, *xout, *yout);
+
+void persp_project_f(float x, y, z, *xout, *yout);
+void al_persp_project_f(float x, y, z, *xout, *yout);
+
+void pivot_scaled_sprite(BITMAP *bmp, BITMAP *sprite, int x, int y, int cx, int cy, fixed angle, fixed scale));
+void al_pivot_scaled_sprite(AL_BITMAP *bmp, AL_BITMAP *sprite, int x, int y, int cx, int cy, al_fixed angle, al_fixed scale));
+
+void pivot_scaled_sprite_v_flip(BITMAP *bmp, BITMAP *sprite, int x, int y, fixed angle, fixed scale)
+void al_pivot_scaled_sprite_v_flip(AL_BITMAP *bmp, AL_BITMAP *sprite, int x, int y, al_fixed angle, al_fixed scale)
+
+void pivot_sprite(BITMAP *bmp, BITMAP *sprite, int x, int y, int cx, int cy, fixed angle);
+void al_pivot_sprite(AL_BITMAP *bmp, AL_BITMAP *sprite, int x, int y, int cx, int cy, al_fixed angle);
+
+void pivot_sprite_v_flip(BITMAP *bmp, BITMAP *sprite, int x, int y, int cx, int cy, fixed angle);
+void al_pivot_sprite_v_flip(AL_BITMAP *bmp, AL_BITMAP *sprite, int x, int y, int cx, int cy, al_fixed angle);
+
+AUDIOSTREAM *play_audio_stream(int len, bits, stereo, freq, vol, pan);
+AL_AUDIOSTREAM *al_play_audio_stream(int len, bits, stereo, freq, vol, pan);
+
+int play_fli(const char *filename, BITMAP *bmp, int loop, int (*callback)());
+int al_play_fli(const char *filename, AL_BITMAP *bmp, int loop, int (*callback)());
+
+int play_looped_midi(MIDI *midi, int loop_start, int loop_end);
+int al_play_midi_looped(AL_MIDI *midi, int loop_start, int loop_end);
+
+int play_memory_fli(const void *fli_data, BITMAP *bmp, int loop, int (*callback)());
+int al_play_memory_fli(const void *fli_data, AL_BITMAP *bmp, int loop, int (*callback)());
+
+int play_midi(MIDI *midi, int loop);
+int al_play_midi(AL_MIDI *midi, int loop);
+
+int play_sample(const SAMPLE *spl, int vol, int pan, int freq, int loop);
+int al_play_sample(const AL_SAMPLE *spl, int vol, int pan, int freq, int loop);
+
+int poll_joystick();
+int al_poll_joystick();
+
+int poll_keyboard();
+int al_poll_keyboard();
+
+int poll_mouse();
+int al_poll_mouse();
+
+int poll_scroll();
+int al_poll_scroll();
+
+void polygon(BITMAP *bmp, int vertices, int *points, int color);
+void al_draw_polygon(AL_BITMAP *bmp, int vertices, int *points, int color);
+
+void polygon3d(BITMAP *bmp, int type, BITMAP *texture, int vc, V3D *vtx[]);
+void al_draw_polygon_3d(AL_BITMAP *bmp, int type, AL_BITMAP *texture, int vc, V3D *vtx[]);
+
+void polygon3d_f(BITMAP *bmp, int type, BITMAP *texture, int vc, V3D_f *vtx[]);
+void al_draw_polygon_3d_f(AL_BITMAP *bmp, int type, BITMAP *texture, int vc, V3D_f *vtx[]);
+
+fixed polygon_z_normal(const V3D *v1, *v2, *v3);
+al_fixed al_polygon_z_normal(const AL_V3D *v1, *v2, *v3);
+
+float polygon_z_normal_f(const V3D_f *v1, *v2, *v3);
+float al_polygon_z_normal_f(const AL_V3D_F *v1, *v2, *v3);
+
+void pop_config_state();
+void al_pop_config_state();
+
+int popup_dialog(DIALOG *dialog, int focus_obj);
+int al_popup_dialog(AL_DIALOG *dialog, int focus_obj);
+
+void position_dialog(DIALOG *dialog, int x, int y);
+void al_position_dialog(AL_DIALOG *dialog, int x, int y);
+
+void position_mouse(int x, int y);
+void al_position_mouse(int x, int y);
+
+void position_mouse_z(int z);
+void al_position_mouse_z(int z);
+
+void push_config_state();
+void al_push_config_state();
+
+void put_backslash(char *filename);
+void al_put_backslash(char *filename);
+
+void putpixel(BITMAP *bmp, int x, int y, int color);
+void al_put_pixel(AL_BITMAP *bmp, int x, int y, int color);
+
+void _putpixel(BITMAP *bmp, int x, int y, int color);
+void al_putpixel_8(AL_BITMAP *bmp, int x, int y, int color);
+
+void _putpixel15(BITMAP *bmp, int x, int y, int color);
+void al_putpixel_8(AL_BITMAP *bmp, int x, int y, int color);
+
+void _putpixel16(BITMAP *bmp, int x, int y, int color);
+void al_putpixel_16(AL_BITMAP *bmp, int x, int y, int color);
+
+void _putpixel24(BITMAP *bmp, int x, int y, int color);
+void al_putpixel_24(AL_BITMAP *bmp, int x, int y, int color);
+
+void _putpixel32(BITMAP *bmp, int x, int y, int color);
+void al_putpixel_32(AL_BITMAP *bmp, int x, int y, int color);
+
+PtWidget_t qnx_get_window(void);
+PtWidget_t alqnx_get_window(void);
+
+void qscale_matrix(MATRIX *m, fixed scale);
+void al_qscale_matrix(AL_MATRIX *m, al_fixed scale);
+
+void qscale_matrix_f(MATRIX_f *m, float scale);
+void al_qscale_matrix_f(AL_MATRIX_f *m, float scale);
+
+void qtranslate_matrix(MATRIX *m, fixed x, fixed y, fixed z);
+void al_qtranslate_matrix(AL_MATRIX *m, fixed x, fixed y, fixed z);
+
+void qtranslate_matrix_f(MATRIX_f *m, float x, float y, float z);
+void al_qtranslate_matrix_f(AL_MATRIX_f *m, float x, float y, float z);
+
+void quad3d(BITMAP *bmp, int type, BITMAP *tex, V3D *v1, *v2, *v3, *v4);
+void al_quad_3d(AL_BITMAP *bmp, int type, AL_BITMAP *tex, AL_V3D *v1, *v2, *v3, *v4);
+
+void quad3d_f(BITMAP *bmp, int type, BITMAP *tex, V3D_f *v1, *v2, *v3, *v4);
+void al_quad_3d_f(AL_BITMAP *bmp, int type, AL_BITMAP *tex, AL_V3D_F *v1, *v2, *v3, *v4);
+
+void quat_interpolate(const QUAT *from, *to, float t, QUAT *out);
+void al_quat_interpolate(const AL_QUAT *from, *to, float t, AL_QUAT *out);
+
+void quat_mul(const QUAT *p, const QUAT *q, QUAT *out);
+void al_quat_mul(const AL_QUAT *p, const AL_QUAT *q, AL_QUAT *out);
+
+void quat_slerp(const QUAT *from, *to, float t, QUAT *out, int how);
+void al_quat_slerp(const AL_QUAT *from, *to, float t, AL_QUAT *out, int how);
+
+void quat_to_matrix(const QUAT *q, MATRIX_f *m);
+void al_quat_to_matrix(const AL_QUAT *q, AL_MATRIX_f *m);
+
+int read_sound_input(void *buffer);
+int al_read_sound_input(void *buffer);
+
+int readkey();
+int al_read_key();
+
+void reallocate_voice(int voice, const SAMPLE *spl);
+void al_reallocate_voice(int voice, const AL_SAMPLE *spl);
+
+void rect(BITMAP *bmp, int x1, int y1, int x2, int y2, int color);
+void al_draw_rect(AL_BITMAP *bmp, int x1, int y1, int x2, int y2, int color);
+
+void rectfill(BITMAP *bmp, int x1, int y1, int x2, int y2, int color);
+void al_draw_rect_fill(AL_BITMAP *bmp, int x1, int y1, int x2, int y2, int color);
+
+void register_assert_handler(int (*handler)(char *msg));
+void al_register_assert_handler(int (*handler)(char *msg));
+
+void register_bitmap_file_type(const char *ext, BITMAP *(*load)(const char *filename, RGB *pal), int (*save)(const char *filename, BITMAP *bmp, const RGB *pal));
+void al_register_bitmap_file_type(const char *ext, AL_BITMAP *(*load)(const char *filename, AL_RGB *pal), int (*save)(const char *filename, AL_BITMAP *bmp, const AL_RGB *pal));
+
+void register_datafile_object(int id, void *(*load)(PACKFILE *f, long size), void (*destroy)(void *data));
+void al_register_datafile_object(int id, void *(*load)(AL_PACKFILE *f, long size), void (*destroy)(void *data));
+
+void register_trace_handler(int (*handler)(char *msg));
+void al_register_trace_handler(int (*handler)(char *msg));
+
+void register_uformat(int type, int (*u_getc)(const char *s), int (*u_getx)(char **s), int (*u_setc)(char *s, int c), int (*u_width)(const char *s), int (*u_cwidth)(int c), int (*u_isok)(int c));
+void al_register_uformat(int type, int (*u_getc)(const char *s), int (*u_getx)(char **s), int (*u_setc)(char *s, int c), int (*u_width)(const char *s), int (*u_cwidth)(int c), int (*u_isok)(int c));
+
+void release_bitmap(BITMAP *bmp);
+void al_release_bitmap(AL_BITMAP *bmp);
+
+void release_screen();
+void al_release_screen();
+
+void release_voice(int voice);
+void al_release_voice(int voice);
+
+void reload_config_texts(const char *new_language);
+void al_reload_config_texts(const char *new_language);
+
+void remove_display_switch_callback(void (*cb)());
+void al_remove_display_switch_callback(void (*cb)());
+
+void remove_int(void (*proc)());
+void al_destroy_timer(void (*proc)());
+
+void remove_joystick();
+void al_remove_joystick();
+
+void remove_keyboard();
+void al_remove_keyboard();
+
+void remove_mouse();
+void al_remove_mouse();
+
+void remove_param_int(void (*proc)(void *), void *param);
+void al_destroy_param_timer(void (*proc)(void *), void *param);
+
+void remove_sound();
+void al_remove_sound();
+
+void remove_sound_input();
+void al_remove_sound_input();
+
+void remove_timer();
+void al_remove_timer();
+
+void render_scene();
+void al_render_scene();
+
+char *replace_extension(char *dest, const char *filename,  const char *ext, int size);
+char *al_replace_extension(char *dest, const char *filename,  const char *ext, int size);
+
+char *replace_filename(char *dest, const char *path,  const char *filename, int size);
+char *al_replace_filename(char *dest, const char *path,  const char *filename, int size);
+
+void request_refresh_rate(int rate);
+void al_request_refresh_rate(int rate);
+
+int request_scroll(int x, int y);
+int al_request_scroll(int x, int y);
+
+int request_video_bitmap(BITMAP *bitmap);
+int al_request_video_bitmap(AL_BITMAP *bitmap);
+
+void reserve_voices(int digi_voices, int midi_voices);
+void al_reserve_voices(int digi_voices, int midi_voices);
+
+void reset_fli_variables();
+void al_reset_fli_variables();
+
+void rest(long time);
+void al_rest(long time);
+
+void rest_callback(long time, void (*callback)())
+void al_rest_callback(long time, void (*callback)())
+
+extern volatile int retrace_count;
+extern volatile int al_retrace_count;
+
+extern void (*retrace_proc)();
+extern void (*al_retrace_proc)();
+
+extern RGB_MAP *rgb_map;
+extern AL_RGB_MAP *al_rgb_map;
+
+void rotate_scaled_sprite(BITMAP *bmp, BITMAP *sprite, int x, int y, fixed angle, fixed scale);
+void al_rotate_scaled_sprite(AL_BITMAP *bmp, AL_BITMAP *sprite, int x, int y, al_fixed angle, al_fixed scale);
+
+void rotate_scaled_sprite_v_flip(BITMAP *bmp, BITMAP *sprite, int x, int y, fixed angle, fixed scale)
+void al_rotate_scaled_sprite_v_flip(AL_BITMAP *bmp, AL_BITMAP *sprite, int x, int y, al_fixed angle, al_fixed scale)
+
+void rotate_sprite(BITMAP *bmp, BITMAP *sprite, int x, int y, fixed angle);
+void al_rotate_sprite(AL_BITMAP *bmp, AL_BITMAP *sprite, int x, int y, fixed angle);
+
+void rotate_sprite_v_flip(BITMAP *bmp, BITMAP *sprite, int x, int y, fixed angle);
+void al_rotate_sprite_v_flip(AL_BITMAP *bmp, AL_BITMAP *sprite, int x, int y, al_fixed angle);
+
+int save_bitmap(const char *filename, BITMAP *bmp, const RGB *pal);
+int al_save_bitmap(const char *filename, AL_BITMAP *bmp, const AL_RGB *pal);
+
+int save_bmp(const char *filename, BITMAP *bmp, const RGB *pal);
+int al_save_bmp(const char *filename, AL_BITMAP *bmp, const AL_RGB *pal);
+
+int save_joystick_data(const char *filename);
+int al_save_joystick_data(const char *filename);
+
+int save_pcx(const char *filename, BITMAP *bmp, const RGB *pal);
+int al_save_pcx(const char *filename, AL_BITMAP *bmp, const AL_RGB *pal);
+
+int save_tga (const char *filename, BITMAP *bmp, const RGB *pal);
+int al_save_tga (const char *filename, AL_BITMAP *bmp, const AL_RGB *pal);
+
+int scancode_to_ascii(int scancode);
+int al_scancode_to_ascii(int scancode);
+
+void scare_mouse();
+void al_scare_mouse();
+
+void scare_mouse_area(int x, int y, int w, int h);
+void al_scare_mouse_area(int x, int y, int w, int h);
+
+void clear_scene(BITMAP *bmp);
+void al_clear_scene(AL_BITMAP *bmp);
+
+extern float scene_gap;
+extern float al_scene_gap;
+
+int scene_polygon3d(int type, BITMAP *texture, int vc, V3D *vtx[]);
+int al_scene_polygon_3d(int type, AL_BITMAP *texture, int vc, AL_V3D *vtx[]);
+
+int scene_polygon3d_f(int type, BITMAP *texture, int vc, V3D_f *vtx[]);
+int al_scene_polygon_3d_f(int type, AL_BITMAP *texture, int vc, AL_V3D_F *vtx[]);
+
+extern BITMAP *screen;
+extern AL_BITMAP *al_screen;
+
+int scroll_screen(int x, int y);
+int al_scroll_screen(int x, int y);
+
+void select_palette(const PALETTE p);
+void al_select_palette(const AL_PALETTE p);
+
+void select_palette(const PALETTE p);
+void al_select_palette(const AL_PALETTE p);
+
+void _set_color(int index, const RGB *p);
+void al_set_color_no_vsync(int index, const AL_RGB *p);
+
+void set_add_blender(int r, int g, int b, int a);
+void al_set_add_blender(int r, int g, int b, int a);
+
+void set_alpha_blender();
+void al_set_alpha_blender();
+
+void set_blender_mode(BLENDER_FUNC b15, b16, b24, int r, g, b, a);
+void al_set_blender_mode(AL_BLENDER_FUNC b15, b16, b24, int r, g, b, a);
+ Should this be removed in favor of the _ex version?
+
+void set_blender_mode_ex(BLENDER_FUNC b15, b16, b24, b32, b15x, b16x, b24x, int r, g, b, a);
+void al_set_blender_mode_ex(AL_BLENDER_FUNC b15, b16, b24, b32, b15x, b16x, b24x, int r, g, b, a);
+
+void set_burn_blender(int r, int g, int b, int a);
+void al_set_burn_blender(int r, int g, int b, int a);
+
+void set_clip(BITMAP *bitmap, int x1, int y1, int x2, int y2);
+void al_set_clip(AL_BITMAP *bitmap, int x1, int y1, int x2, int y2);
+
+void set_color(int index, const RGB *p);
+void al_set_palette_color(int index, const AL_RGB *p);
+
+void set_color_blender(int r, int g, int b, int a);
+void al_set_color_blender(int r, int g, int b, int a);
+
+void set_color_conversion(int mode);
+void al_set_color_conversion(int mode);
+
+void set_color_depth(int depth);
+void al_set_color_depth(int depth);
+
+void set_config_data(const char *data, int length);
+void al_set_config_data(const char *data, int length);
+
+void set_config_file(const char *filename);
+void al_set_config_file(const char *filename);
+
+void set_config_float(const char *section, const char *name, float val);
+void al_set_config_float(const char *section, const char *name, float val);
+
+void set_config_hex(const char *section, const char *name, int val);
+void al_set_config_hex(const char *section, const char *name, int val);
+
+void set_config_id(const char *section, const char *name, int val);
+void al_set_config_id(const char *section, const char *name, int val);
+
+void set_config_int(const char *section, const char *name, int val);
+void al_set_config_int(const char *section, const char *name, int val);
+
+void set_config_string(const char *section, const char *name, const char *val);
+void al_set_config_string(const char *section, const char *name, const char *val);
+
+void set_dialog_color(DIALOG *dialog, int fg, int bg);
+void al_set_dialog_color(AL_DIALOG *dialog, int fg, int bg);
+
+void set_difference_blender(int r, int g, int b, int a);
+void al_set_difference_blender(int r, int g, int b, int a);
+
+int set_display_switch_callback(int dir, void (*cb)());
+int al_set_display_switch_callback(int dir, void (*cb)());
+or al_add_display_switch_callback if there are going to be more than one
+
+int set_display_switch_mode(int mode);
+int al_set_display_switch_mode(int mode);
+
+void set_dissolve_blender(int r, int g, int b, int a);
+void al_set_dissolve_blender(int r, int g, int b, int a);
+
+void set_dodge_blender(int r, int g, int b, int a);
+void al_set_dodge_blender(int r, int g, int b, int a);
+
+void set_gdi_color_format(void);
+void alwin_set_gdi_color_format(void);
+
+int set_gfx_mode(int card, int w, int h, int v_w, int v_h);
+int al_set_gfx_mode(int card, int w, int h, int v_w, int v_h);
+
+void set_hue_blender(int r, int g, int b, int a);
+void al_set_hue_blender(int r, int g, int b, int a);
+
+void set_invert_blender(int r, int g, int b, int a);
+void al_set_invert_blender(int r, int g, int b, int a);
+
+void set_keyboard_rate(int delay, int repeat);
+void al_set_keyboard_rate(int delay, int repeat);
+
+void set_leds(int leds);
+void al_set_keyboard_leds(int leds);
+
+void set_luminance_blender(int r, int g, int b, int a);
+void al_set_luminance_blender(int r, int g, int b, int a);
+
+void set_mouse_range(int x1, int y1, int x2, int y2);
+void al_set_mouse_range(int x1, int y1, int x2, int y2);
+
+void set_mouse_speed(int xspeed, int yspeed);
+void al_set_mouse_speed(int xspeed, int yspeed);
+
+void set_mouse_sprite(BITMAP *sprite);
+void al_set_mouse_sprite(AL_BITMAP *sprite);
+
+void set_mouse_sprite_focus(int x, int y);
+void al_set_mouse_sprite_focus(int x, int y);
+
+void set_multiply_blender(int r, int g, int b, int a);
+void al_set_multiply_blender(int r, int g, int b, int a);
+
+void set_palette(const PALETTE p);
+void al_set_palette(const AL_PALETTE p);
+
+void set_palette_range(const PALETTE p, int from, int to, int vsync);
+void al_set_palette_range(const AL_PALETTE p, int from, int to, int vsync);
+
+void set_palette_to_hdc(HDC dc, PALETTE pal);
+void alwin_set_palette(HDC dc, AL_PALETTE pal);
+
+void set_projection_viewport(int x, int y, int w, int h);
+void al_set_projection_viewport(int x, int y, int w, int h);
+
+void set_saturation_blender(int r, int g, int b, int a);
+void al_set_saturation_blender(int r, int g, int b, int a);
+
+void set_screen_blender(int r, int g, int b, int a);
+void al_set_screen_blender(int r, int g, int b, int a);
+
+int set_sound_input_source(int source);
+int al_set_sound_input_source(int source);
+
+void set_trans_blender(int r, int g, int b, int a);
+void al_set_trans_blender(int r, int g, int b, int a);
+
+void set_ucodepage(const unsigned short *table, const unsigned short *extras);
+void al_set_ucodepage(const unsigned short *table, const unsigned short *extras);
+
+void set_uformat(int type);
+void al_set_uformat(int type);
+
+void set_volume(int digi_volume, int midi_volume);
+void al_set_volume(int digi_volume, int midi_volume);
+
+void set_volume_per_voice(int scale);
+void al_set_volume_per_voice(int scale);
+
+int set_window_close_button(int enable);
+int al_set_window_close_button(int enable);
+
+void set_window_close_hook(void (*proc)());
+void al_set_window_close_hook(void (*proc)());
+
+void set_window_title(const char *name);
+void al_set_window_title(const char *name);
+
+void set_write_alpha_blender();
+void al_set_write_alpha_blender();
+
+void set_zbuffer(ZBUFFER *zbuf);
+void al_set_zbuffer(ZBUFFER *zbuf);
+
+void show_mouse(BITMAP *bmp);
+void al_show_mouse(AL_BITMAP *bmp);
+
+int show_video_bitmap(BITMAP *bitmap);
+int al_show_video_bitmap(AL_BITMAP *bitmap);
+
+int shutdown_dialog(DIALOG_PLAYER *player);
+int al_shutdown_dialog(AL_DIALOG_PLAYER *player);
+
+void simulate_keypress(int key);
+void al_simulate_keypress(int key);
+
+void simulate_ukeypress(int key, int scancode);
+void al_simulate_ukeypress(int key, int scancode);
+
+void solid_mode();
+void al_solid_mode();
+
+void spline(BITMAP *bmp, int points[8], int color);
+void al_draw_spline(AL_BITMAP *bmp, int points[8], int color);
+
+void split_modex_screen(int line);
+void al_split_modex_screen(int line);
+
+int start_sound_input(int rate, int bits, int stereo);
+int al_start_sound_input(int rate, int bits, int stereo);
+
+void stop_audio_stream(AUDIOSTREAM *stream);
+void al_stop_audio_stream(AL_AUDIOSTREAM *stream);
+
+void stop_midi();
+void al_stop_midi();
+
+void stop_sample(const SAMPLE *spl);
+void al_stop_sample(const AL_SAMPLE *spl);
+
+void stop_sound_input();
+void al_stop_sound_input();
+
+void stretch_blit(BITMAP *source, BITMAP *dest, int source_x, source_y, source_width, source_height, int dest_x, dest_y, dest_width, dest_height);
+void al_stretch(AL_BITMAP *source, AL_BITMAP *dest, int source_x, source_y, source_width, source_height, int dest_x, dest_y, dest_width, dest_height);
+
+void stretch_blit(BITMAP *source, BITMAP *dest, int source_x, source_y, source_width, source_height, int dest_x, dest_y, dest_width, dest_height);
+void al_stretch(AL_BITMAP *source, AL_BITMAP *dest, int source_x, source_y, source_width, source_height, int dest_x, dest_y, dest_width, dest_height);
+
+void stretch_blit_from_hdc(HDC hcd, BITMAP *bitmap, int sx, sy, sw, sh, int dx, dy, dw, dh);
+void alwin_stretch_from_hdc(HDC hcd, AL_BITMAP *AL_BITMAP, int sx, sy, sw, sh, int dx, dy, dw, dh);
+
+void stretch_blit_to_hdc(BITMAP *bitmap, HDC dc, int sx, sy, sw, sh, int dx, dy, dw, dh);
+void alwin_stretch_to_hdc(AL_BITMAP *AL_BITMAP, HDC dc, int sx, sy, sw, sh, int dx, dy, dw, dh);
+
+void stretch_sprite(BITMAP *bmp, BITMAP *sprite, int x, int y, int w, int h);
+void al_stretch_sprite(AL_BITMAP *bmp, AL_BITMAP *sprite, int x, int y, int w, int h);
+
+int text_height(const FONT *f)
+int al_text_height(const AL_FONT *f)
+
+int text_length(const FONT *f, const char *str);
+int al_text_length(const AL_FONT *f, const char *str);
+
+int text_mode(int mode);
+int al_text_mode(int mode);
+
+void textout(BITMAP *bmp, const FONT *f, const char *s, int x, y, int color);
+void al_put_text(AL_BITMAP *bmp, const AL_FONT *f, const char *s, int x, y, int color);
+
+void textout_centre(BITMAP *bmp, const FONT *f, const char *s, int x, y, color);
+void al_put_text_centre(AL_BITMAP *bmp, const AL_FONT *f, const char *s, int x, y, color);
+
+void textout_justify(BITMAP *bmp, const FONT *f, const char *s, int x1, int x2, int y, int diff, int color);
+void al_put_text_justify(AL_BITMAP *bmp, const AL_FONT *f, const char *s, int x1, int x2, int y, int diff, int color);
+
+void textout_right(BITMAP *bmp, const FONT *f, const char *s, int x, y, color);
+void al_put_text_right(AL_BITMAP *bmp, const AL_FONT *f, const char *s, int x, y, color);
+
+void textprintf(BITMAP *bmp, const FONT *f, int x, y, color, const char *fmt, ...);
+void al_printf_text(AL_BITMAP *bmp, const AL_FONT *f, int x, y, color, const char *fmt, ...);
+
+void textprintf_centre(BITMAP *bmp, const FONT *f, int x, y, color, const char *fmt, ...);
+void al_printf_text_centre(AL_BITMAP *bmp, const AL_FONT *f, int x, y, color, const char *fmt, ...);
+
+void textprintf_justify(BITMAP *bmp, const FONT *f, int x1, int x2, int y, int diff, int color, const char *fmt, ...);
+void al_printf_text_justify(AL_BITMAP *bmp, const AL_FONT *f, int x1, int x2, int y, int diff, int color, const char *fmt, ...);
+
+void textprintf_right(BITMAP *bmp, const FONT *f, int x, y, color, const char *fmt, ...);
+void al_printf_text_right(AL_BITMAP *bmp, const AL_FONT *f, int x, y, color, const char *fmt, ...);
+
+extern int three_finger_flag;
+extern int al_three_finger_flag;
+
+int timer_can_simulate_retrace()
+int al_timer_can_simulate_retrace()
+
+int timer_is_using_retrace()
+int al_timer_is_using_retrace()
+
+void timer_simulate_retrace(int enable);
+void al_timer_simulate_retrace(int enable);
+
+void TRACE(char *msg, ...);
+void AL_TRACE(char *msg, ...);
+
+void triangle(BITMAP *bmp, int x1, y1, x2, y2, x3, y3, int color);
+void al_draw_triangle(AL_BITMAP *bmp, int x1, y1, x2, y2, x3, y3, int color);
+
+void triangle3d(BITMAP *bmp, int type, BITMAP *tex, V3D *v1, *v2, *v3);
+void al_draw_triangle_3d(AL_BITMAP *bmp, int type, AL_BITMAP *tex, AL_V3D *v1, *v2, *v3);
+
+void triangle3d_f(BITMAP *bmp, int type, BITMAP *tex, V3D_f *v1, *v2, *v3);
+void al_draw_triangle_3d_f(AL_BITMAP *bmp, int type, AL_BITMAP *tex, AL_V3D_F *v1, *v2, *v3);
+
+void unload_datafile(DATAFILE *dat);
+void al_destroy_datafile(AL_DATAFILE *dat);
+
+void unload_datafile_object(DATAFILE *dat);
+void al_destroy_datafile_object(AL_DATAFILE *dat);
+
+void unscare_mouse();
+void al_unscare_mouse();
+
+void unselect_palette();
+void al_unselect_palette();
+
+int update_dialog(DIALOG_PLAYER *player);
+int al_update_dialog(AL_DIALOG_PLAYER *player);
+
+double uatof(const char *s);
+double al_uatof(const char *s);
+
+char *uconvert(const char *s, int type, char *buf, int newtype, int size);
+char *al_uconvert(const char *s, int type, char *buf, int newtype, int size);
+
+char *uconvert_ascii(const char *s, char buf[]);
+char *al_uconvert_ascii(const char *s, char buf[]);
+
+int uconvert_size(const char *s, int type, int newtype);
+int al_uconvert_size(const char *s, int type, int newtype);
+
+char *uconvert_toascii(const char *s, char buf[]);
+char *al_uconvert_to_ascii(const char *s, char buf[]);
+
+int ucwidth(int c);
+int al_ucwidth(int c);
+
+int ugetat(const char *s, int index);
+int al_ugetat(const char *s, int index);
+
+int ugetc(const char *s);
+int al_ugetc(const char *s);
+
+int ugetx(char **s);
+int al_ugetx(char **s);
+
+int ugetxc(const char **s);
+int al_ugetxc(const char **s);
+
+int uinsert(char *s, int index, int c);
+int al_uinsert(char *s, int index, int c);
+
+int uisdigit(int c);
+int al_uisdigit(int c);
+
+int uisok(int c);
+int al_uisok(int c);
+
+int uisspace(int c);
+int al_uisspace(int c);
+
+int uoffset(const char *s, int index);
+int al_uoffset(const char *s, int index);
+
+int ureadkey(int *scancode);
+int al_uread_key(int *scancode);
+
+int uremove(char *s, int index);
+int al_uremove(char *s, int index);
+
+int usetat(char *s, int index, int c);
+int al_usetat(char *s, int index, int c);
+
+int usetc(char *s, int c);
+int al_usetc(char *s, int c);
+
+int usprintf(char *buf, const char *format, ...);
+int al_usprintf(char *buf, const char *format, ...);
+
+char *ustrcat(char *dest, const char *src);
+char *al_ustrcat(char *dest, const char *src);
+
+char *ustrchr(const char *s, int c);
+char *al_ustrchr(const char *s, int c);
+
+int ustrcmp(const char *s1, const char *s2);
+int al_ustrcmp(const char *s1, const char *s2);
+
+char *ustrcpy(char *dest, const char *src);
+char *al_ustrcpy(char *dest, const char *src);
+
+char *ustrdup(const char *src)
+char *al_ustrdup(const char *src)
+
+char *_ustrdup(const char *src, void* (*malloc_func) (size_t))
+char *al_ustrdup_m(const char *src, void* (*malloc_func) (size_t))
+
+const char *ustrerror(int err);
+const char *al_ustrerror(int err);
+
+int ustricmp(const char *s1, const char *s2);
+int al_ustricmp(const char *s1, const char *s2);
+
+int ustrlen(const char *s);
+int al_ustrlen(const char *s);
+
+char *ustrlwr(char *s);
+char *al_ustrlwr(char *s);
+
+char *ustrncat(char *dest, const char *src, int n);
+char *al_ustrncat(char *dest, const char *src, int n);
+
+int ustrncmp(const char *s1, const char *s2, int n);
+int al_ustrncmp(const char *s1, const char *s2, int n);
+
+char *ustrncpy(char *dest, const char *src, int n);
+char *al_ustrncpy(char *dest, const char *src, int n);
+
+char *ustrpbrk(const char *s, const char *set);
+char *al_ustrpbrk(const char *s, const char *set);
+
+char *ustrrchr(const char *s, int c);
+char *al_ustrrchr(const char *s, int c);
+
+int ustrsize(const char *s);
+int al_ustrsize(const char *s);
+
+int ustrsizez(const char *s);
+int al_ustrsizez(const char *s);
+
+char *ustrstr(const char *s1, const char *s2);
+char *al_ustrstr(const char *s1, const char *s2);
+
+double ustrtod(const char *s, char **endp);
+double al_ustrtod(const char *s, char **endp);
+
+char *ustrtok(char *s, const char *set);
+char *al_ustrtok(char *s, const char *set);
+
+char *ustrtok_r(char *s, const char *set, char **last);
+char *al_ustrtok_r(char *s, const char *set, char **last);
+
+long ustrtol(const char *s, char **endp, int base);
+long al_ustrtol(const char *s, char **endp, int base);
+
+char *ustrupr(char *s);
+char *al_ustrupr(char *s);
+
+char *ustrzcat(char *dest, int size, const char *src);
+char *al_ustrzcat(char *dest, int size, const char *src);
+
+char *ustrzcpy(char *dest, int size, const char *src);
+char *al_ustrzcpy(char *dest, int size, const char *src);
+
+char *ustrzncat(char *dest, int size, const char *src, int n);
+char *al_ustrzncat(char *dest, int size, const char *src, int n);
+
+char *ustrzncpy(char *dest, int size, const char *src, int n);
+char *al_ustrzncpy(char *dest, int size, const char *src, int n);
+
+int uszprintf(char *buf, int size, const char *format, ...);
+int al_uszprintf(char *buf, int size, const char *format, ...);
+
+int utolower(int c);
+int al_utolower(int c);
+
+int utoupper(int c);
+int al_utoupper(int c);
+
+int uvsprintf(char *buf, const char *format, va_list args);
+int al_uvsprintf(char *buf, const char *format, va_list args);
+
+int uvszprintf(char *buf, int size, const char *format, va_list args);
+int al_uvszprintf(char *buf, int size, const char *format, va_list args);
+
+int uwidth(const char *s);
+int al_uwidth(const char *s);
+
+int uwidth_max(int type);
+int al_uwidth_max(int type);
+
+fixed vector_length(fixed x, fixed y, fixed z);
+al_fixed al_vector_length(al_fixed x, al_fixed y, al_fixed z);
+
+float vector_length_f(float x, float y, float z);
+float al_vector_length_f(float x, float y, float z);
+
+void vline(BITMAP *bmp, int x, int y1, int y2, int color);
+void al_draw_vline(AL_BITMAP *bmp, int x, int y1, int y2, int color);
+
+SAMPLE *voice_check(int voice);
+AL_SAMPLE *al_voice_check(int voice);
+
+int voice_get_frequency(int voice);
+int al_get_voice_frequency(int voice);
+
+int voice_get_pan(int voice);
+int al_get_voice_pan(int voice);
+
+int voice_get_position(int voice);
+int al_get_voice_position(int voice);
+
+int voice_get_volume(int voice);
+int al_get_voice_volume(int voice);
+
+void voice_ramp_volume(int voice, int time, int endvol);
+void al_start_voice_volume_ramp(int voice, int time, int endvol);
+
+void voice_set_echo(int voice, int strength, int delay);
+void al_set_voice_echo(int voice, int strength, int delay);
+
+void voice_set_frequency(int voice, int frequency);
+void al_set_voice_frequency(int voice, int frequency);
+
+void voice_set_pan(int voice, int pan);
+void al_set_voice_pan(int voice, int pan);
+
+void voice_set_playmode(int voice, int playmode);
+void al_set_voice_play_mode(int voice, int play_mode);
+
+void voice_set_position(int voice, int position);
+void al_set_voice_position(int voice, int position);
+
+void voice_set_priority(int voice, int priority);
+void al_set_voice_priority(int voice, int priority);
+
+void voice_set_tremolo(int voice, int rate, int depth);
+void al_set_voice_tremolo(int voice, int rate, int depth);
+
+void voice_set_vibrato(int voice, int rate, int depth);
+void al_set_voice_vibrato(int voice, int rate, int depth);
+
+void voice_set_volume(int voice, int volume);
+void al_set_voice_volume(int voice, int volume);
+
+void voice_start(int voice);
+void al_start_voice(int voice);
+
+void voice_stop(int voice);
+void al_stop_voice(int voice);
+
+void voice_stop_frequency_sweep(int voice);
+void al_stop_voice_frequency_sweep(int voice);
+
+void voice_stop_pan_sweep(int voice);
+void al_stop_voice_pan_sweep(int voice);
+
+void voice_stop_volumeramp(int voice);
+void al_stop_voice_volume_ramp(int voice);
+
+void voice_sweep_frequency(int voice, int time, int endfreq);
+void al_start_voice_frequency_sweep(int voice, int time, int endfreq);
+
+void voice_sweep_pan(int voice, int time, int endpan);
+void al_start_voice_pan_sweep(int voice, int time, int endpan);
+
+void vsync();
+void al_vsync();
+
+HDC win_get_dc(BITMAP *bmp);
+HDC alwin_get_dc(AL_BITMAP *bmp);
+
+HWND win_get_window(void);
+HWND alwin_get_window(void);
+
+HWND win_get_window(void);
+HWND alwin_get_window(void);
+
+void win_release_dc(BITMAP *bmp, HDC dc);
+void alwin_release_dc(AL_BITMAP *bmp, HDC dc);
+
+void win_set_window(HWND wnd);
+void alwin_set_window(HWND wnd);
+
+void win_set_wnd_create_proc(HWND (*proc)(WNDPROC));
+void alwin_set_wnd_create_proc(HWND (*proc)(WNDPROC));
+
+void xor_mode(int on);
+REMOVED, maybe kept as a macro?
+
+void yield_timeslice();
+void al_yield_timeslice();
+
+=======================================================================
+Name grouping
+
+Ok, above you have each function/variable renamed. Now, is it coherent
+with the rest of the functions? You sometimes can't say, because the
+functions are sorted by the old api name, so they may appear at odd
+places. Here you have _only_ the new api names, sorted, so you can take
+a look and find any odd names or mistakes faster.
+
+al_acquire_bitmap
+al_acquire_screen
+al_active_dialog
+al_active_menu
+al_adjust_sample
+al_allocate_voice
+al_append_filename
+al_apply_matrix
+al_apply_matrix_f
+al_apply_quat
+al_bestfit_color
+al_bitmap_color_depth
+al_bitmap_mask_color
+al_black_palette
+al_blit
+al_blit_masked
+al_broadcast_dialog_message
+al_calc_spline
+al_calibrate_joystick
+al_calibrate_joystick_text
+al_centre_dialog
+al_char_404
+al_check_cpu
+al_clear_bitmap
+al_clear_keybuf
+al_clear_scene
+al_clear_scene
+al_clear_to_color
+al_clear_zbuffer
+al_clip_3d
+al_clip_3d_f
+al_close_fli
+al_color_map
+al_config_is_hooked
+al_cpu_capabilities
+al_cpu_family
+al_cpu_model
+al_cpu_vendor[]
+al_create_bitmap
+al_create_bitmap_ex
+al_create_blender_table
+al_create_color_table
+al_create_compiled_sprite
+al_create_light_table
+al_create_param_timer
+al_create_rgb_table
+al_create_rle_sprite
+al_create_sample
+al_create_scene
+al_create_sub_bitmap
+al_create_sub_zbuffer
+al_create_system_bitmap
+al_create_timer
+al_create_trans_table
+al_create_video_bitmap
+al_create_zbuffer
+al_cross_product
+al_cross_product_f
+al_deallocate_voice
+al_default_palette
+al_delete_file
+al_desktop_color_depth
+al_desktop_palette
+al_destroy_bitmap
+al_destroy_compiled_sprite
+al_destroy_datafile
+al_destroy_datafile_object
+al_destroy_font
+al_destroy_gfx_mode_list
+al_destroy_midi
+al_destroy_param_timer
+al_destroy_rle_sprite
+al_destroy_sample
+al_destroy_scene
+al_destroy_timer
+al_destroy_zbuffer
+al_detect_digi_driver
+al_detect_midi_driver
+al_dialog_bitmap_proc
+al_dialog_box_proc
+al_dialog_button_proc
+al_dialog_check_proc
+al_dialog_clear_proc
+al_dialog_ctext_proc
+al_dialog_edit_proc
+al_dialog_icon_proc
+al_dialog_keyboard_proc
+al_dialog_list_proc
+al_dialog_menu_proc
+al_dialog_radio_proc
+al_dialog_rtext_proc
+al_dialog_shadow_box_proc
+al_dialog_slider_proc
+al_dialog_textbox_proc
+al_dialog_text_list_proc
+al_dialog_text_proc
+al_dialog_yield_proc
+al_do_arc
+al_do_circle
+al_do_dialog
+al_do_ellipse
+al_do_line
+al_do_menu
+al_dot_product
+al_dot_product_f
+al_draw_arc
+al_draw_character
+al_draw_circle
+al_draw_circle_fill
+al_draw_compiled_sprite
+al_draw_ellipse
+al_draw_ellipse_fill
+al_draw_gouraud_sprite
+al_draw_hline
+al_drawing_mode
+al_draw_line
+al_draw_lit_rle_sprite
+al_draw_lit_sprite
+al_draw_polygon
+al_draw_polygon_3d
+al_draw_polygon_3d_f
+al_draw_rect
+al_draw_rect_fill
+al_draw_rle_sprite
+al_draw_spline
+al_draw_sprite
+al_draw_sprite_h_flip
+al_draw_sprite_v_flip
+al_draw_sprite_vh_flip
+al_draw_trans_rle_sprite
+al_draw_trans_sprite
+al_draw_triangle
+al_draw_triangle_3d
+al_draw_triangle_3d_f
+al_draw_vline
+al_empty_string[]
+al_enable_triple_buffer
+al_error[AL_ERROR_SIZE]
+al_fade_from
+al_fade_from_range
+al_fade_in
+al_fade_in_range
+al_fade_interpolate
+al_fade_out
+al_fade_out_range
+al_file_exists
+al_file_size
+al_file_time
+al_findclose
+al_find_datafile_object
+al_find_dialog_focus
+al_findfirst
+al_findnext
+al_find_resource_file
+al_fix_acos
+al_fix_acos
+al_fix_add
+al_fix_asin
+al_fix_atan
+al_fix_atan2
+al_fix_ceil
+al_fix_cos
+al_fix_div
+al_fix_filename_case
+al_fix_filename_path
+al_fix_filename_slashes
+al_fix_floor
+al_fix_hypot
+al_fix_mul
+al_fix_sin
+al_fix_sqrt
+al_fix_sub
+al_fix_tan
+al_fix_to_float
+al_fix_to_int
+al_fixup_datafile
+al_fli_bitmap
+al_fli_bmp_dirty_from
+al_fli_bmp_dirty_to
+al_fli_frame
+al_fli_pal_dirty_from
+al_fli_pal_dirty_to
+al_fli_palette
+al_fli_timer
+al_float_to_fix
+al_floodfill
+al_flush_config_file
+al_font_8x8
+al_for_each_file
+al_free_audio_stream_buffer
+al_freeze_mouse_flag
+al_generate_332_palette
+al_generate_optimized_palette
+al_get_a
+al_get_a32
+al_get_align_matrix
+al_get_align_matrix_f
+al_get_audio_stream_buffer
+al_get_b
+al_get_b15
+al_get_b16
+al_get_b24
+al_get_b32
+al_get_b8
+al_get_b_depth
+al_get_camera_matrix
+al_get_camera_matrix_f
+al_get_color
+al_get_config_argv
+al_get_config_float
+al_get_config_hex
+al_get_config_id
+al_get_config_int
+al_get_config_string
+al_get_config_text
+al_get_datafile_property
+al_get_desktop_resolution
+al_get_display_switch_mode
+al_get_executable_name
+al_get_extension
+al_get_extension_const
+al_get_filename
+al_get_filename_const
+al_get_g
+al_get_g15
+al_get_g16
+al_get_g24
+al_get_g32
+al_get_g8
+al_get_g_depth
+al_get_gfx_mode_list
+al_get_mouse_mickeys
+al_get_palette
+al_get_palette_range
+al_get_pixel
+al_get_pixel_15
+al_get_pixel_16
+al_get_pixel_24
+al_get_pixel_32
+al_get_pixel_8
+al_get_r
+al_get_r15
+al_get_r16
+al_get_r24
+al_get_r32
+al_get_r8
+al_get_r_depth
+al_get_refresh_rate
+al_get_rotation_matrix
+al_get_rotation_matrix_f
+al_get_rotation_quat
+al_get_scaling_matrix
+al_get_scaling_matrix_f
+al_get_sound_input_cap_bits
+al_get_sound_input_cap_parm
+al_get_sound_input_cap_rate
+al_get_sound_input_cap_stereo
+al_get_transformation_matrix
+al_get_transformation_matrix_f
+al_get_translation_matrix
+al_get_translation_matrix_f
+al_get_uformat
+al_get_vector_rotation_matrix
+al_get_vector_rotation_matrix_f
+al_get_vector_rotation_quat
+al_get_voice_frequency
+al_get_voice_pan
+al_get_voice_position
+al_get_voice_volume
+al_get_x_rotate_matrix
+al_get_x_rotate_matrix_f
+al_get_x_rotate_quat
+al_get_y_rotate_matrix
+al_get_y_rotate_matrix_f
+al_get_y_rotate_quat
+al_get_z_rotate_matrix
+al_get_z_rotate_matrix_f
+al_get_z_rotate_quat
+al_gfx_capabilities
+al_gui_bg_color
+al_gui_fg_color
+al_gui_font_baseline
+al_gui_mg_color
+al_gui_mouse_focus
+al_gui_put_text
+al_gui_strlen
+al_hook_config_section
+al_hsv_to_rgb
+al_id[]
+al_identity_matrix
+al_identity_matrix_f
+al_identity_quat
+al_i_love_bill
+al_init_dialog
+al_install_joystick
+al_install_keyboard
+al_install_keyboard_hooks
+al_install_mouse
+al_install_sound
+al_install_sound_input
+al_install_timer
+al_int_to_fix
+al_is_linear_bitmap
+al_is_memory_bitmap
+al_is_planar_bitmap
+al_is_same_bitmap
+al_is_screen_bitmap
+al_is_sub_bitmap
+al_is_system_bitmap
+al_is_video_bitmap
+al_joy[n]
+al_key[AL_KEY_MAX]
+al_keyboard_needs_poll
+al_key_led_flag
+al_key_pressed
+al_key_shifts
+al_load_bitmap
+al_load_bmp
+al_load_datafile
+al_load_datafile_callback
+al_load_datafile_object
+al_load_ibk
+al_load_joystick_data
+al_load_lbm
+al_load_midi
+al_load_midi_patches
+al_load_pcx
+al_load_sample
+al_load_tga
+al_load_voc
+al_load_wav
+al_lock_bitmap
+al_lock_midi
+al_lock_sample
+al_make_acolor
+al_make_acolor_32
+al_make_acolor_depth
+al_make_color
+al_make_color_15
+al_make_color_15_dither
+al_make_color_16
+al_make_color_16_dither
+al_make_color_24
+al_make_color_32
+al_make_color_8
+al_make_color_depth
+al_matrix_mul
+al_matrix_mul_f
+al_matrix_to_quat
+al_midi_loop_end
+al_midi_loop_start
+al_midi_pos
+al_mouse_b
+al_mouse_needs_poll
+al_mouse_pos
+al_mouse_sprite
+al_mouse_x
+al_mouse_x_focus
+al_mouse_y
+al_mouse_y_focus
+al_mouse_z
+al_need_uconvert
+al_next_fli_frame
+al_normalize_vector
+al_normalize_vector_f
+al_num_joysticks
+al_object_message
+al_offer_focus
+al_open_fli
+al_open_memory_fli
+al_os_is_multitasking
+al_os_revision
+al_os_type
+al_os_version
+al_override_config_data
+al_override_config_file
+al_pack_fclose_chunk
+al_packfile_password
+al_pack_fopen
+al_pack_fopen_chunk
+al_palette_color[256]
+al_pause_midi
+al_persp_project
+al_persp_project_f
+al_pivot_scaled_sprite
+al_pivot_scaled_sprite_v_flip
+al_pivot_sprite
+al_pivot_sprite_v_flip
+al_play_audio_stream
+al_play_fli
+al_play_memory_fli
+al_play_midi
+al_play_midi_looped
+al_play_sample
+al_poll_joystick
+al_poll_keyboard
+al_poll_mouse
+al_poll_scroll
+al_polygon_z_normal
+al_polygon_z_normal_f
+al_pop_config_state
+al_popup_dialog
+al_position_dialog
+al_position_mouse
+al_position_mouse_z
+al_printf_text
+al_printf_text_centre
+al_printf_text_justify
+al_printf_text_right
+al_push_config_state
+al_put_backslash
+al_put_pixel
+al_putpixel_16
+al_putpixel_24
+al_putpixel_32
+al_putpixel_8
+al_putpixel_8
+al_put_text
+al_put_text_centre
+al_put_text_justify
+al_put_text_right
+al_qscale_matrix
+al_qscale_matrix_f
+al_qtranslate_matrix
+al_qtranslate_matrix_f
+al_quad_3d
+al_quad_3d_f
+al_quat_interpolate
+al_quat_mul
+al_quat_slerp
+al_quat_to_matrix
+al_read_keyboard
+al_read_sound_input
+al_reallocate_voice
+al_register_assert_handler
+al_register_bitmap_file_type
+al_register_datafile_object
+al_register_trace_handler
+al_register_uformat
+al_release_bitmap
+al_release_screen
+al_release_voice
+al_reload_config_texts
+al_remove_display_switch_callback
+al_remove_joystick
+al_remove_keyboard
+al_remove_mouse
+al_remove_sound
+al_remove_sound_input
+al_remove_timer
+al_render_scene
+al_replace_extension
+al_replace_filename
+al_request_refresh_rate
+al_request_scroll
+al_request_video_bitmap
+al_reserve_voices
+al_reset_fli_variables
+al_rest
+al_rest_callback
+al_resume_midi
+al_retrace_count
+al_rgb_map
+al_rgb_to_hsv
+al_rotate_scaled_sprite
+al_rotate_scaled_sprite_v_flip
+al_rotate_sprite
+al_rotate_sprite_v_flip
+al_save_bitmap
+al_save_bmp
+al_save_joystick_data
+al_save_pcx
+al_save_tga
+al_scancode_to_ascii
+al_scare_mouse
+al_scare_mouse_area
+al_scene_gap
+al_scene_polygon_3d
+al_scene_polygon_3d_f
+al_screen
+al_scroll_screen
+al_seek_midi
+al_select_file
+al_select_gfx_mode
+al_select_palette
+al_select_palette
+al_send_dialog_message
+al_set_add_blender
+al_set_alpha_blender()
+al_set_blender_mode
+al_set_blender_mode_ex
+al_set_burn_blender
+al_set_clip
+al_set_color_blender
+al_set_color_conversion
+al_set_color_depth
+al_set_color_no_vsync
+al_set_config_data
+al_set_config_file
+al_set_config_float
+al_set_config_hex
+al_set_config_id
+al_set_config_int
+al_set_config_string
+al_set_dialog_color
+al_set_difference_blender
+al_set_display_switch_callback
+al_set_display_switch_mode
+al_set_dissolve_blender
+al_set_dodge_blender
+al_set_gfx_mode
+al_set_hue_blender
+al_set_invert_blender
+al_set_keyboard_leds
+al_set_keyboard_rate
+al_set_luminance_blender
+al_set_mouse_range
+al_set_mouse_speed
+al_set_mouse_sprite
+al_set_mouse_sprite_focus
+al_set_multiply_blender
+al_set_palette
+al_set_palette_color
+al_set_palette_range
+al_set_projection_viewport
+al_set_saturation_blender
+al_set_screen_blender
+al_set_sound_input_source
+al_set_trans_blender
+al_set_ucodepage
+al_set_uformat
+al_set_voice_echo
+al_set_voice_frequency
+al_set_voice_pan
+al_set_voice_play_mode
+al_set_voice_position
+al_set_voice_priority
+al_set_voice_tremolo
+al_set_voice_vibrato
+al_set_voice_volume
+al_set_volume
+al_set_volume_per_voice
+al_set_window_close_button
+al_set_window_close_hook
+al_set_window_title
+al_set_write_alpha_blender
+al_set_zbuffer
+al_show_alert
+al_show_alert_3
+al_show_message
+al_show_mouse
+al_show_video_bitmap
+al_shutdown_dialog
+al_simulate_keypress
+al_simulate_ukeypress
+al_solid_mode
+al_split_modex_screen
+al_start_sound_input
+al_start_voice
+al_start_voice_frequency_sweep
+al_start_voice_pan_sweep
+al_start_voice_volume_ramp
+al_stop_audio_stream
+al_stop_midi
+al_stop_sample
+al_stop_sound_input
+al_stop_voice
+al_stop_voice_frequency_sweep
+al_stop_voice_pan_sweep
+al_stop_voice_volume_ramp
+al_stream_midi
+al_stretch
+al_stretch
+al_stretch_masked
+al_stretch_sprite
+al_text_height
+al_text_length
+al_text_mode
+al_three_finger_flag
+al_timer_can_simulate_retrace
+al_timer_is_using_retrace
+al_timer_simulate_retrace
+al_uatof
+al_uconvert
+al_uconvert
+al_uconvert_ascii
+al_uconvert_size
+al_uconvert_to_ascii
+al_ucwidth
+al_ugetat
+al_ugetc
+al_ugetx
+al_ugetxc
+al_uinsert
+al_uisdigit
+al_uisok
+al_uisspace
+al_unscare_mouse
+al_unselect_palette
+al_uoffset
+al_update_dialog
+al_uread_key
+al_uremove
+al_usetat
+al_usetc
+al_usprintf
+al_ustrcat
+al_ustrchr
+al_ustrcmp
+al_ustrcpy
+al_ustrdup
+al_ustrdup_m
+al_ustrerror
+al_ustricmp
+al_ustrlen
+al_ustrlwr
+al_ustrncat
+al_ustrncmp
+al_ustrncpy
+al_ustrpbrk
+al_ustrrchr
+al_ustrsize
+al_ustrsizez
+al_ustrstr
+al_ustrtod
+al_ustrtok
+al_ustrtok_r
+al_ustrtol
+al_ustrupr
+al_ustrzcat
+al_ustrzcpy
+al_ustrzncat
+al_ustrzncpy
+al_uszprintf
+al_utolower
+al_utoupper
+al_uvsprintf
+al_uvszprintf
+al_uwidth
+al_uwidth_max
+al_vector_length
+al_vector_length_f
+al_voice_check
+al_vsync
+al_yield_timeslice
+install_allegro
+remove_allegro
+alqnx_get_window
+alwin_blit_from_hdc
+alwin_blit_to_hdc
+alwin_convert_bitmap_to_hbitmap
+alwin_convert_hbitmap_to_bitmap
+alwin_convert_hpalette_to_palette
+alwin_convert_palette_to_hpalette
+alwin_draw_sprite
+alwin_get_dc
+alwin_get_window
+alwin_release_dc
+alwin_set_gdi_color_format
+alwin_set_palette
+alwin_set_window
+alwin_set_wnd_create_proc
+alwin_stretch_from_hdc
+alwin_stretch_to_hdc
+(*al_digi_recorder)
+(*al_gui_button_proc)
+(*al_gui_ctext_proc)
+(*al_gui_edit_proc)
+(*al_gui_list_proc)
+(*al_gui_menu_draw_menu)
+(*al_gui_menu_draw_menu_item)
+(*al_gui_mouse_b)
+(*al_gui_mouse_x)
+(*al_gui_mouse_y)
+(*al_gui_mouse_z)
+(*al_gui_shadow_box_proc)
+(*al_gui_text_list_proc)
+(*al_keyboard_callback)
+(*al_keyboard_lowlevel_callback)
+(*al_keyboard_ucallback)
+(*al_midi_meta_callback)
+(*al_midi_msg_callback)
+(*al_midi_recorder)
+(*al_midi_sysex_callback)
+(*al_mouse_callback)
+(*al_retrace_proc)
+AL_ASSERT
+AL_MASK_COLOR_15
+AL_MASK_COLOR_16
+AL_MASK_COLOR_24
+AL_MASK_COLOR_32
+AL_MASK_COLOR_8
+AL_TRACE
+
+
+=======================================================================
+Examples
+
+Here I put a few basic examples of Allegro which should give you the
+look and feel of the new API in use. They are slightly modificated and
+icomplete to reduce the parts which are uninteresting:
+
+int main_exhello()
+{
+   install_allegro();
+   al_install_keyboard();
+
+   if (al_set_gfx_mode(AL_GFX_SAFE, 320, 200, 0, 0) != 0) {
+      al_set_gfx_mode(AL_GFX_TEXT, 0, 0, 0, 0);
+      al_show_message("Unable to set any graphic mode\n%s\n", al_error);
+      return 1;
+   }
+
+   al_set_palette(desktop_palette);
+   al_clear_to_color(al_screen, al_make_color(255, 255, 255));
+
+   al_acquire_screen();
+   al_text_mode(-1);
+   al_put_text_centre(al_screen, al_font_8x8, "Hello, world!", AL_SCREEN_W/2,
+      AL_SCREEN_H/2, al_make_color(0,0,0));
+
+   al_release_screen();
+   al_read_key();
+
+   return 0;
+}
+END_OF_MAIN();
+
+
+
+int main_exmidi(int argc, char *argv[])
+{
+   AL_MIDI *the_music;
+
+   install_allegro();
+   if (argc != 2) {
+      al_show_message("Usage: 'exmidi filename.mid'\n");
+      return 1;
+   }
+
+   al_install_keyboard();
+   al_install_timer();
+
+   if (al_install_sound(AL_DIGI_AUTODETECT, AL_MIDI_AUTODETECT, argv[0]) != 0) {
+      al_show_message("Error initialising sound system\n%s\n", al_error);
+      return 1;
+   }
+
+   the_music = al_load_midi(argv[1]);
+   if (!the_music) {
+      al_show_message("Error reading MIDI file '%s'\n", argv[1]);
+      return 1;
+   }
+
+   if (al_set_gfx_mode(AL_GFX_SAFE, 320, 200, 0, 0) != 0) {
+      al_set_gfx_mode(AL_GFX_TEXT, 0, 0, 0, 0);
+      al_show_message("Unable to set any graphic mode\n%s\n", al_error);
+      return 1;
+   }
+   al_set_palette(al_desktop_palette);
+   al_clear_to_color(al_screen, al_make_color(255, 255, 255));
+   al_text_mode(-1);
+
+   al_printf_text_centre(al_screen, al_font_8x8, AL_SCREEN_W/2, AL_SCREEN_H/3,
+      al_make_color(0, 0, 0), "Driver: %s", al_midi_driver->name);
+   al_printf_text_centre(al_screen, al_font, AL_SCREEN_W/2, AL_SCREEN_H/2,
+      al_make_color(0, 0, 0), "Playing %s", argv[1]);
+
+   al_play_midi(the_music, TRUE);
+   al_read_key();
+   al_destroy_midi(the_music);
+   return 0;
+}
+
+END_OF_MAIN();
+

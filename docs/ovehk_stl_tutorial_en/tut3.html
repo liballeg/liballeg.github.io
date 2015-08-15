@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+   <head>
+      <title>Allegro/STL Tutorial: chapter 3</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+      <meta name="author" content="Ove K&aring;ven">
+   </head>
+   <body text="#000000" bgcolor="#FFFFFF" link="#0000EF" vlink="#51188E" alink="#FF0000">
+<H1>Chapter 3</H1>
+<H2>3. Game Basics</H2>
+<H3>3.1 The Backdrop</H3>
+Now that our palette is ready, let's start to get some actual graphics
+onto the screen. We will first create a backdrop bitmap. First we must
+create a bitmap with <CODE>create_bitmap()</CODE>, then we can draw
+onto it, and finally we will blit it onto the screen.
+Here is the code that does this.
+<PRE>
+#include &lt;allegro.h&gt;
+#include "tutorial.h"
+
+#define MIN_Y 8
+
+DATAFILE* data;
+BITMAP* backdrop;
+
+int main()
+{
+ allegro_init();
+ install_keyboard();
+
+ data=load_datafile("tutorial.dat");
+
+ set_gfx_mode(GFX_VGA,320,200,0,0);
+
+ set_palette((RGB*)data[TUT_GAMEPAL].dat);
+
+ // create 320x192 backdrop
+ backdrop=create_bitmap(320,192);
+ for (int Y=0; Y&lt;128; Y++) hline(backdrop,0,Y,319, (Y/2)+128);
+ for (int Y=128; Y&lt;192; Y++) hline(backdrop,0,Y,319, ((Y-128)/2)+192);
+
+ blit(backdrop,screen,0,0,0,MIN_Y,320,200);
+
+ readkey();
+ return 0;
+}
+</PRE>
+As you should know, <CODE>#define</CODE> is a preprocessor directive used
+to create a symbolic alias for something else. Here, we use
+<CODE>MIN_Y</CODE> to decide at what Y position the game screen starts,
+which we preset to be at Y=8, leaving us sufficient room for a status bar
+at the top later on. We have also defined the global variable
+<CODE>backdrop</CODE> to be a pointer to a <CODE>BITMAP</CODE>. We use
+<CODE>create_bitmap()</CODE> to allocate a 320x192 bitmap, then use a
+couple of <B>for</B> loops to fill every scanline of it with an appropriate
+color, using <CODE>hline()</CODE> to draw each of the horizontal lines onto
+the backdrop bitmap. Finally, we use <CODE>blit()</CODE> to copy the
+backdrop onto the screen at the appropriate position. We now have the
+game background ready. (You are of course free to modify the colors as you
+see fit.)
+<H3>3.2 Double Buffering</H3>
+In our game, we are going to use the animation technique known as
+"double buffering". This means that for each frame (animation snapshot),
+we will build the displayed image in an off-screen buffer, then blit it
+onto the screen. This is necessary since if we drew everything sprite by
+sprite directly onto the screen, it would flicker badly.
+<P>
+(The technique known as "page flipping" is a similar solution but builds
+the frame in a part of video memory that isn't shown, and then tells the
+graphics card to show that part of video memory. In this context, each
+screenful of data in video memory is known as a page, and page flipping
+alternates between two pages. If there's a lot of overdraw or special
+effects, double buffering will be faster, but if there isn't much to draw
+page flipping is faster. However, in the standard VGA 320x200 256-color
+graphics mode, there can only be one page, so page flipping is not possible.)
+<P>
+To illustrate this technique, we will now make our game using double
+buffering to move the helicopter across the screen until you hit a key.
+<PRE>
+#include &lt;allegro.h&gt;
+#include "tutorial.h"
+
+#define MIN_Y 8
+
+DATAFILE*data;
+BITMAP*backdrop,*framebuf;
+
+int main()
+{
+ allegro_init();
+ install_keyboard();
+
+ data=load_datafile("tutorial.dat");
+
+ set_gfx_mode(GFX_VGA,320,200,0,0);
+
+ set_palette((RGB*)data[TUT_GAMEPAL].dat);
+
+ // create 320x192 backdrop
+ backdrop=create_bitmap(320,192);
+ for (int Y=0; Y&lt;128; Y++) hline(backdrop,0,Y,319, (Y/2)+128);
+ for (int Y=128; Y&lt;192; Y++) hline(backdrop,0,Y,319, ((Y-128)/2)+192);
+
+ // create 320x200 double buffer
+ framebuf=create_bitmap(320,200);
+ clear(framebuf);
+
+ for (int X=0; X&lt;320; X++) {
+  // build frame
+  blit(backdrop,framebuf,0,0,0,MIN_Y,320,200);
+  draw_rle_sprite(framebuf,(RLE_SPRITE*)data[TUT_CHOPPER].dat,X,100);
+  // display frame
+  vsync();
+  blit(framebuf,screen,0,0,0,0,320,200);
+ }
+ readkey();
+ return 0;
+}
+</PRE>
+Here, we create the <CODE>framebuf</CODE> bitmap to use as our double buffer,
+clear it so that where our planned status bar is supposed to be doesn't
+contain garbage. For each frame in that <B>for</B> loop, we blit the
+backdrop onto the buffer, then draw the helicopter sprite on top of this.
+Then we <CODE>vsync()</CODE> and then blit the buffer onto the visible
+screen.
+<P>
+The <CODE>vsync()</CODE> call waits for the vertical retrace, that is
+when the electron beam that illuminates every pixel on your monitor has
+finished the frame and is beginning to retrace back to the top of the image
+to begin a new screen refresh (typically 60 times per second). The best place
+to update the video memory is in exactly this small retrace period, because
+if you change the image while the electron beam is busy displaying it, you
+may get unwanted artifacts. This isn't serious, just doesn't always look good,
+and besides, there isn't much reason to update the image more often than it
+can be displayed.
+<H3>3.3 User Input</H3>
+Making a chopper cruise across the screen over a cool shaded background is
+all fine and well, but what we want to do is to make a game, that means
+that the user should have at least some control of what he's doing,
+otherwise he could just as well rent a video. So, to show how this can be
+done, we will let the user steer the chopper around the screen using the
+keyboard or joystick.
+<PRE>
+#include &lt;allegro.h&gt;
+#include "tutorial.h"
+
+#define MIN_Y 8
+
+DATAFILE*data;
+BITMAP*backdrop,*framebuf;
+int X=0,Y=100;
+
+int main()
+{
+ allegro_init();
+ install_keyboard();
+ initialise_joystick();
+
+ data=load_datafile("tutorial.dat");
+
+ set_gfx_mode(GFX_VGA,320,200,0,0);
+
+ set_palette((RGB*)data[TUT_GAMEPAL].dat);
+
+ // create 320x192 backdrop
+ backdrop=create_bitmap(320,192);
+ for (int Y=0; Y&lt;128; Y++) hline(backdrop,0,Y,319, (Y/2)+128);
+ for (int Y=128; Y&lt;192; Y++) hline(backdrop,0,Y,319, ((Y-128)/2)+192);
+
+ // create 320x200 double buffer
+ framebuf=create_bitmap(320,200);
+ clear(framebuf);
+
+ while (!key[KEY_ESC]) {
+  // build frame
+  blit(backdrop,framebuf,0,0,0,MIN_Y,320,200);
+  draw_rle_sprite(framebuf,(RLE_SPRITE*)data[TUT_CHOPPER].dat,X,Y);
+  // display frame
+  vsync();
+  blit(framebuf,screen,0,0,0,0,320,200);
+  // get user input
+  poll_joystick();
+  if (key[KEY_LEFT]||joy_left) X--;
+  if (key[KEY_RIGHT]||joy_right) X++;
+  if (key[KEY_UP]||joy_up) Y--;
+  if (key[KEY_DOWN]||joy_down) Y++;
+ }
+ return 0;
+}
+</PRE>
+This is not very advanced, it does not do any bounds-checking or anything,
+it is only meant to show how the Allegro keyboard and digital joystick
+subsystems can be used to control an object. However, we won't do it
+exactly this way in our actual game, we will be somewhat more ambitious in
+our game control design.
+<P>
+To learn more, proceed to the <A HREF="tut4.html">next chapter</A>
+
+</body>
+</html>

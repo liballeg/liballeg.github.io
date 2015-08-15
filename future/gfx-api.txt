@@ -1,0 +1,1904 @@
+# date: 2003 - 12 - 30
+# Graphics API. Details of a user's view to Allegro 5.
+
+
+Changelog:
+
+* 2003/12/30
+- Cleared up the role of the alpha channel on al_blit()
+- Various formatting changes
+- Display bitmap update mode was make into a recommendation.
+- Added 16-bit per component display formats
+- Added some 3-component display formats
+- Generatlized RLE bitmaps to Compressed bitmaps.
+- Removed the useless 'int x' parameter to al_map_yuv422()
+- Removed al_get_bitmap_component_ordering(), replaced by
+  al_get_bitmap_component_positions()
+
+
+
+* 2003/04/19
+- Renamed AL_NOT_MASK_SOURCE to AL_MASK_INV_SOURCE and AL_NOT_DEST_MASK to
+  AL_MASK_INV_DEST.
+- Removed sub-pixel precision and linear interpolation hints. Replaced them
+  with a generic AL_FILTER, which can be controlled by al_set_bitmap_filter().
+- Added al_get_bitmap_region_info()
+- Added al_set_bitmap_filter()
+- Changed clip behavior of al_blit_region_3()
+
+
+History (as of 10-Jan-2003):
+- Added missing flip flags to the other blit functions, as pointed out by
+  Lennart Steinke 
+- Fixed up the behavior of al_list_bitmap_clip() as suggested by Peter Hull.
+- Removed text/font functions from this proposal. They are better left for
+  a separate one.
+- Documented bitmap acquire/release functions
+- Removed XOR mode. This mode can be merged with the blenders
+- Documented primitive drawing functions.
+- Renamed AL_PRIMITIVE_LINE to AL_OUTLINE, as per Lennart Steinke's
+  suggestion and to reduce typing.
+- Renamed AL_TRANS_BLIT to AL_BLEND, as suggested by Nick Davis,
+  and AL_LIT_BLIT to AL_LIT to potentially reuse it for the primitive
+  functions.
+- Removed the circle drawing function and generalized the ellipse one
+  to draw a shape enclosed by a rectangle as suggested by Chris Barry
+  and 'Rash'
+- Updated some of the config variables.
+- Added an 8+8 interleaved format (AL_8_8_I) to support YUV422.
+- Renamed blit_clip to blit_region
+- Renamed blit_scale to blit_scaled and rotate_scale_bitmap to
+  rotate_scaled_bitmap
+- Renamed AL_8 and family to AL_COLOR_*, after overwhelming support
+  for more verbose names.
+- Added wording about alpha channels
+- Documented the al_map_* family of routines.
+- Dropped the 'x' parameter in the yuv mapping functions. It isn't necessairy
+  and will complicate the implementation.
+- Changed return type of al_is_bitmap_of_type() to bool.
+- Started writting a prototype header file.
+- Documented low-level bitmap access.
+- Added an example for the low-level bitmap access routines.
+- Renamed al_blit_3_clip() to al_blit_region_3().
+- Added interpolation hints to the rotate and stretch functions.
+ 
+ 
+/* Insert intro paragraph on graphics and bitmaps, as they relate to Allegro */
+
+
+/**** Blitting ****/
+
+
+/* void al_blit(int flag, AL_BITMAP *source, AL_BITMAP *dest,
+                int dest_x, int dest_y);
+ */
+/* Copies a rectangular area of the source bitmap to the destination bitmap.
+ * The dest_x and dest_y are the coordinates of the top-left corner in the
+ * destination bitmap where the source bitmap will be drawn. This routine
+ * respects the source and destination clipping rectangles.
+ *
+ * If the flags parameter is zero, you can blit between any parts of any two
+ * bitmaps, even if the two memory areas overlap (ie. source and dest are the
+ * same, or one is sub-bitmap of the other). You should be aware, however,
+ * that a lot of SVGA cards don't provide separate read and write banks,
+ * which means that blitting from one part of the screen to another requires
+ * the use of a temporary bitmap in memory, and is therefore extremely slow.
+ * As a general rule you should avoid blitting from the screen onto itself in
+ * SVGA modes. 
+ *
+ * If the flags parameter is not zero, then performing blits in between
+ * overlapping regions has an undefined result.
+ *
+ * If the gfx/current/hw_vram_blit flag is set, and the flags parameter is 0,
+ * the current driver supports hardware accelerated blits from one part of
+ * the current display or associated video bitmaps onto another (in the same
+ * display). This is extremely fast, so when this flag is set it may be worth
+ * storing some of your more frequently used graphics in an offscreen portion
+ * of the video memory by using video bitmaps.
+ *
+ * Similarly, if the gfx/current/hw_vram_masked_blit flag is set and the flags
+ * parameter is set to AL_MASK_SOURCE, then source-masked blitting is supported
+ * in between the current display, or an associated video bitmap, and another
+ * video bitmap or another part of the same display.
+ *
+ * Unlike most of the graphics routines, al_blit() allows the source and
+ * destination bitmaps to be of different color depths, so it can be used
+ * to convert images from one pixel format to another. Note however that
+ * color conversion is only available if the flags parameter is set to 0.
+ * Color conversion can be performed in between any type of bitmap supported
+ * by Allegro. The color converters will use the direct bitmap access routines.
+ *
+ * Additionally, you may not blit from a video, system, display, or sub-bitmaps
+ * thereof that inherit from one display bitmap to video, system, display or
+ * sub-bitmaps thereof that inherit from some other display bitmap.
+ * That is, video and system bitmaps are linked to the display bitmap they
+ * inherit from, and cannot be directly blitted to some other display bitmap
+ * or associated video and system bitmaps. If you really need to cross-blit
+ * in between display bitmap 'families', then use a temporary memory bitmap.
+ *
+ * The flag parameter can be almost any binary OR (|) combination of:
+ *  - AL_MASK_SOURCE - Don't copy source pixels that are of the mask color
+ *  - AL_MASK_DEST   - Don't copy source pixels if the corresponding
+ *                     destination pixel is of the mask color
+ *  - AL_MASK_INV_SOURCE - Don't copy source pixels that are not of the mask
+ *                         color
+ *  - AL_MASK_INV_DEST   - Don't copy source pixels if the corresponding
+ *                         destination pixel is not of the mask color.
+ *  - AL_BLEND       - Draws pixels tranlucently. See al_set_blender()
+ *                     for details. This flag cannot be used in conjunction
+ *                     with AL_LIT.
+ *  - AL_LIT         - Lits the source pixels with the current blend color
+ *                     before writting them to the destination.
+ *                     This flag cannot be used with AL_BLEND.
+ *  - AL_HORIZONTAL_FLIP - Flips the source bitmap along the x axis. The top
+ *                         row of pixels ends up at the bottom and vice versa
+ *  - AL_VERTICAL_FLIP   - Flips the source bitmap along the y axis. The left
+ *                         column of pixels ends up at the right and vice versa
+ *  (desribe the flags in more details)
+ *
+ *  Additional flags can be added via add-ons. (How??)
+ *  
+ * The alpha channel, if present, does not affect pixel processing for any but
+ * the AL_BLEND and AL_LIT drawing modes.
+ *
+ * Comments:
+ *  - The flag parameter can be used to add more functionality
+ *  - Reduction in the API from Allegro 4
+ *  - However, more code will included in static builds.
+ *  - Only flag parameter of 0 will perform color conversion.
+ */
+void al_blit(int flag, AL_BITMAP *source, AL_BITMAP *dest,
+             int dest_x, int dest_y);
+
+
+
+/* void al_blit_region(int flag, AL_BITMAP *source, int source_x, int source_y,
+                       AL_BITMAP* dest, int dest_x, int dest_y,
+                       int width, int height)
+ */
+/* Similarly to al_blit(), al_blit_region() copies a rectangular region of
+ * the source bitmap to the destination bitmap. The source bitmap
+ * rectangle is user-specified. The source_x and source_y parameters
+ * are the coordinates of the top-left corder of the source bitmap
+ * area to be draw. The dest_x and dest_y are the coordinates of the
+ * top-left corner in the destination bitmap where the source bitmap area
+ * will be drawn. The width and height parameters indicate the size
+ * of the rectangle area to be copied. This routine respects the source
+ * and destination clipping rectangles.
+ *
+ * All the restrictions and freedoms provided by al_blit() are also provided
+ * by al_blit_region(), including color conversion, blending and hardware
+ * acceleration.
+ *
+ * al_blit(flags, source, dest, dest_x, dest_y) is strictly equivalent to
+ * al_blit_region(flags, source, 0, 0, dest, dest_x, dest_y, source->w, source->h);
+ */
+void al_blit_region(int flag, AL_BITMAP *source, int source_x, int source_y,
+                    AL_BITMAP* dest, int dest_x, int dest_y,
+                    int width, int height);
+
+
+
+/* void al_blit_scaled(int flag, AL_BITMAP *source, int source_x, int source_y,
+                       int source_w, int source_h, AL_BITMAP *dest,
+                       int dest_x, int dest_y, int dest_w, int dest_h)
+ */
+/* Scales a rectangular area of the source bitmap and draws it into the
+ * destination bitmap. The source bitmap rectangle is user-specified.
+ * The source_x and source_y parameters are the coordinates of the top-left
+ * corder of the source bitmap area to be be stretched. The source_w and
+ * source_h parameters designate the source rectangle's dimenions in pixels.
+ * The dest_x and dest_y are the coordinates of the top-left corner in the
+ * destination bitmap where the source bitmap area will be drawn. The dest_w
+ * and dest_h parameters indicate the size of the final stretched rectangle
+ * area to be copied. This routine respects the source and destination
+ * clipping rectangles.
+ * 
+ * Source width/height and destination width/height must be strictly positive
+ * numbers. If not, the call to al_blit_scaled() is ignored.
+ *
+ * The source and destination sizes can be arbitrary. This function can both
+ * stretch and shrink rectangular areas.
+ *
+ * Stretching from overlapping regions results in implementation-defined
+ * behavior.
+ *
+ * The flags parameter is more constrained however. The valid values described
+ * below can be combined in any way by using a binary OR (|):
+ *  - AL_MASK_SOURCE - Don't copy source pixels that are of the mask color
+ *  - AL_MASK_DEST   - Don't copy source pixels if the corresponding
+ *                     destination pixel is of the mask color
+ *  - AL_MASK_INV_SOURCE - Don't copy source pixels that are not of the mask
+ *                         color
+ *  - AL_MASK_INV_DEST   - Don't copy source pixels if the corresponding
+ *                         destination pixel is not of the mask color.
+ *  - AL_HORIZONTAL_FLIP - Flips the source bitmap along the x axis. The top
+ *                         row of pixels ends up at the bottom and vice versa
+ *  - AL_VERTICAL_FLIP   - Flips the source bitmap along the y axis. The left
+ *                         column of pixels ends up at the right and vice versa
+ *  - AL_FILTER
+ *
+ * The alpha channel, if present, is also scaled accordingly.
+ */
+ void al_blit_scaled(int flag, AL_BITMAP *source, int source_x, int source_y,
+                     int source_w, int source_h, AL_BITMAP *dest,
+                     int dest_x, int dest_y, int dest_w, int dest_h)
+
+
+
+/* void al_rotate_bitmap(int flag, AL_BITMAP *source,
+                         int source_center_x, int source_center_y,
+                         AL_BITMAP *dest, int dest_x, int dest_y, float angle)
+ */
+/* Rotates the bitmap counter-clockwise by the specified angle. The angle
+ * is expressed in radians. The center of the rotation is defined by the
+ * source_center_x and source_center_y parameters relative to the top-left
+ * corner of the source bitmap, in pixels. The rotated bitmap is drawn into
+ * the destination bitmap at the location specified by the dest_x and dest_y
+ * parameters. The destination coordinate is where the rotation center
+ * of the source bitmap will be drawn.
+ *
+ * The flags parameter can be any combination of the following, using
+ * binary OR (|):
+ *  - AL_MASK_SOURCE - Don't copy source pixels that are of the mask color
+ *  - AL_MASK_DEST   - Don't copy source pixels if the corresponding
+ *                     destination pixel is of the mask color
+ *  - AL_MASK_INV_SOURCE - Don't copy source pixels that are not of the mask
+ *                         color
+ *  - AL_MASK_INV_DEST   - Don't copy source pixels if the corresponding
+ *                         destination pixel is not of the mask color.
+ *  - AL_HORIZONTAL_FLIP - Flips the source bitmap along the x axis. The top
+ *                         row of pixels ends up at the bottom and vice versa
+ *  - AL_VERTICAL_FLIP   - Flips the source bitmap along the y axis. The left
+ *                         column of pixels ends up at the right and vice versa
+ *  - AL_FILTER      - Performs interpolation or filtering on the pixel
+ *                     data. See al_set_bitmap_filtering() for details.
+ *
+ * The alpha channel, if present, is rotated accordingly.
+ *
+ * al_rotate_bitmap(flag, source, center_x, center_y, dest, dest_x, dest_y, 
+ *                  angle)
+ * is strictly equivalent to 
+ * al_rotate_scale_bitmap(flag, source, center_x, center_y,
+ *                        dest, dest_x, dest_y, angle, 1.0, 1.0)
+ *
+ * This function respects the source and destination clip rectangles.
+ */
+void al_rotate_bitmap(int flag, AL_BITMAP *source,
+                      int source_center_x, int source_center_y,
+                      AL_BITMAP *dest, int dest_x, int dest_y, float angle)
+
+
+
+/* void al_rotate_scaled_bitmap(int flag,
+                  AL_BITMAP *source, int source_center_x, int source_center_y,
+                  AL_BITMAP *dest, int dest_x, int dest_y,
+                  float angle, float xscale, float yscale) */
+/* Like al_rotate_bitmap() but scales the source bitmap before rotating it.
+ * The xscale and yscale parameters specify the scaling factor. 1.0 is no
+ * scaling, 0.5 will half the size of the bitmap while 2.0 will enlarge it.
+ * The scaling factor can be any floating point value.
+ *
+ * The same flags as al_rotate_bitmap() apply to this function.
+ *
+ * This function respects the source and destination clip rectangles.
+ */
+void al_rotate_scaled_bitmap(int flag,
+                  AL_BITMAP *source, int source_center_x, int source_center_y,
+                  AL_BITMAP *dest, int dest_x, int dest_y,
+                  float angle, float xscale, float yscale)
+
+
+
+/* void al_blit_region_3(int flag,
+                         AL_BITMAP *source1, int source1_x, int source1_y,
+                         AL_BITMAP *source2, int source2_x, int source2_y,
+                         AL_BITMAP *dest, int dest_x, int dest_y,
+                         int dest_w, int dest_h)
+ */
+/* Some of the blitting modes require reading the destination pixels, such as
+ * blending or destination masking. However, reading from video memory can be
+ * quite slow, so it is very much discouraged. Instead, al_blit_3_clip() allows
+ * the use of a second source bitmap from which the pixels are read. This way,
+ * the destination bitmap is only written to, never read. This allows for
+ * very high-speed blending operations on video or display bitmaps. It can
+ * also be used for cross-fading two images in one pass.
+ *
+ * The source image (corresponding to the one in al_blit_clip()) is specified in
+ * source1. The second source image is specified in source2. The second source
+ * must either be a memory or system bitmap, or a video bitmap associated to
+ * the destination bitmap. The second source format and destination format must
+ * always match. The first source depth may be different from the other two but
+ * only in the case of alpha-blending 32-bit RGBA sprites into a bitmap of some
+ * other color depth. In all other cases, the color format of all three bitmaps
+ * need to match.
+ *
+ * The flags parameter is identical to the one in al_blit().
+ *
+ * The second source is ignored when flags does not contain AL_BLEND.
+ *
+ * The destination and the first source's clip rectangles are respected.
+ * The second source's clip rectangles are ignored.
+ */
+void al_blit_region_3(int flag,
+                      AL_BITMAP *source1, int source1_x, int source1_y,
+                      AL_BITMAP *source2, int source2_x, int source2_y,
+                      AL_BITMAP *dest, int dest_x, int dest_y,
+                      int dest_w, int dest_h)
+
+
+
+/**** Bitmap creation ****/
+
+typedef AL_BITMAP AL_DISPLAY;  /* Until we settle on what is what */
+
+
+/* AL_DISPLAY *al_create_display_bitmap(al_id_t card, int width, int height,
+                                        al_id_t format, al_id_t update_method)
+ */
+/* Creates a display bitmap. A display bitmap is a bitmap that can be shown
+ * on screen. It represents a bitmap that is directly visible to the user
+ * (ie: what they see on their monitors).
+ *
+ * Display bitmaps differ from regular bitmaps in that they have a user-visible
+ * and optionally, one or more user-invisible portions. When reading or
+ * writing to the display bitmap, the invisble portion of the bitmap
+ * (if present) is read from an writen to. The visible portion of the
+ * bitmap can only be updated via calls to al_show_display_bitmap().
+ * Using an invisible backbuffer helps reduce flickering and may
+ * even speed up some operations.
+ * Refer to the documentation of al_show_display_bitmap() for details.
+ *
+ * Creating a display bitmap may or may not change the monitor's
+ * resolution. You may or may not have the ability to have more than one
+ * display bitmap at a time.
+ *
+ * Display bitmaps are similar Allegro 4.0's 'screen'.
+ *
+ * The 'card' parameter can be one of:
+ *  - AL_GFX_FULL_SCREEN - Selects a full-screen display bitmap. The screen's
+ *                         resolution may be changed to accomodate the
+ *                         required display bitmap settings. Not all platforms
+ *                         support full screen display bitmaps.
+ *                         Typically, you can only have one display bitmap
+ *                         if you are using a full-screen mode. However,
+ *                         if the platform supports multiple monitors
+ *                         then multiple full-screen display bitmaps may be
+ *                         created, each on a different monitor.
+ *  - AL_GFX_WINDOWED    - Selects a windowed display bitmap. Not all platforms
+ *                         support windowed display bitmaps. For platforms that
+ *                         do support windowed bitmaps however, you can create
+ *                         multiple display bitmaps and Allegro will create and
+ *                         manage multiple windows.
+ *  - AL_GFX_SAFE        - Selects a display bitmap that is guaranteed to be
+ *                         creatable on the current platform. Color space and
+ *                         depth settings are ignored. You may get virtually any
+ *                         color depth and color space settings so your
+ *                         application should be able to work with all possible
+ *                         combinations.
+ *                         You may or may not get a full-screen mode. You can
+ *                         only create a single safe display bitmap; no other
+ *                         display bitmap can co-exist with a safe display
+ *                         bitmap.
+ *  - AL_GFX_AUTODETECT  - Allegro will autodetect whether the current platform
+ *                         supports windowed or full-screen modes, and will
+ *                         pick the mode that best matches the gfx configuration
+ *                         settings.
+ *
+ * For example, DOS will only support one full-screen display bitmap.
+ * Windows95 will support either multiple windowed display bitmaps or a single
+ * full-screen. Windows98, 2000 and XP can also support multiple full-screen
+ * display bitmaps if the system has multiple monitors. Under X, you may
+ * not be able to set a full-screen mode at all.
+ *
+ * The width and height parameters specify the size, in pixels, of the display
+ * bitmap to create.
+ *
+ * The update_method parameter is used to specify which method Allegro will use
+ * to update the visible portion of the display bitmap.
+ *
+ * The update_method parameter must be one of the following:
+ *   - AL_GFX_UPDATE_AUTO == 0
+ *   - AL_GFX_UPDATE_DIRECT
+ *   - AL_GFX_UPDATE_DOUBLE_BUFFERING
+ *   - AL_GFX_UPDATE_DIRTY_RECTANGLES
+ *   - AL_GFX_UPDATE_DOUBLE_VIDEO_BUFFERING
+ *   - AL_GFX_UPDATE_PAGE_FLIPPING
+ *   - AL_GFX_UPDATE_TRIPLE_BUFFERING
+ *
+ * Note that the update mode is only a suggestion. Individual drivers are free
+ * to pick the best matching mode they can get.
+ *
+ * See the documentation for al_show_display_bitmap() for the details
+ * on the display update methods.
+ *
+ * (Enumerate config settings)
+ * (Talk about pixels and screen coordinates?)
+ *
+ * Allegro supports several color spaces. The color space is
+ * specified by the following flags in the format parameter:
+ *   - AL_RGBA
+ *   - AL_RGB
+ *   - AL_PALETTE
+ *   - AL_YUV
+ *   - AL_LUMINANCE
+ *
+ * These flags select the color space but not the color depth. The depth
+ * is selected via one of the following flags, which are combined with 
+ * a binary OR (|) with the previous ones:
+ *   - AL_COLOR_8
+ *   - AL_COLOR_8_8_I
+ *   - AL_COLOR_5_5_5       (==  AL_COLOR_15?)
+ *   - AL_COLOR_5_6_5       (==  AL_COLOR_16?)
+ *   - AL_COLOR_8_8_8       (==  AL_COLOR_24?)
+ *   - AL_COLOR_8_8_8_8     (==  AL_COLOR_32?)
+ *   - AL_COLOR_10_10_10
+ *   - AL_COLOR_10_10_10_2
+ *   - AL_COLOR_16_16_16
+ *   - AL_COLOR_16_16_16_16
+ *   - AL_COLOR_32_32_32
+ *   - AL_COLOR_32_32_32_32 (== AL_COLOR_128?)
+ *
+ * The color depth specification can be augmented by the following flags, which
+ * are combined with a binray OR (|) with the previous ones:
+ *   - AL_COLOR_INTEGER
+ *   - AL_COLOR_FLOAT
+ *
+ * Note that not all combinations of formats and depths are valie.
+ *
+ * If you don't specify the color space, then Allegro will default to
+ * AL_RGB if there are 3 components, AL_RGBA if there are 4 components
+ * and AL_PALETTE if there is only one component. If you don't specify
+ * the color depth, then Allegro will select the desktop color depth
+ * (if applicable) or some other sensible default depending on the platform.
+ *
+ * For example, setting an RGB 5.6.5 16-bpp mode, you'd use:
+ * <code>
+ * AL_BITMAP *screen = al_create_display_bitmap(AL_GFX_AUTO, w, h,
+ *                     AL_COLOR_5_6_5, AL_GFX_UPDATE_AUTO);
+ * </code>
+ *
+ * Notice that we don't specify the color space so Allegro will select
+ * AL_RGB, since AL_COLOR_5_6_5 has 3 components.
+ *
+ * A call to al_destroy_bitmap() with a display bitmap as parameter will
+ * destroy the bitmap. If the display bitmap set a full-screen mode on creation
+ * then the resolution is restored on destruction.
+ *
+ * If Allegro is unable to create the desired display bitmap, or if the
+ * specified display bitmap is unsupported on the current platform, then
+ * NULL is returned.
+ */
+AL_DISPLAY *al_create_display_bitmap(al_id_t card, int width, int height,
+                                     al_id_t format, al_id_t update_method)
+
+
+
+/* AL_BITMAP *al_create_bitmap(int flags, AL_DISPLAY *inherit_from,
+                               int width, int height)
+ */
+/* Creates a bitmap of size width by height, and returns a pointer to it.
+ * The bitmap will have clipping turned on, and the clipping rectangle set
+ * to the full size of the new bitmap. The image memory will not be cleared, so
+ * it will probably contain garbage: you should initialize the bitmap data
+ * before using it.
+ *
+ * The bitmap's color depth, color component ordering and color space are
+ * inherited from the bitmap specified in the 'inherit_from' parameter.
+ * If NULL is used Allegro will use the global color space and depth settings
+ * instead. (??)
+ *
+ * You can select whether to create a memory, a video or a system bitmap
+ * by specifying the bitmap type in the flags parameter.
+ *
+ * Note that system and video bitmaps must always inherit from a display
+ * bitmap. Video and system bitmaps can only be blitted to memory bitmaps
+ * or video, system or display bitmaps (and sub-bitmaps thereof) that
+ * inherit from the same parent display bitmap. That is, you cannot blit
+ * blit from a video bitmap in display_1 to display_2.
+ *
+ * The inherit_from parameter is required for creating video or system bitmaps.
+ *
+ * Flags can be only one of:
+ *  - AL_BITMAP_TYPE_MEMORY == 0
+ *  - AL_BITMAP_TYPE_VIDEO
+ *  - AL_BITMAP_TYPE_SYSTEM
+ *
+ * This specifies the bitmap type to create.
+ *
+ * Additionally, you can OR the flags parameter with:
+ *  - AL_KEEP_MEMORY_COPY - For video bitmaps onle, specifies that a memory copy
+ *                          should be kept for high-speed reading. This switch 
+ *                          also allows the bitmap to be automatically restored
+ *                          after destructive context switches under Windows.
+ *                          Note that writes to that bitmap are performed at
+ *                          half speed, since two bitmaps need to be updated.
+ */
+AL_BITMAP *al_create_bitmap(int flags, AL_DISPLAY *inherit_from,
+                            int width, int height);
+
+
+
+/* AL_BITMAP *al_create_bitmap_2(int flags, AL_DISPLAY *inherit_from,
+                                 int width, int height, al_id_t format)
+ */
+/* Like al_create_bitmap() except that you can specify the color depth
+ * and color space for the bitmap. On some platform, video
+ * and system bitmaps may need to have their color space and depth match the
+ * display bitmap they are associated to. In that case, if those parameters
+ * do not match, NULL is returned.
+ *
+ * If the format is 0, then the same color depth and format as the
+ * parent is used.
+ *
+ * The format can be any one of the color space formats supported by Allegro.
+ * See the documentation for al_create_display_bitmap() for details.
+ *
+ * Additionally, the following color spaces are supported:
+ *  - AL_MONOCHROME
+ *
+ * The following depths are also supported:
+ *  - AL_COLOR_1
+ */
+AL_BITMAP *al_create_bitmap_2(int flags, AL_DISPLAY *inherit_from,
+                              int width, int height, al_id_t format);
+
+
+
+/* AL_BITMAP *al_compress_bitmap(AL_BITMAP *bmp) */
+/* Creates a compressed version of the specified bitmap. Compressed bitmaps
+ * have additional restrictions over regular bitmaps. You cannot draw
+ * into a compressed bitmaps.
+ *
+ * Compressed bitmaps typically have performence advantages over non-compressed
+ * bitmaps. Note that compression might be lossy - that is, the compressed
+ * bitmap may not be pixel-identical to the original bitmap.
+ *
+ * The parent bitmap's clipping rectangles are ignored.
+ *
+ * The source bitmap data is copied, so you no longer need to have the
+ * original bitmap around. Destroying the original bitmap will not
+ * affect operations on the compressed bitmap.
+ *
+ * You should destroy the compressed bitmap via a call to al_destroy_bitmap()
+ * when you are done using it.
+ *
+ * The bitmap specified by the 'bmp' parameter is not modified.
+ *
+ * If the bitmap is not compressible, NULL is returned.
+ *
+ * XXX What else can we say?
+ */
+AL_BITMAP *al_compress_bitmap(AL_BITMAP *bmp);
+
+
+
+/* AL_BITMAP *al_create_sub_bitmap(AL_BITMAP *parent, int x, int y,
+                                   int w, int h)
+ */
+/* Creates a sub-bitmap of the parent, at the specified coordinates and of the
+ * specified size. A sub-bitmap is a bitmap that shares drawing memory with a
+ * pre-existing (parent) bitmap, but possibly with a different size and clipping
+ * settings.
+ *
+ * When creating a sub-bitmap of a mode-X display bitmap, the x position must be
+ * a multiple of four (should we remove this limitation?)
+ *
+ * If the sub-bitmap does not lie completely inside the parent bitmap, then
+ * it is automatically clipped so that it does.
+ *
+ * The parent bitmap's clipping rectangles are ignored.
+ *
+ * If a sub-bitmap was not or cannot be created then NULL is returned.
+ *
+ * Note that destroying parents of sub-bitmaps will not destroy the
+ * sub-bitmaps; instead the sub-bitmaps become invalid and should no
+ * longer be used.
+ */
+AL_BITMAP *al_create_sub_bitmap(AL_BITMAP *parent, int x, int y, int w, int h);
+
+
+
+/**** Clipping ****/
+
+
+/* void al_set_bitmap_clip(AL_BITMAP *bitmap, int id, int x, int y, int w, int h) */
+/* Each bitmap has a associated clipping rectangles, which are the areas of
+ * the image that are allowed to be read and written by Allegro. Nothing
+ * will be drawn to pixels outside this space.
+ *
+ * As Allegro supports multiple clip rectangles, you must specify the id
+ * number of the clip rectangle you'd like to set up. The id number is
+ * arbitrary - you can use any number and there is no speed or memory
+ * penalty for chosing one set of numbers over an other.
+ *
+ * By default, the clip rectangle of id 0 is enabled and clips
+ * the bitmap to its dimensions.
+ *
+ * Specify the top-left corner of the clip rectangle by the x and y
+ * parameters (in pixels), and the size of the rectangle in pixels
+ * by the width and height parameters.
+ *
+ * Width and Height must be non-negative, but can be zero.
+ *
+ * Invalid clip rectangles are ignored.
+ *
+ * If a clip rectangle is outsize the bitmap, then it itself is clipped
+ * to the bitmap dimensions.
+ *
+ * If there are no enabled clip rectangles, then clipping is disabled, which
+ * may speed up some drawing operations by a small amount but will result
+ * in your program dying a horrible death if you try to read or write beyond
+ * the edges of the bitmap.
+ *
+ * The clip rectangles can overlap. Allegro will automatically (and internally)
+ * adjust the rectangles so that they do not.
+ *
+ * If you use an unused id number for the bitmap clip rectangle, then a new clip
+ * rectangle is created for this bitmap, and is enabled by default.
+ */
+void al_set_bitmap_clip(AL_BITMAP *bitmap, int id, int x, int y, int w, int h);
+
+
+/* void al_get_bitmap_clip(AL_BITMAP *bitmap, int id, int *x, int *y, int *w, int *h) */
+/* Returns the position and dimension of some clip rectangle for the specified
+ * bitmap. The position and dimentions are returned by reference from the
+ * x, y, w and h parameters.
+ *
+ * If the clip rectangle associated with the id number specified does not exist
+ * then 0 is returned in all parameters.
+ *
+ * If NULL as passed as one of the references to the position or dimension of
+ * the clip rectangle, then that parameter is ignored for the purpose of this
+ * function.
+ *
+ * This function will return the user-defined clip rectangle information and
+ * not the internal information used by Allegro.
+ */
+void al_get_bitmap_clip(AL_BITMAP *bitmap, int id, int *x, int *y, int *w, int *h);
+
+
+/* void al_enable_bitmap_clip(AL_BITMAP *bitmap, int id, bool enable) */
+/* Enables or disales a clip rectangle. By default, all clip rectangles are enabled.
+ * If the clip rectangle associted with the id number specified does not exist
+ * then this function returns immediately and no changes to the bitmap is made.
+ */
+void al_enable_bitmap_clip(AL_BITMAP *bitmap, int id, bool enable);
+
+
+/* bool al_is_enabled_bitmap_clip(AL_BITMAP *bitmap, int id) */
+/* Querries whether the specified clip rectangle is enabled or not.
+ *
+ * If the clip rectangle associted with the id number specified does not exist
+ * then this function returns FALSE.
+ */
+bool al_is_enabled_bitmap_clip(AL_BITMAP *bitmap, int id);
+
+
+/* int al_list_bitmap_clip(AL_BITMAP *bitmap, int *ids, int max_num_id) */
+/* This function can be used to list the ids of all existing clip rectangles
+ * for some bitmap.
+ *
+ * If ids is NULL then the number of clip rectangles is returned. In this case,
+ * the max_num_id parameter is ignored.
+ *
+ * If ids is not NULL, then the id numbers of all existing clip rectangles
+ * are written to the int array pointed by ids. The size of that array
+ * is specified by the max_num_id parameter. al_list_bitmap_clip() will
+ * never write more than 'max_num_id' integers in the array pointer by
+ * 'ids'. The return value is the number of clip rectangle ids written in
+ * the array.
+ *
+ * Here are two examples of the use of this function:
+ *
+ * <code>
+ * int num_ids = al_list_bitmap_clip(bmp, NULL, 0);
+ *
+ * int *id = malloc(sizeof(int) * num_ids);
+ *
+ * if (!id) {
+ *   //handle error
+ * }
+ *
+ * al_list_bitmap_clip(bmp, id, num_ids);
+ *
+ * for (i = 0; i < num_ids; i++) {
+ *    int x, y, w, h;
+ *    al_get_bitmap_clip(bmp, id[i], &x, &y, &w, &h);
+ *    printf("Clip rectangle %i at (%i,%i) of size %ix%i\n",
+ *            id[i], x, y, w, h);
+ * }
+ *
+ * free(id);
+ * </code>
+ *
+ * <code>
+ * int id[10];  // Reserve a safe number
+ * int num_ids = al_list_bitmap_clip(bmp, id, 10);
+ */
+int al_list_bitmap_clip(AL_BITMAP *bitmap, int *ids, int num_ids);
+
+
+
+/* void al_show_display_bitmap(AL_DISPLAY *display) */
+/* The display bitmap is not entirely visible to the user. Depending on the
+ * update mode selected on creation, there may be invisible buffers associated
+ * with the display bitmap. Allegro will first draw into those buffers, and
+ * al_show_display_bitmap() will copy or update those buffers so that what
+ * has been drawn in them becomes visible on screen. The different update
+ * methods have various advantages and disadvantages, as listed below.
+ 
+ * Depending on the update method chosen when creating the display bitmap
+ * al_show_display_bitmap() will perform different actions. The following
+ * list describes each update method, what al_show_display_bitmap() does
+ * and why you'd want to use it (or not).
+ *
+ * * AL_GFX_UPDATE_AUTO:
+ *   Allegro will automatically pick the best mode it can find.
+ *
+ * * AL_GFX_UPDATE_DIRECT:
+ *   The display bitmap is directly visible by the user. Any changes can be
+ *   immediately viewed by the user. This is the method used by Allegro 4.
+ *   Calls to al_show_display_bitmap() will be silently ignored.
+ *
+ * * AL_GFX_UPDATE_DOUBLE_BUFFERING:
+ *   Double-buffer the display bitmap using a memory bitmap. Drawing into the
+ *   display bitmap will draw into a memory buffer first. Then, when
+ *   al_show_display_bitmap() is called, that memory buffer is copied to the
+ *   video card. Since the contents of the display bitmap are available in
+ *   system RAM, then reading from that display bitmap is very fast. This
+ *   implies that al_blit() with operations that require reading the
+ *   destination bitmap will also run very quickly. However, transfering
+ *   the contents of the memory buffer to video RAM so it can be displayed
+ *   is a rather slow process, limiting the achievable frame rate.
+ *   The contents of the previous frame remains in the memory buffer.
+ *
+ * * AL_GFX_UPDATE_DIRTY_RECTANGLES:  (note: Need to change the name - refers to a particular implementation)
+ *   Much like AL_GFX_UPDATE_DOUBLE_BUFFERING, a secondary memory bitmap is
+ *   used. This memory bitmap is drawn into by Allegro. When
+ *   al_show_display_bitmap() is called, only the parts of the display bitmap
+ *   that have changed are drawn on the visible portion of the screen.
+ *   This method speeds up the screen updating when the display bitmap's
+ *   content does not change much in between frames. However, this method
+ *   may prove to be slower if the entire display bitmap changes since the
+ *   last call to al_show_display_bitmap().
+ *   The contents of the previous frame remains in the memory buffer.
+ *
+ * * AL_GFX_UPDATE_DOUBLE_VIDEO_BUFFERING:
+ *   Double-buffer the display bitmap using a video bitmap. This method is
+ *   similar to AL_GFX_UPDATE_DOUBLE_BUFFERING except that the secondary
+ *   buffer lives in video memory. This means that reading from the display
+ *   bitmap is really slow, which will render blending operations nearly
+ *   useless. It does make updating the visible oprtion of the display
+ *   bitmap much faster if hardware acceleration is availble (as it is
+ *   on most video cards these days). Also, drawing into this bitmap
+ *   from video bitmaps will also be very fast.
+ *   The contents of the previous frame remains in the video buffer.
+ *
+ * * AL_GFX_UPDATE_PAGE_FLIPPING:
+ *   Uses page flipping with a video bitmap. Instead of copying the contents
+ *   of the secondary buffer to the visible portion of the display bitmap,
+ *   the video card is instructed to display that secondary buffer instead,
+ *   and sets the buffer that was previously visible to be invisible.
+ *   In other words, the visible and invisible buffers are swapped.
+ *   This update method can be significantly faster than double buffering.
+ *   However, Allegro will wait for the vertical retrace signal before updating
+ *   the display, which means that the framerate is dependent on the monitor
+ *   refresh rate. On the other hand, waiting for the vertical retrace signal
+ *   means that the image will not tear. See al_wait_for_vsync() for details.
+ *   The contents of the previous frame is undefined.
+ *
+ * * AL_GFX_UPDATE_TRIPLE_BUFFERING:
+ *   Like page flipping but uses three buffers instead of just two. This allows
+ *   the Operating System to perform a swap assynchronously so that no waiting
+ *   is required.
+ *   The contents of the previous frame is undefined.
+ *
+ * Note that unless the update method is GFX_UPDATE_DIRECT then
+ * al_show_display_bitmap() must be called to show any update on the
+ * display.
+ */
+void al_show_display_bitmap(AL_DISPLAY *display);
+
+
+
+/* void al_wait_for_vsync(AL_DISPLAY *display) */
+/* Waits for the vertical retrace signal on the specified display bitmap.
+ * The retrace happens when the electron beam in your monitor has reached
+ * the bottom of the screen and is moving back to the top ready for another
+ * scan. During this short period the graphics card isn't sending any data
+ * to the monitor, so you can do things to it that aren't possible at other
+ * times, such as altering the palette without causing flickering (snow).
+ *
+ * Not every video card support waiting for the vertical refresh signal
+ * (the Voodoo 3 for example), and some display devices have no concept
+ * of vertical refresh (such as LCDs), so there may be no wait at all.
+ */
+void al_wait_for_vsync(AL_DISPLAY *display);
+
+
+
+/* void al_destroy_bitmap(AL_BITMAP* bitmap) */
+/* Destroys a bitmap. The memory and resources associated with the bitmap
+ * are released. If the bitmap was a display bitmap in full-screen mode
+ * then the resolution of the monitor is reset.
+ * Destroying parents of sub-bitmaps will not destroy the sub-bitmaps;
+ * instead the sub-bitmaps become invalid and should no longer
+ * be used.
+ *
+ * Note: Perhaps the debug build can keep track of a parent's sub-bitmap
+ * and flag an error in allegro.log when trying to use a sub-bitmap
+ * of a destroyed parent.
+ */
+void al_destroy_bitmap(AL_BITMAP* bitmap);
+void al_destroy_display_bitmap(AL_DISPLAY *display);  /* Only if AL_DISPLAY != AL_BITMAP */
+
+
+
+
+/**** Bitmap locking ****/
+
+/* void al_acquire_bitmap(AL_BITMAP *bitmap) */
+/* Acquires the specified video or display bitmap for drawing from or to it.
+ * This does not apply to memory bitmaps, and only affects some platforms (for
+ * example, Windows needs it, DOS does not). These calls are not strictly
+ * required because the drawing routines will automatically acquire the
+ * bitmap before accessing it. However, acquiring a DirectDraw surface is very
+ * slow, so you will get much better performance if you acquire the video 
+ * or display bitmap just once at the start of your main redraw function,
+ * and only release it when the drawing is completely finished.
+ *
+ * Multiple acquire calls may be nested, and the bitmap will only be truly
+ * released when the lock count returns to zero.
+ *
+ * You must release all acquired bitmaps prior to calling
+ * al_show_display_bitmap().
+ *
+ * Be warned that DirectX programs activate a mutex lock whenever a surface
+ * is locked, which prevents them from getting any input messages, so you
+ * must be sure to release all your bitmaps before using any timer, keyboard,
+ * or other non-graphics routines! 
+ */
+void al_acquire_bitmap(AL_BITMAP *bitmap);
+
+
+
+/* void al_release_bitmap(AL_BITMAP *bitmap) */
+/* Releases a bitmap that was previously acquired by calling
+ * al_acquire_bitmap(). If the bitmap was acquired multiple times, you must
+ * release it the same number of times before it will truly be unlocked. 
+ *
+ * You must release all acquired bitmaps prior to calling
+ * al_show_display_bitmap().
+ */
+void al_release_bitmap(AL_BITMAP *bitmap);
+
+
+/**** Primitive functions ****/
+
+/* Most primitive functions take a flags parameter that will determine
+ * the operation they will perform. Those flags, which are described here,
+ * can be combined together via a binary OR (|). Not all combinations
+ * are valid.
+ *
+ *  - AL_OUTLINE  == 0
+ *    The default mode. Primitives drawn with this mode will only have
+ *    their outlines rendered. For example, drawing a rectangle will
+ *    only draw the rectangle border. This flag has no meaning for
+ *    unidimentional primitives such as lines and points.
+ *    This flag cannot be used in conjunction with AL_FILLED.
+ *
+ *  - AL_FILLED
+ *    Primitives drawn with this mode will have their area filled by
+ *    their color. For example, drawing a rectangle will fill the 
+ *    surface enclosed by it with the specified color. This flag
+ *    has no meaning for unidimentional primitives such as lines and
+ *    points.
+ *    This flag cannot be used in conjunction with AL_OUTLINE.
+ *
+ *  - AL_PATTERNED
+ *    Draws the primitive using the pre-set pattern. With the patterned
+ *    mode, you provide a pattern bitmap which is tiled across the surface
+ *    of the shape.
+ *
+ *  - AL_MASK_DEST
+ *    Specifies that the destination pixels are not written to if they
+ *    are of the mask color. This allows you to use the masked area
+ *    of a bitmap as a drawing mask. You can combine this flag with
+ *    any of the other primitive flags.
+ *
+ *  - AL_MASK_INV_DEST
+ *    Specifies that the destination pixels are not written to if they
+ *    are not of the mask color. This allows you to use the masked area
+ *    of a bitmap as a drawing surface, with the non-masked area left
+ *    untouched. You can combine this flag with any of the other primitive
+ *    flags.
+ *
+ *  - AL_MASK_SOURCE
+ *    Specifies that the source pixels are not written to if they
+ *    are of the mask color. This flag only has meaning when the
+ *    AL_PATTERNED flag is also used. It is otherwise ignored.
+ *
+ *  - AL_MASK_INV_SOURCE
+ *    Specifies that the source pixels are not written to if they
+ *    are not of the mask color. This flag only has meaning when the
+ *    AL_PATTERNED flag is also used. It is otherwise ignored.
+ *
+ *  - AL_BLEND
+ *    The primitive is drawn translucently, using the currently set blender
+ *    function. See al_set_blender() for details.
+ */
+
+
+/* AL_COLOR *al_get_pixel(AL_BITMAP *bmp, int x, int y, AL_COLOR *color) */
+/* Reads a pixel from point (x,y) in the bitmap.
+ * You need to pass a valid pointer to an AL_COLOR structure as the 'color'
+ * parameter. This structure will be filled in by al_get_pixel(). This
+ * procedure is necessary to support bitmaps of arbitrary color depth.
+ *
+ * If the point specified by (x,y) lies outside the bitmap's clip
+ * region, then the color returned is equivalent to pure black
+ * (red, green and blue are all 0).
+ *
+ * The return value is the value passed as the 'color' parameter.
+ *
+ * Here's an example use:
+ * <code>
+ * AL_COLOR color;
+ * al_put_pixel(0, bmp2, x, y, al_get_pixel(bmp1, x, y, &color));
+ * </code>
+ */
+AL_COLOR *al_get_pixel(AL_BITMAP *bmp, int x, int y, AL_COLOR *color);
+
+
+
+/* void al_put_pixel (int flag, AL_BITMAP *bitmap, int x, int y,
+                      AL_COLOR *color)
+ */
+/* Writes a pixel to the specified position in the bitmap. The primitive flags
+ * are respected (see above). The bitmap's clipping rectangles are also
+ * respected.
+ *
+ * If NULL is passed as the 'color' parameter, or the pixel coordinates lie
+ * outside the bitmap, then nothing is done; the function silently fails.
+ */
+void al_put_pixel(int flag, AL_BITMAP *bitmap, int x, int y, AL_COLOR *color);
+
+
+
+/* void al_draw_line (int flag, AL_BITMAP *bitmap, int x1, int y1,
+                      int x2, int y2, AL_COLOR *color)
+ */
+/* Draws a line from point (x1,y1) to point (x2,y2) using the color specified
+ * by the 'color' parameter. The start and end coordinates are inclusive.
+ * If the color parameter is NULL then this function silently fails.
+ *
+ * The bitmap's clipping rectangles are respected.
+ */
+void al_draw_line (int flag, AL_BITMAP *bitmap, int x1, int y1, int x2, int y2,
+                   AL_COLOR *color);
+
+
+
+/* void al_draw_hline(int flag, AL_BITMAP *bitmap, int x, int y, int width, 
+                      AL_COLOR *color) */
+/* Draws a horizontal line from point (x,y) to point (x + width - 1, y). If
+ * the width is zero or negative, or the color parameter is NULL, then this
+ * function silently fails.
+ *
+ * This function respects the bitmap's clip rectangles.
+ *
+ * al_draw_hline(flag, bitmap, x, y, width, color) is equivalent to
+ * al_draw_line(flag, bitmap, x, y, x + width - 1, y, color) only when
+ * the width parameter is greater than zero.
+ *
+ * If the gfx/current/hw_vram_hline flag is set, and the flag parameter
+ * is set to AL_OUTLINE or AL_FILLED, then this function is accelerated
+ * when drawing into video or display bitmaps.
+ */
+void al_draw_hline(int flag, AL_BITMAP *bitmap, int x, int y, int width,
+                   AL_COLOR *color);
+
+
+
+/* void al_draw_vline(int flag, AL_BITMAP *bitmap, int x, int y, int height,
+                      AL_COLOR *color) */
+/* Draws a vertical line from point (x,y) to point (x, y +  height - 1). If
+ * the height is zero or negative, or the color parameter is NULL, then this
+ * function silently fails.
+ *
+ * This function respects the bitmap's clip rectangles.
+ *
+ * al_draw_vline(flag, bitmap, x, y, height, color) is equivalent to
+ * al_draw_line(flag, bitmap, x, y, x, y + height - 1, color) only when
+ * the height parameter is greater than zero.
+ *
+ * If the gfx/current/hw_vram_vline flag is set, and the flag parameter
+ * is set to AL_OUTLINE or AL_FILLED, then this function is accelerated
+ * when drawing into video or display bitmaps.
+ */
+void al_draw_vline(int flag, AL_BITMAP *bitmap, int x, int y, int height,
+                   AL_COLOR *color);
+
+
+
+/* void al_draw_triangle(int flag, AL_BITMAP *bitmap, int x1, int y1,
+                         int x2, int y2, int x3, int y3, AL_COLOR *color)
+ */
+/* Draws a triangle with the corners at (x1,y1), (x2,y2) and (x3,y2), with the
+ * specified color. If the color parameter is NULL then this function silently
+ * fails.
+ *
+ * The bitmap's clip rectangles are respected.
+ *
+ * Comment: What about the degenerate case?
+ *
+ * If the gfx/current/hw_vram_triangle flag is set, and the flag parameter
+ * is set to AL_OUTLINE or AL_FILLED, then this function is accelerated
+ * when drawing into video or display bitmaps.
+ */
+void al_draw_triangle(int flag, AL_BITMAP *bitmap, int x1, int y1,
+                      int x2, int y2, int x3, int y3, AL_COLOR *color);
+
+
+
+/* void al_draw_polygon(int flag, AL_BITMAP *bitmap, int points[], int num_points, AL_COLOR *color) */
+/* Draws an arbitrary polygon on the specified bitmap, using the specified
+ * color. The polygon can be convex or concave.
+ *
+ * The coordinates of the corners are specified by the points array, which
+ * is an interleaved array of x and y coordinate pairs. That is, the n-th
+ * point has its x coordiante in points[n * 2] and its y coordinate in
+ * points[n * 2 + 1]. The number of points in this polygon is specified by the
+ * num_points parameter. Thus the points[] array much have 2 * num_points
+ * entries.
+ *
+ * The bitmap's clip rectangles are respected.
+ *
+ * Comment: What about the degenerate case?
+ */
+void al_draw_polygon(int flag, AL_BITMAP *bitmap, int points[], int num_points,
+                     AL_COLOR *color);
+
+
+
+/* void al_draw_ellipse(int flag, AL_BITMAP *bitmap, int x, int y,
+                        int width, int height, AL_COLOR *color)
+ */
+/* Draws an ellipse enclosed in the rectangle specified by the coordinate of
+ * its top-left corner (x,y) and its size (width,height), with the specified
+ * color.
+ *
+ * If you need to draw a circle of radius r, then simply call:
+ * <code>
+ * al_draw_ellipse(flag, bitmap, x - r, y - r, 2 * r, 2 * r, color);
+ * </code>
+ *
+ * The bitmap's clip rectangles are respected.
+ */
+void al_draw_ellipse(int flag, AL_BITMAP *bitmap, int x, int y,
+                     int width, int height, AL_COLOR *color);
+
+
+/* void al_draw_circle(int flag, AL_BITMAP *bitmap, int x, int y, int r,
+                       AL_COLOR *color)
+ */
+/* Draws a circle.  Equivalent to:
+ *
+ * <code>
+ * al_draw_ellipse(flag, bitmap, x - r, y - r, 2 * r, 2 * r, color);
+ * </code>
+ */
+void al_draw_circle(int flag, AL_BITMAP *bitmap, int x, int y, int r,
+                    AL_COLOR *color);
+
+
+
+/* void al_draw_rect(int flag, AL_BITMAP *bitmap, int x, int y,
+                     int width, int height, AL_COLOR *color)
+ */
+/* Draws a rectangle with the upper-left corner at (x,y), and of size
+ * (width,height), in pixels. The specified color is used for the drawing.
+ *
+ * The bitmap's clip rectangles are respected.
+ */  
+void al_draw_rect(int flag, AL_BITMAP *bitmap, int x, int y,
+                  int width, int height, AL_COLOR *color);
+
+
+
+/* void al_floodfill(int flag, AL_BITMAP *bitmap, int x, int y, AL_COLOR *color) */
+/* Floodfills an enclosed area, starting at point (x,y), with the specified
+ * color.
+ *
+ * The bitmap's clip rectangles are respected.
+ *
+ * Note that this function cannot be hardware accelerated, and that it requires
+ * reading from the destination bitmap. It is not recommened to use it in
+ * conjuction with video or display bitmaps.
+ */
+void al_floodfill(int flag, AL_BITMAP *bitmap, int x, int y, AL_COLOR *color);
+
+
+
+/* void al_clear_bitmap(AL_BITMAP *bmp, AL_COLOR *color) */
+/* Clears the bitmap using the specified color.
+ * 
+ * The bitmap's clip rectangles are NOT respected. If you need to respect
+ * the clip rectangles, then use al_draw_rect(AL_FILLED,...) instead.
+ *
+ * If the gfx/current/hw_vram_clear flag is set then this function is
+ * accelerated when drawing into video or display bitmaps.
+ */
+void al_clear_bitmap (AL_BITMAP *bmp, AL_COLOR *color);
+
+
+
+/**** Pattern drawing ****/
+
+
+/* void al_set_pattern(AL_BITMAP *bmp, int mode, AL_BITMAP *pattern,
+                       int anchor_x, int anchor_y)
+ */
+/* Sets the current pattern for pattern drawing.
+ *
+ * With the patterned modes, you provide a pattern bitmap which is tiled
+ * across the surface of the shape. Allegro stores a pointer to this bitmap
+ * rather than copying it, so you must not destroy the bitmap while it is
+ * still selected as the pattern. The width and height of the pattern must
+ * be powers of two, but they can be different, eg. a 64x16 pattern is fine,
+ * but a 17x3 one is not. The pattern is tiled in a grid starting at point
+ * (x_anchor, y_anchor). Normally you should just pass zero for these values,
+ * which lets you draw several adjacent shapes and have the patterns meet up
+ * exactly along the shared edges. Zero alignment may look peculiar if you
+ * are moving a patterned shape around the screen, however, because the
+ * shape will move but the pattern alignment will not, so in some situations
+ * you may wish to alter the anchor position. 
+ *
+ * The set pattern mode only applies to when drawing into the bitmap specified
+ * by the 'bmp' parameter.
+ *
+ * Pattern drawing is enabled by setting the AL_PATTERNED flag on the 'flags'
+ * parameter of the primitive functions.
+ */
+void al_set_pattern(AL_BITMAP *bmp, int mode, AL_BITMAP *pattern,
+                    int anchor_x, int anchor_y);
+
+
+
+/* void al_get_pattern(AL_BITMAP *bmp, int *mode, AL_BITMAP **pattern,
+                       int *anchor_x, int *anchor_y)
+ */
+/* Retreives the current pattern settings of the bitmap specified by the 'bmp'.
+ * The pattern settings are returned by reference in the following parameters.
+ * Pass NULL to those parameters to not retrieve them.
+ *
+ * If the 'bmp' parameter is NULL, then this function will not write to any
+ * other parameter.
+ */
+void al_get_pattern(AL_BITMAP *bmp, int *mode, AL_BITMAP **pattern,
+                    int *anchor_x, int *anchor_y);
+
+
+
+/* void al_set_bitmap_filter(AL_BITMAP *bmp, int filter) */
+/* Sets the bitmap filtering mode. Filtering is enabled whenever AL_FILTERED
+ * is specified as a parameter to the relevent functions. Filtering only
+ * affects the source bitmap pixels, before they are drawn into the destination
+ * bitmap.
+ *
+ * Filtering is a hint, so drivers may or may not decide to respect it.
+ *
+ * The filter parameter can be any of:
+ *  - AL_BITMAP_FILTER_NONE
+ *  - AL_BITMAP_FILTER_BILINEAR
+ */
+void al_set_bitmap_filter(AL_BITMAP *bmp, int filter);
+
+
+
+
+/**** Color mapping ****/
+
+
+/* AL_COLOR* al_map_rgb(AL_BITMAP *bmp, AL_COLOR *p,
+                        unsigned char r, unsigned char g, unsigned char b)
+ */
+/* Converts colors from a Red-Green-Blue hardware-independent format to the
+ * pixel format required by a bitmap. The specific bitmap to convert the
+ * color to is specified in the 'bmp' parameter. In the 'p' parameter, pass
+ * a pointer to an already made AL_COLOR object. The 'r', 'g' and 'b'
+ * parameters specify the intensity of each Red, Green and Blue components,
+ * respectivally. The range of the color components is from 0 to 255
+ * included.
+ *
+ * If an alpha channel is required, then 255 is automatically used for alpha.
+ *
+ * The return value is identical to the 'p' parameter, allowing you
+ * to chain calls to primitive functions.
+ *
+ * If either the 'p' or the 'bmp' parameters are NULL, then this function
+ * silently fails. In this case, the value of '*p' is not touched.
+ *
+ * If the target bitmap uses floating-point components, then the integer
+ * values in the range 0-255 are first mapped to 0.0-1.0. Only then is the
+ * final color value computed.
+ *
+ * Example use:
+ * <pre>
+ *   AL_COLOR color;
+ *   al_put_pixel(bmp, x, y, al_map_rgb(bmp, &color, 45, 63, 97));
+ * </pre>
+ */
+AL_COLOR* al_map_rgb(AL_BITMAP *bmp, AL_COLOR *p,
+                     unsigned char r, unsigned char g, unsigned char b);
+
+
+
+/* AL_COLOR* al_map_rgba(AL_BITMAP *bmp, AL_COLOR *p,
+            unsigned char r, unsigned char g, unsigned char b, unsigned char a)
+ */
+/* Similar to al_map_rgb(), but also includes an alpha component. The alpha
+ * component should be in the range 0 to 255 included. The alpha component
+ * is ignored if the bitmap does not support an alpha channel.
+ */
+AL_COLOR* al_map_rgba(AL_BITMAP *bmp, AL_COLOR *p,
+            unsigned char r, unsigned char g, unsigned char b, unsigned char a);
+
+
+
+/* AL_COLOR* al_map_rgb_f(AL_BITMAP *bmp, AL_COLOR *p,
+                          float r, float g, float b)
+ */
+/* Similar to al_map_rgb(), but accepts color components as single-precision
+ * floating-point numbers. The values of 'r', 'g' and 'b' should be in the range
+ * 0.0 to 1.0 included.
+ *
+ * An alpha of 1.0 is automatically inserted if the target bitmap supports an
+ * alpha channel.
+ *
+ * If the target bitmap uses integer components instead of floating-point
+ * ones, then the floating point components are scaled to the apropreate
+ * range and converted to integers before the final color value is computed.
+ */
+AL_COLOR* al_map_rgb_f (AL_BITMAP *bmp, AL_COLOR *p, float r, float g, float b);
+
+
+
+/* AL_COLOR* al_map_rgba_f(AL_BITMAP *bmp, AL_COLOR *p,
+                           float r, float g, float b, float a)
+ */
+/* Similar to al_map_rgb_f(), but also includes an alpha component. The alpha
+ * component should be in the range 0.0 to 1.0 included. The alpha component
+ * is ignored if the bitmap does not support an alpha channel.
+ */
+AL_COLOR* al_map_rgba_f(AL_BITMAP *bmp, AL_COLOR *p,
+                        float r, float g, float b, float a);
+
+
+
+/* AL_COLOR* al_map_rgb_i(AL_BITMAP *bmp, AL_COLOR *p, int r, int g, int b) */
+/* Similar to al_map_rgb(), but accepts color components in half the integer
+ * range. If the target bitmap uses integer components, then the color
+ * components in the range 0 to INT_MAX are scaled down to the apropreate
+ * range before the final color value is computed. However, if the target
+ * bitmap uses floating-point components, then the color components are
+ * first mapped to the range 0.0 to 1.0 before computing the final color
+ * value.
+ *
+ * An alpha of INT_MAX is assumed for target bitmaps requiring an alpha
+ * channel.
+ */
+AL_COLOR* al_map_rgb_i(AL_BITMAP *bmp, AL_COLOR *p, int r, int g, int b);
+
+
+
+/* AL_COLOR* al_map_rgba_i(AL_BITMAP *bmp, AL_COLOR *p,
+                           int r, int g, int b, int a)
+ */
+/* Similar to al_map_rgb_i(), but also includes an alpha component. The alpha
+ * component should be in the range 0 to INT_MAX included. The alpha component
+ * is ignored if the target bitmap does not support an alpha channel.
+ */
+AL_COLOR* al_map_rgba_i(AL_BITMAP *bmp, AL_COLOR *p,
+                        int r, int g, int b, int a);
+
+
+/* AL_COLOR* al_map_yuv422(AL_BITMAP *bmp, AL_COLOR *p,
+                       unsigned char y, unsigned char u, unsigned char v)
+/* Converts colors from a Luma-Chrominance1-Chrominance2 hardware-independent
+ * format (YCrCb) to the pixel format required by a bitmap. The specific
+ * bitmap to convert the color to is specified in the 'bmp' parameter. In the
+ * 'p' parameter, pass a pointer to an already made AL_COLOR object. The
+ * 'y', 'u' and 'v' parameters specify the value of each Luma, Chrominance1 and
+ * Chrominance2 components, respectivally. The range of the color components
+ * is from 0 to 255 included.
+ *
+ * If an alpha channel is required, then 255 is automatically used for alpha.
+ *
+ * The return value is identical to the 'p' parameter, allowing you
+ * to chain calls to primitive functions.
+ *
+ * If either the 'p' or the 'bmp' parameters are NULL, then this function
+ * silently fails. In this case, the value of '*p' is not touched.
+ *
+ * If the target bitmap uses floating-point components, then the integer
+ * values in the range 0-255 are first mapped to 0.0-1.0. Only then is the
+ * final color value computed.
+ *
+ * Example use:
+ * <pre>
+ *   AL_COLOR color;
+ *   al_put_pixel(bmp, x, y, al_map_yuv(bmp, &color, 45, 63, 97));
+ * </pre>
+ */
+AL_COLOR* al_map_yuv422(AL_BITMAP *bmp, AL_COLOR *p,
+                        unsigned char y, unsigned char u, unsigned char v);
+
+
+
+/* void al_unmap_rgb(AL_BITMAP *bmp, AL_COLOR *p,
+                     unsigned char *r, unsigned char *g, unsigned char *b)
+ */
+/* Performs the opposite operation from al_map_rgb(). The raw color value
+ * extracted from the specified bitmap is decomposed into its basic
+ * hardware-independent Red-Green-Blue components.
+ *
+ * The extracted color components are in the range 0 to 255 included.
+ *
+ * The 'p' parameter points to the raw pixel color that was extracted from the
+ * bitmap specified in 'bmp' (or sub-bitmap thereof). The 'r', 'g' and 'b'
+ * parameters will be filled with the extracted color components.
+ *
+ * If any of the color component pointers is NULL, then that component
+ * is not extracted from the raw pixel color.
+ *
+ * Example code:
+ * <pre>
+ *  unsigned char r, g, b;
+ *  AL_COLOR color;
+ *  al_unmap_rgb(bmp, al_get_pixel(bmp, &color, x, y), &r, &g, &b);
+ *  printf("Red: %u, Green: %u, Blue: %u\n", r, g, b);
+ * </pre>
+ */
+void al_unmap_rgb(AL_BITMAP *bmp, AL_COLOR *p,
+                  unsigned char *r, unsigned char *g, unsigned char *b);
+
+
+
+/* void al_unmap_rgba(AL_BITMAP *bmp, AL_COLOR *p,
+         unsigned char *r, unsigned char *g, unsigned char *b, unsigned char *a)
+ */
+/* Similar to al_unmap_rgb, but also extracts an alpha component. If the bitmap
+ * has no alpha channel, then the value 255 is returned through the 'a'
+ * parameter.
+ */
+void al_unmap_rgba(AL_BITMAP *bmp, AL_COLOR *p,
+        unsigned char *r, unsigned char *g, unsigned char *b, unsigned char *a);
+
+
+
+/* void al_unmap_rgb_f(AL_BITMAP *bmp, AL_COLOR *p,
+                       float *r, float *g, float *b)
+ */
+/* Similar to al_unmap_rgb(), but extracts the color components as
+ * single-precision floating-point numbers, in the range 0.0 to 1.0.
+ */
+void al_unmap_rgb_f (AL_BITMAP *bmp, AL_COLOR *p, float *r, float *g, float *b);
+
+
+
+/* void al_unmap_rgba_f(AL_BITMAP *bmp, AL_COLOR *p,
+                        float *r, float *g, float *b, float *a)
+ */
+/* Similar to al_unmap_rgb_f(), but also extracts an alpha component. If the
+ * bitmap has no alpha channel, then the value 1.0 is returned through the 'a'
+ * parameter.
+ */
+void al_unmap_rgba_f(AL_BITMAP *bmp, AL_COLOR *p,
+                     float *r, float *g, float *b, float *a);
+
+
+
+/* void al_unmap_rgb_i (AL_BITMAP *bmp, AL_COLOR *p, int *r, int *g, int *b) */
+/* Similar to al_unmap_rgb(), but extracts the color components as
+ * integers in the range 0 to INT_MAX.
+ */
+void al_unmap_rgb_i (AL_BITMAP *bmp, AL_COLOR *p, int *r, int *g, int *b);
+
+
+
+/* void al_unmap_rgba_i(AL_BITMAP *bmp, AL_COLOR *p,
+                        int *r, int *g, int *b, int *a);
+ */
+/* Similar to al_unmap_rgb_i(), but also extracts an alpha component. If the
+ * bitmap has no alpha channel, then the value INT_MAX is returned through the
+ * 'a' parameter.
+ */
+void al_unmap_rgba_i(AL_BITMAP *bmp, AL_COLOR *p,
+                     int *r, int *g, int *b, int *a);
+
+
+
+/* void al_unmap_yuv422(AL_BITMAP *bmp, AL_COLOR *p,
+                        unsigned char *y, unsigned char *u, unsigned char *v)
+ */
+/* Performs the opposite operation from al_map_yuv(). The raw color value
+ * extracted from the specified bitmap is decomposed into its basic
+ * hardware-independent Luma-Chromiance1-Chrominance2 components
+ * (YCrCb).
+ *
+ * The extracted color components are in the range 0 to 255 included.
+ *
+ * The 'p' parameter points to the raw pixel color that was extracted from the
+ * bitmap specified in 'bmp' (or sub-bitmap thereof). The 'y', 'u' and 'v'
+ * parameters will be filled with the extracted color components.
+ *
+ * If any of the color component pointers is NULL, then that component
+ * is not extracted from the raw pixel color.
+*/
+void al_unmap_yuv422(AL_BITMAP *bmp, AL_COLOR *p,
+                     unsigned char *y, unsigned char *u, unsigned char *v);
+
+
+
+
+/**** Bitmap properties ****/
+
+/* int al_get_bitmap_color_format(AL_BITMAP *bmp) */
+/* Returns the color format of the bitmap specified in the 'bmp' parameter.
+ *
+ * The color format is any one of the following:
+ *   - AL_RGBA
+ *   - AL_RGB
+ *   - AL_PALETTE
+ *   - AL_YUV
+ *   - AL_LUMINANCE
+ *   - AL_MONOCHROME
+ */
+int al_get_bitmap_color_format(AL_BITMAP *bmp);
+
+
+
+/* int al_get_bitmap_color_depth(AL_BITMAP *bmp) */
+/* Returns the color depth and component arrangement of the bitmap specified
+ * in the 'bmp' parameter. The color depth and component arrangement is
+ * specified by one of the following:
+ *   - AL_COLOR_1
+ *   - AL_COLOR_8
+ *   - AL_COLOR_8_8_I
+ *   - AL_COLOR_5_5_5       (==  AL_COLOR_15?)
+ *   - AL_COLOR_5_6_5       (==  AL_COLOR_16?)
+ *   - AL_COLOR_8_8_8       (==  AL_COLOR_24?)
+ *   - AL_COLOR_8_8_8_8     (==  AL_COLOR_32?)
+ *   - AL_COLOR_10_10_10
+ *   - AL_COLOR_10_10_10_2
+ *   - AL_COLOR_16_16_16
+ *   - AL_COLOR_16_16_16_16
+ *   - AL_COLOR_32_32_32
+ *   - AL_COLOR_32_32_32_32 (== AL_COLOR_128?)
+ */
+int al_get_bitmap_color_depth(AL_BITMAP *bmp);
+
+
+
+/* void al_get_bitmap_component_positions(AL_BITMAP *bmp, int bit[4]) */
+/* Returns the color component bit positions.
+ *
+ *  bit[]:  RGBA:  YUV:
+ *   0       R      Y
+ *   1       G      U
+ *   2       B      V
+ *   3       A     N/A
+ */
+int al_get_bitmap_component_positions(AL_BITMAP *bmp, int bit[4]);
+
+
+
+/* AL_COLOR *al_get_bitmap_mask_color(AL_BITMAP *bmp, AL_COLOR *c) */
+/* Reads the mask color of the bitmap specified in the 'bmp' parameter
+ * and stores it in a pre-allocated AL_COLOR structure.
+ *
+ * The mask color is typically magic pink for non-paletized bitmaps,
+ * and 0 for paletized and monochrome bitmaps.
+ *
+ * The parameter passed in 'c' is returned.
+ *
+ * If either 'bmp' or 'c' are NULL, then this function silently
+ * fails. Nothing will be written to the color that 'c' points to.
+ */
+AL_COLOR *al_get_bitmap_mask_color(AL_BITMAP *bmp, AL_COLOR *c);
+
+
+
+/* bool al_is_same_bitmap(AL_BITMAP *bmp1, AL_BITMAP *bmp2) */
+/* If the bitmaps specified in the 'bmp1' and 'bmp2' parameters describe the
+ * same drawing surface, ie. the pointers are equal, one is a sub-bitmap of the
+ * other, or they are both sub-bitmaps of a common parent, then this function
+ * return TRUE. Otherwise, FALSE is returned.
+ *
+ * If either the 'bmp1' or 'bmp2' parameters is NULL, then FALSE is returned.
+ */
+bool al_is_same_bitmap(AL_BITMAP *bmp1, AL_BITMAP *bmp2);
+
+
+
+/* bool al_is_bitmap_of_type(AL_BITMAP *bmp, int type) */
+/* Determines whether the bitmap specified in the 'bmp' parameter is of the
+ * type specified in the 'type' parameter. If it is so, then TRUE is returned.
+ * otherwise, FALSE is returned.
+ *
+ * The 'type' parameter can be any one of the following:
+ *  - AL_BITMAP_TYPE_MEMORY     - Bitmap is in system RAM
+ *  - AL_BITMAP_TYPE_RLE        - Bitmap is an RLE-type
+ *  - AL_BITMAP_TYPE_VIDEO      - Bitmap is in video RAM
+ *  - AL_BITMAP_TYPE_SYSTEM     - Bitmap is in system RAM but of video format
+ *  - AL_BITMAP_TYPE_LINEAR     - Bitmap is linear: pixel x+1 is located
+ *                                immediately after pixel x
+ *  - AL_BITMAP_TYPE_PLANAR     - Bitmap is planar (see ModeX)
+ *  - AL_BITMAP_TYPE_SUB_BITMAP - Bitmap is a sub-bitmap
+ *  - AL_BITMAP_TYPE_DISPLAY    - Bitmap is a display bitmap.
+ *
+ * If the 'bmp' parameter is NULL, or the type parameter is not valid, then
+ * FALSE is returned.
+ */
+bool al_is_bitmap_of_type(AL_BITMAP *bmp, int type);
+
+
+
+/* AL_BITMAP *al_get_bitmap_parent(AL_BITMAP *bmp) */
+/* If the bitmap specified in the 'bmp' parameter is a sub-bitmap, then
+ * a pointer to its parent is returned. Otherwise, NULL is returned.
+ */
+AL_BITMAP *al_get_bitmap_parent(AL_BITMAP *bmp);
+
+
+
+
+/**** Palettes ****/
+
+/* Palettes 
+ * Notice that palettes are attached to BITMAPS. There are no more global
+ * palettes.
+ * Palettes are internal ref-counted objects, which are copied-on-write.
+ * No calls to vsync() is performed. It's up to the user program to handle that.
+ */
+void al_set_palette_color(AL_BITMAP *bmp, int index, const AL_COLOR *color);
+void al_set_palette_range(AL_BITMAP *bmp, int start, int width, const AL_COLOR **palette);
+AL_COLOR *al_get_palette_color(AL_BITMAP *bmp, int index, AL_COLOR *p);
+void al_get_palette_range(AL_BITMAP *bmp, int start, int width, AL_COLOR **palette);
+int  al_compute_palette_conversion_table(AL_BITMAP *bmp, AL_RGB_MAP *map);
+void al_set_palette_conversion_table(AL_BITMAP *bmp, AL_RGB_MAP *map);
+
+
+
+/**** File system interaction ****/
+
+/* Allegro supports loading bitmaps from any byte stream. This provides you
+ * the flexiblity to load bitmaps from custom file systems or even from memory.
+ *
+ * Notes:
+ *  Should the load_bitmap functions take a parent bitmap to inherit properties
+ *  from? Or should this be a state in al_set_color_conversion()?
+ */
+AL_BITMAP *al_load_bitmap(const char *filename);
+AL_BITMAP *al_load_packed_bitmap(PACKFILE *packfile);
+int al_save_bitmap(AL_BITMAP *bmp, const char *filename);
+/* Note: bitmap types can be registered via register_driver */
+
+
+
+/**** Low-level bitmap access ****/
+
+/* To speed up low-level operations on bitmaps, Allegro provides a way to
+ * access the bitmap data directly. It is up to you to make sure that you
+ * write correct information.
+ *
+ * Please note that no clipping rectangle affects direct bitmap access,
+ * and that reading or writing past the end of a line or column may
+ * crash your program or your computer. You must unselect selected
+ * regions once you are done with the operation, or risk memory leaks
+ * or crashes. You must be very careful of what you do when dealing
+ * directly with bitmaps; Allegro will perform no checking for you.
+ *
+ * Once again, when using direct bitmap access, you are on your own.
+ *
+ * Allegro supports reading from two source bitmaps simultaniously,
+ * and writing to one destination bitmap. This allows you to write
+ * complex blenders or other transforms painlessly while still
+ * allowing them to run very fast.
+ *
+ * Before you can read pixels though, you must first select a read
+ * region in a bitmap. That bitmap can be any of the bitmaps that
+ * Allegro supports. Once you have selected a region, you must ask
+ * for a pointer to a horizontal span. You should only ask for spans
+ * inside the selected regions. Spans outside or partially outside
+ * the selected region are left undefined. This means you cannot
+ * safely access them.
+ *
+ * You can query for as many span pointers as you like within the
+ * selected region. If you need to perform operations on two scan
+ * lines at a time, for example, you can simply request for two
+ * pointers inside the selected region.
+ * 
+ * Once you have obtained your pointer, you can use any of the
+ * al_bitmap_read*() or al_bitmap_write*() functions to read/write to the
+ * selected bitmaps.
+ *
+ * Since you can only have one read and write selected region per bitmap
+ * at a time, setting the selected region to another region inside the same
+ * bitmap will automatically unselect the previous region.
+ *
+ * Once you are done with a bitmap region, you *must* unselect it.
+ * Failure to do so will leave the system in an undefined state.
+ *
+ * Implementation detail: On Windows, you cannot access data in
+ * Thread-Local Storage while at least one bitmap region is selected.
+ *
+ * You can select up to one read and one write region per bitmap at
+ * a time. You cannot select two read regions on the same bitmap at
+ * the same time.
+ */
+ 
+
+/* int al_select_bitmap_read1_region(AL_BITMAP *bitmap, int x, int y, int width, int height) */
+/* Selects a region inside the first source bitmap for reading. If a region
+ * in this bitmap was already selected for reading, then the previous region is
+ * unselected and the new one selected in its place. Pointers to the old region
+ * are all invalidated. You will need to query Allegro about new pointers to
+ * read from this region.
+ *
+ * Pass the coordinates of the top-left corner of the bitmap region to select,
+ * as well as the size of the region to select. If Allegro is unable to select
+ * that region then this functions returns -1. Otherwise, it returns 0.
+ *
+ * Selected a region of height 1 that is entirely inside the bitmap will always
+ * succeed.
+ *
+ * This function is implemented as a macro.
+ */
+int al_select_bitmap_read1_region(AL_BITMAP *bitmap, int x, int y, int width, int height);
+
+
+/* int al_select_bitmap_read2_region(AL_BITMAP *bitmap, int x, int y, int width, int height) */
+/* Behaves identically to al_select_bitmap_read1_region(), but selects a read
+ * region inside a second source bitmap.
+ *
+ * This function is implemented as a macro.
+ */
+int al_select_bitmap_read2_region(AL_BITMAP *bitmap, int x, int y, int width, int height);
+
+
+/* int al_select_bitmap_write_region(AL_BITMAP *bitmap, int x, int y, int width, int height) */
+/* Behaves identically to al_select_bitmap_read1_region(), but selects a write
+ * region inside the destination bitmap. This region may overlap with either
+ * source bitmaps.
+ *
+ * This function is implemented as a macro.
+ */
+int al_select_bitmap_write_region(AL_BITMAP *bitmap, int x, int y, int width, int height);
+
+
+/* int al_unselect_bitmap_read1_region(AL_BITMAP *bitmap) */
+/* Unselects a read region for the first source bitmap. You must call this
+ * function once you are done with using Direct Bitmap Access on the
+ * selected bitmap.
+ *
+ * This function is implemented as a macro.
+ */
+int al_unselect_bitmap_read1_region(AL_BITMAP *bitmap);
+
+
+/* int al_unselect_bitmap_read2_region(AL_BITMAP *bitmap) */
+/* Unselects a read region for the second source bitmap. You must call this
+ * function once you are done with using Direct Bitmap Access on the
+ * selected bitmap.
+ *
+ * This function is implemented as a macro.
+ */
+int al_unselect_bitmap_read2_region(AL_BITMAP *bitmap);
+
+
+/* int al_unselect_bitmap_write_region(AL_BITMAP *bitmap) */
+/* Unselects a write region for the destination bitmap. You must call this
+ * function once you are done with using Direct Bitmap Access on the
+ * selected bitmap.
+ *
+ * This function is implemented as a macro.
+ */
+int al_unselect_bitmap_write_region(AL_BITMAP *bitmap);
+
+
+/* void *al_map_bitmap_linear_address(AL_BITMAP *bitmap, int x, int y) */
+/* Returns a pointer to the memory region occupied by the bitmap at
+ * position (x,y). The position must be within one of the the selected
+ * bitmap regions.
+ *
+ * The address returns is linear for a particular horizontal span. That is,
+ * the pixel at x+1 is immediately after the pixel at x. You need to manually
+ * update the pointer to reach the other pixels in the same span.
+ *
+ * This function is implemented as a macro.
+ */
+void *al_map_bitmap_linear_address(AL_BITMAP *bitmap, int x, int y);
+
+
+
+/* void al_get_bitmap_region_info(BITMAP *bitmap, int region, int *line_stride, int *pixel_stride) */
+/* Returns low-level information about a specified bitmap region. The 'bitmap'
+ * parameter should point to a valid bitmap which has had the proper region
+ * selected. The 'region' parameter should be one of AL_BITMAP_READ1_REGION,
+ * AL_BITMAP_READ2_REGION or AL_BITMAP_WRITE_REGION, to specify which region
+ * to get information from. That region must have been selected prior to this
+ * call.
+ *
+ * Pass in 'line_stride' and 'pixel_stride' pointers to integers which will
+ * be filled up with the number of bytes between each start of scan line and
+ * the number of bytes between each start of pixel.
+ *
+ * If the bitmap is NULL or the specified region has not been selected,
+ * then 'line_stride' and 'pixel_stride' are both set to 0. If either
+ * 'line_stride' or 'pixel_stride' are NULL, then the value of the
+ * stride for that parameter is not returned.
+ */
+void al_get_bitmap_region_info(BITMAP *bitmap, int region, int *line_stride, int *pixel_stride)
+
+
+
+/* Writes the specified number of bits to the address provided.
+ * The address must lie within one of the selected bitmap regions.
+ *
+ * These functions are implemented as macros. 
+ */
+void al_bitmap_write_8 (void *address, unsigned char  value);
+void al_bitmap_write_16(void *address, unsigned short value);
+void al_bitmap_write_32(void *address, unsigned int   value);
+void al_bitmap_write_128(void *address, unsigned int  value[4]);
+
+/* Reads the specified number of bits from the address provided.
+ * The address must lie within one of the selected bitmap regions.
+ *
+ * These functions are implemented as macros. 
+ */
+unsigned char  al_bitmap_read_8 (void *address);
+unsigned short al_bitmap_read_16(void *address);
+unsigned int   al_bitmap_read_32(void *address);
+unsigned int  *al_bitmap_read_128(void *address, unsigned int t[4]);  /* I don't really like this one... */
+
+
+/* Here's a complete example for a simple 16-bpp add blender:
+ *
+ * void blend_add(BITMAP *source1, BITMAP *source2, BITMAP *dest) {
+ *    int i, j;
+ *    unsigned short *s1, *s2, *d;
+ *
+ *    if (source1->w != source2->w || source1->w != dest->w
+ *         || source1->h != source2->h || source1->h != dest->h)
+ *         return;
+ *
+ *    if (al_get_bitmap_color_space() != AL_RGB
+ *
+ *    al_acquire_bitmap(source1);
+ *    al_acquire_bitmap(source2);
+ *    al_acquire_bitmap(dest);
+ *
+ *    for (j = 0; j < source1->h; j++) {
+ *
+ *        al_select_bitmap_read1_region(source1, 0, j, source1->w, 1);
+ *        al_select_bitmap_read2_region(source2, 0, j, source2->w, 1);
+ *        al_select_bitmap_write_region(dest,    0, j, dest->w,    1);
+ *        s1 = al_map_bitmap_linear_address(source1, 0, j);
+ *        s2 = al_map_bitmap_linear_address(source2, 0, j);
+ *        d  = al_map_bitmap_linear_address(dest,    0, j);
+ *
+ *        for (i = 0; j < source1->w; i++) {
+ *            unsigned short c1, c2;
+ *            unsigned int r, g, b;
+ *
+ *            c1 = al_bitmap_read_16(s1);
+ *            c2 = al_bitmap_read_16(s2);
+ *
+ *            r = (c1 & 0xF800) + (c2 & 0xF800);
+ *            g = (c1 & 0x07E0) + (c2 & 0x07E0);
+ *            b = (c1 & 0x001F) + (c2 & 0x001F);
+ *
+ *            r = MIN(r, 0xF800);
+ *            g = MIN(g, 0x07E0);
+ *            b = MIN(b, 0x001F);
+ *
+ *            al_bitmap_write_16(d, r | g | b);
+ *
+ *            s1++;
+ *            s2++;
+ *            d++;
+ *        }
+ *    }
+ *
+ *    al_unselect_bitmap_read1_region(source1);
+ *    al_unselect_bitmap_read2_region(source2);
+ *    al_unselect_bitmap_dest_region(dest);
+ *
+ *    al_release_bitmap(source1);
+ *    al_release_bitmap(source2);
+ *    al_release_bitmap(dest);
+ *
+ *    return;
+ * }
+ */
+
+
+
+typedef struct AL_COLOR {
+	unsigned long raw[4];  /* 128 bit fragments */
+} AL_COLOR;
+
+
+/*
+
+Configuration routines:
+
+gfx
+ |- system
+     |- num_display_devices Number of display devices on the system (multiple monitors)
+     |- num_display_drivers Number of display drivers Allegro can use (AL_GFX_*)
+ |- current
+     |- display_device      Current display device for display bitmap creation and for information retreival
+     |- display_bitmap      Currently selected bitmap to change parameters
+     |- color_format        Color format for this bitmap
+     |- window_x            X Position of the window on the desktop (in pixels)
+     |- window_y            Y Position of the window on the desktop (in pixels)
+     |- window_scale_x      X scaling factor of the window
+     |- window_scale_y      Y scaling factor of the window
+     |- resizable           Allow for resize
+     |- windowed            Display bitmap is a window
+     |- refresh_rate        Monitor refresh rate, in Hz
+     |- overlay             Request an overlayed mode
+     |- hw_vram_blit        Set to true if hardware accelerated VRAM to VRAM
+                            blitting is supported.
+ |- query
+     (similar to ../current, but values are read-only)
+     |- driver              Selects the current driver for query
+     |- valid               Indicates that the druver or display device query is valid
+     |- width               Width, in pixels
+     |- height              Height, in pixels
+     |- name                Name of the current device or driver
+     |- refresh_rate        Monitor refresh rate, in Hz
+     |- max_refresh_rate    The maxium refresh rate available
+*/
+
+
+
+Configuration system howto:
+
+- Enumerate all Allegro display drivers:
+	int num = al_get_int("gfx/system/num_display_drivers");
+	for (i = 0; i < num; i++) {
+		al_set_int("gfx/query/driver", i);
+		printf("%s", al_get_string("gfx/query/name");
+	}
+	
+- Create a YUV 422 overlay
+	al_set_boolean("gfx/current/overlay", TRUE);
+	al_set_boolean("gfz/current/windowed", TRUE);
+	AL_BITMAP *screen = al_create_display_bitmap(GFX_AUTO, width, height, AL_8_8_I | AL_YUV, GFX_UPDATE_AUTO);
+
+- Set a full screen 32-bpp display bitmap on the second monitor
+	al_set_int("gfx/current/display_device", 1);
+	al_set_int("gfx/current/windowed", FALSE);
+	AL_BITMAP *screen = al_create_display_bitmap(GFX_AUTO, width, height, AL_32, GFX_UPDATE_AUTO);
+	
+- Display current resolutions of all monitors on the system
+	int num = al_get_int("gfx/system/num_display_devices");
+	for (i = 0; i < num; i++) {
+		al_set_int("gfx/query/display_device", i);
+		printf("%i: %i x %i x %i (%s)\n", i
+			al_get_int("gfx/query/width"),
+			al_get_int("gfx/query/height"),
+			al_get_int("gfx/query/color_depth"),
+			al_get_string("gfx/query/color_space"));
+	}
+
+- Moves a display bitmap window
+	al_set_int("gfx/current/display_bitmap", screen->id);
+	al_set_int("gfx/current/window_x", 55);
+	al_set_int("gfx/current/window_y", 107);

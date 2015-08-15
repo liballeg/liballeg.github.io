@@ -1,0 +1,35 @@
+Allegro 5 API: Displays as event sources
+
+[ This document only describes displays acting as event sources,
+  cf. Bob's gfx API. ]
+
+
+
+- Type: AL_DISPLAY
+
+   [Could be merged with AL_BITMAP in future.]
+   Display objects are also event sources.
+
+
+
+- Event: AL_EVENT_DISPLAY_EXPOSE
+
+   This event type is generated when an area of a display becomes
+   obscured, then later unobscured, so that the area needs to be
+   redrawn.  Some graphics drivers will attempt to handle the
+   redrawing automatically (and in those cases, expose events won't be
+   generated).  However, when that is not possible, you will need to
+   redraw the obscured region yourself.
+
+   Fields specific to this event type:
+
+      (int) e.display.x
+      (int) e.display.y
+
+         The top-left corner of the exposed region.
+
+      (int) e.display.width
+      (int) e.display.height
+
+         The dimensions of the exposed region.  Note that displays may
+         be resized by the user, etc.

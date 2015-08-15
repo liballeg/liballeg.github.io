@@ -1,0 +1,578 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Native dialogs support</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="date" content="" />
+  <link rel="stylesheet" href="pandoc.css" type="text/css" />
+  <script type="text/javascript" src="autosuggest.js"></script>
+  <script type="text/javascript" src="search_index.js"></script>
+</head>
+<body>
+<h1 class="title">Native dialogs support</h1>
+<div class="sidebar">
+<ul
+><li
+  ><a href="index.html"
+    ><strong
+      >Contents</strong
+      ></a
+    ></li
+  ><li
+  ><a href="config.html"
+    >Configuration files</a
+    ></li
+  ><li
+  ><a href="direct3d.html"
+    >Direct3D</a
+    ></li
+  ><li
+  ><a href="display.html"
+    >Display</a
+    ></li
+  ><li
+  ><a href="events.html"
+    >Events</a
+    ></li
+  ><li
+  ><a href="file.html"
+    >File I/O</a
+    ></li
+  ><li
+  ><a href="fshook.html"
+    >Filesystem</a
+    ></li
+  ><li
+  ><a href="fixed.html"
+    >Fixed</a
+    ></li
+  ><li
+  ><a href="graphics.html"
+    >Graphics</a
+    ></li
+  ><li
+  ><a href="joystick.html"
+    >Joystick</a
+    ></li
+  ><li
+  ><a href="keyboard.html"
+    >Keyboard</a
+    ></li
+  ><li
+  ><a href="memory.html"
+    >Memory</a
+    ></li
+  ><li
+  ><a href="misc.html"
+    >Miscellaneous</a
+    ></li
+  ><li
+  ><a href="mouse.html"
+    >Mouse</a
+    ></li
+  ><li
+  ><a href="opengl.html"
+    >OpenGL</a
+    ></li
+  ><li
+  ><a href="path.html"
+    >Path</a
+    ></li
+  ><li
+  ><a href="platform.html"
+    >Platform-specific</a
+    ></li
+  ><li
+  ><a href="state.html"
+    >State</a
+    ></li
+  ><li
+  ><a href="system.html"
+    >System</a
+    ></li
+  ><li
+  ><a href="threads.html"
+    >Threads</a
+    ></li
+  ><li
+  ><a href="time.html"
+    >Time</a
+    ></li
+  ><li
+  ><a href="timer.html"
+    >Timer</a
+    ></li
+  ><li
+  ><a href="transformations.html"
+    >Transformations</a
+    ></li
+  ><li
+  ><a href="utf8.html"
+    >UTF-8</a
+    ></li
+  ><li
+  ><a href="index.html#addons"
+    ><strong
+      >Addons</strong
+      ></a
+    ></li
+  ><li
+  ><a href="audio.html"
+    >Audio addon</a
+    ></li
+  ><li
+  ><a href="acodec.html"
+    >Audio codecs</a
+    ></li
+  ><li
+  ><a href="color.html"
+    >Color addon</a
+    ></li
+  ><li
+  ><a href="font.html"
+    >Font addons</a
+    ></li
+  ><li
+  ><a href="image.html"
+    >Image I/O addon</a
+    ></li
+  ><li
+  ><a href="native_dialog.html"
+    >Native dialogs addon</a
+    ></li
+  ><li
+  ><a href="physfs.html"
+    >PhysicsFS addon</a
+    ></li
+  ><li
+  ><a href="primitives.html"
+    >Primitives addon</a
+    ></li
+  ></ul
+><div class="searchbox">
+<script type="text/javascript">
+function on_search(index, control) {
+    for (i = 0; i < search_index.length; i++) {
+        if (search_index[i] == control.keywords[index]) {
+            break;
+        }
+    }
+    location.href = search_urls[i];
+}
+</script>Search<br /> <input type="text" name="q" id="q" size="15" autocomplete="off" /><br /><script type="text/javascript"> new autosuggest("q", search_index, null, on_search); </script>
+</div>
+
+</div>
+
+<div class="content">
+
+
+
+<div id="TOC"
+><ul
+  ><li
+    ><a href="#allegro_native_dialog"
+      >ALLEGRO_NATIVE_DIALOG</a
+      ></li
+    ><li
+    ><a href="#al_create_native_file_dialog"
+      >al_create_native_file_dialog</a
+      ></li
+    ><li
+    ><a href="#al_show_native_file_dialog"
+      >al_show_native_file_dialog</a
+      ></li
+    ><li
+    ><a href="#al_get_native_file_dialog_count"
+      >al_get_native_file_dialog_count</a
+      ></li
+    ><li
+    ><a href="#al_get_native_file_dialog_path"
+      >al_get_native_file_dialog_path</a
+      ></li
+    ><li
+    ><a href="#al_destroy_native_dialog"
+      >al_destroy_native_dialog</a
+      ></li
+    ><li
+    ><a href="#al_show_native_message_box"
+      >al_show_native_message_box</a
+      ></li
+    ><li
+    ><a href="#al_open_native_text_log"
+      >al_open_native_text_log</a
+      ></li
+    ><li
+    ><a href="#al_close_native_text_log"
+      >al_close_native_text_log</a
+      ></li
+    ><li
+    ><a href="#al_append_native_text_log"
+      >al_append_native_text_log</a
+      ></li
+    ><li
+    ><a href="#al_get_native_dialog_event_source"
+      >al_get_native_dialog_event_source</a
+      ></li
+    ><li
+    ><a href="#al_get_allegro_native_dialog_version"
+      >al_get_allegro_native_dialog_version</a
+      ></li
+    ></ul
+  ></div
+>
+<p
+>These functions are declared in the following header file. Link with allegro_dialog.</p
+><pre
+><code
+  >#include &lt;allegro5/allegro_native_dialog.h&gt;
+</code
+  ></pre
+><div id="allegro_native_dialog"
+><h1
+  ><a href="#TOC"
+    >ALLEGRO_NATIVE_DIALOG</a
+    ></h1
+  ><pre
+  ><code
+    >typedef struct ALLEGRO_NATIVE_DIALOG ALLEGRO_NATIVE_DIALOG;
+</code
+    ></pre
+  ><p
+  >Opaque handle to a native dialog.</p
+  ></div
+><div id="al_create_native_file_dialog"
+><h1
+  ><a href="#TOC"
+    >al_create_native_file_dialog</a
+    ></h1
+  ><pre
+  ><code
+    >ALLEGRO_NATIVE_DIALOG *al_create_native_file_dialog(
+    ALLEGRO_PATH const *initial_path,
+    char const *title,
+    char const *patterns,
+    int mode)
+</code
+    ></pre
+  ><p
+  >Creates a new native file dialog. You should only have one such dialog opened at a time.</p
+  ><p
+  >Parameters:</p
+  ><ul
+  ><li
+    >initial_path: The initial search path and filename. Can be NULL.</li
+    ><li
+    >title: Title of the dialog.</li
+    ><li
+    >patterns: A list of semi-colon separated patterns to match. You should always include the pattern &quot;*.*&quot; as usually the MIME type and not the file pattern is relevant. If no file patterns are supported by the native dialog, this parameter is ignored.</li
+    ><li
+    >mode: 0, or a combination of the flags below.</li
+    ></ul
+  ><p
+  >Possible flags for the 'mode' parameter are:</p
+  ><ul
+  ><li
+    >ALLEGRO_FILECHOOSER_FILE_MUST_EXIST: If supported by the native dialog, it will not allow entering new names, but just allow existing files to be selected. Else it is ignored.</li
+    ><li
+    >ALLEGRO_FILECHOOSER_SAVE: If the native dialog system has a different dialog for saving (for example one which allows creating new directories), it is used. Else ignored.</li
+    ><li
+    >ALLEGRO_FILECHOOSER_FOLDER: If there is support for a separate dialog to select a folder instead of a file, it will be used.</li
+    ><li
+    >ALLEGRO_FILECHOOSER_PICTURES: If a different dialog is available for selecting pictures, it is used. Else ignored.</li
+    ><li
+    >ALLEGRO_FILECHOOSER_SHOW_HIDDEN: If the platform supports it, also hidden files will be shown.</li
+    ><li
+    >ALLEGRO_FILECHOOSER_MULTIPLE: If supported, allow selecting multiple files.</li
+    ></ul
+  ><p
+  >Returns:</p
+  ><p
+  >A handle to the dialog which you can pass to <a href="native_dialog.html#al_show_native_file_dialog"
+    >al_show_native_file_dialog</a
+    > to display it, and from which you then can query the results. When you are done, call [al_destroy_native_file_dialog] on it.</p
+  ></div
+><div id="al_show_native_file_dialog"
+><h1
+  ><a href="#TOC"
+    >al_show_native_file_dialog</a
+    ></h1
+  ><pre
+  ><code
+    >void al_show_native_file_dialog(ALLEGRO_NATIVE_DIALOG *fd)
+</code
+    ></pre
+  ><p
+  >Show the dialog window. The display may be NULL, otherwise the given display is treated as the parent if possible.</p
+  ><p
+  >This function blocks the calling thread until it returns, so you may want to spawn a thread with <a href="threads.html#al_create_thread"
+    >al_create_thread</a
+    > and call it from inside that thread.</p
+  ></div
+><div id="al_get_native_file_dialog_count"
+><h1
+  ><a href="#TOC"
+    >al_get_native_file_dialog_count</a
+    ></h1
+  ><pre
+  ><code
+    >int al_get_native_file_dialog_count(const ALLEGRO_NATIVE_DIALOG *fc)
+</code
+    ></pre
+  ><p
+  >Returns the number of files selected, or 0 if the dialog was cancelled.</p
+  ></div
+><div id="al_get_native_file_dialog_path"
+><h1
+  ><a href="#TOC"
+    >al_get_native_file_dialog_path</a
+    ></h1
+  ><pre
+  ><code
+    >const ALLEGRO_PATH *al_get_native_file_dialog_path(
+   const ALLEGRO_NATIVE_DIALOG *fc, size_t i)
+</code
+    ></pre
+  ><p
+  >Returns one of the selected paths.</p
+  ></div
+><div id="al_destroy_native_dialog"
+><h1
+  ><a href="#TOC"
+    >al_destroy_native_dialog</a
+    ></h1
+  ><pre
+  ><code
+    >void al_destroy_native_dialog(ALLEGRO_NATIVE_DIALOG *fd)
+</code
+    ></pre
+  ><p
+  >Frees up all resources used by the dialog.</p
+  ></div
+><div id="al_show_native_message_box"
+><h1
+  ><a href="#TOC"
+    >al_show_native_message_box</a
+    ></h1
+  ><pre
+  ><code
+    >int al_show_native_message_box(ALLEGRO_DISPLAY *display,
+   char const *title, char const *heading, char const *text,
+   char const *buttons, int flags)
+</code
+    ></pre
+  ><p
+  >Show a native GUI message box. This can be used for example to display an error message if creation of an initial display fails. The display may be NULL, otherwise the given display is treated as the parent if possible.</p
+  ><p
+  >The message box will have a single &quot;OK&quot; button and use the style informative dialog boxes usually have on the native system. If the <code
+    >buttons</code
+    > parameter is not NULL, you can instead specify the button text in a string, with buttons separated by a vertical bar (|).</p
+  ><table
+  ><col width="37%"
+     /><col width="62%"
+     /><thead
+    ><tr class="header"
+      ><th align="left"
+	>Flags</th
+	><th align="left"
+	></th
+	></tr
+      ></thead
+    ><tbody
+    ><tr class="odd"
+      ><td align="left"
+	>ALLEGRO_MESSAGEBOX_WARN</td
+	><td align="left"
+	>The message is a warning. This may cause a different icon (or other effects).</td
+	></tr
+      ><tr class="even"
+      ><td align="left"
+	>ALLEGRO_MESSAGEBOX_ERROR</td
+	><td align="left"
+	>The message is an error.</td
+	></tr
+      ><tr class="odd"
+      ><td align="left"
+	>ALLEGRO_MESSAGEBOX_QUESTION</td
+	><td align="left"
+	>The message is a question.</td
+	></tr
+      ><tr class="even"
+      ><td align="left"
+	>ALLEGRO_MESSAGEBOX_OK_CANCEL</td
+	><td align="left"
+	>Instead of the &quot;OK&quot; button also display a cancel button. Ignored if <code
+	  >buttons</code
+	  > is not NULL.</td
+	></tr
+      ><tr class="odd"
+      ><td align="left"
+	>ALLEGRO_MESSAGEBOX_YES_NO</td
+	><td align="left"
+	>Instead of the &quot;OK&quot; button display Yes/No buttons. Ignored if <code
+	  >buttons</code
+	  > is not NULL.</td
+	></tr
+      ></tbody
+    ></table
+  ><p
+  >Returns:</p
+  ><ul
+  ><li
+    >0 if the dialog window was closed without activating a button.</li
+    ><li
+    >1 if the OK or Yes button was pressed.</li
+    ><li
+    >2 if the Cancel or No button was pressed.</li
+    ></ul
+  ><p
+  >If <code
+    >buttons</code
+    > is not NULL, the number of the pressed button is returned, starting with 1.</p
+  ><p
+  >Example:</p
+  ><pre
+  ><code
+    >  button = al_show_native_message_box(&quot;Fullscreen?&quot;,
+     &quot;Do you want to run this game in fullscreen mode?&quot;,
+     &quot;Never|Always|Not this time|Only this time&quot;,
+     ALLEGRO_MESSAGEBOX_QUESTION);
+  /* button is 1/2/3/4 if one of the buttons is pressed, 0 if the window
+   * is closed.
+   */
+</code
+    ></pre
+  ></div
+><div id="al_open_native_text_log"
+><h1
+  ><a href="#TOC"
+    >al_open_native_text_log</a
+    ></h1
+  ><pre
+  ><code
+    >ALLEGRO_NATIVE_DIALOG *al_open_native_text_log(char const *title, int flags)
+</code
+    ></pre
+  ><p
+  >Opens a window to which you can append log messages with <a href="native_dialog.html#al_append_native_text_log"
+    >al_append_native_text_log</a
+    >. This can be useful for debugging if you don't want to depend on a console being available.</p
+  ><p
+  >Use <a href="native_dialog.html#al_close_native_text_log"
+    >al_close_native_text_log</a
+    > to close the window again.</p
+  ><p
+  >The flags available are:</p
+  ><dl
+  ><dt
+    >ALLEGRO_TEXTLOG_NO_CLOSE</dt
+    ><dd
+    ><p
+      >Prevent the window from having a close button. Otherwise if the close button is pressed an event is generated; see <a href="native_dialog.html#al_get_native_dialog_event_source"
+	>al_get_native_dialog_event_source</a
+	>.</p
+      ></dd
+    ><dt
+    >ALLEGRO_TEXTLOG_MONOSPACE</dt
+    ><dd
+    ><p
+      >Use a monospace font to display the text.</p
+      ></dd
+    ></dl
+  ><p
+  >Returns NULL if there was an error opening the window, or if text log windows are not implemented on the platform.</p
+  ><p
+  >See also: <a href="native_dialog.html#al_append_native_text_log"
+    >al_append_native_text_log</a
+    >, <a href="native_dialog.html#al_close_native_text_log"
+    >al_close_native_text_log</a
+    ></p
+  ></div
+><div id="al_close_native_text_log"
+><h1
+  ><a href="#TOC"
+    >al_close_native_text_log</a
+    ></h1
+  ><pre
+  ><code
+    >void al_close_native_text_log(ALLEGRO_NATIVE_DIALOG *textlog)
+</code
+    ></pre
+  ><p
+  >Closes a message log window opened with <a href="native_dialog.html#al_open_native_text_log"
+    >al_open_native_text_log</a
+    > earlier.</p
+  ><p
+  >Does nothing if passed NULL.</p
+  ><p
+  >See also: <a href="native_dialog.html#al_open_native_text_log"
+    >al_open_native_text_log</a
+    ></p
+  ></div
+><div id="al_append_native_text_log"
+><h1
+  ><a href="#TOC"
+    >al_append_native_text_log</a
+    ></h1
+  ><pre
+  ><code
+    >void al_append_native_text_log(ALLEGRO_NATIVE_DIALOG *textlog,
+   char const *format, ...)
+</code
+    ></pre
+  ><p
+  >Appends a line of text to the message log window and scrolls to the bottom (if the line would not be visible otherwise). This works like printf. A line is continued until you add a newline character.</p
+  ><p
+  >If the window is NULL then this function will fall back to calling printf. This makes it convenient to support logging to a window or a terminal.</p
+  ></div
+><div id="al_get_native_dialog_event_source"
+><h1
+  ><a href="#TOC"
+    >al_get_native_dialog_event_source</a
+    ></h1
+  ><pre
+  ><code
+    >ALLEGRO_EVENT_SOURCE *al_get_native_dialog_event_source(
+   ALLEGRO_NATIVE_DIALOG *dialog)
+</code
+    ></pre
+  ><p
+  >Get an event source for a native window. The possible events are:</p
+  ><dl
+  ><dt
+    >ALLEGRO_EVENT_NATIVE_DIALOG_CLOSE</dt
+    ><dd
+    >The window was requested to be closed, either by pressing the close button or pressing Escape on the keyboard. Only supported for windows created with <a href="native_dialog.html#al_open_native_text_log"
+      >al_open_native_text_log</a
+      >. The user.data1 field will hold a pointer to the <a href="native_dialog.html#allegro_native_dialog"
+      >ALLEGRO_NATIVE_DIALOG</a
+      > which generated the event. The user.data2 field will be 1 if the event was generated as a result of a key press; otherwise it will be zero.</dd
+    ></dl
+  ></div
+><div id="al_get_allegro_native_dialog_version"
+><h1
+  ><a href="#TOC"
+    >al_get_allegro_native_dialog_version</a
+    ></h1
+  ><pre
+  ><code
+    >uint32_t al_get_allegro_native_dialog_version(void)
+</code
+    ></pre
+  ><p
+  >Returns the (compiled) version of the addon, in the same format as <a href="system.html#al_get_allegro_version"
+    >al_get_allegro_version</a
+    >.</p
+  ></div
+>
+<p class="timestamp">
+Allegro version 4.9.21 (WIP)
+ - Last updated: 2010-07-24 19:05:33 UTC
+</p>
+</div>
+
+
+</body>
+</html>
+

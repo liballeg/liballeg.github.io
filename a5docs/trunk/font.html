@@ -1,0 +1,478 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Font addons</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="pandoc.css" type="text/css" />
+  <script type="text/javascript" src="autosuggest.js"></script>
+  <script type="text/javascript" src="search_index.js"></script>
+</head>
+<body>
+<div class="sidebar">
+<div>
+<ul>
+<li><a href="index.html"><strong>Contents</strong></a></li>
+<li><a href="config.html">Configuration files</a></li>
+<li><a href="display.html">Display</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="file.html">File I/O</a></li>
+<li><a href="fshook.html">Filesystem</a></li>
+<li><a href="fixed.html">Fixed point math</a></li>
+<li><a href="fullscreen_mode.html">Fullscreen modes</a></li>
+<li><a href="graphics.html">Graphics</a></li>
+<li><a href="haptic.html">Haptic</a></li>
+<li><a href="joystick.html">Joystick</a></li>
+<li><a href="keyboard.html">Keyboard</a></li>
+<li><a href="memory.html">Memory</a></li>
+<li><a href="monitor.html">Monitor</a></li>
+<li><a href="mouse.html">Mouse</a></li>
+<li><a href="path.html">Path</a></li>
+<li><a href="shader.html">Shader</a></li>
+<li><a href="state.html">State</a></li>
+<li><a href="system.html">System</a></li>
+<li><a href="threads.html">Threads</a></li>
+<li><a href="time.html">Time</a></li>
+<li><a href="timer.html">Timer</a></li>
+<li><a href="touch.html">Touch input</a></li>
+<li><a href="transformations.html">Transformations</a></li>
+<li><a href="utf8.html">UTF-8</a></li>
+<li><a href="misc.html">Miscellaneous</a></li>
+<li><a href="platform.html">Platform-specific</a></li>
+<li><a href="direct3d.html">Direct3D</a></li>
+<li><a href="opengl.html">OpenGL</a></li>
+</ul>
+<!-- The preceding blank line forces pandoc to terminate the list -->
+</div>
+<div>
+<ul>
+<li><a href="index.html#addons"><strong>Addons</strong></a></li>
+<li><a href="audio.html">Audio addon</a></li>
+<li><a href="acodec.html">Audio codecs</a></li>
+<li><a href="color.html">Color addon</a></li>
+<li><a href="font.html">Font addons</a></li>
+<li><a href="image.html">Image I/O addon</a></li>
+<li><a href="main.html">Main addon</a></li>
+<li><a href="memfile.html">Memfile addon</a></li>
+<li><a href="native_dialog.html">Native dialogs addon</a></li>
+<li><a href="physfs.html">PhysicsFS addon</a></li>
+<li><a href="primitives.html">Primitives addon</a></li>
+<li><a href="video.html">Video streaming addon</a></li>
+</ul>
+<!-- The preceding blank line forces pandoc to terminate the list -->
+</div>
+<div>
+<ul>
+<li><a href="index_all.html"><strong>Index</strong></a></li>
+</ul>
+<!-- The preceding blank line forces pandoc to terminate the list -->
+</div>
+<div class="searchbox">
+<script type="text/javascript">
+function on_search(index, control) {
+    // Note to self: the less-than sign must NOT converted to an entity!
+    // SCRIPT elements are special.  The HTML validator gives bad advice.
+    for (i = 0; i < search_index.length; i++) {
+        if (search_index[i] == control.keywords[index]) {
+            break;
+        }
+    }
+    location.href = search_urls[i];
+}
+</script>
+Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br/>
+<script type="text/javascript"> new autosuggest("q", search_index, null, on_search); </script>
+</div>
+</div>
+<div class="content">
+<div id="header">
+<h1 class="title">Font addons</h1>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#general-font-routines">General font routines</a><ul>
+<li><a href="#allegro_font">ALLEGRO_FONT</a></li>
+<li><a href="#al_init_font_addon">al_init_font_addon</a></li>
+<li><a href="#al_shutdown_font_addon">al_shutdown_font_addon</a></li>
+<li><a href="#al_load_font">al_load_font</a></li>
+<li><a href="#al_destroy_font">al_destroy_font</a></li>
+<li><a href="#al_register_font_loader">al_register_font_loader</a></li>
+<li><a href="#al_get_font_line_height">al_get_font_line_height</a></li>
+<li><a href="#al_get_font_ascent">al_get_font_ascent</a></li>
+<li><a href="#al_get_font_descent">al_get_font_descent</a></li>
+<li><a href="#al_get_text_width">al_get_text_width</a></li>
+<li><a href="#al_get_ustr_width">al_get_ustr_width</a></li>
+<li><a href="#al_draw_text">al_draw_text</a></li>
+<li><a href="#al_draw_ustr">al_draw_ustr</a></li>
+<li><a href="#al_draw_justified_text">al_draw_justified_text</a></li>
+<li><a href="#al_draw_justified_ustr">al_draw_justified_ustr</a></li>
+<li><a href="#al_draw_textf">al_draw_textf</a></li>
+<li><a href="#al_draw_justified_textf">al_draw_justified_textf</a></li>
+<li><a href="#al_get_text_dimensions">al_get_text_dimensions</a></li>
+<li><a href="#al_get_ustr_dimensions">al_get_ustr_dimensions</a></li>
+<li><a href="#al_get_allegro_font_version">al_get_allegro_font_version</a></li>
+<li><a href="#al_get_font_ranges">al_get_font_ranges</a></li>
+</ul></li>
+<li><a href="#multiline-text-drawing">Multiline text drawing</a><ul>
+<li><a href="#al_draw_multiline_text">al_draw_multiline_text</a></li>
+<li><a href="#al_draw_multiline_ustr">al_draw_multiline_ustr</a></li>
+<li><a href="#al_draw_multiline_textf">al_draw_multiline_textf</a></li>
+<li><a href="#al_do_multiline_text">al_do_multiline_text</a></li>
+<li><a href="#al_do_multiline_ustr">al_do_multiline_ustr</a></li>
+</ul></li>
+<li><a href="#bitmap-fonts">Bitmap fonts</a><ul>
+<li><a href="#al_grab_font_from_bitmap">al_grab_font_from_bitmap</a></li>
+<li><a href="#al_load_bitmap_font">al_load_bitmap_font</a></li>
+<li><a href="#al_load_bitmap_font_flags">al_load_bitmap_font_flags</a></li>
+<li><a href="#al_create_builtin_font">al_create_builtin_font</a></li>
+</ul></li>
+<li><a href="#ttf-fonts">TTF fonts</a><ul>
+<li><a href="#al_init_ttf_addon">al_init_ttf_addon</a></li>
+<li><a href="#al_shutdown_ttf_addon">al_shutdown_ttf_addon</a></li>
+<li><a href="#al_load_ttf_font">al_load_ttf_font</a></li>
+<li><a href="#al_load_ttf_font_f">al_load_ttf_font_f</a></li>
+<li><a href="#al_load_ttf_font_stretch">al_load_ttf_font_stretch</a></li>
+<li><a href="#al_load_ttf_font_stretch_f">al_load_ttf_font_stretch_f</a></li>
+<li><a href="#al_get_allegro_ttf_version">al_get_allegro_ttf_version</a></li>
+</ul></li>
+</ul>
+</div>
+<p>These functions are declared in the following header file. Link with allegro_font.</p>
+<pre class="sourceCode c"><code class="sourceCode c"> <span class="ot">#include &lt;allegro5/allegro_font.h&gt;</span></code></pre>
+<h1 id="general-font-routines">General font routines</h1>
+<h2 id="allegro_font">ALLEGRO_FONT</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_FONT ALLEGRO_FONT;</code></pre>
+<p>A handle identifying any kind of font. Usually you will create it with <a href="font.html#al_load_font">al_load_font</a> which supports loading all kinds of TrueType fonts supported by the FreeType library. If you instead pass the filename of a bitmap file, it will be loaded with <a href="graphics.html#al_load_bitmap">al_load_bitmap</a> and a font in Allegro's bitmap font format will be created from it with <a href="font.html#al_grab_font_from_bitmap">al_grab_font_from_bitmap</a>.</p>
+<h2 id="al_init_font_addon">al_init_font_addon</h2>
+<pre class="sourceCode c"><code class="sourceCode c">bool al_init_font_addon(<span class="dt">void</span>)</code></pre>
+<p>Initialise the font addon.</p>
+<p>Note that if you intend to load bitmap fonts, you will need to initialise allegro_image separately (unless you are using another library to load images).</p>
+<p>Similarly, if you wish to load truetype-fonts, do not forget to also call <a href="font.html#al_init_ttf_addon">al_init_ttf_addon</a>.</p>
+<p>Returns true on success, false on failure. On the 5.0 branch, this function has no return value. You may wish to avoid checking the return value if your code needs to be compatible with Allegro 5.0. Currently, the function will never return false.</p>
+<p>See also: <a href="image.html#al_init_image_addon">al_init_image_addon</a>, <a href="font.html#al_init_ttf_addon">al_init_ttf_addon</a>, <a href="font.html#al_shutdown_font_addon">al_shutdown_font_addon</a></p>
+<h2 id="al_shutdown_font_addon">al_shutdown_font_addon</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_shutdown_font_addon(<span class="dt">void</span>)</code></pre>
+<p>Shut down the font addon. This is done automatically at program exit, but can be called any time the user wishes as well.</p>
+<p>See also: <a href="font.html#al_init_font_addon">al_init_font_addon</a></p>
+<h2 id="al_load_font">al_load_font</h2>
+<pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_FONT *al_load_font(<span class="dt">char</span> <span class="dt">const</span> *filename, <span class="dt">int</span> size, <span class="dt">int</span> flags)</code></pre>
+<p>Loads a font from disk. This will use <a href="font.html#al_load_bitmap_font_flags">al_load_bitmap_font_flags</a> if you pass the name of a known bitmap format, or else <a href="font.html#al_load_ttf_font">al_load_ttf_font</a>.</p>
+<p>The flags parameter is passed through to either of those functions. Bitmap and TTF fonts are also affected by the current <a href="graphics.html#al_set_new_bitmap_flags">bitmap flags</a> at the time the font is loaded.</p>
+<p>See also: <a href="font.html#al_destroy_font">al_destroy_font</a>, <a href="font.html#al_init_font_addon">al_init_font_addon</a>, <a href="font.html#al_register_font_loader">al_register_font_loader</a>, <a href="font.html#al_load_bitmap_font_flags">al_load_bitmap_font_flags</a>, <a href="font.html#al_load_ttf_font">al_load_ttf_font</a></p>
+<h2 id="al_destroy_font">al_destroy_font</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_destroy_font(ALLEGRO_FONT *f)</code></pre>
+<p>Frees the memory being used by a font structure. Does nothing if passed NULL.</p>
+<p>See also: <a href="font.html#al_load_font">al_load_font</a></p>
+<h2 id="al_register_font_loader">al_register_font_loader</h2>
+<pre class="sourceCode c"><code class="sourceCode c">bool al_register_font_loader(<span class="dt">char</span> <span class="dt">const</span> *extension,
+   ALLEGRO_FONT *(*load_font)(<span class="dt">char</span> <span class="dt">const</span> *filename, <span class="dt">int</span> size, <span class="dt">int</span> flags))</code></pre>
+<p>Informs Allegro of a new font file type, telling it how to load files of this format.</p>
+<p>The <code>extension</code> should include the leading dot ('.') character. It will be matched case-insensitively.</p>
+<p>The <code>load_font</code> argument may be NULL to unregister an entry.</p>
+<p>Returns true on success, false on error. Returns false if unregistering an entry that doesn't exist.</p>
+<p>See also: <a href="font.html#al_init_font_addon">al_init_font_addon</a></p>
+<h2 id="al_get_font_line_height">al_get_font_line_height</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_font_line_height(<span class="dt">const</span> ALLEGRO_FONT *f)</code></pre>
+<p>Returns the usual height of a line of text in the specified font. For bitmap fonts this is simply the height of all glyph bitmaps. For truetype fonts it is whatever the font file specifies. In particular, some special glyphs may be higher than the height returned here.</p>
+<p>If the X is the position you specify to draw text, the meaning of ascent and descent and the line height is like in the figure below.</p>
+<pre><code>X------------------------
+    /\         |        |
+   /  \        |        |
+  /____\       ascent   |
+ /      \      |        |
+/        \     |        height
+----------------        |
+               |        |
+               descent  |
+               |        |
+-------------------------</code></pre>
+<p>See also: <a href="font.html#al_get_text_width">al_get_text_width</a>, <a href="font.html#al_get_text_dimensions">al_get_text_dimensions</a></p>
+<h2 id="al_get_font_ascent">al_get_font_ascent</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_font_ascent(<span class="dt">const</span> ALLEGRO_FONT *f)</code></pre>
+<p>Returns the ascent of the specified font.</p>
+<p>See also: <a href="font.html#al_get_font_descent">al_get_font_descent</a>, <a href="font.html#al_get_font_line_height">al_get_font_line_height</a></p>
+<h2 id="al_get_font_descent">al_get_font_descent</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_font_descent(<span class="dt">const</span> ALLEGRO_FONT *f)</code></pre>
+<p>Returns the descent of the specified font.</p>
+<p>See also: <a href="font.html#al_get_font_ascent">al_get_font_ascent</a>, <a href="font.html#al_get_font_line_height">al_get_font_line_height</a></p>
+<h2 id="al_get_text_width">al_get_text_width</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_text_width(<span class="dt">const</span> ALLEGRO_FONT *f, <span class="dt">const</span> <span class="dt">char</span> *str)</code></pre>
+<p>Calculates the length of a string in a particular font, in pixels.</p>
+<p>See also: <a href="font.html#al_get_ustr_width">al_get_ustr_width</a>, <a href="font.html#al_get_font_line_height">al_get_font_line_height</a>, <a href="font.html#al_get_text_dimensions">al_get_text_dimensions</a></p>
+<h2 id="al_get_ustr_width">al_get_ustr_width</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_ustr_width(<span class="dt">const</span> ALLEGRO_FONT *f, ALLEGRO_USTR <span class="dt">const</span> *ustr)</code></pre>
+<p>Like <a href="font.html#al_get_text_width">al_get_text_width</a> but expects an ALLEGRO_USTR.</p>
+<p>See also: <a href="font.html#al_get_text_width">al_get_text_width</a>, <a href="font.html#al_get_ustr_dimensions">al_get_ustr_dimensions</a></p>
+<h2 id="al_draw_text">al_draw_text</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_draw_text(<span class="dt">const</span> ALLEGRO_FONT *font,
+   ALLEGRO_COLOR color, <span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">int</span> flags,
+   <span class="dt">char</span> <span class="dt">const</span> *text) </code></pre>
+<p>Writes the NUL-terminated string <code>text</code> onto the target bitmap at position <code>x</code>, <code>y</code>, using the specified <code>font</code>.</p>
+<p>The <code>flags</code> parameter can be 0 or one of the following flags:</p>
+<ul>
+<li>ALLEGRO_ALIGN_LEFT - Draw the text left-aligned (same as 0).</li>
+<li>ALLEGRO_ALIGN_CENTRE - Draw the text centered around the given position.</li>
+<li>ALLEGRO_ALIGN_RIGHT - Draw the text right-aligned to the given position.</li>
+</ul>
+<p>It can also be combined with this flag:</p>
+<ul>
+<li>ALLEGRO_ALIGN_INTEGER - Always draw text aligned to an integer pixel position. This was formerly the default behaviour. Since: 5.0.8, 5.1.4</li>
+</ul>
+<p>This function does not support newline characters (<code>\n</code>), but you can use <a href="font.html#al_draw_multiline_text">al_draw_multiline_text</a> for multi line text output.</p>
+<p>See also: <a href="font.html#al_draw_ustr">al_draw_ustr</a>, <a href="font.html#al_draw_textf">al_draw_textf</a>, <a href="font.html#al_draw_justified_text">al_draw_justified_text</a>, <a href="font.html#al_draw_multiline_text">al_draw_multiline_text</a>.</p>
+<h2 id="al_draw_ustr">al_draw_ustr</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_draw_ustr(<span class="dt">const</span> ALLEGRO_FONT *font,
+   ALLEGRO_COLOR color, <span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">int</span> flags,
+   <span class="dt">const</span> ALLEGRO_USTR *ustr) </code></pre>
+<p>Like <a href="font.html#al_draw_text">al_draw_text</a>, except the text is passed as an ALLEGRO_USTR instead of a NUL-terminated char array.</p>
+<p>See also: <a href="font.html#al_draw_text">al_draw_text</a>, <a href="font.html#al_draw_justified_ustr">al_draw_justified_ustr</a>, <a href="font.html#al_draw_multiline_ustr">al_draw_multiline_ustr</a></p>
+<h2 id="al_draw_justified_text">al_draw_justified_text</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_draw_justified_text(<span class="dt">const</span> ALLEGRO_FONT *font,
+   ALLEGRO_COLOR color, <span class="dt">float</span> x1, <span class="dt">float</span> x2,
+   <span class="dt">float</span> y, <span class="dt">float</span> diff, <span class="dt">int</span> flags, <span class="dt">const</span> <span class="dt">char</span> *text)</code></pre>
+<p>Like <a href="font.html#al_draw_text">al_draw_text</a>, but justifies the string to the region x1-x2.</p>
+<p>The <code>diff</code> parameter is the maximum amount of horizontal space to allow between words. If justisfying the text would exceed <code>diff</code> pixels, or the string contains less than two words, then the string will be drawn left aligned.</p>
+<p>The <code>flags</code> parameter can be 0 or one of the following flags:</p>
+<ul>
+<li>ALLEGRO_ALIGN_INTEGER - Draw text aligned to integer pixel positions. Since: 5.0.8, 5.1.5</li>
+</ul>
+<p>See also: <a href="font.html#al_draw_justified_textf">al_draw_justified_textf</a>, <a href="font.html#al_draw_justified_ustr">al_draw_justified_ustr</a></p>
+<h2 id="al_draw_justified_ustr">al_draw_justified_ustr</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_draw_justified_ustr(<span class="dt">const</span> ALLEGRO_FONT *font,
+   ALLEGRO_COLOR color, <span class="dt">float</span> x1, <span class="dt">float</span> x2,
+   <span class="dt">float</span> y, <span class="dt">float</span> diff, <span class="dt">int</span> flags, <span class="dt">const</span> ALLEGRO_USTR *ustr)</code></pre>
+<p>Like <a href="font.html#al_draw_justified_text">al_draw_justified_text</a>, except the text is passed as an ALLEGRO_USTR instead of a NUL-terminated char array.</p>
+<p>See also: <a href="font.html#al_draw_justified_text">al_draw_justified_text</a>, <a href="font.html#al_draw_justified_textf">al_draw_justified_textf</a>.</p>
+<h2 id="al_draw_textf">al_draw_textf</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_draw_textf(<span class="dt">const</span> ALLEGRO_FONT *font, ALLEGRO_COLOR color,
+   <span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">int</span> flags,
+   <span class="dt">const</span> <span class="dt">char</span> *format, ...)</code></pre>
+<p>Formatted text output, using a printf() style format string. All parameters have the same meaning as with <a href="font.html#al_draw_text">al_draw_text</a> otherwise.</p>
+<p>See also: <a href="font.html#al_draw_text">al_draw_text</a>, <a href="font.html#al_draw_ustr">al_draw_ustr</a></p>
+<h2 id="al_draw_justified_textf">al_draw_justified_textf</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_draw_justified_textf(<span class="dt">const</span> ALLEGRO_FONT *f,
+   ALLEGRO_COLOR color, <span class="dt">float</span> x1, <span class="dt">float</span> x2, <span class="dt">float</span> y,
+   <span class="dt">float</span> diff, <span class="dt">int</span> flags, <span class="dt">const</span> <span class="dt">char</span> *format, ...)</code></pre>
+<p>Formatted text output, using a printf() style format string. All parameters have the same meaning as with <a href="font.html#al_draw_justified_text">al_draw_justified_text</a> otherwise.</p>
+<p>See also: <a href="font.html#al_draw_justified_text">al_draw_justified_text</a>, <a href="font.html#al_draw_justified_ustr">al_draw_justified_ustr</a>.</p>
+<h2 id="al_get_text_dimensions">al_get_text_dimensions</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_get_text_dimensions(<span class="dt">const</span> ALLEGRO_FONT *f,
+   <span class="dt">char</span> <span class="dt">const</span> *text,
+   <span class="dt">int</span> *bbx, <span class="dt">int</span> *bby, <span class="dt">int</span> *bbw, <span class="dt">int</span> *bbh)</code></pre>
+<p>Sometimes, the <a href="font.html#al_get_text_width">al_get_text_width</a> and <a href="font.html#al_get_font_line_height">al_get_font_line_height</a> functions are not enough for exact text placement, so this function returns some additional information.</p>
+<p>Returned variables (all in pixels):</p>
+<ul>
+<li>x, y - Offset to upper left corner of bounding box.</li>
+<li>w, h - Dimensions of bounding box.</li>
+</ul>
+<p>Note that glyphs may go to the left and upwards of the X, in which case x and y will have negative values.</p>
+<p>See also: <a href="font.html#al_get_text_width">al_get_text_width</a>, <a href="font.html#al_get_font_line_height">al_get_font_line_height</a>, <a href="font.html#al_get_ustr_dimensions">al_get_ustr_dimensions</a></p>
+<h2 id="al_get_ustr_dimensions">al_get_ustr_dimensions</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_get_ustr_dimensions(<span class="dt">const</span> ALLEGRO_FONT *f,
+   ALLEGRO_USTR <span class="dt">const</span> *ustr,
+   <span class="dt">int</span> *bbx, <span class="dt">int</span> *bby, <span class="dt">int</span> *bbw, <span class="dt">int</span> *bbh)</code></pre>
+<p>Like <a href="font.html#al_get_text_dimensions">al_get_text_dimensions</a>, except the text is passed as an ALLEGRO_USTR instead of a NUL-terminated char array.</p>
+<p>See also: <a href="font.html#al_get_text_dimensions">al_get_text_dimensions</a></p>
+<h2 id="al_get_allegro_font_version">al_get_allegro_font_version</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">uint32_t</span> al_get_allegro_font_version(<span class="dt">void</span>)</code></pre>
+<p>Returns the (compiled) version of the addon, in the same format as <a href="system.html#al_get_allegro_version">al_get_allegro_version</a>.</p>
+<h2 id="al_get_font_ranges">al_get_font_ranges</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_font_ranges(ALLEGRO_FONT *f, <span class="dt">int</span> ranges_count, <span class="dt">int</span> *ranges)</code></pre>
+<p>Gets information about all glyphs contained in a font, as a list of ranges. Ranges have the same format as with <a href="font.html#al_grab_font_from_bitmap">al_grab_font_from_bitmap</a>.</p>
+<p><code>ranges_count</code> is the maximum number of ranges that will be returned.</p>
+<p><code>ranges</code> should be an array with room for <code>ranges_count</code> * 2 elements. The even integers are the first unicode point in a range, the odd integers the last unicode point in a range.</p>
+<p>Returns the number of ranges contained in the font (even if it is bigger than <code>ranges_count</code>).</p>
+<p>Since: 5.1.4</p>
+<p>See also: <a href="font.html#al_grab_font_from_bitmap">al_grab_font_from_bitmap</a></p>
+<h1 id="multiline-text-drawing">Multiline text drawing</h1>
+<h2 id="al_draw_multiline_text">al_draw_multiline_text</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_draw_multiline_text(<span class="dt">const</span> ALLEGRO_FONT *font,
+     ALLEGRO_COLOR color, <span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">float</span> max_width, <span class="dt">float</span> line_height,
+     <span class="dt">int</span> flags, <span class="dt">const</span> <span class="dt">char</span> *text)</code></pre>
+<p>Like <a href="font.html#al_draw_text">al_draw_text</a>, but this function supports drawing multiple lines of text. It will break <code>text</code> in lines based on its contents and the <code>max_width</code> parameter. The lines are then layed out vertically depending on the <code>line_height</code> parameter and drawn each as if <a href="font.html#al_draw_text">al_draw_text</a> was called on them.</p>
+<p>A newline <code>\n</code> in the <code>text</code> will cause a &quot;hard&quot; line break after its occurrence in the string. The text after a hard break is placed on a new line. Carriage return <code>\r</code> is not supported, will not cause a line break, and will likely be drawn as a square or a space depending on the font.</p>
+<p>The <code>max_width</code> parameter controls the maximum desired width of the lines. This function will try to introduce a &quot;soft&quot; line break after the longest possible series of words that will fit in <code>max_length</code> when drawn with the given <code>font</code>. A &quot;soft&quot; line break can occur either on a space or tab (<code>\t</code>) character.</p>
+<p>However, it is possible that <code>max_width</code> is too small, or the words in <code>text</code> are too long to fit <code>max_width</code> when drawn with <code>font</code>. In that case, the word that is too wide will simply be drawn completely on a line by itself. If you don't want the text that overflows <code>max_width</code> to be visible, then use <a href="graphics.html#al_set_clipping_rectangle">al_set_clipping_rectangle</a> to clip it off and hide it.</p>
+<p>The lines <code>text</code> was split into will each be drawn using the <code>font</code>, <code>x</code>, <code>color</code> and <code>flags</code> parameters, vertically starting at <code>y</code> and with a distance of <code>line_height</code> between them. If <code>line_height</code> is zero (<code>0</code>), the value returned by calling <a href="font.html#al_get_font_line_height">al_get_font_line_height</a> on <code>font</code> will be used as a default instead.</p>
+<p>The <code>flags</code> ALLEGRO_ALIGN_LEFT, ALLEGRO_ALIGN_CENTRE, ALLEGRO_ALIGN_RIGHT and ALLEGRO_ALIGN_INTEGER will be honoured by this function.</p>
+<p>If you want to calculate the size of what this function will draw without actually drawing it, or if you need a complex and/or custom layout, you can use <a href="font.html#al_do_multiline_text">al_do_multiline_text</a>.</p>
+<p>Since: 5.1.9</p>
+<p>See also: <a href="font.html#al_do_multiline_text">al_do_multiline_text</a>, <a href="font.html#al_draw_multiline_text">al_draw_multiline_text</a>, <a href="font.html#al_draw_multiline_textf">al_draw_multiline_textf</a></p>
+<h2 id="al_draw_multiline_ustr">al_draw_multiline_ustr</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_draw_multiline_ustr(<span class="dt">const</span> ALLEGRO_FONT *font,
+     ALLEGRO_COLOR color, <span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">float</span> max_width, <span class="dt">float</span> line_height,
+     <span class="dt">int</span> flags, <span class="dt">const</span> ALLEGRO_USTR *ustr)</code></pre>
+<p>Like <a href="font.html#al_draw_multiline_text">al_draw_multiline_text</a>, except the text is passed as an ALLEGRO_USTR instead of a NUL-terminated char array.</p>
+<p>Since: 5.1.9</p>
+<p>See also: <a href="font.html#al_draw_multiline_text">al_draw_multiline_text</a>, <a href="font.html#al_draw_multiline_textf">al_draw_multiline_textf</a>, <a href="font.html#al_do_multiline_text">al_do_multiline_text</a></p>
+<h2 id="al_draw_multiline_textf">al_draw_multiline_textf</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_draw_multiline_textf(<span class="dt">const</span> ALLEGRO_FONT *font,
+     ALLEGRO_COLOR color, <span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">float</span> max_width, <span class="dt">float</span> line_height,
+     <span class="dt">int</span> flags, <span class="dt">const</span> <span class="dt">char</span> *format, ...)</code></pre>
+<p>Formatted text output, using a printf() style format string. All parameters have the same meaning as with <a href="font.html#al_draw_multiline_text">al_draw_multiline_text</a> otherwise.</p>
+<p>Since: 5.1.9</p>
+<p>See also: <a href="font.html#al_draw_multiline_text">al_draw_multiline_text</a>, <a href="font.html#al_draw_multiline_ustr">al_draw_multiline_ustr</a>, <a href="font.html#al_do_multiline_text">al_do_multiline_text</a></p>
+<h2 id="al_do_multiline_text">al_do_multiline_text</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_do_multiline_text(<span class="dt">const</span> ALLEGRO_FONT *font,
+   <span class="dt">float</span> max_width, <span class="dt">const</span> <span class="dt">char</span> *text,
+   bool (*cb)(<span class="dt">int</span> line_num, <span class="dt">const</span> <span class="dt">char</span> *line, <span class="dt">int</span> size, <span class="dt">void</span> *extra),
+   <span class="dt">void</span> *extra)</code></pre>
+<p>This function processes the <code>text</code> and splits it into lines as <a href="font.html#al_draw_multiline_text">al_draw_multiline_text</a> would, and then calls the callback <code>cb</code> once for every line. This is useful for custom drawing of multiline text, or for calculating the size of multiline text ahead of time. See the documentation on <a href="font.html#al_draw_multiline_text">al_draw_multiline_text</a> for an explanation of the splitting algorithm.</p>
+<p>For every line that this function splits <code>text</code> into the callback <code>cb</code> will be called once with the following parameters:</p>
+<ul>
+<li><code>line_num</code> - the number of the line starting from zero and counting up</li>
+<li><code>line</code> - a pointer to the beginning character of the line (see below)</li>
+<li><code>size</code> - the size of the line (0 for empty lines)</li>
+<li><code>extra</code> - the same pointer that was passed to al_do_multiline_text</li>
+</ul>
+<p>Note that <code>line</code> is <em>not</em> guaranteed to be a NUL-terminated string, but will merely point to a character within <code>text</code> or to an empty string in case of an empty line. If you need a NUL-terminated string, you will have to copy <code>line</code> to a buffer and NUL-terminate it yourself. You will also have to make your own copy if you need the contents of <code>line</code> after <code>cb</code> has returned, as <code>line</code> is <em>not</em> guaranteed to be valid after that.</p>
+<p>If the callback <code>cb</code> returns false, al_do_multiline_text will stop immediately, otherwise it will continue on to the next line.</p>
+<p>Since: 5.1.9</p>
+<p>See also: <a href="font.html#al_draw_multiline_text">al_draw_multiline_text</a></p>
+<h2 id="al_do_multiline_ustr">al_do_multiline_ustr</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_do_multiline_ustr(<span class="dt">const</span> ALLEGRO_FONT *font, <span class="dt">float</span> max_width,
+   <span class="dt">const</span> ALLEGRO_USTR *ustr,
+   bool (*cb)(<span class="dt">int</span> line_num, <span class="dt">const</span> ALLEGRO_USTR * line, <span class="dt">void</span> *extra),
+   <span class="dt">void</span> *extra)</code></pre>
+<p>Like <a href="font.html#al_do_multiline_text">al_do_multiline_text</a>, but using ALLEGRO_USTR instead of a NUL-terminated char array for text.</p>
+<p>Since: 5.1.9</p>
+<p>See also: <a href="font.html#al_draw_multiline_ustr">al_draw_multiline_ustr</a></p>
+<h1 id="bitmap-fonts">Bitmap fonts</h1>
+<h2 id="al_grab_font_from_bitmap">al_grab_font_from_bitmap</h2>
+<pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_FONT *al_grab_font_from_bitmap(ALLEGRO_BITMAP *bmp,
+   <span class="dt">int</span> ranges_n, <span class="dt">const</span> <span class="dt">int</span> ranges[])</code></pre>
+<p>Creates a new font from an Allegro bitmap. You can delete the bitmap after the function returns as the font will contain a copy for itself.</p>
+<p>Parameters:</p>
+<ul>
+<li>bmp: The bitmap with the glyphs drawn onto it</li>
+<li>n: Number of unicode ranges in the bitmap.</li>
+<li>ranges: 'n' pairs of first and last unicode point to map glyphs to for each range.</li>
+</ul>
+<p>The bitmap format is as in the following example, which contains three glyphs for 1, 2 and 3.</p>
+<pre><code>.............
+. 1 .222.333.
+. 1 .  2.  3.
+. 1 .222.333.
+. 1 .2  .  3.
+. 1 .222.333.
+.............</code></pre>
+<p>In the above illustration, the dot is for pixels having the background color. It is determined by the color of the top left pixel in the bitmap. There should be a border of at least 1 pixel with this color to the bitmap edge and between all glyphs.</p>
+<p>Each glyph is inside a rectangle of pixels not containing the background color. The height of all glyph rectangles should be the same, but the width can vary.</p>
+<p>The placement of the rectangles does not matter, except that glyphs are scanned from left to right and top to bottom to match them to the specified unicode codepoints.</p>
+<p>The glyphs will simply be drawn using <a href="graphics.html#al_draw_bitmap">al_draw_bitmap</a>, so usually you will want the rectangles filled with full transparency and the glyphs drawn in opaque white.</p>
+<p>Examples:</p>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> ranges[] = {<span class="dv">32</span>, <span class="dv">126</span>};
+al_grab_font_from_bitmap(bitmap, <span class="dv">1</span>, ranges)
+
+<span class="dt">int</span> ranges[] = {
+    <span class="bn">0x0020</span>, <span class="bn">0x007F</span>,  <span class="co">/* ASCII */</span>
+    <span class="bn">0x00A1</span>, <span class="bn">0x00FF</span>,  <span class="co">/* Latin 1 */</span>
+    <span class="bn">0x0100</span>, <span class="bn">0x017F</span>,  <span class="co">/* Extended-A */</span>
+    <span class="bn">0x20AC</span>, <span class="bn">0x20AC</span>}; <span class="co">/* Euro */</span>
+al_grab_font_from_bitmap(bitmap, <span class="dv">4</span>, ranges)</code></pre>
+<p>The first example will grab glyphs for the 95 standard printable ASCII characters, beginning with the space character (32) and ending with the tilde character (126). The second example will map the first 96 glyphs found in the bitmap to ASCII range, the next 95 glyphs to Latin 1, the next 128 glyphs to Extended-A, and the last glyph to the Euro character. (This is just the characters found in the Allegro 4 font.)</p>
+<p>See also: <a href="graphics.html#al_load_bitmap">al_load_bitmap</a>, <a href="font.html#al_grab_font_from_bitmap">al_grab_font_from_bitmap</a></p>
+<h2 id="al_load_bitmap_font">al_load_bitmap_font</h2>
+<pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_FONT *al_load_bitmap_font(<span class="dt">const</span> <span class="dt">char</span> *fname)</code></pre>
+<p>Load a bitmap font from a file. This is done by first calling <a href="graphics.html#al_load_bitmap_flags">al_load_bitmap_flags</a> and then <a href="font.html#al_grab_font_from_bitmap">al_grab_font_from_bitmap</a>.</p>
+<p>If you wanted to load an old A4 font, for example, it would be better to load the bitmap yourself in order to call <a href="graphics.html#al_convert_mask_to_alpha">al_convert_mask_to_alpha</a> on it before passing it to <a href="font.html#al_grab_font_from_bitmap">al_grab_font_from_bitmap</a>.</p>
+<p>See also: <a href="font.html#al_load_bitmap_font_flags">al_load_bitmap_font_flags</a>, <a href="font.html#al_load_font">al_load_font</a>, <a href="graphics.html#al_load_bitmap_flags">al_load_bitmap_flags</a></p>
+<h2 id="al_load_bitmap_font_flags">al_load_bitmap_font_flags</h2>
+<pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_FONT *al_load_bitmap_font_flags(<span class="dt">const</span> <span class="dt">char</span> *fname, <span class="dt">int</span> flags)</code></pre>
+<p>Like <a href="font.html#al_load_bitmap_font">al_load_bitmap_font</a> but additionally takes a flags parameter which is a bitfield containing a combination of the following:</p>
+<p>ALLEGRO_NO_PREMULTIPLIED_ALPHA : The same meaning as for <a href="graphics.html#al_load_bitmap_flags">al_load_bitmap_flags</a>.</p>
+<p>See also: <a href="font.html#al_load_bitmap_font">al_load_bitmap_font</a>, <a href="graphics.html#al_load_bitmap_flags">al_load_bitmap_flags</a></p>
+<h2 id="al_create_builtin_font">al_create_builtin_font</h2>
+<pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_FONT *al_create_builtin_font(<span class="dt">void</span>)</code></pre>
+<p>Creates a monochrome bitmap font (8x8 pixels per character).</p>
+<p>This font is primarily intended to be used for displaying information in environments or during early runtime states where no external font data is available or loaded (e.g. for debugging).</p>
+<p>The builtin font contains the following unicode character ranges:</p>
+<pre><code>0x0020 to 0x007F (ASCII)
+0x00A1 to 0x00FF (Latin 1)
+0x0100 to 0x017F (Extended A)
+0x20AC to 0x20AC (euro currency symbol)</code></pre>
+<p>Returns NULL on an error.</p>
+<p>The font memory must be freed the same way as for any other font, using <a href="font.html#al_destroy_font">al_destroy_font</a>.</p>
+<p>Since: 5.0.8, 5.1.3</p>
+<p>See also: <a href="font.html#al_load_bitmap_font">al_load_bitmap_font</a>, <a href="font.html#al_destroy_font">al_destroy_font</a></p>
+<h1 id="ttf-fonts">TTF fonts</h1>
+<p>These functions are declared in the following header file. Link with allegro_ttf.</p>
+<pre class="sourceCode c"><code class="sourceCode c"> <span class="ot">#include &lt;allegro5/allegro_ttf.h&gt;</span></code></pre>
+<h2 id="al_init_ttf_addon">al_init_ttf_addon</h2>
+<pre class="sourceCode c"><code class="sourceCode c">bool al_init_ttf_addon(<span class="dt">void</span>)</code></pre>
+<p>Call this after <a href="font.html#al_init_font_addon">al_init_font_addon</a> to make <a href="font.html#al_load_font">al_load_font</a> recognize &quot;.ttf&quot; and other formats supported by <a href="font.html#al_load_ttf_font">al_load_ttf_font</a>.</p>
+<p>Returns true on success, false on failure.</p>
+<h2 id="al_shutdown_ttf_addon">al_shutdown_ttf_addon</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_shutdown_ttf_addon(<span class="dt">void</span>)</code></pre>
+<p>Unloads the ttf addon again. You normally don't need to call this.</p>
+<h2 id="al_load_ttf_font">al_load_ttf_font</h2>
+<pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_FONT *al_load_ttf_font(<span class="dt">char</span> <span class="dt">const</span> *filename, <span class="dt">int</span> size, <span class="dt">int</span> flags)</code></pre>
+<p>Loads a TrueType font from a file using the FreeType library. Quoting from the FreeType FAQ this means support for many different font formats:</p>
+<p><em>TrueType, OpenType, Type1, CID, CFF, Windows FON/FNT, X11 PCF, and others</em></p>
+<p>The <code>size</code> parameter determines the size the font will be rendered at, specified in pixels. The standard font size is measured in <em>units per EM</em>, if you instead want to specify the size as the total height of glyphs in pixels, pass it as a negative value.</p>
+<blockquote>
+<p><em>Note:</em> If you want to display text at multiple sizes, load the font multiple times with different size parameters.</p>
+</blockquote>
+<p>The following flags are supported:</p>
+<ul>
+<li><p>ALLEGRO_TTF_NO_KERNING - Do not use any kerning even if the font file supports it.</p></li>
+<li><p>ALLEGRO_TTF_MONOCHROME - Load as a monochrome font (which means no anti-aliasing of the font is done).</p></li>
+<li><p>ALLEGRO_TTF_NO_AUTOHINT - Disable the Auto Hinter which is enabled by default in newer versions of FreeType. Since: 5.0.6, 5.1.2</p></li>
+</ul>
+<p>See also: <a href="font.html#al_init_ttf_addon">al_init_ttf_addon</a>, <a href="font.html#al_load_ttf_font_f">al_load_ttf_font_f</a></p>
+<h2 id="al_load_ttf_font_f">al_load_ttf_font_f</h2>
+<pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_FONT *al_load_ttf_font_f(ALLEGRO_FILE *file,
+    <span class="dt">char</span> <span class="dt">const</span> *filename, <span class="dt">int</span> size, <span class="dt">int</span> flags)</code></pre>
+<p>Like <a href="font.html#al_load_ttf_font">al_load_ttf_font</a>, but the font is read from the file handle. The filename is only used to find possible additional files next to a font file.</p>
+<blockquote>
+<p><em>Note:</em> The file handle is owned by the returned ALLEGRO_FONT object and must not be freed by the caller, as FreeType expects to be able to read from it at a later time.</p>
+</blockquote>
+<h2 id="al_load_ttf_font_stretch">al_load_ttf_font_stretch</h2>
+<pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_FONT *al_load_ttf_font_stretch(<span class="dt">char</span> <span class="dt">const</span> *filename, <span class="dt">int</span> w, <span class="dt">int</span> h,
+   <span class="dt">int</span> flags)</code></pre>
+<p>Like <a href="font.html#al_load_ttf_font">al_load_ttf_font</a>, except it takes separate width and height parameters instead of a single size parameter.</p>
+<p>If the height is a positive value, and the width zero or positive, then font will be stretched according to those parameters. The width must not be negative if the height is positive.</p>
+<p>As with <a href="font.html#al_load_ttf_font">al_load_ttf_font</a>, the height may be a negative value to specify the total height in pixels. Then the width must also be a negative value, or zero.</p>
+<p>Returns <code>NULL</code> if the height is positive while width is negative, or if the height is negative while the width is positive.</p>
+<p>Since: 5.0.6, 5.1.0</p>
+<p>See also: <a href="font.html#al_load_ttf_font">al_load_ttf_font</a>, <a href="font.html#al_load_ttf_font_stretch_f">al_load_ttf_font_stretch_f</a></p>
+<h2 id="al_load_ttf_font_stretch_f">al_load_ttf_font_stretch_f</h2>
+<pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_FONT *al_load_ttf_font_stretch_f(ALLEGRO_FILE *file,
+    <span class="dt">char</span> <span class="dt">const</span> *filename, <span class="dt">int</span> w, <span class="dt">int</span> h, <span class="dt">int</span> flags)</code></pre>
+<p>Like <a href="font.html#al_load_ttf_font_stretch">al_load_ttf_font_stretch</a>, but the font is read from the file handle. The filename is only used to find possible additional files next to a font file.</p>
+<blockquote>
+<p><em>Note:</em> The file handle is owned by the returned ALLEGRO_FONT object and must not be freed by the caller, as FreeType expects to be able to read from it at a later time.</p>
+</blockquote>
+<p>Since: 5.0.6, 5.1.0</p>
+<p>See also: <a href="font.html#al_load_ttf_font_stretch">al_load_ttf_font_stretch</a></p>
+<h2 id="al_get_allegro_ttf_version">al_get_allegro_ttf_version</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">uint32_t</span> al_get_allegro_ttf_version(<span class="dt">void</span>)</code></pre>
+<p>Returns the (compiled) version of the addon, in the same format as <a href="system.html#al_get_allegro_version">al_get_allegro_version</a>.</p>
+<p class="timestamp">
+Allegro version 5.1.12 (GIT)
+ - Last updated: 2015-07-05 04:30:22 UTC
+</p>
+</div>
+</body>
+</html>

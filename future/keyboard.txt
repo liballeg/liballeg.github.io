@@ -1,0 +1,308 @@
+# date: 2003 - 03 - 04
+# This file documents the keyboard API which is now considered
+# finalised for milestone 1.
+
+
+Allegro 5 API: Keyboard
+
+Status: Finalised for milestone 1 around 2003-01-10.
+
+
+
+Pertinent Threads:
+
+   * "Keyboard interface" 2002-12-08
+
+   * "AltGr does..." 2002-12-09
+
+   * "keyboards and input" 2002-12-12
+
+   * "Events and inputs, slight overhaul?" 2002-12-19
+
+   * "Scancodes/keycodes" 2002-12-22
+
+
+
+- Type: AL_KEYBOARD
+
+   This is an abstract data type representing the physical keyboard.
+   Keyboard objects are also event sources.
+
+
+
+- Function: AL_KEYBOARD *al_install_keyboard(void)
+
+   Install the keyboard driver.  If successful, returns a pointer to a
+   new keyboard object.  Otherwise NULL is returned.
+
+   The system driver must be installed before this function can be
+   called.
+
+
+
+- Function: void al_uninstall_keyboard(AL_KEYBOARD *keyboard)
+
+   Uninstall the keyboard driver.  This will automatically unregister
+   the keyboard with any event queues.
+
+   KEYBOARD may not be NULL.
+
+
+
+- Type: AL_KBDSTATE
+
+   This is a structure that is used to hold a "snapshot" of a
+   keyboard's state at a particular instant.  It contains the
+   following publically readable fields:
+
+      typedef struct AL_KBDSTATE
+      {
+         AL_DISPLAY *display;
+      } AL_KBDSTATE;
+
+   `display' points to the display that had keyboard focus at the time
+   the state was saved.  If no display was focused, this points to
+   NULL.
+
+   You cannot read the state of keys directly.  Use the function
+   al_key_down().
+
+   Future note: in the situation of DOS or Linux console where you
+   might use the keyboard routines without setting a graphics mode, we
+   should provide something like:
+   AL_DISPLAY *al_create_null_display(void);
+
+
+
+- Fuction: void al_get_keyboard_state(AL_KEYBOARD *keyboard,
+	AL_KBDSTATE *ret_state)
+
+   Save the state of the keyboard specified at the time the function
+   is called into the kbdstate pointed to by RET_STATE.  The previous
+   state stored in RET_STATE is clobbered.
+
+   RET_STATE may not be NULL.
+   
+
+
+
+- Function: bool al_key_down(AL_KBDSTATE *state, int keycode)
+
+   Return true if the key specified was held down in the state
+   specified.
+
+   KEYCODE must be non-negative.
+
+
+
+- Constants: AL_KEY_*
+
+   The following are the "keycodes", referring to physical keys on a
+   keyboard.  [ XXX: Explain this clearly. ]  Pressing AL_KEY_Q will
+   not necessarily produce a 'q' or 'Q' character.
+
+   (The above describes the design ideal.  In reality, we may not be
+   able to implement such a thing, depending on the underlying
+   platform.).
+
+      AL_KEY_A ... AL_KEY_Z,
+      AL_KEY_0 ... AL_KEY_9,
+      AL_KEY_PAD_0 ... AL_KEY_PAD_9,
+      AL_KEY_F1 ... AL_KEY_F12,
+
+      AL_KEY_ESCAPE, AL_KEY_TILDE, AL_KEY_MINUS, AL_KEY_EQUALS,
+      AL_KEY_BACKSPACE, AL_KEY_TAB, AL_KEY_OPENBRACE,
+      AL_KEY_CLOSEBRACE, AL_KEY_ENTER, AL_KEY_SEMICOLON, AL_KEY_QUOTE,
+      AL_KEY_BACKSLASH, AL_KEY_BACKSLASH2, AL_KEY_COMMA,
+      AL_KEY_FULLSTOP, AL_KEY_SLASH, AL_KEY_SPACE,
+
+      AL_KEY_INSERT, AL_KEY_DELETE, AL_KEY_HOME, AL_KEY_END,
+      AL_KEY_PGUP, AL_KEY_PGDN, AL_KEY_LEFT, AL_KEY_RIGHT, AL_KEY_UP,
+      AL_KEY_DOWN,
+
+      AL_KEY_PAD_SLASH, AL_KEY_PAD_ASTERISK, AL_KEY_PAD_MINUS,
+      AL_KEY_PAD_PLUS, AL_KEY_PAD_DELETE, AL_KEY_PAD_ENTER,
+
+      AL_KEY_PRINTSCREEN, AL_KEY_PAUSE,
+
+      AL_KEY_ABNT_C1, AL_KEY_YEN, AL_KEY_KANA, AL_KEY_CONVERT,
+      AL_KEY_NOCONVERT, AL_KEY_AT, AL_KEY_CIRCUMFLEX, AL_KEY_COLON2,
+      AL_KEY_KANJI,
+
+      AL_KEY_LSHIFT, AL_KEY_RSHIFT, AL_KEY_LCTRL, AL_KEY_RCTRL,
+      AL_KEY_ALT, AL_KEY_ALTGR, AL_KEY_LWIN, AL_KEY_RWIN,
+      AL_KEY_WINMENU, AL_KEY_SCROLL_LOCK, AL_KEY_NUM_LOCK,
+      AL_KEY_CAPS_LOCK
+
+   The keycode names are based on a hypothetical keyboard which is,
+   for the most part, a 104-ish key QWERTY keyboard.  (The Right Alt
+   key is called "AltGr", and it also contains Japanese input keys.)
+
+   Implementation notes:
+   
+   - Some keyboards will have more keys.  We can add more constants as
+     necessary, eg. AL_KEY_MUTE, AL_KEY_COFFEE.
+
+   - Keys of exotic keyboards should be onto the QWERTY keyboard as
+     well as possible.  It doesn't have to be perfect though.
+
+
+
+- Constants: AL_KEYMOD_*
+
+   The following are bitflags used in the `modifiers' field of
+   keyboard event packets to indicate the state of the modifier keys
+   on the keyboard.
+
+      AL_KEYMOD_SHIFT,
+      AL_KEYMOD_CTRL,
+      AL_KEYMOD_ALT,
+      AL_KEYMOD_LWIN,
+      AL_KEYMOD_RWIN,
+      AL_KEYMOD_WINMENU,
+      AL_KEYMOD_ALTGR,
+      AL_KEYMOD_SCROLL_LOCK,
+      AL_KEYMOD_NUM_LOCK,
+      AL_KEYMOD_CAPS_LOCK,
+      AL_KEYMOD_IN_ALT_SEQ,  -- not sure about this
+      AL_KEYMOD_ACCENT1,
+      AL_KEYMOD_ACCENT2,
+      AL_KEYMOD_ACCENT3,
+      AL_KEYMOD_ACCENT4,
+      AL_KEYMOD_ACCENT5,
+      AL_KEYMOD_ACCENT6
+
+
+
+- Event: AL_EVENT_KEY_UP
+
+   Event packets of this type are generated when a key is pressed
+   down.
+
+   If E is an event packet of type AL_EVENT_KEY_DOWN, the following
+   fields are usable (field types in brackets).  As usual, the fields
+   are semantically read-only.
+
+   Common fields:
+
+      (long)          e->keyboard.type
+      (AL_KEYBOARD *) e->keyboard.source
+      (unsigned long) e->keyboard.timestamp
+
+   Specific fields for this event type:
+
+      (AL_DISPLAY *) e.keyboard.display
+ 
+	 In which display the event occurred.
+
+      (int) e.keyboard.keycode
+
+	 Which key was pressed down.
+
+      (unsigned int) e.keyboard.unmodchar
+
+	 [ XXX: Explain properly.  This is like unichar but unaffected
+		by keyboard modifiers (and/or dead keys or whatever).
+
+	   XXX: Rename. ]
+
+      (unsigned int) e.keyboard.unichar
+
+         Which unicode character would be produced as the result of
+	 the key being pressed down.
+
+      (unsigned int) e.keyboard.modifiers
+
+         Bitfield show the state of the modifier keys
+
+   Usage note: If a non-US-QWERTY keymap is in use, then `keycode'
+   and `unichar' may not match at all.  Do not assume `AL_KEY_A'
+   corresponds to the character 'a', for example.
+
+   Note: On a certain unnamed window system (X), the behavior of
+   modifier keys is slightly strange:
+
+      - If a modifier key K is pressed, then the `modifiers' field in
+	the AL_EVENT_KEY_DOWN event structure may or may not include
+	the modifier flag corresponding to K.  In order words, the
+	`modifiers' field may indicate the state of modifier keys just
+	prior to the key K being press, or just afterwards.
+
+      - Auto-repeats may or may not be generated for modifier keys.
+
+   If you use `unichar' and `modifiers' fields only as intended, for
+   typing input, then you should not run into these warts.
+
+
+
+- Event: AL_EVENT_KEY_REPEAT
+
+   Events of this type are generated when a key is autorepeated.
+   Apart from the type, these events are identical to
+   AL_EVENT_KEY_DOWN events.  Repeat events always come after press
+   events, without a release event in between.
+
+   Usage note: If you are writing a game and need auto-firing support,
+   use a timer.  Even for non-modifiers keys, auto-repeats cannot be
+   expected to arrive at a regular rate, if at all (it depends on the
+   platform).
+
+   Note: Because the underlying system may not be telling us enough
+   information, key repeats will sometimes be sent as if they were
+   physical key presses.  This is really a pathological case that only
+   occurs on one platform (X) in certain circumstances, so you don't
+   really need to know about it.  (If you actually see this behaviour,
+   don't bother asking us to fix it -- we really can't.)
+
+   Specific fields for this event type:
+
+      As for AL_EVENT_KEY_DOWN.
+
+
+
+- Event: AL_EVENT_KEY_UP
+
+   Events of this type are generated when a key is released.
+
+   Specific fields for this event type:
+
+      (int) e->keyboard.keycode
+
+	 Which key was released.
+
+      (unsigned int) e->keyboard.unmodchar
+
+         [XXX: explain, rename]
+
+
+
+----------------------------------------------------------------------
+
+Missing functionality / Issues:
+
+
+
+- There needs to be a way to convert a key press event into a string
+  that is reasonable to show to the user, mainly for game config
+  screens.  Previously there was al_keycode_to_key_name(), which
+  would produce:
+
+     al_keycode_to_key_name(AL_KEY_Q) => "Q"
+
+  However, that would confuse users using a non-QWERTY keymap.
+  [al_keycode_to_key_name() has been removed (for now, at least).]
+
+  The `unichar' field is not suitable because not all keys produce
+  characters, and the character produced also depends on modifiers.
+
+  If we had a function like al_keycode_to_key_name() that respected
+  the current keymap, such as:
+
+     al_keycode_to_string(AL_KEY_Q) => "Q" (for QWERTY keymap)
+     al_keycode_to_string(AL_KEY_Q) => "A" (for AZERTY keymap)
+
+  then that might do the job.
+
+
+
+- Need a al_unichar_to_keycode() function?

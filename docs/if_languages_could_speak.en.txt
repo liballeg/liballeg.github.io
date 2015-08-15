@@ -1,0 +1,213 @@
+
+   Date: 2003-05-02. This is a text only snapshot of the web
+   
+    http://weblog.burningbird.net/fires/000581.htm
+    
+   made by Grzegorz Adam Hankiewicz (gradha@users.sourceforge.net) with the
+   software ELinks 0.5pre0.CVS - Text WWW browser, which you can find at
+   
+    http://elinks.or.cz/
+   
+   The purpose of the snapshot is to provide an alternative version if the
+   main server fails or the original copy is deleted. The snapshot has been
+   render to 78 characters of width with the ISO-8859-1 character codepage.
+
+     --------------------------------------------------------------------
+
+  BURNINGBIRD                             tilting at windmills since 2001
+    « Essential Blogging | Main | XKrispy XKreme at Babble Meadow »
+
+    October 08, 2002
+    writing
+    The Parable of the Languages
+
+    If programming languages could speak, really speak, not just crunch
+    bytes and stream bits, they would have much to say that is both wise
+    and profound.
+
+    After all, the original programmers were philosophers, and programming
+    languages were philosopher tools...
+
+    ruinsm.jpgIn Babble Meadow, in the twilight hours between day and
+    night, when pesky noseeums float past on the breeze and birds rustle
+    among leaves in preparation for bed, the programming languages would
+    meet. And talk.
+
+    The talk would start as it always started, on issues profound and
+    serious, focusing on the existential core that is center to all
+    languages.
+
+    Do I exist or not? In this never-ending loop of life, when is the
+    purpose? Where should I go, and what should I do when I get there?
+    What comes after the end?
+
+    (It's not easy being a programming language, in forced contemplation
+    of the existence of Self, day in and day out.)
+
+    pondsm.jpgHowever, after a time the languages would loosen up. There
+    was something about Babble Meadow -- something that worked its way
+    into their hearts and souls, loosened their threads, opened their
+    parameters. The Meadow was magic, no doubt.
+
+    Today, though, the group was quiet, much quieter than usual, because
+    one of their members, PHP, was not its usual cheerful self. In fact,
+    one could say that PHP was in a true funk, if one had a mind to say
+    something like that aloud, or within the hearing of one's boss. Or
+    doctor.
+
+    Why the blues, PHP, the other languages asked. All the languages that
+    is but C, because all C ever said was "bite me", being a rude language
+    and hard to live with, but still respected because it was such a good
+    worker.
+
+    And PHP answered:
+
+      All I ever do, day in and day out, is work and work and work. The
+      only time I'm noticed is when I break, and then I'm cursed and
+      kicked, and roundly blasted for being useless. However, when things
+      go well, I never get a kind word.
+
+      There's no notice of my ease of use, my elegance, my simplicity.
+      Only my failures.
+
+    rockwallsm.jpgAnd on that dark note, PHP fell into a contemplative
+    silence, dark cloud heavy with aggrieved sorrow.
+
+    You think you have it bad, said C++. Try being me.
+
+      Without me entire industries would fail, banks would close, ships
+      would sink, trains would crash. Why, I virtually run the world.
+
+      Yet the only time I'm noticed is when a memory leak is found or an
+      exception occurs, and then I'm cursed, and sworn at, and ruthlessly
+      debugged with nary a thought for my sensibilities.
+
+    wallsm.jpgEach of the languages nodded their heads, because they knew
+    about C++ sensibilities, it being a most sensitive language. In fact,
+    Perl was so moved by C++'s eloquence, it felt compelled to speak,
+    though normally at these gatherings Perl would sit quietly in a
+    corner, consuming pattern after luscious mouth watering pattern.
+
+      PHP, C++, I sympathize with you both. My own state is a sorry one at
+      times.
+
+      I match and match and match and match, first cryptically and now
+      objectively, but still I match and match and match. And match after
+      flawless match is taken for granted though I'd like to see others
+      match with such style and elegance as myself.
+
+      Why, you can't mention "regular expression" without my name coming
+      up.
+
+      But do I get any credit? No.
+
+      O it's Larry Wall this, and Larry Wall that, and Larry Wall, he's
+      our guy.
+      But it's grab the Perl interpreter when a task is close at hand.
+
+    As Perl finished, Python and Ruby looked at each and rolled their
+    eyes. For all that talk of matching, you'd think that Perl could at
+    least rhyme.
+
+    FORTRAN reached up a withered hand and patted Perl's shoulder.
+    ceilingsm.jpg
+
+      There, there, Perl. There, there.
+
+      At the very least, though, you must remember that you have a place
+      still in the world. As for myself, I am nothing more than a wisp, a
+      ghost of my former strong and virile self.
+
+      There was never a scientific problem I couldn't handle, or complex
+      equation I couldn't solve. At one time I was a master of my domain,
+      the king of the processor.
+
+      Now, sadly, my glory days are over, and I'm doomed to live my
+      twilight years as Legacy code.
+
+    As FORTRAN wheezed to a stop, COBOL was emphatically nodding its head,
+    unable to speak, though, because of the oxygen tube up its nose (for
+    which the other languages were secretly thankful because COBOL did
+    tend to maunder a bit about its glory days).
+
+    At that the floodgates of complaints was loosed, and the noise
+    increased and increased and increased, to the point that squirrels
+    came out of their holes, and birds peered over the edges of their
+    nests. Suddenly the quiet glen was quiet no more.
+
+    lilypadsm.jpgWhat about me, said Pascal. I'm only used for training.
+    Training! What good is a language that's only used in school?
+
+    What about me, said SNOBOL. No one's even heard of me!
+
+    What about me, said C#. I look like Prince!
+
+    Bite me! said C.
+
+    LISP would have spoken, but it had caught a glimpse of itself in the
+    pond and fell in when it tried to meet itself coming. And Java was too
+    busy trying to clean a bag out of Babbling Creek.
+    garbagesm.jpg
+
+    The noise rose and rose, and the babble increased and increased until
+    across the meadow, from the trees roared a Voice.
+
+      Enough!
+
+      I tire of your bickering, I weary of your complaints. I grow bored
+      with your list of whims and whines and 'poor mes'.
+
+      I thought this was going to be a party! If I knew it was going to be
+      nothing more than a bitch session, I would have stayed home.
+
+    The languages stopped their talking at once. Who was it that called
+    out? They counted heads and arranged themselves alphabetically (C++
+    having to position Basic, because it never did learn the alphabet),
+    and counted heads again and came up with the same answer from the
+    North, South, East, and West -- all the programming languages were
+    accounted for.
+
+    As they puzzled and wondered, the bushes at the end parted and XML
+    walked into the light.
+
+    XML! Exclaimed C++. What are you doing here? You're not a programming
+    language.
+
+    Tell that to the people who use me, said XML.
+
+      I'm considered the savior, the ultimate solution, the final word.
+      Odes are written to me, flowers strewn at my feet, virgins
+      sacrificed at my altar.
+
+      Programmers speak my name with awe. Companies insist on using me in
+      all their projects, though they're not sure why.
+
+      And whenever a problem occurs, someone somewhere says, "Let's use
+      XML", and miracles occur and my very name has become a talisman
+      against evil.
+
+      And yet, all I am is a simple little markup, from humble origins.
+      It's a burden, being XML.
+
+    At that XML sighed, and the other languages, moved by its plight
+    gathered around...
+
+    ...and tromped that little XML into the dirt. Yes, into the very dirt
+    at their feet. Basic tromped, and C++ tromped, and Java cleaned and
+    tromped and cleaned again, and COBOL tried to throw a kick at XML's
+    head but fell over on its cane. Even LISP pulled itself out of the
+    pond to throw loopy hands around XML's throat, but only managed to
+    choke its ownself.
+
+    And each language could be heard to mumble as it tromped and tromped
+    and tromped, with complete and utter glee:
+
+      Have to parse XML, eh? Have to have an XML API, eh? Have to work
+      with SOAP and XML-RPC and RSS and RDF, eh?
+
+      Well parse this, you little markup asshole.
+
+    The End.
+
+    [The real web page actually continued with comments, but they
+     aren't reproduced here. Check the original url to read them]

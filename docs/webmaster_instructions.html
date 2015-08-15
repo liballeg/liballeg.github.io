@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.3.7: http://docutils.sourceforge.net/" />
+<title>Instructions for Allegro web translators</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger
+:Contact: goodger@users.sourceforge.net
+:date: $Date: 2005/09/12 11:11:47 $
+:version: $Revision: 1.1 $
+:copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+*/
+
+a.footnote-reference {
+  font-size: smaller ;
+  vertical-align: super }
+
+a.target {
+  color: blue }
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.attention, div.caution, div.danger, div.error, div.hint,
+div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.hint p.admonition-title, div.important p.admonition-title,
+div.note p.admonition-title, div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.figure {
+  margin-left: 2em }
+
+div.footer, div.header {
+  font-size: smaller }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr {
+  width: 75% }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+dd p:first-child {
+  margin-top: 0px }
+
+li p:first-child {
+  margin-top: 0px }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em ;
+  background-color: #eeeeee }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.field-argument {
+  font-style: italic }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option-argument {
+  font-style: italic }
+
+span.problematic {
+  color: red }
+
+table {
+  margin-top: 1em }
+
+table.citation {
+  border-left: solid thin gray ;
+  padding-left: 0.5ex }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.footnote {
+  border-left: solid thin black ;
+  padding-left: 0.5ex }
+
+td.docinfo-name {
+  font-weight: bold ;
+  text-align: right }
+
+td.field-name {
+  font-weight: bold }
+
+</style>
+</head>
+<body>
+<div class="document" id="instructions-for-allegro-web-translators">
+<h1 class="title">Instructions for Allegro web translators</h1>
+<p>This is a small document which should explain some basic things
+about the system used to build the allegro web page. If you have
+any problems with it or something is unclear, please drop me an
+email at <a class="reference" href="mailto:gradha&#64;users.sourceforge.net">gradha&#64;users.sourceforge.net</a>.</p>
+<dl class="docutils">
+<dt>Contents:</dt>
+<dd><ol class="first last arabic simple">
+<li><a class="reference" href="#quick-cvs-commands">Quick CVS commands</a></li>
+<li><a class="reference" href="#needed-tools-to-build-work-with-the-page">Needed tools to build/work with the page</a></li>
+<li><a class="reference" href="#first-download">First download</a></li>
+<li><a class="reference" href="#configuration-of-makefile-local">Configuration of Makefile.local</a></li>
+<li><a class="reference" href="#configuration-of-allegro-ini">Configuration of allegro.ini</a></li>
+<li><a class="reference" href="#configuration-of-kill-warnings-txt">Configuration of kill_warnings.txt</a></li>
+<li><a class="reference" href="#the-build-process">The build process</a></li>
+<li><a class="reference" href="#semi-automatic-build-process">Semi automatic build process</a></li>
+<li><a class="reference" href="#updating-the-web-page-at-the-sourceforge-mirror">Updating the web page at the SourceForge mirror</a></li>
+<li><a class="reference" href="#starting-a-new-language">Starting a new language</a></li>
+<li><a class="reference" href="#external-files">External files</a></li>
+<li><a class="reference" href="#mirrored-binary-files">Mirrored binary files</a></li>
+<li><a class="reference" href="#who-s-the-dictator">Who's the dictator?</a></li>
+<li><a class="reference" href="#python-for-the-scripts-what-if-there-are-problems">Python for the scripts? What if there are problems?</a></li>
+<li><a class="reference" href="#releasing-a-wip-especially-for-other-allegro-developers">Releasing a WIP (especially for other Allegro developers)</a></li>
+<li><a class="reference" href="#things-left-to-do">Things left to do</a></li>
+<li><a class="reference" href="#available-mirrors">Available mirrors</a></li>
+<li><a class="reference" href="#updating-djgpp-s-mirror-list">Updating DJGPP's mirror list</a></li>
+<li><a class="reference" href="#rules-for-translators">Rules for translators</a></li>
+<li><a class="reference" href="#the-source-of-this-document">The source of this document</a></li>
+</ol>
+</dd>
+</dl>
+<div class="section" id="quick-cvs-commands">
+<h1><a name="quick-cvs-commands">Quick CVS commands</a></h1>
+<p>The following instructions presume you are using a command line
+Unix-like version of CVS. Most graphical CVS clients behave
+practically the same and have similar options:</p>
+<ul>
+<li><p class="first">Initial anonymous login and checkout:</p>
+<pre class="literal-block">
+cvs -d:pserver:anonymous&#64;cvs.sourceforge.net:/cvsroot/alleg login
+cvs -z3 -d:pserver:anonymous&#64;cvs.sourceforge.net:/cvsroot/alleg co allegrowww
+</pre>
+</li>
+<li><p class="first">Initial developer setup and checkout:</p>
+<pre class="literal-block">
+export CVS_RSH=ssh
+cvs -z3 -d:ext:developername&#64;cvs.sourceforge.net:/cvsroot/alleg co allegrowww
+</pre>
+</li>
+<li><p class="first">Usual update command to retrieve latest changes:</p>
+<pre class="literal-block">
+cvs -z3 update -Pd (retrieves new directories and deletes unused ones)
+</pre>
+</li>
+<li><p class="first">Usual diff command (in case you want to send a diff to somebody):</p>
+<pre class="literal-block">
+cvs -z3 diff -u &gt; filename
+</pre>
+</li>
+<li><p class="first">Usual add command (to add files _and_ directories):</p>
+<pre class="literal-block">
+cvs add dirname
+cvs add filename1 filename2 filename3
+</pre>
+</li>
+</ul>
+<blockquote>
+Note you have to add dirname before adding <tt class="docutils literal"><span class="pre">dirname/filename1</span></tt>.</blockquote>
+<ul>
+<li><p class="first">Usual remove command (forces deletion of specified files):</p>
+<pre class="literal-block">
+cvs remove -f filename1 filename2 filename3
+</pre>
+</li>
+</ul>
+<blockquote>
+Note you can't remove directories. Leave them empty, and cvs should
+ignore them.</blockquote>
+<ul>
+<li><p class="first">Usual commit command (use only after a verified update command):</p>
+<pre class="literal-block">
+cvs -z3 commit  (this opens your editor and waits for your log message)
+cvs -z3 commit -m &quot;put here your message&quot;   (avoids opening the editor)
+</pre>
+</li>
+</ul>
+<blockquote>
+<p>Note that <strong>ALWAYS BEFORE</strong> commiting files you should run <tt class="docutils literal"><span class="pre">cvs</span>
+<span class="pre">update</span></tt> to make sure you are commiting changes against the latest
+cvs version of the files.</p>
+<p>Please check the full CVS documentation for details of specific
+commands.</p>
+</blockquote>
+</div>
+<div class="section" id="needed-tools-to-build-work-with-the-page">
+<h1><a name="needed-tools-to-build-work-with-the-page">Needed tools to build/work with the page</a></h1>
+<p>You need GNU make on your system (other make versions might work, but
+are untested/unsupported). Under linux you can get it from where you
+got your distro as a developer package. Under dos/windows you should
+be able to get it somewhere from <a class="reference" href="http://www.delorie.com/djgpp/">http://www.delorie.com/djgpp/</a>.</p>
+<p>You need python. The script has to be run with a version 2.x,
+because it uses a function of the module md5 previously not
+available, and it is required to check the integrity of the
+mirrored binary files. Recent python versions should be available
+at <a class="reference" href="http://www.python.org">http://www.python.org</a>.</p>
+<p>Aparently that is the minimum you need to get the build
+working. But before you try, the default options rebuild the file
+<tt class="docutils literal"><span class="pre">external/makedoc.exe</span></tt>.  makedoc is Allegro's documentation tool,
+it is used to generate files like the online documentation api,
+the faq, the help file, etc. This means that the build process will
+fail if you don't have gcc or djgpp installed on your machine.</p>
+<p>If you can't build makedoc yourself, you will have to create a
+<tt class="docutils literal"><span class="pre">Makefile.local</span></tt> file with <tt class="docutils literal"><span class="pre">MAKEDOC_DEP</span> <span class="pre">=</span></tt> (see below), get
+a working makedoc binary for your platform and place it in the
+external dir. If you want to get the compiler, get it from the same
+place you got GNU make. I can provide you a makedoc binary for DOS
+or i386/Linux platform (which surprise surprise seems to run at
+the sourceforge shell).</p>
+</div>
+<div class="section" id="first-download">
+<h1><a name="first-download">First download</a></h1>
+<p>Ok, so you got the CVS tree of the <tt class="docutils literal"><span class="pre">allegrowww</span></tt> module, with
+read/write or just read permission. Note that there are a few
+directories which will mean something:</p>
+<blockquote>
+<dl class="docutils">
+<dt>src</dt>
+<dd>This contains the basic layout of the web pages.</dd>
+<dt>data</dt>
+<dd>This contains the texts of the web pages, in different
+languages.</dd>
+<dt>extra</dt>
+<dd>This contains the allegro documentation in native <tt class="docutils literal"><span class="pre">._tx</span></tt>
+format plus some helper scripts and the makedoc tool.</dd>
+</dl>
+</blockquote>
+<p>The build process is started by running GNU make inside the
+<tt class="docutils literal"><span class="pre">allegrowww</span></tt> directory. By default the make process will put
+files under the <tt class="docutils literal"><span class="pre">out/</span></tt> directory. This doesn't exist yet on your
+hard disk, and if you don't create it, the <tt class="docutils literal"><span class="pre">makefile</span> <span class="pre">depend</span></tt>
+target will do it for you, but you can use this to your advantage
+and create a symbolic link to another directory, for example a link
+to an exported Apache folder, so you could test the web pages as if
+you were really online, but in your own intranet. All the generated
+files are however plain html, so this is not a requirement and you
+can use a normal browser to see the result in your hard disk.</p>
+<p>The makefile is pretty simple because most of it is generated
+dynamically through the <tt class="docutils literal"><span class="pre">webmake.py</span></tt> script, and put in the
+<tt class="docutils literal"><span class="pre">dependency_info</span></tt> file, which will contain all the rules
+to build the pages. You are not supposed to touch the file
+<tt class="docutils literal"><span class="pre">Makefile</span></tt>. Instead, you can create <tt class="docutils literal"><span class="pre">Makefile.local</span></tt> and override
+there the global parameters to your personal taste (see below).</p>
+<p>Note that CVS won't contain binary files: zips, tars, and images
+are not to be commited to the repository, because it does a poor
+job of keeping binary files. You will find that after the first
+make run you don't have an <tt class="docutils literal"><span class="pre">out/images</span></tt> directory as well as a
+few others. To get them, you can use the <tt class="docutils literal"><span class="pre">make</span> <span class="pre">mirror</span></tt> command
+as described in section <a class="reference" href="#mirrored-binary-files">Mirrored binary files</a>.</p>
+</div>
+<div class="section" id="configuration-of-makefile-local">
+<h1><a name="configuration-of-makefile-local">Configuration of Makefile.local</a></h1>
+<p>This file doesn't exist in the repository, and will be ignored when
+you commit new files. It is used to allow you personalization of
+the build process, and most importantly to let you configure it so
+that it works.  Yes, the process as is works under Linux, but will
+surely fail under Windows or any other platform.</p>
+<p>The most important variables you can override are:</p>
+<blockquote>
+<dl class="docutils">
+<dt>PYTHON_EXEC</dt>
+<dd>Should point to your python binary. This allows you to
+have different python versions installed. On windows for
+example you should do something similar to: <tt class="docutils literal"><span class="pre">PYTHON_EXEC</span>
+<span class="pre">=</span> <span class="pre">C:\PYTHON21\PYTHON.EXE</span></tt>. Under linux you could use:
+<tt class="docutils literal"><span class="pre">PYTHON_EXEC</span> <span class="pre">=</span> <span class="pre">/usr/local/bin/python2.1</span></tt>.</dd>
+<dt>STDOUTPUT</dt>
+<dd>By default is <tt class="docutils literal"><span class="pre">$&#64;</span></tt> and will work for most people. Some
+Windows, however, seem to have problems with path forward
+slashes appearing in <tt class="docutils literal"><span class="pre">$&#64;</span></tt>, and work only with backslashes. To
+correct this, use: <tt class="docutils literal"><span class="pre">STDOUTPUT</span> <span class="pre">=</span> <span class="pre">$(subst</span> <span class="pre">/,\,$&#64;)</span></tt></dd>
+<dt>MAKEDOC_DEP</dt>
+<dd>Points by default to <tt class="docutils literal"><span class="pre">$(MAKEDOC)</span></tt>, which is the makedoc
+binary.  If you don't want to recompile it whenever its source
+is updated through CVS, set this empty: <tt class="docutils literal"><span class="pre">MAKEDOC_DEP</span> <span class="pre">=</span></tt>.
+This means that you will have to get it from another place and
+put it in <tt class="docutils literal"><span class="pre">external/makedoc.exe</span></tt>, or the build process will
+fail at some point during the generation of the documentation
+from the Allegro sources.</dd>
+<dt>GENERATE_LANGUAGES</dt>
+<dd>A string made up of language codes separated by colons. This
+variable is used to determine which langcode pages will be
+created in the out directory.</dd>
+<dt>GENERATE_ONLINE_DOCS</dt>
+<dd>Just like the previous value, indicates for which langcodes
+should be generated the external online documentation.</dd>
+</dl>
+</blockquote>
+<p>Apart from those you will hardly need to touch more variables, but
+just in case you can take a look at the beginning of the Makefile.</p>
+</div>
+<div class="section" id="configuration-of-allegro-ini">
+<h1><a name="configuration-of-allegro-ini">Configuration of allegro.ini</a></h1>
+<p>This file works as <tt class="docutils literal"><span class="pre">Makefile.local</span></tt>: you won't get it from the
+repository.  You will get however <tt class="docutils literal"><span class="pre">allegro.ini.example</span></tt> which
+is a template. Check the template and use it only if you need to
+specify some values other than the default ones, because the values
+provided in the example are hardcoded in the python script.</p>
+<p><tt class="docutils literal"><span class="pre">external_languages</span></tt> and <tt class="docutils literal"><span class="pre">external_online_docs</span></tt> are
+similar to the <tt class="docutils literal"><span class="pre">Makefile.local</span></tt> <tt class="docutils literal"><span class="pre">GENERATE_LANGUAGES</span></tt>
+and <tt class="docutils literal"><span class="pre">GENERATE_ONLINE_DOCS</span></tt> variables.  If you reduce in
+<tt class="docutils literal"><span class="pre">Makefile.local</span></tt> the range of generated files, you will have
+missing pages accesible through the top language bar at each page.
+Setting <tt class="docutils literal"><span class="pre">external_languages</span></tt> to the languages you left out in
+<tt class="docutils literal"><span class="pre">GENERATE_LANGUAGES</span></tt> will transform those broken local links to
+external links set by <tt class="docutils literal"><span class="pre">external_language_link</span></tt>. This is used for
+the Demon mirror which only holds the english version of the web page
+and documentation in order to save web space (it's Shawn's account,
+you know personal web pages usually don't have much space available).</p>
+<p>The <tt class="docutils literal"><span class="pre">external_online_docs</span></tt> variable is the same story but with
+the online docs which are generated through makedoc and put at
+<tt class="docutils literal"><span class="pre">out/onlinedocs/xx/</span></tt> where <tt class="docutils literal"><span class="pre">xx</span></tt> is a language code.</p>
+<p>As you will see, there's a little problem with these two
+variables. What happens if a new translator adds to the global
+Makefile a new language like it for italian? The result will be
+that unmaintained sites will generate online docs and local broken
+links for that langcode. Therefore, in the future these variables
+will be changed to <tt class="docutils literal"><span class="pre">local_languages</span></tt> and <tt class="docutils literal"><span class="pre">local_online_docs</span></tt>,
+which will be negations of the actual ones, and thus will avoid
+that future langcode additions generate bad html code.</p>
+<p>Finally, the <tt class="docutils literal"><span class="pre">allowed_includes</span></tt> variable is a
+colon separated string of keywords. These keywords
+appear as optional arguments to include tags in the form
+<tt class="docutils literal"><span class="pre">&lt;include-(data|source)[-keyword]=filename&gt;</span></tt>. If the script finds
+an include tag with a keyword option, and this keyword doesn't exist
+in the allowed_includes variable, the script will happily ignore
+the tag and continue processing. Such behaviour allows to customize
+html output in a per site basis, and is used for example at the
+end of the <tt class="docutils literal"><span class="pre">src/menu_bar</span></tt> file to show a &quot;Hosted by Sourceforge&quot;
+logo, which will obviously appear only at the Sourceforge mirror.</p>
+</div>
+<div class="section" id="configuration-of-kill-warnings-txt">
+<h1><a name="configuration-of-kill-warnings-txt">Configuration of kill_warnings.txt</a></h1>
+<p>Previously there was a <tt class="docutils literal"><span class="pre">kill_warnings.txt</span></tt> file, but now there
+isn't, it wasn't used, and it wasn't useful at all.</p>
+</div>
+<div class="section" id="the-build-process">
+<h1><a name="the-build-process">The build process</a></h1>
+<p>The build process consists of make running the python script to
+generate the output page. Also, the build process <em>as is</em> when you
+get it from CVS is definitely oriented towards Unix users. In order
+to make it work under Windows, you will have to follow the advice
+given in the sections 4 and 5 of this document.</p>
+<p>The first time you run make, the scripts will generate a
+<tt class="docutils literal"><span class="pre">dependency_info</span></tt> file. It contains information about which source
+files depend on which localizations for every langcode html
+version. It will also contain the build rules for each langocde
+file. Sometimes you will have to regenerate the dependency
+information, and this happens when there a global change in
+the Makefile, like a new langcode, or you have just added a new
+localization file for one of the english versions found in the data
+directory. In such cases, running 'make dep' will erase the file,
+and the next time you run make, it will be regenerated.</p>
+<p>If you have a mirror and want to mirror the web site, your usual
+cron job should contain something very similar to the following:</p>
+<pre class="literal-block">
+cd directory_where_you_keep_the_allegrowww_module
+cvs update -Pd
+make mirror &amp;&amp; make dep &amp;&amp; make &amp;&amp; make
+</pre>
+<p><tt class="docutils literal"><span class="pre">make</span> <span class="pre">mirror</span></tt> is explained in chapter <a class="reference" href="#mirrored-binary-files">Mirrored binary files</a>.
+You will notice something strange in that script. First of all, the
+<tt class="docutils literal"><span class="pre">dependency_info</span></tt> file is rebuilt even when no changes have been
+done to CVS. Then, you will see that there are two make commands in
+a row. That is because the external files found at <tt class="docutils literal"><span class="pre">data/external</span></tt>
+need a special treatement. The first time you run make, files will
+be created in those directory, but since the <tt class="docutils literal"><span class="pre">dependency_info</span></tt>
+file was generated when they still didn't exist, source files might
+not be updated correctly yet.</p>
+<p>To correct this, the build rule for files in the <tt class="docutils literal"><span class="pre">data/external</span></tt>
+directory erases manually the <tt class="docutils literal"><span class="pre">dependency_info</span></tt> file, meaning that
+the next time make is run, correct dependency information will be
+generated. Of course, if the CVS has not touched any of those files,
+the second make will just say &quot;nothing to do&quot;, so it doesn't waste
+too much CPU time anyway.</p>
+<p>Note that there's a <tt class="docutils literal"><span class="pre">src/force_update</span></tt> file. All web output
+depends on this file, and it's there exactly to force a whole
+web update when for example the <tt class="docutils literal"><span class="pre">webmake.py</span></tt> script changes its
+output. Since the file will be updated through CVS, touching its
+timestamp is not enough, you have to modify its contents to force a
+whole web update. Adding a character to it will be enough. In short,
+you can ignore this file if you are not developing the <tt class="docutils literal"><span class="pre">webmake.py</span></tt>
+and related web generation scripts.</p>
+</div>
+<div class="section" id="semi-automatic-build-process">
+<h1><a name="semi-automatic-build-process">Semi automatic build process</a></h1>
+<p>If you are interested only in maintaining a mirror of
+the web page, and have a Unix environment, you can use
+<tt class="docutils literal"><span class="pre">scripts/update-website.py</span></tt>.  This script runs the cvs/mirror/make
+commands in the correct order and keeps the local copy updated. In
+fact, it is used on SourceForge to update the web from the CVS
+automatically. If you choose to go this path what you have to do is:</p>
+<blockquote>
+<ul class="simple">
+<li>Check out the allegrowww module.</li>
+<li>Configure your allegro.ini and Makefile.local.</li>
+<li>Put <tt class="docutils literal"><span class="pre">scripts/update-website.py</span></tt> inside a cron job.</li>
+<li>Profit.</li>
+</ul>
+</blockquote>
+<p>The script is by default totally quiet, as you don't want successful
+jobs to be reported through cron's email messages. If you do,
+there's a switch you can turn on to get the full output of all
+updates. The script is command line friendly, run it once to get
+info on all parameters. You shouldn't need to run the script more
+than once a day, as the Allegro web page is fairly static with few
+updates every month.</p>
+</div>
+<div class="section" id="updating-the-web-page-at-the-sourceforge-mirror">
+<h1><a name="updating-the-web-page-at-the-sourceforge-mirror">Updating the web page at the SourceForge mirror</a></h1>
+<p>The previous script is not enough to have the Allegro page correctly
+updated at the SourceForge mirror. But only because there is some
+trickery to make part of the Allegro web page look <em>dynamic</em>. It
+is the CVS snapshot file, which on SourceForge contains a listing
+of snapshot files and on other mirrors it contains a reference
+to the SourceForge <em>dynamic</em> page. See the first comment of
+<tt class="docutils literal"><span class="pre">scripts/sourceforge/update_cvs_snapshots.py</span></tt> to see how this
+is done. This script also trims the number of available snapshots
+to ten.</p>
+<p>Another thing that is good to do is change the permissions and
+group of files generated by <tt class="docutils literal"><span class="pre">webmake.py</span></tt>. The group should be
+<tt class="docutils literal"><span class="pre">alleg</span></tt>, and the permissions <tt class="docutils literal"><span class="pre">664</span></tt>.</p>
+<p>Both of these tasks, as well as running the <tt class="docutils literal"><span class="pre">update-website.py</span></tt>
+script are handled by a common cron wrapper found in
+<tt class="docutils literal"><span class="pre">scripts/sourceforge/update_web.sh</span></tt>. This wrapper only needs the
+path to the root allegrowww checkout to work. Only the webmaster
+needs to take care of this cron:</p>
+<pre class="literal-block">
+# This updates the Allegro web page. More info at:
+# http://cvs.sourceforge.net/viewcvs.py/alleg/allegrowww/docs/sf_cron_update_web.txt?view=auto
+27  19  * * *  allegrowww/scripts/sourceforge/update_web.sh  allegrowww
+</pre>
+<p>Usually <tt class="docutils literal"><span class="pre">$HOME/allegrowww</span></tt> will be a link pointing to
+<tt class="docutils literal"><span class="pre">/home/groups/a/al/alleg/cvs_allegrowww_checkout/</span></tt>, so
+you don't have to type a lot. Extra notes are stored in
+<tt class="docutils literal"><span class="pre">sf_cron_update_web.txt</span></tt>.</p>
+<p>There are also two periodic maintentance scripts run for translators:
+one tries to show if a translation has been orphaned due to lack
+of work by the translator. The other shows which text chunks are
+missing translation for non English languages. Again, the webmaster
+needs to take care of these crons:</p>
+<pre class="literal-block">
+# This notifies a mailing list if a web translation is stale. More info at:
+# http://cvs.sourceforge.net/viewcvs.py/alleg/allegrowww/docs/sf_cron_author_statistics_update.txt?view=auto
+13  11  1 * *  $SHELL allegrowww/scripts/author_statistics_update.sh allegrowww
+
+# This notifies a mailing list which text chunks haven't been translated yet. More info at:
+# http://cvs.sourceforge.net/viewcvs.py/alleg/allegrowww/docs/sf_cron_translation_stat.txt?view=auto
+05  3   * * sat allegrowww/scripts/sourceforge/translation_stat.sh  allegrowww
+</pre>
+</div>
+<div class="section" id="starting-a-new-language">
+<h1><a name="starting-a-new-language">Starting a new language</a></h1>
+<p>You've got used to the CVS and start to understand the dependencies:
+the <tt class="docutils literal"><span class="pre">src</span></tt> directory contains plain layout files. The <tt class="docutils literal"><span class="pre">data</span></tt>
+directory is divided in several dirs, each of them with the name
+of one file in the <tt class="docutils literal"><span class="pre">src</span></tt> directory.  Again, each of these will
+have at least an <tt class="docutils literal"><span class="pre">en</span></tt> file, and possibly <tt class="docutils literal"><span class="pre">es</span></tt>, <tt class="docutils literal"><span class="pre">fr</span></tt>, etc,
+files. These contain the plain text localizations. Note that unlike
+the <tt class="docutils literal"><span class="pre">src</span></tt> directory, the files under <tt class="docutils literal"><span class="pre">data</span></tt> directory must not
+have any <tt class="docutils literal"><span class="pre">&lt;include-whatever&gt;</span></tt> tags, because they are meant to
+contain the final text.</p>
+<p>Those two letter extensions are language codes identifying each
+translation's texts. If you want to contribute the <tt class="docutils literal"><span class="pre">it</span></tt> (italian)
+language, you will be adding <tt class="docutils literal"><span class="pre">it</span></tt> files everywhere with the
+translation of the <tt class="docutils literal"><span class="pre">en</span></tt> files.</p>
+<p>This is not enough: you will have to modify <tt class="docutils literal"><span class="pre">src/top_header</span></tt>
+to include the new language link in the top part of each generated
+html file. This will ensure that the end user can always switch to
+the same page in another language following that link.</p>
+<p>Finally, you have to add some dependency information to the main
+Makefile to generate the new files. Just add your new language code
+to the variable <tt class="docutils literal"><span class="pre">GENERATE_LANGUAGES</span></tt>, and the next time you build
+the dependency information, language pages will be generated. You
+have to add your language in the form <tt class="docutils literal"><span class="pre">&lt;langcode&gt;,&lt;charset&gt;</span></tt>, where
+<tt class="docutils literal"><span class="pre">charset</span></tt> is the character set that should be specified in every
+file's header meta tag. Example for Korean: <tt class="docutils literal"><span class="pre">kr,euc-kr</span></tt>. Omitting
+the <tt class="docutils literal"><span class="pre">,&lt;charset&gt;</span></tt> part will presume iso-8859-1 charset.</p>
+<p>Now running <tt class="docutils literal"><span class="pre">make</span> <span class="pre">dep</span></tt> will generate the new files of the
+added language code. Note that you may generate them without
+having any translated files: the <tt class="docutils literal"><span class="pre">webmake.py</span></tt> script will put
+<tt class="docutils literal"><span class="pre">en</span></tt> texts wherever your language texts are missing, providing a
+fallback replacement, and notifying you with a warning during the
+generation. This will allow the english version to evolve without
+having to wait for the translation files.</p>
+<p>Yet another detail you may want to customize is the date timestap
+printed at the foot of each web page. By default it will show an
+English date, but you can easily localize the month name. Open
+<tt class="docutils literal"><span class="pre">data/localize_time/language_code</span></tt> and put in the first line the
+twelve month names of the year separated by spaces. The second line,
+which can be optionally empty, indicates the string formatting of
+the date.  The formatting is done using python variable substitution:
+<tt class="docutils literal"><span class="pre">%(variable_name)[formatting]type</span></tt>.  The variables can be:
+<em>daynumber</em>, <em>monthname</em>, <em>year</em>, <em>hour</em> and <em>minute</em>. <em>formatting</em>
+is optional and can be a C-like <em>printf</em> formatting string. <em>type</em>
+will be <tt class="docutils literal"><span class="pre">d</span></tt> for numbers and <tt class="docutils literal"><span class="pre">s</span></tt> for strings. Example for
+Spanish string:</p>
+<pre class="literal-block">
+el %(daynumber)d de %(monthname)s del %(year)d a las %(hour)02d:%(minute)02d (UTC).
+</pre>
+<p>Also, please add yourself to the <tt class="docutils literal"><span class="pre">src/webmasters.html</span></tt> file for
+completeness.</p>
+<p>Remember that after you add/remove files you have to run manually
+<tt class="docutils literal"><span class="pre">make</span> <span class="pre">depend</span></tt>, or the new files/changes won't get noticed by
+the Makefile.  If you modify files of the <tt class="docutils literal"><span class="pre">data</span></tt> or <tt class="docutils literal"><span class="pre">src</span></tt>
+directories and nothing happens please <tt class="docutils literal"><span class="pre">make</span> <span class="pre">depend</span></tt> and try again,
+check your clock/time, etc.</p>
+<p>Your language files are meant to be encoded in the same encoding
+you will be using in the html output: if you are using iso-8859-2
+for html output, the localization files should be in iso-8859-2.</p>
+<p>IMPORTANT NOTE: Please don't modify <tt class="docutils literal"><span class="pre">src/top_header</span></tt> (to include
+your language) and Makefile with your language code until a good
+part of the web is translated. Otherwise, the web will be purely the
+same like the english version and end users will be disappointed. Use
+<tt class="docutils literal"><span class="pre">Makefile.local</span></tt> to test locally your translation until you have a
+good portion of the web page translated to your language. Of course,
+you are free to release them whenever you want, it all depends on
+how much free time you can spare for translations :)</p>
+</div>
+<div class="section" id="external-files">
+<h1><a name="external-files">External files</a></h1>
+<p>There are several pages which are autogenerated from the original
+Allegro documentation. Effort has been put so that writting once
+an <tt class="docutils literal"><span class="pre">external/langcode/*._tx</span></tt> file will generate automatically
+the html version through makedoc and a helper python script which
+changes slightly the html code. This also means that copying the
+<tt class="docutils literal"><span class="pre">._tx</span></tt> files over will update the web page automatically. Nice, eh?</p>
+<p>The generated files will be put under
+<tt class="docutils literal"><span class="pre">data/external/langcode</span></tt>. Those files should not be modified
+manually or commited, since they are automatic.</p>
+<p>There's only one caveat: due to the system used to generate
+automatically the web dependencies, it <em>might</em> be necessary at times
+to run make <em>twice</em>.  Running make once may work too, but it could
+work bad, so just to make sure run make twice after regenerating
+the dependencies. Under Unix systems it's as easy as <tt class="docutils literal"><span class="pre">make</span> <span class="pre">&amp;&amp;</span>
+<span class="pre">make</span></tt>. The second make won't do anything if there's nothing to do,
+so it won't slow you down very much.</p>
+<p>If you want to provide translations of the external files,
+create your langcode directory under external, and put there
+the appropiate <tt class="docutils literal"><span class="pre">xxx._tx</span></tt> translated files. You may want to
+take a look at the Spanish version to get an idea on how it all
+works. Remember to generate and commit the <tt class="docutils literal"><span class="pre">nothing.txt</span></tt> file
+under <tt class="docutils literal"><span class="pre">data/external/langcode/</span></tt> so that the directory will exist
+for other people too.</p>
+<p>The external Allegro API is also generated from the external
+directory, but it is put directly at <tt class="docutils literal"><span class="pre">out/onlinedocs/xx/</span></tt>.</p>
+<p>You will also notice that having external files generated through
+<tt class="docutils literal"><span class="pre">makedoc.c</span></tt> requires you to have a working GCC compiler. This
+can be a problem, like at SourceForge, where the compiler is not
+available. In such cases, create your <tt class="docutils literal"><span class="pre">Makefile.local</span></tt> with
+the <tt class="docutils literal"><span class="pre">MAKEFILE_DEP</span></tt> variable set empty, and source updates to
+<tt class="docutils literal"><span class="pre">makedoc.c</span></tt> won't bother you. However, you will have to manually
+get <tt class="docutils literal"><span class="pre">makedoc.exe</span></tt> put into the external directory, possibly
+(cross)compiling at home and uploading the binary to the correct
+place so that the build of the web pages can proceed.</p>
+</div>
+<div class="section" id="mirrored-binary-files">
+<h1><a name="mirrored-binary-files">Mirrored binary files</a></h1>
+<p>While CVS and the scripts take care of all the text files, what
+happens with binary files? Putting them under CVS is a perverted
+waste, since CVS is not good for binary files. So how to mirror
+them? With yet another python script (weren't you expecting it?).</p>
+<p>The mirror scripts are called running either <tt class="docutils literal"><span class="pre">make</span> <span class="pre">mirror</span></tt> or
+<tt class="docutils literal"><span class="pre">make</span> <span class="pre">fake-mirror</span></tt>. Don't run the first one until you understand
+what is going to happen, and for this, you can use the 'fake-mirror',
+because it will show you what it's going to do.</p>
+<p>Basically, <tt class="docutils literal"><span class="pre">external/binary-files.txt</span></tt> is placed under CVS control,
+and this file is a crude python file which is imported by the mirror
+script (note that since it's true python code, wrong syntax will
+make all the mirror process fail, so be sure to run fake-mirror at
+least once before commiting to CVS. Another solution is to write a
+proper config file...). From this file you can call two commands,
+<tt class="docutils literal"><span class="pre">mirror_files.append</span></tt> and <tt class="docutils literal"><span class="pre">delete.append</span></tt>.</p>
+<p>The first is used to register a binary file, and the second is
+used to delete files which don't have to me mirrored any more. The
+parameter to mirror_files is a tuple (ie: a comma separated list
+enclosed in parenthesis). The first element of the list is the
+'nick' used from the web pages' source. Usually it will be the same
+like the filename path, but it doesn't have to, so you can make it
+shorter if it doesn't clash with other entries.</p>
+<p>The second is the URL from where the script can get the file if
+it has to.  The third is the size of the file, the fourth is a md5
+hash. You can specify -1 for the length and an empty string for the
+hash, but you will loose the integrity checks (very needed if an
+upload is interrupted). The fifth element is the path relative to
+the out directory where the file will be placed, and the last one
+is a bracket enclosed string list, which can contain the following
+keywords: all, none, high, medium, low, no-sourceforge.</p>
+<p><em>all</em> mirrors the file everywhere, <em>none</em> deletes it from all
+mirrors, and <em>high</em>, <em>medium</em> and <em>low</em> indicate the importance
+of the file. Usually a mirror will specify in it's <tt class="docutils literal"><span class="pre">allegro.ini</span></tt>
+config file the levels of mirroring.  Finally, <em>no-sourceforge</em> is
+a special keyword used to avoid the SF mirror enter in an endless
+loop. Usually this is not needed, but just in case...</p>
+<p>Running <tt class="docutils literal"><span class="pre">fake-mirror</span></tt> will tell all the files which will be
+downloaded or deleted depending on your <tt class="docutils literal"><span class="pre">allegro.ini</span></tt>. You can
+interrupt both <tt class="docutils literal"><span class="pre">fake-mirror</span></tt> and <tt class="docutils literal"><span class="pre">mirror</span></tt> with Ctrl+C, though
+the script doesn't know how to resume downloads, so the file which
+was interrupted will be redownloaded again.</p>
+<p>Finally, note that the generation of the web page depends on
+the existence of the binary files: if you run <tt class="docutils literal"><span class="pre">make</span></tt> before
+downloading any files, all the links will point to the remote
+URL. If you <tt class="docutils literal"><span class="pre">make</span> <span class="pre">mirror</span></tt> you will have to rebuild again the
+html files so that their code points to the local file.  That's why
+<tt class="docutils literal"><span class="pre">make</span> <span class="pre">mirror</span></tt> is the first command to run after <tt class="docutils literal"><span class="pre">cvs</span> <span class="pre">update</span></tt>.</p>
+</div>
+<div class="section" id="who-s-the-dictator">
+<h1><a name="who-s-the-dictator">Who's the dictator?</a></h1>
+<p>Don't be fooled by the webmasters.html file where it says that
+Grzegorz Adam Hankiewicz is the main webmaster. In the real world,
+I will be probably buried under lots of real life work and will be
+unable to keep up always with each small update. CVS allows anybody
+with write access to change any file, which means that if I happen
+to dissapear, somebody can just substitute me.</p>
+<p>Apart from the web translators, allegro developers can also update
+the web without previous notification if needed: they already have
+write access, so the only thing they have to do is get the allegrowww
+module, make some changes adding a few files to the data directory
+and let others translate that to the rest of the available languages.</p>
+<p>So don't be shy, if you want to make some changes fast, don't
+even mail me and modify the web page at will, even in the worst
+case things can be undone. And web translators will be notified
+automatically through the allegrowww-commits mailing list, so they
+will also know what to do.</p>
+<p>While the allegrowww-commits mailing list is for CVS commits,
+I guess everybody can post to it manually to ask something to the
+whole group, meaning that if you want to make a change and you are
+unsure about what to do, somebody on the list could have an idea.</p>
+</div>
+<div class="section" id="python-for-the-scripts-what-if-there-are-problems">
+<h1><a name="python-for-the-scripts-what-if-there-are-problems">Python for the scripts? What if there are problems?</a></h1>
+<p>I used python for the scripts because I feel very comfortable
+programming with it. But the language doesn't matter: if you wish
+to have the parser in C, C++, Java or whatever, just do it. Provide
+your version and if it works and is better to use than the actual
+version, it will be used instead.</p>
+<p>If there are problems, you can try to fix them yourself or mail
+me to check what's happening. There shouldn't be any, however,
+the build process seems to work without problem under DOS and
+Linux. But gremlins exist...</p>
+</div>
+<div class="section" id="releasing-a-wip-especially-for-other-allegro-developers">
+<h1><a name="releasing-a-wip-especially-for-other-allegro-developers">Releasing a WIP (especially for other Allegro developers)</a></h1>
+<p>The following items are roughly a guide to release new WIPs on the
+web page and have it working correctly. A little bit schematic,
+but will be improved in the future:</p>
+<ul>
+<li><p class="first">Add a news item in the <tt class="docutils literal"><span class="pre">src/index.html</span></tt> file. Move the oldest
+one to the <tt class="docutils literal"><span class="pre">src/old_news.html</span></tt>. The former should contain only
+3 news items.</p>
+</li>
+<li><p class="first">Add the corresponding tags in <tt class="docutils literal"><span class="pre">data/index/index.en</span></tt>. You have
+there the tags of a previous wip release announcement, so you
+can basically copy it, change the numbers and rewrite the small
+changelog. To have a good measure of the length the small changelog
+should have, trim it to no more than 600 characters (without HTML
+tags). You will surely leave important changes, but that's the
+point of having a true changelog linked for too curious users!</p>
+</li>
+<li><p class="first">Update <tt class="docutils literal"><span class="pre">external/en/*._tx</span></tt> with <tt class="docutils literal"><span class="pre">*._tx</span></tt> files from the recently
+released Allegro package <em>only</em> if this package is a later version
+than the current one. This means you can ignore stable versions
+if there's a more advanced WIP version. Don't forget about the
+files in the <tt class="docutils literal"><span class="pre">build</span></tt> subdirectory.</p>
+</li>
+<li><p class="first">Update the <tt class="docutils literal"><span class="pre">makedoc.exe</span></tt> binary at the SourceForge shell 
+account updating the web page. This is currently at
+<tt class="docutils literal"><span class="pre">/home/groups/a/al/alleg/cvs_allegrowww_checkout/external/makedoc.exe</span></tt>.
+There's no need to do this step if makedoc didn't change.
+If you do, remember that you have to update the makedoc source
+in the external folder too, for those mirrors that are able to
+build it.</p>
+</li>
+<li><p class="first">Update <tt class="docutils literal"><span class="pre">src/wip.html</span></tt> with correct link numbers, both the
+defines at the beginning and the later links to files. Note
+that the real information about download links is stored in
+<tt class="docutils literal"><span class="pre">external/binary-files.txt</span></tt>, which you will have to update
+correctly. This usually involves duplicating the entries of
+the last version and refilling them with the new data. The old
+entries should be added to the end of the <tt class="docutils literal"><span class="pre">binary-files.txt</span></tt>,
+in the <tt class="docutils literal"><span class="pre">delete</span></tt> section.</p>
+</li>
+<li><p class="first">Open <tt class="docutils literal"><span class="pre">src/api.html</span></tt> and change the version of the online
+documentation.</p>
+</li>
+<li><p class="first">Optionally generate documentation binaries in pdf and ps.gz
+format. You will have to upload these to the SourceForge web
+page before adding them to <tt class="docutils literal"><span class="pre">binary-files.txt</span></tt> or put them on
+your web site and make sure they get fetched by SourceForge,
+and then reupdate the <tt class="docutils literal"><span class="pre">binary-files.txt</span></tt> file to point to
+the SourceForge web page.</p>
+</li>
+<li><p class="first">Add to the end of <tt class="docutils literal"><span class="pre">src/old.html</span></tt> the new diff link.</p>
+</li>
+<li><p class="first">Add the tag release if necessary to <tt class="docutils literal"><span class="pre">src/cvs.html</span></tt>.</p>
+</li>
+<li><p class="first">Commit and check some hours later the web page. See <cite>Available
+mirrors</cite> on how/who updates the mirrors.</p>
+</li>
+<li><p class="first">Announce on <a class="reference" href="http://www.allegro.cc/">http://www.allegro.cc/</a>.</p>
+</li>
+<li><p class="first">Announce on <a class="reference" href="http://freshmeat.net/">http://freshmeat.net/</a> (needs a free user account).</p>
+</li>
+<li><p class="first">Update allegro entry in the free software directory at
+<a class="reference" href="http://www.gnu.org/directory/allegro.html">http://www.gnu.org/directory/allegro.html</a></p>
+<p>To do so, there are two ways:</p>
+<ol class="arabic">
+<li><p class="first">provide Janet Casey (<a class="reference" href="mailto:jcasey&#64;gnu.org">jcasey&#64;gnu.org</a>) the new information.
+(note to self: depending on humans is bad)</p>
+</li>
+<li><p class="first">check out the entries of the directory from anonymous cvs:</p>
+<pre class="literal-block">
+export CVS_RSH=&quot;ssh&quot;
+cvs -d:ext:anoncvs&#64;savannah.gnu.org:/webcvs/directory login
+cvs -z3 -d:ext:anoncvs&#64;savannah.gnu.org:/webcvs/directory co directory
+</pre>
+</li>
+</ol>
+<blockquote>
+<p>Then update allegro.txt (note it's in latin1) and send the diff to
+&lt;<a class="reference" href="mailto:bug-directory&#64;gnu.org">bug-directory&#64;gnu.org</a>&gt;.</p>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="things-left-to-do">
+<h1><a name="things-left-to-do">Things left to do</a></h1>
+<p>Scrap all this pile of junk. It is too complicated to make a web
+change, so it scares everybody other than Grzegorz to change the
+web. Replace by something more shiny and easy to use.</p>
+<p>If you feel something has been left out, don't hesitate to tell me,
+or to add it directly to the <tt class="docutils literal"><span class="pre">todo.txt</span></tt> file.</p>
+</div>
+<div class="section" id="available-mirrors">
+<h1><a name="available-mirrors">Available mirrors</a></h1>
+<p>At the moment of writting this, three mirrors exist:</p>
+<blockquote>
+<ul class="simple">
+<li><a class="reference" href="http://alleg.sourceforge.net/">http://alleg.sourceforge.net/</a></li>
+<li><a class="reference" href="http://allegro.sunsite.dk/">http://allegro.sunsite.dk/</a></li>
+<li><a class="reference" href="http://www.talula.demon.co.uk/allegro/">http://www.talula.demon.co.uk/allegro/</a></li>
+</ul>
+</blockquote>
+<p>All three mirrors are automated now. The SourceForge mirror is
+updated by a cron script in my shell account (gradha). Every three
+hours it updates a local anonymous copy of the allegrowww module,
+and rebuilds modified pages to the web server (which is in another
+directory at the same server). The only problem with this setup is
+that the SourceForge shell account doesn't provide gcc, so if the
+makedoc tool changed, somebody would have to compile it on a linux
+machine and modify the binary after testing that it runs. This is
+not so critical, though, because the makedoc format seems to be very
+flexible and backwards compatible. The three hours period is a little
+bit long, but that's to avoid abusing the server. There's a little
+bit of trickery in some script to update the cvs snapshots web.</p>
+<p>The Sunsite and Talula mirrors can be updated only through ftp. I've
+set up a cron job at my personal home machine, which gets the
+allegrowww module and then, with sitecopy, updates both pages. If
+for some reason the scripts breaks or the server vanishes, you
+will have to get ftp password from Shawn Hargreaves and the Sunsite
+staff in order to be able to update those hosts manually. They are
+fully automated, and should require no manual maintenance unless
+something breaks.</p>
+<p>The SourceForge server should be considered the primary server,
+all files are there, and downloads link to SourceForge's download
+mirrors. The demon mirror only hosts English html, all binary links
+point to SourceForge to avoid bandwith usage and because Shawn's
+quota is around 20 Mb, 10 of which are already used. The sunsite
+server is a mostly complete mirror of SourceForge, it's not complete
+because it has a disk quota of 50MB, which was exceeded sometime
+in december 2002, so it was changed to host all binary files except
+those in the <em>low</em> category.</p>
+</div>
+<div class="section" id="updating-djgpp-s-mirror-list">
+<h1><a name="updating-djgpp-s-mirror-list">Updating DJGPP's mirror list</a></h1>
+<p>The file <tt class="docutils literal"><span class="pre">src/mirrors.html</span></tt> contains a list of DJGPP mirrors
+with direct links to the Allegro directory. This file is updated
+by <tt class="docutils literal"><span class="pre">scripts/update-mirror-list.py</span></tt>.  This script has to be run
+manually by the webmaster, the script will get an updated list of the
+mirror list, parse it and regenerate the specified file. Example:</p>
+<pre class="literal-block">
+python scripts/update-mirror-list.py -f src/mirrors.html
+</pre>
+<p>Now doing a <tt class="docutils literal"><span class="pre">cvs</span> <span class="pre">diff</span></tt> will show if there were changes, which
+should be commited. The idea is that the webmaster automates the
+execution of the script.  The script is written in such a way that
+the minimum failure will explode with a beautiful log of fireworks.
+Should the webmaster not update the file, whack him.</p>
+</div>
+<div class="section" id="rules-for-translators">
+<h1><a name="rules-for-translators">Rules for translators</a></h1>
+<p>In the spirit of keeping web rot to a minimum, the following policy
+will be enforced:</p>
+<ul>
+<li><p class="first">If a translator has not updated the web in a year:</p>
+<blockquote>
+<ul class="simple">
+<li>The <tt class="docutils literal"><span class="pre">webmasters.html</span></tt> page shows that the language translation
+is no longer maintained.</li>
+<li>The developer assigned to this task is removed from
+Sourceforge's group unless he is doing work on other modules
+of the Allegro project.</li>
+<li>At the top of each page is slapped a &quot;this language is not
+maintained any more&quot; with a link to the webmasters page.</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first">If a language has not been updated in five years:</p>
+<blockquote>
+<ul class="simple">
+<li>It is removed from the web. Previous work is kept under CVS,
+of course, in the hope that somebody will come and bring it
+up to date.</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first">Finally, people who want to contribute a new language have a
+three month limit of time to get used to the CVS and start
+commiting changes. Once this time has expired, their commit rights
+will be removed from Sourceforge and the translator position will
+be vacant again.</p>
+</li>
+</ul>
+<p>Anybody with admin rights on the Sourceforge project can enforce
+this policy (removal of users).  At least two people should be
+allowed to do this, the main webmaster and the Allegro dictator.</p>
+</div>
+<div class="section" id="the-source-of-this-document">
+<h1><a name="the-source-of-this-document">The source of this document</a></h1>
+<p>This document should be available from Sourceforge's CVS
+allegrowww module in the allegro project. The HTTP link is:
+<a class="reference" href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/alleg/allegrowww/instructions.txt">http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/alleg/allegrowww/instructions.txt</a>.</p>
+<p>If you are reading the HTML version, this was
+generated with reStructuredText, which you can get from
+<a class="reference" href="http://docutils.sourceforge.net/">http://docutils.sourceforge.net/</a>. If you are reading the txt version,
+well, that is what the strange markup is for, generating the HTML
+version.</p>
+<p>This document is not automatically generated for several reasons:</p>
+<ul class="simple">
+<li>Changes to it are pretty scarce.</li>
+<li>It requires latest Python version for the HTML generation, as
+well as docutils.</li>
+<li>It's sort of internal document for translators, who can always
+get the latest version from CVS.</li>
+</ul>
+</div>
+</div>
+</body>
+</html>

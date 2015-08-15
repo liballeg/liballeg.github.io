@@ -1,0 +1,511 @@
+# date: 2003 - 08 - 02
+# This file documents the digital sound API. First draft.
+
+
+Allegro 5 API: Digital sound
+
+Status: First draft completed 2003-08-02.
+
+
+
+Pertinent Threads & Brief Change History:
+
+   Brackets contain attributions for suggestions, complaints or
+   whatnot which inspired the change or something about that change.
+   Apologies if someone is left out.  This history is not meant to be
+   exhaustive.
+
+   * "Ho hum" 2003-07-13:
+
+      - ideas for first draft
+
+
+
+----------------------------------------------------------------------
+
+
+
+List of all methods:
+
+- Type: AL_AUDIO_STREAM
+- Function: AL_AUDIO_STREAM *al_ref_audio_stream(AL_AUDIO_STREAM *stream)
+- Function: void al_deref_audio_stream(AL_AUDIO_STREAM *stream)
+- Function: int al_install_audio_stream(AL_AUDIO_STREAM *stream)
+- Function: void al_uninstall_audio_stream(AL_AUDIO_STREAM *stream)
+
+- Enum: AL_SAMPLE_PLAYMODE
+
+- Type: AL_SAMPLE
+- Function: void al_load_sample(const char *filename)
+- Function: AL_SAMPLE *al_create_sample(int len, int n_channels)
+- Function: void al_sample_set_default_playmode(AL_SAMPLE *sample, AL_SAMPLE_PLAYMODE playmode)
+- Function: AL_SAMPLE_PLAYMODE al_sample_get_default_playmode(AL_SAMPLE *sample)
+- Function: void al_destroy_sample(AL_SAMPLE *sample)
+
+- Type: AL_SAMPLE_STREAM
+- Function: AL_SAMPLE_STREAM *al_create_sample_stream(AL_SAMPLE *sample, AL_SAMPLE_PLAYMODE playmode)
+- Function: void al_sample_set_playmode(AL_SAMPLE_STREAM *stream, AL_SAMPLE_PLAYMODE playmode)
+- Function: AL_SAMPLE_PLAYMODE al_sample_get_playmode(AL_SAMPLE_STREAM *stream)
+- Function: void al_sample_set_position(AL_SAMPLE_STREAM *stream, int pos)
+- Function: int al_sample_get_position(AL_SAMPLE_STREAM *stream)
+
+- Type: AL_MIXER_STREAM
+- Function: AL_MIXER_STREAM *al_create_mixer_stream(void)
+- Function: void al_mixer_attach_stream(AL_MIXER_STREAM *mixer, AL_AUDIO_STREAM *stream, float vol, float pan, float freq, int paused)
+- Function: void al_mixer_detach_stream(AL_AUDIO_STREAM *stream)
+- Function: void al_play_sample(AL_MIXER_STREAM *mixer, AL_SAMPLE *sample, float vol, float pan, float freq, AL_SAMPLE_PLAYMODE playmode)
+- Function: void al_play_sample_surround(AL_MIXER_STREAM *mixer, AL_SAMPLE *sample, float vol, int n, float *data, float freq, AL_SAMPLE_PLAYMODE playmode)
+- Function: void al_play_sample_3d(AL_MIXER_STREAM *mixer, AL_SAMPLE *sample, float vol, float voldist, float *coordinates, float freq, AL_SAMPLE_PLAYMODE playmode)
+- Function: AL_SAMPLE_STREAM *al_start_sample(AL_MIXER_STREAM *mixer, AL_SAMPLE *sample, float vol, float pan, float freq, AL_SAMPLE_PLAYMODE playmode, int paused)
+- Function: AL_SAMPLE_STREAM *al_start_sample_surround(AL_MIXER_STREAM *mixer, AL_SAMPLE *sample, float vol, int n, float *data, float freq, AL_SAMPLE_PLAYMODE playmode, int paused)
+- Function: AL_SAMPLE_STREAM *al_start_sample_3d(AL_MIXER_STREAM *mixer, AL_SAMPLE *sample, float vol, float voldist, float *coordinates, float freq, AL_SAMPLE_PLAYMODE playmode, int paused)
+
+- Function: void al_audio_stream_set_paused(AL_AUDIO_STREAM *stream, int paused)
+- Function: int al_audio_stream_is_paused(AL_AUDIO_STREAM *stream)
+- Function: void al_audio_stream_set_volume(AL_AUDIO_STREAM *stream, float vol)
+- Function: float al_audio_stream_get_volume(AL_AUDIO_STREAM *stream)
+- Function: void al_audio_stream_set_panning(AL_AUDIO_STREAM *stream, float pan)
+- Function: float al_audio_stream_get_panning(AL_AUDIO_STREAM *stream)
+- Function: void al_audio_stream_set_surround_state(AL_AUDIO_STREAM *stream, int n, float *data)
+- Function: void al_audio_stream_set_surround_parameter(AL_AUDIO_STREAM *stream, int n, int i, float val)
+- Function: float *al_audio_stream_get_surround_state(AL_AUDIO_STREAM *stream)
+- Function: void al_audio_stream_set_3d_position(AL_AUDIO_STREAM *stream, float *coordinates)
+- Function: float *al_audio_stream_get_3d_position(AL_AUDIO_STREAM *stream)
+- Function: void al_audio_stream_set_frequency(AL_AUDIO_STREAM *stream, float freq)
+- Function: float al_audio_stream_get_frequency(AL_AUDIO_STREAM *stream)
+
+TODO: allow for hardware mixing and such
+
+
+
+- Type: AL_AUDIO_STREAM
+
+   This is an abstract data type representing an audio generator. The
+   two most important subtypes are AL_SAMPLE_STREAM and
+   AL_MIXER_STREAM. Every time you play a sample, an AL_SAMPLE_STREAM
+   manages the playback state and returns the sample data. Whenever
+   samples and other streams are mixed together, an AL_MIXER_STREAM
+   does the mixing. The important point to note is that these are
+   derived from the abstract type AL_AUDIO_STREAM, so a hierarchy of
+   mixers, with sample streams at the leaves, can be created. You may
+   also create your own audio streams that generate arbitrary sample
+   data either from scratch or from other streams.
+
+   Here is an example of how audio streams may be strung together:
+
+              +---- SAMPLE
+              |
+      Top-    +---- SAMPLE
+      level --+                     +-- SAMPLE
+      MIXER   |   Some      Sub-    |
+              +-- Cool --- MIXER ---+-- SAMPLE
+              |  Filter    stream   |
+              |                     +-- Custom stream
+              +---- SAMPLE
+
+   Note how a filter can be applied to an arbitrary set of samples and
+   will still be processed just once.
+
+   Streams are reference-counted. When you add one to a hierarchy like
+   the above, its reference counter will be incremented. When you
+   remove one, its reference counter will be decremented. As soon as
+   the counter reaches zero the stream will be destroyed. You should
+   think of this as a means for having multiple references to a
+   stream. For instance, you might ask Allegro to play a sample, thus
+   giving Allegro a reference to the stream, but you might keep an
+   extra reference for yourself so that you can tweak the playback.
+   See al_ref_audio_stream() and al_deref_audio_stream().
+
+   Streams may be finite. For example, a sample stream will end if it
+   is not set to loop. A mixer stream will never end. If a stream
+   ends, Allegro will sacrifice any references to it. This means you
+   can fire a sample (or other stream) and then forget about it; it is
+   as simple as leaving Allegro with the only reference.
+
+
+
+- Function: AL_AUDIO_STREAM *al_ref_audio_stream(AL_AUDIO_STREAM *stream)
+
+   This function increments the reference counter for an audio stream.
+   The stream is returned for convenience. You will never actually
+   need this function in order to work with Allegro, but it is
+   provided in case you have a use for it.
+
+
+
+- Function: void al_deref_audio_stream(AL_AUDIO_STREAM *stream)
+
+   This function decrements the reference counter for an audio stream.
+   If the counter reaches zero, the stream will be destroyed.
+
+   In more user-friendly terms, think of this as the function for
+   destroying a stream, but with the special property that if Allegro
+   is using the stream then it will not be destroyed until Allegro has
+   finished with it. A couple of examples may help:
+
+      AL_AUDIO_STREAM *stream = (AL_AUDIO_STREAM *)al_create_sample_stream(sample, AL_SAMPLE_NO_LOOP);
+      /* The reference counter is 1. */
+      al_mixer_attach_stream(mixer, stream, 1.0f, 0.0f, 1.0f, FALSE);
+      /* We have a reference and the mixer has a reference;
+       * the counter is 2. */
+      al_deref_audio_stream(stream);
+      /* The counter is now 1. The correct way to think of this is as
+       * follows: we have just sacrificed our reference. When the
+       * sample stops playing, the stream will be destroyed, but
+       * until then Allegro will happily continue playing it. */
+
+      AL_AUDIO_STREAM *stream = (AL_AUDIO_STREAM *)al_create_sample_stream(sample, AL_SAMPLE_NO_LOOP);
+      /* The reference counter is 1. */
+      al_mixer_attach_stream(mixer, stream, 1.0f, 0.0f, 1.0f, FALSE);
+      /* We have a reference and the mixer has a reference;
+       * the counter is 2. */
+      al_mixer_detach_stream(stream);
+      /* The mixer no longer has a reference, and the counter is 1.
+       * Since we haven't called al_deref_audio_stream() yet, the
+       * stream has not been destroyed. */
+      al_deref_audio_stream(stream);
+      /* That destroyed the stream, since ours was the only
+       * reference. */
+
+   As a rule of thumb, never use a reference after you have sacrificed
+   it. There is one exception to this rule, which should become
+   apparent as you read the description of al_install_audio_stream():
+   you may leave Allegro with the only reference and continue to keep
+   a pointer for manipulating the stream, but you must only do this if
+   you are certain that the stream will not end or otherwise be
+   destroyed while you are using it.
+
+
+
+- Function: int al_install_audio_stream(AL_AUDIO_STREAM *stream)
+
+   This function registers an audio stream with the sound card. Once
+   you have done this, Allegro will asynchronously request data from
+   the stream and send them to the sound card. Returns zero on success
+   or a negative number on failure. It is an error to install a stream
+   like this when one is already installed.
+
+   TODO: is it really an error? A sound card might be able to cope
+   with more than one. This may indeed be how we deal with hardware
+   voices: al_install_audio_stream() for each stream we want played in
+   hardware. Speaking of which, we'll want a special case of
+   AL_MIXER_STREAM that does this hardware stuff, so people don't have
+   to write separate code to take advantage of hardware.
+
+   If you would like al_uninstall_audio_stream() to destroy this
+   stream for you later, call al_deref_audio_stream() after calling
+   al_install_audio_stream(). WARNING: you must only do this for
+   streams that will not end, such as mixers or looping samples.
+
+
+
+- Function: void al_uninstall_audio_stream(AL_AUDIO_STREAM *stream)
+
+   This function deregisters an audio stream with the sound card.
+   Allegro will cease asynchronously sending this stream's data to the
+   sound card. You will not necessarily need to call this yourself;
+   Allegro will uninstall any installed streams for you on exit. Make
+   sure you have called al_deref_audio_stream() for any such streams
+   so that they will be destroyed; see al_install_audio_stream() for
+   details on this.
+
+   TODO: if only one can be installed, we don't need the parameter -
+   and the description should be reworded a bit.
+
+
+
+- Enum: AL_SAMPLE_PLAYMODE
+
+   This enumeration consists of the following flags:
+
+      AL_SAMPLE_NO_LOOP   - sample will play once
+      AL_SAMPLE_LOOP      - sample will loop
+      AL_SAMPLE_ONEDIR    - normal looping: sample pointer will jump
+                            from one loop point to the other and the
+                            playback direction will be constant
+      AL_SAMPLE_BIDIR     - bidirectional looping: sample pointer will
+                            bounce off the loop points
+      AL_SAMPLE_FORWARDS  - sample will play forwards
+      AL_SAMPLE_BACKWARDS - sample will play backwards
+
+   TODO: inconsistency: NO_LOOP has an underline but ONEDIR doesn't.
+   But ONE_DIR wouldn't look quite right against BIDIR (and BI_DIR
+   would look awful). Part of me wants to rename ONEDIR to STRAIGHT :)
+   Opinions/suggestions?
+
+   These should be combined with the bitwise OR operator (|). It is an
+   error to combine conflicting flags.
+
+   When you create a sample, its playmode will default to
+   AL_SAMPLE_NO_LOOP | AL_SAMPLE_ONEDIR | AL_SAMPLE_FORWARDS. When you
+   load a sample, metadata may be used to figure out a different
+   playmode, but usually it will have the same default. All functions
+   that take a playmode parameter will change only those modes you
+   specify explicitly, so for instance a bidirectionally looping
+   sample will continue to loop bidirectionally unless you specify
+   AL_SAMPLE_ONEDIR.
+
+
+
+- Type: AL_SAMPLE
+
+   This structure holds a sample. It can be of arbitrary length, and
+   can be generated at run time or loaded from disk.
+
+
+
+- Function: void al_load_sample(const char *filename)
+
+   This function loads a sample from disk. Currently supported are
+   .wav files containing uncompressed PCM data, and .voc files.
+
+
+
+- Function: AL_SAMPLE *al_create_sample(int len, int n_channels)
+
+   This function creates a sample of the specified length with the
+   specified number of channels. You may specify an arbitrary number
+   of channels, but at present the meanings of the channels are
+   documented only for the following values of n_channels:
+
+      1 - mono             2 - stereo             6 - 5.1 surround
+
+      0 - centre           0 - left
+                           1 - right
+
+   TODO: figure out what order the surround channels come in
+      (centre, left, right, surround left, surround right, LFE)
+   and whether some other lesser or greater surround modes should be
+   provided/documented.
+
+   TODO: more on the internals of an AL_SAMPLE. 8-bit vs 16-bit? Don't
+   forget loop points!
+
+
+
+- Function: void al_sample_set_default_playmode(AL_SAMPLE *sample, AL_SAMPLE_PLAYMODE playmode)
+- Function: AL_SAMPLE_PLAYMODE al_sample_get_default_playmode(AL_SAMPLE *sample)
+
+   These functions set and return the default playmode for a sample.
+
+
+
+- Function: void al_destroy_sample(AL_SAMPLE *sample)
+
+   This destroys a sample and frees the memory it is using.
+
+   TODO: danger here, if this sample is currently playing. This is
+   especially true at the end of the program. If we are encouraging
+   the user to leave Allegro to destroy an installed mixer stream, and
+   that mixer is currently playing some sample streams, then it is
+   likely the user will end up destroying the samples before the
+   stream is destroyed. But to make sample streams stop safely when a
+   sample is destroyed would require samples to keep track of streams;
+   this would feel bloated, and so much for const correctness.
+   Suggestions?
+
+
+
+- Type: AL_SAMPLE_STREAM
+
+   This is an audio stream that returns sample data. Whenever you play
+   a sample, one of these will feed the sample data to the mixer. For
+   the most basic sound applications you will not need to worry about
+   this, but if you want to adjust or stop a sample while it is
+   playing, you will have to manipulate one of these objects.
+
+
+
+- Function: AL_SAMPLE_STREAM *al_create_sample_stream(AL_SAMPLE *sample, AL_SAMPLE_PLAYMODE playmode)
+
+   This creates a sample stream ready to play the specified sample. It
+   does not associate the stream with any mixer; you must do this
+   yourself.
+
+   If the sample is to play backwards, it will start at the end;
+   otherwise it will start at the beginning. You are allowed to
+   override the default playmode here before the starting position is
+   determined. You can of course change the position later with
+   al_sample_set_position().
+
+
+
+- Function: void al_sample_set_playmode(AL_SAMPLE_STREAM *stream, AL_SAMPLE_PLAYMODE playmode)
+- Function: AL_SAMPLE_PLAYMODE al_sample_get_playmode(AL_SAMPLE_STREAM *stream)
+
+   These set and return the playmode of a currently playing sample.
+
+
+
+- Function: void al_sample_set_position(AL_SAMPLE_STREAM *stream, int pos)
+- Function: int al_sample_get_position(AL_SAMPLE_STREAM *stream)
+
+   These set and return the playback position of a currently playing
+   sample.
+
+
+
+- Type: AL_MIXER_STREAM
+
+   This is an audio stream capable of mixing other streams together.
+   For typical sound applications, you will get one of these and you
+   will be able to use it to play samples. You can also create your
+   own mixer streams as children of the parent one.
+
+
+
+- Function: AL_MIXER_STREAM *al_create_mixer_stream(void)
+
+   This creates a mixer stream. See the description of AL_MIXER_STREAM
+   for details.
+
+
+
+- Function: void al_mixer_attach_stream(AL_MIXER_STREAM *mixer, AL_AUDIO_STREAM *stream, float vol, float pan, float freq, int paused)
+
+   This attaches the specified stream to the specified mixer. Any
+   stream can be attached to one mixer at a time, and that mixer will
+   then mix this stream's output into its own. It is an error to
+   attempt to attach a stream to more than one mixer, or to attempt to
+   generate sample data from a stream when it is attached to a mixer.
+   A stream will always know which mixer it is attached to, if any. If
+   a stream ends, it will be detached from the mixer automatically.
+   For as long as the stream is attached, the mixer has a reference to
+   it; if you call al_deref_audio_stream(), the stream will destroy
+   itself when it ends. This method is used internally by the various
+   fire-and-forget functions, and you can use it yourself.
+
+
+
+- Function: void al_mixer_detach_stream(AL_AUDIO_STREAM *stream)
+
+   This detaches a stream from whichever mixer it is attached to. It
+   is not an error to call this when the stream is not attached to any
+   mixer, since a stream will detach itself if it ends.
+
+
+
+- Function: void al_play_sample(AL_MIXER_STREAM *mixer, AL_SAMPLE *sample, float vol, float pan, float freq, AL_SAMPLE_PLAYMODE playmode)
+
+   This uses the specified mixer to play a sample. You may specify the
+   volume (ranging from -1.0f to 1.0f, with the sample being inverted
+   if the volume is negative), the stereo panning (-1.0f to 1.0f) and
+   the frequency (1.0f to play at the frequency the sample was
+   recorded at, 2.0f to play at double the speed, etc.). You may also
+   override the playmode before the starting position is calculated
+   (since it needs to start at the end if the sample is to play
+   backwards).
+
+
+
+- Function: void al_play_sample_surround(AL_MIXER_STREAM *mixer, AL_SAMPLE *sample, float vol, int n, float *data, float freq, AL_SAMPLE_PLAYMODE playmode)
+
+   This is the same as al_play_sample(), except it gives you more
+   precise control over the levels of the various channels.
+
+   TODO: document this further.
+
+
+
+- Function: void al_play_sample_3d(AL_MIXER_STREAM *mixer, AL_SAMPLE *sample, float vol, float voldist, float *coordinates, float freq, AL_SAMPLE_PLAYMODE playmode)
+
+   This is the same as al_play_sample(), except it allows you to
+   position a sample in 3D space at a point (x,y,z). Load the three
+   values into an array of float as follows:
+
+      float pos[3] = {x, y, z};
+
+   (0,0,0) is the position of the listener. As you increase x, the
+   source moves to the right. As you increase y, the source moves
+   upwards. As you increase z, the source moves behind the listener
+   (you must make z negative to place the source in front of the
+   listener).
+
+   You must specify a volume and a distance (voldist). If the source
+   is at that distance or nearer, the sample will play at the
+   specified volume. If the source is further away, the volume will
+   be reduced.
+
+
+
+- Function: AL_SAMPLE_STREAM *al_start_sample(AL_MIXER_STREAM *mixer, AL_SAMPLE *sample, float vol, float pan, float freq, AL_SAMPLE_PLAYMODE playmode, int paused)
+- Function: AL_SAMPLE_STREAM *al_start_sample_surround(AL_MIXER_STREAM *mixer, AL_SAMPLE *sample, float vol, int n, float *data, float freq, AL_SAMPLE_PLAYMODE playmode, int paused)
+- Function: AL_SAMPLE_STREAM *al_start_sample_3d(AL_MIXER_STREAM *mixer, AL_SAMPLE *sample, float vol, float voldist, float *coordinates, float freq, AL_SAMPLE_PLAYMODE playmode, int paused)
+
+   These are the same as the equivalent al_play_sample*() functions,
+   except for two things. First, they return a reference to the
+   AL_SAMPLE_STREAM. This is a separate reference from the one Allegro
+   is using; you must eventually call both al_mixer_detach_stream()
+   and al_deref_audio_stream() on this sample stream.
+
+   WARNING: do not call al_deref_audio_stream() before calling
+   al_mixer_detach_stream(), unless the sample is set to loop.
+
+   Secondly, they allow you to request that the stream start paused.
+   Use this feature whenever you wish to set some other playback
+   parameters for this sample before it starts playing.
+
+
+
+- Function: void al_audio_stream_set_paused(AL_AUDIO_STREAM *stream, int paused)
+- Function: int al_audio_stream_is_paused(AL_AUDIO_STREAM *stream)
+- Function: void al_audio_stream_set_volume(AL_AUDIO_STREAM *stream, float vol)
+- Function: float al_audio_stream_get_volume(AL_AUDIO_STREAM *stream)
+- Function: void al_audio_stream_set_panning(AL_AUDIO_STREAM *stream, float pan)
+- Function: float al_audio_stream_get_panning(AL_AUDIO_STREAM *stream)
+- Function: void al_audio_stream_set_surround_state(AL_AUDIO_STREAM *stream, int n, float *data)
+- Function: void al_audio_stream_set_surround_parameter(AL_AUDIO_STREAM *stream, int n, int i, float val)
+- Function: float *al_audio_stream_get_surround_state(AL_AUDIO_STREAM *stream)
+- Function: void al_audio_stream_set_3d_position(AL_AUDIO_STREAM *stream, float *axes)
+- Function: float *al_audio_stream_get_3d_position(AL_AUDIO_STREAM *stream)
+- Function: void al_audio_stream_set_frequency(AL_AUDIO_STREAM *stream, float freq)
+- Function: float al_audio_stream_get_frequency(AL_AUDIO_STREAM *stream)
+
+   These functions set and query the state of a stream being mixed. It
+   is important to note that they only work for a stream that is
+   attached to a mixer. You will get away with calling them on a
+   stream that has no mixer attached (it will do nothing), but this is
+   only the case because streams are detached from mixers
+   automatically if they end.
+
+   See al_play_sample() for details on the format of the volume,
+   panning and frequency parameters. See al_play_sample_surround() and
+   al_play_sample_3d() for details on how the surround state and 3D
+   position work.
+
+   al_audio_stream_set_surround_state() allows you to set the first n
+   surround parameters, and any others will be calculated for you.
+   al_audio_stream_set_surround_parameter() allows you to set one
+   surround parameter (i), but you should specify how many of the
+   parameters you wish to control (n) so that any extra ones can be
+   recalculated for you. It is an error if i >= n.
+
+
+
+TODO: OK, so mixers have a special status in that any stream can
+be attached to a mixer. In that case, should mixer become an abstract
+class? A mixer would then be any stream capable of incorporating data
+from another stream and adjusting its volume, frequency and channel
+distribution (panning/surround/3D) as well as keeping track of
+whether the stream is paused or not.
+
+
+
+TODO: more on the internals of AL_AUDIO_STREAM. Someone who is more
+au fait with Allegro 5's faking of C++ techniques :) can do this, but
+basically a stream should be able to provide its sample data in one
+of two ways (at the stream's choice):
+
+1. Generate sample data in a buffer somewhere (where?)
+2. Return a pointer to our own sample data: useful for things like
+   samples where the sample data are just sitting there and need not
+   be copied
+
+This must be implemented in such a way as to be safe in DOS interrupt
+context where no memory swapping can occur. Either that or we'll have
+to insist that mixers are polled in DOS. Oh yeah ...
+
+
+
+TODO: do we need an al_poll_sound() function, for polling installed
+streams?

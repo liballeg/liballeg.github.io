@@ -1,0 +1,385 @@
+# date: 2003 - 01 - 29
+# Draft 1 for reimplementation of unicode strings,
+# Written by Grzegorz Adam Hankiewicz <gradha@users.sourceforge.net>
+# The goal of this document is to discuss how to separate/improve
+# the unicode string functions found in A4. Since a separation
+# is a very big change, this proposal probably won't be implemented
+# in the 4.x branches, though it could already exist as separate lib.
+
+Whenever somebody talks about unicode string handling and videogames,
+usually the listeners will be puzzled. Apparently video games
+don't need unicode string functions, yet the real world is very
+different and more complicated and unicode string routines are
+needed to internationalize programs, let Allegro communicate with
+system libraries which talk only in a specific encoding format,
+or just do necessary internal string operations.
+
+The implementation of A4 suffers from different problems: first
+of all, there's a hidden global state that specifies the encoding
+format used by created strings, and it is modified with set_uformat,
+or read with get_uformat.  The problem of this global variable is
+that it affects user code and third party library code trying to
+use Allegro's string functions.
+
+This may not seem a problem until you are trying to convert strings
+or handle different encodings at the same time, what format was
+a string created with? The string you are receiving as parameter,
+is it utf8 or plain ascii?
+
+Second, to avoid depending on the global variable, many of the
+functions require tiresome parameters if the user wants to handle
+strings correctly always, not so common for user code, but necessary
+for allegro addons which try to run ubiquitly. Also, the parameters
+are explicit, but due to the previous global variable issue, they
+can be used wrong if somebody (the user, or another addon lib)
+fiddles with the global variable.
+
+Third, the api is a compromised mixture between libc's legacy and
+A4's naming scheme.  It's damn ugly, unpronouncable, and error prone:
+being a duplicate of libc, type strcpy instead of ustrcpy and your
+program might perform wrong, or even crash at a later stage if it
+is using utf8 or 16 bit strings. Yes, old farts, er... programmers
+are used to that API, but it's hardly a good one.
+
+Fourth, being a C function, string handling is a pain unless nice
+functions are provided, something not provided by current a4 maybe
+because it's said to be a low level game library, or because nobody
+ever thought these string functions would be used seriously.
+
+Fifth, changing the global encoding may affect Allegro internally,
+since driver strings are created once, read later, and if the
+encoding is different, bad things could happen.
+
+The proposal is to solve all points with a new separated
+library, which won't depend any more on Allegro, and thus will be
+usable from everywhere, Allegro included.
+
+First of all, a new internal string implementation is required:
+at the moment the encoding of a string is handled separately
+from the string itself. This means that all functions passing
+an unicode string always require twice the number of parameters.
+Also, specifying manually parameters is tedious and error prone. To
+avoid creating a new variable type, the string itself will contain
+the encoding parameter as the first byte of the string. Graphical
+representation of string in memory, numbers representing byte
+offsets:
+
+   String 'Hello' in ASCII
+
+   0------1---2---3---4---5---6---+
+   | Type | H | e | l | l | o | 0 |
+   +------+---+---+---+---+---+---+
+
+   in 16-bit unicode (ignore fake values, it's an example)
+
+   0------1---2---3---4---5---6---7---8---9---10--11--12--+
+   | Type | H | 0 | e | 0 | l | 0 | l | 0 | o | 0 | 0 | 0 |
+   +------+---+---+---+---+---+---+---+---+---+---+---+­--+
+
+   An empty string:
+
+   0------1---+
+   | Type | 0 |
+   +------+---+
+
+Note that the empty string is represented with type.
+
+In the above examples, the type byte has to have always the MSB set
+to one. If the user prints such a string with normal printf routines,
+he will get a non-control character printed in front of the string,
+hinting that something is going wrong, and reminding that a string
+conversion is needed. The second MSB will be used to specify
+a special type, the `indirect' string (just had too much asm).
+The 6 LSB can be used to specify the format encoding, enough for
+the currently implemented four formats. There's NO prevision the
+let the user implement custom types. Ok, maybe in a later draft,
+I just don't want to think about it now.
+
+While the type byte might be seen as 'obscene', users handling
+unicode strings will anyway have to use library functions for
+reading single characters (ugetc/usetc) if they want to play
+safe with multi-byte characters, so it will be hidden through the
+implementation of these functions. This means that to extract a
+string you only need to use pointer+1.
+
+Not only does this get rid of the global variable, but library
+functions returning error messages can use their preferred encoding
+format (like utf8 or even ascii to avoid using too many bytes if
+the error is in English), functions writting to strings can check
+the string type and report an encoding error to the user (only in
+the debug version of the library, possibly through assertions),
+and functions reading strings will never fail, since they can
+read any encoding without depending on the so many times mentioned
+global variable.
+
+In order to 'remind' the user that these strings are not
+plain strings, a new typedef or define can be used in function
+prototypes. This won't prevent mixing unicode strings with normal
+ones, since the define will map to a simple char*, and the compiler
+won't bark at it. However, most people reading the API hopefully
+will note this and at least scratch their head about the type before
+using the function. The library will use the prefix 'us_' or 'US_'
+where necessary, meaning unicode string. This should provide a good
+enough C namespace to avoid collisions with other libraries.
+
+So far so good, but here we come with the biggest problem: converting
+normal strings to this new format (from now on, called us format) and
+viceversa. Since the us format requires the type at the beginning of
+the string itself, looks like the user would have to create a new
+string with one char more to just put the type at the beginning
+and then copy all the string to the new allocated memory. This
+is terribly slow, because it means effectively duplicating string
+creation: once for the external library creating the say utf8 string,
+and another one to convert to us format.
+
+To solve this partially, the library could use the second MSB, which
+indicates an indirect string. Just like a pointer, it would contain
+only the type and direction of the string. Let's imagine that we are
+using stdlib's getenv function to retrieve an environment variable,
+which we would like to print graphically on the screen through a5's
+truetype antialiased hardware accelerated output functions (hey,
+we can all dream):
+
+   us_char tmp[US_IHOLDER];  /* unicode string indirect holder/handle */
+   char *lang_variable = getenv("LANG");
+
+   /* possible memory representation of lang_variable now */
+
+   /* 0---1---2---+ */
+   /* | E | S | 0 | */
+   /* +---+---+---+ */
+
+   /* function is like a4's uconvert_ascii
+   tmp = us_import(lang_variable, US_ASCII, tmp);
+
+   /* possible memory representation of tmp now in a 32 bit system */
+
+   /* 0----------1---------2----------3--------4-------+ */
+   /* | 1100000b | Pointer to real memory address of S | */
+   /* +----------+---------+----------+--------+-------+ */
+   
+   al_draw_text(whatever, ... , tmp);
+
+With the help of memory representations you should have understood
+by now what I mean with indirect string: it's really a holder array
+which contains a pointer to real string, and it's type, with the
+second MSB set to one. Thanks to this bit, al_draw_text (which
+would rely on the uc_ functions anyway) won't even know if it's a
+holder or not, because through uc_get_char(...) or any other possible
+retrieval function it will get the characters. The define US_IHOLDER
+could be 5 bytes in 32 bit systems, 9 in 64 bit systems, etc.
+
+And the advantage over converting the whole string to us format is
+that the hypotetical us_import_ascii function has constant execution
+time, and you don't have to manually allocate/free the temporary
+resource. In fact, you could hapily reuse it in loops like:
+
+   us_char tmp[US_IHOLDER];
+   char *p;
+
+   /* tight loop retrieving and printing values */
+   while((p = get_a_dynamic_string_from_somewhere())) {
+      /* calculate screen coordinates and more */
+      ...
+      al_draw_text(..., us_import(p, US_ASCII, tmp));
+      free(p);
+   }
+
+Imagine a more convulted example where you have strings with
+different encodings:
+
+   us_char tmp1[US_IHOLDER], tmp2[US_IHOLDER], tmp3[US_IHOLDER];
+   ...
+   al_draw_text(..., us_import("This %s had error %s", US_ASCII, tmp1),
+      us_import(one_string, US_UTF8, tmp2),
+      us_import(second_one, US_16BIT, tmp3));
+
+What you see there is not possible today, where al_draw_text expects
+all the strings to be in global encoding set with set_uformat. Now,
+al_draw_text could parse with the help of the us_ functions all
+strings independently (because each has the type attached), convert
+them to the format required internally (which might not be any
+of the ones used as parameters!) and finally print out the real
+string. And there's no single malloc for the user... practically
+as easy as a C++ automatic conversion class.
+
+What happens when we want to deal with the exterior in a specific
+encoding format? We have to convert the string, inconditionally:
+
+   char *p;
+   us_char *some_string = al_get_some_us_format_string(...);
+
+   /* we need an ascii string for normal printf! */
+   p = us_export(some_string, US_ASCII);
+   if (!p) {
+      /* something failed, lack of memory? Abort */
+   } else {
+      printf("%s", p);
+      free(p);
+   }
+
+us_export() is the symetrical function of us_import. You pass an us
+string and the format you want it to be converted. Then, us_export
+allocates enough memory, copies the string to the new buffer, and
+returns it. Of course, if you are concerned about speed, memory
+and unneeded conversions, you could detect the type of the string
+before and check if it's already ASCII:
+
+   char *p;
+   us_char *some_string = al_get_some_us_format_string(...);
+
+   if (us_type(some_string) == US_ASCII) {
+      printf("%s", p+1);
+   } else {
+      /* we need an ascii string for normal printf! */
+      p = us_export(some_string, US_ASCII);
+      if (!p) {
+         /* something failed, lack of memory? Abort */
+      } else {
+         printf("%s", p);
+         free(p);
+      }
+   }
+
+This covers basic and quick import/export functions. What if we
+want to do more complex conversions?  Here, we would use us_convert,
+the swiss army knife:
+
+  char *us_convert(char *src, int src_type, char *dest, int dest_type);
+
+Basically, you always have to put something into 'src'. If
+src_type is US_AUTO (which in binary is all zeros except the
+MSB, which is set to one), 'src' will be treated like a normal
+us format string. Otherwise, you can specify the encoding format
+with the traditional defines (US_ASCII, US_UTF8, etc). If 'dest'
+is NULL, us_convert will allocate the necessary memory and return
+it. Otherwise, 'dest' will be overwritten inplace (beware with buffer
+overflows!). 'dest_type' is one of the defines US_ASCII, US_UTF, etc.
+This means the new string will be in the specified format. However,
+if 'dest_type' is ored with US_AUTO, the new string will be in
+us format. And if instead of the usual define you use US_POINTER,
+us_convert will create an indirect string. US_POINTER is ignored for
+'src_type'. Let's see some examples:
+
+   /* replicate us_import functionality from previous example */
+   us_convert("This %s had error %s", US_ASCII, tmp1, US_AUTO | US_POINTER);
+   us_convert(one_string, US_UTF8, tmp2, US_AUTO | US_POINTER);
+
+   /* would you like that with dynamic memory for some reason? */
+   char *tmp1 = us_convert("This %s had error %s", US_ASCII, NULL, US_AUTO | US_POINTER);
+   ...
+   free(tmp1);
+   
+   char *tmp2 = us_convert(one_string, US_UTF8, NULL, US_AUTO | US_POINTER);
+   ...
+   free(tmp2);
+   
+   /* note that in the above examples there's no real encoding conversion,
+    * just pointer creation.
+    */
+
+   /* replicate us_export functionality from previous example */
+   char *ascii = us_convert(some_string, US_AUTO, NULL, US_ASCII);
+   ...
+   free(ascii);
+   
+   /* maybe you prefer static memory instead? */
+   us_convert(some_string, US_AUTO, big_array, US_ASCII);
+
+   /* create an us dynamically with internal 16bit format from utf8 string */
+   char *temp = us_convert(some_string, US_UTF8, NULL, US_AUTO | US_16BIT);
+   ...
+   free(temp);
+
+   /* create us inplace with internal utf8 format from ascii string */
+   us_convert(some_string, US_ASCII, big_array, US_AUTO | US_ASCII);
+
+   /* convert an us string from ascii to 16bit */
+   char *temp = us_convert(some_string, US_AUTO, NULL, US_AUTO | US_16BIT);
+   ...
+   free(temp);
+
+Those are the new functions. Now, the rest of the API compared
+to a4. Note that if not specified, the functions only accept us
+format strings:
+
+ set_uformat, get_uformat, uconvert_size, do_uconvert, uconvert_ascii,
+ uconvert_toascii, uwidth, ucwidth, uisok, uoffset, uwidth_max:
+   we get rid of these functions.
+
+ register_uformat, set_ucodepage:
+   left for a future revision of this draft.
+
+ need_uconvert: will be replaced partially with us_get_type, conversions
+   will be left for us_convert.
+
+ uconvert: will be replaced with us_convert, which accepts strings
+   of any encoding.
+
+ empty_string: will be left as us_empty_string for people who like
+   building strings manually
+
+ ugetc, ugetx: maybe left for internal use.
+ usetc: maybe left for internal use.
+
+ ugetat: left as us_get_at.
+ usetat: left as us_set_at.
+ utolower: left as us_lower_char.
+ utoupper: left as us_upper_char.
+ ustrlwr: left as us_lower_string, returning new allocated string.
+ ustrupr: left as us_upper_string, returning new allocated string.
+ uisspace: left as us_is_space.
+ uisdigit: left as us_is_digit.
+
+ uinsert: left as us_insert. New version us_insert_string to insert
+   more than a single character
+   (possibly returning a new malloced string?)
+ uremove: left as us_delete_at, working only with us forat. New
+   version us_delete_range, to delete more than a single character.
+
+ ustrsize: left as us_length_in_bytes.
+ ustrsizez: left as us_length_in_bytesz.
+ ustrlen: left as us_length.
+
+ ustrdup: left as us_duplicate.
+ _ustrdup: removed, possibly using new memory allocation protocol
+   from another proposed draft.
+
+ ustrcpy, ustrncpy: removed.
+ ustrzcpy: left as us_copy, working only with us format.
+ ustrzncpy: left as us_copy_limit.
+ ustrcat, ustrncat, ustrzncat: removed.
+ ustrzcat: left as us_concatenate accepting multiple us format
+   strings, ending the sequence with NULL (variadic funciton), and
+   returns a new allocated string with the concatenation in the
+   us format able to contain all the strings without loosing
+   characters due to 'downconversions' (invented word).
+
+ ustrcmp: left as us_compare.
+ ustrncmp: left as us_compare_limit.
+ ustricmp: left as us_icompare.
+ ustrnicmp: left as us_icompare_limit.
+
+ ustrchr: left as us_find_char.
+ ustrrchr: left as us_find_last_char.
+ ustrstr: left as us_find_string. New us_find_last_string.
+
+ ustrpbrk: left as us_find_delimiter, returning indices instead of
+   pointer to found character.
+
+ ustrtok: removed
+ ustrtok_r: left as us_find_tokens.
+
+ uatof: left as us_to_double.
+ ustrtol: left as us_to_integer.
+ ustrtod: maybe left?
+
+ ustrerror: left as us_error_string. Maybe with conversion parameters?
+
+ usprintf: left as us_printf
+ uszprintf: left as us_printf_limit
+ uvsprintf: left as us_vprintf
+ uvszprintf: left as us_vprintf_limit
+
+ New us_allocate_printf, which returns a new string alread formatted.
+

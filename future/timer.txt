@@ -1,0 +1,133 @@
+# date: 2003 - 03 - 04
+# This file documents the timer API which is now considered
+# finalised for milestone 1.
+
+
+Allegro 5 API: Timers
+
+Status: No objections as of 2002-12-12
+	Speeds changed to type long and milliseconds, 2003-03-04.
+
+
+
+Overview:
+
+   Timers provide a method of tracking time.  Each timer has a
+   _counter_, an integer value which will be incremented by +1 at
+   discrete time intervals (chosen by the user).
+
+   A timer can also act as an event source, generating event packets
+   whenever its counter is incremented.
+
+
+
+- Type: AL_TIMER
+
+   This is an abstract data type representing a timer object.  A timer
+   object can act as an event source.
+
+
+
+- Macro: AL_SECS_TO_MSECS(seconds)
+- Macro: AL_BPS_TO_MSECS(beats_per_second)
+- Macro: AL_BPM_TO_MSECS(beats_per_minute)
+
+   These macros convert from various time units into milliseconds.
+
+
+
+- Function: AL_TIMER *al_install_timer(long speed_msecs)
+
+   Install a new timer.  If successful, a pointer to a new timer
+   object is returned, otherwise NULL is returned.  SPEED_MSECS is in
+   milliseconds per "tick", and must be positive.  The new timer is
+   initially stopped.
+
+   The system driver must be installed before this function can be
+   called.
+
+   Usage note: Typical granularity is on the order of milliseconds.
+
+
+
+- Function: void al_start_timer(AL_TIMER *timer)
+
+   Start the timer specified.  From then, the timer's counter will
+   increment at a constant rate, and it will begin generating events.
+   It is an error to start a timer that is already started.  The
+   implementation may signal such an error, or ignore it.
+
+
+
+- Function: void al_stop_timer(AL_TIMER *timer)
+
+   Stop the timer specified.  The timer's counter will stop
+   incrementing and it will stop generating events.  It is an error to
+   stop a timer that is already stopped.  The implementation may
+   signal such an error, or ignore it.
+
+
+
+- Function: bool al_timer_started(AL_TIMER *timer)
+
+   Return true if the timer specified is currently started.
+
+
+
+- Function: void al_timer_set_speed(AL_TIMER *timer, long speed_msecs)
+
+   Set the timer's speed, i.e. the rate at which its counter will be
+   incremented when it is started.  This can be done when the timer is
+   started or stopped.  If the timer is currently running, it is made
+   to look as though the speed change occured precisely at the last
+   tick.  SPEED_MSECS is in milliseconds per "tick", and must be
+   positive.
+
+   Usage note: Typical granularity is on the order of milliseconds.
+
+
+
+- Function: void al_uninstall_timer(AL_TIMER *timer)
+
+   Uninstall the timer specified.  If the timer is started, it will
+   automatically be stopped before uninstallation.  It will also
+   automatically unregister the timer with any event queues.
+
+   TIMER may not be NULL.
+
+
+
+- Function: long al_timer_count(AL_TIMER *timer)
+
+   Return the timer's counter value.  The timer can be started or
+   stopped.
+
+
+
+- Function: void al_timer_set_count(AL_TIMER *timer, long count)
+
+   Change a timer's counter value.  The timer can be started or
+   stopped.  COUNT value may be positive or negative, but will always
+   be incremented by +1.
+
+
+
+- Event type: AL_EVENT_TIMER
+
+   Whenever a timer's counter is incremented, it will generate events
+   of this type.
+
+   If E is an event packet of type AL_TIMER_EVENT, the following
+   fields are usable (field types in brackets).  As usual, the fields
+   are semantically read-only.
+
+   Common fields:
+
+      (long)          e->timer.type
+      (AL_TIMER *)    e->timer.source
+      (unsigned long) e->timer.timestamp
+
+   Specific fields for this event type:
+
+      (long) e.timer.count -- the value of the timer's counter at the
+		time the event occurred, after being incremented.

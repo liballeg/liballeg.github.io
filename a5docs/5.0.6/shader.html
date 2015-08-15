@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>Shader addon</title>
+  <link rel="stylesheet" href="pandoc.css" type="text/css" />
+  <script type="text/javascript" src="autosuggest.js"></script>
+  <script type="text/javascript" src="search_index.js"></script>
+</head>
+<body>
+<div class="sidebar">
+
+<div>
+<ul>
+<li><a href="index.html"><strong>Contents</strong></a></li>
+<li><a href="config.html">Configuration files</a></li>
+<li><a href="display.html">Display</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="file.html">File I/O</a></li>
+<li><a href="fshook.html">Filesystem</a></li>
+<li><a href="fixed.html">Fixed point math</a></li>
+<li><a href="graphics.html">Graphics</a></li>
+<li><a href="joystick.html">Joystick</a></li>
+<li><a href="keyboard.html">Keyboard</a></li>
+<li><a href="memory.html">Memory</a></li>
+<li><a href="mouse.html">Mouse</a></li>
+<li><a href="path.html">Path</a></li>
+<li><a href="state.html">State</a></li>
+<li><a href="system.html">System</a></li>
+<li><a href="threads.html">Threads</a></li>
+<li><a href="time.html">Time</a></li>
+<li><a href="timer.html">Timer</a></li>
+<li><a href="touch.html">Touch input</a></li>
+<li><a href="transformations.html">Transformations</a></li>
+<li><a href="utf8.html">UTF-8</a></li>
+<li><a href="misc.html">Miscellaneous</a></li>
+<li><a href="platform.html">Platform-specific</a></li>
+<li><a href="direct3d.html">Direct3D</a></li>
+<li><a href="opengl.html">OpenGL</a>
+</div>
+</li>
+</ul>
+<div>
+<ul>
+<li><a href="index.html#addons"><strong>Addons</strong></a></li>
+<li><a href="audio.html">Audio addon</a></li>
+<li><a href="acodec.html">Audio codecs</a></li>
+<li><a href="color.html">Color addon</a></li>
+<li><a href="font.html">Font addons</a></li>
+<li><a href="image.html">Image I/O addon</a></li>
+<li><a href="memfile.html">Memfile addon</a></li>
+<li><a href="native_dialog.html">Native dialogs addon</a></li>
+<li><a href="physfs.html">PhysicsFS addon</a></li>
+<li><a href="primitives.html">Primitives addon</a></li>
+<li><a href="shader.html">Shader addon</a></li>
+<li><a href="video.html">Video streaming addon</a>
+</div>
+</li>
+</ul>
+<div>
+<ul>
+<li><a href="index_all.html"><strong>Index</strong></a>
+</div>
+</li>
+</ul>
+<div class="searchbox">
+<script type="text/javascript">
+function on_search(index, control) {
+    for (i = 0; i < search_index.length; i++) {
+        if (search_index[i] == control.keywords[index]) {
+            break;
+        }
+    }
+    location.href = search_urls[i];
+}
+</script>
+Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br/>
+<script type="text/javascript"> new autosuggest("q", search_index, null, on_search); </script>
+</div>
+
+</div>
+
+<div class="content">
+
+
+
+<div id="header">
+<h1 class="title">Shader addon</h1>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#allegro_shader">ALLEGRO_SHADER</a></li>
+<li><a href="#allegro_shader_type">ALLEGRO_SHADER_TYPE</a></li>
+<li><a href="#allegro_shader_platform">ALLEGRO_SHADER_PLATFORM</a></li>
+<li><a href="#al_create_shader">al_create_shader</a></li>
+<li><a href="#al_attach_shader_source">al_attach_shader_source</a></li>
+<li><a href="#al_attach_shader_source_file">al_attach_shader_source_file</a></li>
+<li><a href="#al_link_shader">al_link_shader</a></li>
+<li><a href="#al_get_shader_log">al_get_shader_log</a></li>
+<li><a href="#al_use_shader">al_use_shader</a></li>
+<li><a href="#al_destroy_shader">al_destroy_shader</a></li>
+<li><a href="#al_set_shader_sampler">al_set_shader_sampler</a></li>
+<li><a href="#al_set_shader_matrix">al_set_shader_matrix</a></li>
+<li><a href="#al_set_shader_int">al_set_shader_int</a></li>
+<li><a href="#al_set_shader_float">al_set_shader_float</a></li>
+<li><a href="#al_set_shader_int_vector">al_set_shader_int_vector</a></li>
+<li><a href="#al_set_shader_float_vector">al_set_shader_float_vector</a></li>
+<li><a href="#al_set_shader_vertex_array">al_set_shader_vertex_array</a></li>
+<li><a href="#al_set_shader_color_array">al_set_shader_color_array</a></li>
+<li><a href="#al_set_shader_texcoord_array">al_set_shader_texcoord_array</a></li>
+<li><a href="#al_set_shader">al_set_shader</a></li>
+<li><a href="#al_get_opengl_program_object">al_get_opengl_program_object</a></li>
+<li><a href="#al_get_direct3d_effect">al_get_direct3d_effect</a></li>
+</ul>
+</div>
+<p>These functions are declared in the following header file. Link with allegro_shader.</p>
+<pre><code>#include &lt;allegro5/allegro_shader.h&gt;
+</code></pre>
+<h1 id="allegro_shader"><a href="#TOC">ALLEGRO_SHADER</a></h1>
+<pre><code>typedef struct ALLEGRO_SHADER ALLEGRO_SHADER;
+</code></pre>
+<p>Represents a shader object. It can be either a vertex or a pixel shader. The shader source for the underlying shader can be provided either as GLSL, HLSL or Cg.</p>
+<p>Since: 5.1.0</p>
+<h1 id="allegro_shader_type"><a href="#TOC">ALLEGRO_SHADER_TYPE</a></h1>
+<pre><code>typedef enum ALLEGRO_SHADER_TYPE ALLEGRO_SHADER_TYPE;
+</code></pre>
+<p>Used with <a href="shader.html#al_attach_shader_source">al_attach_shader_source</a> to specify which kind of shader should be attached.</p>
+<dl>
+<dt>ALLEGRO_VERTEX_SHADER</dt>
+<dd><p>A vertex shader is executed for each vertex it is used with. The program will output exactly one vertex at a time.</p>
+<p>When Allegro's graphics are being used then in addition to all vertices of primitives from the primitives addon, each drawn bitmap also consists of four vertices.</p>
+</dd>
+<dt>ALLEGRO_PIXEL_SHADER</dt>
+<dd><p>A pixel shader is executed for each pixel it is used with. The program will output exactly one pixel at a time - either in the backbuffer or in the current target bitmap.</p>
+<p>With Allegro's builtin graphics this means the shader is for example called for each destination pixel of the output of an <a href="graphics.html#al_draw_bitmap">al_draw_bitmap</a> call.</p>
+<p>A more accurate term for pixel shader would be fragment shader since one final pixel in the target bitmap is not necessarily composed of only a single output but of multiple fragments (for example when multi-sampling is being used).</p>
+</dd>
+</dl>
+<p>Since: 5.1.0</p>
+<h1 id="allegro_shader_platform"><a href="#TOC">ALLEGRO_SHADER_PLATFORM</a></h1>
+<pre><code>typedef enum ALLEGRO_SHADER_PLATFORM ALLEGRO_SHADER_PLATFORM;
+</code></pre>
+<p>Used with <a href="shader.html#al_create_shader">al_create_shader</a> to select the type of shader.</p>
+<ul>
+<li>ALLEGRO_SHADER_AUTO</li>
+<li>ALLEGRO_SHADER_GLSL</li>
+<li>ALLEGRO_SHADER_HLSL</li>
+<li>ALLEGRO_SHADER_CG</li>
+</ul>
+<p>Since: 5.1.0</p>
+<h1 id="al_create_shader"><a href="#TOC">al_create_shader</a></h1>
+<pre><code>ALLEGRO_SHADER *al_create_shader(ALLEGRO_SHADER_PLATFORM platform)
+</code></pre>
+<p>Specify one of the <a href="shader.html#allegro_shader_platform">ALLEGRO_SHADER_PLATFORM</a> values to create a new shader object. The ALLEGRO_SHADER_AUTO value means GLSL is used if OpenGL is being used otherwise HLSL.</p>
+<p>Since: 5.1.0</p>
+<h1 id="al_attach_shader_source"><a href="#TOC">al_attach_shader_source</a></h1>
+<pre><code>bool al_attach_shader_source(ALLEGRO_SHADER *shader, ALLEGRO_SHADER_TYPE type,
+    const char *source)
+</code></pre>
+<p>Attaches the shader's source code to the shader object and compiles it. Passing NULL deletes the underlying (OpenGL or DirectX) shader.</p>
+<p>When using the ALLEGRO_USE_PROGRAMMABLE_PIPELINE flag with <a href="display.html#al_set_new_display_flags">al_set_new_display_flags</a> Allegro itself will use shaders for all its graphics operations. No default shaders are provided so for anything to be drawn you have to setup at least one pair of shaders.</p>
+<p>If you do not use ALLEGRO_USE_PROGRAMMABLE_PIPELINE Allegro's graphics functions will not use any shader specific functions themselves. In case of a system with no fixed function pipeline (like OpenGL ES 2 or OpenGL 3 or 4) this means Allegro's drawing functions cannot be used.</p>
+<p>TODO: Is ALLEGRO_USE_PROGRAMMABLE_PIPELINE set automatically in this case?</p>
+<p>When ALLEGRO_USE_PROGRAMMABLE_PIPELINE is used the following shader variables are provided by Allegro and can be accessed in your shaders:</p>
+<ul>
+<li><p>projview_matrix - matrix for Allegro's orthographic projection multiplied by the <a href="transformations.html#al_use_transform">al_use_transform</a> matrix (vertex shader)</p></li>
+<li><p>pos - vertex position attribute (vertex shader)</p></li>
+<li><p>color - vertex color attribute (vertex shader, passed to fragment shader)</p></li>
+<li><p>texcoord - vertex texture coordinate (vertex shader, passed to fragment shader)</p></li>
+<li><p>use_tex - whether or not to use the bound texture (fragment shader)</p></li>
+<li><p>tex - the sampler2D for the texture if one is bound (fragment shader)</p></li>
+<li><p>use_tex_matric - whether or not to use a texture matrix (fragment shader)</p></li>
+<li><p>tex_matrix - the texture matrix (fragment shader, used by the primitives addon)</p></li>
+</ul>
+<p>Returns true on access and false on error, in which case the error log is updated. The error log can be retrieved with <a href="shader.html#al_get_shader_log">al_get_shader_log</a>.</p>
+<p>Since: 5.1.0</p>
+<h1 id="al_attach_shader_source_file"><a href="#TOC">al_attach_shader_source_file</a></h1>
+<pre><code>bool al_attach_shader_source_file(ALLEGRO_SHADER *shader,
+   ALLEGRO_SHADER_TYPE type, const char *filename)
+</code></pre>
+<p>Like <a href="shader.html#al_attach_shader_source">al_attach_shader_source</a> but reads the source code for the shader from the named file.</p>
+<p>Since: 5.1.0</p>
+<h1 id="al_link_shader"><a href="#TOC">al_link_shader</a></h1>
+<pre><code>bool al_link_shader(ALLEGRO_SHADER *shader)
+</code></pre>
+<p>This is reqired before the shader can be used with <a href="shader.html#al_use_shader">al_use_shader</a>. It should be called after successfully compiling the shader with <a href="shader.html#al_attach_shader_source">al_attach_shader_source</a> or <a href="shader.html#al_attach_shader_source_file">al_attach_shader_source_file</a>.</p>
+<p>Returns true on access and false on error, in which case the error log is updated. The error log can be retrieved with <a href="shader.html#al_get_shader_log">al_get_shader_log</a>.</p>
+<p>Since: 5.1.0</p>
+<h1 id="al_get_shader_log"><a href="#TOC">al_get_shader_log</a></h1>
+<pre><code>const char *al_get_shader_log(ALLEGRO_SHADER *shader)
+</code></pre>
+<p>Return a read-only string containing the information log for a shader program. The log is updated by certain functions, such as <a href="shader.html#al_attach_shader_source">al_attach_shader_source</a> or <a href="shader.html#al_link_shader">al_link_shader</a> when there is an error.</p>
+<p>This function never returns NULL.</p>
+<p>Since: 5.1.0</p>
+<h1 id="al_use_shader"><a href="#TOC">al_use_shader</a></h1>
+<pre><code>void al_use_shader(ALLEGRO_SHADER *shader, bool use)
+</code></pre>
+<p>Uses the shader for subsequent drawing operations.</p>
+<p>Since: 5.1.0</p>
+<h1 id="al_destroy_shader"><a href="#TOC">al_destroy_shader</a></h1>
+<pre><code>void al_destroy_shader(ALLEGRO_SHADER *shader)
+</code></pre>
+<p>This destroys the shader object as well as the underlying shader.</p>
+<p>Since: 5.1.0</p>
+<h1 id="al_set_shader_sampler"><a href="#TOC">al_set_shader_sampler</a></h1>
+<pre><code>bool al_set_shader_sampler(ALLEGRO_SHADER *shader, const char *name,
+   ALLEGRO_BITMAP *bitmap, int unit)
+</code></pre>
+<p>Adds a texture sampler variable for the given bitmap and texture unit to the shader.</p>
+<p>Since: 5.1.0</p>
+<h1 id="al_set_shader_matrix"><a href="#TOC">al_set_shader_matrix</a></h1>
+<pre><code>bool al_set_shader_matrix(ALLEGRO_SHADER *shader, const char *name,
+   ALLEGRO_TRANSFORM *matrix)
+</code></pre>
+<p>Adds a matrix variable to the shader.</p>
+<p>Since: 5.1.0</p>
+<h1 id="al_set_shader_int"><a href="#TOC">al_set_shader_int</a></h1>
+<pre><code>bool al_set_shader_int(ALLEGRO_SHADER *shader, const char *name, int i)
+</code></pre>
+<p>Adds an integer variable to the shader.</p>
+<p>Since: 5.1.0</p>
+<h1 id="al_set_shader_float"><a href="#TOC">al_set_shader_float</a></h1>
+<pre><code>bool al_set_shader_float(ALLEGRO_SHADER *shader, const char *name, float f)
+</code></pre>
+<p>Adds a float variable to the shader.</p>
+<p>Since: 5.1.0</p>
+<h1 id="al_set_shader_int_vector"><a href="#TOC">al_set_shader_int_vector</a></h1>
+<pre><code>bool al_set_shader_int_vector(ALLEGRO_SHADER *shader, const char *name,
+   int elem_size, int *i, int num_elems)
+</code></pre>
+<p>Adds an array of integer vectors to the shader. The 'elem_size' parameter can take one of the values 1, 2, 3 or 4. If it is 1 then an array of 'num_elems' integer values is added. Otherwise each added array element is assumed to be a vector with 2, 3 or 4 elements in it.</p>
+<p>Since: 5.1.0</p>
+<h1 id="al_set_shader_float_vector"><a href="#TOC">al_set_shader_float_vector</a></h1>
+<pre><code>bool al_set_shader_float_vector(ALLEGRO_SHADER *shader, const char *name,
+   int elem_size, float *f, int num_elems)
+</code></pre>
+<p>Same as <a href="shader.html#al_set_shader_int_vector">al_set_shader_int_vector</a> except all values are float instead of int.</p>
+<p>Since: 5.1.0</p>
+<h1 id="al_set_shader_vertex_array"><a href="#TOC">al_set_shader_vertex_array</a></h1>
+<pre><code>bool al_set_shader_vertex_array(ALLEGRO_SHADER *shader, float *v, int stride)
+</code></pre>
+<p>Sets a vertex attribute.</p>
+<p>FIXME: Right now each array element is a 3-component vector.</p>
+<p>Since: 5.1.0</p>
+<h1 id="al_set_shader_color_array"><a href="#TOC">al_set_shader_color_array</a></h1>
+<pre><code>bool al_set_shader_color_array(ALLEGRO_SHADER *shader, unsigned char *c, int stride)
+</code></pre>
+<p>Sets a vertex attribute.</p>
+<p>FIXME: Right now each array element is a 4-component vector.</p>
+<p>Since: 5.1.0</p>
+<h1 id="al_set_shader_texcoord_array"><a href="#TOC">al_set_shader_texcoord_array</a></h1>
+<pre><code>bool al_set_shader_texcoord_array(ALLEGRO_SHADER *shader, float *u, int stride)
+</code></pre>
+<p>Sets a vertex attribute.</p>
+<p>FIXME: Right now each array element is a 2-component vector.</p>
+<p>Since: 5.1.0</p>
+<h1 id="al_set_shader"><a href="#TOC">al_set_shader</a></h1>
+<pre><code>void al_set_shader(ALLEGRO_DISPLAY *display, ALLEGRO_SHADER *shader)
+</code></pre>
+<p><em>Not yet documented.</em></p>
+<p>FIXME: Maybe this is not even needed as we have al_use_shader?</p>
+<p>Since: 5.1.0</p>
+<h1 id="al_get_opengl_program_object"><a href="#TOC">al_get_opengl_program_object</a></h1>
+<pre><code>GLuint al_get_opengl_program_object(ALLEGRO_SHADER *shader)
+</code></pre>
+<p><em>Not yet documented.</em></p>
+<p>Since: 5.1.0</p>
+<h1 id="al_get_direct3d_effect"><a href="#TOC">al_get_direct3d_effect</a></h1>
+<pre><code>LPD3DXEFFECT al_get_direct3d_effect(ALLEGRO_SHADER *shader)
+</code></pre>
+<p><em>Not yet documented.</em></p>
+<p>Since: 5.1.0</p>
+<p class="timestamp">
+Allegro version 5.1.2 (SVN)
+ - Last updated: 2012-03-03 13:37:24 UTC
+</p>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+# date: 2002 - 11 - 17
+# Draft 2 for discussion of file handling routines,
+# writen by Angelo Mottola. 
+# Proposed for implementation into Allegro 5.
+
+Goals:
+* unified interface to be able to access files on disk as well as virtual files in memory
+* ability to use filters on data to be read/written
+* ability to pass parameter(s) to filters (encryption password, etc.)
+* possibility to attach/detach filters anytime during a file lifetime
+
+
+
+/* The filter array holds a list of instances of applied filters. Each instance holds
+ * the filter state relative to this file.
+ * Removed the name and pos parameters as they are indeed redundant.
+ * Will use the extra parameter for those where appropriate.
+ */
+typedef struct AL_FILE
+{
+    AL_FILESYSTEM_VTABLE *vtable;   /* associated vtable for file operations */
+    int flags;          /* misc flags (read/write/etc.) */
+    AL_FILTER_INSTANCE **filter;    /* NULL terminated array of applied filter instances */
+    void *extra;            /* filesystem dependent data (FILE *, etc.) */
+} AL_FILE;
+
+
+/* A filter instance hold private informations on the state of a filter applied to a
+ * single file. A single instance will never be used for more than one file.
+ */
+typedef struct AL_FILTER_INSTANCE
+{
+    AL_FILTER *filter;      /* Filter in use */
+    void *param;            /* Parameter(s) for this filter instance */
+    int flags;              /* Specifies if the filter instance is on read and/or write */
+    void *extra;            /* Internal filter instance data (buffers, etc.) */
+} AL_FILTER_INSTANCE;
+
+
+/* Removed the "extra" parameter, that is now part of the AL_FILTER_INSTANCE
+ * struct. The AL_FILTER struct now just holds static data.
+ * The flags parameter passed to the "init" hook is used to specify if the filter
+ * instance to be created is to be used on read and/or write. This is different from
+ * the flags parameter in the AL_FILTER struct, which is used for other purposes
+ * (currently I can only think about filter autodetection).
+ */
+typedef struct AL_FILTER
+{
+    int id;
+    AL_FILTER_INSTANCE *(*init)(AL_FILE *file, void *param, int flags);
+    int (*exit)(AL_FILE *file, AL_FILTER_INSTANCE *filter);
+    int (*detect)(AL_FILE *file, AL_FILTER_INSTANCE *filter);
+    int (*open)(AL_FILE *file, AL_FILTER_INSTANCE *filter);
+    int (*read)(AL_FILE *file, AL_FILTER_INSTANCE *filter, void *buffer, int size);
+    int (*write)(AL_FILE *file, AL_FILTER_INSTANCE *filter, void *buffer, int size);
+    int (*flush)(AL_FILE *file, AL_FILTER_INSTANCE *filter);
+    int flags;              /* Filter flags (autodetect, etc.) */
+} AL_FILTER;
+
+
+/* The "open" hook is no more; will use dedicated functions to open files
+ * instead. Removed the "ioctl" and "unlink" hooks.
+ * Seek now behaves like libc lseek, allowing to seek from the start, the current
+ * position or the end of a file.
+ */
+typedef struct AL_FILESYSTEM_VTABLE
+{
+    int id;
+    int (*close)(AL_FILE *file);
+    int (*read)(AL_FILE *file, void *buffer, int size);
+    int (*write)(AL_FILE *file, void *buffer, int size);
+    int (*seek)(AL_FILE *file, int offset, int mode);
+    void *extra;            /* any filesystem internal data */
+} AL_FILESYSTEM_VTABLE;
+
+
+AL_FILE *al_file_open_file(char *name, char *mode);
+AL_FILE *al_file_open_memory(void *addr, char *mode);
+int al_file_close(AL_FILE *file);
+int al_file_read(AL_FILE *file, void *buffer, int size);
+int al_file_write(AL_FILE *file, void *buffer, int size);
+int al_file_seek(AL_FILE *file, int pos, int mode); /* like lseek */
+
+/* "flags" can be AL_FILTER_AUTODETECT so that the "detect" filter hook
+ * is called on each file is opened later. The "detect" hook eventually scans
+ * the file for an header, but it must assure the file position is left untouched
+ * on function return. If successful, on opening the filter is automatically
+ * attached to the file. This system could also be used to encode/decode
+ * pcx/bmp/... files!
+ * Registered hooks are all stored into a global hash table/linked list.
+ * NOTE: maybe we can (should?) go with al_register_driver() here too...
+ */
+int al_register_file_filter(AL_FILTER *filter, int flags);
+int al_unregister_file_filter(int filter_id);
+
+/* attaching a filter to a file causes the filter "init" hook to generate a
+ * new instance of the filter, possibly allocating memory for internal
+ * buffers. Then it calls the "open" hook that eventually reads an header
+ * from the file. The flags parameter is used to specify if the filter
+ * instance to be attached is to be used on read and/or write to the file.
+ * Detaching causes the filter "flush" hook execution, which provides to
+ * flush any temp data to the file, then it calls the "exit" hook which
+ * deallocates any memory used by the filter instance.
+ */
+int al_attach_file_filter(AL_FILE *file, int filter_id, void *param, int flags);
+int al_detach_file_filter(AL_FILE *file, int filter_id, void *param);
+
+

@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    ></title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta name="generator" content="pandoc"
+     /><script type="text/javascript" src="autosuggest.js"></script>
+<script type="text/javascript" src="search_index.js"></script>
+<link rel="stylesheet" href="pandoc.css" type="text/css" media="all" />
+</head
+  ><body
+  ><table class="white">
+<tr>
+<td valign="top" class="sidebar">
+
+<div class="sidebar">
+<ul
+><li
+  ><a href="index.html"
+    >Front</a
+    ></li
+  ><li
+  ><a href="config.html"
+    >Configuration files</a
+    ></li
+  ><li
+  ><a href="display.html"
+    >Display</a
+    ></li
+  ><li
+  ><a href="events.html"
+    >Events</a
+    ></li
+  ><li
+  ><a href="file.html"
+    >File I/O</a
+    ></li
+  ><li
+  ><a href="fshook.html"
+    >Filesystem hooks</a
+    ></li
+  ><li
+  ><a href="graphics.html"
+    >Graphics</a
+    ></li
+  ><li
+  ><a href="joystick.html"
+    >Joystick</a
+    ></li
+  ><li
+  ><a href="keyboard.html"
+    >Keyboard</a
+    ></li
+  ><li
+  ><a href="memory.html"
+    >Memory</a
+    ></li
+  ><li
+  ><a href="misc.html"
+    >Miscellaneous</a
+    ></li
+  ><li
+  ><a href="mouse.html"
+    >Mouse</a
+    ></li
+  ><li
+  ><a href="opengl.html"
+    >OpenGL</a
+    ></li
+  ><li
+  ><a href="path.html"
+    >Path</a
+    ></li
+  ><li
+  ><a href="state.html"
+    >State</a
+    ></li
+  ><li
+  ><a href="system.html"
+    >System</a
+    ></li
+  ><li
+  ><a href="threads.html"
+    >Threads</a
+    ></li
+  ><li
+  ><a href="time.html"
+    >Time</a
+    ></li
+  ><li
+  ><a href="timer.html"
+    >Timer</a
+    ></li
+  ><li
+  ><a href="utf8.html"
+    >UTF-8</a
+    ></li
+  ><li
+  ><a href="kcm_audio.html"
+    >Audio addon</a
+    ></li
+  ><li
+  ><a href="acodec.html"
+    >Audio codecs</a
+    ></li
+  ><li
+  ><a href="color.html"
+    >Color addon</a
+    ></li
+  ><li
+  ><a href="font.html"
+    >Font addons</a
+    ></li
+  ><li
+  ><a href="iio.html"
+    >Image I/O addon</a
+    ></li
+  ><li
+  ><a href="native_dialog.html"
+    >Native dialogs addon</a
+    ></li
+  ><li
+  ><a href="physfs.html"
+    >PhysicsFS addon</a
+    ></li
+  ><li
+  ><a href="primitives.html"
+    >Primitives addon</a
+    ></li
+  ></ul
+><!-- keep blank line for correct HTML -->
+</div>
+
+<div class="searchbox">
+<script type="text/javascript">
+function onSubmit(form) {
+    for (i = 0; i < search_index.length; i++) {
+        if (search_index[i] == form.q.value) {
+            form.action = search_urls[i];
+            form.method = "POST";
+            return true;
+        }
+    }
+    // Search-term is not in the index.
+    // We could add an URL here which does a fulltext search - for
+    // now we simply do nothing by return false to the form.
+    return false;
+}
+</script>
+<form id="search" action="search.py" onSubmit="return onSubmit(this);"><input type="text" name="q" id="q" autocomplete="off" /><br /> <input type="submit" value="Search" /><script>actb = new actb("q", search_index);</script>
+</form>
+</div>
+
+
+</td>
+<td class="content">
+
+
+<div id="toc"
+    ><ul
+      ><li
+	><a href="#time-routines" id="TOC-time-routines"
+	  >Time routines</a
+	  ><ul
+	  ><li
+	    ><a href="#allegro_timeout" id="TOC-allegro_timeout"
+	      >ALLEGRO_TIMEOUT</a
+	      ></li
+	    ><li
+	    ><a href="#al_current_time" id="TOC-al_current_time"
+	      >al_current_time</a
+	      ></li
+	    ><li
+	    ><a href="#al_init_timeout" id="TOC-al_init_timeout"
+	      >al_init_timeout</a
+	      ></li
+	    ><li
+	    ><a href="#al_rest" id="TOC-al_rest"
+	      >al_rest</a
+	      ></li
+	    ></ul
+	  ></li
+	></ul
+      ></div
+    ><h1 id="time-routines"
+    ><a href="#TOC-time-routines"
+      >Time routines</a
+      ></h1
+    ><h2 id="allegro_timeout"
+    ><a href="#TOC-allegro_timeout"
+      >ALLEGRO_TIMEOUT</a
+      ></h2
+    ><pre
+    ><code
+      >typedef struct ALLEGRO_TIMEOUT ALLEGRO_TIMEOUT;
+</code
+      ></pre
+    ><p
+    >Represent a timeout value. The size of the structure is known so can be statically allocated. The contents are private.</p
+    ><h2 id="al_current_time"
+    ><a href="#TOC-al_current_time"
+      >al_current_time</a
+      ></h2
+    ><pre
+    ><code
+      >AL_FUNC(double, al_current_time, (void));
+</code
+      ></pre
+    ><p
+    >Return the number of seconds since the Allegro library was initialised. The return value is undefined if Allegro is uninitialised. The resolution depends on the used driver, but typically can be in the order of microseconds.</p
+    ><h2 id="al_init_timeout"
+    ><a href="#TOC-al_init_timeout"
+      >al_init_timeout</a
+      ></h2
+    ><pre
+    ><code
+      >AL_FUNC(void, al_init_timeout, (ALLEGRO_TIMEOUT *timeout, double seconds));
+</code
+      ></pre
+    ><p
+    >Set timeout value of some number of seconds after the function call.</p
+    ><h2 id="al_rest"
+    ><a href="#TOC-al_rest"
+      >al_rest</a
+      ></h2
+    ><pre
+    ><code
+      >AL_FUNC(void, al_rest, (double seconds));
+</code
+      ></pre
+    ><p
+    >Waits for the specified number seconds. This tells the system to pause the current thread for the given amount of time. With some operating systems, the accuracy can be in the order of 10ms. That is, even</p
+    ><pre
+    ><code
+      >al_rest(0.000001)
+</code
+      ></pre
+    ><p
+    >might pause for something like 10ms. Also see the section <Timer routines> on easier ways to time your program without using up all CPU.</p
+    ></td>
+</tr>
+</table>
+
+
+<p>
+Last updated: 2009-07-05 05:34:35 UTC
+</p>
+</body
+  ></html
+>
+

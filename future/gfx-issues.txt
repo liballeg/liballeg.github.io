@@ -1,0 +1,50 @@
+Issues:
+
+1. Should all operations be async? We can sync on read/write turnarounds.
+   Allows for higher throughput using hw accel, at the cost of a few check per
+   operation. put_pixel will be adversely affected, but that's not the
+   performence case.
+
+
+2. al_blit() cannot cross-blit from one video bitmap family to another.
+   Should we lift this restriction? Render to Texture makes this
+   implementable on GL/D3D. Allegro could force a memory bitmap copy
+   on systems that don't support this functionlity (are there any?).
+   What about blitting from the frame buffer in one context to another?
+   We'll pry use a memory copy for that.
+
+
+3. Source clip rectangles. Are they really that useful? FOr their limited
+   uses, could we leave this functionality to the user / add-ons?
+   Computing the intersections/unions of 3 sets of clip rectangles
+   is not trivial. Not even DDraw exposes this functionlity, so it's not
+   hw accelerated.
+   Dropping this would greatly simplify the implementation of some functions
+   (al_blit_region3()).
+
+
+4. Multiple sets of clip rectangles. How useful is this? Would blit with
+   a mask bitmap be more useful? DDraw has lots of restrictions on this
+   (cannot use on a window, colorkeying must be disabled, etc).
+
+
+5. Support for floating-point frame buffers / bitmaps. Allegro shouldn't have
+   too much trouble supporting them.
+
+
+6. Monochrome bitmap support. We could drop it in favor of paletted bitmaps
+   (For fonts) or luminence bitmaps. Arguably, those are far more useful.
+   They can also be hardware accelerated.
+
+
+7. Sub-bitmap memory alignment. ModeX requires an alignment to 4 pixel boundaries.
+   Can Allegro cope without this restriction?
+
+
+8. ModeX support. Should we still support it? It just makes our lives twice as hard,
+   and doesn't help much.
+   Elias proposed a double-buffering scheme for supporting mode-x at a performence loss.
+   Basically, only the mode-x driver has access to the screen.
+   Double buffering apps wouldn't see any perf loss. Page flip isn't supported.
+   Only direct screen writes will run at half speed.
+   Is this acceptable?

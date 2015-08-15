@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+   <head>
+      <title>Allegro/STL Tutorial: chapter 5</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+      <meta name="author" content="Ove K&aring;ven">
+   </head>
+   <body text="#000000" bgcolor="#FFFFFF" link="#0000EF" vlink="#51188E" alink="#FF0000">
+<H1>Chapter 5</H1>
+<H2>5. STL Basics</H2>
+<H3>5.1 C++ Templates</H3>
+Another thing that C++ offers is the concept of templates. In many ways,
+templates have many things in common with macros, but are processed by
+the C++ compiler itself, with the stronger type checking this implies,
+instead of the preprocessor. As an example, consider the old C macro
+<PRE>
+#define MAX(x,y) (((x)&gt;(y))?(x):(y))
+</PRE>
+For simple cases, such as <CODE>MAX(a,b)</CODE> and even
+<CODE>MAX(a+b,c*d)</CODE>, this will work fine, but what if we do
+<CODE>MAX(a++,b++)</CODE>? This is implementation-specific, but at
+least one of the parameters is likely to be incremented twice. Also,
+there is no type checking, which could cause problems with more complex
+macros, or confusing error messages. This is just a few of the drawbacks
+of using macros. Another common implementation is
+<PRE>
+inline int max(int a,int b) { return a&gt;b?a:b; }
+</PRE>
+which does not suffer from the above drawbacks, but now will only support
+integers, and a new <CODE>max()</CODE> would have to be written for any
+other data type you might want to use. Even though they could all be
+overloaded, it would be tedious, and still not work for user-defined types.
+<P>
+C++ templates solves all of these problems. You can simply define
+<CODE>max()</CODE> for a templated abstract data type <CODE>T</CODE>, then
+the C++ compiler will automatically instantiate the template for any
+data types that is actually used.
+<PRE>
+template &lt;class T&gt;
+inline T max(T a,T b) { return a&gt;b?a:b; }
+</PRE>
+We now have a pretty perfect <CODE>max()</CODE> definition. However, in our
+game we're currently not really interested in defining template functions,
+but rather in finding a way to manage a list of sprite objects. Fortunately,
+templates can also be used for class data types. Here is an example of a
+template class that can store any data type.
+<PRE>
+template &lt;class T&gt;
+class storage {
+public:
+ T data;
+ storage(T dat) { data=dat; }
+ T getdata() const { return data; }
+};
+</PRE>
+The <B>const</B> in there means that the function does not have any side
+effects, and can safely be called for <B>const</B> (read-only) objects.
+<P>
+However, when we use such a template class, we must tell which data type
+the template should be instantiated for, like this:
+<PRE>
+ storage&lt;int&gt; my_int(200);
+
+ cout &lt;&lt; my_int.getdata() &lt;&lt; endl;
+</PRE>
+This will, of course, print <CODE>200</CODE> to the screen. You can think
+of the instantiation process as replacing every occurrence of <CODE>T</CODE>
+in the class definition with the appropriate type, <CODE>int</CODE> in this
+case. This way, you can make a template class work with practically any data
+type you want. So what we are going to do, is to let STL work with our sprite
+base class.
+<H3>5.2 The Standard Template Library</H3>
+The Standard Template Library, or STL, is a collection of template classes
+and template functions to provide a general-purpose data-management system
+with extreme flexibility without sacrificing efficiency. This is, of course,
+very convenient for us, since we need to manage a list of game objects
+in an efficient way. However, this library does have a steep learning
+curve, and easily confuses beginners. So let's take a brief overview first,
+then show how it can be used in our game.
+<P>
+The STL provides a wide variety of container classes. We are just going to
+use sequences, of which STL provides these:
+<UL>
+<LI>vector, essentially a resizeable array
+<LI>deque, similar to a vector but can quickly add and remove elements at
+the beginning and end of the array
+<LI>list, a double-linked list, can quickly add and remove elements anywhere
+<LI>slist, a single-linked list, faster than list but one-way
+</UL>
+For a game, where objects come and go at will, it seems most reasonable
+to use the "list" template class, so that's what we are going to use.
+So, let's see how we are going to use it to store pointers to sprite objects:
+<PRE>
+#include &lt;allegro.h&gt;
+#include &lt;stl.h&gt;
+#include "tutorial.h"
+
+#define MIN_Y 8
+
+DATAFILE*data;
+BITMAP*backdrop,*framebuf;
+
+class sprite {
+protected:
+ fix X,Y;
+public:
+ sprite(fix _X,fix _Y) { X=_X; Y=_Y; }
+ virtual ~sprite() {}
+ virtual void draw(BITMAP*dest) {}
+ virtual void animate() {}
+};
+
+typedef list&lt;sprite*&gt; sprite_list;
+
+sprite_list sprites;
+
+class chopper : public sprite {
+public:
+ chopper(fix _X,fix _Y) : sprite(_X,_Y) {}
+ virtual void draw(BITMAP*dest) {
+  draw_rle_sprite(dest,(RLE_SPRITE*)data[TUT_CHOPPER].dat,X,Y);
+ }
+ virtual void animate();
+};
+
+void chopper::animate()
+{
+ if (key[KEY_LEFT]||joy_left) --X;
+ if (key[KEY_RIGHT]||joy_right) ++X;
+ if (key[KEY_UP]||joy_up) --Y;
+ if (key[KEY_DOWN]||joy_down) ++Y;
+}
+
+class chopper2 : public chopper {
+public:
+ chopper2(fix _X,fix _Y) : chopper(_X,_Y) {}
+ virtual void animate();
+};
+
+void chopper2::animate()
+{
+ if (key[KEY_LEFT]||joy_left) ++X;
+ if (key[KEY_RIGHT]||joy_right) --X;
+ if (key[KEY_UP]||joy_up) ++Y;
+ if (key[KEY_DOWN]||joy_down) --Y;
+}
+
+int main()
+{
+ allegro_init();
+ install_keyboard();
+ initialise_joystick();
+
+ data=load_datafile("tutorial.dat");
+
+ set_gfx_mode(GFX_VGA,320,200,0,0);
+
+ set_palette((RGB*)data[TUT_GAMEPAL].dat);
+
+ // create 320x192 backdrop
+ backdrop=create_bitmap(320,192);
+ for (int Y=0; Y&lt;128; Y++) hline(backdrop,0,Y,319, (Y/2)+128);
+ for (int Y=128; Y&lt;192; Y++) hline(backdrop,0,Y,319, ((Y-128)/2)+192);
+
+ // create 320x200 double buffer
+ framebuf=create_bitmap(320,200);
+ clear(framebuf);
+
+ chopper Hero(50,100);
+ chopper2 AnotherHero(250,50);
+ sprites.push_back(&amp;Hero);
+ sprites.push_back(&amp;AnotherHero);
+
+ while (!key[KEY_ESC]) {
+  // build frame
+  blit(backdrop,framebuf,0,0,0,MIN_Y,320,200);
+  // draw sprites
+  {
+   sprite_list::const_iterator spr=sprites.begin();
+   while (spr!=sprites.end()) {
+    (*spr)->draw(framebuf);
+    spr++;
+   }
+  }
+  // display frame
+  vsync();
+  blit(framebuf,screen,0,0,0,0,320,200);
+  // animate sprites
+  poll_joystick();
+  {
+   sprite_list::const_iterator spr=sprites.begin();
+   while (spr!=sprites.end()) {
+    (*spr)->animate();
+    spr++;
+   }
+  }
+ }
+ return 0;
+}
+</PRE>
+Let's go through what exactly it is we are doing here. First, we
+<CODE>#include &lt;stl.h&gt;</CODE>, which should be fairly obvious what for.
+This is really a convenience header that includes all other STL header, it's
+not really part of STL itself. We could include the exact headers we need,
+especially if we wanted to reduce compilation time, or make our programs
+more portable, but for simplicity, we'll just use <CODE>stl.h</CODE>.
+<P>
+Next, we use <B>typedef</B> to define <CODE>sprite_list</CODE> as the
+instantiation of the list template class we are going to use. This is
+not strictly necessary, but it's easier to remember and perhaps change
+later, than to use <CODE>list&lt;sprite*&gt;</CODE> all over. Then we
+define the global variable <CODE>sprites</CODE> to be a variable of
+this type; that is, it will be our sprite list.
+<P>
+In the main code, we use the <CODE>push_back()</CODE> method to insert
+our helicopter object as the last element in the sprite list. We could
+also use <CODE>push_front()</CODE> instead to insert it as the first. We
+also insert two helicopter objects, to show that it actually works.
+<P>
+In the main game loop, we traverse the linked list twice, once to draw
+the sprites onto the double buffer, and once more to move them about.
+In each of these traversals, we need a variable that tells us where
+in the list we are. This is what an iterator does. Note that in C++ you
+can define types inside a class, and STL has conveniently defined the
+appropriate iterator types <CODE>iterator</CODE> and
+<CODE>const_iterator</CODE> inside the class, so we can define an
+iterator to traverse the list. The <CODE>++</CODE> operator of the
+iterator moves it to the next element. The <CODE>*</CODE> (dereferencing)
+operator of the iterator returns the element itself, which happens to be
+of the type <CODE>sprite*</CODE>.
+<P>
+As you can see, the power of STL is what we just did, to abstract a complex
+data structure into something as simple, flexible and manageable as this,
+even if it does take some effort to learn.
+<P>
+To learn more, proceed to the <A HREF="tut6.html">next chapter</A>
+
+</body>
+</html>

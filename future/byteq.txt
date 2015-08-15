@@ -1,0 +1,63 @@
+# date: 2003 - 01 - 31
+# This file documents a byte queues API, which is designed to
+# supplement the filtered streams API.
+
+
+Overview:
+
+   Allegro provides "byte queues", which are simply queues that work
+   with arrays of bytes.  They were specifically designed to help with
+   writing stream filters.
+
+
+
+- Type: AL_BYTE_QUEUE
+
+   This is an abstract data type representing a byte queue.
+
+
+
+- Function: AL_BYTE_QUEUE *al_create_byte_queue(void)
+
+   Create a new, empty byte queue and return a pointer to it.
+   If an error occurs, NULL is returned.
+
+   Byte queues may be created and used without the system driver being
+   installed beforehand.
+
+
+
+- Function: void al_destroy_byte_queue(AL_BYTE_QUEUE *bq)
+
+   Free the memory used by the byte queue BQ.
+
+   BQ may not be NULL.
+
+
+
+- Function: size_t al_byte_queue_put_data(AL_BYTE_QUEUE *bq,
+                                        const void *inbuf, size_t bufsize)
+
+   Put the contents of the buffer pointed to by INBUF into the byte
+   queue BQ.  A maximum BUFSIZE number of bytes will be copied.
+
+   The function returns the number of bytes that were actually copied.
+   In case of an error (i.e. out of memory) the return value will be
+   less than BUFSIZE.
+
+   Note: Byte queues are not limited-length arrays.  More memory will
+   be allocated as required, so a short byte count will only be
+   returned if the system runs out of memory.
+
+
+
+- Function: size_t al_byte_queue_get_data(AL_BYTE_QUEUE *bq,
+                                        void *outbuf, size_t maxbufsize)
+
+   Get queued data from the queue BQ into the array pointed to by
+   OUTBUF, up to a maximum of MAXBUFSIZE bytes.  As with any other
+   queues, data is retrieved on a first-in, first-out basis (FIFO).
+
+   The function returns the number of bytes that were copied into
+   OUTBUF.  If a value less than MAXBUFSIZE is returned, the queue was
+   completely drained.

@@ -1,0 +1,332 @@
+# date: 2003 - 02 - 03
+# This is a proposal for a filtered streams API (part 1).
+
+
+Overview:
+
+   Allegro provides a framework for _streams_, which are similar to C
+   Standard I/O streams, designed to allow reading from and writing to
+   different media through a common interface.  For example, data
+   could be read from a disk file, a memory block, a network
+   connection, etc.  The Allegro library itself will only provide code
+   to support disk files and memory blocks, but other media can be
+   added by support libraries or the user.
+
+   In addition to providing a common interface, filters can be applied
+   on top of Allegro streams to perform various transformations on
+   data before it is written or after it is read from the underlying
+   media, e.g. for compression, encryption, etc.  Filters can be
+   chained, so that the output of one filter is the input of another
+   filter.
+
+
+   Diagram:
+
+   The topmost filter will be the last to receive the data that comes
+   out of the underlying media.  On the other hand, in write
+   operations the topmost filter receives the data first from the
+   user.
+
+                                 user
+                                 ^  |
+                                 |  V
+                         ,-------------------. |
+                      /  | last added filter | | writing
+                      |  +-------------------+ V
+                      |  | 2nd  added filter |
+              stream -+  +-------------------+
+                      |  | 1st  added filter |
+                      |  +-------------------+ ^
+                      \  | underlying media  | | reading
+                         `-------------------' |
+
+
+
+Top-level interface:
+
+
+
+- Type: AL_STREAM
+
+   Abstract data type representing an Allegro stream and the filters
+   that have been applied to it.
+
+   (Actually, this type is only abstract when looking at it from the
+   top-level interface.  If you need to write new filters or stream
+   types, then this type is not abstract at all.)
+
+
+
+- Function: AL_STREAM *al_open_file_stream(const char *filename,
+                                           const char *mode)
+
+   Open the file named by FILENAME for reading or writing as an
+   Allegro stream.  MODE may be "r" to open the file for reading, or
+   "w" to open the file for writing.
+
+   Returns a pointer to a new Allegro stream if successful, or NULL on
+   error.
+
+   Note: Random-access streams are not available at present.  We
+   should probably make r/w streams available, even if nearly all
+   filters will only operate in one direction.
+
+   Note: In the terminology of fopen() and friends, all streams opened
+   are "binary" streams.
+
+
+
+- Function: AL_STREAM *al_open_fp_stream(FILE *stream, unsigned int flags,
+                                         bool fclose_on_close)
+
+   Wrap the C standard I/O _binary_ stream STREAM for use as an
+   Allegro stream.  FLAGS must contain a combination of the following
+   flags:
+
+      AL_STREAM_READ -- STREAM is readable
+      AL_STREAM_WRITE -- STREAM is writable
+      AL_STREAM_SEEK_FORWARD -- STREAM supports seeking forward
+      AL_STREAM_SEEK_BACKWARD -- STREAM supports seeking backward
+
+   AL_STREAM_READ and AL_STREAM_WRITE cannot both be present, because
+   random access streams are not supported (yet).
+
+   If FCLOSE_ON_CLOSE is true, fclose() will be called on STREAM when
+   the Allegro stream is closed by al_close_stream().  Otherwise
+   STREAM will remain open.
+
+   The function returns a pointer to a new Allegro stream if
+   successful, or NULL on error.
+
+   Note: Wrapping a standard I/O _text_ stream as opened by fopen()
+   may or may not work as you expect.  i.e. You should probably pass
+   "rb" or "wb" to fopen() instead of "r" or "w".
+
+   Note: If nonblocking I/O has been set on the standard I/O stream's
+   file descriptor, the result is unspecified.  Don't do that.
+
+
+
+- Function: AL_STREAM *al_open_memory_stream(void *buf, size_t bufsize,
+                                        const char *mode, size_t *out_length)
+
+   Prepare a block of memory for reading or writing as an Allegro
+   stream.  BUF points to the start of the memory block, which is
+   BUFSIZE bytes long.  MODE must be either "r" (for a read-only
+   stream) or "w" (for a write-only stream).
+
+   If MODE is "w" then OUT_LENGTH may point to a size_t variable, or
+   NULL.  In the former case, the length of the data that has been
+   written to the stream so far will be stored in the variable pointed
+   to by OUT_LENGTH.
+
+   If MODE is "w" then OUT_LENGTH is ignored.
+
+   The function returns a pointer to a new Allegro stream if
+   successful, or NULL on error.
+
+   The block of memory pointed to by BUF will NOT be duplicated, so it
+   must be available for the lifetime of the Allegro stream.  During
+   that time the memory block must not be modified directly.  If
+   OUT_LENGTH is not NULL, the variable it points to must similarly be
+   available and not be modified directly for the lifetime of the
+   stream.
+
+   XXX: Random-access streams should be added in future.
+
+
+
+XXX: Should add a memory buffer output stream that will grow
+     automatically.
+
+
+
+- Function: bool al_add_buffer_filter(AL_STREAM *stream, size_t maxbufsize)
+
+   Applies a buffering filter on top of the stream specified.  The
+   purpose of a buffering filter is to avoid reading from or writing
+   to filters below itself very often.  Instead, it will try to
+   read/write larger quantities of data in one go, and thereby
+   accessing lower level filters less often.  For some media, such as
+   hard/floppy disks, this can bring a significant speedup.  For other
+   media, e.g. memory buffers, an extra layer of buffering can
+   actually be detrimental to performance.
+
+   MAXBUFSIZE is the size of the memory buffer to use in bytes.  For a
+   read filter, this is how much data the filter will try to grab from
+   the next filter in one go.  For a write filter, this is how much
+   data it will queue up before giving it to the next filter.
+
+   Returns true if the filter is successfully applied.
+
+   This filter only works on unidirectional streams at present.
+
+
+
+- Function: bool al_add_lzss_compression_filter(AL_STREAM *stream)
+
+   Applies a LZSS compression filter on top of the stream specified.
+
+   When applied to a write-only stream, the filter will take
+   uncompressed data from higher level filters and produce compressed
+   data for lower level filters.
+
+   The filter does not support read-only or bidirectional streams.
+
+   The function returns true on success.
+
+
+
+- Function: bool al_add_lzss_decompression_filter(AL_STREAM *stream)
+
+   Applies a LZSS decompression filter on top of the stream specified.
+
+   When applied to a read-only stream, the filter will take compressed
+   data from lower level filters and produce uncompressed data for
+   higher level filters.
+
+   The filter does not support write-only or bidirectional streams.
+
+   The function returns true on success.
+
+
+
+... Some other filters ...
+
+
+
+- Function: bool al_close_stream(AL_STREAM *stream)
+
+   Closes the Allegro stream specified.  All applied filters will be
+   removed automatically.  Output streams are flushed beforehand.
+
+   Returns true on success.  After the call to al_close_stream()
+   returns STREAM is unusable, regardless of the return value.
+
+   STREAM may not be NULL.
+
+
+
+- Function: size_t al_stream_read(AL_STREAM *stream, void *outbuf, size_t count)
+
+   Read data from an Allegro input stream into the array pointed to by
+   OUTBUF, up to a maximum size of COUNT bytes.
+
+   Returns the number of bytes read.  If the end of the stream is
+   reached before COUNT bytes is read, or an error occurs, the
+   returned value will be a short byte count (or zero) and the
+   end-of-file indicator or the error indicator will be set.
+
+   Attempting to read from an output stream is an error.  The stream's
+   error indicator will be set and zero will be returned.
+
+   Note: Use al_stream_eof() or al_stream_error() to determine if a
+   short byte count is due to EOF or an error.
+
+
+
+- Function: size_t al_stream_write(AL_STREAM *stream, const void *inbuf, size_t count)
+
+   Write COUNT bytes from the array pointed to by INBUF into the
+   Allegro stream STREAM.
+
+   Returns the number of bytes written.  If an error occurs, the
+   return value is a short byte count (or zero) and the error
+   indicator will be set.
+
+
+
+- Function: bool al_stream_seek(AL_STREAM *stream, long offset, int whence)
+
+   Set the file position indicator for the stream pointed to by
+   stream.  The new position, measured in bytes, is obtained by adding
+   offset bytes to the position specified by WHENCE.  If WHENCE is set
+   to AL_SEEK_SET, AL_SEEK_CUR, or AL_SEEK_END, the offset is relative
+   to the start of the file, the current position indicator, or
+   end-of-file, respectively.
+
+   In keeping with stdio, seeking past the EOF is allowed.
+
+   Returns true on success.
+
+   On failure the stream error indicator is _not_ set, but the
+   stream's errno _may_ be set.
+
+   XXX: Implementations of seek need a lot of testing.
+
+
+
+- Function: long al_stream_tell(AL_STREAM *stream)
+
+   Obtain the current value of the file position indicator for the
+   stream pointed to by STREAM.  If an error occurs, -1 is returned.
+
+   On failure the stream error indicator is _not_ set.
+
+   XXX: Implementation is non-existant.  I expect it to be handled
+        automatically by the top-most level code, rather than by the
+        filters themselves.
+
+
+
+- Function: bool al_stream_flush(AL_STREAM *stream)
+
+   If STREAM is a write-only stream, this function forces a write of
+   buffered data for the given stream and returns true on success.
+
+   No guarantee is made of how much data will actually be flushed, or
+   if the data flushed will actually be written to disk/memory/etc.
+
+   If STREAM is a read-only stream, the error indicator for the stream
+   will be set, and false returned.
+
+
+
+- Function: bool al_stream_eof(AL_STREAM *stream)
+
+   Returns true if the end-of-file indicator for STREAM is set.
+
+
+
+- Function: bool al_stream_error(AL_STREAM *stream)
+
+   Returns true if the error indicator for STREAM is set.
+
+
+
+- Function: int al_stream_errno(AL_STREAM *stream)
+
+   Returns the error code for the stream.  Error codes are the same as
+   for `errno'.
+
+   This function is only meaningful after the error indicator for the
+   stream has been set.  If the error indicator has not been set, the
+   return value is zero.  If the error indicator _has_ been set, the
+   return value could be zero too.
+
+
+
+XXX: clearerr function?
+
+
+
+- Function: int  al_stream_getc(AL_STREAM *stream)
+- Function: int  al_stream_putc(AL_STREAM *stream, int c)
+- Function: int  al_stream_igetw(AL_STREAM *stream)
+- Function: long al_stream_igetl(AL_STREAM *stream)
+- Function: int  al_stream_iputw(AL_STREAM *stream, int w)
+- Function: long al_stream_iputl(AL_STREAM *stream, long l)
+- Function: int  al_stream_mgetw(AL_STREAM *stream)
+- Function: long al_stream_mgetl(AL_STREAM *stream)
+- Function: int  al_stream_mputw(AL_STREAM *stream, int w)
+- Function: long al_stream_mputl(AL_STREAM *stream)
+
+   Convenience functions.
+
+   XXX: Document these once we start moving this stuff to the manual.
+
+
+
+XXX: Missing al_stream_gets, al_stream_puts.  Maybe want
+     al_stream_printf and co?  The printf function should not have
+     arbitrarily limited lengths.

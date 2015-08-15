@@ -1,0 +1,637 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    ></title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta name="generator" content="pandoc"
+     /><script type="text/javascript" src="autosuggest.js"></script>
+<script type="text/javascript" src="search_index.js"></script>
+<link rel="stylesheet" href="pandoc.css" type="text/css" media="all" />
+</head
+  ><body
+  ><table class="white">
+<tr>
+<td valign="top" class="sidebar">
+
+<div class="sidebar">
+<ul
+><li
+  ><a href="index.html"
+    >Front</a
+    ></li
+  ><li
+  ><a href="config.html"
+    >Configuration files</a
+    ></li
+  ><li
+  ><a href="display.html"
+    >Display</a
+    ></li
+  ><li
+  ><a href="events.html"
+    >Events</a
+    ></li
+  ><li
+  ><a href="file.html"
+    >File I/O</a
+    ></li
+  ><li
+  ><a href="fshook.html"
+    >Filesystem hooks</a
+    ></li
+  ><li
+  ><a href="graphics.html"
+    >Graphics</a
+    ></li
+  ><li
+  ><a href="joystick.html"
+    >Joystick</a
+    ></li
+  ><li
+  ><a href="keyboard.html"
+    >Keyboard</a
+    ></li
+  ><li
+  ><a href="memory.html"
+    >Memory</a
+    ></li
+  ><li
+  ><a href="misc.html"
+    >Miscellaneous</a
+    ></li
+  ><li
+  ><a href="mouse.html"
+    >Mouse</a
+    ></li
+  ><li
+  ><a href="opengl.html"
+    >OpenGL</a
+    ></li
+  ><li
+  ><a href="path.html"
+    >Path</a
+    ></li
+  ><li
+  ><a href="state.html"
+    >State</a
+    ></li
+  ><li
+  ><a href="system.html"
+    >System</a
+    ></li
+  ><li
+  ><a href="threads.html"
+    >Threads</a
+    ></li
+  ><li
+  ><a href="time.html"
+    >Time</a
+    ></li
+  ><li
+  ><a href="timer.html"
+    >Timer</a
+    ></li
+  ><li
+  ><a href="utf8.html"
+    >UTF-8</a
+    ></li
+  ><li
+  ><a href="kcm_audio.html"
+    >Audio addon</a
+    ></li
+  ><li
+  ><a href="acodec.html"
+    >Audio codecs</a
+    ></li
+  ><li
+  ><a href="color.html"
+    >Color addon</a
+    ></li
+  ><li
+  ><a href="font.html"
+    >Font addons</a
+    ></li
+  ><li
+  ><a href="iio.html"
+    >Image I/O addon</a
+    ></li
+  ><li
+  ><a href="native_dialog.html"
+    >Native dialogs addon</a
+    ></li
+  ><li
+  ><a href="physfs.html"
+    >PhysicsFS addon</a
+    ></li
+  ><li
+  ><a href="primitives.html"
+    >Primitives addon</a
+    ></li
+  ></ul
+><!-- keep blank line for correct HTML -->
+</div>
+
+<div class="searchbox">
+<script type="text/javascript">
+function onSubmit(form) {
+    for (i = 0; i < search_index.length; i++) {
+        if (search_index[i] == form.q.value) {
+            form.action = search_urls[i];
+            form.method = "POST";
+            return true;
+        }
+    }
+    // Search-term is not in the index.
+    // We could add an URL here which does a fulltext search - for
+    // now we simply do nothing by return false to the form.
+    return false;
+}
+</script>
+<form id="search" action="search.py" onSubmit="return onSubmit(this);"><input type="text" name="q" id="q" autocomplete="off" /><br /> <input type="submit" value="Search" /><script>actb = new actb("q", search_index);</script>
+</form>
+</div>
+
+
+</td>
+<td class="content">
+
+
+<div id="toc"
+    ><ul
+      ><li
+	><a href="#events" id="TOC-events"
+	  >Events</a
+	  ><ul
+	  ><li
+	    ><a href="#allegro_event" id="TOC-allegro_event"
+	      >ALLEGRO_EVENT</a
+	      ></li
+	    ><li
+	    ><a href="#allegro_event_source" id="TOC-allegro_event_source"
+	      >ALLEGRO_EVENT_SOURCE</a
+	      ></li
+	    ><li
+	    ><a href="#allegro_event_type" id="TOC-allegro_event_type"
+	      >ALLEGRO_EVENT_TYPE</a
+	      ></li
+	    ><li
+	    ><a href="#allegro_get_event_type" id="TOC-allegro_get_event_type"
+	      >ALLEGRO_GET_EVENT_TYPE</a
+	      ></li
+	    ><li
+	    ><a href="#al_create_event_queue" id="TOC-al_create_event_queue"
+	      >al_create_event_queue</a
+	      ></li
+	    ><li
+	    ><a href="#al_create_user_event_source" id="TOC-al_create_user_event_source"
+	      >al_create_user_event_source</a
+	      ></li
+	    ><li
+	    ><a href="#al_destroy_event_queue" id="TOC-al_destroy_event_queue"
+	      >al_destroy_event_queue</a
+	      ></li
+	    ><li
+	    ><a href="#al_destroy_user_event_source" id="TOC-al_destroy_user_event_source"
+	      >al_destroy_user_event_source</a
+	      ></li
+	    ><li
+	    ><a href="#al_drop_next_event" id="TOC-al_drop_next_event"
+	      >al_drop_next_event</a
+	      ></li
+	    ><li
+	    ><a href="#al_emit_user_event" id="TOC-al_emit_user_event"
+	      >al_emit_user_event</a
+	      ></li
+	    ><li
+	    ><a href="#al_event_queue_is_empty" id="TOC-al_event_queue_is_empty"
+	      >al_event_queue_is_empty</a
+	      ></li
+	    ><li
+	    ><a href="#al_flush_event_queue" id="TOC-al_flush_event_queue"
+	      >al_flush_event_queue</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_next_event" id="TOC-al_get_next_event"
+	      >al_get_next_event</a
+	      ></li
+	    ><li
+	    ><a href="#al_peek_next_event" id="TOC-al_peek_next_event"
+	      >al_peek_next_event</a
+	      ></li
+	    ><li
+	    ><a href="#al_register_event_source" id="TOC-al_register_event_source"
+	      >al_register_event_source</a
+	      ></li
+	    ><li
+	    ><a href="#al_unref_user_event" id="TOC-al_unref_user_event"
+	      >al_unref_user_event</a
+	      ></li
+	    ><li
+	    ><a href="#al_unregister_event_source" id="TOC-al_unregister_event_source"
+	      >al_unregister_event_source</a
+	      ></li
+	    ><li
+	    ><a href="#al_wait_for_event" id="TOC-al_wait_for_event"
+	      >al_wait_for_event</a
+	      ></li
+	    ><li
+	    ><a href="#al_wait_for_event_timed" id="TOC-al_wait_for_event_timed"
+	      >al_wait_for_event_timed</a
+	      ></li
+	    ><li
+	    ><a href="#al_wait_for_event_until" id="TOC-al_wait_for_event_until"
+	      >al_wait_for_event_until</a
+	      ></li
+	    ></ul
+	  ></li
+	></ul
+      ></div
+    ><h1 id="events"
+    ><a href="#TOC-events"
+      >Events</a
+      ></h1
+    ><h2 id="allegro_event"
+    ><a href="#TOC-allegro_event"
+      >ALLEGRO_EVENT</a
+      ></h2
+    ><pre
+    ><code
+      >typedef union ALLEGRO_EVENT ALLEGRO_EVENT;
+</code
+      ></pre
+    ><p
+    >An ALLEGRO_EVENT is a union of all builtin event structures, i.e. it is an object large enough to hold the data of any event type. All events have the following fields in common:</p
+    ><pre
+    ><code
+      >ALLEGRO_EVENT_TYPE          type;
+ALLEGRO_EVENT_SOURCE *      any.source;
+double                      any.timestamp;
+</code
+      ></pre
+    ><p
+    >By examining the type field you can then access type-specific fields. The any.source field tells you which event source generated that particular event. The any.timestamp field tells you when the event was generated. The time is referenced to the same starting point as al_current_time().</p
+    ><h2 id="allegro_event_source"
+    ><a href="#TOC-allegro_event_source"
+      >ALLEGRO_EVENT_SOURCE</a
+      ></h2
+    ><pre
+    ><code
+      >typedef struct ALLEGRO_EVENT_SOURCE ALLEGRO_EVENT_SOURCE;
+</code
+      ></pre
+    ><p
+    >An event source is any object which can generate events. Event sources are usually referred to by distinct types, e.g. ALLEGRO_KEYBOARD<em
+      >, but can be casted to ALLEGRO_EVENT_SOURCE</em
+      > when used in contexts that accept generic event sources.</p
+    ><p
+    >Each event is of one of the following types</p
+    ><ul
+    ><li
+      ><p
+	>ALLEGRO_EVENT_JOYSTICK_AXIS - a joystick axis value changed. Fields are: joystick.stick, joystick.axis, joystick.pos (-1.0 to 1.0).</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_EVENT_JOYSTICK_BUTTON_DOWN - a joystick button was pressed. Fields are: joystick.button.</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_EVENT_JOYSTICK_BUTTON_UP - a joystick button was released. Fields are: joystick.button.</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_EVENT_KEY_DOWN - a keyboard key was pressed. Fields: keyboard.keycode, keyboard.unichar, keyboard.modifiers.</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_EVENT_KEY_REPEAT - a typed character auto-repeated. Fields: keyboard.keycode (ALLEGRO<em
+	  >KEY</em
+	  >*), keyboard.unichar (unicode character), keyboard.modifiers (ALLEGRO<em
+	  >KEYMOD</em
+	  >*).</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_EVENT_KEY_UP - a keyboard key was released. Fields: keyboard.keycode.</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_EVENT_MOUSE_AXES - one or more mouse axis values changed. Fields: mouse.x, mouse.y, mouse.z, mouse.dx, mouse.dy, mouse.dz. Note: Calling al_set_mouse_xy also will result in a change of axis values, but such a change is reported with ALLEGRO_EVENT_MOUSE_WARPED events instead.</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_EVENT_MOUSE_BUTTON_DOWN - a mouse button was pressed. Fields: mouse.x, mouse.y, mouse.z, mouse.button.</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_EVENT_MOUSE_BUTTON_UP - a mouse button was released. Fields: mouse.x, mouse.y, mouse.z, mouse.button.</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_EVENT_MOUSE_WARPED - al_set_mouse_xy was called to move the mouse. This event is identical to ALLEGRO_EVENT_MOUSE_AXES otherwise.</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_EVENT_MOUSE_ENTER_DISPLAY - the mouse cursor entered a window opened by the program. Fields: mouse.x, mouse.y, mouse.z.</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_EVENT_MOUSE_LEAVE_DISPLAY - the mouse cursor leave the boundaries of a window opened by the program. Fields: mouse.x, mouse.y, mouse.z.</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_EVENT_TIMER - a timer counter incremented. Fields: timer.count.</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_EVENT_DISPLAY_EXPOSE - The display (or a portion thereof) has become visible. Note: The display needs to be created with ALLEGRO_GENERATE_EXPOSE_EVENTS flag. Fields: display.x, display.y, display.width, display.height</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_EVENT_DISPLAY_RESIZE - The window has been resized. Fields: display.x, display.y, display.width, display.height</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_EVENT_DISPLAY_CLOSE - The close button of the window has been pressed.</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_EVENT_DISPLAY_LOST - Displays can be lost with some drivers (just Direct3D?). This means that rendering is impossible. The device will be restored as soon as it is possible. The program should be able to ignore this event and continue rendering however it will have no effect.</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_EVENT_DISPLAY_FOUND - Generated when a lost device is regained. Drawing will no longer be a no-op.</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_EVENT_DISPLAY_SWITCH_OUT - The window is no longer active, that is the user might have clicked into another window or &quot;tabbed&quot; away.</p
+	></li
+      ><li
+      ><p
+	>ALLEGRO_EVENT_DISPLAY_SWITCH_IN - The window is the active one again.</p
+	></li
+      ></ul
+    ><h2 id="allegro_event_type"
+    ><a href="#TOC-allegro_event_type"
+      >ALLEGRO_EVENT_TYPE</a
+      ></h2
+    ><pre
+    ><code
+      >typedef unsigned int ALLEGRO_EVENT_TYPE;
+enum
+</code
+      ></pre
+    ><p
+    >An integer used to distinguish between different types of events.</p
+    ><h2 id="allegro_get_event_type"
+    ><a href="#TOC-allegro_get_event_type"
+      >ALLEGRO_GET_EVENT_TYPE</a
+      ></h2
+    ><pre
+    ><code
+      >#define ALLEGRO_GET_EVENT_TYPE(a, b, c, d)   AL_ID(a, b, c, d)
+</code
+      ></pre
+    ><p
+    >Make an event type identifier, which is a 32-bit integer. Usually this will be made from four 8-bit character codes, for example:</p
+    ><pre
+    ><code
+      >#define MY_EVENT_TYPE   ALLEGRO_GET_EVENT_TYPE('M','I','N','E')
+</code
+      ></pre
+    ><p
+    >You should try to make your IDs unique so they don't clash with any 3rd party code you may be using.</p
+    ><p
+    >IDs less than 1024 are reserved for Allegro or its addons.</p
+    ><h2 id="al_create_event_queue"
+    ><a href="#TOC-al_create_event_queue"
+      >al_create_event_queue</a
+      ></h2
+    ><pre
+    ><code
+      >ALLEGRO_EVENT_QUEUE *al_create_event_queue(void)
+</code
+      ></pre
+    ><p
+    >Create a new, empty event queue, returning a pointer to object if successful. Returns NULL on error.</p
+    ><h2 id="al_create_user_event_source"
+    ><a href="#TOC-al_create_user_event_source"
+      >al_create_user_event_source</a
+      ></h2
+    ><pre
+    ><code
+      >ALLEGRO_EVENT_SOURCE *al_create_user_event_source(void)
+</code
+      ></pre
+    ><p
+    >Allocate an event source for emitting user events.</p
+    ><h2 id="al_destroy_event_queue"
+    ><a href="#TOC-al_destroy_event_queue"
+      >al_destroy_event_queue</a
+      ></h2
+    ><pre
+    ><code
+      >void al_destroy_event_queue(ALLEGRO_EVENT_QUEUE *queue)
+</code
+      ></pre
+    ><p
+    >Destroy the event queue specified. All event sources currently registered with the queue will be automatically unregistered before the queue is destroyed.</p
+    ><h2 id="al_destroy_user_event_source"
+    ><a href="#TOC-al_destroy_user_event_source"
+      >al_destroy_user_event_source</a
+      ></h2
+    ><pre
+    ><code
+      >void al_destroy_user_event_source(ALLEGRO_EVENT_SOURCE *src)
+</code
+      ></pre
+    ><p
+    >Destroy an event source created with <a href="events.html#al_create_user_event_source"
+      >al_create_user_event_source</a
+      >.</p
+    ><h2 id="al_drop_next_event"
+    ><a href="#TOC-al_drop_next_event"
+      >al_drop_next_event</a
+      ></h2
+    ><pre
+    ><code
+      >bool al_drop_next_event(ALLEGRO_EVENT_QUEUE *queue)
+</code
+      ></pre
+    ><p
+    >Drop the next event packet from the queue. If the queue is empty, nothing happens. Returns true iff an event was dropped.</p
+    ><h2 id="al_emit_user_event"
+    ><a href="#TOC-al_emit_user_event"
+      >al_emit_user_event</a
+      ></h2
+    ><pre
+    ><code
+      >bool al_emit_user_event(ALLEGRO_EVENT_SOURCE *src,
+   ALLEGRO_EVENT *event, void (*dtor)(ALLEGRO_USER_EVENT *))
+</code
+      ></pre
+    ><p
+    >Emit a user event. The event source must have been created with <a href="events.html#al_create_user_event_source"
+      >al_create_user_event_source</a
+      >. Some fields of the event being passed in may be modified. Returns <code
+      >false</code
+      > if the event source isn't registered with any queues, hence the event wouldn't have been delivered into any queues.</p
+    ><p
+    >Reference counting will be performed on the event if <code
+      >dtor</code
+      > is non-NULL. When the reference count drops to zero <code
+      >dtor</code
+      > will be called with a copy of the event as an argument. It should free the resources associated with the event. If <code
+      >dtor</code
+      > is NULL then reference counting will not be performed.</p
+    ><p
+    >You need to call <a href="events.html#al_unref_user_event"
+      >al_unref_user_event</a
+      > when you are done with a reference counted user event that you have gotten from <a href="events.html#al_get_next_event"
+      >al_get_next_event</a
+      >, <a href="events.html#al_peek_next_event"
+      >al_peek_next_event</a
+      >, <a href="events.html#al_wait_for_event"
+      >al_wait_for_event</a
+      >, etc. You may, but do not need to, call <a href="events.html#al_unref_user_event"
+      >al_unref_user_event</a
+      > on non-reference counted user events.</p
+    ><h2 id="al_event_queue_is_empty"
+    ><a href="#TOC-al_event_queue_is_empty"
+      >al_event_queue_is_empty</a
+      ></h2
+    ><pre
+    ><code
+      >bool al_event_queue_is_empty(ALLEGRO_EVENT_QUEUE *queue)
+</code
+      ></pre
+    ><p
+    >Return true if the event queue specified is currently empty.</p
+    ><h2 id="al_flush_event_queue"
+    ><a href="#TOC-al_flush_event_queue"
+      >al_flush_event_queue</a
+      ></h2
+    ><pre
+    ><code
+      >void al_flush_event_queue(ALLEGRO_EVENT_QUEUE *queue)
+</code
+      ></pre
+    ><p
+    >Drops all events, if any, from the queue.</p
+    ><h2 id="al_get_next_event"
+    ><a href="#TOC-al_get_next_event"
+      >al_get_next_event</a
+      ></h2
+    ><pre
+    ><code
+      >bool al_get_next_event(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT *ret_event)
+</code
+      ></pre
+    ><p
+    >Take the next event packet out of the event queue specified, and copy the contents into RET_EVENT, returning true. The original event packet will be removed from the queue. If the event queue is empty, return false and the contents of RET_EVENT are unspecified.</p
+    ><h2 id="al_peek_next_event"
+    ><a href="#TOC-al_peek_next_event"
+      >al_peek_next_event</a
+      ></h2
+    ><pre
+    ><code
+      >bool al_peek_next_event(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT *ret_event)
+</code
+      ></pre
+    ><p
+    >Copy the contents of the next event packet in the event queue specified into RET_EVENT and return true. The original event packet will remain at the head of the queue. If the event queue is actually empty, this function returns false and the contents of RET_EVENT are unspecified.</p
+    ><h2 id="al_register_event_source"
+    ><a href="#TOC-al_register_event_source"
+      >al_register_event_source</a
+      ></h2
+    ><pre
+    ><code
+      >void al_register_event_source(ALLEGRO_EVENT_QUEUE *queue,
+   ALLEGRO_EVENT_SOURCE *source)
+</code
+      ></pre
+    ><p
+    >Register the event source with the event queue specified. An event source may be registered with any number of event queues simultaneously, or none. Trying to register an event source with the same event queue more than once does nothing.</p
+    ><h2 id="al_unref_user_event"
+    ><a href="#TOC-al_unref_user_event"
+      >al_unref_user_event</a
+      ></h2
+    ><pre
+    ><code
+      >void al_unref_user_event(ALLEGRO_USER_EVENT *event)
+</code
+      ></pre
+    ><p
+    >Unreference a user-defined event. This must be called on any user event that you get from <a href="events.html#al_get_next_event"
+      >al_get_next_event</a
+      >, <a href="events.html#al_peek_next_event"
+      >al_peek_next_event</a
+      >, <a href="events.html#al_wait_for_event"
+      >al_wait_for_event</a
+      >, etc. which is reference counted. This function does nothing if the event is not reference counted.</p
+    ><p
+    >See also: <a href="events.html#al_emit_user_event"
+      >al_emit_user_event</a
+      >.</p
+    ><h2 id="al_unregister_event_source"
+    ><a href="#TOC-al_unregister_event_source"
+      >al_unregister_event_source</a
+      ></h2
+    ><pre
+    ><code
+      >void al_unregister_event_source(ALLEGRO_EVENT_QUEUE *queue,
+   ALLEGRO_EVENT_SOURCE *source)
+</code
+      ></pre
+    ><p
+    >Unregister an event source with an event queue. If the event source is not actually registered with the event queue, nothing happens.</p
+    ><p
+    >If the queue had any events in it which originated from the event source, they will no longer be in the queue after this call.</p
+    ><h2 id="al_wait_for_event"
+    ><a href="#TOC-al_wait_for_event"
+      >al_wait_for_event</a
+      ></h2
+    ><pre
+    ><code
+      >void al_wait_for_event(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT *ret_event)
+</code
+      ></pre
+    ><p
+    >Wait until the event queue specified is non-empty. If RET_EVENT is not NULL, the first event packet in the queue will be copied into RET_EVENT and removed from the queue. If RET_EVENT is NULL the first event packet is left at the head of the queue.</p
+    ><h2 id="al_wait_for_event_timed"
+    ><a href="#TOC-al_wait_for_event_timed"
+      >al_wait_for_event_timed</a
+      ></h2
+    ><pre
+    ><code
+      >bool al_wait_for_event_timed(ALLEGRO_EVENT_QUEUE *queue,
+   ALLEGRO_EVENT *ret_event, float secs)
+</code
+      ></pre
+    ><p
+    >Wait until the event queue specified is non-empty. If RET_EVENT is not NULL, the first event packet in the queue will be copied into RET_EVENT and removed from the queue. If RET_EVENT is NULL the first event packet is left at the head of the queue.</p
+    ><p
+    >TIMEOUT_MSECS determines approximately how many seconds to wait. If the call times out, false is returned. Otherwise true is returned.</p
+    ><h2 id="al_wait_for_event_until"
+    ><a href="#TOC-al_wait_for_event_until"
+      >al_wait_for_event_until</a
+      ></h2
+    ><pre
+    ><code
+      >bool al_wait_for_event_until(ALLEGRO_EVENT_QUEUE *queue,
+   ALLEGRO_EVENT *ret_event, ALLEGRO_TIMEOUT *timeout)
+</code
+      ></pre
+    ></td>
+</tr>
+</table>
+
+
+<p>
+Last updated: 2009-07-05 05:34:15 UTC
+</p>
+</body
+  ></html
+>
+

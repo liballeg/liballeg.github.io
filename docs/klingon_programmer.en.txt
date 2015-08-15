@@ -1,0 +1,47 @@
+
+   Date: 2003-12-13. This is a text only snapshot of the web
+   
+    http://www-users.cs.york.ac.uk/~susan/joke/klingon.htm
+    
+   made by Grzegorz Adam Hankiewicz (gradha@users.sourceforge.net) with the
+   software ELinks 0.5pre12.CVS - Text WWW browser, which you can find at
+   
+    http://elinks.or.cz/
+   
+   The purpose of the snapshot is to provide an alternative version if the
+   main server fails or the original copy is deleted. The snapshot has been
+   render to 78 characters of width with the ISO-8859-1 character codepage.
+
+     --------------------------------------------------------------------
+
+   [Susan Stepney's Home Page][joke index]
+
+     I compiled the following from a variety of different sources on the
+     Web, but I don't think I've found the original perpetrator. If you
+     know who, could you email me for inclusion? Thanks.
+
+     Stephen J Baker has a list of his own Klingon programmer jokes.
+
+   -------------------------------------------------------------------------
+
+			      Klingon Programmer
+
+    Top 10 things likely to be overheard if you had a Klingon Programmer:
+
+    1. A TRUE Klingon Warrior does not comment his code!
+    2. By filing this bug report you have challenged the honor of my
+       family. Prepare to die!
+    3. You question the worthiness of my code? I should kill you where you
+       stand!
+    4. Our competitors are without honor!
+    5. Specifications are for the weak and timid!
+    6. This machine is GAGH! I need dual Pentium processors if I am to do
+       battle with this code!
+    7. Perhaps it IS a good day to die! I say we ship it!
+    8. Our users will know fear and cower before our software! Ship it!
+       Ship it and let them flee like the dogs they are!
+    9. My program has just dumped Stova Core!
+   10. Behold, the keyboard of Kalis! The greatest Klingon code warrior
+       that ever lived!
+
+   -------------------------------------------------------------------------

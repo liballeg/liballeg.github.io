@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    ></title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta name="generator" content="pandoc"
+     /><script type="text/javascript" src="autosuggest.js"></script>
+<script type="text/javascript" src="search_index.js"></script>
+<link rel="stylesheet" href="pandoc.css" type="text/css" media="all" />
+</head
+  ><body
+  ><table class="white">
+<tr>
+<td valign="top" class="sidebar">
+
+<div class="sidebar">
+<ul
+><li
+  ><a href="index.html"
+    >Front</a
+    ></li
+  ><li
+  ><a href="config.html"
+    >Configuration files</a
+    ></li
+  ><li
+  ><a href="display.html"
+    >Display</a
+    ></li
+  ><li
+  ><a href="events.html"
+    >Events</a
+    ></li
+  ><li
+  ><a href="file.html"
+    >File I/O</a
+    ></li
+  ><li
+  ><a href="fshook.html"
+    >Filesystem hooks</a
+    ></li
+  ><li
+  ><a href="graphics.html"
+    >Graphics</a
+    ></li
+  ><li
+  ><a href="joystick.html"
+    >Joystick</a
+    ></li
+  ><li
+  ><a href="keyboard.html"
+    >Keyboard</a
+    ></li
+  ><li
+  ><a href="memory.html"
+    >Memory</a
+    ></li
+  ><li
+  ><a href="misc.html"
+    >Miscellaneous</a
+    ></li
+  ><li
+  ><a href="mouse.html"
+    >Mouse</a
+    ></li
+  ><li
+  ><a href="opengl.html"
+    >OpenGL</a
+    ></li
+  ><li
+  ><a href="path.html"
+    >Path</a
+    ></li
+  ><li
+  ><a href="state.html"
+    >State</a
+    ></li
+  ><li
+  ><a href="system.html"
+    >System</a
+    ></li
+  ><li
+  ><a href="threads.html"
+    >Threads</a
+    ></li
+  ><li
+  ><a href="time.html"
+    >Time</a
+    ></li
+  ><li
+  ><a href="timer.html"
+    >Timer</a
+    ></li
+  ><li
+  ><a href="utf8.html"
+    >UTF-8</a
+    ></li
+  ><li
+  ><a href="kcm_audio.html"
+    >Audio addon</a
+    ></li
+  ><li
+  ><a href="acodec.html"
+    >Audio codecs</a
+    ></li
+  ><li
+  ><a href="color.html"
+    >Color addon</a
+    ></li
+  ><li
+  ><a href="font.html"
+    >Font addons</a
+    ></li
+  ><li
+  ><a href="iio.html"
+    >Image I/O addon</a
+    ></li
+  ><li
+  ><a href="native_dialog.html"
+    >Native dialogs addon</a
+    ></li
+  ><li
+  ><a href="physfs.html"
+    >PhysicsFS addon</a
+    ></li
+  ><li
+  ><a href="primitives.html"
+    >Primitives addon</a
+    ></li
+  ></ul
+><!-- keep blank line for correct HTML -->
+</div>
+
+<div class="searchbox">
+<script type="text/javascript">
+function onSubmit(form) {
+    for (i = 0; i < search_index.length; i++) {
+        if (search_index[i] == form.q.value) {
+            form.action = search_urls[i];
+            form.method = "POST";
+            return true;
+        }
+    }
+    // Search-term is not in the index.
+    // We could add an URL here which does a fulltext search - for
+    // now we simply do nothing by return false to the form.
+    return false;
+}
+</script>
+<form id="search" action="search.py" onSubmit="return onSubmit(this);"><input type="text" name="q" id="q" autocomplete="off" /><br /> <input type="submit" value="Search" /><script>actb = new actb("q", search_index);</script>
+</form>
+</div>
+
+
+</td>
+<td class="content">
+
+
+<div id="toc"
+    ><ul
+      ><li
+	><a href="#state" id="TOC-state"
+	  >State</a
+	  ><ul
+	  ><li
+	    ><a href="#allegro_state" id="TOC-allegro_state"
+	      >ALLEGRO_STATE</a
+	      ></li
+	    ><li
+	    ><a href="#allegro_state_flags" id="TOC-allegro_state_flags"
+	      >ALLEGRO_STATE_FLAGS</a
+	      ></li
+	    ><li
+	    ><a href="#al_get_errno" id="TOC-al_get_errno"
+	      >al_get_errno</a
+	      ></li
+	    ><li
+	    ><a href="#al_set_errno" id="TOC-al_set_errno"
+	      >al_set_errno</a
+	      ></li
+	    ><li
+	    ><a href="#al_restore_state" id="TOC-al_restore_state"
+	      >al_restore_state</a
+	      ></li
+	    ><li
+	    ><a href="#al_store_state" id="TOC-al_store_state"
+	      >al_store_state</a
+	      ></li
+	    ></ul
+	  ></li
+	></ul
+      ></div
+    ><h1 id="state"
+    ><a href="#TOC-state"
+      >State</a
+      ></h1
+    ><h2 id="allegro_state"
+    ><a href="#TOC-allegro_state"
+      >ALLEGRO_STATE</a
+      ></h2
+    ><pre
+    ><code
+      >typedef struct ALLEGRO_STATE
+</code
+      ></pre
+    ><p
+    >Opaque type which is passed to <a href="state.html#al_store_state"
+      >al_store_state</a
+      >/<a href="state.html#al_restore_state"
+      >al_restore_state</a
+      >.</p
+    ><h2 id="allegro_state_flags"
+    ><a href="#TOC-allegro_state_flags"
+      >ALLEGRO_STATE_FLAGS</a
+      ></h2
+    ><pre
+    ><code
+      >enum ALLEGRO_STATE_FLAGS {
+</code
+      ></pre
+    ><p
+    >Flags which can be passed to <a href="state.html#al_store_state"
+      >al_store_state</a
+      >/<a href="state.html#al_restore_state"
+      >al_restore_state</a
+      > as bit combinations. The following flags store or restore settings corresponding to the following al_set_/al_get_ calls:</p
+    ><ul
+    ><li
+      >ALLEGRO_STATE_NEW_DISPLAY_PARAMETERS - new_display_format, new_display_refresh_rate, new_display_flags</li
+      ><li
+      >ALLEGRO_STATE_NEW_BITMAP_PARAMETERS - new_bitmap_format, new_bitmap_flags</li
+      ><li
+      >ALLEGRO_STATE_DISPLAY - current_display</li
+      ><li
+      >ALLEGRO_STATE_TARGET_BITMAP - target_bitmap</li
+      ><li
+      >ALLEGRO_STATE_BLENDER - blender</li
+      ><li
+      >ALLEGRO_STATE_NEW_FILE_INTERFACE - new_file_interface</li
+      ><li
+      >ALLEGRO_STATE_BITMAP - same as ALLEGRO_STATE_NEW_BITMAP_PARAMETERS and ALLEGRO_STATE_TARGET_BITMAP</li
+      ><li
+      >ALLEGRO_STATE_ALL - all of the above</li
+      ></ul
+    ><h2 id="al_get_errno"
+    ><a href="#TOC-al_get_errno"
+      >al_get_errno</a
+      ></h2
+    ><pre
+    ><code
+      >int al_get_errno(void)
+</code
+      ></pre
+    ><p
+    >Some Allegro functions will set an error number as well as returning an error code. Call this function to retrieve the last error number set for the calling thread.</p
+    ><h2 id="al_set_errno"
+    ><a href="#TOC-al_set_errno"
+      >al_set_errno</a
+      ></h2
+    ><pre
+    ><code
+      >void al_set_errno(int errnum)
+</code
+      ></pre
+    ><p
+    >Set the error number for for the calling thread.</p
+    ><h2 id="al_restore_state"
+    ><a href="#TOC-al_restore_state"
+      >al_restore_state</a
+      ></h2
+    ><pre
+    ><code
+      >void al_restore_state(ALLEGRO_STATE const *state)
+</code
+      ></pre
+    ><p
+    >Restores part of the state of the current thread from the given <code
+      >ALLEGRO_STATE</code
+      > object.</p
+    ><h2 id="al_store_state"
+    ><a href="#TOC-al_store_state"
+      >al_store_state</a
+      ></h2
+    ><pre
+    ><code
+      >void al_store_state(ALLEGRO_STATE *state, int flags)
+</code
+      ></pre
+    ><p
+    >Stores part of the state of the current thread in the given <a href="state.html#allegro_state"
+      >ALLEGRO_STATE</a
+      > objects. The flags parameter can take any bit-combination of the flags described under <a href="state.html#allegro_state_flags"
+      >ALLEGRO_STATE_FLAGS</a
+      >.</p
+    ></td>
+</tr>
+</table>
+
+
+<p>
+Last updated: 2009-06-07 09:43:08 UTC
+</p>
+</body
+  ></html
+>
+

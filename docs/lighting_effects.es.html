@@ -1,0 +1,408 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+   <head>
+      <title>Efectos de luz</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+      <meta name="author" content="Shawn Hargreaves">
+   </head>
+   <body text="#000000" bgcolor="#FFFFFF" link="#0000EF" vlink="#51188E" alink="#FF0000">
+
+<p><center><h1><b>
+¿El camino hacia la i<font color="#808080">l</font><font color="#A0A0A0">u</font><font color="#C0C0C0">mi</font><font color="#A0A0A0">n</font><font color="#808080">a</font>ción?
+</b></h1><p><br>
+<b>Por Shawn Hargreaves, 6 de Junio de 1998</b>
+<p><br><i>
+Al principio no había nada.<br>
+Y entonces Dios dijo, "Hágase la luz".<br>
+Y seguía sin haber nada, pero ahora todo el mundo podía verlo.
+</i></center>
+<p>
+<hr>
+<p>
+Este documento es en muchos modos una continuación de mi demo 
+<a href="http://www.talula.demon.co.uk/rtl/index.html">RTL</a>,
+por lo que quizás le interese comenzar echándole un vistazo. Lo que
+hace es iluminación suave por cada pixel en modo VGA 320x200, pero
+he estado pensando en otras posibles aproximaciones y métodos para
+hacer cosas similares en mayores resoluciones y otras profundidades de
+color. En particular he dedicado la mayor parte del día a pasear por
+Croydon buscando nuevo apartamento (mi alquiler actual expira el próximo
+mes), y entre visita y visita a decrépitos apartamentos, los cuales eran
+descritos por los rendatarios invariablemente como "buen piso de estudio",
+he tenido un número de ideas que merecen ser descritas aquí.
+<p>
+Nota: no he intentado codificar lo que describo, asi que no puedo prometer
+que estas ideas sean útiles, o incluso posibles, y no puedo proporcionarle
+código fuente o enseñarle con detalle cómo implementarlo. Esto es
+más una sesión de brainstorming que un tutorial de verdad. Algún día
+me gustaría probar algunas de estas técnicas y ver cómo funcionan en la
+práctica, pero si alguien se me adelanta, o ha realizado cosas similares
+en el pasado, me encantaría escuchar de sus resultados...
+<p>
+Hay básicamente dos aproximaciones a la iluminación en tiempo real. O
+las luces son parte del entorno e iluminan el sprite del jugador mientras
+se mueve, o las luces son parte de la jugabilidad (llevadas por los
+jugadores, activadas por explosiones, etc) e iluminan el entorno. Por
+supuesto puede mezclar ambos métodos en un solo juego, pero generalmente
+es mejor concentrarse en uno u otro. Recuerde que no puede tener luz sin
+algo de oscuridad. Si para comenzar tiene un entorno bien iluminado,
+hay pocas razones para darle al jugador una antorcha, y esas áreas
+iluminadas por sus explosiones serán como mucho desafortunadas. Igualmente, si
+tiene muchas luces que son activadas en su juego, probablemente quiera
+hacer todo básicamente oscuro para sacarles el máximo provecho.
+<p>
+Creo que esta decisión realmente depende de lo buenos que sean sus
+artistas. Desde mi perspectiva como programador, no puedo dibujar un
+buen escenario de fondo, pero puedo pintarrajear una aproximación de
+lo que quiero, oscurecerla para que nadie vea lo mala que es, y hacer
+que parezca buena programando muchas explosiones y luces de misiles por
+encima. Pero si tiene buenos artistas, ellos pueden _dibujar_ areas de
+luz, oscuridad, y cualquier cosa intermedia, y hacer que parezca mucho
+mejor que mis crudos efectos programados. Las luces predibujadas son
+obviamente estáticas por naturaleza, pero podría hacer que afectasen a
+los sprites a medida que éstos se mueven por el mundo. Esta aproximación
+es obviamente menos cara a nivel computacional que iluminar toda la
+pantalla en tiempo real, y mucho más fácil de desactivar opcionalmente en
+máquinas menos potentes, aparte de entrometerse menos en la jugabilidad:
+es más un toque agradable para un juego existente que algo fundamental
+para su estética.
+<p>
+Si desea seguir esta aproximación, lo más importante es que las luces del
+fondo (aquellas dibujadas por el artista) deben coincidir exáctamente con
+las luces programadas que serán usadas para los sprites. Nada sería peor
+que ver un personaje salir de las sombras a un área clara, y ver cambiar
+los colores del gráfico de oscuros a normales varios pixels más tarde :-)
+
+Probablemente necesitará una herramienta de edición decente y un montón
+de paciencia para colocar todas las luces correctamente, y será mucho
+más fácil si usa iluminación de bordes suaves en vez de contrastes
+altos entre claros y oscuros. También considere que si sus luces vienen
+todas de fuentes estáticas del entorno, no debe activar grandes fuentes
+de luz como parte del juego. Sería genial tener una lucha con espadas
+en una mazmorra, con los jugadores entrando y saliendo de las sombras
+arrojadas por las antorchas, pero sería realmente estúpido que uno de
+ellos lanzase una granada en las sombras, causando una gran explosión
+que no afectase en absoluto a las iluminación del entorno...
+<p>
+Si desea iluminar todo el entorno, tiene otras dos opciones básicas:
+¿iluminación pixel a pixel, o a nivel de primitiva de dibujado? El
+iluminado pixel a pixel conlleva crear un mapa de iluminación para la
+escena, indicando la cantidad de luz (¿y color?) que cae sobre cada lugar,
+para colorear la imagen correctamente. Esto le permite proyectar luz con
+la forma e intensidad que desee, por lo que es sencillo tener antorchas,
+focos, y efectos de cualquier forma extraña e irregular que pueda
+concebir. Obviamente hay una gran cantidad de procesado necesario para
+dibujar una imagen separada para las luces, y si toma este camino perderá
+toda la información direccional de la luz (conoce la cantidad, pero no
+de dónde vino, así que es imposible realizar effectos de bumpmapping).
+<p>
+Un mapa de luz funcionará bien si tiene muchas luces de formas extrañas,
+afectando a un número relativamente reducido de pixels (ej: para
+iluminaciones complejas en modos de baja resolución). Cuando tiene más
+pixels y unas pocas luces simples (ej: omnidireccionales), podría ser
+mejor iluminar las cosas a medida que dibuja cada sprite o tile de fondo,
+calculando la cantidad de luz que caería en cada objeto y coloreando
+todo en una pasada. Un valor fijo de coloreado podría funcionar si
+sus luces son suficientemente simples y sus gráficos suficientemente
+pequeños, o podría aplicar el nivel de iluminación con un algoritmo
+gouraud sobre el sprite para conseguir un efecto más suave (no estoy
+seguro de si es posible dibujar todo un mapa de tiles con sombreado
+gouraud lo suficientemente rápido en SVGA, pero sería interesante probarlo).
+<p>
+En modos de 256 colores, es sencillo usar un valor de 0 a 255 para el
+nivel de luz, y una tabla precalculada de 64k para mezclar éste con
+cada pixel. En modos truecolor las cosas se vuelven más peliagudas. En
+mi humilde opinión no merece la pena iluminar una imagen de 15 ó 16
+bits directamente, porque el rendimiento será horadado completamente
+por las interminables separaciones en componentes RGB individuales,
+sus transformaciones y respectivas recombinaciones en pixels con formato
+empaquetado. Creo que sería más lógico trabajar con formatos de 24 bits
+en memoria (ó quizás 32 para mantener pixels alineados), y reducir éste
+a 15 o 16 bits mientras copia la imagen procesada a la memoria de vídeo.
+<p>
+Iluminar un pixel truecolor de 24 bits es casi lo mismo que con uno de
+256 colores, excepto que repite el proceso tres veces para tratar cada
+componente de color individualmente. Estrictamente hablando necesita
+evaluar v*l/255, para colorear el componente de color <b>v</b> al nivel
+de luz <b>l</b>, pero creo que encontrará más rápido sustituir esta
+operación con una tabla precalculada de 64k, exáctamente como en la
+versión de 256 colores. El código truecolor únicamente necesita mirar
+en la tabla precalculada tres veces más :-)
+<p>
+Curiosamente, tengo la sensación de que el conjunto de instrucciones
+MMX podría ayudar mucho en este tipo de operaciones requeridas para
+iluminación truecolor. Si realmente quiere exprimir el máxiro rendimiento,
+podría resultar útil aprender el conjunto de instrucciones MMX y diseñar
+su código con esto en mente, para que más tarde pueda hacer versiones
+MMX de sus rutinas críticas.
+<p>
+Las luces con color son ciertamente atractivas, pero en mi humilde opinión
+estan sobrevaloradas en importancia.
+Recientemente las máquinas se han hecho lo suficientemente rápidas como
+para soportar iluminación RGB completa a una velocidad razonable, por lo
+que tenemos juegos como Incoming, Forsaken, y Unreal lanzando destellos
+verdes y púrpuras cada vez que dispara un misil. No puedo negar que
+eso resulte bonito, pero creo que se abusa de ello, y dentro de unos años
+miraremos atrás y criticaremos lo vacíos que son estos juegos. Observe el mundo a
+su alrededor, o prácticamente cualquier película o programa de televisión:
+la vasta mayoría de las luces son blancas, y hay buenas razones para
+ello. Sutiles tonos de naranja, azul o rosa pueden hacer maravillas
+para añadir atmósfera, pero puede alterar los gráficos originales para
+conseguir el mismo efecto. No hay necesidad de luz roja alrededor de
+una chimenea, cuando puede obtener el mismo efecto aplicando luz blanca
+a un gráfico de fondo rojizo...
+<p>
+Creo que a pesar de que tener luces coloreadas es agradable,
+no merece la pena sacrificar mucho rendimiento o resolución para
+conseguirlas. Preferiría tener implementados sutiles efectos de luz
+monócromos en alta resolución, que iluminación coloreada en 320x200.
+<p>
+De hecho, creo que el método más rápido para implementar iluminación
+truecolor pixel a pixel no consiste en tener un mapa de iluminación
+separado, sino en combinarlo con la imagen principal. Si quiere trabajar
+con modos de 15 bits, pero trabaja en memoria con formato de 24 bits para
+tener fácil acceso a los componentes de color individuales, hay tres bits
+de sobra en cada byte, lo cual en mi humilde opinión es suficiente para
+almacenar el nivel de iluminación. Sólo le dará ocho tonalidades, pero no
+tienen que empezar desde negro: cero puede representar el nivel de luz
+por defecto de su escena, y valores mayores añaden luz por encima. Esto
+no le permitirá tener suaves gradientes o luces que hacen fundidos, pero
+le servirá para cosas con bordes definidos, como la luz de una antorcha,
+y debería darle potencial para fundidos, siempre y cuando los restrinja
+a 8 o 16 pixels en lugar de intentar un gradiente luminoso de 100 pixels
+de anchura.
+<p>
+Para dibujar una imágen en este formato, almacenaría sus gráficos
+como imágenes de 24 bits, pero desplazados para usar sólo los cinco
+bits inferiores de cada pixel. Estos los puede dibujar con normalidad,
+dejando a cero los bits de iluminación. Entonces añadiría los gráficos
+de iluminación encima, lo que requeriría una función propia de dibujado
+que dejase intactos los cinco bits inferiores mientras colorea los
+tres bits superiores (esto se puede hacer con una tabla precalculada
+de 64k, básicamente del mismo modo que las funciones de translucidez
+de 256 cocores de Allegro). Lo bueno de este formato es que cuando un
+objeto afecta tanto al color como al nivel de luz de un pixel (ej:
+una explosión), puede dibujar todo en una pasada, usando una tabla
+precalculada apropiada que afecte tanto a los cinco bits inferiores
+como a los tres superiores del destino. Por ejemplo, podría dibujar el
+sprite del jugador (imágen normal con máscara) llevando una antorcha
+(con color aditivo en los bits de iluminación), o una explosión (color
+aditivo tanto en el color del pixel como en los bits de iluminación),
+¡todo en una sola pasada en una función! Le haría falta preprocesar sus
+gráficos originales para convertirlos al formato adecuado, pero creo
+que el resultado merecería la pena.
+<p>
+Cuando llegase el momento de copiar las componentes de color 5.3 en
+la pantalla, sólo necesitaría una tabla precalculada de 256 bytes para
+convertir cada valor en un color de verdad. Para modos de pantalla de 24
+ó 32 bits, sólo tendría que mirar en la tabla precalculada y escribir
+el resultado en pantalla. Para modos de pantalla de 15 ó 16 bits,
+necesitaría mirar tres veces en la tabla y combinar los colores RGB
+resultantes (tendría tres tablas precalculadas con valores desplazados
+para acelerar este proceso).
+<p>
+Nota interesante: algunas tarjetas SVGA (incluyendo mi Matrox) tienen
+una característica oculta que permite programar los registros de la
+paleta incluso en modos truecolor, para alterar los valores producidos
+por el DAC truecolor. Esto está pensado para utilidades que ajustan los
+brillos de la pantalla o su balance de color, pero cargando una paleta
+apropiada ¡podría visualizar una imagen de 24 bits directamente en el
+formato 5.3 de color+luz! Realmente saber esto no es algo útil, porque
+no lo soportan muchas tarjetas y no hay un modo estándar para usar esta
+característica, pero creo que es muy guay :-)
+<p>
+El problema de dibujar un mapa de luz es que hay que hacerlo todo el
+tiempo, por cada pixel de la pantalla. Este procedimiento estándar
+además limita la iluminación de un pixel a un color entre negro y
+el color original, pero no más brillante: exáctamente así trabaja el
+mundo real, pero tiende a enfadar a los artistas porque significa que
+deben dibujar todo excesivamente brillante, y no pueden predecir cómo
+se verá hasta que vean el juego en acción, con un nivel ambiente mucho
+más oscuro. Una manera para evitar esto sería dibujar las imágenes tal
+y como deberían verse normalmente, y entonces añadir luz donde las cosas
+son particularmente brillantes, al contrario del procedimiento habitual
+de quitar luz donde las cosas son oscuras. Esto le permitiría dibujar los
+efectos de iluminación diréctamente en el framebuffer principal, y sólo
+donde las cosas estén ocurriendo (ej: alrededor de las explosiones),
+en vez de sobre toda la pantalla, pero si no es muy cuidadoso podría
+acabar todo con una pinta muy rara. Cuando ilumina las cosas por encima
+de su tono original (ej: multiplicando por un valor mayor que uno),
+se arriesga al desborde y tener que recortar el valor del color,
+y esto distorsionará su tono si alguno de sus componentes debe ser
+recortado antes que los demás hayan llegado a sus máximos. Amplificar
+lo que originalmente es una imagen oscura también podría fastidiar el
+contraste y tono del gráfico (ej: un artista podría dibujar detalles de
+sombras con pixels azul oscuro a pesar de que el objeto realmente fuese
+blanco o gris iluminado al máximo), y cuando las cosas se dibujan muy
+oscuras sufren errores de cuantización debido a la limitación de bits,
+lo que puede resultar malo cuando se añada más luz.
+<p>
+Pensamiento aleatorio: estoy seguro al 99% que esta idea es estúpida,
+pero tampoco me he parado mucho a pensarlo, así que por mencionarla no
+pasa nada. En lugar de añadir luz sobre el color original del pixel,
+¿no sería genial si pudiesemos hacer iluminación negro &lt;-&gt; color
+normal, y apesar de ello dibujar las luces directamente en el framebuffer
+principal evitando dibujarlas donde no ocurre nada? La solución obvia
+sería dibujar oscuridad en vez de luz, pero no es tan fácil determinar
+dónde debería hacer esto ("en todo lugar excepto donde haya una explosión"
+podría ser una forma difícil de dibujar, especialmente si hay muchas
+explosiones :-) Pero no puede comenzar desde negro y simplemente añadir
+luz en sitios al tun tun, porque su imagen inicial es negra, y no hay
+forma de saber a qué color debería colorearse. Tengo una vaga sensación de
+que podría haber una forma de realizar esto usando colores sustractivos
+(formato CMY) en vez del habitual RGB, pero por mi vida que soy incapaz
+de descubrir cómo. Seguramente me estoy volviendo loco...
+<p>
+Bien, olvidemos por un momento los mapas de iluminación de pixels
+y volvamos a la idea de tener objetos que iluminan cosas a nivel de
+sprite. Considere esto:
+<ul><li>
+Aproximación obvia: cuanto más alejado esté de la luz, estará iluminado
+con menor intensidad.
+<p><li>
+Aproximación igualmente obvia: repita el cálculo de distancia para cada
+esquina del sprite e interpole el resto del sprite mediante gouraud.
+<p><li>
+Problema: el efecto gouraud tendrá un efecto visual casi nulo, porque
+normalmente la anchura de un sprite es generalmente pequeña comparada
+con su distancia respecto a la luz.
+<p><li>
+Observación: mire a alguien que esté en una habitación oscura con
+una luz enfrente, y verá que su cara está iluminada pero su espalda
+oscura. Alguien que estuviese detrás en la misma habitación seguiría
+teniendo la cara iluminada y su espalda oscura, incluso si la cara
+de la segunda persona está más lejos de la luz que la espalda de la
+primera.
+<p><li>
+Explicación: esto ocurre porque la vida real es un entorno tridimensional
+y las personas no son imágenes planas de sprites :-)
+<p><li>
+Aplicación: calcule tanto la distancia como la dirección de la luz hacia
+el sprite. Use la distancia para calcular un nivel de luz general (cuanto
+más lejos más oscuro). Use la dirección para decidir qué esquinas están
+más cerca de la luz, y aplique toda la intensidad en éstas, y quizás la
+mitad o un cuarto de intensidad a las más lejanas (obviamente usando
+interpolación cuando la dirección de la luz no vaya hacia ninguna de
+las esquinas).
+<p><li>
+Implicación: el sprite parecerá tener volumen en una tercera dimensión,
+y obtendrá una bonita luz que se curva alrededor del objeto de forma
+uniforme a medida que el objeto y/ó la luz se muevan el uno alrededor
+del otro.
+<p><li>
+Complicación: este método aproxima los contornos de su sprite como algo
+a caballo entre una semiesfera y una pirámide. Funcionará brillantemente
+para los sprites con estas formas, y debería ser suficientemente bueno
+para gráficos de formas redondeadas, pero cuanto mayor sea su complejidad,
+más obvios serán los errores de render. No tengo idea de cómo se vería
+a un sprite humano de esta forma, ¡pero me encantaría verlo si alguien
+tiene interés en descubrirlo!
+</ul>
+<p>
+Pensamiento aleatorio #2: amo las paletas de colores. Incluso en modos
+truecolor puede ser útil guardar sus sprites en un formato de 256 colores,
+a pesar de que use diferentes paletas para cada sprite. Dibujar un
+juego completo en 256 colores es una árdua tarea, pero no hay problema
+en reducir un único sprite a una paleta, y permite usar múchos más
+efectos interesantes. Las paletas se pueden cambiar sobre la marcha
+con mayor facilidad que colorear pixels truecolor, y puede mover 256
+colores en una tabla precalculada y hacer un montón de cosas que serían
+prohibitivas con gráficos de 16 ó 24 bits. Los artistas aman el truecolor,
+pero los programadores inteligentes pueden hacer cosas más interesantes
+con paletas, y realmente no son tan restrictivas siempre cuando pueda
+usar más de una.
+<p>
+Usando dos gráficos de entrada, dos tablas precalculadas, y procesando
+todo de forma apropiada, creo que es posible evitar los errores del método
+de sombreado de sprites mencionado anteriormente, y obtener iluminación
+con bumpmapping 100% correcta, junto con luces especulares en tiempo real,
+¡por sólo el doble de tiempo necesario para dibujar sprites con iluminación normal!
+<p>
+El primer paso es dibujar su imágen de sprite, y al mismo tiempo hacer un
+mapa en grises (negro representando los puntos de menor altura, blanco los
+mayores). Ahora necesita una utilidad que convierta el mapa de grises en
+un bitmap gradiente. Medir el gradiente es bastante fácil: simplemente
+coja la diferencia entre la altura del pixel superior e inferior para
+obtener el gradiente vertical, y la diferencia entre el pixel izquierdo y
+derecho para el horizontal. Cómo codificar esta orientación en un pixel
+de 8 bits es un reto algo mayor :-) Puede usar 4 bits para los vectores
+X e Y, consiguiendo un rango de -8 &lt;-&gt; 7 para cada valor, pero
+creo que sería mejor convertir esto en coordenadas polares (esféricas)
+y guardar un ángulo (probablemente use 6 bits) y elevación (2 bits).
+<p>
+En el juego, cuando tenga que dibujar el sprite necesitará saber de
+dónde procede la luz, convirtiendo la información en el mismo formato
+empaquetado que usó para el bitmap gradiente. Estríctamente hablando,
+en un juego 2d sólo puede tener luces viniendo del mismo plano que el
+sprite, por lo que las elevaciones serían siempre nulas, pero creo que
+las cosas resultarían mejor si trucase las luces para que floten algo
+por encima del plano de sprites, para que la elevación se incremente a
+medida que el sprite se acerca a la luz.
+<p>
+Un pixel estará totalmente iluminado si la luz es perpendicular a éste,
+es decir, si la dirección de la luz es exáctamente opuesta al vector de
+orientación del pixel. A medida que la luz se aleja de esta dirección, se
+oscurece, exáctamente según el producto escalar de ambos vectores. El
+truco para hacer esto eficientemente en tiempo real, es empaquetando
+ambos vectores en un único byte, para poder precalcular una tabla de 64k
+que contuviese las combinaciones de las direcciones de luz y pixels,
+que nos diría cuánta luz incide en un punto cuando es iluminado desde
+una dirección particular. En otras palabras, podemos usar la función
+draw_lit_sprite() de Allegro, pasandole nuestro bitmap gradiente y la
+dirección de luz empaquetada como "color de luz", ¡y dibujará nuestro
+mapa de luz en grises para el sprite! Entonces podemos usar tablas
+precalculadas de iluminación más convencionales para colorear cada
+pixel del sprite de acuerdo con el mapa de luz, y dibujar el color con
+bumpmapping resultante en la pantalla. Obviamente la forma más rápida
+para implementar esto sería escribir una función especial que combinase
+ambas operaciones de tablas en una sola, evitando tener que almacenar
+la imagen temporal del mapa de luz.
+<p>
+Con este esquema, podría añadir fácilmente luces especulares sin
+añadir código adicional en tiempo de ejecución.  Estas son los "puntos
+brillantes" que adornan casi todos los objetos del mundo real, aunque
+son más pronunciados en superficies metálicas. Ocurren cuando la luz es
+reflejada directamente desde la superficie hasta su ojo, en vez de ser
+absorvida y reflejada en todas direcciones por igual como ocurriría con
+una superficie poco reflectante.
+Al color de la luz no le afecta la tonalidad de la superficie que la
+refleja, por lo que casi siempre son blancas. No ocurren en el mismo sitio
+que las luces mas brillantes (es decir: donde cae perpendicularmente
+sobre la superficie), sino donde la superficie refleja la luz hacia su
+ojo, es decir, cuando el ángulo entre la superficie que está mirando y
+la normal de ésta es igual al ángulo entre la dircción de la luz y la
+normal de la superficie. Los brillos especulares tienen un ángulo de
+reflexión más agudo que las luces difusas, por lo que sólo afectan unos
+pocos pixels en un lugar determinado, pero al variar éste ángulo y el
+brillo de la luz puede conseguir convincentes efectos en muchas texturas
+diferentes y tipos de materiales (si tiene una copia del 3DS, juegue un
+poco con los parámetros de luz especular en el editor de materiales para
+tener una idea de cómo funciona esto).
+<p>
+Dado que las luces especulares aparecen con diferentes ángulos a los de
+la luz normal, no pueden ser almacenadas en los mismos bits que el color
+de luz principal. Pero como son tan detalladas y definidas, no requieren
+un gradiente tan suave. Creo que podría almacenar adecuadamente el nivel
+de luz combinado en un único byte, usando 6 bits para el nivel de luz
+difusa y 2 bits para la intensidad especular. El código que muestra un
+objeto con bumpmapping seguiría sin ser modificado, sólo tendría que usar
+tablas precalculadas diferentes. En lugar de producir un nivel de gris
+de 8 bits, la tabla usada para combinar los dos vectores de dirección
+realizaría dos cálculos individuales (no necesita conocer la dirección de
+la vista, porque en un juego 2d ésta está siempre encima del sprite), y
+produciría un valor de luz combinada 6.2. La tabla de iluminación entonces
+usaría los 6 bits menores de este color para colorear el pixel del prite,
+y añadir algo de blanco al resultado según los 2 bits de mayor peso del
+color empaquetado. Resultado: luces especulares en tiempo real "gratis"...
+<p>
+Variando las dos tablas descritas anteriormente, sospecho que son posibles
+muchos efectos interesantes, como por ejemplo una variante del clásico
+efecto 3d cromado. Este funciona al aplicar una textura de plasma con
+las coordenadas u/v calculadas a partir de la normal transformada del
+polígono, pero estoy seguro de que se podría conseguir algo muy similar
+en 2d combinando un mapa de alturas (heightfield) y un vector de dirección
+con tablas precalculadas adecuadas.
+
+
+</body>
+</html>

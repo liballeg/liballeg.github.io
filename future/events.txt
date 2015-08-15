@@ -1,0 +1,91 @@
+# date: 2003 - 03 - 04
+# This file documents the events API which is now considered
+# finalised for milestone 1.
+
+
+Allegro 5 API: Events
+
+Status: Finalised for milestone 1 around 2003-01-10.
+	Timestamps changed to unsigned long & milliseconds, 2003-03-04.
+
+
+
+Overview:
+
+   An "event" is a thing that happens at some instant in time.  The
+   fact that this event occurred is captured in a piece of data, known
+   also as an "event".  In the documentation we sometimes use "event
+   packet" for the latter meaning.  The API uses "event" exclusively,
+   for brevity.
+
+   Event packets can be created by some certain types of objects,
+   collectively known as "event sources", and then placed into "event
+   queues", in chronological order.  The user can take event packets
+   out of event queues, also in chronological order, and examine them.
+   When the user no longer needs the event packet, the event packet
+   can be "released" and the memory it uses will be reclaimed.
+
+   Figure: A simplified view
+
+      event source 1 \
+                       \
+      event source 2 ---->--- event queue ----->---- user
+                       /
+      event source 3 /
+
+                   Event packets          The user takes event
+                   are generated          packets out of the
+                   and placed into        queue, examines them,
+                   event queues.          then releases them.
+
+
+
+- Type: AL_EVENT
+
+   An AL_EVENT is a union of all builtin event packets.  In C syntax
+   it looks like this:
+
+      typedef union AL_EVENT AL_EVENT;
+
+      union AL_EVENT
+      {
+         unsigned int type;
+         struct
+         {
+            unsigned int type;
+            AL_EVENT *source;
+            unsigned long timestamp;
+         } any;
+         ...
+      };
+
+   Note: All fields are semantically read-only.  Do not modify
+   anything inside event packets.
+
+   Explanation of fields:
+
+      type      -- the type of event that occurred
+
+      source    -- which event source this event is due to
+
+      timestamp -- when the event occurred, measured in milliseconds
+                   relative to some arbitrary reference point.  The
+                   value is comparable with values returned by
+                   al_current_time().
+
+   Example:
+
+      Say E is an event packet.  You can find out:
+
+      - its type:
+
+         e.type
+         e.any.type  (equivalent)
+
+      - which event source is responsible for it:
+
+         e.any.source
+
+      - at what time the event occurred:
+
+         e->any.timestamp

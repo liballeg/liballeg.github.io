@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+   <head>
+      <title>Uploading files to Simtel</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+      <meta name="author" content="Shawn Hargreaves">
+   </head>
+   <body text="black" bgcolor="white" link="#0000EF" vlink="#51188E" alink="#FF0000">
+
+
+<h2><font color="#3366FF">Uploading files to SimTel</font></h2><hr>
+
+If you've written an Allegro add-on package, it would be a good idea to 
+upload it to the Allegro directory on SimTel, so that it can be mirrored 
+around the world, included on CD-ROM distributions, and will still be easily 
+accessible even if you move your homepage.
+<p>
+
+First things first: make absolutely sure that you aren't using any 
+copyrighted materials, because lawsuits can be nasty! And do all the obvious 
+things like including documentation, installation instructions, contact 
+information, etc.
+<p>
+
+Secondly, you need to package your project into a nice archive format. This 
+should be a zip file (not self-extracting), and should include a version 
+number in the filename, so that people can easily tell when you upload a new 
+release. If you have separate archives for source and binaries, you should 
+use the djgpp convention of a 'b' suffix for the binary files, 's' for the 
+sources, and 'd' for documentation.
+<p>
+
+Make sure that your archive will unzip cleanly on both LFN and non-LFN 
+systems. This means using only 8.3 format lowercase filenames. Don't use 
+pkzip, because it will convert all the names to uppercase, which looks very 
+ugly if you install it with LFN enabled.
+<p>
+
+You should include a directory structure in your archive, so that if people 
+just copy the entire contents of the SimTel djgpp tree into their djgpp 
+directory and then run "unzip *.zip", it will install everything into a 
+sensible place. If you want to fit in with the djgpp tree structure, this 
+means that your package should install into a contrib/mypackage/ directory. 
+If you think that your package might someday be used with different 
+compilers, eg. Windows or Linux, you may prefer to place it in a 
+subdirectory of the Allegro tree instead, for example allegro/mypackage/.
+<p>
+
+Your package should include a manifest file, which has the same name as the 
+zip but with a .mft extension, and contains a list of all the files in the 
+archive. This should install into the djgpp manifest directory, or for 
+packages that need to work on other platforms as well, the root of your 
+package directory. The manifest file can be automatically generated from the 
+zip itself, for example the Allegro zipup.sh file uses:
+
+<pre>
+   echo "Generating allegro.mft..."
+   unzip -Z1 $name.zip | sort &gt; allegro/allegro.mft
+   echo "allegro/allegro.mft" &gt;&gt; allegro/allegro.mft
+   zip -9 $name.zip allegro/allegro.mft
+</pre><p>
+
+Having prepared your zip file, fire up your favorite ftp client, go to 
+ftp.delorie.com, log in as anonymous with your email address as the 
+password, change to the incoming directory, and upload your file. Make sure 
+that you've selected a binary mode transfer, and check the file sizes 
+afterwards to check that the whole thing was transferred successfully.
+<p>
+
+Finally, send an email to dj@delorie.com telling him the name of the file 
+you just uploaded, and ask him to move it across to the Allegro directory on 
+SimTel. If this is a replacement for a previous version of the same package, 
+tell him the names of any old files that can now be deleted, and give him a 
+nice short (half-line) description of the package to go in the SimTel index.
+<p>
+
+Further reading: see the
+<a href="http://www.delorie.com/howto/djgpp/simtel-upload.html">Uploading 
+DJGPP files to Simtel.NET</a> HOWTO by DJ Delorie himself.
+
+</body>
+</html>

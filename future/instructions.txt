@@ -1,0 +1,46 @@
+# date: 2003 - 01 - 18
+# This document is intented for people who want to upload files
+# to Allegro's future directory, because they are maintainers,
+# developers, or have the write access and want to correct something.
+# Please read it if you are interested in one of these tasks.
+
+All the developers/admins listed at Allegro's SourceForge
+page have write access to the directory future of Allegro's
+web page. This directory contains a few script files and
+all the proposals usually sent to the Alleg5 mailing list
+(http://alleg.sourceforge.net/maillist.html). The proposals don't
+need any specific format, you can just upload the files to the
+directory and they will appear.
+
+However, text files can have a header marked with '#' characters,
+and these lines will be shown in info.html, which is nicer to read
+with a web browser. If one of the header lines is in the format
+'# date: textstring', the textstring will be extracted and used
+as sorting instead of the file's modification time. Why? Well,
+these files are mirrored to http://sunsite.dk/allegro/, and their
+modification time can't be the same as in SF's server, so this
+special tag helps to maintain a coherent timestamp across mirrors.
+Please use the string format year - month - date, where year is a
+four digit number, and month and date are two digit numbers.
+
+Uploading files to the server is easy as copying a file (through
+a network, using difficult to break ciphers). If you are using a
+Unix environment and have configured it with a private/public key,
+you can upload files with:
+
+  scp doc developer@alleg.sourceforge.net:/home/groups/a/al/alleg/htdocs/future
+
+Or you can login to your shell account, and make 'future' a symbolic
+link to the directory, so it becomes easier to type:
+
+  scp doc developer@alleg.sourceforge.net:future
+
+Finally, if you fill excited about these documents and don't have
+write access to SourceForge's server, please send your proposal to
+the mailing list mentioned above, and if it looks good, one of the
+admins will upload it.
+
+If something above sounds wrong, or the scripts start blurbing
+BSODs, contact Allegro admins, if possible through one of Allegro's
+mailing lists.
+

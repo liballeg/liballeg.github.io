@@ -1,0 +1,444 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >Configuration files</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta name="generator" content="pandoc"
+     /><script type="text/javascript" src="autosuggest.js"></script>
+<script type="text/javascript" src="search_index.js"></script>
+<link rel="stylesheet" href="pandoc.css" type="text/css" media="all" />
+</head
+  ><body
+  ><table class="white">
+<tr>
+<td valign="top" class="sidebar">
+
+<div class="sidebar">
+<ul
+><li
+  ><a href="index.html"
+    ><strong
+      >Contents</strong
+      ></a
+    ></li
+  ><li
+  ><a href="config.html"
+    >Configuration files</a
+    ></li
+  ><li
+  ><a href="display.html"
+    >Display</a
+    ></li
+  ><li
+  ><a href="events.html"
+    >Events</a
+    ></li
+  ><li
+  ><a href="file.html"
+    >File I/O</a
+    ></li
+  ><li
+  ><a href="fshook.html"
+    >Filesystem</a
+    ></li
+  ><li
+  ><a href="fixed.html"
+    >Fixed</a
+    ></li
+  ><li
+  ><a href="graphics.html"
+    >Graphics</a
+    ></li
+  ><li
+  ><a href="joystick.html"
+    >Joystick</a
+    ></li
+  ><li
+  ><a href="keyboard.html"
+    >Keyboard</a
+    ></li
+  ><li
+  ><a href="memory.html"
+    >Memory</a
+    ></li
+  ><li
+  ><a href="misc.html"
+    >Miscellaneous</a
+    ></li
+  ><li
+  ><a href="mouse.html"
+    >Mouse</a
+    ></li
+  ><li
+  ><a href="opengl.html"
+    >OpenGL</a
+    ></li
+  ><li
+  ><a href="path.html"
+    >Path</a
+    ></li
+  ><li
+  ><a href="platform.html"
+    >Platform-specific</a
+    ></li
+  ><li
+  ><a href="state.html"
+    >State</a
+    ></li
+  ><li
+  ><a href="system.html"
+    >System</a
+    ></li
+  ><li
+  ><a href="threads.html"
+    >Threads</a
+    ></li
+  ><li
+  ><a href="time.html"
+    >Time</a
+    ></li
+  ><li
+  ><a href="timer.html"
+    >Timer</a
+    ></li
+  ><li
+  ><a href="utf8.html"
+    >UTF-8</a
+    ></li
+  ><li
+  ><a href="index.html#addons"
+    ><strong
+      >Addons</strong
+      ></a
+    ></li
+  ><li
+  ><a href="audio.html"
+    >Audio addon</a
+    ></li
+  ><li
+  ><a href="acodec.html"
+    >Audio codecs</a
+    ></li
+  ><li
+  ><a href="color.html"
+    >Color addon</a
+    ></li
+  ><li
+  ><a href="font.html"
+    >Font addons</a
+    ></li
+  ><li
+  ><a href="image.html"
+    >Image I/O addon</a
+    ></li
+  ><li
+  ><a href="native_dialog.html"
+    >Native dialogs addon</a
+    ></li
+  ><li
+  ><a href="physfs.html"
+    >PhysicsFS addon</a
+    ></li
+  ><li
+  ><a href="primitives.html"
+    >Primitives addon</a
+    ></li
+  ></ul
+><!-- keep blank line for correct HTML -->
+</div>
+
+<div class="searchbox">
+<script type="text/javascript">
+function onSubmit(form) {
+    for (i = 0; i < search_index.length; i++) {
+        if (search_index[i] == form.q.value) {
+            form.action = search_urls[i];
+            form.method = "POST";
+            return true;
+        }
+    }
+    // Search-term is not in the index.
+    // We could add an URL here which does a fulltext search - for
+    // now we simply do nothing by return false to the form.
+    return false;
+}
+</script>
+<form id="search" action="search.py" onsubmit="return onSubmit(this);"><input type="text" name="q" id="q" size="15" autocomplete="off" /><br /> <input type="submit" value="Search" /><script type="text/javascript">actb = new actb("q", search_index);</script>
+</form>
+</div>
+
+
+</td>
+<td class="content">
+
+
+<h1 class="title"
+    >Configuration files</h1
+    ><div id="toc"
+    ><ul
+      ><li
+	><a href="#allegro_config" id="TOC-allegro_config"
+	  >ALLEGRO_CONFIG</a
+	  ></li
+	><li
+	><a href="#al_add_config_comment" id="TOC-al_add_config_comment"
+	  >al_add_config_comment</a
+	  ></li
+	><li
+	><a href="#al_add_config_section" id="TOC-al_add_config_section"
+	  >al_add_config_section</a
+	  ></li
+	><li
+	><a href="#al_create_config" id="TOC-al_create_config"
+	  >al_create_config</a
+	  ></li
+	><li
+	><a href="#al_destroy_config" id="TOC-al_destroy_config"
+	  >al_destroy_config</a
+	  ></li
+	><li
+	><a href="#al_get_config_value" id="TOC-al_get_config_value"
+	  >al_get_config_value</a
+	  ></li
+	><li
+	><a href="#al_merge_config" id="TOC-al_merge_config"
+	  >al_merge_config</a
+	  ></li
+	><li
+	><a href="#al_merge_config_into" id="TOC-al_merge_config_into"
+	  >al_merge_config_into</a
+	  ></li
+	><li
+	><a href="#al_load_config_file" id="TOC-al_load_config_file"
+	  >al_load_config_file</a
+	  ></li
+	><li
+	><a href="#al_set_config_value" id="TOC-al_set_config_value"
+	  >al_set_config_value</a
+	  ></li
+	><li
+	><a href="#al_save_config_file" id="TOC-al_save_config_file"
+	  >al_save_config_file</a
+	  ></li
+	><li
+	><a href="#al_get_first_config_section" id="TOC-al_get_first_config_section"
+	  >al_get_first_config_section</a
+	  ></li
+	><li
+	><a href="#al_get_next_config_section" id="TOC-al_get_next_config_section"
+	  >al_get_next_config_section</a
+	  ></li
+	><li
+	><a href="#al_get_first_config_entry" id="TOC-al_get_first_config_entry"
+	  >al_get_first_config_entry</a
+	  ></li
+	><li
+	><a href="#al_get_next_config_entry" id="TOC-al_get_next_config_entry"
+	  >al_get_next_config_entry</a
+	  ></li
+	></ul
+      ></div
+    ><h1 id="allegro_config"
+    ><a href="#TOC-allegro_config"
+      >ALLEGRO_CONFIG</a
+      ></h1
+    ><pre
+    ><code
+      >typedef struct ALLEGRO_CONFIG ALLEGRO_CONFIG;
+</code
+      ></pre
+    ><h1 id="al_add_config_comment"
+    ><a href="#TOC-al_add_config_comment"
+      >al_add_config_comment</a
+      ></h1
+    ><pre
+    ><code
+      >void al_add_config_comment(ALLEGRO_CONFIG *config,
+   const char *section, const char *comment)
+</code
+      ></pre
+    ><p
+    >Add a comment in a section of a configuration. If the section doesn't yet exist, it will be created. The section can be NULL or &quot;&quot; for the global section.</p
+    ><p
+    >The comment may or may not begin with a hash character. Any newlines in the comment string will be replaced by space characters.</p
+    ><h1 id="al_add_config_section"
+    ><a href="#TOC-al_add_config_section"
+      >al_add_config_section</a
+      ></h1
+    ><pre
+    ><code
+      >void al_add_config_section(ALLEGRO_CONFIG *config, const char *name)
+</code
+      ></pre
+    ><p
+    >Add a section to a configuration structure.</p
+    ><h1 id="al_create_config"
+    ><a href="#TOC-al_create_config"
+      >al_create_config</a
+      ></h1
+    ><pre
+    ><code
+      >ALLEGRO_CONFIG *al_create_config(void)
+</code
+      ></pre
+    ><p
+    >Create an empty configuration structure.</p
+    ><h1 id="al_destroy_config"
+    ><a href="#TOC-al_destroy_config"
+      >al_destroy_config</a
+      ></h1
+    ><pre
+    ><code
+      >void al_destroy_config(ALLEGRO_CONFIG *config)
+</code
+      ></pre
+    ><p
+    >Free the resources used by a configuration structure. Does nothing if passed NULL.</p
+    ><h1 id="al_get_config_value"
+    ><a href="#TOC-al_get_config_value"
+      >al_get_config_value</a
+      ></h1
+    ><pre
+    ><code
+      >const char *al_get_config_value(const ALLEGRO_CONFIG *config,
+   const char *section, const char *key)
+</code
+      ></pre
+    ><p
+    >Gets a pointer to an internal character buffer that will only remain valid as long as the ALLEGRO_CONFIG structure is not destroyed. Copy the value if you need a copy. The section can be NULL or &quot;&quot; for the global section. Returns NULL if the section or key do not exist.</p
+    ><h1 id="al_merge_config"
+    ><a href="#TOC-al_merge_config"
+      >al_merge_config</a
+      ></h1
+    ><pre
+    ><code
+      >ALLEGRO_CONFIG *al_merge_config(const ALLEGRO_CONFIG *cfg1,
+    const ALLEGRO_CONFIG *cfg2)
+</code
+      ></pre
+    ><p
+    >Merge two configuration structures, and return the result as a new configuration. Values in configuration 'cfg2' override those in 'cfg1'. Neither of the input configuration structures are modified. Comments from 'cfg2' are not retained.</p
+    ><h1 id="al_merge_config_into"
+    ><a href="#TOC-al_merge_config_into"
+      >al_merge_config_into</a
+      ></h1
+    ><pre
+    ><code
+      >void al_merge_config_into(ALLEGRO_CONFIG *master, const ALLEGRO_CONFIG *add)
+</code
+      ></pre
+    ><p
+    >Merge one configuration structure into another. Values in configuration 'add' override those in 'master'. 'master' is modified. Comments from 'add' are not retained.</p
+    ><h1 id="al_load_config_file"
+    ><a href="#TOC-al_load_config_file"
+      >al_load_config_file</a
+      ></h1
+    ><pre
+    ><code
+      >ALLEGRO_CONFIG *al_load_config_file(const char *filename)
+</code
+      ></pre
+    ><p
+    >Read a configuration file from disk. Returns NULL on error.</p
+    ><h1 id="al_set_config_value"
+    ><a href="#TOC-al_set_config_value"
+      >al_set_config_value</a
+      ></h1
+    ><pre
+    ><code
+      >void al_set_config_value(ALLEGRO_CONFIG *config,
+   const char *section, const char *key, const char *value)
+</code
+      ></pre
+    ><p
+    >Set a value in a section of a configuration. If the section doesn't yet exist, it will be created. If a value already existed for the given key, it will be overwritten. The section can be NULL or &quot;&quot; for the global section.</p
+    ><p
+    >For consistency with the on-disk format of config files, any leading and trailing whitespace will be stripped from the value. If you have significant whitespace you wish to preserve, you should add your own quote characters and remove them when reading the values back in.</p
+    ><h1 id="al_save_config_file"
+    ><a href="#TOC-al_save_config_file"
+      >al_save_config_file</a
+      ></h1
+    ><pre
+    ><code
+      >bool al_save_config_file(const ALLEGRO_CONFIG *config, const char *filename)
+</code
+      ></pre
+    ><p
+    >Write out a configuration file to disk. Returns true on success, false on error.</p
+    ><h1 id="al_get_first_config_section"
+    ><a href="#TOC-al_get_first_config_section"
+      >al_get_first_config_section</a
+      ></h1
+    ><pre
+    ><code
+      >char const *al_get_first_config_section(ALLEGRO_CONFIG const *config,
+   void **iterator)
+</code
+      ></pre
+    ><p
+    >Returns the name of the first section in the given config file. Usually this will return an empty string for the global section. The <code
+      >iterator</code
+      > parameter will receive an opaque iterator which is used by <a href="config.html#al_get_next_config_section"
+      >al_get_next_config_section</a
+      > to iterate over the remaining sections.</p
+    ><p
+    >Note: The returned string and the iterator are only valid as long as no change is made to the passed ALLEGRO_CONFIG.</p
+    ><h1 id="al_get_next_config_section"
+    ><a href="#TOC-al_get_next_config_section"
+      >al_get_next_config_section</a
+      ></h1
+    ><pre
+    ><code
+      >char const *al_get_next_config_section(void **iterator)
+</code
+      ></pre
+    ><p
+    >Returns the name of the next section in the given config file. The <code
+      >iterator</code
+      > must have been obtained with <a href="config.html#al_get_first_config_section"
+      >al_get_first_config_section</a
+      > first.</p
+    ><h1 id="al_get_first_config_entry"
+    ><a href="#TOC-al_get_first_config_entry"
+      >al_get_first_config_entry</a
+      ></h1
+    ><pre
+    ><code
+      >char const *al_get_first_config_entry(ALLEGRO_CONFIG const *config,
+   char const *section, void **iterator)
+</code
+      ></pre
+    ><p
+    >Returns the name of the first key in the given section in the given config. The <code
+      >iterator</code
+      > works like the one for <a href="config.html#al_get_first_config_section"
+      >al_get_first_config_section</a
+      >.</p
+    ><p
+    >Note: The returned string and the iterator are only valid as long as no change is made to the passed ALLEGRO_CONFIG.</p
+    ><h1 id="al_get_next_config_entry"
+    ><a href="#TOC-al_get_next_config_entry"
+      >al_get_next_config_entry</a
+      ></h1
+    ><pre
+    ><code
+      >char const *al_get_next_config_entry(void **iterator)
+</code
+      ></pre
+    ><p
+    >Returns the next key for the iterator obtained by <a href="config.html#al_get_first_config_entry"
+      >al_get_first_config_entry</a
+      >;</p
+    ></td>
+</tr>
+</table>
+
+
+<p>
+Last updated: 2009-09-13 09:23:18 UTC
+</p>
+</body
+  ></html
+>
+

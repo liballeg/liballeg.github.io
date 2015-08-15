@@ -1,0 +1,82 @@
+# date: 2002 - 07 - 12
+# Written by Shawn Hargreaves
+
+> Yes.  There are probably lots of ideas in the archive, but for now I'm
+> thinking of the simple model of a chain of filters connected together,
+> terminated by an "I/O unit".  The I/O unit is the part that actually
+> reads from/writes to disk/mem/whatever.  Filters do encryption,
+> compression, etc.
+
+That's pretty much how I did this at work. Here's a few bits of 
+advice based on stuff I got wrong the first time I tried it :-)
+
+Don't make too clear a distinction between filters and things that
+do actual IO. I initially had a different structure for the two,
+but it turned out that a lot of the higher level plugs need to
+change all sorts of behaviours in weird ways, so it worked much
+better to have all the objects look identical to the user, with
+each one having a full set of methods and being in total control
+of whether it passes some calls onto the module below it in the 
+chain, does real physical IO, or does whatever sort of weird
+mangling before passing on the request.
+
+I also found it useful to split reading and writing into two
+completely different sets of objects, as a lot of my tasks ended
+up being one-way only, and even when they do support both
+directions, there was surprisingly little code that could be
+shared between the two versions.
+
+Here's a few of the things I ended up wanting to do with the 
+system:
+
+- Compression.
+
+- Archiving. The caller requests a file from the archive module,
+which creates a lower level module to read the physical file,
+reads the header, seeks to the correct part of it, and pretends
+that the archive member is a single file. It keeps the lower
+level worker file active between multiple calls, so if you
+read many entries in a row from the same archive it only needs 
+to open the file and read the table of contents once, and if
+you read them in order, it can avoid any seeks as well. This
+module sometimes also creates temporary decompression filters:
+depending on what it finds in the archive header these might
+go right above the physical file but below the archive controller
+(if the whole thing is compressed) or as the top level filter
+above the archive controller if only individual members are
+compressed. That means it needs to be possible for modules
+to create new filters either above or below them in the chain,
+and rebuild the chain on the fly - my initial version didn't
+support that and it was a real pain to get working!
+
+- Copy mode loaders: on Xbox these check if the file is on
+the hard drive, read it from there if found, otherwise it
+reads from the DVD and creates a copy on the hard disk at
+the same time as it is being read (so the next access to
+this file can avoid the slow DVD). Basically just a controller
+that chains to various combinations of loaders and savers
+on different devices.
+
+- Checksum loaders and savers. The saver automatically adds
+a checksum to the start of the data, and the loader tests
+it and returns an error from the file open call if you try 
+to read a file with a bad checksum through it. Because these
+need the entire file to be available for the checksum
+calculation, they can't be streamed, so they are built on
+top of the cache filter:
+
+- Memory caching. When saving, these buffer up all the data
+in memory and only actually pass it on to the lower level disk
+access filter when you close the file. When loading, they
+read the entire file into memory when you open it, then the
+read calls can return data from this buffer. We used this a
+lot to speed up bits of code that needed to re-read the same
+parameter files: rather than a complex restructuring of the
+code to only load the file once, we could load it into the
+memory cache, then read it multiple times very quickly.
+
+- Access to weird devices, like Xbox memory units.
+
+I reckon if you can design a system that would be capable of
+supporting modules for all the above uses, it will be able
+to deal with anything people are likely to throw at it!

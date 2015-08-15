@@ -1,0 +1,227 @@
+# date: 2002 - 12 - 28
+# Draft 2 for 'scanline shaders' to be used with the polygon-3D
+# functions.
+# Written by Rebecka Svanberg <vatten@users.sourceforge.net>
+# Proposed for implementation into the 5 branch or later.
+
+This would be the API exposed to most users:
+
+   al_shader_begin( al_shader*, size_t sizeof_polygon_edge );
+   al_shader_push_data( al_shader*, void* );
+   al_shader_push_func( al_shader*, AL_SCANLINE_SHADER );
+   al_shader_push_init( al_shader*, AL_EDGE_FILLER );
+   AL_SCANLINE_SHADER al_shader_suggest_func( BITMAP* scr, char* function_name, int flags );
+   al_shader_end( al_shader* );
+
+   ...
+
+   al_polygon3d( BITMAP*, {the actual coordinates}, al_shader* );
+
+And this would be exposed for those users that wanted it:
+
+   typedef void ** (*AL_SCANLINE_SHADER) (POLYGON_EDGE*, void** );
+   typedef void ** (*AL_EDGE_FILLER) (POLYGON_EDGE*, AL_CONST V3D_f *v1, AL_CONST V3D_f *v2, void** );
+   typedef struct POLYGON_SEGMENT{ ... };
+   typedef struct POLYGON_EDGE{ ... };
+   typedef struct POLYGON_INFO{ ... };
+
+The 'al_shader' has two public members: s.output and
+s.polygon. s.output is the address of the scanline currently
+processed. s.polygon is the POLYGON_INFO of the current polygon.
+
+The main idea is to mimic the 'vertex/pixel - shaders' in mordern 3D
+rendering hardware, but in software since allegro does not support
+hardware acceleration. The 'AL_SCANLINE_SHADER' that is pushed
+onto the 'al_shader' object is basically just what allegro calls a
+'SCANLINE_FILLER' today, but with slightly altered arguments:
+
+This is how the 'SCANLINE_FILLER' looks today:
+
+   void SCANLINE_FILLER(unsigned long addr, int w, POLYGON_SEGMENT *info);
+   
+I would like this altered into the more cryptical:
+
+   void ** SCANLINE_FILLER(POLYGON_EDGE*, void** );
+   
+where 'unsigned long addr' and 'int w' has been moved into the
+'POLYGON_SEGMENT' struct out of practical reasons. The function
+then takes a 'void**' pointer. This is a pointer into an array that
+'al_shader' keeps internally (an array containing the data you
+provided with 'al_shader_push_data').
+Think of this array as optional arguments to the 'shader functions'.
+The function then returnes the address to the next 'optional
+argument' just after the last one it used.
+
+Of corse allegro would provide the user with a set of such 'shader
+functions' to use.
+
+Example of some user code that simply maps a texture onto a polygon:
+
+   static al_shader s;
+   static int u[MAX_SCANLINE];
+   static int v[MAX_SCANLINE];
+
+   /* Start to setup the shader */
+   al_shader_begin(&s);
+   /*
+    * Push a function that initiates things that has
+    * to be initiated at the beginning of the polygon.
+    * The suggested function can either be a dummy,
+    * or do what _fill_3d_edge_structure_f currently do.
+    */
+   al_shader_push_data( &s, cliprect );
+   al_shader_push_init( &s, InitPoly3d );
+   /*
+    * Push a function that writes two 'scanlines' of projected
+    * texture coordinates into 'u' and 'v'.
+    */
+   al_shader_push_data( &s, &u );
+   al_shader_push_data( &s, &v );
+   al_shader_push_func( &s, MapUVFunc );
+   /*
+    * Push a function that takes two 'scanlines' of projected
+    * texture coordinates (u and v). Then takes the color at
+    * these coordinates from the bitmap 'texture' and produces
+    * yet another scanline.
+    * Note the special member 'output' inside the shader structure,
+    * that holds a pointer to the beginning of the scanline where
+    * we are supposed to draw our polygon in the end.
+    */
+   al_shader_push_data( &s, &u );
+   al_shader_push_data( &s, &v );
+   al_shader_push_data( &s, &texture );
+   al_shader_push_data( &s, &s.output );
+   al_shader_push_func( &s, PlotUVFunc );
+   /* We are done with this shader */
+   al_shader_end(&s);
+
+   ...
+   /* Render some polygon with our predefined shader. */
+   al_polygon( screen, some coordinates, &s );
+
+So why use this approach, when it would be so much simpler to just
+call 'al_poly3d( screen, some coords, texture, MAP_UV_TEXTURE )'?
+
+Because it gives a greater flexibility, and in some cases it might
+even become slightly faster (but not usually).  Imagine that you
+no longer wanted to map a *bitmap* as the texture...  You want
+to map some mathematical noise onto your polygone...  With the
+normal API you would have to aquire a bitmap, draw some noise onto
+it, and then use it as a texture.  Here you would instead write a
+'noise function' that calculates the apropriate noise for a certain
+texture coordinate, and then replace 'PlotUVFunc' with it.
+
+If you would like bumpmapping, you could add a function that uses the
+texture coordinates to fetch 'bump-info' from a bumpmap instead. Then
+use this new 'bump-info' to light your polygon...
+
+What about a 'voxelmapped' or 'heightmapped' polygon? It will not
+be fast, and it will be hard to write, but it will be possible. Any
+application will be able to provide their own odd effects to the
+allegro polygon rendering engine, including things that no-one has
+thought of yet!
+
+
+Speed impact, and the main idea: (sorry if this is a bit of 'what
+every beginner should now about graphcis', I am pretty sure that
+you guys allready know these things... I just found it hard to
+present any other way)
+
+   When you draw upon a bitmap, be it with a polygon-drawing function,
+   an image or some Gui, then this bitmap will become loaded into the
+   cache-memory of the CPU. This is an expensive operation, because
+   reading from main memory is expensive unless you have a very old
+   machine where the CPU is slower than memory. Once you have got some
+   memory inside the cache however, you can access it for allmost no
+   cost. Unfortunately, when you draw upon a bitmap using a traditional
+   approach, you will just load this bitmap into cache, and then forget
+   about it - thereby wasting a lot of cache that could have been used
+   to hold more important data.
+   
+   The traditional approach when drawing a polygone is to make
+   lot's of expensive calculations for the edges of the polygone,
+   for each scanline.  Then it will call a 'scanline filler', or an
+   'inner loop' which is a function that... well, fills the screen
+   between the edges of the polygon at the current scanline.
+   (That the edges are quite expensive is not such a big problem,
+   since if you have got approximately y scanlines, you will have
+   something like y^2 pixels, so the CPU will spend most time inside
+   your 'inner loop' anyway.)
+
+   A scanline is at most SCREENSIZE*sizeof(PIXEL) bytes. If you have
+   a screen resolution of 1024*1024 (which is too large for a decent
+   software renderer anyway) and 32 bit color, your scanlines will be
+   4K each. Fitting at least 3 such scanlines into your cache should
+   not be a problem on most machines.
+   
+   Therefore, the first time some function tampers with these scanlines,
+   they will cost alot of time. The second, third or 42'nd time these
+   scanlines are touched (whithout any other large data-structures
+   loaded into cache in the time between), they will cost noticeable
+   much less time.  On my AMD-K6II, the cost of accessing cached data
+   is about 6 times less than accessing main memory.
+   
+   I have done a few experiments with this approach and I can tell that
+   it is seldom as fast as the traditional approach, and only in a few
+   situations will it be faster.  If you divide the normal texturemapper
+   into a function that calculates texture coordinates, and one
+   that uses those coordinates to map a bitmap onto the scanline,
+   the resulting combination will be about 80-90% as fast as the
+   traditional approach (it will be slower) when usning 8-bit graphic.
+   It will perform slightly better when using 32-bit graphic (95%).
+   If you add a graud-shaded lightning step, an extra bumpmap and an
+   additional lightning step (a total of 5 steps), the speed decreases
+   down to about half the speed of a traditional texturemapping
+   (whithout any effects).  Dividing the lit texturemapper into a
+   texturemapper and an additional lightning step will decrease speed
+   to 90% of the traditional lit texturemapper, in 8-bit graphics, and
+   it will actually preform slightly better in 32-bit graphics (104%).
+
+   I believe that these initial experiments could have been refined
+   to gain better performance (these are only the results of about two
+   days of experiments).  All tests has been done in linux (X11) using
+   the performance-testing program 'test' that comes with allegro. I
+   have not bothered about screen profiling results, because generally
+   the traditional approach was slower in those cases (the shaders
+   was faster).  The percent-values I have given is the number the
+   profiling tests have given for the traditional divided with the
+   number for the shaders. A value of 100% thus means that there
+   is no difference in speed.  I have tested 8 bit, and 32 bit. The
+   shaders allways performed better in 32-bit than they did in 8 bit.
+   Screensize has been set to 320x200, because I couldn't force the
+   testprogram to use larger screens. A 320x200x8 screen will fit into
+   the cache of the machine where I ran most of the tests (AMD-K6II
+   350MHz cache=32K). Some additional tests have been done on a Dual
+   AMD-Athlon 1.5Ghz cache=256K.  The general impression has been
+   that the shaders do better when main memory is slow, CPU is fast,
+   and cache is small. In the cases where the entire screen has fitted
+   into the cache, the shaders was slower than the traditional approach.
+   The larger the screen has been, or the more memory has been acessed,
+   the better the shaders has performed. In a few cases the shaders
+   actually performed better than the traditional approach. Slow memory,
+   32-bit graphics, heavy general use of memory have been common in
+   these cases. X11 has rather slow screen acesss, and the shaders did
+   allways as good or better when drawing directly to the X11-screen.
+
+   Theoretically, it should never have to be slower than the traditional
+   approach, because nothing would prevent allegro from supporting a
+   'shader function' that did exactly the same as the 'scanline fillers'
+   do today... but providing a much greater flexibility for the one
+   that would not mind a slight decrease in preformance.
+   
+   To conclude: Altering the API to something like this, would allow a
+   much greater freedom to create addtional effects for a mapping. The
+   traditional behaviour would still be present, and would allso be
+   the preferred method as long as there is no interest in additional
+   effects.
+
+The 'AL_EDGE_FILLER' function, and the size argument to the shader
+exists to allow user supplied initialization of edges. This is
+needed to allow any kind of user specified shader functions, like
+perhaps reflection mappings. It takes more arguments than the shader
+function, but works otherwise the same.
+
+The function 'al_shader_suggest_func' exists to fetch the correct
+standard shader that provides the traditional functionality (and
+perhaps some non-traditional shaders as well), to be used with the
+kind of bitmap that we supply.

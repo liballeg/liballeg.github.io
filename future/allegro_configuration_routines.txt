@@ -1,0 +1,93 @@
+# date: 2002 - 09 - 06
+# Allegro configuration routines ramblings
+# written by Angelo Mottola, lillo at users dot sourceforge dot net.
+
+Dealing with strings as config keys has some advantages, but also many disadvantages.
+If we want to use the config routines for as many purposes as possible, it is necessary
+these to be fast. Also, having strings separated by / all over your sources isn't pretty and
+asks for troubles when it comes to debugging.
+Using integers as keys to the config routines is faster, looks (reads) better and people is
+already accustomed to it. To overcome troubles with this and to keep the routines as
+general purpose as possible, I've thought about the following structure layout:
+
+
+typedef struct AL_CONFIG_ENTRY
+{
+	AL_CONFIG_ENTRY *next;	/* Next element in linked list */
+	int key;					/* Key for this element */
+	char *name;				/* Key name, if any */
+	int type;					/* Key data type */
+	union {
+		int value;				/* Integer data */
+		double fvalue;			/* Floating point data */
+		void *ptr;				/* Pointer data */
+	} data;
+	void (*read_hook)(AL_CONFIG_ENTRY *entry);	/* On-read hook */
+	void (*write_hook)(AL_CONFIG_ENTRY *entry);	/* On-write hook */
+} AL_CONFIG_ENTRY;
+
+
+typedef struct AL_CONFIG
+{
+	struct AL_CONFIG **child;	/* Dynamic array of children */
+	char *name;				/* Configuration name */
+	int key_min;				/* Minimum key value accepted by this config */
+	int key_max;				/* Maximum key value accepted by this config */
+	AL_CONFIG_ENTRY **entry;	/* Hash table of stored entries */
+	void (*read_hook)(AL_CONFIG_ENTRY *entry);	/* On-read hook */
+	void (*write_hook)(AL_CONFIG_ENTRY *entry);	/* On-write hook */
+} AL_CONFIG;
+
+An AL_CONFIG has a range of keys; this means that it only accepts keys whose values
+and in that range. When accessing data, the user has to specify an AL_CONFIG on
+which to work; this can be the private Allegro root config as well as a sub config or a
+completely custom config. The data key is compared with the range of the specified
+config; if it matches, it looks for the key in the config hash table; if it doesn't match, it
+looks for the key in each of its child configs recursively. When (if) the key is found, if the
+specified key hooks are set (read or write), they get called. If they're not set, the hooks
+of the AL_CONFIG of the found key are checked.
+When setting a key, you specify just the AL_CONFIG, the key integer value and the data.
+No key name is saved. This means that when saving the config to disk, that key will not
+be saved as there's no key name associated with it. If you want the key data to be
+written to disk when saving, you have to call
+
+al_set_key_name(AL_CONFIG *config, int key, char *name);
+
+This will set the key name internally, so that when saving the key will be identified by
+its name.
+
+/* Create and destroy configs */
+AL_CONFIG *al_create_config(AL_CONFIG *parent, char *name, int key_min, int key_max);
+void al_destroy_config(AL_CONFIG *config);
+
+/* Data handling */
+/* If passed NULL as "config", the private Allegro root config is used */
+int al_set_bool(AL_CONFIG *config, int key, int value);
+int al_set_int(AL_CONFIG *config, int key, int value);
+int al_set_string(AL_CONFIG *config, int key, char *string);
+....
+int al_get_bool(AL_CONFIG *config, int key);
+int al_get_int(AL_CONFIG *config, int key);
+char *al_get_string(AL_CONFIG *config, int key);
+....
+
+For example you'll have:
+
+(internally in Allegro:)
+....
+/* the root config doesn't accept any key; it just stores sub configs */
+#define AL_CONFIG_KEY_MIN			0
+#define AL_CONFIG_KEY_MAX			0
+....
+#define AL_CONFIG_GFX_KEY_MIN		0x100
+#define AL_CONFIG_GFX_KEY_MAX		0x200
+....
+#define AL_WINDOW_X			AL_CONFIG_GFX_KEY_MIN + 10
+....
+(during internal Allegro initialization:)
+al_root_config = al_create_config(NULL, "Allegro", AL_CONFIG_KEY_MIN, AL_CONFIG_KEY_MAX);
+al_create_config(al_root_config, "Graphics", AL_CONFIG_GFX_KEY_MIN, AL_CONFIG_GFX_KEY_MAX);
+....
+(in your program:)
+....
+al_set_int(NULL, AL_WINDOW_X, 150); /* This has a write hook that automatically makes the program window to move at x=150 */

@@ -1,0 +1,52 @@
+# date: 2003 - 01 - 31
+# This file documents the event source API which is now considered
+# finalised for milestone 1.
+
+
+Allegro 5 API: Generic event sources
+
+Status: Finalised for milestone 1 around 2003-01-10.
+
+
+
+- Type: AL_EVENT_SOURCE
+
+   This is a placeholder for many other types which are capable of
+   fulfilling the requirements of _event sources_, i.e. types that can
+   generate events.
+
+   One way to think of it is as a base class of all event source
+   classes.
+
+
+
+- Function: void al_event_source_set_mask(AL_EVENT_SOURCE *source,
+	unsigned long mask)
+
+   Set the event mask of the specified event source.  This will
+   restrict the types of event packets that the event source will
+   generate.  MASK is made by bitwise-OR'ing the event types that will
+   be allowed to be generated.  By default, event sources will
+   generate all event types that they are capable of.
+
+   Example:
+
+      AL_POINTER *p = al_install_pointer(0);
+
+      -- By default, P will generate events of the following types:
+         AL_POINTER_EVENT_AXES, AL_POINTER_EVENT_BUTTON_DOWN,
+         AL_POINTER_EVENT_BUTTON_UP.
+
+      al_event_source_set_mask((AL_EVENT_SOURCE *)p,
+	AL_POINTER_EVENT_AXES | AL_POINTER_EVENT_BUTTON_DOWN);
+
+      -- P will now only generate events of the types
+         AL_POINTER_EVENT_AXES and AL_POINTER_EVENT_BUTTON_DOWN.  Any
+         event queues that P is registered with, now or in the future,
+         will not events of type AL_POINTER_EVENT_BUTTON_UP.
+
+
+
+- Function: unsigned long al_event_source_mask(AL_EVENT_SOURCE *source)
+
+   Return the event mask for the specified event source.

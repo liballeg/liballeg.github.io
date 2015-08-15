@@ -1,0 +1,102 @@
+# date: 2001 - 12 - 01
+
+Design Goal:
+ - As simple API as can be (smaller than 4.0 ?) but still as powerful
+ - Portability
+
+
+Audio:
+ - Switch to completely disable the Allegro mixer, and send audiobuffers to the sound card directly. (TRAC)
+ - Methods to get and 'suggest' playback rates, sample depth, stereoness (TRAC)
+ - Callback for audiobuffers, when they are done playing. (MrGrim)
+ - MMX remixers (can't do it in DOS interrupt context)
+ - Ability to switch remixers without resorting to the config-file hack
+ - remove those unused sound functions (vibratto, etc)
+ - Collapse load_* into one function load_sample(), smart enough to read the file
+   header to determine the format.
+ - Option to let the remixer divide by the number of voices currently playing instead
+   of some preset amount.
+ - play_midi and play_looped_midi combined
+ - DMusic support
+
+
+Graphics:
+ - 8 bit palette components
+ - Possible merge of AllegroGL (as an OpenGL driver only, to keep it light)
+ - merge blit and sprite API
+ - window resizing support
+ - is_*_bitmap collapsed to a single function - get_bitmap_type()
+ - fixing the (x1,y1)-(x2,y2) included or not included issue. (use width/height instead?)
+ - What to do with floodfill (can't be accelerated via GL or D3D)
+ - Dump draw_character
+ - Unified rotate_flip_pivot_stretch routine
+ - Dump compiled sprites
+ - Hooks in the polygon routines to add our own span-based sorter.
+   This means that ZBuffer, SBuffer, and P3D can spun out to other libs.
+ - Make blenders work with spans (see FBlend)
+ - hsv_to_rgb and rgb_to_hsv in a separate lib
+ - Remove not-so-useful blenders (dissolve, dodge, hue, invert, luminance,
+   multiply, saturation, screen)
+ - Collapse load_* into one function load_bitmap(), smart enough to read the file
+   header to determine the format.
+ - GFX_SAFE sets a Windowed mode when possible
+ - DDraw7 and DGraphics8 support
+ - Fix this whole 32bpp == int, 16bpp == short thing. Use int16_t and int32_t instead?
+ - true color fade in/out (Nathan)
+ - DRAW_MODE_TRANS_PATTERN (Nathan)
+ - Speed ups in the asm code - drop READ/WRITE_BANK calls for linear memory bitmaps.
+
+
+Text Drawing:
+ - load_font/save_font API
+ - textout should not use -1 for colored fonts.
+
+
+Input:
+ - Message based (see SDL)
+ - DInput 8
+
+
+Muti-threading:
+ - Mutexes, thread control, etc
+
+
+Packfiles:
+ - Remove compression/encryption. This can be spun off to a new lib.
+   Basic endian-safe pack functions can still be present.
+ - Allow registering of new compression and encryption libs.
+ - save_datafile() and save_datafile_object() (Nathan Smith)
+
+
+Network:
+ - Can we get one? Please? :) 
+
+
+Core:
+ - Configuration via an OpenGL-like al_set(variable, value) system
+ - prefixing of the API
+ - Some of the little used variables converted to strings (os_type/version, cpu_family, etc)
+ - Move as much as possible to VTables
+ - Update to DirectX 9 (we have the time ;)
+ - Drop DOS.
+ - Dynamic module loading (we could have alleg-gfx.dll, alleg-sound.dll, etc)
+
+
+Installation:
+ - Have a Windows installer built from a script (PIMP?)
+
+
+Documentation:
+ - Generated from source via Doxygen or Javadoc (see AllegroGL for example)
+
+
+Stuff to remove (can be placed in add-ons)
+ Perhaps a script can be supplied to make these add-ons installation
+ as simple as copying them to the allegro dir and running make/make install?
+
+ - FLI playback code
+ - Software 3D code
+ - 3D Math
+ - Fixed point math
+ - Compiled sprites and RLE
+ 

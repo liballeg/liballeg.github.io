@@ -1,0 +1,386 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+   <head>
+      <title>Lighting effects</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+      <meta name="author" content="Shawn Hargreaves">
+   </head>
+   <body text="#000000" bgcolor="#FFFFFF" link="#0000EF" vlink="#51188E" alink="#FF0000">
+
+<p><center><h1><b>
+The road to en<font color="#808080">l</font><font color="#A0A0A0">i</font><font color="#C0C0C0">g</font><font color="#A0A0A0">h</font><font color="#808080">t</font>enment?
+</b></h1><p><br>
+<b>By Shawn Hargreaves, June 6th 1998</b>
+<p><br><i>
+In the beginning there was nothing.<br>
+Then God said, "Let there be light".<br>
+And there was still nothing, but now everybody could see it.
+</i></center>
+<p>
+<hr>
+<p>
+This document is in many ways a followup to my
+<a href="http://www.talula.demon.co.uk/rtl/index.html">RTL</a> lighting 
+demo, so you should probably start by looking at that. It does smooth 
+pixel-level lighting in a 320x200 VGA mode, but I've been thinking about 
+various other possible approaches, and ways to do similar things in higher 
+resolutions or with more colors. In particular I spent most of today 
+wandering around Croydon looking for a new flat (my current lease expires 
+next month), and in between peering at an assortment of dingy and decrepit 
+basements that were invariably described by the landlords as "nice 
+attractive studio flats", I had a number of programming ideas which I think 
+are worth describing here.
+<p>
+Note: I haven't attempted to code any of this stuff myself, so I can't 
+promise that all these ideas are useful, or even possible for that matter, 
+and I cannot give you example source or teach you in detail how to implement 
+them. This is more of a brainstorming session than a proper tutorial. 
+Someday I would like to try out a few of these techniques and see how well 
+they work in practice, but if anyone else beats me to it, or has done 
+similar things in the past, I would love to hear about your results...
+<p>
+There are basically two approaches to realtime lighting. Either the lights 
+are part of the environment and illuminate the player sprites as they move 
+around, or the lights are part of the gameplay (carried by players, 
+triggered by explosions, etc) and they light up the environment. Of course 
+you can mix both methods in a single game, but it is generally better to 
+concentrate on one or the other. Remember that you can't have a light 
+without some dark as well. If you have a well-lit environment to start with, 
+there is very little point in giving your player a torch, and those lovely 
+illuminated areas around your explosions are at best going to look rather 
+weedy. Conversely, if you have lots of lights being triggered by actions 
+within the game, you probably want to keep the basic level very dark to get 
+the maximum benefit out of them.
+<p>
+I think that this decision really comes down to how good your artist is. 
+From my perspective as a programmer, I cannot draw great background scenery, 
+but I can scratch out some rough approximation of what I want, darken it 
+down so that nobody can see how bad it really is, and then make it look 
+quite cool by programming lots of cool explosions and missile lights over 
+the top. But if you have a good artist, they can _draw_ areas of light, 
+shadow, and anything else in between, and make it look much nicer than my 
+crude programmed effects. Predrawn lights are obviously static in nature, 
+but could be made to affect the character sprites as they move around in the 
+game world. This approach is obviously a lot less computationally expensive 
+than trying to light the entire display in realtime, and much easier to 
+disable as an option for slower machines, plus it intrudes less on the 
+gameplay: it is more of a nice finishing touch for an existing game than 
+something fundamental to the way everything looks.
+<p>
+If you want to take this approach, the important thing is that the 
+background lights (drawn by the artist) must match up exactly with the 
+programmed lights used for the character sprites. Nothing would look worse 
+than a character stepping out of the shadows into a floodlit area, and then 
+the graphic only turning from black to normal colors a few pixels later :-) 
+You will probably need a decent editing tool and a lot of patience to 
+position all the lights correctly, and this will be much easier if you stick 
+to soft-edged illumination rather than any really sharp bright/dark 
+contrasts. Also consider that if your lights are all coming from static 
+parts of the environment, you mustn't trigger any major lightsources as part 
+of the game itself. It would look great to have a swordfight in a dungeon, 
+with the players moving in and out of the torchlit areas, but it would look 
+really silly if one of them then set off a grenade in the shadows, causing a 
+huge explosion but not changing the environment lights at all...
+<p>
+If you do want to do full environment lighting, you have another two basic 
+choices: do you do it on a pixel basis, or only for each drawing primitive? 
+Pixel precise lighting involves creating a light map for the scene, 
+indicating the amount (and color?) of light falling on every location, and 
+then tinting the image accordingly. This lets you cast whatever amount and 
+shape of light you like, so it is easy to have torch beams, spotlights, and 
+whatever weird flickery or irregularly shaped effects you can think up. 
+There is obviously a fair amount of extra processing involved in drawing a 
+separate image for the lights, though, and if you go down this route you 
+will lose all directional information about the light (you know how much, 
+but not where it came from, so bumpmapping effects are impossible).
+<p>
+A light map will work well if you have a lot of weirdly shaped lights, 
+affecting a relatively small number of pixels (eg. for complex lighting in 
+low resolution modes). When you have more pixels and only a few simple (ie. 
+omnidirectional) lights, it might be better to do the lighting at the same 
+time as drawing each sprite or background tile, calculating the amount of 
+light that would fall on that object and then tinting the entire thing in 
+one pass. A fixed tint color could work if your lights are simple enough and 
+your tiles are small enough, or you could gouraud the light level across the 
+sprite to get a smoother effect (I'm not sure if it is possible to gouraud 
+an entire tile map background quickly enough in an SVGA mode, but it would 
+be interesting to try).
+<p>
+In a 256 color mode, it is easy to use a 256 greyscale value for the light 
+level, and a 64k lookup table to blend this with each pixel color. In 
+truecolor modes, things get rather more hairy. IMHO it isn't worth trying to 
+light a 15 or 16 bit image directly, because your performance will be 
+totally destroyed by the endless splitting up into individual RGB 
+components, blending those, and then recombining back into a packed pixel 
+format. I think it would be much more sensible to work with a 24 bit format 
+in memory (or perhaps 32 to maintain good pixel alignment), and reduce this 
+to a 15 or 16 bit format at the same time as you copy the finished image 
+across to video memory.
+<p>
+Lighting a 24 bit truecolor pixel is almost the same as for a 256 color one, 
+except that you repeat the process three times so as to affect each of the 
+individual color components. Strictly speaking you just need to evaluate 
+v*l/255, to tint color component <b>v</b> to light level <b>l</b>, but I 
+think you will find it much faster to replace this with a 64k lookup table, 
+exactly as for the 256 color version. Truecolor code just needs three times 
+as many table lookups :-)
+<p>
+Incidentally, I have a feeling that the MMX instructions could help a great 
+deal with the kind of operations required for truecolor lighting. If you 
+really want to squeeze the maximum possible performance, it might be worth 
+learning the MMX instruction set and designing your code with this in mind, 
+so you can make special MMX versions of the key routines at some later date.
+<p>
+Colored lights are certainly cool, but IMHO they are greatly overrated in 
+importance. Machines have just recently got fast enough to support full RGB 
+lighting at a reasonable speed, so we have games like Incoming, Forsaken, 
+and Unreal flinging out patches of green and purple light every time you 
+fire a missile. I can't deny that this looks pretty cool, but I think it is 
+being grossly overused, and a few years from now we will look back and 
+cringe at how garish these games are. Look at the world around you, or 
+practically any film or TV show: the vast majority of lights are white, and 
+there are good reasons for this. Subtle tints of orange, blue or pink can do 
+wonders to add atmosphere, but you can just alter your source graphics to 
+get this same effect. There is no need for red light around a fireplace, 
+when you can get the exact same effect by applying white light to some red 
+tinted background tiles...
+<p>
+I think that although colored lights are certainly nice to have, it isn't 
+worth sacrificing much performance or resolution in order to achive them. 
+I'd rather have some nicely implemented, subtle monochrome lighting effects 
+in a high resolution, than full color lighting in a 320x200 mode.
+<p>
+I think the fastest way to implement pixel based truecolor lighting is not 
+in fact to have a separate light map at all, but to combine this with the 
+main framebuffer image. If you are targetting a 15 bit screen mode, but 
+working with a 24 bit memory format in order to get easy access to 
+the individual color components, there are three spare bits in each byte, 
+which is IMHO enough to store the light level. It will only give you eight 
+shades, but they don't need to start right from black: zero can represent 
+the default ambient light level of your scene, and higher values add 
+extra light on top of that. This won't allow any really smooth gradients or 
+lights that fade in and out, but will be fine for sharp edged things like a 
+torch beam, and should provide at least some potential for fades, as long as 
+you restrict them to 8 or 16 pixels rather than trying a 100 pixel wide 
+light gradient.
+<p>
+To draw an image in this format, you would store your source graphics as 24 
+bit images, but shifted to only use the bottom five bits of each pixel. 
+These could be drawn exactly as normal, which would leave zeros in all the 
+light bits. You would then add light graphics over the top, which would 
+require a custom drawing function to leave the bottom five bits alone while 
+adding color to the top three bits (this can most easily be done with a 64k 
+lookup table, in basically the same way as the 256 color Allegro translucent 
+mode functions). The nice thing about this format is that when an object 
+affects both the pixel color and the light level (eg. an explosion), you can 
+draw the entire thing in one pass, by using a suitable lookup table that 
+will affect both the bottom five and top three bits in the destination. For 
+example you could draw a player sprite (normal masked cutout image) carrying 
+a torch (additive color in the light bits), or an explosion (additive color 
+in both the pixel color and light bits), all in a single pass with just one 
+function! It would need some preprocessing to get your source graphics into 
+the right format, but I think the results would be well worth it.
+<p>
+When it came time to blit these 5.3 color components onto the screen, you 
+would only need a 256 byte lookup table to convert each value to an actual 
+displayable color. For a 24 or 32 bit screen mode, you would just do the 
+table lookup and write the result to the screen. For a 15 or 16 bit mode, 
+you would need to do three lookups and combine the resulting RGB colors (you 
+could have three lookup tables containing preshifted values to speed up this 
+process).
+<p>
+Interesting note: some SVGA cards (including my Matrox) have an obscure 
+feature where you can program the palette registers even in truecolor modes, 
+to alter the color values produced by the truecolor DAC. This is intended 
+for use by utilities that adjust the screen brightness or color balance, but 
+by loading a suitable palette you could actually get the card to display a 
+24 bit image directly from this 5.3 color+light format! This isn't really a 
+useful thing to know, because not many cards support it and there is no 
+standard way to access this feature, but I think it is kind of neat :-)
+<p>
+The trouble with drawing a lighting map is that you have to do it all the 
+time, for every pixel on the screen. The standard lighting approach also 
+only allows you to light a pixel somewhere between black and the original 
+color, but not any brighter: this is exactly how the real world operates, 
+but tends to upset artists because it means they have to draw everything 
+excessively bright, and can't really tell what it will look like until they 
+see it in the game, being displayed at a much darker ambient level. One 
+way around this would be to draw the images as you normally want them to 
+look, and then add light to this where things are particularly bright, as 
+opposed to the more usual taking away of light where things are dark. This 
+would allow you to draw the lighting effects directly onto the main 
+framebuffer, and only where things are actually happening (eg. around the 
+explosions), rather than all over the screen, but unless you are very 
+careful it could end up looking a bit weird. When you light things above 
+their original shade (ie. multiplying by a value greater than one), you risk 
+overflowing and having to clamp the color value, and this will distort the 
+shade if some color components clamp before others have reached their 
+maximums. Amplifying what was originally a dark image also risks upsetting 
+the contrast and tone of the graphic (eg. an artist might use dark blue 
+detail pixels in the shadows, even though the object should really be white 
+or grey when fully lit), and when things are drawn very dark they will 
+suffer from quantizing errors due to limited color bits, that could look 
+nasty when more light is added.
+<p>
+Random thought: I'm 99% sure that this idea is nonsense, but I haven't 
+thought it through well enough to be certain of that, so I may as well 
+mention it. Instead of adding light above the original pixel color, wouldn't 
+it be cool if we could do normal black &lt;-&gt; original lighting, but 
+still draw the lights directly onto the main framebuffer and avoid having to 
+draw them where nothing is happening? The obvious approach would be to draw 
+darkness instead of light, but it isn't so easy to work out where you should 
+do this ("everywhere except where there is an explosion" might be rather a 
+tricky shape to display, especially if there are lots of explosions :-) But 
+you can't start from black and just add light in particular places, because 
+if your initial image is black, there is no way to know what color it should 
+be lit towards. I have a vague feeling that there might be some really cool 
+way to make this work by using subtractive color (CMY format) instead of the 
+usual additive RGB layout, but I can't for the life of me figure out exactly 
+how. I'm probably just going crazy...
+<p>
+Ok, let's forget about pixel light maps for a while, and go back to the idea 
+of having light objects that illuminate things on a sprite-by-sprite basis. 
+Consider this:
+<ul><li>
+Obvious approach: the further you are from the light, the less brightly you 
+are illuminated.
+<p><li>
+Equally obvious approach: repeat the distance calculation for each corner of 
+the sprite, and gouraud those light levels across it.
+<p><li>
+Problem: that gourauding will have pretty much zero visible effect, because 
+the width of a sprite is generally pretty tiny compared to the falloff 
+distance of a light. 
+<p><li>
+Observation: look at someone standing in a dark room with a light in front 
+of them, and you will see that they are lit in front but their backside is 
+totally dark. Someone else standing further back than them in this same room 
+will also have a lit front and dark back, even though the front of this 
+second person is further away from the light than the back of the first 
+person. <p><li>
+Explanation: this is because real life is a true 3d environment, and people 
+are not just flat sprite images :-)
+<p><li>
+Application: calculate both the distance and direction from the light to the 
+sprite. Use the distance to work out an overall light level (the further 
+away, the dimmer it is). Use the direction to work out which corners are 
+closest to the light, and apply the full amount of light to the close ones, 
+and maybe half or a quarter that much light to the further away ones 
+(obviously with some interpolation for when the light direction doesn't lie 
+exactly towards any of the sprite corners).
+<p><li>
+Implication: the sprite will appear to be rounded out in the third 
+dimension, and you will get light that curves around it in a nice and solid 
+looking way as the object and/or light move around relative to each other.
+<p><li>
+Complication: this method is approximating the contours of your sprite as 
+something partway between a hemisphere and a pyramid. It will work 
+brilliantly for sprites that are those shapes, and should still be close 
+enough to look good for any vaguely blob-like graphics, but the more complex 
+your character becomes, the more obvious the errors will be. I have no idea 
+what this would look like on a normal human type sprite, but would be very 
+interested to find out if anyone fancies trying it!
+</ul>
+<p>
+Random thought #2: I love palettes. Even in a truecolor mode, it can be well 
+worth storing your input graphics in a 256 color format, even if you end up 
+using different palettes for each sprite. Drawing a whole game in 256 colors 
+is a major hassle, but there is no problem reducing a single character to a 
+paletted format, and it allows so many more cunning effects to be used. 
+Palettes can be changed around on the fly much more easily than truecolor 
+pixels can be tinted, and you can feed 256 color pixels into a lookup table 
+to do all sorts of things that would be prohibitive with a 16 or 24 bit 
+input. Artists love truecolor, but clever programmers can do much more 
+interesting things with palettes, and they aren't really so restrictive as 
+long as you can use more than one of them at a time.
+<p>
+By using two input graphics, two lookup tables, and some cunning 
+preprocessing, I think it is possible to avoid the errors of the 
+abovementioned sprite gourauding method, and get 100% correct bumpmapped 
+lighting, complete with realtime specular highlights, for only about twice 
+the expense of drawing a normal lit sprite!
+<p>
+The first step is to draw your sprite image, and at the same time to make a 
+greyscale heightmap for it (black representing the lowest points, and white 
+the highest). Next, you need to write a utility that will convert this 
+greyscale image into a gradient bitmap. Measuring the gradients is easy 
+enough: just take the difference between the pixel height above and below a 
+point to get a vertical gradient, and the difference between the left and 
+right pixel heights to get the horizontal slope. How best to encode this 
+orientation into a single 8 bit pixel is rather more of a challenge :-) You 
+could just use 4 bits each for the X and Y slopes, giving a -8 &lt;-&gt; 7 
+range for each value, but I think it might be better to convert this into 
+spherical coordinates and store it as an angle (probably best to use 6 bits 
+for this) and elevation (2 bits).
+<p>
+Ingame, when it comes time to draw the sprite you need to work out what 
+direction the light is coming from, converting this into the same single 
+byte format that you used for the gradient bitmap. Strictly speaking, in a 
+2d game you can only ever have lights coming from the same plane as the 
+sprite, so the elevations would always be zero, but I think things would 
+look much better if you bodged things to put the lights on a plane a bit 
+above the sprites, so the elevation will increase as the sprite gets closer 
+to the light.
+<p>
+A pixel is fully lit if the light is perpendicular to it, ie. if the light 
+direction is the exact opposite of the pixel orientation vector. As the 
+light moves further away from this direction, it becomes darker, the exact 
+amount being the dot product of the two vectors. The trick to doing this 
+efficiently in realtime is that, having packed both vectors into a single 
+byte, we can precalculate a 64k lookup table listing the combinations of any 
+possible light and pixel directions, which will just tell us how much light 
+strikes this surface when it is lit from this particular direction. In other 
+words we can use the Allegro draw_lit_sprite() function, passing it our 
+gradient bitmap and the packed light direction as our "light color", and it 
+will output a greyscale light map for the sprite! We can then use a more 
+conventional lighting lookup table to tint each sprite color pixel according 
+to that light map, and draw the resulting bumpmapped color to the screen. 
+Obviously the fastest way to implement this would be to write a special 
+function that would combine both table lookups into a single operation, 
+avoiding the need to store the temporary light map image.
+<p>
+With this scheme, you could quite easily add specular highlights for zero 
+additional code at runtime. These are the "shiny spots" that adorn almost 
+all real world objects, although they are most pronounced on metallic 
+surfaces. They occur where the light is reflected directly from the surface 
+towards your eye, rather than being absorbed and then reemitted equally in 
+all directions as would happen with a normal dull surface. The highlight 
+color is unaffected by the shade of the surface that is reflecting it, so 
+they are almost always white. They don't happen in the same place as the 
+brightest normal lighting (ie. where the light is falling directly onto the 
+surface), but where the surface is reflecting the light directly towards 
+your eye, ie. where the angle between the direction you are looking at it 
+from and the surface normal is the same as the angle between the light 
+direction and the surface normal. Specular highlights have a much sharper 
+falloff than diffuse lights, so they only affect a few pixels in a very 
+confined location, but varying the exact falloff curve and the brightness of 
+the highlight can give a convincing effect of many different textures and 
+material types (if you have a copy of 3DS, have a fiddle with with the 
+specular lighting parameters in the material editor to get an idea how this 
+works).
+<p>
+Because specular highlights occur at different angles to the normal 
+brightest light, they cannot be stored in the same bits as the main light 
+color. But because they are so sharp and clearly defined, they don't require 
+nearly such a smooth gradient. I think you could store an adequately 
+detailed combined light level in a single byte, using 6 bits for the diffuse 
+light level and 2 bits for the specular intensity. The code to display a 
+bumpmapped object would remain unchanged, just using different lookup 
+tables. Instead of outputting an 8 bit greyscale level, the table used to 
+combine the two direction vectors would do two individual computations (it 
+doesn't need to know about the view direction, because in a 2d game that is 
+always directly above the sprite), and output a combined 6.2  light value. 
+The lighting table would then use the low 6 bits of this input to tint the 
+sprite pixel color, and add some amount of white to the result depending on 
+the top two bits of the light value. Result: realtime specular highlights, 
+"for free"...
+<p>
+By varying the two tables described above, I suspect that all sorts of other 
+interesting effects would be possible, for example a variant of the classic 
+3d chrome effect. That works by applying a plasma texture to a polygon with 
+u/v coordinates calculated from the transformed polygon normal, but I'm sure 
+something very similar could be done in 2d by combining a heightfield bitmap 
+and direction vector with suitable lookup tables.
+
+</body>
+</html>

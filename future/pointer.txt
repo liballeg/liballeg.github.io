@@ -1,0 +1,328 @@
+# date: 2003 - 01 - 31
+# This file documents the pointer API which is now considered
+# finalised for milestone 1.
+
+
+Allegro 5 API: Pointers
+
+Status: Finalised for milestone 1 around 2003-01-10.
+
+
+
+Pertinent Threads & Brief Change History:
+
+   * "Mouse interface" 2002-10-01:
+
+      - al_mouse_x/y removed (lwithers)
+      - al_grab_mouse -> al_mouse_emulate_fullscreen_behaviour (pw)
+      - changed encoding of x+dx thing (bob, lwithers)
+      - switched to generic pointer interface (pw, marcello)
+      - the whole interface was redone at this stage to accomodate > 2
+	axes and multiple pointer devices, so too many changes
+
+   * "Mouse interface, part 2" 2002-11-27:
+
+      - al_pointer_get_xy can accept NULL args (bob)
+      - clarified that the default device is 0 (hein)
+      - switched to a combined axis change event (pw, bob)
+
+   * "Combinatorial explosion" 2002-11-29:
+
+      - let one pointer object track state for multiple displays (pw)
+
+   * "Keyboard interface" 2002-12-08:
+
+      - represent/unrepresent -> attach/detach (hein)
+
+
+
+Overview:
+
+   "Pointers" are devices that let the user point at things on the
+   screen.  Allegro refers to mice, trackballs, trackpads and other
+   such devices as "pointers".  More exotic devices, like graphics
+   tablets are also considered to be pointers.
+
+   Pointers all have two axes, X and Y, but some may have more.  Many
+   mice would have a third axis, to represent their wheels.  A
+   graphics tablet would have a third axis, to represent the pressure
+   being applied.  A more expensive tablet may have even more axes,
+   for example, to represent the tilt on the pen.
+
+
+
+- Type: AL_POINTER
+
+   This is an abstract data type representing a physical pointer
+   device.  Pointer objects are also event sources.
+
+
+
+- Function: int al_num_pointers(void)
+
+   Return the number of pointer devices that are available on the
+   system.
+
+   The system driver must be installed before this function is called.
+
+
+
+- Function: AL_POINTER *al_install_pointer(int pointern)
+
+   Install pointer device number POINTERN and return a pointer to a
+   new pointer object, or NULL on error.
+
+   POINTERN must be non-negative.  The "default" pointer device on the
+   system will be numbered 0.
+
+   The system driver must be installed before this function can be
+   called.
+
+
+
+- Function: void al_uninstall_pointer(AL_POINTER *pointer)
+
+   Uninstall the pointer device specified.  This will automatically
+   unregister the pointer with any event queues.
+
+   POINTER may not be NULL.
+
+
+
+- Function: int al_pointer_num_axes(AL_POINTER *pointer)
+
+   Return the number of axes on a pointer.  In the case of a mouse
+   this will usually be two, or three if it has a wheel.  The minimum
+   number of axes that must be present is two.  The first two axes are
+   always the X and Y axes respectively.
+
+
+
+- Function: unsigned int al_pointer_axis_flags(AL_POINTER *pointer, int axisn)
+
+   Return the flags containing information about the axis specified.
+   The first axis is numbered 0.
+
+   AXISN must non-negative.  For convenience, if AXISN is greater or
+   equal to the number of axes on the device, this function will not
+   signal an error, but simply return zero.
+
+   Flags:
+
+      AL_POINTER_AXIS_WHEEL     -- the axis is a wheel
+      AL_POINTER_AXIS_PRESSURE  -- the axis holds pressure info
+      AL_POINTER_AXIS_XTILT     -- the axis holds horizontal tilt info
+      AL_POINTER_AXIS_YTILT     -- the axis holds vertical tilt info
+
+
+
+- Function: int al_pointer_num_buttons(AL_POINTER *pointer)
+
+   Return the number of buttons on a pointer device.  In the case of a
+   mouse, this will usually be two or three.
+
+
+
+- Function: bool al_pointer_emulate_fullscreen_behaviour(AL_POINTER *pointer,
+                                                         AL_DISPLAY *display)
+
+   In windowed environments, it may be necessary to grab the pointer
+   device inside a window and do other related hacks, for example, if
+   you are using a mouse as an input for a first person shooter game.
+   This function will try to do that, and return true if successful.
+   For fullscreen displays this is a no-op, and true is returned.
+
+   If this function is successful, then the following functions may
+   work for some axes where they would not have worked before:
+
+      al_pointer_set_axis
+      al_pointer_set_axis_range
+      al_pointer_set_axis_speed
+
+   Usage note: This behaviour shouldn't be enabled unless explicitly
+   chosen by the user.  It could mean, for example, that the mouse is
+   trapped within your window until your program is terminated.
+
+   XXX: The semantics of this function are still a bit fuzzy.
+
+
+
+- Function: void al_pointer_unemulate_fullscreen_behaviour(AL_POINTER *pointer)
+
+   Undo what al_pointer_emulate_fullscreen_behaviour() did, if
+   anything.  After calling this function, some ranges and speeds set
+   while "fullscreen behaviour" was enabled may be lost.
+
+   If the pointer is not actually in "fullscreen behaviour" mode, then
+   this function does nothing.
+
+   If the pointer was in "fullscreen behaviour" mode in some display,
+   and that display was destroyed, "fullscreen behaviour" mode will be
+   automatically disabled.
+
+   XXX: The semantics of this function are still a bit fuzzy.
+
+
+
+- Type: AL_PTRSTATE
+
+   This is a structure that is used to hold a "snapshot" of a
+   pointer's axes and buttons at a particular instant.  It contains
+   the following publically readable fields:
+
+      typedef struct AL_PTRSTATE
+      {
+         AL_DISPLAY *display;
+	 int axis[0 ... number_of_axes-1];
+	 int wheel_axis;
+	 unsigned int buttons;
+      } AL_PTRSTATE;
+
+   `display' points to the display that had pointer focus at the time
+   the state was saved.  If no display was focused, this points to
+   NULL.
+
+   The `axis[i]' values represent the position of axis i at the time
+   the snapshot was taken.
+
+   `wheel_axis' contains the index of the first wheel axis on the
+   device.  If the device has no wheel, then `wheel_axis' is a
+   negative number.
+
+   `buttons' is a bitfield holding the state of each button on the
+   pointer.  A set bit means the button is held down.  The first
+   button is numbered 0.
+
+
+
+- Function: void al_get_pointer_state(AL_POINTER *pointer,
+        AL_PTRSTATE *ret_state)
+
+   Save the state of the pointer specified at the time the function is
+   called into the pointer state pointed to by RET_STATE.  The
+   previous state stored in RET_STATE is clobbered.
+
+   RET_STATE may not be NULL.
+
+
+
+- Function: int al_pointer_wheel(AL_PTRSTATE *state)
+
+   Helper for retrieving the value of the wheel axis help in a pointer
+   state structure.  If there is no wheel axis, zero is returned.
+
+   This function can be defined thus:
+
+      int al_pointer_wheel(AL_PTRSTATE *state)
+      {
+         return (state->wheel_axis >= 0) ? state->axis[state->wheel_axis] : 0;
+      }
+
+
+
+- Function: bool al_pointer_button_down(AL_PTRSTATE *state, int buttonn)
+
+   Helper for accessing the `buttons' field in a pointer state
+   structure.  Returns true if the button specified is held down.
+
+   It can be defined thus:
+
+      bool al_pointer_button_down(AL_PTRSTATE *state, int buttonn)
+      {
+         return !! (state->buttons & (1 << buttonn));
+      }
+
+
+
+- Function: bool al_pointer_set_xy_axes(AL_POINTER *pointer, AL_DISPLAY *display,
+                                        int x, int y)
+
+   Move the pointer device to position X, Y on the screen, relative to
+   DISPLAY.  Returns true if successful.
+
+
+
+- Function: bool al_pointer_set_xy_range(AL_POINTER *pointer,
+        AL_DISPLAY *display, int x1, int y1, int x2, int y2)
+
+   Set the range that the pointer device can travel in the X, Y
+   directions when it is in DISPLAY.  The range specification is
+   half-open, i.e. [x1, X2) and [y1, Y2).  Returns true on success.
+
+   Where this function is impossible or anti-social (e.g. setting the
+   X or Y axes in windowed environments, or the range given is bad),
+   it returns false.
+
+   Usage note: In a windowed environment it is generally not possible
+   to put limits on the X, Y axes.  It will probably fail unless you
+   call al_pointer_emulate_fullscreen_behaviour() first (but that is
+   no guarantee that it will work afterwards either).
+
+
+
+- Function: bool al_pointer_set_xy_speed(AL_POINTER *pointer,
+        int xspeed, int yspeed)
+
+   Sets the X, Y axes speeds.  Larger values of SPEED represent slower
+   movement.  Returns true on success, or false if this operation is
+   impossible or anti-social in the current environment.
+
+
+
+- Function: bool al_pointer_set_aux_axis(AL_POINTER *pointer, int axisn, int pos)
+
+   Set the position of an auxiliary axis on the pointer device (an
+   'auxiliary axis' means other than the X and Y axes).  If the
+   position is outside the axis' range, it will be adjusted to the
+   closest value allowed.  Returns true on success.
+
+   AXISN must be greater or equal to 2.
+
+
+
+- Event: AL_EVENT_POINTER_AXES
+
+   This event type is generated when one or more of the axes changed
+   on a pointer.
+
+   Fields specific to this event type:
+
+      (AL_DISPLAY *) e.pointer.display
+
+         In which display the event occurred.
+
+      (int) e.pointer.axis[i]
+
+         where 0 < i < number of axes on the pointer.
+	 axis[i] is the new position on axis number i.
+
+      (int) e.pointer.daxis[i]
+
+         where 0 < i < number of axes on the pointer.
+	 daxis[i] is the amount that the axes changed by.
+
+   Note: because of axis range limits, axis[i] - daxis[i] may not be
+   exactly the previous position on the axis.
+
+
+
+- Event: AL_EVENT_POINTER_BUTTON_DOWN
+- Event: AL_EVENT_POINTER_BUTTON_UP
+
+   These event types are generated when a button is pressed or released 
+   on the pointer device.
+
+   Fields specific to this event type:
+
+      (AL_DISPLAY *) e.pointer.display
+
+         In which display the event occurred.
+
+      (int) e.pointer.button
+
+         The button that was pressed or released.
+
+      (int) e.pointer.axis[i]
+
+         where 0 < i < number of axes on the pointer.  axis[i] is the
+	 position on axis number i at the time the event occurred.

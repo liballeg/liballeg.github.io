@@ -1,0 +1,67 @@
+# date: 2003 - 04 - 08
+# Roadmap of Allegro development divided in individual milestones.
+# Written by Peter Wang.
+
+
+    Milestone
+    ---------
+
+    * mouse (not including code for tablets, but the API should be designed
+      so as to allow for tablets)
+    * keyboard
+    * timer
+    * joystick (not including fancy stuff like force feedback, but again the
+      API should be easily extendable later to include that stuff)
+
+    This is basically the content of my events API prototype, modulo API
+    drafting and a Windows implementation.
+
+
+All those APIs have been designed and coded for Linux and X (which was
+already done in October last year --- hmm).  Eric had a crack at the
+Windows side, but I don't know if he got further (of course, he has much
+more important things to do than work on vapourware).
+
+
+    Milestone
+    ---------
+
+    * filtered packfiles
+    * LZSS filter
+    * config API
+
+    This is Garth's work and Angelo's work, modulo the APIs.
+
+
+Filtered streams are mostly done (there'll be at least one more revision
+though).  The config API was designed and implemented by Angelo, and I
+think that's fairly complete, except saving and loading.
+
+
+    Milestone
+    ---------
+
+    * doc DTD finalised
+    * XSLT thingy to transform to DocBook
+    * CSS thingy so docs can be viewed directly in a browser (?)
+    * initial new makedoc (text, maybe html and other outputs)
+    * docs for APIs drafted so far
+
+    Some of this is already done by Stepan and Laurence.
+
+
+Nothing happened here.  Again, if someone understands all that XML
+stuff, they could work on this.  I think the most important thing would
+be the XSLT to DocBook, so we get lots of output for free.
+
+
+    Milestone (PCM)
+    ---------
+
+    * PCM sound output, including audiostreams
+	(in future, maybe 3d sound and > 16 bit sound)
+    * wave file loading/saving
+
+    The API would probably require a lot of discussion here.
+
+

@@ -1,0 +1,400 @@
+# date: 2003 - 02 - 03
+# This is a proposal for a filtered streams API (part 2).
+
+
+* Custom filters and stream types
+
+In this layer, the streams framework is exposed completely to the
+user, for maximum flexibility.  We will first look at the main data
+structures used in the framework, then explain how to write a new
+filter or new stream type.
+
+
+
+** Data structures
+
+*** AL_STREAM
+
+From the top-level interface, AL_STREAM is the only data type used by
+the user.  It looks like this:
+
+   typedef struct AL_STREAM
+   {
+      AL_STREAM_FILTER *filters; /* linked list */
+      bool error;
+      int errcode;
+   } AL_STREAM;
+
+As you can see, it is really only a wrapper for a linked list, plus
+the error indicator for the stream and the error code.
+
+- FILTERS points to the head of the linked list of "filter instances".
+  Filter instances are added at the head of the list, i.e.  the last
+  filter instance added is at the head.  (Actually, this ordering is
+  not enforced and some filters may decide to do other things.)
+
+- ERROR is the error indicator for the stream.  It is set whenever an
+  error occurs during an operation on the stream.
+
+  Note that it is only for use by the user (accessed through
+  `al_stream_error'), and a filter author should not use the value of
+  ERROR to decide whether or not to go ahead with a particular task.
+
+- ERRCODE indicates the error condition that caused ERROR to be set to
+  true.  The error codes take standard error code values, i.e. the
+  values that `errno' can take.
+
+  ERRCODE should only be set by the filter where the error originated.
+  This rule should be observed so that the true nature of the error is
+  not clobbered by filters further up the chain.
+
+  (The field is not called `errno' because `errno' can be a macro.)
+
+
+*** AL_STREAM_FILTER
+
+As we saw above, a stream is linked list of filter instances.  Each
+filter instance looks like this:
+
+   typedef struct AL_STREAM_FILTER
+   {
+      AL_STREAM_FILTER_VTABLE *vtable;
+      AL_STREAM_FILTER *next;
+      unsigned int flags;
+      bool eof;
+      char *desc;
+      char *error_message;
+   } AL_STREAM_FILTER;
+
+The reason we say "looks like" is that filter instances can be any
+block of memory that the filter author wants, but the start of the
+memory block must reserve enough space for the fields above (and the
+fields must be properly initialised, of course).
+
+To help you out, the following macro is defined:
+
+   #define AL_STREAM_FILTER_HEADER      \
+      AL_STREAM_FILTER_VTABLE *vtable;  \
+      AL_STREAM_FILTER *next;           \
+      unsigned int flags;               \
+      bool eof;                         \
+      char *desc;			\
+      char *error_message
+
+Your own filter instance structure definition would look like this:
+
+   typedef struct MY_FILTER
+   {
+      /* Fields that all filter instance structures must have */
+      AL_STREAM_FILTER_HEADER;
+
+      /* My own fields */
+      int foo;
+      unsigned char bar;
+   } MY_FILTER;
+
+The meaning of each field are as follows:
+
+- VTABLE will point to a structure of type AL_STREAM_FILTER_VTABLE,
+  which is a table of pointers to functions.  These functions are
+  invoked when the filter instance gets a request to do something,
+  e.g. to write some data.
+
+- NEXT will point to the next (lower) filter instance in the filter
+  chain.  For the last filter instance in the chain, NEXT points to
+  NULL.
+
+- FLAGS is a bit-field of the capabilities of the stream.  The FLAGS
+  field of the highest level filter instance is taken as the FLAGS
+  value for the entire stream.  The bit-field is a combination of the
+  following flags:
+
+     AL_STREAM_READ -- the STREAM is readable
+     AL_STREAM_WRITE -- the STREAM is writable
+     AL_STREAM_SEEK_FORWARD -- the STREAM supports seeking forward
+     AL_STREAM_SEEK_BACKWARD -- the STREAM supports seeking backward
+
+- EOF is a boolean that the filter will set to true when it reaches
+  the end of the stream.
+
+  Note: Even though lower level filters may have reached the EOF,
+  higher level filters may not have reached their view of the EOF yet,
+  because of buffering effects.
+
+  al_stream_eof() returns true if and only if EOF field of the highest
+  level filter instance is true.
+
+- DESC and ERROR_MESSAGE are pointers to strings, intended to help
+  with debugging.
+
+  DESC should point to a brief string description of the filter
+  instance.  The string can be statically or dynamically allocated.
+  If your filter refers to a file name or network address or something
+  similar, we recommend that you include that information in the DESC
+  string.  Otherwise, the description should just be the name of the
+  filter.
+
+  ERROR_MESSAGE should point to NULL or a string (which can be
+  statically or dynamically allocated).  It is intended that the
+  string be printed out to help with debugging.  Therefore if an error
+  occurs, the filter should make ERROR_MESSAGE point to an appropriate
+  message.
+
+  The top-level streams code doesn't make use of either DESC nor
+  ERROR_MESSAGE.  The filter author is responsible for freeing any
+  dynamically allocated memory that those fields use.
+
+
+
+** Writing a stream filter
+
+*** Adding a filter to a stream
+
+The first thing a filter author needs provide is a function that adds
+their new filter to an existing stream.  It is recommended that such a
+function look like this:
+
+   bool add_my_filter(AL_STREAM *stream, ... additional args ...);
+
+to keep the existing style.
+
+This function generally needs to do three things:
+
+ 1. Check that the filter can be applied to the stream, using the
+    FLAGS field of the highest level filter in the stream
+    (i.e. "stream->filters->flags").  e.g. A filter that only works on
+    a write-only stream would check that the stream has the
+    AL_STREAM_WRITE bit set, but not the AL_STREAM_READ set.
+
+    Note that some streams may be bi-directional (in future), so check
+    for that too.
+
+    If your filter cannot be applied the stream, return false and
+    stop.
+
+ 2. Allocate a filter instance structure.  As mentioned before, the
+    structure needs to look like the AL_STREAM_FILTER structure.
+
+ 3. Initialise the filter instance structure.  You must set each field
+    as follows:
+
+    - VTABLE must point to the vtable for your filter type (an
+      AL_STREAM_FILTER_VTABLE).  The vtable is described further later
+      on.
+
+    - NEXT: See next step.
+
+    - FLAGS needs to be set to indicate the capabilities of the
+      stream.  You should take the FLAGS value of the current highest
+      level filter in the chain, i.e. "stream->filters->flags", and
+      modify it appropriately.  For example, if your filter does not
+      support seeking, so you would clear the AL_STREAM_SEEK_* flags.
+
+    - EOF must be set to false initially.
+
+    - DESC should point to a string describing the filter instance.
+
+    - ERROR_MESSAGE may point to NULL initially, or you may prefer to
+      preallocate string for an error messge.
+
+ 4. Once the structure is allocated and initialised, the function can
+    attach the filter instance to the stream.  The stream contains a
+    linked list of filters.  You should normally add your filter at the
+    head of the list.
+
+       my_filter->next = stream->filters;
+       stream->filters = (AL_STREAM_FILTER *)my_filter;
+
+*** The stream filter vtable
+
+The filter instance structure has a VTABLE pointer, which must point
+to a table of functions, of type AL_STREAM_FILTER_VTABLE.
+
+   typedef struct AL_STREAM_FILTER_VTABLE
+   {
+      bool   (*close)(AL_STREAM *, AL_STREAM_FILTER *);
+      size_t (*read) (AL_STREAM *, AL_STREAM_FILTER *,
+                      void *out_buf, size_t count);
+      size_t (*write)(AL_STREAM *, AL_STREAM_FILTER *,
+                      const void *in_buf, size_t count);
+      bool   (*seek) (AL_STREAM *, AL_STREAM_FILTER *,
+                      long offset, int whence);
+      bool   (*flush)(AL_STREAM *, AL_STREAM_FILTER *);
+   } AL_STREAM_FILTER_VTABLE;
+
+Each of the hooks in the vtable are detailed below.
+
+For read-only filters, these hooks must be present:
+
+   close, read, seek
+
+For write-only filters, these hooks must be present:
+
+   close, write, seek, flush
+
+**** bool (*close)(AL_STREAM *stream, AL_STREAM_FILTER *filter)
+
+This function is called for each of the filters attached to a stream
+when the stream is to be closed, from the head of the filters list to
+the tail.  After the close function is called for a filter, the filter
+is immediately removed from the filters list.  This is essentially
+what happens:
+
+   while (stream->filters != NULL) {
+      f = stream->filters;
+      next = f->next;
+
+      f->vtable->close(stream, f);
+      /* Return value is checked in real code */
+
+      stream->filters = next;
+   }
+
+In your close function you should flush all pending data you are
+holding, if the stream is an output stream, and whatever other cleanup
+tasks that you need to do.  You can access filters in the list after
+FILTER.  They will not have been closed yet.
+
+Finally, you need to free the filter instance data.  If all is well,
+return true.  If an error occurs, set the stream's ERROR field to
+true, and return false.
+
+Note: You should not make the close hook fail unless you really mean
+it.  Currently, if your close hook fails, the entire close operation
+is aborted (and fails).  The close hook should NOT fail just because
+the stream's ERROR field has been set.
+
+Note: Unlike other hooks, you do _not_ pass on the call to the close
+hook to the next filter.
+
+**** size_t (*read)(AL_STREAM *stream, AL_STREAM_FILTER *filter, void *out_buf, size_t count)
+
+This function is called when the user wants to read from the stream.
+The read request is given to the first filter in the list, which then
+requests data from the second filter in the list, and so on.
+
+This function needs to try to fill the array pointed to by OUT_BUF
+with input, up to a maximum size of COUNT bytes.  It should try to
+fill the buffer completely if possible.  The return value of the
+function says how much of the buffer actually got filled.
+
+Note: COUNT may be zero.  In that case your filter should simply
+return 0.
+
+What you will probably want to do is firstly request data from filters
+further down the chain.  You need to call the next filter's read hook
+like so:
+
+   size_t n = filter->next->vtable->read(stream, filter->next, buffer, count);
+
+Next, apply your transformations to the input you are given, write the
+result to OUT_BUF and return a value to say how much data you stored
+into OUT_BUF.
+
+If the EOF is reached, the filter instances' EOF field must be set to
+true.  Following stdio streams, this should not happen until after the
+user tries to read _past_ the EOF.  i.e. if the user asks for N bytes,
+and N bytes are remaining, then the EOF indicator _should not_ be set.
+
+If an error is detected, the stream's ERROR field must be set to true.
+If you know the nature for the error, ERRCODE should be set to
+something appropriate.  You may also like to write a message to the
+filter's ERROR_MESSAGE field.
+
+al_stream_read() does not call the read hook of the first filter in
+the chain unless its FLAG value contains the AL_STREAM_READ flag.
+
+**** size_t (*write)(AL_STREAM *stream, AL_STREAM_FILTER *filter, const void *in_buf, size_t count)
+
+This function is called when the user wants to write data to a stream.
+The first filter in the filters list will get the write request, apply
+transformations the input, then pass the transformed data to the next
+filter.
+
+IN_BUF is the input buffer to be written, which is COUNT bytes long.
+Note that IN_BUF can not be modified in place.
+
+To pass data to the latter filters in the list, write something like
+this:
+
+   size_t n = filter->next->vtable->write(stream, filter->next, buffer, count);
+
+The write function should return the number of bytes that it wrote.
+
+If an error is detected, the stream's ERROR and ERRCODE fields should
+be set, and a short byte count returned.  You may also like to make
+the filter's ERROR_MESSAGE field point to an appropriate string.
+
+al_stream_write() does not call the write hook of the first filter in
+the chain unless its FLAG value contains the AL_STREAM_WRITE flag.
+
+**** bool (*seek)(AL_STREAM *stream, AL_STREAM_FILTER *filter, long offset, int whence)
+
+This function is called when the user wants to seek to another place
+in the stream.  You should try to fulfil the seek request, and return
+true if successful.  For most filters, this will require calling the
+seek hook of the next filter in the chain.
+
+For whatever reason, the current filter's view of the current stream
+position, and the next filter's view of the current stream position
+may be different, and your code will have to account for that.
+
+If an error occurs, set the stream's ERRCODE field and return false.
+Do NOT set the stream's ERROR field.  You may also like to put an
+appropriate message in the filter instance's ERROR_MESSAGE field.
+
+[ Note: When a user calls al_stream_seek() on a stream, the seek hooks
+of the topmost filter instance will _always_ be called, regardless the
+AL_STREAM_SEEK_* flags in its FLAGS field.  Therefore you must always
+provide a seek hook, even if it always fails.
+
+Rationale: I had some rationale, but it seems out of date now.  The
+previous paragraph is under a big "Maybe". ]
+
+
+**** bool (*flush)(AL_STREAM *stream, AL_STREAM_FILTER *filter)
+
+This function is called when the user wants to flush an output stream.
+
+You flush hook should try to flush as much data out of the filter
+instance's output buffers as possible, if necessary.  This is done by
+calling the next filter's write hook with the appropriate data.  Once
+you have done that, pass the flush request onto the next filter, with
+something like "filter->next->vtable->flush(stream, filter->next);".
+
+Return true on success.  On failure, set the streams ERROR and ERRCODE
+fields and return false.  You may also like to put an appropriate
+message in the filter instance's ERROR_MESSAGE field.
+
+
+** Writing a new stream type
+
+In some ways, writing a new stream type is very similar to writing a
+new filter.  This is because streams masquerade as filters at the end
+of the list of filters.  To other filters, they look like filters and
+their hooks are called in the same way as filter hooks.  However, they
+are not really filters because they do not take input to or give
+output to other filters.  Instead they read and write data from other
+sources, such as a disk file.
+
+The author of a new stream type is responsible for allocating the
+overall AL_STREAM structure and filling in its initial contents.  The
+AL_STREAM structure must be allocated using al_malloc() because it
+will be freed by al_close_stream().
+
+XXX: al_malloc doesn't exist yet
+
+The contents of the AL_STREAM structure were detailed before.
+
+   ERROR -- Set to false initially.
+
+   ERRCODE -- Set to zero initially.
+
+   FILTERS -- Make this point to an AL_STREAM_FILTER structure, or a
+   "subclass" thereof.  The structure's NEXT field must point to NULL
+   to signify the end of the filter chain.
+
+As mentioned before, a stream type simply masquerades as a filter.
+The only difference is that it does not consult filters further down
+the list.  See the filter hook descriptions to see what each hook is
+supposed to do.

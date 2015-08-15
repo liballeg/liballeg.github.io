@@ -1,0 +1,36 @@
+# date: 2003 - 03 - 04
+# This file documents a couple of miscellaneous time procedures which
+# are now considered finalised for milestone 1.
+
+
+Allegro 5 API: Miscellaneous time procedures
+
+Status: Finalised for milestone 1 around 2003-01-10.
+	al_current_time() return type changed to unsigned long, and
+	  units changed to milliseconds.  Similar for al_rest.
+	  2003-03-04.
+
+
+
+- Function: unsigned long al_current_time(void)
+
+   Return the current time, measured in milliseconds relative to some
+   arbitrary reference point (when the Allegro library was initialised).
+   You can compare values returned by this function with event
+   timestamps (i.e. they come from the same clock).
+
+   This function DOES require the system driver to be installed.
+
+   Usage note: Typical granularity is on the order of milliseconds.
+
+   Note: The value returned by al_current_time() will wrap if the
+   program runs for too long (about 49 days after the Allegro library
+   is initialised).
+
+
+
+- Function: void al_rest(long msecs)
+
+   Rest for the amount of time specified, in milliseconds.
+
+   This function does not require the system driver to be installed.

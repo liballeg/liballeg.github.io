@@ -1,0 +1,457 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+   <head>
+      <title>Portability guidelines</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+      <meta name="author" content="Shawn Hargreaves">
+   </head>
+   <body text="#000000" bgcolor="#FFFFFF" link="#0000EF" vlink="#51188E" alink="#FF0000">
+
+
+<center><h1><b>
+<font color="#3366FF">Being a Good Traveler</font>
+</b></h1><p><h3><i>
+<font color="#3366FF">Or, how not to stop your Allegro program from being easily portable</font>
+</i></h3>
+<p><br>
+By Shawn Hargreaves, November 1999
+</center>
+<p>
+<hr>
+<p>
+As of the 3.9.x work-in-progress series which is current at the time of this 
+writing, Allegro has been ported to DOS (djgpp and Watcom), Windows (MSVC, 
+mingw32, and RSXNTDJ), Linux (console and X) and BeOS. By the time you read 
+this, version 4.0 will probably be out, or perhaps even some later release 
+with support for more different platforms. Allegro gives you the exact same 
+library functions no matter where you are running it, and this makes it very 
+easy to produce versions of your program for all of these systems: in 
+theory, a simple recompile should be all the porting work required. Things 
+are rarely quite that simple in the real world, though, so you will probably 
+need to tweak a few things to get your program working on each new platform. 
+This document tries to guess what the most likely problem areas will be, in 
+hopes that you can avoid them right from the start rather than getting stuck 
+having to do lots of fiddling later on. Some of these are Allegro things, 
+but most are general C things: in either case, please let me know if you can 
+think of any other problem areas that I left out!
+<ul><li>
+The most obvious change required to get DOS sources working on other 
+platforms is that you have to write END_OF_MAIN() just after your main() 
+function. This macro is a noop in the DOS version of the library, but in the 
+Windows version it does magic to turn your standard ANSI main() function 
+into a Microsoft-style WinMain(), and on Unix platforms it does a different 
+sort of magic to let Allegro capture the value of your argv[0] parameter 
+(which is needed for locating the config files).
+<p><li>
+Give your main() function the correct prototype. ANSI C says that it is 
+allowed to be either 'int main()', or 'int main(int argc, char *argv[])', 
+and that it should return zero for success, or a nonzero exit code if 
+something went wrong. It is not correct to declare main as returning void, 
+or to just fall off the bottom of it without returning a value.
+<p><li>
+Don't use any nonstandard library functions. Obviously if you call DirectX 
+functions, that will only work on Windows, or if you call DPMI functions, 
+that will only work on a DPMI system like djgpp. So you should avoid using 
+platform specific headers like conio.h, or platform specific parts of 
+Allegro like the GDI interfacing functions. Stick to ANSI standard 
+functions, Allegro library functions, and any other libraries that are 
+available on all the platforms you want to support. For instance the rand() 
+function is specified by ANSI as part of libc, but random() is not, so 
+portable code should use rand() in preference to random().
+<p><li>
+Related to the above: on some platforms rand() only returns a 16 bit value, 
+so don't assume that the higher bits will contain anything useful (djgpp 
+rand() does return a full 32 bit result, but you can't count on this).
+<p><li>
+One of the least standard aspects of libc is how to read what files are 
+contained in a directory. Most DOS and Windows compilers have some kind of 
+findfirst() and findnext() functions, but they differ as to exactly what 
+these are called and what parameters they take. Posix systems (Unix, djgpp) 
+have opendir() and readdir(), but these are missing from MSVC. So either 
+don't do such things, or use the Allegro for_each_file() function, which is 
+supported on all platforms.
+<p><li>
+Take a look at the "C Extensions" page in the gcc docs. There are many 
+things in here which are a) very cool, and b) not supported by compilers 
+other than gcc, so if you want your code to be portable, you unfortunately 
+can't use them. You must likewise avoid any MSVCisms such as __stdcall, 
+__declspec, etc, but these aren't nearly so tempting as all the funky stuff 
+that gcc can do :-)
+<p><li>
+Don't declare C functions as being inline, because not all compilers support 
+it. If you want to do this for optimization reasons, use the Allegro INLINE 
+macro instead, which is defined to be inline for compilers that support 
+that, __inline for stupid compilers like MSVC that enjoy punctuation 
+characters, and nothing at all for even stupider compilers that don't know 
+anything about it. You have to be extra careful if you want to declare 
+inline functions inside a header file, though. Allegro manages to make this 
+work on all compilers through a combination of the AL_INLINE() macro and the 
+inline.c library source file, but this is nasty stuff and not easy to get 
+working in all combinations of optimized and debug builds, so I would advise 
+you to avoid it if at all possible. If not, you can copy the way that 
+Allegro does it, but you'll need to add your own equivalent of inline.c to 
+your projects, and somehow arrange for this to instantiate static copies of 
+all your own inline functions while avoiding the ones from allegro.h (which 
+have already been instantiated once by inline.c). Alternatively you can not 
+bother with an inline.c file, but in that case your program is likely to 
+fail in non-optimized debug builds, and on compilers like Watcom that don't 
+support inline functions at all.
+<p><li>
+Don't use inline asm! (this should be fairly obvious). If you absolutely do 
+have to write things in asm, make a prototype version in C first, and then 
+comment it out before you start working on the optimized asm version. That 
+way, if you later want to run the code on a different platform you can 
+comment out the asm, restore your original C version, and not have to 
+rewrite the whole thing. You may also find that asm code is more easily 
+portable if you write it as external .s files, or perhaps using NASM, rather 
+than inlining it within your C sources. There are still some minor 
+differences between platforms (for example djgpp prefixes symbol names with 
+an underscore, while Linux does not), but these can easily be solved with a 
+few preprocessor macros. It is quite straightforward to share external asm 
+source files between djgpp, Intel Linux, and Intel BeOS platforms, and 
+Allegro even manages to use the same code with MSVC and Watcom as well! This 
+is much better than inline asm, which has to be completely rewritten for 
+every new compiler, but obviously still a long way short of being truly 
+portable, since Intel asm is unlikely to do the right thing on a PPC, MIPS, 
+or Alpha machine :-)
+<p><li>
+Be careful about writing things in C++, especially where the newer language 
+features are concerned, because not all compilers support the entire 
+language spec yet. In particular namespaces and exceptions are problematic, 
+but even template instantiation can work in different ways on some systems. 
+These problems are likely to become less as time goes by, and even today are 
+far less awkward than they were a couple of years ago, but your code will be 
+far more portable if you stick to the original core of the language 
+(classes, inheritance, virtual functions, etc).
+<p><li>
+Turn on strict warning mode in your compiler, and listen to whatever it 
+complains about. Something that is a warning on one platform is liable to 
+turn into an error on another, and even if you do manage to get away with 
+them, compiler warnings are a sign of dubious code and so always worth 
+fixing.
+<p><li>
+Link with the debugging version of the Allegro library, because this 
+includes some extra checks that will warn you about potential problem areas. 
+But don't forget to switch back to using the optimized library before you 
+release your final program, since the debug version is much slower.
+<p><li>
+In some compilers, char variables are signed, while in others, they are 
+unsigned. If you care about this (ie. if you are doing math or storing 
+negative values in single bytes), you should always be explicit and declare 
+your types as signed char or unsigned char. You don't need to do that for 
+short, int, and long variables, though, which are always signed unless you 
+specify otherwise.
+<p><li>
+Remember that DOS compilers (and I think also Windows ones) only have a 
+limited stack size, unlike on Unix where the stack can dynamically grow to 
+use all virtual memory. So don't declare huge local arrays that will be 
+allocated on the stack: this works on Linux, but not elsewhere.
+<p><li>
+If you are developing DOS programs under Windows, every now and then you 
+should drop down into clean DOS mode and test whether they run when using 
+CWSDPMI as your DPMI server. This is because CWSDPMI supports some DPMI 1.0 
+functions that are missing from the Microsoft DPMI implementations, and 
+which allow djgpp to trap illegal memory accesses such as trying to 
+dereference a NULL pointer. If your program works under Windows but not with 
+CWSDPMI, you almost certainly have some pointer bugs, and you really do need 
+to fix these because they are liable to come back later in an even worse 
+form, and will cause endless hassles as you move the code to different 
+platforms.
+<p><li>
+Don't make assumptions about how the compiler will lay out your structures 
+in memory. For example if you write:
+<pre>
+   typedef struct MYSTRUCT
+   {
+      char a;
+      short b;
+      int c;
+   };
+</pre>
+you might expect that sizeof(MYSTRUCT) will be 7, but in fact most Intel 
+compilers will pad it to 8 bytes. It is quite possible, though, that some 
+might pad to 12, or that a future 64 bit platform might make that int 
+variable twice as large as you are expecting. So you need to avoid code 
+which cares about such changes, and be sure to use sizeof() whenever you 
+need to allocate space for a data structure.
+<p><li>
+Don't use the fread() or pack_fread() functions for loading anything other 
+than streams of single byte data, and likewise don't use fwrite() or 
+pack_fwrite() for saving them. If you do, your saved files will randomly 
+change format depending on how your compiler decides to pad your memory 
+structures, and they also won't be portable to machines with a different 
+processor endianess. To read and write binary files in a portable way, you 
+need to transfer each 16 or 32 bit value in turn, using functions like 
+pack_igetw() and pack_igetl() (or pack_mgetw() and pack_mgetl(), depending 
+on the endianess of your disk file format). The Allegro src/bmp.c file is a 
+pretty good example of how to do this correctly.
+<p><li>
+Avoid using the Allegro dat2s utility in portable code, because it generates 
+asm source files, and these won't work on platforms with radically different 
+asm syntices (it would be far more portable if it output C code, but neither 
+gcc nor MSVC is able to compile C sources containing large initialized 
+arrays, so that doesn't work very well in practice). Strangely enough, the 
+exedat utility seems to work far more reliably on different platforms, so 
+that should probably be your first port of call when it comes to merging 
+data resources into the executable. If portability is your top priority, 
+though, the safest thing is not to use either of these, and stick with 
+loading your data from external files.
+<p><li>
+On DOS, filenames are in 8.3 format, and there is no case variation. On 
+Windows, they can be longer and the case is remembered, but case is not 
+significant, so that for instance "MyFile" refers to the same thing as 
+"myfILe". On Unix, filenames can be long and case is significant, so that 
+"MyFile" and "myfILe" are totally different things. Urgh! If you want to be 
+portable, stick to 8.3 format lowercase names, and don't use anything but 
+regular alphanumeric characters. You can be pretty sure that this sort of 
+name will work anywhere.
+<p><li>
+DOS and Windows tend to use '\' as a file path separator, but also 
+understand '/'. Unix systems only use '/', so to be portable, you should 
+always use a '/' yourself as well.
+<p><li>
+Be careful when munging filenames around, because what works on one system 
+may mean something totally different on another. Allegro provides a few 
+functions that may be useful for this kind of work, and which will do 
+appropriate even if slightly different things on each platform, such as 
+fix_filename_case() and fix_filename_path().
+<p><li>
+Most DOS and Windows compilers will pass wildcard commandline arguments 
+straight through to your program, but on Unix, these are expanded into a 
+list of individual files by the shell, before your program even starts to 
+run. With djgpp, the Unix shell expansion will be emulated unless you write 
+a __crt0_glob_function() to override this behavior. Portable programs 
+obviously cannot count on whether their arguments will already have been 
+expanded or not, so they should be designed to work either way around. For 
+example the dat utility is constructed in such a way that it can be passed 
+long lists of filenames by a Unix style shell, but internally it also calls 
+for_each_file() on each argument, so the expansion will still happen if it 
+is given raw wildcard parameters.
+<p><li>
+On DOS and Windows, programs tend to just install into a single directory, 
+but on Unix, system administrators will like you much better if your program 
+knows how to exist in a multiuser environment, and adheres to the Filesystem 
+Hierarchy Standard (FHS). You can read all the details on
+<a href="http://www.pathname.com/fhs/">http://www.pathname.com/fhs/</a>, but 
+here's a quick summary:
+<p>
+Most importantly, you need to distinguish between read-only data, global 
+modifiable data, and user-specific data. Assuming that someone has 
+downloaded your game, unpacked it, compiled it, and run it, it is a good 
+thing for your game not to modify the directory where it is installed, so 
+that this directory could be mounted read-only. If you want to save out 
+variable data such as a hiscore table, put this in the /var/games directory 
+(or if you need many such files, create a /var/games/mygame subdirectory, 
+and put your data in that). But don't forget that there can be many users on 
+the same machine, and they may not all want to share the same stored 
+information! Anything that is specific to the current user, such as save 
+game files or controller configuration, should go in their home directory, 
+which can be located by reading the HOME environment variable (eg. char 
+*mydir = getenv("HOME")). Again, if you need to put many files here, you can 
+create a subdirectory for yourself.
+<p>
+That is probably enough to make your game work well in a multiuser 
+environment, but if you want to go further and set up a really beautiful 
+configuration (for example to provide a "make install" target as well as the 
+regular compilation rules) you should be aware of the following locations:
+<p>
+Most binaries go in /usr/local/bin, but games should be placed in 
+/usr/local/games. This directory is only for the executable itself, which is 
+specific to the current machine architecture, and can be run directly by the 
+user.
+<p>
+Shared libraries and other executable code go in /usr/local/lib. The 
+contents of this directory are also specific to one machine architecture, 
+but the user does not run them directly (for example the Allegro shared 
+library goes in here).
+<p>
+Non-executable resources go in /usr/local/share/, or for games, 
+/usr/local/share/games/. The point of this directory is that it contains 
+material which remains the same no matter what type of computer your game is 
+running on, so if someone has a network containing a mix of i386 machines, 
+Alpha boxes, and PPC systems, they can still mount these files over the 
+network and use the same data on all hardware. So this is the place to put 
+your graphics, sounds, and level data. If you have more than one file to 
+put in here, make a subdirectory to contain them all.
+<p><li>
+Don't use specific driver names in your programs, because for example there 
+is no GFX_VESA2L in the Windows version, and no MIDI_WIN32 on Linux. Except 
+in very specific circumstances (for example when you are writing the setup 
+program :-) you should always use the autodetect parameters, and let the 
+user decide whether to override this autodetection by using the setup 
+program or editing the config file. Quite apart from the portability issues, 
+hardcoding your driver selection is a bad idea because not everybody has the 
+same hardware as you, so even though one particular graphics driver is the 
+best on your machine, it might not work at all for someone else.
+<p><li>
+If you absolutely do need to write special code that depends on specific 
+hardware drivers, use the preprocessor to test whether they are available on 
+the current platform. For example if you want a routine that will do one 
+thing when using a mode-X graphics mode but a different thing on all other 
+drivers, you can write:
+<pre>
+   #ifdef GFX_MODEX
+      if (gfx_driver->id == GFX_MODEX) {
+	 /* do funky mode-X graphics stuff */
+      }
+      else
+   #endif
+      {
+	 /* do normal graphics stuff */
+      }
+</pre>
+This code will simply not bother to compile the mode-X routines if there is 
+no mode-X driver on the current platform, and it is better than checking for 
+the platform itself, because this test will adapt to things like the Linux 
+version where mode-X support might or might not be available, depending on 
+what options were passed to the configure script.
+<p><li>
+Stick to standard screen resolutions like 320x200, 640x480, and 800x600 (and 
+no, 512x384 and 640x400 are not supported by all hardware). For optimal 
+portability, hedge your bets by supporting a couple of different 
+resolutions, in case one of them decides not to work.
+<p><li>
+If your program uses a hicolor or truecolor mode (ie. anything more than 8 
+bit color), you should support all possible hicolor and truecolor modes. Not 
+every system will be capable of every color depth, but Allegro makes it 
+trivial to handle multiple depths, and you can be pretty sure that at least 
+one out of 15, 16, 24, or 32 bit color will be available (except in lowres 
+modes: many DOS drivers only support 8 bit color for resolutions smaller 
+than 640x480).
+<p><li>
+Page flipping and triple buffering are cool, and hardware accelerated 
+blitting with your graphics stored in offscreen vram is very cool, but these 
+methods are far less portable than drawing onto a memory bitmap and then 
+simply blasting the result across to the screen. If you want to use the more 
+optimized methods, I suggest implementing them as options alongside a simple 
+double buffer, as shown in the Allegro demo game and exupdate example 
+program.
+<p><li>
+When you want to set a graphics mode but don't particularly care what type 
+of graphics mode (for example in order to display the dialog that will be 
+used to select your real resolution), use the GFX_SAFE driver. When you 
+request a GFX_SAFE mode, Allegro will poke around trying to find whatever 
+resolution is supported on the current system, and if it can't find anything 
+at all, it will abort the program with a (hopefully descriptive :-) error 
+message, so you don't need to bother checking for errors yourself.
+<p><li>
+Remember that not all platforms have any solid existence outside of Allegro. 
+For example Windows programs cannot produce output or read keyboard input 
+until they have opened up a window to do this in, and likewise the stdout 
+from an X program may not be visible if it was launched from inside a GUI 
+interface. So you should always set a graphics mode before using the Allegro 
+input functions, and do all your output to a graphics mode screen rather 
+than by calling printf(). If you absolutely do need to output messages while 
+not in a graphics mode, use the allegro_message() function, which is 
+implemented as a printf() call on some platforms but an alert box on others.
+<p><li>
+The vsync() function is dangerous, so don't use it for anything too 
+important. Some platforms (eg. Linux fbcon) don't support this functionality 
+at all, while others (eg. various incompetently written DOS VESA drivers) 
+support it wrongly. Also, even when it does work as intended the retrace 
+speed depends on the type of graphics hardware and the display mode in use, 
+so this is certainly not a good thing to use for controlling your game 
+speed. Use it to sync your drawing up with the monitor if you want, but be 
+prepared for it to just return instantly on some systems. Unfortunately you 
+cannot easily detect whether this call is working correctly, due to the high 
+incidence of buggy VESA implementations that make it look like this is ok 
+even when it really isn't.
+<p><li>
+In Windows, all video memory and system bitmaps need to be acquired before 
+you can draw onto them, and must be released as soon as you have finished 
+drawing (because you can't call any other non graphical functions while a 
+bitmap is locked). If you don't acquire them yourself, Allegro will do it 
+for you inside the drawing functions, but this can be inefficient if you are 
+drawing many things in a row. For example if you are using a thousand 
+putpixel() calls to create a starfield, you can get a big speed boost by 
+calling acquire_bitmap() yourself at the start of that entire block of 
+drawing code, and a matching release_bitmap() at the end.
+<p><li>
+In Windows, the screen contents, and the contents of any video bitmaps, are 
+forgotten every time the user tabs away from your program, so you must be 
+prepared to redraw the entire display as soon as they switch back to it (ie. 
+you are always operating in SWITCH_AMNESIA mode). You can try calling 
+set_display_switch_mode() to change this, but at the moment, this call will 
+always fail when used on Windows. This is very unfortunate, but it results 
+from a flaw in the design of DirectX, and there is nothing we can do to 
+improve the situation. It isn't a problem for games where the animation 
+system is already repainting the entire screen on every frame, but if it is 
+a problem for you, you can either call set_display_switch_callback() to hook 
+the SWITCH_IN event and trigger a special redraw whenever this occurs, or 
+you can just ignore the problem and tell your users never to tab away from 
+the game :-)
+<p><li>
+If you are writing directly to video memory, you need to be extra careful 
+because the old _farpokeb() method for doing this is grossly non portable 
+(although it will still work with djgpp programs). You can still use the 
+line pointers directly for writing to memory bitmaps, but to access a video 
+bitmap, you need to perform the following operations:
+<pre>
+   // call bmp_select() once at the very start of your drawing operation
+   bmp_select(bmp);
+
+   for (y=top; y&lt;bottom; y++) {
+      // call bmp_write_line() once for every horizontal line
+      unsigned long address = bmp_write_line(bmp, y);
+
+      for (x=left; x&lt;right; x++) {
+	 // use bmp_write*() macros to write the pixels
+	 bmp_write8(address+x, color);
+      }
+   }
+
+   // call bmp_unwrite_line() once at the very end of the drawing operation
+   bmp_unwrite_line(bmp);
+</pre>
+Yes, it looks horrific, but half of these macros will just expand into noops 
+on any given platform, and the other half tend to collapse into just a bit 
+of pointer twiddling or inline asm, so it really isn't all that bad. And 
+this is the only way to make direct memory access code that is 100% portable 
+to any platform.
+<p>
+For higher color depths, change bmp_write8() to bmp_write15(), 
+bmp_write16(), etc, and multiply the x coordinate by a scaling factor before 
+you add it to the destination address. For 15 and 16 bit modes, you should 
+multiply by sizeof(short). For 24 bit modes, multiply by 3. For 32 bit 
+modes, multiply by sizeof(long).
+<p><li>
+All of the current Allegro platforms provide asynchronous input, which means 
+that the key[] array and mouse position variables are automatically updated 
+whenever new data is available. It is possible that some future platforms 
+may not be capable of this, though, in which case you will need to call the 
+polling functions (poll_mouse() and poll_keyboard()) whenever you want to 
+copy information from the hardware device into the state variables (you 
+don't need to poll when you are using a function to read the data, though, 
+such as readkey() or get_mouse_mickeys()). It is up to you whether you want 
+to bother with input polling, since it is quite possible that no platforms 
+will ever actually require it, but if you want to be ultra safe, you should 
+poll every time you want to read new input. To simplify testing this sort of 
+code on platforms that don't require it, after the first time you call the 
+polling routines, Allegro will switch into a special polling emulation mode 
+that won't provide any more input unless you keep polling for it, so you can 
+be sure you didn't forget to put polling calls in any important places.
+<p><li>
+In DOS, you need to lock all memory that is touched in an interrupt context 
+(ie. a timer handler, mouse movement callback, MIDI event callback, etc). 
+Use the LOCK_VARIABLE() macro to lock global variables, END_OF_FUNCTION() 
+and LOCK_FUNCTION() to lock function code, and LOCK_DATA() to lock allocated 
+blocks of memory (you don't need to lock local variables, because the entire 
+interrupt stack is already locked). On other platforms you can get away 
+without any of this locking, but it is a good idea to do it anyway in case 
+you ever want that code to work on DOS. You should also avoid calling 
+library functions in an interrupt context (because you have no way of 
+locking them, and also because they tend not to work there in any case), and 
+you shouldn't use any floating point operations.
+<p><li>
+Don't rely on high precision timers. You can count on getting at least 10 ms 
+(1/100 of a second) accuracy on any platform, but even though some systems 
+are capable of much greater accuracy than this, others are not. If you 
+install a timer faster than the current platform can support, it will still 
+end up going at an average of the requested speed, but the calls will all be 
+bunched up together at each system timer tick, which isn't really very 
+useful.
+</ul>
+
+
+</body>
+</html>
