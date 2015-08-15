@@ -749,11 +749,12 @@ THING *create_thing(<span class="dt">void</span>)
 <h1 id="al_emit_user_event">al_emit_user_event</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_emit_user_event(ALLEGRO_EVENT_SOURCE *src,
    ALLEGRO_EVENT *event, <span class="dt">void</span> (*dtor)(ALLEGRO_USER_EVENT *))</code></pre>
-<p>Emit a user event. The event source must have been initialised with <a href="events.html#al_init_user_event_source">al_init_user_event_source</a>. Returns <code>false</code> if the event source isn't registered with any queues, hence the event wouldn't have been delivered into any queues.</p>
+<p>Emit an event from a user event source. The event source must have been initialised with <a href="events.html#al_init_user_event_source">al_init_user_event_source</a>. Returns <code>false</code> if the event source isn't registered with any queues, hence the event wouldn't have been delivered into any queues.</p>
 <p>Events are <em>copied</em> in and out of event queues, so after this function returns the memory pointed to by <code>event</code> may be freed or reused. Some fields of the event being passed in may be modified by the function.</p>
 <p>Reference counting will be performed if <code>dtor</code> is not NULL. Whenever a copy of the event is made, the reference count increases. You need to call <a href="events.html#al_unref_user_event">al_unref_user_event</a> to decrease the reference count once you are done with a user event that you have received from <a href="events.html#al_get_next_event">al_get_next_event</a>, <a href="events.html#al_peek_next_event">al_peek_next_event</a>, <a href="events.html#al_wait_for_event">al_wait_for_event</a>, etc.</p>
 <p>Once the reference count drops to zero <code>dtor</code> will be called with a copy of the event as an argument. It should free the resources associated with the event, but <em>not</em> the event itself (since it is just a copy).</p>
 <p>If <code>dtor</code> is NULL then reference counting will not be performed. It is safe, but unnecessary, to call <a href="events.html#al_unref_user_event">al_unref_user_event</a> on non-reference counted user events.</p>
+<p>You can use al_emit_user_event to emit both user and non-user events from your user event source. Note that emitting input events will not update the corresponding input device states. For example, you may emit an event of type <a href="events.html#allegro_event_key_down">ALLEGRO_EVENT_KEY_DOWN</a>, but it will not update the <a href="keyboard.html#allegro_keyboard_state">ALLEGRO_KEYBOARD_STATE</a> returned by <a href="keyboard.html#al_get_keyboard_state">al_get_keyboard_state</a>.</p>
 <p>See also: <a href="events.html#allegro_user_event">ALLEGRO_USER_EVENT</a>, <a href="events.html#al_unref_user_event">al_unref_user_event</a></p>
 <h1 id="al_unref_user_event">al_unref_user_event</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_unref_user_event(ALLEGRO_USER_EVENT *event)</code></pre>
@@ -769,7 +770,7 @@ THING *create_thing(<span class="dt">void</span>)
 <p>See also: <a href="events.html#al_get_event_source_data">al_get_event_source_data</a></p>
 <p class="timestamp">
 Allegro version 5.1.12 (GIT)
- - Last updated: 2015-07-05 04:30:13 UTC
+ - Last updated: 2015-08-15 15:28:06 UTC
 </p>
 </div>
 </body>

@@ -160,6 +160,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="#al_is_compatible_bitmap">al_is_compatible_bitmap</a></li>
 <li><a href="#al_is_sub_bitmap">al_is_sub_bitmap</a></li>
 <li><a href="#al_get_parent_bitmap">al_get_parent_bitmap</a></li>
+<li><a href="#al_get_bitmap_x">al_get_bitmap_x</a></li>
+<li><a href="#al_get_bitmap_y">al_get_bitmap_y</a></li>
+<li><a href="#al_reparent_bitmap">al_reparent_bitmap</a></li>
 </ul></li>
 <li><a href="#drawing-operations">Drawing operations</a><ul>
 <li><a href="#al_clear_to_color">al_clear_to_color</a></li>
@@ -558,6 +561,22 @@ ASSERT(al_get_parent_bitmap(b) == a &amp;&amp; al_get_parent_bitmap(c) == a);</c
 <p>The assertion will pass because only <code>a</code> is a real bitmap, and both <code>b</code> and <code>c</code> are its sub-bitmaps.</p>
 <p>Since: 5.0.6, 5.1.2</p>
 <p>See also: <a href="graphics.html#al_create_sub_bitmap">al_create_sub_bitmap</a>, <a href="graphics.html#al_is_sub_bitmap">al_is_sub_bitmap</a></p>
+<h2 id="al_get_bitmap_x">al_get_bitmap_x</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_bitmap_x(ALLEGRO_BITMAP *bitmap)</code></pre>
+<p>For a sub-bitmap, return it's x position within the parent.</p>
+<p>See also: <a href="graphics.html#al_create_sub_bitmap">al_create_sub_bitmap</a>, <a href="graphics.html#al_get_parent_bitmap">al_get_parent_bitmap</a>, <a href="graphics.html#al_get_bitmap_y">al_get_bitmap_y</a></p>
+<p>Since: 5.1.12</p>
+<h2 id="al_get_bitmap_y">al_get_bitmap_y</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_bitmap_y(ALLEGRO_BITMAP *bitmap)</code></pre>
+<p>For a sub-bitmap, return it's y position within the parent.</p>
+<p>See also: <a href="graphics.html#al_create_sub_bitmap">al_create_sub_bitmap</a>, <a href="graphics.html#al_get_parent_bitmap">al_get_parent_bitmap</a>, <a href="graphics.html#al_get_bitmap_x">al_get_bitmap_x</a></p>
+<p>Since: 5.1.12</p>
+<h2 id="al_reparent_bitmap">al_reparent_bitmap</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_reparent_bitmap(ALLEGRO_BITMAP *bitmap, ALLEGRO_BITMAP *parent,
+   <span class="dt">int</span> x, <span class="dt">int</span> y, <span class="dt">int</span> w, <span class="dt">int</span> h)</code></pre>
+<p>For a sub-bitmap, changes the parent, position and size. This is the same as destroying the bitmap and re-creating it with <a href="graphics.html#al_create_sub_bitmap">al_create_sub_bitmap</a> - except the bitmap pointer stays the same. This has many uses, for example an animation player could return a single bitmap which can just be re-parented to different animation frames without having to re-draw the contents. Or a sprite atlas could re-arrange its sprites without having to invalidate all existing bitmaps.</p>
+<p>See also: <a href="graphics.html#al_create_sub_bitmap">al_create_sub_bitmap</a>, <a href="graphics.html#al_get_parent_bitmap">al_get_parent_bitmap</a></p>
+<p>Since: 5.1.12</p>
 <h1 id="drawing-operations">Drawing operations</h1>
 <p>All drawing operations draw to the current &quot;target bitmap&quot; of the current thread. Initially, the target bitmap will be the backbuffer of the last display created in a thread.</p>
 <h2 id="al_clear_to_color">al_clear_to_color</h2>
@@ -1104,7 +1123,7 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <p>See also: <a href="graphics.html#allegro_render_state">ALLEGRO_RENDER_STATE</a>, <a href="graphics.html#allegro_render_function">ALLEGRO_RENDER_FUNCTION</a>, <a href="graphics.html#allegro_write_mask_flags">ALLEGRO_WRITE_MASK_FLAGS</a></p>
 <p class="timestamp">
 Allegro version 5.1.12 (GIT)
- - Last updated: 2015-07-10 04:30:28 UTC
+ - Last updated: 2015-08-15 15:28:26 UTC
 </p>
 </div>
 </body>
