@@ -118,6 +118,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="#allegro_bpm_to_secs">ALLEGRO_BPM_TO_SECS</a></li>
 <li><a href="#al_create_timer">al_create_timer</a></li>
 <li><a href="#al_start_timer">al_start_timer</a></li>
+<li><a href="#al_resume_timer">al_resume_timer</a></li>
 <li><a href="#al_stop_timer">al_stop_timer</a></li>
 <li><a href="#al_get_timer_started">al_get_timer_started</a></li>
 <li><a href="#al_destroy_timer">al_destroy_timer</a></li>
@@ -153,12 +154,16 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="timer.html#al_start_timer">al_start_timer</a>, <a href="timer.html#al_destroy_timer">al_destroy_timer</a></p>
 <h1 id="al_start_timer">al_start_timer</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_start_timer(ALLEGRO_TIMER *timer)</code></pre>
-<p>Start the timer specified. From then, the timer's counter will increment at a constant rate, and it will begin generating events. Starting a timer that is already started does nothing.</p>
-<p>See also: <a href="timer.html#al_stop_timer">al_stop_timer</a>, <a href="timer.html#al_get_timer_started">al_get_timer_started</a></p>
+<p>Start the timer specified. From then, the timer's counter will increment at a constant rate, and it will begin generating events. Starting a timer that is already started does nothing. Starting a timer that was stopped will reset the timer's counter, effectively restarting the timer from the beginning.</p>
+<p>See also: <a href="timer.html#al_stop_timer">al_stop_timer</a>, <a href="timer.html#al_get_timer_started">al_get_timer_started</a>, <a href="timer.html#al_resume_timer">al_resume_timer</a></p>
+<h1 id="al_resume_timer">al_resume_timer</h1>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_resume_timer(ALLEGRO_TIMER *timer)</code></pre>
+<p>Resume the timer specified. From then, the timer's counter will increment at a constant rate, and it will begin generating events. Resuming a timer that is already started does nothing. Resuming a stopped timer will not reset the timer's counter (unlike al_start_timer).</p>
+<p>See also: <a href="timer.html#al_start_timer">al_start_timer</a>, <a href="timer.html#al_stop_timer">al_stop_timer</a>, <a href="timer.html#al_get_timer_started">al_get_timer_started</a></p>
 <h1 id="al_stop_timer">al_stop_timer</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_stop_timer(ALLEGRO_TIMER *timer)</code></pre>
 <p>Stop the timer specified. The timer's counter will stop incrementing and it will stop generating events. Stopping a timer that is already stopped does nothing.</p>
-<p>See also: <a href="timer.html#al_start_timer">al_start_timer</a>, <a href="timer.html#al_get_timer_started">al_get_timer_started</a></p>
+<p>See also: <a href="timer.html#al_start_timer">al_start_timer</a>, <a href="timer.html#al_get_timer_started">al_get_timer_started</a>, <a href="timer.html#al_resume_timer">al_resume_timer</a></p>
 <h1 id="al_get_timer_started">al_get_timer_started</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_get_timer_started(<span class="dt">const</span> ALLEGRO_TIMER *timer)</code></pre>
 <p>Return true if the timer specified is currently started.</p>
@@ -195,7 +200,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Retrieve the associated event source. Timers will generate events of type <a href="events.html#allegro_event_timer">ALLEGRO_EVENT_TIMER</a>.</p>
 <p class="timestamp">
 Allegro version 5.1.12 (GIT)
- - Last updated: 2015-08-15 15:28:30 UTC
+ - Last updated: 2015-09-23 01:05:19 UTC
 </p>
 </div>
 </body>

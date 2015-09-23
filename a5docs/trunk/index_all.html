@@ -175,6 +175,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="mouse.html#allegro_mouse_state">ALLEGRO_MOUSE_STATE</a> <!-- --></li>
 <li><a href="timer.html#allegro_msecs_to_secs">ALLEGRO_MSECS_TO_SECS</a> <!-- --></li>
 <li><a href="threads.html#allegro_mutex">ALLEGRO_MUTEX</a> <!-- --></li>
+<li><a href="display.html#allegro_new_window_title_max_size">ALLEGRO_NEW_WINDOW_TITLE_MAX_SIZE</a> <!-- --></li>
 <li><a href="misc.html#allegro_pi">ALLEGRO_PI</a> <!-- --></li>
 <li><a href="graphics.html#allegro_pixel_format">ALLEGRO_PIXEL_FORMAT</a> <!-- --></li>
 <li><a href="audio.html#allegro_playmode">ALLEGRO_PLAYMODE</a> <!-- --></li>
@@ -234,6 +235,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="getting_started.html#blending">Blending</a> <!-- --></li>
 <li><a href="graphics.html#blending-modes">Blending modes</a> <!-- --></li>
 <li><a href="getting_started.html#changing-the-drawing-target">Changing the drawing target</a> <!-- --></li>
+<li><a href="display.html#clipboard">Clipboard</a> <!-- --></li>
 <li><a href="graphics.html#clipping">Clipping</a> <!-- --></li>
 <li><a href="color.html#color-addon">Color addon</a> <!-- --></li>
 <li><a href="graphics.html#colors">Colors</a> <!-- --></li>
@@ -304,6 +306,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="opengl.html#opengl-integration">OpenGL integration</a> <!-- --></li>
 <li><a href="getting_started.html#opening-a-window">Opening a window</a> <!-- --></li>
 <li><a href="path.html#path-structures">Path structures</a> <!-- --></li>
+<li><a href="font.html#per-glyph-text-handling">Per glyph text handling</a> <!-- --></li>
 <li><a href="physfs.html#physicsfs-integration">PhysicsFS integration</a> <!-- --></li>
 <li><a href="primitives.html#pixel-precise-output">Pixel-precise output</a> <!-- --></li>
 <li><a href="platform.html#platform-specific-functions">Platform-specific functions</a> <!-- --></li>
@@ -341,6 +344,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="video.html#video-streaming-addon">Video streaming addon</a> <!-- --></li>
 <li><a href="audio.html#voice-functions">Voice functions</a> <!-- --></li>
 <li><a href="platform.html#windows">Windows</a> <!-- --></li>
+<li><a href="platform.html#x11">X11</a> <!-- --></li>
 <li><a href="display.html#al_acknowledge_drawing_halt">al_acknowledge_drawing_halt</a> <!-- --></li>
 <li><a href="display.html#al_acknowledge_drawing_resume">al_acknowledge_drawing_resume</a> <!-- --></li>
 <li><a href="display.html#al_acknowledge_resize">al_acknowledge_resize</a> <!-- --></li>
@@ -375,6 +379,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="transformations.html#al_check_inverse">al_check_inverse</a> <!-- --></li>
 <li><a href="graphics.html#al_clear_depth_buffer">al_clear_depth_buffer</a> <!-- --></li>
 <li><a href="graphics.html#al_clear_to_color">al_clear_to_color</a> <!-- --></li>
+<li><a href="display.html#al_clipboard_has_text">al_clipboard_has_text</a> <!-- --></li>
 <li><a href="graphics.html#al_clone_bitmap">al_clone_bitmap</a> <!-- --></li>
 <li><a href="native_dialog.html#al_clone_menu">al_clone_menu</a> <!-- --></li>
 <li><a href="native_dialog.html#al_clone_menu_for_popup">al_clone_menu_for_popup</a> <!-- --></li>
@@ -484,6 +489,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="primitives.html#al_draw_filled_rectangle">al_draw_filled_rectangle</a> <!-- --></li>
 <li><a href="primitives.html#al_draw_filled_rounded_rectangle">al_draw_filled_rounded_rectangle</a> <!-- --></li>
 <li><a href="primitives.html#al_draw_filled_triangle">al_draw_filled_triangle</a> <!-- --></li>
+<li><a href="font.html#al_draw_glyph">al_draw_glyph</a> <!-- --></li>
 <li><a href="primitives.html#al_draw_indexed_buffer">al_draw_indexed_buffer</a> <!-- --></li>
 <li><a href="primitives.html#al_draw_indexed_prim">al_draw_indexed_prim</a> <!-- --></li>
 <li><a href="font.html#al_draw_justified_text">al_draw_justified_text</a> <!-- --></li>
@@ -626,8 +632,10 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="graphics.html#al_get_blend_color">al_get_blend_color</a> <!-- --></li>
 <li><a href="graphics.html#al_get_blender">al_get_blender</a> <!-- --></li>
 <li><a href="audio.html#al_get_channel_count">al_get_channel_count</a> <!-- --></li>
+<li><a href="display.html#al_get_clipboard_text">al_get_clipboard_text</a> <!-- --></li>
 <li><a href="graphics.html#al_get_clipping_rectangle">al_get_clipping_rectangle</a> <!-- --></li>
 <li><a href="config.html#al_get_config_value">al_get_config_value</a> <!-- --></li>
+<li><a href="system.html#al_get_cpu_count">al_get_cpu_count</a> <!-- --></li>
 <li><a href="fshook.html#al_get_current_directory">al_get_current_directory</a> <!-- --></li>
 <li><a href="graphics.html#al_get_current_display">al_get_current_display</a> <!-- --></li>
 <li><a href="transformations.html#al_get_current_inverse_transform">al_get_current_inverse_transform</a> <!-- --></li>
@@ -658,6 +666,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="config.html#al_get_first_config_section">al_get_first_config_section</a> <!-- --></li>
 <li><a href="font.html#al_get_font_ascent">al_get_font_ascent</a> <!-- --></li>
 <li><a href="font.html#al_get_font_descent">al_get_font_descent</a> <!-- --></li>
+<li><a href="font.html#al_get_font_fallback">al_get_font_fallback</a> <!-- --></li>
 <li><a href="font.html#al_get_font_line_height">al_get_font_line_height</a> <!-- --></li>
 <li><a href="font.html#al_get_font_ranges">al_get_font_ranges</a> <!-- --></li>
 <li><a href="fshook.html#al_get_fs_entry_atime">al_get_fs_entry_atime</a> <!-- --></li>
@@ -667,6 +676,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="fshook.html#al_get_fs_entry_name">al_get_fs_entry_name</a> <!-- --></li>
 <li><a href="fshook.html#al_get_fs_entry_size">al_get_fs_entry_size</a> <!-- --></li>
 <li><a href="fshook.html#al_get_fs_interface">al_get_fs_interface</a> <!-- --></li>
+<li><a href="font.html#al_get_glyph_advance">al_get_glyph_advance</a> <!-- --></li>
+<li><a href="font.html#al_get_glyph_dimensions">al_get_glyph_dimensions</a> <!-- --></li>
+<li><a href="font.html#al_get_glyph_width">al_get_glyph_width</a> <!-- --></li>
 <li><a href="haptic.html#al_get_haptic_autocenter">al_get_haptic_autocenter</a> <!-- --></li>
 <li><a href="haptic.html#al_get_haptic_capabilities">al_get_haptic_capabilities</a> <!-- --></li>
 <li><a href="haptic.html#al_get_haptic_effect_duration">al_get_haptic_effect_duration</a> <!-- --></li>
@@ -722,6 +734,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="display.html#al_get_new_display_refresh_rate">al_get_new_display_refresh_rate</a> <!-- --></li>
 <li><a href="file.html#al_get_new_file_interface">al_get_new_file_interface</a> <!-- --></li>
 <li><a href="display.html#al_get_new_window_position">al_get_new_window_position</a> <!-- --></li>
+<li><a href="display.html#al_get_new_window_title">al_get_new_window_title</a> <!-- --></li>
 <li><a href="config.html#al_get_next_config_entry">al_get_next_config_entry</a> <!-- --></li>
 <li><a href="config.html#al_get_next_config_section">al_get_next_config_section</a> <!-- --></li>
 <li><a href="events.html#al_get_next_event">al_get_next_event</a> <!-- --></li>
@@ -751,6 +764,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="graphics.html#al_get_pixel_block_width">al_get_pixel_block_width</a> <!-- --></li>
 <li><a href="graphics.html#al_get_pixel_format_bits">al_get_pixel_format_bits</a> <!-- --></li>
 <li><a href="graphics.html#al_get_pixel_size">al_get_pixel_size</a> <!-- --></li>
+<li><a href="system.html#al_get_ram_size">al_get_ram_size</a> <!-- --></li>
 <li><a href="audio.html#al_get_sample">al_get_sample</a> <!-- --></li>
 <li><a href="audio.html#al_get_sample_channels">al_get_sample_channels</a> <!-- --></li>
 <li><a href="audio.html#al_get_sample_data">al_get_sample_data</a> <!-- --></li>
@@ -805,6 +819,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="platform.html#al_get_win_window_handle">al_get_win_window_handle</a> <!-- --></li>
 <li><a href="display.html#al_get_window_constraints">al_get_window_constraints</a> <!-- --></li>
 <li><a href="display.html#al_get_window_position">al_get_window_position</a> <!-- --></li>
+<li><a href="platform.html#al_get_x_window_id">al_get_x_window_id</a> <!-- --></li>
 <li><a href="font.html#al_grab_font_from_bitmap">al_grab_font_from_bitmap</a> <!-- --></li>
 <li><a href="mouse.html#al_grab_mouse">al_grab_mouse</a> <!-- --></li>
 <li><a href="direct3d.html#al_have_d3d_non_pow2_texture_support">al_have_d3d_non_pow2_texture_support</a> <!-- --></li>
@@ -920,6 +935,8 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="audio.html#al_play_sample">al_play_sample</a> <!-- --></li>
 <li><a href="audio.html#al_play_sample_instance">al_play_sample_instance</a> <!-- --></li>
 <li><a href="native_dialog.html#al_popup_menu">al_popup_menu</a> <!-- --></li>
+<li><a href="graphics.html#al_premul_rgba">al_premul_rgba</a> <!-- --></li>
+<li><a href="graphics.html#al_premul_rgba_f">al_premul_rgba_f</a> <!-- --></li>
 <li><a href="graphics.html#al_put_blended_pixel">al_put_blended_pixel</a> <!-- --></li>
 <li><a href="graphics.html#al_put_pixel">al_put_pixel</a> <!-- --></li>
 <li><a href="fixed.html#al_radtofix_r">al_radtofix_r</a> <!-- --></li>
@@ -965,6 +982,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="time.html#al_rest">al_rest</a> <!-- --></li>
 <li><a href="audio.html#al_restore_default_mixer">al_restore_default_mixer</a> <!-- --></li>
 <li><a href="state.html#al_restore_state">al_restore_state</a> <!-- --></li>
+<li><a href="timer.html#al_resume_timer">al_resume_timer</a> <!-- --></li>
 <li><a href="audio.html#al_rewind_audio_stream">al_rewind_audio_stream</a> <!-- --></li>
 <li><a href="transformations.html#al_rotate_transform">al_rotate_transform</a> <!-- --></li>
 <li><a href="transformations.html#al_rotate_transform_3d">al_rotate_transform_3d</a> <!-- --></li>
@@ -991,6 +1009,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="audio.html#al_set_audio_stream_speed">al_set_audio_stream_speed</a> <!-- --></li>
 <li><a href="graphics.html#al_set_blend_color">al_set_blend_color</a> <!-- --></li>
 <li><a href="graphics.html#al_set_blender">al_set_blender</a> <!-- --></li>
+<li><a href="display.html#al_set_clipboard_text">al_set_clipboard_text</a> <!-- --></li>
 <li><a href="graphics.html#al_set_clipping_rectangle">al_set_clipping_rectangle</a> <!-- --></li>
 <li><a href="config.html#al_set_config_value">al_set_config_value</a> <!-- --></li>
 <li><a href="opengl.html#al_set_current_opengl_context">al_set_current_opengl_context</a> <!-- --></li>
@@ -1005,6 +1024,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="state.html#al_set_errno">al_set_errno</a> <!-- --></li>
 <li><a href="events.html#al_set_event_source_data">al_set_event_source_data</a> <!-- --></li>
 <li><a href="system.html#al_set_exe_name">al_set_exe_name</a> <!-- --></li>
+<li><a href="font.html#al_set_font_fallback">al_set_font_fallback</a> <!-- --></li>
 <li><a href="fshook.html#al_set_fs_interface">al_set_fs_interface</a> <!-- --></li>
 <li><a href="haptic.html#al_set_haptic_autocenter">al_set_haptic_autocenter</a> <!-- --></li>
 <li><a href="haptic.html#al_set_haptic_gain">al_set_haptic_gain</a> <!-- --></li>
@@ -1033,6 +1053,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="display.html#al_set_new_display_refresh_rate">al_set_new_display_refresh_rate</a> <!-- --></li>
 <li><a href="file.html#al_set_new_file_interface">al_set_new_file_interface</a> <!-- --></li>
 <li><a href="display.html#al_set_new_window_position">al_set_new_window_position</a> <!-- --></li>
+<li><a href="display.html#al_set_new_window_title">al_set_new_window_title</a> <!-- --></li>
 <li><a href="system.html#al_set_org_name">al_set_org_name</a> <!-- --></li>
 <li><a href="path.html#al_set_path_drive">al_set_path_drive</a> <!-- --></li>
 <li><a href="path.html#al_set_path_extension">al_set_path_extension</a> <!-- --></li>
@@ -1197,7 +1218,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <p class="timestamp">
 Allegro version 5.1.12 (GIT)
- - Last updated: 2015-08-15 15:28:37 UTC
+ - Last updated: 2015-09-23 01:05:22 UTC
 </p>
 </div>
 </body>

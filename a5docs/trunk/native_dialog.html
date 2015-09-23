@@ -195,16 +195,21 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <dl>
 <dt>ALLEGRO_FILECHOOSER_FILE_MUST_EXIST</dt>
-<dd>If supported by the native dialog, it will not allow entering new names, but just allow existing files to be selected. Else it is ignored. ALLEGRO_FILECHOOSER_SAVE
+<dd>If supported by the native dialog, it will not allow entering new names, but just allow existing files to be selected. Else it is ignored.
 </dd>
-<dd>If the native dialog system has a different dialog for saving (for example one which allows creating new directories), it is used. Else it is ignored. ALLEGRO_FILECHOOSER_FOLDER
+<dt>ALLEGRO_FILECHOOSER_SAVE</dt>
+<dd>If the native dialog system has a different dialog for saving (for example one which allows creating new directories), it is used. Else it is ignored.
 </dd>
-<dd>If there is support for a separate dialog to select a folder instead of a file, it will be used. ALLEGRO_FILECHOOSER_PICTURES
+<dt>ALLEGRO_FILECHOOSER_FOLDER</dt>
+<dd>If there is support for a separate dialog to select a folder instead of a file, it will be used.
 </dd>
-<dd>If a different dialog is available for selecting pictures, it is used. Else it is ignored. ALLEGRO_FILECHOOSER_SHOW_HIDDEN
+<dt>ALLEGRO_FILECHOOSER_PICTURES</dt>
+<dd>If a different dialog is available for selecting pictures, it is used. Else it is ignored.
 </dd>
-<dd>If the platform supports it, also hidden files will be shown. ALLEGRO_FILECHOOSER_MULTIPLE
+<dt>ALLEGRO_FILECHOOSER_SHOW_HIDDEN</dt>
+<dd>If the platform supports it, also hidden files will be shown.
 </dd>
+<dt>ALLEGRO_FILECHOOSER_MULTIPLE</dt>
 <dd>If supported, allow selecting multiple files.
 </dd>
 </dl>
@@ -233,16 +238,21 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
    <span class="dt">char</span> <span class="dt">const</span> *buttons, <span class="dt">int</span> flags)</code></pre>
 <p>Show a native GUI message box. This can be used for example to display an error message if creation of an initial display fails. The display may be NULL, otherwise the given display is treated as the parent if possible.</p>
 <p>The message box will have a single &quot;OK&quot; button and use the style informative dialog boxes usually have on the native system. If the <code>buttons</code> parameter is not NULL, you can instead specify the button text in a string, with buttons separated by a vertical bar (|).</p>
+<p>The flags available are:</p>
 <dl>
 <dt>ALLEGRO_MESSAGEBOX_WARN</dt>
-<dd>The message is a warning. This may cause a different icon (or other effects). ALLEGRO_MESSAGEBOX_ERROR
+<dd>The message is a warning. This may cause a different icon (or other effects).
 </dd>
-<dd>The message is an error. ALLEGRO_MESSAGEBOX_QUESTION
+<dt>ALLEGRO_MESSAGEBOX_ERROR</dt>
+<dd>The message is an error.
 </dd>
-<dd>The message is a question. ALLEGRO_MESSAGEBOX_OK_CANCEL
+<dt>ALLEGRO_MESSAGEBOX_QUESTION</dt>
+<dd>The message is a question.
 </dd>
-<dd>Display a cancel button alongside the &quot;OK&quot; button. Ignored if <code>buttons</code> is not NULL. ALLEGRO_MESSAGEBOX_YES_NO
+<dt>ALLEGRO_MESSAGEBOX_OK_CANCEL</dt>
+<dd>Display a cancel button alongside the &quot;OK&quot; button. Ignored if <code>buttons</code> is not NULL.
 </dd>
+<dt>ALLEGRO_MESSAGEBOX_YES_NO</dt>
 <dd>Display Yes/No buttons instead of the &quot;OK&quot; button. Ignored if <code>buttons</code> is not NULL.
 </dd>
 </dl>
@@ -534,7 +544,7 @@ ALLEGRO_MENU *menu = al_build_menu(menu_info);</code></pre>
 <p>See also: <a href="native_dialog.html#al_set_display_menu">al_set_display_menu</a></p>
 <p class="timestamp">
 Allegro version 5.1.12 (GIT)
- - Last updated: 2015-08-15 15:28:35 UTC
+ - Last updated: 2015-09-23 01:05:21 UTC
 </p>
 </div>
 </body>

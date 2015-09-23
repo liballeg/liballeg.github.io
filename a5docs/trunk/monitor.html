@@ -122,7 +122,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <pre class="sourceCode c"><code class="sourceCode c"> <span class="ot">#include &lt;allegro5/allegro.h&gt;</span></code></pre>
 <h1 id="allegro_monitor_info">ALLEGRO_MONITOR_INFO</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_MONITOR_INFO</code></pre>
-<p>Describes a monitor's size and position relative to other monitors. x1, y1 will be 0, 0 on the primary display. Other monitors can have negative values if they are to the left or above the primary display.</p>
+<p>Describes a monitor's size and position relative to other monitors. x1, y1 will be 0, 0 on the primary display. Other monitors can have negative values if they are to the left or above the primary display. x2, y2 are the coordinates one beyond the bottom right pixel, so that x2-x1 gives the width and y2-y1 gives the height of the display.</p>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_MONITOR_INFO
 {
    <span class="dt">int</span> x1;
@@ -153,7 +153,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="monitor.html#al_get_monitor_info">al_get_monitor_info</a></p>
 <p class="timestamp">
 Allegro version 5.1.12 (GIT)
- - Last updated: 2015-08-15 15:28:28 UTC
+ - Last updated: 2015-09-23 01:05:18 UTC
 </p>
 </div>
 </body>

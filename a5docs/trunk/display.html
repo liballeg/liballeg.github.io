@@ -152,6 +152,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="#al_get_display_orientation">al_get_display_orientation</a></li>
 <li><a href="#al_get_display_refresh_rate">al_get_display_refresh_rate</a></li>
 <li><a href="#al_set_window_title">al_set_window_title</a></li>
+<li><a href="#al_set_new_window_title">al_set_new_window_title</a></li>
+<li><a href="#allegro_new_window_title_max_size">ALLEGRO_NEW_WINDOW_TITLE_MAX_SIZE</a></li>
+<li><a href="#al_get_new_window_title">al_get_new_window_title</a></li>
 <li><a href="#al_set_display_icon">al_set_display_icon</a></li>
 <li><a href="#al_set_display_icons">al_set_display_icons</a></li>
 </ul></li>
@@ -161,6 +164,11 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul></li>
 <li><a href="#screensaver">Screensaver</a><ul>
 <li><a href="#al_inhibit_screensaver">al_inhibit_screensaver</a></li>
+</ul></li>
+<li><a href="#clipboard">Clipboard</a><ul>
+<li><a href="#al_get_clipboard_text">al_get_clipboard_text</a></li>
+<li><a href="#al_set_clipboard_text">al_set_clipboard_text</a></li>
+<li><a href="#al_clipboard_has_text">al_clipboard_has_text</a></li>
 </ul></li>
 </ul>
 </div>
@@ -181,7 +189,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Create a display, or window, with the specified dimensions. The parameters of the display are determined by the last calls to al_set_new_display_*. Default parameters are used if none are set explicitly. Creating a new display will automatically make it the active one, with the backbuffer selected for drawing.</p>
 <p>Returns NULL on error.</p>
 <p>Each display that uses OpenGL as a backend has a distinct OpenGL rendering context associated with it. See <a href="graphics.html#al_set_target_bitmap">al_set_target_bitmap</a> for the discussion about rendering contexts.</p>
-<p>See also: <a href="display.html#al_set_new_display_flags">al_set_new_display_flags</a>, <a href="display.html#al_set_new_display_option">al_set_new_display_option</a>, <a href="display.html#al_set_new_display_refresh_rate">al_set_new_display_refresh_rate</a>, <a href="monitor.html#al_set_new_display_adapter">al_set_new_display_adapter</a>, <a href="display.html#al_set_window_position">al_set_window_position</a></p>
+<p>See also: <a href="display.html#al_set_new_display_flags">al_set_new_display_flags</a>, <a href="display.html#al_set_new_display_option">al_set_new_display_option</a>, <a href="display.html#al_set_new_display_refresh_rate">al_set_new_display_refresh_rate</a>, <a href="monitor.html#al_set_new_display_adapter">al_set_new_display_adapter</a>, <a href="display.html#al_set_window_position">al_set_new_window_title</a></p>
 <h2 id="al_destroy_display">al_destroy_display</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_destroy_display(ALLEGRO_DISPLAY *display)</code></pre>
 <p>Destroy a display.</p>
@@ -487,6 +495,21 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_window_title(ALLEGRO_DISPLAY *display, <span class="dt">const</span> <span class="dt">char</span> *title)</code></pre>
 <p>Set the title on a display.</p>
 <p>See also: <a href="display.html#al_set_display_icon">al_set_display_icon</a>, <a href="display.html#al_set_display_icons">al_set_display_icons</a></p>
+<h2 id="al_set_new_window_title">al_set_new_window_title</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_new_window_title(<span class="dt">char</span> *title)</code></pre>
+<p>Set the title that will be used when a new display is created. Allegro uses a static buffer of <a href="display.html#allegro_new_window_title_max_size">ALLEGRO_NEW_WINDOW_TITLE_MAX_SIZE</a> to store this, so the length of the titme you set must be less than this.</p>
+<p>See also: <a href="display.html#al_set_window_title">al_set_window_title</a>, <a href="display.html#al_get_new_window_title">al_get_new_window_title</a>, <a href="display.html#al_create_display">al_create_display</a>, <a href="display.html#allegro_new_window_title_max_size">ALLEGRO_NEW_WINDOW_TITLE_MAX_SIZE</a></p>
+<p>Since: 5.1.12</p>
+<h2 id="allegro_new_window_title_max_size">ALLEGRO_NEW_WINDOW_TITLE_MAX_SIZE</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#define ALLEGRO_NEW_WINDOW_TITLE_MAX_SIZE 255</span></code></pre>
+<p>This is the maximum size of the title that can be set with <a href="display.html#al_set_new_window_title">al_set_new_window_title</a>.</p>
+<p>See also: <a href="display.html#al_set_new_window_title">al_set_new_window_title</a></p>
+<p>Since: 5.1.12</p>
+<h2 id="al_get_new_window_title">al_get_new_window_title</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">const</span> <span class="dt">char</span> *al_get_new_window_title(<span class="dt">void</span>)</code></pre>
+<p>Returns the title that will be used when a new display is created. This returns the value that <a href="display.html#al_set_window_title">al_set_window_title</a> was called with. If that function wasn't called yet, the value of <a href="system.html#al_get_app_name">al_get_app_name</a> is returned as a default. The current implementation returns a pointer to a static buffer of which you should make a copy if you want to modify it.</p>
+<p>See also: <a href="display.html#al_set_window_title">al_set_window_title</a>, <a href="display.html#al_set_new_window_title">al_set_new_window_title</a>, <a href="display.html#al_create_display">al_create_display</a></p>
+<p>Since: 5.1.12</p>
 <h2 id="al_set_display_icon">al_set_display_icon</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_display_icon(ALLEGRO_DISPLAY *display, ALLEGRO_BITMAP *icon)</code></pre>
 <p>Changes the icon associated with the display (window). Same as <a href="display.html#al_set_display_icons">al_set_display_icons</a> with one icon.</p>
@@ -515,9 +538,27 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h2 id="al_inhibit_screensaver">al_inhibit_screensaver</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_inhibit_screensaver(bool inhibit)</code></pre>
 <p>This function allows the user to stop the system screensaver from starting up if true is passed, or resets the system back to the default state (the state at program start) if false is passed. It returns true if the state was set successfully, otherwise false.</p>
+<h1 id="clipboard">Clipboard</h1>
+<p>With the clipboard API of Allegro, text can be copied from and to the clipboard. Currentlly, only UTF8 encoded text is supported. It currently works on Linux, Windows, OSX, Android and IOS.</p>
+<h2 id="al_get_clipboard_text">al_get_clipboard_text</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">char</span> *al_get_clipboard_text(ALLEGRO_DISPLAY *display)</code></pre>
+<p>This function returns a pointer to a string, allocated with <a href="memory.html#al_malloc">al_malloc</a> with the text contents of the clipboard if available. If not text is available on the clipboard then this function returns NULL. You must call <a href="memory.html#al_free">al_free</a> on the returned pointer when you don't need it anymore.</p>
+<p>Beware that text on the clipboard on Windows may be in Windows format, that is, it may have carriage return newline combinations for the line endings instead of regular newlines for the line endings on Linux or OSX.</p>
+<p>Since: 5.1.12</p>
+<p>See also: <a href="display.html#al_set_clipboard_text">al_set_clipboard_text</a>, <a href="display.html#al_clipboard_has_text">al_clipboard_has_text</a></p>
+<h2 id="al_set_clipboard_text">al_set_clipboard_text</h2>
+<pre class="sourceCode c"><code class="sourceCode c">bool al_set_clipboard_text(ALLEGRO_DISPLAY *display, <span class="dt">const</span> <span class="dt">char</span> *text)</code></pre>
+<p>This function pastes the text given as an argument to the clipboard.</p>
+<p>Since: 5.1.12</p>
+<p>See also: <a href="display.html#al_get_clipboard_text">al_get_clipboard_text</a>, <a href="display.html#al_clipboard_has_text">al_clipboard_has_text</a></p>
+<h2 id="al_clipboard_has_text">al_clipboard_has_text</h2>
+<pre class="sourceCode c"><code class="sourceCode c">bool al_clipboard_has_text(ALLEGRO_DISPLAY *display)</code></pre>
+<p>This function returns true if and only if the clipboard has text available.</p>
+<p>Since: 5.1.12</p>
+<p>See also: <a href="display.html#al_set_clipboard_text">al_set_clipboard_text</a>, <a href="display.html#al_get_clipboard_text">al_get_clipboard_text</a></p>
 <p class="timestamp">
 Allegro version 5.1.12 (GIT)
- - Last updated: 2015-08-15 15:28:05 UTC
+ - Last updated: 2015-09-23 01:05:16 UTC
 </p>
 </div>
 </body>

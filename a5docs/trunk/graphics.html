@@ -116,7 +116,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="#al_map_rgb">al_map_rgb</a></li>
 <li><a href="#al_map_rgb_f">al_map_rgb_f</a></li>
 <li><a href="#al_map_rgba">al_map_rgba</a></li>
+<li><a href="#al_premul_rgba">al_premul_rgba</a></li>
 <li><a href="#al_map_rgba_f">al_map_rgba_f</a></li>
+<li><a href="#al_premul_rgba_f">al_premul_rgba_f</a></li>
 <li><a href="#al_unmap_rgb">al_unmap_rgb</a></li>
 <li><a href="#al_unmap_rgb_f">al_unmap_rgb_f</a></li>
 <li><a href="#al_unmap_rgba">al_unmap_rgba</a></li>
@@ -245,27 +247,38 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_map_rgba(
    <span class="dt">unsigned</span> <span class="dt">char</span> r, <span class="dt">unsigned</span> <span class="dt">char</span> g, <span class="dt">unsigned</span> <span class="dt">char</span> b, <span class="dt">unsigned</span> <span class="dt">char</span> a)</code></pre>
 <p>Convert r, g, b, a (ranging from 0-255) into an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a>.</p>
+<p>See also: <a href="graphics.html#al_map_rgb">al_map_rgb</a>, <a href="graphics.html#al_premul_rgba">al_premul_rgba</a>, <a href="graphics.html#al_map_rgb_f">al_map_rgb_f</a></p>
+<h2 id="al_premul_rgba">al_premul_rgba</h2>
+<pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_premul_rgba(
+   <span class="dt">unsigned</span> <span class="dt">char</span> r, <span class="dt">unsigned</span> <span class="dt">char</span> g, <span class="dt">unsigned</span> <span class="dt">char</span> b, <span class="dt">unsigned</span> <span class="dt">char</span> a)</code></pre>
+<p>This is a shortcut for <a href="graphics.html#al_map_rgba">al_map_rgba</a>(r * a / 255, g * a / 255, b * a / 255, a).</p>
 <p>By default Allegro uses pre-multiplied alpha for transparent blending of bitmaps and primitives (see <a href="graphics.html#al_load_bitmap_flags">al_load_bitmap_flags</a> for a discussion of that feature). This means that if you want to tint a bitmap or primitive to be transparent you need to multiply the color components by the alpha components when you pass them to this function. For example:</p>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> r = <span class="dv">255</span>;
 <span class="dt">int</span> g = <span class="dv">0</span>;
 <span class="dt">int</span> b = <span class="dv">0</span>;
 <span class="dt">int</span> a = <span class="dv">127</span>;
-ALLEGRO_COLOR c = al_map_rgba(r * a / <span class="dv">255</span>, g * a / <span class="dv">255</span>, b * a / <span class="dv">255</span>, a);
+ALLEGRO_COLOR c = al_premul_rgba(r, g, b, a);
 <span class="co">/* Draw the bitmap tinted red and half-transparent. */</span>
 al_draw_tinted_bitmap(bmp, c, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>);</code></pre>
-<p>See also: <a href="graphics.html#al_map_rgb">al_map_rgb</a>, <a href="graphics.html#al_map_rgba_f">al_map_rgba_f</a>, <a href="graphics.html#al_map_rgb_f">al_map_rgb_f</a></p>
+<p>Since: 5.1.12</p>
+<p>See also: <a href="graphics.html#al_map_rgba">al_map_rgba</a>, <a href="graphics.html#al_premul_rgba_f">al_premul_rgba_f</a></p>
 <h2 id="al_map_rgba_f">al_map_rgba_f</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_map_rgba_f(<span class="dt">float</span> r, <span class="dt">float</span> g, <span class="dt">float</span> b, <span class="dt">float</span> a)</code></pre>
 <p>Convert r, g, b, a (ranging from 0.0f-1.0f) into an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a>.</p>
+<p>See also: <a href="graphics.html#al_map_rgba">al_map_rgba</a>, <a href="graphics.html#al_premul_rgba_f">al_premul_rgba_f</a>, <a href="graphics.html#al_map_rgb_f">al_map_rgb_f</a></p>
+<h2 id="al_premul_rgba_f">al_premul_rgba_f</h2>
+<pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_premul_rgba_f(<span class="dt">float</span> r, <span class="dt">float</span> g, <span class="dt">float</span> b, <span class="dt">float</span> a)</code></pre>
+<p>This is a shortcut for <a href="graphics.html#al_map_rgba_f">al_map_rgba_f</a>(r * a, g * a, b * a, a).</p>
 <p>By default Allegro uses pre-multiplied alpha for transparent blending of bitmaps and primitives (see <a href="graphics.html#al_load_bitmap_flags">al_load_bitmap_flags</a> for a discussion of that feature). This means that if you want to tint a bitmap or primitive to be transparent you need to multiply the color components by the alpha components when you pass them to this function. For example:</p>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">float</span> r = <span class="dv">1</span>;
 <span class="dt">float</span> g = <span class="dv">0</span>;
 <span class="dt">float</span> b = <span class="dv">0</span>;
 <span class="dt">float</span> a = <span class="fl">0.5</span>;
-ALLEGRO_COLOR c = al_map_rgba_f(r * a, g * a, b * a, a);
+ALLEGRO_COLOR c = al_premul_rgba_f(r, g, b, a);
 <span class="co">/* Draw the bitmap tinted red and half-transparent. */</span>
 al_draw_tinted_bitmap(bmp, c, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>);</code></pre>
-<p>See also: <a href="graphics.html#al_map_rgba">al_map_rgba</a>, <a href="graphics.html#al_map_rgb">al_map_rgb</a>, <a href="graphics.html#al_map_rgb_f">al_map_rgb_f</a></p>
+<p>Since: 5.1.12</p>
+<p>See also: <a href="graphics.html#al_map_rgba_f">al_map_rgba_f</a>, <a href="graphics.html#al_premul_rgba">al_premul_rgba</a></p>
 <h2 id="al_unmap_rgb">al_unmap_rgb</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_unmap_rgb(ALLEGRO_COLOR color,
    <span class="dt">unsigned</span> <span class="dt">char</span> *r, <span class="dt">unsigned</span> <span class="dt">char</span> *g, <span class="dt">unsigned</span> <span class="dt">char</span> *b)</code></pre>
@@ -1123,7 +1136,7 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <p>See also: <a href="graphics.html#allegro_render_state">ALLEGRO_RENDER_STATE</a>, <a href="graphics.html#allegro_render_function">ALLEGRO_RENDER_FUNCTION</a>, <a href="graphics.html#allegro_write_mask_flags">ALLEGRO_WRITE_MASK_FLAGS</a></p>
 <p class="timestamp">
 Allegro version 5.1.12 (GIT)
- - Last updated: 2015-08-15 15:28:26 UTC
+ - Last updated: 2015-09-23 01:05:17 UTC
 </p>
 </div>
 </body>
