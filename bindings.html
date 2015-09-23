@@ -14,33 +14,25 @@
 <body>
 <table id="header" width="100%">
 <tr>
-
 <td>
 <img id="logo" src="images/logo.png" alt="Allegro" height="58" width="186" />
 </td>
-
 <td id="title">
 A game programming library
 </td>
-
 <td align="right">
-
 <!-- Hide language choices until at least one other translation is complete.
 <div class="sellang">
 [English](index.html)
 [español](es/index.html)
 </div>
 -->
-
 <form id="search" action="http://liballeg.org/search/search.py" method="get">
-  
 <input name="query" value="" type="text"/> <select name="where"> <option selected="selected" value="api">A4 API</option> <option value="mail">Mail</option> <option value="site">Site</option> <option value="forum">Forum</option> </select> <input name="submit" value="Search" type="submit"/>
 </form>
 </td>
-
 </tr>
 </table>
-
 <div id="left">
 <div id="sidebar">
 <ul>
@@ -56,6 +48,7 @@ A game programming library
 <li><strong><a href="download.html">Latest version</a></strong></li>
 <li><a href="git.html">GIT</a></li>
 <li><a href="old.html">Older versions</a></li>
+<li><a href="addons.html">Addons</a></li>
 </ul></li>
 <li>Documentation
 <ul>
@@ -88,13 +81,14 @@ A game programming library
 </ul></li>
 </ul>
 <!-- keep blank line for correct HTML -->
-</div><!-- sidebar -->
-
+</div>
+<!-- sidebar -->
 <div id="hosting">
-<a href="https://github.com/liballeg">GitHub project</a> <br/> <br/> <a href="http://gna.org/projects/allegro">Gna project</a>
-</div><!-- hosting -->
-</div><!-- left -->
-
+<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/> <a href="http://gna.org/projects/allegro">Gna project</a></p>
+</div>
+<!-- hosting -->
+</div>
+<!-- left -->
 <div id="content">
 <h1 id="language-bindings">Language bindings</h1>
 <p>Although Allegro is written in C and C++, and is mainly designed to be used from such, it's possible to use Allegro from other programming languages.</p>
@@ -102,22 +96,22 @@ A game programming library
 <h1 id="bindings-for-allegro-5">Bindings for Allegro 5</h1>
 <dl>
 <dt><a href="http://github.com/trezker/allua">allua</a></dt>
-<dd><p>Lua binding to Allegro 5 by Trezker.</p>
+<dd>Lua binding to Allegro 5 by Trezker.
 </dd>
 <dt><a href="https://github.com/dleslie/allegro-egg">Chicken Scheme</a></dt>
-<dd><p>Binding for Chicken Scheme by Daniel Leslie.</p>
+<dd>Binding for Chicken Scheme by Daniel Leslie.
 </dd>
 <dt><a href="https://github.com/resttime/cl-liballegro">cl-liballegro</a></dt>
-<dd><p>Bindings for Common Lisp by resttime.</p>
+<dd>Bindings for Common Lisp by resttime.
 </dd>
 <dt><a href="https://github.com/SiegeLord/DAllegro5">DAllegro5</a></dt>
-<dd><p>D binding to Allegro 5 by SiegeLord.</p>
+<dd>D binding to Allegro 5 by SiegeLord.
 </dd>
 <dt><a href="https://github.com/dradtke/go-allegro">go-allegro</a></dt>
-<dd><p>Go binding to Allegro 5 by Damien Radtke.</p>
+<dd>Go binding to Allegro 5 by Damien Radtke.
 </dd>
 <dt>Python</dt>
-<dd><p>The Allegro 5 distribution comes with a basic Python wrapper; see the <code>python</code> directory.</p>
+<dd>The Allegro 5 distribution comes with a basic Python wrapper; see the <code>python</code> directory.
 </dd>
 </dl>
 <h1 id="bindings-for-allegro-4">Bindings for Allegro 4</h1>
@@ -130,25 +124,25 @@ A game programming library
 <h2 id="c">C++</h2>
 <dl>
 <dt><a href="http://www.cellosoft.com/software/view.php?id=14">alBitmap</a></dt>
-<dd><p>alBitmap is a C++ Wrapper for the Allegro BITMAP datatype. Features built-in memory allocation/deallocation, inlined functions for bitmap creation, loading, saving, blitting, comparing, plus some convenience functions for printing text with STL's string type.</p>
+<dd>alBitmap is a C++ Wrapper for the Allegro BITMAP datatype. Features built-in memory allocation/deallocation, inlined functions for bitmap creation, loading, saving, blitting, comparing, plus some convenience functions for printing text with STL's string type.
 </dd>
 <dt><a href="http://sourceforge.net/projects/als">Allegro Simplificator</a></dt>
-<dd><p>Allegro Simplificator is a C++ wrapper. It provides classes for most Allegro functions and adds some new functionality (cross-platform networking). It comes with some examples and extensive documentation.</p>
+<dd>Allegro Simplificator is a C++ wrapper. It provides classes for most Allegro functions and adds some new functionality (cross-platform networking). It comes with some examples and extensive documentation.
 </dd>
 </dl>
 <h2 id="c-1">C</h2>
 <dl>
 <dt><a href="http://www.skorzec.com/allegnet/">AllegNet</a></dt>
-<dd><p>AllegNet is a .NET library, coded in <a href="http://en.wikipedia.org/wiki/C_Sharp_programming_language">C# 2.0</a> based on Allegro 4.2.0. With AllegNet you can build your own video game in full managed code. So you can use this to build C#, vb.net, J# and C++ managed games.</p>
+<dd>AllegNet is a .NET library, coded in <a href="http://en.wikipedia.org/wiki/C_Sharp_programming_language">C# 2.0</a> based on Allegro 4.2.0. With AllegNet you can build your own video game in full managed code. So you can use this to build C#, vb.net, J# and C++ managed games.
 </dd>
 <dt><a href="http://code.google.com/p/mallegro/">Mallegro</a></dt>
-<dd><p>Mallegro (or Managed Allegro) is a .NET wrapper for Allegro written by Michael Jensen. It promises making Allegro available to C# and VB.NET developers.</p>
+<dd>Mallegro (or Managed Allegro) is a .NET wrapper for Allegro written by Michael Jensen. It promises making Allegro available to C# and VB.NET developers.
 </dd>
 <dt><a href="http://elvenprogrammer.themanaworld.org/projects-list/games/sharpallegro/">SharpAllegro</a></dt>
-<dd><p>Sharp Allegro aims to ease game development in C# by using well developed libraries such as Allegro, AllegroGL, MASkinG, and so on.</p>
+<dd>Sharp Allegro aims to ease game development in C# by using well developed libraries such as Allegro, AllegroGL, MASkinG, and so on.
 </dd>
 <dt><a href="http://elvenprogrammer.themanaworld.org/projects-list/games/sharpalleggl/">SharpAllegGL</a></dt>
-<dd><p>SharpAllegGL is a .NET wrapper around AllegroGL library, addon of Allegro game development library.</p>
+<dd>SharpAllegGL is a .NET wrapper around AllegroGL library, addon of Allegro game development library.
 </dd>
 </dl>
 <h2 id="d">D</h2>
@@ -160,7 +154,7 @@ A game programming library
 <h2 id="lisp">Lisp</h2>
 <dl>
 <dt><a href="http://cl-alleg.sourceforge.net/">Common Lisp FFI for Allegro</a></dt>
-<dd>cl-alleg provides a foreign function interface for the Allegro games library. This is built on top of <a href="http://cl-alleg.sourceforge.net/">CFFI</a> and so should be portable across multiple common lisp implementations. The author also writes a cl-alleg game development blog at <a href="http://gameylisp.blogspot.com/">http://gameylisp.blogspot.com/</a>.
+<dd>cl-alleg provides a foreign function interface for the Allegro games library. This is built on top of <a href="http://cl-alleg.sourceforge.net/">CFFI</a> and so should be portable across multiple common lisp implementations. The author also writes a cl-alleg game development blog at <a href="http://gameylisp.blogspot.com/" class="uri">http://gameylisp.blogspot.com/</a>.
 </dd>
 </dl>
 <h2 id="lua">Lua</h2>
@@ -205,15 +199,17 @@ A game programming library
 <dd>The Wiki also has a page about language bindings. Because everyone can edit it, it may have additional links not listed here. But they may not work or point to abandoned or very work in progress work.
 </dd>
 </dl>
-</div><!-- content -->
-
+</div>
+<!-- content -->
 <div id="footer">
 <div id="contact">
-<a href="webmasters.html">Contact the webmasters</a>
-</div><!-- contact -->
-<a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
+<p><a href="webmasters.html">Contact the webmasters</a></p>
+</div>
+<!-- contact -->
+<p><a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
     height="33" width="88" vspace="1" hspace="1" /> </a> <a href="http://www.anybrowser.org/campaign/"> <img src="images/anyb.png" border="0" alt="Viewable with any browser"
-    height="31" width="88" vspace="1" hspace="1" /> </a>
-</div><!-- footer -->
+    height="31" width="88" vspace="1" hspace="1" /> </a></p>
+</div>
+<!-- footer -->
 </body>
 </html>

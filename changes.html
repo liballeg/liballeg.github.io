@@ -14,33 +14,25 @@
 <body>
 <table id="header" width="100%">
 <tr>
-
 <td>
 <img id="logo" src="images/logo.png" alt="Allegro" height="58" width="186" />
 </td>
-
 <td id="title">
 A game programming library
 </td>
-
 <td align="right">
-
 <!-- Hide language choices until at least one other translation is complete.
 <div class="sellang">
 [English](index.html)
 [español](es/index.html)
 </div>
 -->
-
 <form id="search" action="http://liballeg.org/search/search.py" method="get">
-  
 <input name="query" value="" type="text"/> <select name="where"> <option selected="selected" value="api">A4 API</option> <option value="mail">Mail</option> <option value="site">Site</option> <option value="forum">Forum</option> </select> <input name="submit" value="Search" type="submit"/>
 </form>
 </td>
-
 </tr>
 </table>
-
 <div id="left">
 <div id="sidebar">
 <ul>
@@ -56,6 +48,7 @@ A game programming library
 <li><strong><a href="download.html">Latest version</a></strong></li>
 <li><a href="git.html">GIT</a></li>
 <li><a href="old.html">Older versions</a></li>
+<li><a href="addons.html">Addons</a></li>
 </ul></li>
 <li>Documentation
 <ul>
@@ -88,13 +81,14 @@ A game programming library
 </ul></li>
 </ul>
 <!-- keep blank line for correct HTML -->
-</div><!-- sidebar -->
-
+</div>
+<!-- sidebar -->
 <div id="hosting">
-<a href="https://github.com/liballeg">GitHub project</a> <br/> <br/> <a href="http://gna.org/projects/allegro">Gna project</a>
-</div><!-- hosting -->
-</div><!-- left -->
-
+<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/> <a href="http://gna.org/projects/allegro">Gna project</a></p>
+</div>
+<!-- hosting -->
+</div>
+<!-- left -->
 <div id="content">
 <h1 id="allegro-changelog-for-5.0.x-series">Allegro changelog for 5.0.x series</h1>
 <p>See <code>changes._tx</code> for changes in earlier versions of Allegro. These lists serve as summaries; the full histories are in the git repository.</p>
@@ -200,7 +194,7 @@ A game programming library
 <p>Graphics:</p>
 <ul>
 <li><p>Avoid null pointer dereference when setting a target bitmap after its video_texture has already been released (D3D).</p></li>
-<li><p>Make d3d_lock_region fail immediately if <em>al</em>d3d_sync_bitmap failed, likely because the device was lost.</p></li>
+<li><p>Make d3d_lock_region fail immediately if _al_d3d_sync_bitmap failed, likely because the device was lost.</p></li>
 <li><p>Set device_lost flag immediately when d3d_display_thread_proc finds the device is lost.</p></li>
 <li><p>Sync bitmaps before resizing display to prevent changes being lost after the resize (D3D).</p></li>
 <li><p>Revert a faulty FBO rebinding optimisation in al_set_target_bitmap.</p></li>
@@ -553,7 +547,7 @@ A game programming library
 <li><p>Don't mix into a global temporary sample buffer, causing noise when two separate mixers are trying to run in parallel.</p></li>
 <li><p>Make it possible to start/stop an audio stream which is attached to a voice.</p></li>
 <li><p>ALSA voices could not be resumed after being stopped, because the update threads quit as soon as a voice is stopped.</p></li>
-<li><p>OpenAL backend did not handle the case where <em>al</em>voice_update returns less than a full buffer.</p></li>
+<li><p>OpenAL backend did not handle the case where _al_voice_update returns less than a full buffer.</p></li>
 <li><p>Attempt to load FLAC and Vorbis DLLs only once to avoid Windows popping up too many error windows.</p></li>
 </ul>
 <p>Native dialogs addon:</p>
@@ -660,7 +654,7 @@ A game programming library
 </ul>
 <p>Build system:</p>
 <ul>
-<li><p>Force &quot;default&quot; visibility of <em>al</em>mangled_main on OS X, otherwise the dynamic linker cannot find the symbol if building with XCode4 (Owen Anderson and Peter Hull).</p></li>
+<li><p>Force &quot;default&quot; visibility of _al_mangled_main on OS X, otherwise the dynamic linker cannot find the symbol if building with XCode4 (Owen Anderson and Peter Hull).</p></li>
 <li><p>Generated pkg-config files should take into account LIB_SUFFIX variable (Cristian Morales Vega).</p></li>
 <li><p>Update allegro_font pkg-config file to not require allegro_primitives.</p></li>
 </ul>
@@ -788,7 +782,7 @@ A game programming library
 </ul>
 <p>Other:</p>
 <ul>
-<li><p>Use <em>NSGetExecutablePath for al</em>get_standard_path(ALLEGRO_EXENAME_PATH) on OS X (Jeff Connelly).</p></li>
+<li><p>Use _NSGetExecutablePath for al_get_standard_path(ALLEGRO_EXENAME_PATH) on OS X (Jeff Connelly).</p></li>
 <li><p>Minor bug fixes and documentation updates.</p></li>
 </ul>
 <h1 id="changes-from-5.0.0-rc2-to-5.0.0-rc3-december-2010">Changes from 5.0.0 RC2 to 5.0.0 RC3 (December 2010)</h1>
@@ -879,7 +873,7 @@ A game programming library
 <li><p>Make al_resize_display keep the original resolution (or change back) if it can't set the users request, on Windows.</p></li>
 <li><p>Do not emit ALLEGRO_DISPLAY_RESIZE events from the Windows and X11 display drivers when using al_resize_display.</p></li>
 <li><p>[X11] Make al_get_num_display_modes and al_get_display_mode work if the adapter is set to default. Right now there was no way to query the modes of the default monitor.</p></li>
-<li><p>[X11] Use <em>NET</em>WM_STATE_FULLSCREEN hint for &quot;true&quot; fullscreen displays. Enable mouse grabbing in fullscreen modes.</p></li>
+<li><p>[X11] Use _NET_WM_STATE_FULLSCREEN hint for &quot;true&quot; fullscreen displays. Enable mouse grabbing in fullscreen modes.</p></li>
 <li><p>Added ALLEGRO_EVENT_DISPLAY_ORIENTATION and implement it on iOS.</p></li>
 <li><p>Dennis Busch fixed a problem with displays not showing up on the primary display by default in some dual head setups, on Windows.</p></li>
 <li><p>Increase the precision of texture coordinate deltas in the software triangle renderer, from floats to doubles.</p></li>
@@ -1111,7 +1105,7 @@ A game programming library
 <li><p>Remove sub-bitmap clip-to-parent restriction on create. Add out-of-bounds blitting support to memory bitmaps.</p></li>
 <li><p>Merge sub-bitmap and parent bitmap clipping; clip source bitmap to (0,0)-(w,h); fix flipping to/from clipped bitmaps.</p></li>
 <li><p>Made mouse cursors independent of displays. You may create cursors without a display, and you may use a cursor with any display.</p></li>
-<li><p>Rename al_{set,get}<em>current</em>video_adapter to *new_display_adapter for consistency.</p></li>
+<li><p>Rename al_{set,get}_current_video_adapter to *new_display_adapter for consistency.</p></li>
 <li><p>Move the new display video adapter and new window position to thread-local state, like other new display parameters. Make al_store_state also save those parameters with ALLEGRO_STATE_NEW_DISPLAY_PARAMETERS.</p></li>
 <li><p>Rename al_transform_transform to al_compose_transform. Switched the order of parameters in al_compose_transform and al_copy_transform to match the rest of the transform functions.</p></li>
 <li><p>Made memory bitmap manipulation without a display possible (again?).</p></li>
@@ -1183,13 +1177,13 @@ A game programming library
 <li><p>Added a simple display capabilities querying capability to al_get_display_option: ALLEGRO_MAX_BITMAP_SIZE, ALLEGRO_SUPPORT_NPOT_BITMAP, ALLEGRO_CAN_DRAW_INTO_BITMAP, ALLEGRO_SUPPORT_SEPARATE_ALPHA. (OpenGL only for now)</p></li>
 <li><p>Fix in OpenGL 3.0 context creation.</p></li>
 <li><p>Make the extensions mechanism compatible with OpenGL version &gt;= 3. Declared symbols needed by OpenGL 3.2 and 3.3 and brought OpenGL extensions up to date.</p></li>
-<li><p>Fix an assertion in <em>al</em>draw_bitmap_region_memory so it does not trigger when source and destination are the same bitmap.</p></li>
+<li><p>Fix an assertion in _al_draw_bitmap_region_memory so it does not trigger when source and destination are the same bitmap.</p></li>
 <li><p>Fix some locking issues by setting GL_PACK_ALIGNMENT and GL_UNPACK_ALIGNMENT before reading/writing pixels.</p></li>
 <li><p>Partial implementation of ALLEGRO_FULLSCREEN_WINDOW on OS X (Snow Leopard, probably Leopard).</p></li>
 <li><p>Started X11 fullscreen support (resolution switching).</p></li>
 <li><p>Fix handling of X11 size hints.</p></li>
 <li><p>Fixed a deadlock related to fullscreen windows under X11 caused by using a nested lock for a condition variable.</p></li>
-<li><p>Use <em>NET</em>WM_ICON to set icon on X11 instead of XSetWMHints.</p></li>
+<li><p>Use _NET_WM_ICON to set icon on X11 instead of XSetWMHints.</p></li>
 <li><p>Get the iPhone OpenGL version more properly. Only use separate blending on iPhone with OpenGL ES 2.0+.</p></li>
 <li><p>Release the splash view and windows on iPhone, which makes backgrounding Allegro apps on OS 4.0 work.</p></li>
 <li><p>Updated iphone port for IPad (only tested in the simulator).</p></li>
@@ -1206,7 +1200,7 @@ A game programming library
 </ul>
 <p>Config routines:</p>
 <ul>
-<li><p>Add al_{load,save}<em>config</em>file_f.</p></li>
+<li><p>Add al_{load,save}_config_file_f.</p></li>
 <li><p>Reorder al_save_config_file* arguments to match al_save_bitmap and al_save_sample.</p></li>
 <li><p>Optimise config routines to work well for thousands of keys/sections.</p></li>
 </ul>
@@ -1295,7 +1289,7 @@ A game programming library
 </ul>
 <p>Path:</p>
 <ul>
-<li>Fix an infinite loop in <em>find</em>executable_file when searching for the executable on the PATH (Alan Coopersmith).</li>
+<li>Fix an infinite loop in _find_executable_file when searching for the executable on the PATH (Alan Coopersmith).</li>
 </ul>
 <p>Primitives addon:</p>
 <ul>
@@ -1335,7 +1329,7 @@ A game programming library
 <li><p>Fixed a bunch of clipping problems with OpenGL, especially with sub-bitmaps.</p></li>
 <li><p>Fix bug in OpenGL FBO setup when the target bitmap is the sub-bitmap of a bitmap with an FBO.</p></li>
 <li><p>Fixed crash in al_get_num_display_modes under OSX 10.5.</p></li>
-<li><p>Fixed some problems in <em>al</em>convert_to_display_bitmap that caused problems in WGL FS display resize.</p></li>
+<li><p>Fixed some problems in _al_convert_to_display_bitmap that caused problems in WGL FS display resize.</p></li>
 <li><p>Fixed al_set_current_display(NULL) on WGL.</p></li>
 <li><p>Added subtractive blending. al_set_blender() takes another parameter.</p></li>
 <li><p>Added ALLEGRO_FULLSCREEN_WINDOW display flag (X11 and D3D for now).</p></li>
@@ -1472,9 +1466,9 @@ A game programming library
 </ul>
 <p>Audio addons:</p>
 <ul>
-<li><p>Changed the <em>stream suffix to </em>f in the audio loading functions.</p></li>
+<li><p>Changed the _stream suffix to _f in the audio loading functions.</p></li>
 <li><p>Added the stream versions of loading functions for wav, ogg and flac.</p></li>
-<li><p>Rename audio I/O functions to al_load_{format}, al_save_{format}, al_load_{format}<em>f and al</em>save_{format}_f.</p></li>
+<li><p>Rename audio I/O functions to al_load_{format}, al_save_{format}, al_load_{format}<em>f and al_save</em>{format}_f.</p></li>
 <li><p>Added al_load_sample_f, al_save_sample_f, al_load_audio_stream_f and the related functions.</p></li>
 <li><p>Fixed a bug where al_save_sample was improperly handling the extension.</p></li>
 <li><p>al_drain_audio_stream would hang on an audio stream in the 'playing' state (the default) which wasn't attached to anything.</p></li>
@@ -1485,7 +1479,7 @@ A game programming library
 <p>Image addons:</p>
 <ul>
 <li><p>Fixed return values of al_save_bmp_f and al_save_pcx_f being ignored.</p></li>
-<li><p>Changed the <em>stream suffix to </em>f in the image loading functions.</p></li>
+<li><p>Changed the _stream suffix to _f in the image loading functions.</p></li>
 </ul>
 <p>TTF addon:</p>
 <ul>
@@ -2047,7 +2041,7 @@ A game programming library
 </ul>
 <p>Path functions:</p>
 <ul>
-<li><p>Added al_path_clone(), al_path_make_canonical(), al_path_make_absolute(), al_path_set_extension(), al_{get,set}_org_name, al_{get,set}<em>app</em>name} functions.</p></li>
+<li><p>Added al_path_clone(), al_path_make_canonical(), al_path_make_absolute(), al_path_set_extension(), al_{get,set}_org_name, al_{get,set}_app_name} functions.</p></li>
 <li><p>Made al_path_get_extension() not include the leading &quot;.&quot; of the extension,</p></li>
 <li><p>Add AL_EXENAME_PATH, AL_USER_SETTINGS_PATH, AL_SYSTEM_SETTINGS_PATH enums for al_get_path().</p></li>
 </ul>
@@ -2424,7 +2418,7 @@ A game programming library
 <li><p>Elias Pschernig added another mysha.pcx for the font example.</p></li>
 <li><p>Elias Pschernig re-added GLX checked to scons build which went missing in the merge.</p></li>
 <li><p>Elias Pschernig added icon.xpm which went missing in the merge.</p></li>
-<li><p>Peter Wang replaced <em>al</em>draw_bitmap_region_memory_fast with <em>al</em>draw_bitmap_region_memory.</p></li>
+<li><p>Peter Wang replaced _al_draw_bitmap_region_memory_fast with _al_draw_bitmap_region_memory.</p></li>
 <li><p>Trent Gamblin made memblit.c compile a little faster in debug mode.</p></li>
 <li><p>Peter Wang mergedd changes in r7948:10859 on 4.9 branch to 4.9-newgfx branch.</p></li>
 <li><p>Peter Wang enabled WANT_D3D by default. Only set ALLEGRO_D3D on Windows.</p></li>
@@ -2461,7 +2455,7 @@ A game programming library
 <li><p>Trent Gamblin used higher compatibility flags to Direct3DCreate9, made D3D driver die more gracefully on unsupported configurations, removed flags from draw_line, and did more error checking.</p></li>
 <li><p>Trent Gamblin turned al_init macros into an inline function.</p></li>
 <li><p>Trent Gamblin commented out a TRACE line that was causing the entire log to be overwritten.</p></li>
-<li><p>Peter Wang fixed an incorrect call to <em>al</em>vector_find_and_delete.</p></li>
+<li><p>Peter Wang fixed an incorrect call to _al_vector_find_and_delete.</p></li>
 <li><p>Peter Wang made various formatting fixes.</p></li>
 <li><p>Peter Wang converted CR/LF line endings to LF.</p></li>
 <li><p>Trent Gamblin added NaturalDocs for the graphics api.</p></li>
@@ -2490,7 +2484,7 @@ A game programming library
 <li><p>Elias Pschernig removed masking from the GLX driver.</p></li>
 <li><p>Trent Gamblin implemented blending for memory bitmaps (very slow unless the blend mode is ALLEGRO_ONE,ALLEGRO_ZERO with a pure white blend color).</p></li>
 <li><p>Trent Gamblin implemented blending for the D3D driver.</p></li>
-<li><p>Trent Gamblin added ALLEGRO_PIXEL_FORMAT_ANY_(15|16|24|32)<em>(WITH</em>ALPHA|NO_ALPHA) formats, used ALLEGRO_PIXEL_FORMAT_ANY_32_NO_ALPHA in locking examples, and ixed some formatting.</p></li>
+<li><p>Trent Gamblin added ALLEGRO_PIXEL_FORMAT_ANY_(15|16|24|32)_(WITH_ALPHA|NO_ALPHA) formats, used ALLEGRO_PIXEL_FORMAT_ANY_32_NO_ALPHA in locking examples, and ixed some formatting.</p></li>
 <li><p>Trent Gamblin added al_clone_bitmap which makes an exact copy of the color-data of a bitmap.</p></li>
 <li><p>Trent Gamblin added a ALLEGRO_KEEP_BITMAP_FORMAT flag that forces Allegro to use the same format as the disk file when loading bitmaps.</p></li>
 <li><p>Elias Pschernig implemented video bitmap masking for the GLX driver (by converting to alpha textures and drawing with alpha blending).</p></li>
@@ -2532,7 +2526,7 @@ A game programming library
 <li><p>Elias Pschernig moved src/misc/colconv.c from windows sources to general sources.</p></li>
 <li><p>Elias Pschernig uncommented accidentally commented out line.</p></li>
 <li><p>Elias Pschernig made scons read the list of source files from cmake/FileList.cmake, so there's only one place to add new files.</p></li>
-<li><p>Trent Gamblin made <em>al</em>get_pixel_value faster.</p></li>
+<li><p>Trent Gamblin made _al_get_pixel_value faster.</p></li>
 <li><p>Trent Gamblin made al_unmap_rgba_i use a table instead of relying on al_unmap_rgba_f.</p></li>
 <li><p>Peter Wang changed #includes to use file names from the root of the include hierarchy, i.e. #include &quot;allegro/internal/foo.h&quot; instead of #include &quot;internal/foo.h&quot; and likewise for allegro/platform/foo.h.</p></li>
 <li><p>Peter Wang removed some stray CR characters.</p></li>
@@ -2553,11 +2547,11 @@ A game programming library
 <li><p>Elias Pschernig fixed al_lock_bitmap and al_unlock_bitmap implementation in the xdummy driver (for now it works in a slow way).</p></li>
 <li><p>Trent Gamblin made al_notify_resize return success/failure and added al_resize_display to resize the display from code.</p></li>
 <li><p>Elias Pschernig started implementing lock_region and unlock_region for the xdummy driver.</p></li>
-<li><p>Elias Pschernig split xdraw.c out of xdisplay.c, used <em>AL</em>THREAD instead of pthreads in the xdummy driver, added a lock to the xdummy driver, in order to implement al_destroy_display, used the correct format.</p></li>
+<li><p>Elias Pschernig split xdraw.c out of xdisplay.c, used _AL_THREAD instead of pthreads in the xdummy driver, added a lock to the xdummy driver, in order to implement al_destroy_display, used the correct format.</p></li>
 <li><p>Elias Pschernig fixed a comment typo.</p></li>
 <li><p>Elias Pschernig fixed a typo in AL_CONVERT_PALETTE_8_TO_ABGR_8888.</p></li>
 <li><p>Trent Gamblin improved D3D line drawing, added al_get_num_display_modes and al_get_display_mode, and cleaned up &amp; organized some code.</p></li>
-<li><p>Trent Gamblin removed <em>al</em>win_delete_from_vector.</p></li>
+<li><p>Trent Gamblin removed _al_win_delete_from_vector.</p></li>
 <li><p>Trent Gamblin added draw_memory_bitmap_region vtable hook to AL_DISPLAY.</p></li>
 <li><p>Elias Pschernig implemented enough of the xdummy driver to run exnewap (doesn't display correctly yet though).</p></li>
 <li><p>Elias Pschernig updated scons build files.</p></li>
@@ -2569,12 +2563,12 @@ A game programming library
 <li><p>Trent Gamblin added clear, filled rectangle, and line for memory bitmaps.</p></li>
 <li><p>Trent Gamblin made it so the system driver is no longer hard coded, added switch_out method to display vtable, made the D3D window and system driver code generic.</p></li>
 <li><p>Trent Gamblin merged 4.9-elias and 4.9-trentg into 4.9-newgfx.</p></li>
-<li><p>Elias Pschernig adjusted prototype of <em>al</em>init to implementation.</p></li>
+<li><p>Elias Pschernig adjusted prototype of _al_init to implementation.</p></li>
 <li><p>Elias Pschernig fixed a bogus cast.</p></li>
 <li><p>Elias Pschernig fixed typo in al_get_new_diplay_format for non-mingw.</p></li>
 <li><p>Trent Gamblin made display and bitmap parameters local to the calling thread.</p></li>
 <li><p>Trent Gamblin added al_draw_rotated_bitmap and al_draw_rotated_scaled_bitmap for memory bitmaps using Allegro's software rotation code as a base.</p></li>
-<li><p>Trent Gamblin ported a stretch blit fix from 4.2, made al_init call allegro_init, made al_draw_bitmap(<em>region) much faster on memory bitmaps, and added al</em>draw_scaled_bitmap for memory bitmaps.</p></li>
+<li><p>Trent Gamblin ported a stretch blit fix from 4.2, made al_init call allegro_init, made al_draw_bitmap(_region) much faster on memory bitmaps, and added al_draw_scaled_bitmap for memory bitmaps.</p></li>
 <li><p>Trent Gamblin renamed AL_LOCKED_RECTANGLE to AL_LOCKED_REGION, and started on memory bitmaps (al_draw_bitmap and al_draw_bitmap region work).</p></li>
 <li><p>Trent Gamblin made seperate functions for getting/setting display/bitmap parameters, made backbuffer-as-source bitmap work in D3D, and changed parameter ordering of some functions.</p></li>
 <li><p>Trent Gamblin added al_is_compatible_bitmap removed dependancy on Allegro's 3D math functions from the D3D driver.</p></li>
@@ -2594,7 +2588,7 @@ A game programming library
 <li><p>Michael Jensen fixed a mistake in the documenation for is_compatible_font.</p></li>
 <li><p>Peter Wang fixed wrong variable in example code for load_font();</p></li>
 <li><p>Trent Gamblin fixed some problems with the cmake build on Windows.</p></li>
-<li><p>Peter Wang removed the second parameter in a call to <em>al</em>event_source_needs_to_generate_event() which was missed earlier.</p></li>
+<li><p>Peter Wang removed the second parameter in a call to _al_event_source_needs_to_generate_event() which was missed earlier.</p></li>
 <li><p>Peter Wang exposed some internal documentation on destructors, events and event sources to NaturalDocs.</p></li>
 <li><p>Peter Wang changed al_wait_for_event() so that a timeout value of &quot;0&quot; means to not wait at all. To wait an indefinite amount of time the caller should pass the AL_WAIT_FOREVER constant.</p></li>
 <li><p>Peter Wang removed the declarations of al_event_source_set_mask and al_event_source_mask which were missed in the previous change.</p></li>
@@ -2639,15 +2633,17 @@ A game programming library
 <li><p>al_install_timer al_uninstall_timer al_start_timer al_stop_timer al_timer_is_started al_timer_get_speed al_timer_set_speed al_timer_get_count al_timer_set_count</p></li>
 </ul>
 <!-- vi: set sts=3 sw=3 et: -->
-</div><!-- content -->
-
+</div>
+<!-- content -->
 <div id="footer">
 <div id="contact">
-<a href="webmasters.html">Contact the webmasters</a>
-</div><!-- contact -->
-<a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
+<p><a href="webmasters.html">Contact the webmasters</a></p>
+</div>
+<!-- contact -->
+<p><a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
     height="33" width="88" vspace="1" hspace="1" /> </a> <a href="http://www.anybrowser.org/campaign/"> <img src="images/anyb.png" border="0" alt="Viewable with any browser"
-    height="31" width="88" vspace="1" hspace="1" /> </a>
-</div><!-- footer -->
+    height="31" width="88" vspace="1" hspace="1" /> </a></p>
+</div>
+<!-- footer -->
 </body>
 </html>

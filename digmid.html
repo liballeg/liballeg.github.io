@@ -14,33 +14,25 @@
 <body>
 <table id="header" width="100%">
 <tr>
-
 <td>
 <img id="logo" src="images/logo.png" alt="Allegro" height="58" width="186" />
 </td>
-
 <td id="title">
 A game programming library
 </td>
-
 <td align="right">
-
 <!-- Hide language choices until at least one other translation is complete.
 <div class="sellang">
 [English](index.html)
 [español](es/index.html)
 </div>
 -->
-
 <form id="search" action="http://liballeg.org/search/search.py" method="get">
-  
 <input name="query" value="" type="text"/> <select name="where"> <option selected="selected" value="api">A4 API</option> <option value="mail">Mail</option> <option value="site">Site</option> <option value="forum">Forum</option> </select> <input name="submit" value="Search" type="submit"/>
 </form>
 </td>
-
 </tr>
 </table>
-
 <div id="left">
 <div id="sidebar">
 <ul>
@@ -56,6 +48,7 @@ A game programming library
 <li><strong><a href="download.html">Latest version</a></strong></li>
 <li><a href="git.html">GIT</a></li>
 <li><a href="old.html">Older versions</a></li>
+<li><a href="addons.html">Addons</a></li>
 </ul></li>
 <li>Documentation
 <ul>
@@ -88,13 +81,14 @@ A game programming library
 </ul></li>
 </ul>
 <!-- keep blank line for correct HTML -->
-</div><!-- sidebar -->
-
+</div>
+<!-- sidebar -->
 <div id="hosting">
-<a href="https://github.com/liballeg">GitHub project</a> <br/> <br/> <a href="http://gna.org/projects/allegro">Gna project</a>
-</div><!-- hosting -->
-</div><!-- left -->
-
+<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/> <a href="http://gna.org/projects/allegro">Gna project</a></p>
+</div>
+<!-- hosting -->
+</div>
+<!-- left -->
 <div id="content">
 <h1 id="midi-patch-sets">MIDI patch sets</h1>
 <p>The DIGMID wavetable music driver needs a set of instrument samples, which can either be in the GUS patch or SoundFont 2.0 formats. GUS patches can be read directly from disk or converted into a single patches.dat file with the pat2dat utility. SoundFont banks must be converted prior to use.</p>
@@ -103,9 +97,11 @@ A game programming library
 <p>It is very easy to customise a GUS format patch set. You can either just copy new instruments over the top of the existing .pat files, or edit the default.cfg index to use different patches. If you want to modify a SoundFont bank, you must first convert it into the patches.dat format, which can be edited using the grabber. Each instrument is stored as a seperate object, so you can export them to .pat files, import from other files, move them around, rename them, etc. The patches.dat also contains a default_cfg index object in the standard GUS format, so you can edit this to use different samples (in particular you can list a single instrument for multiple program numbers, so for example you could use a single brass sample for the trumpet/trombone/tuba/horn/etc, if you are trying to reduce the size of your sample set).</p>
 <p>I am no lawyer, and I didn't make any of the patch sets listed below, so I can't tell you what the copyright situation with these samples is. Apart from the Emu bank, I think you are probably quite safe to redistribute them with a freeware game, but I would be very careful about using them in commercial products. It may be possible, but check the details first. I can't give any guarantee about the legality of these files...</p>
 <table>
+<colgroup>
 <col width="16%" />
 <col width="13%" />
 <col width="69%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Name</th>
@@ -161,15 +157,17 @@ A game programming library
 </tr>
 </tbody>
 </table>
-</div><!-- content -->
-
+</div>
+<!-- content -->
 <div id="footer">
 <div id="contact">
-<a href="webmasters.html">Contact the webmasters</a>
-</div><!-- contact -->
-<a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
+<p><a href="webmasters.html">Contact the webmasters</a></p>
+</div>
+<!-- contact -->
+<p><a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
     height="33" width="88" vspace="1" hspace="1" /> </a> <a href="http://www.anybrowser.org/campaign/"> <img src="images/anyb.png" border="0" alt="Viewable with any browser"
-    height="31" width="88" vspace="1" hspace="1" /> </a>
-</div><!-- footer -->
+    height="31" width="88" vspace="1" hspace="1" /> </a></p>
+</div>
+<!-- footer -->
 </body>
 </html>

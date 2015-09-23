@@ -14,33 +14,25 @@
 <body>
 <table id="header" width="100%">
 <tr>
-
 <td>
 <img id="logo" src="images/logo.png" alt="Allegro" height="58" width="186" />
 </td>
-
 <td id="title">
 A game programming library
 </td>
-
 <td align="right">
-
 <!-- Hide language choices until at least one other translation is complete.
 <div class="sellang">
 [English](index.html)
 [español](es/index.html)
 </div>
 -->
-
 <form id="search" action="http://liballeg.org/search/search.py" method="get">
-  
 <input name="query" value="" type="text"/> <select name="where"> <option selected="selected" value="api">A4 API</option> <option value="mail">Mail</option> <option value="site">Site</option> <option value="forum">Forum</option> </select> <input name="submit" value="Search" type="submit"/>
 </form>
 </td>
-
 </tr>
 </table>
-
 <div id="left">
 <div id="sidebar">
 <ul>
@@ -56,6 +48,7 @@ A game programming library
 <li><strong><a href="download.html">Latest version</a></strong></li>
 <li><a href="git.html">GIT</a></li>
 <li><a href="old.html">Older versions</a></li>
+<li><a href="addons.html">Addons</a></li>
 </ul></li>
 <li>Documentation
 <ul>
@@ -88,13 +81,14 @@ A game programming library
 </ul></li>
 </ul>
 <!-- keep blank line for correct HTML -->
-</div><!-- sidebar -->
-
+</div>
+<!-- sidebar -->
 <div id="hosting">
-<a href="https://github.com/liballeg">GitHub project</a> <br/> <br/> <a href="http://gna.org/projects/allegro">Gna project</a>
-</div><!-- hosting -->
-</div><!-- left -->
-
+<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/> <a href="http://gna.org/projects/allegro">Gna project</a></p>
+</div>
+<!-- hosting -->
+</div>
+<!-- left -->
 <div id="content">
 <h1 id="latest-version">Latest version</h1>
 <p>Here you can download either the modern Allegro 5 library, or the classical Allegro 4 library. Allegro 5 is <em>not</em> backwards compatible with Allegro 4.</p>
@@ -103,9 +97,11 @@ A game programming library
 <h2 id="allegro-5.0-source-releases-stable">Allegro 5.0 source releases (stable)</h2>
 <p>Allegro 5.0 supports <strong>Unix</strong> (Linux, FreeBSD, etc.), <strong>Windows</strong>, <strong>MacOS X</strong> and <strong>iPhone</strong>. You can read the <a href="changes.html">full change log</a>.</p>
 <table>
+<colgroup>
 <col width="26%" />
 <col width="6%" />
 <col width="66%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Filename</th>
@@ -140,9 +136,11 @@ A game programming library
 <h2 id="allegro-5.1-source-releases-unstable">Allegro 5.1 source releases (unstable)</h2>
 <p>The 5.1 branch is source compatible, but not binary compatible, with the stable 5.0 branch. It contains provisional new features which are <em>subject to change at any time</em>. You can read the <a href="changes-unstable.html">changes since 5.0</a>.</p>
 <table>
+<colgroup>
 <col width="26%" />
 <col width="6%" />
 <col width="66%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Filename</th>
@@ -176,9 +174,11 @@ A game programming library
 <h2 id="allegro-4.4-source-releases">Allegro 4.4 source releases</h2>
 <p>Allegro 4.4 supports <strong>Unix</strong> (Linux, FreeBSD, etc.), <strong>Windows</strong>, <strong>MacOS X</strong> and <strong>Haiku/BeOS</strong>. You can read the <a href="stabledocs/en/changes.html">full change log</a>.</p>
 <table>
+<colgroup>
 <col width="26%" />
 <col width="6%" />
 <col width="66%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Filename</th>
@@ -212,9 +212,11 @@ A game programming library
 <h2 id="allegro-4.2-source-releases">Allegro 4.2 source releases</h2>
 <p>Allegro 4.2 supports <strong>Unix</strong> (Linux, FreeBSD, etc.), <strong>Windows</strong>, <strong>MacOS X</strong>, <strong>Haiku/BeOS</strong>, <strong>DOS</strong> and <strong>QNX</strong>.</p>
 <table>
+<colgroup>
 <col width="26%" />
 <col width="6%" />
 <col width="66%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Filename</th>
@@ -252,9 +254,11 @@ A game programming library
 </table>
 <h2 id="miscellaneous-files">Miscellaneous files</h2>
 <table>
+<colgroup>
 <col width="26%" />
 <col width="6%" />
 <col width="66%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Filename</th>
@@ -299,9 +303,11 @@ A game programming library
 <p>Allegro 5 can be found in the <code>allegro</code> package on <a href="http://brew.sh/">homebrew</a>. Use the <code>--devel</code> switch to install a 5.1.x release.</p>
 <h2 id="iphone-binaries">IPhone binaries</h2>
 <table>
+<colgroup>
 <col width="27%" />
 <col width="6%" />
 <col width="65%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Filename</th>
@@ -329,8 +335,10 @@ A game programming library
 </table>
 <h2 id="windows-binaries">Windows Binaries</h2>
 <table>
+<colgroup>
 <col width="26%" />
 <col width="73%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Site</th>
@@ -363,8 +371,10 @@ A game programming library
 <h2 id="ubuntu-ppa">Ubuntu PPA</h2>
 <p>For Linux distributions based on Ubuntu (and Ubuntu itself), you can download binary packages for Allegro 5 by adding the following PPAs to your software sources, and then installing the relevant packages:</p>
 <table>
+<colgroup>
 <col width="38%" />
 <col width="61%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">PPA</th>
@@ -382,15 +392,17 @@ A game programming library
 </tr>
 </tbody>
 </table>
-</div><!-- content -->
-
+</div>
+<!-- content -->
 <div id="footer">
 <div id="contact">
-<a href="webmasters.html">Contact the webmasters</a>
-</div><!-- contact -->
-<a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
+<p><a href="webmasters.html">Contact the webmasters</a></p>
+</div>
+<!-- contact -->
+<p><a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
     height="33" width="88" vspace="1" hspace="1" /> </a> <a href="http://www.anybrowser.org/campaign/"> <img src="images/anyb.png" border="0" alt="Viewable with any browser"
-    height="31" width="88" vspace="1" hspace="1" /> </a>
-</div><!-- footer -->
+    height="31" width="88" vspace="1" hspace="1" /> </a></p>
+</div>
+<!-- footer -->
 </body>
 </html>
