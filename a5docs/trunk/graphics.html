@@ -953,7 +953,7 @@ a = d.a * 0 + s.a * d.a</code></pre>
 <p>See also: <a href="graphics.html#al_register_bitmap_loader">al_register_bitmap_loader</a>, <a href="graphics.html#al_register_bitmap_saver_f">al_register_bitmap_saver_f</a></p>
 <h2 id="al_register_bitmap_loader_f">al_register_bitmap_loader_f</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_register_bitmap_loader_f(<span class="dt">const</span> <span class="dt">char</span> *extension,
-   ALLEGRO_BITMAP *(*loader_f)(ALLEGRO_FILE *fp, <span class="dt">int</span> flags))</code></pre>
+   ALLEGRO_BITMAP *(*fs_loader)(ALLEGRO_FILE *fp, <span class="dt">int</span> flags))</code></pre>
 <p>Register a handler for <a href="graphics.html#al_load_bitmap_f">al_load_bitmap_f</a>. The given function will be used to handle the loading of bitmaps files with the given extension.</p>
 <p>The extension should include the leading dot ('.') character. It will be matched case-insensitively.</p>
 <p>The <code>fs_loader</code> argument may be NULL to unregister an entry.</p>
@@ -961,7 +961,7 @@ a = d.a * 0 + s.a * d.a</code></pre>
 <p>See also: <a href="graphics.html#al_register_bitmap_loader">al_register_bitmap_loader</a></p>
 <h2 id="al_register_bitmap_saver_f">al_register_bitmap_saver_f</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_register_bitmap_saver_f(<span class="dt">const</span> <span class="dt">char</span> *extension,
-   bool (*saver_f)(ALLEGRO_FILE *fp, ALLEGRO_BITMAP *bmp))</code></pre>
+   bool (fs_saver)(ALLEGRO_FILE *fp, ALLEGRO_BITMAP *bmp))</code></pre>
 <p>Register a handler for <a href="graphics.html#al_save_bitmap_f">al_save_bitmap_f</a>. The given function will be used to handle the saving of bitmaps files with the given extension.</p>
 <p>The extension should include the leading dot ('.') character. It will be matched case-insensitively.</p>
 <p>The <code>saver_f</code> argument may be NULL to unregister an entry.</p>
@@ -1136,7 +1136,7 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <p>See also: <a href="graphics.html#allegro_render_state">ALLEGRO_RENDER_STATE</a>, <a href="graphics.html#allegro_render_function">ALLEGRO_RENDER_FUNCTION</a>, <a href="graphics.html#allegro_write_mask_flags">ALLEGRO_WRITE_MASK_FLAGS</a></p>
 <p class="timestamp">
 Allegro version 5.1.12 (GIT)
- - Last updated: 2015-09-23 01:05:17 UTC
+ - Last updated: 2015-09-23 03:07:07 UTC
 </p>
 </div>
 </body>
