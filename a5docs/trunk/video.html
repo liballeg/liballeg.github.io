@@ -121,13 +121,12 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="#al_start_video">al_start_video</a></li>
 <li><a href="#al_start_video_with_voice">al_start_video_with_voice</a></li>
 <li><a href="#al_get_video_event_source">al_get_video_event_source</a></li>
-<li><a href="#al_pause_video">al_pause_video</a></li>
-<li><a href="#al_is_video_paused">al_is_video_paused</a></li>
-<li><a href="#al_get_video_aspect_ratio">al_get_video_aspect_ratio</a></li>
+<li><a href="#al_set_video_playing">al_set_video_playing</a></li>
+<li><a href="#al_is_video_playing">al_is_video_playing</a></li>
 <li><a href="#al_get_video_audio_rate">al_get_video_audio_rate</a></li>
 <li><a href="#al_get_video_fps">al_get_video_fps</a></li>
-<li><a href="#al_get_video_width">al_get_video_width</a></li>
-<li><a href="#al_get_video_height">al_get_video_height</a></li>
+<li><a href="#al_get_video_scaled_width">al_get_video_scaled_width</a></li>
+<li><a href="#al_get_video_scaled_height">al_get_video_scaled_height</a></li>
 <li><a href="#al_get_video_frame">al_get_video_frame</a></li>
 <li><a href="#al_get_video_position">al_get_video_position</a></li>
 <li><a href="#al_seek_video">al_seek_video</a></li>
@@ -139,8 +138,8 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="allegro_video_event_type">ALLEGRO_VIDEO_EVENT_TYPE</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">enum</span> ALLEGRO_VIDEO_EVENT_TYPE</code></pre>
 <ul>
-<li>ALLEGRO_EVENT_VIDEO_FRAME_ALLOC</li>
-<li>ALLEGRO_EVENT_VIDEO_FRAME_SHOW</li>
+<li>ALLEGRO_EVENT_VIDEO_FRAME_SHOW - This event is sent when it is time to show a new frame. Once you receive this event, you can draw the current frame (as returned by <a href="video.html#al_get_video_frame">al_get_video_frame</a>). <a href="video.html#al_get_video_frame">al_get_video_frame</a> will continue returning the same frame until the next ALLEGRO_EVENT_VIDEO_FRAME_SHOW is sent.</li>
+<li>ALLEGRO_EVENT_VIDEO_FINISHED - This event is sent when the video is finished. Depending on the backend, it may be possible to seek to an earlier part of the video and set the video to play to resume playback.</li>
 </ul>
 <p>Since: 5.1.0</p>
 <h1 id="allegro_video_position_type">ALLEGRO_VIDEO_POSITION_TYPE</h1>
@@ -184,19 +183,14 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_EVENT_SOURCE *al_get_video_event_source(ALLEGRO_VIDEO *video)</code></pre>
 <p>Get an event source for the video. The possible events are described under <a href="video.html#allegro_video_event_type">ALLEGRO_VIDEO_EVENT_TYPE</a>.</p>
 <p>Since: 5.1.0</p>
-<h1 id="al_pause_video">al_pause_video</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_pause_video(ALLEGRO_VIDEO *video, bool paused)</code></pre>
+<h1 id="al_set_video_playing">al_set_video_playing</h1>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_video_playing(ALLEGRO_VIDEO *video, bool play)</code></pre>
 <p>Paused or resumes playback.</p>
-<p>Since: 5.1.0</p>
-<h1 id="al_is_video_paused">al_is_video_paused</h1>
-<pre class="sourceCode c"><code class="sourceCode c">bool al_is_video_paused(ALLEGRO_VIDEO *video)</code></pre>
-<p>Returns true if the video is currently paused.</p>
-<p>Since: 5.1.0</p>
-<h1 id="al_get_video_aspect_ratio">al_get_video_aspect_ratio</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">double</span> al_get_video_aspect_ratio(ALLEGRO_VIDEO *video)</code></pre>
-<p>Returns the aspect ratio of the video. Videos often do not use square pixels so you should always check the aspect ratio before displaying video frames.</p>
-<p>Returns zero or a negative value if the aspect ratio is unknown.</p>
-<p>Since: 5.1.0</p>
+<p>Since: 5.1.12</p>
+<h1 id="al_is_video_playing">al_is_video_playing</h1>
+<pre class="sourceCode c"><code class="sourceCode c">bool al_is_video_playing(ALLEGRO_VIDEO *video)</code></pre>
+<p>Returns true if the video is currently playing.</p>
+<p>Since: 5.1.12</p>
 <h1 id="al_get_video_audio_rate">al_get_video_audio_rate</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">double</span> al_get_video_audio_rate(ALLEGRO_VIDEO *video)</code></pre>
 <p>Returns the audio rate of the video, in Hz.</p>
@@ -205,19 +199,29 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">double</span> al_get_video_fps(ALLEGRO_VIDEO *video)</code></pre>
 <p>Returns the speed of the video in frames per second. Often this will not be an integer value.</p>
 <p>Since: 5.1.0</p>
-<h1 id="al_get_video_width">al_get_video_width</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_video_width(ALLEGRO_VIDEO *video)</code></pre>
-<p>Returns the number of raw pixel columns in the video stream. Multiply this with the aspect ratio to get the true width.</p>
-<p>Since: 5.1.0</p>
-<p>See also: <a href="video.html#al_get_video_aspect_ratio">al_get_video_aspect_ratio</a></p>
-<h1 id="al_get_video_height">al_get_video_height</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_video_height(ALLEGRO_VIDEO *video)</code></pre>
-<p>Returns the number of rows in the video. Typically this will be 720 or 1080.</p>
-<p>Since: 5.1.0</p>
+<h1 id="al_get_video_scaled_width">al_get_video_scaled_width</h1>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">float</span> al_get_video_scaled_width(ALLEGRO_VIDEO *video)</code></pre>
+<p>Returns the width with which the video frame should be drawn. Videos often do not use square pixels, so this will may return a value larger than the width of the frame bitmap.</p>
+<p>Since: 5.1.12</p>
+<p>See also: <a href="video.html#al_get_video_frame">al_get_video_frame</a></p>
+<h1 id="al_get_video_scaled_height">al_get_video_scaled_height</h1>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">float</span> al_get_video_scaled_height(ALLEGRO_VIDEO *video)</code></pre>
+<p>Returns the height with which the video frame should be drawn. Videos often do not use square pixels, so this will may return a value larger than the height of the frame bitmap.</p>
+<p>See also: <a href="video.html#al_get_video_frame">al_get_video_frame</a></p>
+<p>Since: 5.1.12</p>
 <h1 id="al_get_video_frame">al_get_video_frame</h1>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_BITMAP *al_get_video_frame(ALLEGRO_VIDEO *video)</code></pre>
 <p>Returns the current video frame. The bitmap is owned by the video so do not attempt to free it. The bitmap will stay valid until the next call to al_get_video_frame.</p>
+<p>Videos often do not use square pixels so the recommended way to draw a video frame would be using code like this:</p>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">float</span> scale = <span class="fl">1.0</span>; <span class="co">/* Adjust this to fit your target bitmap dimensions. */</span>
+ALLEGRO_BITMAP* frame = al_get_video_frame(video);
+<span class="dt">float</span> sw = al_get_bitmap_width(frame);
+<span class="dt">float</span> sh = al_get_bitmap_height(frame);
+<span class="dt">float</span> dw = scale * al_get_video_scaled_width(video);
+<span class="dt">float</span> dh = scale * al_get_video_scaled_height(video);
+al_draw_scaled_bitmap(frame, <span class="dv">0</span>, <span class="dv">0</span>, sw, sh, <span class="dv">0</span>, <span class="dv">0</span>, dw, dh, <span class="dv">0</span>);</code></pre>
 <p>Since: 5.1.0</p>
+<p>See also: <a href="video.html#al_get_video_scaled_width">al_get_video_scaled_width</a>, <a href="video.html#al_get_video_scaled_height">al_get_video_scaled_height</a></p>
 <h1 id="al_get_video_position">al_get_video_position</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">double</span> al_get_video_position(ALLEGRO_VIDEO *video, ALLEGRO_VIDEO_POSITION_TYPE which)</code></pre>
 <p>Returns the current position of the video stream in seconds since the beginning. The parameter is one of the <a href="video.html#allegro_video_position_type">ALLEGRO_VIDEO_POSITION_TYPE</a> constants.</p>
@@ -228,7 +232,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.0</p>
 <p class="timestamp">
 Allegro version 5.1.12 (GIT)
- - Last updated: 2015-09-25 03:08:01 UTC
+ - Last updated: 2015-09-29 04:30:24 UTC
 </p>
 </div>
 </body>

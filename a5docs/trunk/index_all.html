@@ -803,14 +803,13 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="font.html#al_get_ustr_dimensions">al_get_ustr_dimensions</a> <!-- --></li>
 <li><a href="font.html#al_get_ustr_width">al_get_ustr_width</a> <!-- --></li>
 <li><a href="primitives.html#al_get_vertex_buffer_size">al_get_vertex_buffer_size</a> <!-- --></li>
-<li><a href="video.html#al_get_video_aspect_ratio">al_get_video_aspect_ratio</a> <!-- --></li>
 <li><a href="video.html#al_get_video_audio_rate">al_get_video_audio_rate</a> <!-- --></li>
 <li><a href="video.html#al_get_video_event_source">al_get_video_event_source</a> <!-- --></li>
 <li><a href="video.html#al_get_video_fps">al_get_video_fps</a> <!-- --></li>
 <li><a href="video.html#al_get_video_frame">al_get_video_frame</a> <!-- --></li>
-<li><a href="video.html#al_get_video_height">al_get_video_height</a> <!-- --></li>
 <li><a href="video.html#al_get_video_position">al_get_video_position</a> <!-- --></li>
-<li><a href="video.html#al_get_video_width">al_get_video_width</a> <!-- --></li>
+<li><a href="video.html#al_get_video_scaled_height">al_get_video_scaled_height</a> <!-- --></li>
+<li><a href="video.html#al_get_video_scaled_width">al_get_video_scaled_width</a> <!-- --></li>
 <li><a href="audio.html#al_get_voice_channels">al_get_voice_channels</a> <!-- --></li>
 <li><a href="audio.html#al_get_voice_depth">al_get_voice_depth</a> <!-- --></li>
 <li><a href="audio.html#al_get_voice_frequency">al_get_voice_frequency</a> <!-- --></li>
@@ -879,7 +878,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="system.html#al_is_system_installed">al_is_system_installed</a> <!-- --></li>
 <li><a href="haptic.html#al_is_touch_input_haptic">al_is_touch_input_haptic</a> <!-- --></li>
 <li><a href="touch.html#al_is_touch_input_installed">al_is_touch_input_installed</a> <!-- --></li>
-<li><a href="video.html#al_is_video_paused">al_is_video_paused</a> <!-- --></li>
+<li><a href="video.html#al_is_video_playing">al_is_video_playing</a> <!-- --></li>
 <li><a href="fixed.html#al_itofix">al_itofix</a> <!-- --></li>
 <li><a href="path.html#al_join_paths">al_join_paths</a> <!-- --></li>
 <li><a href="threads.html#al_join_thread">al_join_thread</a> <!-- --></li>
@@ -930,7 +929,6 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="platform.html#al_osx_get_window">al_osx_get_window</a> <!-- --></li>
 <li><a href="path.html#al_path_cstr">al_path_cstr</a> <!-- --></li>
 <li><a href="events.html#al_pause_event_queue">al_pause_event_queue</a> <!-- --></li>
-<li><a href="video.html#al_pause_video">al_pause_video</a> <!-- --></li>
 <li><a href="events.html#al_peek_next_event">al_peek_next_event</a> <!-- --></li>
 <li><a href="transformations.html#al_perspective_transform">al_perspective_transform</a> <!-- --></li>
 <li><a href="haptic.html#al_play_haptic_effect">al_play_haptic_effect</a> <!-- --></li>
@@ -1087,6 +1085,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="threads.html#al_set_thread_should_stop">al_set_thread_should_stop</a> <!-- --></li>
 <li><a href="timer.html#al_set_timer_count">al_set_timer_count</a> <!-- --></li>
 <li><a href="timer.html#al_set_timer_speed">al_set_timer_speed</a> <!-- --></li>
+<li><a href="video.html#al_set_video_playing">al_set_video_playing</a> <!-- --></li>
 <li><a href="audio.html#al_set_voice_playing">al_set_voice_playing</a> <!-- --></li>
 <li><a href="audio.html#al_set_voice_position">al_set_voice_position</a> <!-- --></li>
 <li><a href="display.html#al_set_window_constraints">al_set_window_constraints</a> <!-- --></li>
@@ -1221,7 +1220,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <p class="timestamp">
 Allegro version 5.1.12 (GIT)
- - Last updated: 2015-09-25 03:08:01 UTC
+ - Last updated: 2015-09-29 04:30:25 UTC
 </p>
 </div>
 </body>
