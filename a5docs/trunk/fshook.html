@@ -274,8 +274,8 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>This function takes the <a href="fshook.html#allegro_fs_entry">ALLEGRO_FS_ENTRY</a> <code>dir</code>, which should represent a directory, and looks for any other file system entries that are in it. This function will then call the callback function <code>callback</code> once for every filesystem entry in the directory <code>dir</code>.</p>
 <p>The callback <code>callback</code> must be of type <code>int callback(ALLEGRO_FS_ENTRY * entry, void * extra)</code>. The <code>callback</code> will be called with a pointer to an <a href="fshook.html#allegro_fs_entry">ALLEGRO_FS_ENTRY</a> that matches one file or directory in <code>dir</code>, and the pointer passed in the <code>extra</code> parameter to <a href="fshook.html#al_for_each_fs_entry">al_for_each_fs_entry</a>.</p>
 <p>When <code>callback</code> returns <code>ALLEGRO_FOR_EACH_FS_ENTRY_STOP</code> or <code>ALLEGRO_FOR_EACH_FS_ENTRY_ERROR</code>, iteration will stop immediately and <a href="fshook.html#al_for_each_fs_entry">al_for_each_fs_entry</a> will return the value the <code>callback</code> returned.</p>
-<p>When <code>callback</code> returns <code>ALLEGRO_FOR_EACH_FS_ENTRY_OK</code> iteration will continue normally, and if the [ALLEGRO_FS_ENRTY] parameter of <code>callback</code> is a directory, <a href="fshook.html#al_for_each_fs_entry">al_for_each_fs_entry</a> will call itself on that directory. Therefore the function will recusively descend into that directory.</p>
-<p>However, when <code>callback</code> returns <code>ALLEGRO_FOR_EACH_FS_ENTRY_SKIP</code> iteration will continue, but <a href="fshook.html#al_for_each_fs_entry">al_for_each_fs_entry</a> will NOT recurse into the [ALLEGRO_FS_ENRTY] parameter of <code>callback</code> even if it is a directory.</p>
+<p>When <code>callback</code> returns <code>ALLEGRO_FOR_EACH_FS_ENTRY_OK</code> iteration will continue normally, and if the <a href="fshook.html#allegro_fs_entry">ALLEGRO_FS_ENTRY</a> parameter of <code>callback</code> is a directory, <a href="fshook.html#al_for_each_fs_entry">al_for_each_fs_entry</a> will call itself on that directory. Therefore the function will recusively descend into that directory.</p>
+<p>However, when <code>callback</code> returns <code>ALLEGRO_FOR_EACH_FS_ENTRY_SKIP</code> iteration will continue, but <a href="fshook.html#al_for_each_fs_entry">al_for_each_fs_entry</a> will NOT recurse into the <a href="fshook.html#allegro_fs_entry">ALLEGRO_FS_ENTRY</a> parameter of <code>callback</code> even if it is a directory.</p>
 <p>This function will skip any files or directories named <code>.</code> or <code>..</code> which may exist on certain platforms and may signify the current and the parent directory. The <code>callback</code> will not be called for files or directories with such a name.</p>
 <p>Returns ALLEGRO_FOR_EACH_FS_ENTRY_OK if sucessful, or ALLEGRO_FOR_EACH_FS_ENTRY_ERROR if something went wrong in processing the directory. In that case it will use <a href="state.html#al_set_errno">al_set_errno</a> to indicate the type of error which occurred. This function returns ALLEGRO_FOR_EACH_FS_ENTRY_STOP in case iteration was stopped by making <code>callback</code> return that value. In this case, <a href="state.html#al_set_errno">al_set_errno</a> will not be used.</p>
 <p>See also: <a href="fshook.html#allegro_for_each_fs_entry_result">ALLEGRO_FOR_EACH_FS_ENTRY_RESULT</a></p>
@@ -322,7 +322,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="state.html#al_store_state">al_store_state</a>, <a href="state.html#al_restore_state">al_restore_state</a>.</p>
 <p class="timestamp">
 Allegro version 5.1.13 (GIT)
- - Last updated: 2015-09-30 14:13:05 UTC
+ - Last updated: 2015-09-30 14:17:48 UTC
 </p>
 </div>
 </body>
