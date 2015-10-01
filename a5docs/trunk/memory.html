@@ -128,12 +128,14 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="al_malloc">al_malloc</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#define al_malloc(n) \</span>
 <span class="ot">   (al_malloc_with_context((n), __LINE__, __FILE__, __func__))</span></code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/memory.h#L40https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/memory.h#L41">al_malloc</a></p>
 <p>Like malloc() in the C standard library, but the implementation may be overridden.</p>
 <p>This is a macro.</p>
 <p>See also: <a href="memory.html#al_free">al_free</a>, <a href="memory.html#al_realloc">al_realloc</a>, <a href="memory.html#al_calloc">al_calloc</a>, <a href="memory.html#al_malloc_with_context">al_malloc_with_context</a>, <a href="memory.html#al_set_memory_interface">al_set_memory_interface</a></p>
 <h1 id="al_free">al_free</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#define al_free(p) \</span>
 <span class="ot">   (al_free_with_context((p), __LINE__, __FILE__, __func__))</span></code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/memory.h#L45https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/memory.h#L46">al_free</a></p>
 <p>Like free() in the C standard library, but the implementation may be overridden.</p>
 <p>Additionally, on Windows, a memory block allocated by one DLL must be freed from the same DLL. In the few places where an Allegro function returns a pointer that must be freed, you must use <a href="memory.html#al_free">al_free</a> for portability to Windows.</p>
 <p>This is a macro.</p>
@@ -141,37 +143,44 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="al_realloc">al_realloc</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#define al_realloc(p, n) \</span>
 <span class="ot">   (al_realloc_with_context((p), (n), __LINE__, __FILE__, __func__))</span></code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/memory.h#L50https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/memory.h#L51">al_realloc</a></p>
 <p>Like realloc() in the C standard library, but the implementation may be overridden.</p>
 <p>This is a macro.</p>
 <p>See also: <a href="memory.html#al_malloc">al_malloc</a>, <a href="memory.html#al_realloc_with_context">al_realloc_with_context</a></p>
 <h1 id="al_calloc">al_calloc</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#define al_calloc(c, n) \</span>
 <span class="ot">   (al_calloc_with_context((c), (n), __LINE__, __FILE__, __func__))</span></code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/memory.h#L55https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/memory.h#L56">al_calloc</a></p>
 <p>Like calloc() in the C standard library, but the implementation may be overridden.</p>
 <p>This is a macro.</p>
 <p>See also: <a href="memory.html#al_malloc">al_malloc</a>, <a href="memory.html#al_calloc_with_context">al_calloc_with_context</a></p>
 <h1 id="al_malloc_with_context">al_malloc_with_context</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> *al_malloc_with_context(size_t n,
    <span class="dt">int</span> line, <span class="dt">const</span> <span class="dt">char</span> *file, <span class="dt">const</span> <span class="dt">char</span> *func)</code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/memory.c#L38https://github.com/liballeg/allegro5/blob/5.1/src/memory.c#L39">al_malloc_with_context</a></p>
 <p>This calls malloc() from the Allegro library (this matters on Windows), unless overridden with <a href="memory.html#al_set_memory_interface">al_set_memory_interface</a>,</p>
 <p>Generally you should use the <a href="memory.html#al_malloc">al_malloc</a> macro.</p>
 <h1 id="al_free_with_context">al_free_with_context</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_free_with_context(<span class="dt">void</span> *ptr,
    <span class="dt">int</span> line, <span class="dt">const</span> <span class="dt">char</span> *file, <span class="dt">const</span> <span class="dt">char</span> *func)</code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/memory.c#L51https://github.com/liballeg/allegro5/blob/5.1/src/memory.c#L52">al_free_with_context</a></p>
 <p>This calls free() from the Allegro library (this matters on Windows), unless overridden with <a href="memory.html#al_set_memory_interface">al_set_memory_interface</a>.</p>
 <p>Generally you should use the <a href="memory.html#al_free">al_free</a> macro.</p>
 <h1 id="al_realloc_with_context">al_realloc_with_context</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> *al_realloc_with_context(<span class="dt">void</span> *ptr, size_t n,
    <span class="dt">int</span> line, <span class="dt">const</span> <span class="dt">char</span> *file, <span class="dt">const</span> <span class="dt">char</span> *func)</code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/memory.c#L64https://github.com/liballeg/allegro5/blob/5.1/src/memory.c#L65">al_realloc_with_context</a></p>
 <p>This calls realloc() from the Allegro library (this matters on Windows), unless overridden with <a href="memory.html#al_set_memory_interface">al_set_memory_interface</a>,</p>
 <p>Generally you should use the <a href="memory.html#al_realloc">al_realloc</a> macro.</p>
 <h1 id="al_calloc_with_context">al_calloc_with_context</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> *al_calloc_with_context(size_t count, size_t n,
    <span class="dt">int</span> line, <span class="dt">const</span> <span class="dt">char</span> *file, <span class="dt">const</span> <span class="dt">char</span> *func)</code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/memory.c#L77https://github.com/liballeg/allegro5/blob/5.1/src/memory.c#L78">al_calloc_with_context</a></p>
 <p>This calls calloc() from the Allegro library (this matters on Windows), unless overridden with <a href="memory.html#al_set_memory_interface">al_set_memory_interface</a>,</p>
 <p>Generally you should use the <a href="memory.html#al_calloc">al_calloc</a> macro.</p>
 <h1 id="allegro_memory_interface">ALLEGRO_MEMORY_INTERFACE</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_MEMORY_INTERFACE ALLEGRO_MEMORY_INTERFACE;</code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/memory.h#L26">ALLEGRO_MEMORY_INTERFACE</a></p>
 <p>This structure has the following fields.</p>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> *(*mi_malloc)(size_t n, <span class="dt">int</span> line, <span class="dt">const</span> <span class="dt">char</span> *file, <span class="dt">const</span> <span class="dt">char</span> *func);
 <span class="dt">void</span> (*mi_free)(<span class="dt">void</span> *ptr, <span class="dt">int</span> line, <span class="dt">const</span> <span class="dt">char</span> *file, <span class="dt">const</span> <span class="dt">char</span> *func);
@@ -182,12 +191,13 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="memory.html#al_set_memory_interface">al_set_memory_interface</a></p>
 <h1 id="al_set_memory_interface">al_set_memory_interface</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_memory_interface(ALLEGRO_MEMORY_INTERFACE *memory_interface)</code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/memory.c#L29">al_set_memory_interface</a></p>
 <p>Override the memory management functions with implementations of <a href="memory.html#al_malloc_with_context">al_malloc_with_context</a>, <a href="memory.html#al_free_with_context">al_free_with_context</a>, <a href="memory.html#al_realloc_with_context">al_realloc_with_context</a> and <a href="memory.html#al_calloc_with_context">al_calloc_with_context</a>. The context arguments may be used for debugging. The new functions should be thread safe.</p>
 <p>If the pointer is NULL, the default behaviour will be restored.</p>
 <p>See also: <a href="memory.html#allegro_memory_interface">ALLEGRO_MEMORY_INTERFACE</a></p>
 <p class="timestamp">
 Allegro version 5.1.13 (GIT)
- - Last updated: 2015-10-01 13:08:48 UTC
+ - Last updated: 2015-10-01 14:07:12 UTC
 </p>
 </div>
 </body>

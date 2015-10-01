@@ -128,6 +128,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <pre class="sourceCode c"><code class="sourceCode c"> <span class="ot">#include &lt;allegro5/allegro.h&gt;</span></code></pre>
 <h1 id="allegro_keyboard_state">ALLEGRO_KEYBOARD_STATE</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_KEYBOARD_STATE ALLEGRO_KEYBOARD_STATE;</code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/keyboard.h#L33">ALLEGRO_KEYBOARD_STATE</a></p>
 <p>This is a structure that is used to hold a &quot;snapshot&quot; of a keyboard's state at a particular instant. It contains the following publically readable fields:</p>
 <ul>
 <li>display - points to the display that had keyboard focus at the time the state was saved. If no display was focused, this points to NULL.</li>
@@ -247,37 +248,45 @@ ALLEGRO_KEYMOD_ACCENT4</code></pre>
 <p>The event field 'keyboard.modifiers' is a bitfield composed of these constants. These indicate the modifier keys which were pressed at the time a character was typed.</p>
 <h1 id="al_install_keyboard">al_install_keyboard</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_install_keyboard(<span class="dt">void</span>)</code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/keybdnu.c#L127">al_install_keyboard</a></p>
 <p>Install a keyboard driver. Returns true if successful. If a driver was already installed, nothing happens and true is returned.</p>
 <p>See also: <a href="keyboard.html#al_uninstall_keyboard">al_uninstall_keyboard</a>, <a href="keyboard.html#al_is_keyboard_installed">al_is_keyboard_installed</a></p>
 <h1 id="al_is_keyboard_installed">al_is_keyboard_installed</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_is_keyboard_installed(<span class="dt">void</span>)</code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/keybdnu.c#L118">al_is_keyboard_installed</a></p>
 <p>Returns true if <a href="keyboard.html#al_install_keyboard">al_install_keyboard</a> was called successfully.</p>
 <h1 id="al_uninstall_keyboard">al_uninstall_keyboard</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_uninstall_keyboard(<span class="dt">void</span>)</code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/keybdnu.c#L178">al_uninstall_keyboard</a></p>
 <p>Uninstalls the active keyboard driver, if any. This will automatically unregister the keyboard event source with any event queues.</p>
 <p>This function is automatically called when Allegro is shut down.</p>
 <p>See also: <a href="keyboard.html#al_install_keyboard">al_install_keyboard</a></p>
 <h1 id="al_get_keyboard_state">al_get_keyboard_state</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_get_keyboard_state(ALLEGRO_KEYBOARD_STATE *ret_state)</code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/keybdnu.c#L245">al_get_keyboard_state</a></p>
 <p>Save the state of the keyboard specified at the time the function is called into the structure pointed to by <em>ret_state</em>.</p>
 <p>See also: <a href="keyboard.html#al_key_down">al_key_down</a>, <a href="keyboard.html#allegro_keyboard_state">ALLEGRO_KEYBOARD_STATE</a></p>
 <h1 id="al_key_down">al_key_down</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_key_down(<span class="dt">const</span> ALLEGRO_KEYBOARD_STATE *state, <span class="dt">int</span> keycode)</code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/keybdnu.c#L257">al_key_down</a></p>
 <p>Return true if the key specified was held down in the state specified.</p>
 <p>See also: <a href="keyboard.html#allegro_keyboard_state">ALLEGRO_KEYBOARD_STATE</a></p>
 <h1 id="al_keycode_to_name">al_keycode_to_name</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">const</span> <span class="dt">char</span> *al_keycode_to_name(<span class="dt">int</span> keycode)</code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/keybdnu.c#L223">al_keycode_to_name</a></p>
 <p>Converts the given keycode to a description of the key.</p>
 <h1 id="al_set_keyboard_leds">al_set_keyboard_leds</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_set_keyboard_leds(<span class="dt">int</span> leds)</code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/keybdnu.c#L209">al_set_keyboard_leds</a></p>
 <p>Overrides the state of the keyboard LED indicators. Set <code>leds</code> to a combination of the keyboard modifier flags to enable the corresponding LED indicators (<code>ALLEGRO_KEYMOD_NUMLOCK</code>, <code>ALLEGRO_KEYMOD_CAPSLOCK</code> and <code>ALLEGRO_KEYMOD_SCROLLLOCK</code> are supported) or to -1 to return to default behavior. False is returned if the current keyboard driver cannot set LED indicators.</p>
 <h1 id="al_get_keyboard_event_source">al_get_keyboard_event_source</h1>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_EVENT_SOURCE *al_get_keyboard_event_source(<span class="dt">void</span>)</code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/keybdnu.c#L266">al_get_keyboard_event_source</a></p>
 <p>Retrieve the keyboard event source. All <a href="events.html#allegro_event_key_down">keyboard events</a> are generated by this event source.</p>
 <p>Returns NULL if the keyboard subsystem was not installed.</p>
 <p class="timestamp">
 Allegro version 5.1.13 (GIT)
- - Last updated: 2015-10-01 13:08:47 UTC
+ - Last updated: 2015-10-01 14:07:12 UTC
 </p>
 </div>
 </body>
