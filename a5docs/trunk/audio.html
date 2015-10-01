@@ -118,7 +118,6 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="#allegro_mixer">ALLEGRO_MIXER</a></li>
 <li><a href="#allegro_mixer_quality">ALLEGRO_MIXER_QUALITY</a></li>
 <li><a href="#allegro_playmode">ALLEGRO_PLAYMODE</a></li>
-<li><a href="#allegro_audio_event_type">ALLEGRO_AUDIO_EVENT_TYPE</a></li>
 <li><a href="#allegro_sample_id">ALLEGRO_SAMPLE_ID</a></li>
 <li><a href="#allegro_sample">ALLEGRO_SAMPLE</a></li>
 <li><a href="#allegro_sample_instance">ALLEGRO_SAMPLE_INSTANCE</a></li>
@@ -261,9 +260,6 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="#al_save_sample">al_save_sample</a></li>
 <li><a href="#al_save_sample_f">al_save_sample_f</a></li>
 </ul></li>
-<li><a href="#audio-events">Audio events</a><ul>
-<li><a href="#al_get_audio_event_source">al_get_audio_event_source</a></li>
-</ul></li>
 <li><a href="#audio-recording">Audio recording</a><ul>
 <li><a href="#allegro_audio_recorder">ALLEGRO_AUDIO_RECORDER</a></li>
 <li><a href="#allegro_audio_recorder_event">ALLEGRO_AUDIO_RECORDER_EVENT</a></li>
@@ -332,14 +328,6 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>ALLEGRO_PLAYMODE_LOOP</li>
 <li>ALLEGRO_PLAYMODE_BIDIR</li>
 </ul>
-<h2 id="allegro_audio_event_type">ALLEGRO_AUDIO_EVENT_TYPE</h2>
-<p>Defines types of audio events that can be retrieved from the audio event source. Not all audio drivers will generate these events.</p>
-<ul>
-<li>ALLEGRO_EVENT_AUDIO_ROUTE_CHANGE</li>
-<li>ALLEGRO_EVENT_AUDIO_INTERRUPTION</li>
-<li>ALLEGRO_EVENT_AUDIO_END_INTERRUPTION</li>
-</ul>
-<p>Since: 5.1.0</p>
 <h2 id="allegro_sample_id">ALLEGRO_SAMPLE_ID</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_SAMPLE_ID ALLEGRO_SAMPLE_ID;</code></pre>
 <p>An ALLEGRO_SAMPLE_ID represents a sample being played via <a href="audio.html#al_play_sample">al_play_sample</a>. It can be used to later stop the sample with <a href="audio.html#al_stop_sample">al_stop_sample</a>.</p>
@@ -1019,14 +1007,6 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p><em>Note:</em> the allegro_audio library does not support any audio file formats by default. You must use the allegro_acodec addon, or register your own format handler.</p>
 </blockquote>
 <p>See also: <a href="audio.html#al_save_sample">al_save_sample</a>, <a href="audio.html#al_register_sample_saver_f">al_register_sample_saver_f</a>, <a href="acodec.html#al_init_acodec_addon">al_init_acodec_addon</a></p>
-<h1 id="audio-events">Audio events</h1>
-<p>Audio events are all user events and so must be handled as such, mainly calling <a href="events.html#al_unref_user_event">al_unref_user_event</a> on them.</p>
-<p>See also: <a href="events.html#al_unref_user_event">al_unref_user_event</a></p>
-<h2 id="al_get_audio_event_source">al_get_audio_event_source</h2>
-<p>Get the audio event source. <a href="audio.html#al_install_audio">al_install_audio</a> must be called prior to calling this function.</p>
-<p>This emits events related to the core sound system. For events specific to streams or recorders, you must use their own unique event sources.</p>
-<p>Since: 5.1.0</p>
-<p>See also: <a href="audio.html#allegro_audio_event_type">ALLEGRO_AUDIO_EVENT_TYPE</a>, <a href="audio.html#al_get_audio_stream_event_source">al_get_audio_stream_event_source</a>, <a href="audio.html#al_get_audio_recorder_event_source">al_get_audio_recorder_event_source</a></p>
 <h1 id="audio-recording">Audio recording</h1>
 <p>Allegro's audio recording routines give you real-time access to raw, uncompressed audio input streams. Since Allegro hides all of the platform specific implementation details with its own buffering, it will add a small amount of latency. However, for most applications that small overhead will not adversely affect performance.</p>
 <p>Recording is supported by the ALSA, AudioQueue, DirectSound8, and PulseAudio drivers. Enumerating or choosing other recording devices is not yet supported.</p>
@@ -1035,6 +1015,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p>An opaque datatype that represents a recording device.</p>
 <p>Since: 5.1.1</p>
 <h2 id="allegro_audio_recorder_event">ALLEGRO_AUDIO_RECORDER_EVENT</h2>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_AUDIO_RECORDER_EVENT ALLEGRO_AUDIO_RECORDER_EVENT;</code></pre>
 <p>Structure that holds the audio recorder event data. Every event type will contain:</p>
 <ul>
 <li>.source: pointer to the audio recorder</li>
@@ -1098,7 +1079,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p>Since: 5.1.1</p>
 <p class="timestamp">
 Allegro version 5.1.13 (GIT)
- - Last updated: 2015-09-30 14:17:55 UTC
+ - Last updated: 2015-10-01 13:08:52 UTC
 </p>
 </div>
 </body>

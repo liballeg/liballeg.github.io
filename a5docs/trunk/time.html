@@ -113,7 +113,6 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <ul>
 <li><a href="#allegro_timeout">ALLEGRO_TIMEOUT</a></li>
 <li><a href="#al_get_time">al_get_time</a></li>
-<li><a href="#al_current_time">al_current_time</a></li>
 <li><a href="#al_init_timeout">al_init_timeout</a></li>
 <li><a href="#al_rest">al_rest</a></li>
 </ul>
@@ -127,8 +126,6 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="al_get_time">al_get_time</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">double</span> al_get_time(<span class="dt">void</span>)</code></pre>
 <p>Return the number of seconds since the Allegro library was initialised. The return value is undefined if Allegro is uninitialised. The resolution depends on the used driver, but typically can be in the order of microseconds.</p>
-<h1 id="al_current_time">al_current_time</h1>
-<p>Alternate spelling of <a href="time.html#al_get_time">al_get_time</a>.</p>
 <h1 id="al_init_timeout">al_init_timeout</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_init_timeout(ALLEGRO_TIMEOUT *timeout, <span class="dt">double</span> seconds)</code></pre>
 <p>Set timeout value of some number of seconds after the function call.</p>
@@ -140,7 +137,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>might pause for something like 10ms. Also see the section on Timer routines for easier ways to time your program without using up all CPU.</p>
 <p class="timestamp">
 Allegro version 5.1.13 (GIT)
- - Last updated: 2015-09-30 14:17:52 UTC
+ - Last updated: 2015-10-01 13:08:50 UTC
 </p>
 </div>
 </body>
