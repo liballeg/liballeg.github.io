@@ -182,7 +182,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="display-creation">Display creation</h1>
 <h2 id="allegro_display">ALLEGRO_DISPLAY</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_DISPLAY ALLEGRO_DISPLAY;</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/display.h#L105">ALLEGRO_DISPLAY</a></p>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/display.h#L108">ALLEGRO_DISPLAY</a></p>
 <p>An opaque type representing an open display or window.</p>
 <h2 id="al_create_display">al_create_display</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_DISPLAY *al_create_display(<span class="dt">int</span> w, <span class="dt">int</span> h)</code></pre>
@@ -236,6 +236,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </dd>
 <dt>ALLEGRO_OPENGL_FORWARD_COMPATIBLE</dt>
 <dd>If this flag is set, the OpenGL context created with ALLEGRO_OPENGL_3_0 will be forward compatible <em>only</em>, meaning that all of the OpenGL API declared deprecated in OpenGL 3.0 will not be supported. Currently, a display created with this flag will <em>not</em> be compatible with Allegro drawing routines; the display option ALLEGRO_COMPATIBLE_DISPLAY will be set to false.
+</dd>
+<dt>ALLEGRO_OPENGL_ES_PROFILE</dt>
+<dd>Used together with ALLEGRO_OPENGL, requests that the OpenGL context uses the OpenGL ES profile. A specific version can be requested with <a href="display.html#al_set_new_display_option">al_set_new_display_option</a>. Note: Currently this is only supported by the X11/GLX driver.
 </dd>
 <dt>ALLEGRO_DIRECT3D</dt>
 <dd>Require the driver to do rendering with Direct3D and provide a Direct3D device.
@@ -353,6 +356,16 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <p>PORTRAIT means only the two portrait orientations are supported, LANDSCAPE means only the two landscape orientations and ALL allows all four orientations. When the orientation changes between a portrait and a landscape orientation the display needs to be resized. This is done by sending an <a href="events.html#allegro_event_display_resize">ALLEGRO_EVENT_DISPLAY_RESIZE</a> message which should be handled by calling <a href="display.html#al_acknowledge_resize">al_acknowledge_resize</a>.</p>
 <p>Since: 5.1.0</p>
+</dd>
+<dt>ALLEGRO_OPENGL_MAJOR_VERSION</dt>
+<dd><p>Request a specific OpenGL major version.</p>
+<p>Note: Currently only used in the OpenGL ES profile.</p>
+<p>Since: 5.1.13</p>
+</dd>
+<dt>ALLEGRO_OPENGL_MINOR_VERSION</dt>
+<dd><p>Request a specific OpenGL minor version.</p>
+<p>Note: Currently only used in the OpenGL ES profile.</p>
+<p>Since: 5.1.13</p>
 </dd>
 </dl>
 <p>See also: <a href="display.html#al_set_new_display_flags">al_set_new_display_flags</a>, <a href="display.html#al_get_display_option">al_get_display_option</a></p>
@@ -533,7 +546,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.12</p>
 <h2 id="allegro_new_window_title_max_size">ALLEGRO_NEW_WINDOW_TITLE_MAX_SIZE</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#define ALLEGRO_NEW_WINDOW_TITLE_MAX_SIZE 255</span></code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/display.h#L110">ALLEGRO_NEW_WINDOW_TITLE_MAX_SIZE</a></p>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/display.h#L113">ALLEGRO_NEW_WINDOW_TITLE_MAX_SIZE</a></p>
 <p>This is the maximum size of the title that can be set with <a href="display.html#al_set_new_window_title">al_set_new_window_title</a>.</p>
 <p>See also: <a href="display.html#al_set_new_window_title">al_set_new_window_title</a></p>
 <p>Since: 5.1.12</p>
@@ -599,7 +612,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="display.html#al_set_clipboard_text">al_set_clipboard_text</a>, <a href="display.html#al_get_clipboard_text">al_get_clipboard_text</a></p>
 <p class="timestamp">
 Allegro version 5.1.13 (GIT)
- - Last updated: 2015-11-01 16:07:07 UTC
+ - Last updated: 2015-11-03 18:08:50 UTC
 </p>
 </div>
 </body>
