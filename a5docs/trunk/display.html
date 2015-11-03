@@ -238,7 +238,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <dd>If this flag is set, the OpenGL context created with ALLEGRO_OPENGL_3_0 will be forward compatible <em>only</em>, meaning that all of the OpenGL API declared deprecated in OpenGL 3.0 will not be supported. Currently, a display created with this flag will <em>not</em> be compatible with Allegro drawing routines; the display option ALLEGRO_COMPATIBLE_DISPLAY will be set to false.
 </dd>
 <dt>ALLEGRO_OPENGL_ES_PROFILE</dt>
-<dd>Used together with ALLEGRO_OPENGL, requests that the OpenGL context uses the OpenGL ES profile. A specific version can be requested with <a href="display.html#al_set_new_display_option">al_set_new_display_option</a>. Note: Currently this is only supported by the X11/GLX driver.
+<dd>Used together with ALLEGRO_OPENGL, requests that the OpenGL context uses the OpenGL ES profile. A specific version can be requested with <a href="display.html#al_set_new_display_option">al_set_new_display_option</a>. Note: Currently this is only supported by the X11/GLX driver. Since: 5.1.13
 </dd>
 <dt>ALLEGRO_DIRECT3D</dt>
 <dd>Require the driver to do rendering with Direct3D and provide a Direct3D device.
@@ -263,7 +263,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="display.html#al_set_new_display_option">al_set_new_display_option</a>, <a href="display.html#al_get_display_option">al_get_display_option</a>, <a href="display.html#al_set_display_option">al_set_display_option</a></p>
 <h2 id="al_get_new_display_option">al_get_new_display_option</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_new_display_option(<span class="dt">int</span> option, <span class="dt">int</span> *importance)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/display_settings.c#L54">al_get_new_display_option</a></p>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/display_settings.c#L64">al_get_new_display_option</a></p>
 <p>Retrieve an extra display setting which was previously set with <a href="display.html#al_set_new_display_option">al_set_new_display_option</a>.</p>
 <h2 id="al_set_new_display_option">al_set_new_display_option</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_new_display_option(<span class="dt">int</span> option, <span class="dt">int</span> value, <span class="dt">int</span> importance)</code></pre>
@@ -359,19 +359,17 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </dd>
 <dt>ALLEGRO_OPENGL_MAJOR_VERSION</dt>
 <dd><p>Request a specific OpenGL major version.</p>
-<p>Note: Currently only used in the OpenGL ES profile.</p>
 <p>Since: 5.1.13</p>
 </dd>
 <dt>ALLEGRO_OPENGL_MINOR_VERSION</dt>
 <dd><p>Request a specific OpenGL minor version.</p>
-<p>Note: Currently only used in the OpenGL ES profile.</p>
 <p>Since: 5.1.13</p>
 </dd>
 </dl>
 <p>See also: <a href="display.html#al_set_new_display_flags">al_set_new_display_flags</a>, <a href="display.html#al_get_display_option">al_get_display_option</a></p>
 <h2 id="al_reset_new_display_options">al_reset_new_display_options</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_reset_new_display_options(<span class="dt">void</span>)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/display_settings.c#L94">al_reset_new_display_options</a></p>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/display_settings.c#L104">al_reset_new_display_options</a></p>
 <p>This undoes any previous call to <a href="display.html#al_set_new_display_option">al_set_new_display_option</a> on the calling thread.</p>
 <h2 id="al_get_new_window_position">al_get_new_window_position</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_get_new_window_position(<span class="dt">int</span> *x, <span class="dt">int</span> *y)</code></pre>
@@ -497,12 +495,12 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="display.html#al_set_new_display_flags">al_set_new_display_flags</a>, <a href="display.html#al_get_display_flags">al_get_display_flags</a></p>
 <h2 id="al_get_display_option">al_get_display_option</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_display_option(ALLEGRO_DISPLAY *display, <span class="dt">int</span> option)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/display_settings.c#L84">al_get_display_option</a></p>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/display_settings.c#L94">al_get_display_option</a></p>
 <p>Return an extra display setting of the display.</p>
 <p>See also: <a href="display.html#al_set_new_display_option">al_set_new_display_option</a></p>
 <h2 id="al_set_display_option">al_set_display_option</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_display_option(ALLEGRO_DISPLAY *display, <span class="dt">int</span> option, <span class="dt">int</span> value)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/display_settings.c#L72">al_set_display_option</a></p>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/display_settings.c#L82">al_set_display_option</a></p>
 <p>Change an option that was previously set for a display. After displays are created, they take on the options set with <a href="display.html#al_set_new_display_option">al_set_new_display_option</a>. Calling <a href="display.html#al_set_new_display_option">al_set_new_display_option</a> subsequently only changes options for newly created displays, and doesn't touch the options of already created displays. <a href="display.html#al_set_display_option">al_set_display_option</a> allows changing some of these values. Not all display options can be changed or changing them will have no effect. Changing options other than those listed below is undefined.</p>
 <ul>
 <li>ALLEGRO_SUPPORTED_ORIENTATIONS - This can be changed to allow new or restrict previously enabled orientations of the screen/device. See <a href="display.html#al_set_new_display_option">al_set_new_display_option</a> for more information on this option.</li>
@@ -612,7 +610,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="display.html#al_set_clipboard_text">al_set_clipboard_text</a>, <a href="display.html#al_get_clipboard_text">al_get_clipboard_text</a></p>
 <p class="timestamp">
 Allegro version 5.1.13 (GIT)
- - Last updated: 2015-11-03 18:08:50 UTC
+ - Last updated: 2015-11-03 20:07:34 UTC
 </p>
 </div>
 </body>
