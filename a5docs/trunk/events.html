@@ -555,6 +555,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <blockquote>
 <p><em>Note:</em> This event means that the next time you call a drawing function, your program will crash. So you <em>must</em> stop drawing and you <em>must</em> immediately reply with <a href="display.html#al_acknowledge_drawing_halt">al_acknowledge_drawing_halt</a>. Allegro sends this event because it cannot handle this automatically. Your program might be doing the drawing in a different thread from the event handling, in which case the drawing thread needs to be signaled to stop drawing before acknowledging this event.</p>
 </blockquote>
+<blockquote>
+<p><em>Note:</em> Mobile devices usually never quit an application, so to prevent the battery from draining while your application is halted it can be a good idea to call <a href="timer.html#al_stop_timer">al_stop_timer</a> on all your timers, otherwise they will keep generating events. If you are using audio, you can also stop all audio voices (or pass NULL to <a href="audio.html#al_set_default_voice">al_set_default_voice</a> if you use the default mixer), otherwise Allegro will keep streaming silence to the voice even if the stream or mixer are stopped or detached.</p>
+</blockquote>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="events.html#allegro_event_display_resume_drawing">ALLEGRO_EVENT_DISPLAY_RESUME_DRAWING</a></p>
 <h2 id="allegro_event_display_resume_drawing">ALLEGRO_EVENT_DISPLAY_RESUME_DRAWING</h2>
@@ -797,7 +800,7 @@ THING *create_thing(<span class="dt">void</span>)
 <p>See also: <a href="events.html#al_get_event_source_data">al_get_event_source_data</a></p>
 <p class="timestamp">
 Allegro version 5.1.13 (GIT)
- - Last updated: 2015-11-17 18:07:23 UTC
+ - Last updated: 2015-11-18 22:07:34 UTC
 </p>
 </div>
 </body>
