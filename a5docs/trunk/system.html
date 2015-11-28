@@ -249,12 +249,12 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="al_register_assert_handler">al_register_assert_handler</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_register_assert_handler(<span class="dt">void</span> (*handler)(<span class="dt">char</span> <span class="dt">const</span> *expr,
    <span class="dt">char</span> <span class="dt">const</span> *file, <span class="dt">int</span> line, <span class="dt">char</span> <span class="dt">const</span> *func))</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/debug.c#L368https://github.com/liballeg/allegro5/blob/5.1/src/debug.c#L369">al_register_assert_handler</a></p>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/debug.c#L369https://github.com/liballeg/allegro5/blob/5.1/src/debug.c#L370">al_register_assert_handler</a></p>
 <p>Register a function to be called when an internal Allegro assertion fails. Pass NULL to reset to the default behaviour, which is to do whatever the standard <code>assert()</code> macro does.</p>
 <p>Since: 5.0.6, 5.1.0</p>
 <h1 id="al_register_trace_handler">al_register_trace_handler</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_register_trace_handler(<span class="dt">void</span> (*handler)(<span class="dt">char</span> <span class="dt">const</span> *))</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/debug.c#L377">al_register_trace_handler</a></p>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/debug.c#L378">al_register_trace_handler</a></p>
 <p>Register a callback which is called whenever Allegro writes something to its log files. The default logging to allegro.log is disabled while this callback is active. Pass NULL to revert to the default logging.</p>
 <p>This function may be called prior to al_install_system.</p>
 <p>See the example allegro5.cfg for documentation on how to configure the used debug channels, logging levels and trace format.</p>
@@ -277,7 +277,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.12</p>
 <p class="timestamp">
 Allegro version 5.1.13 (GIT)
- - Last updated: 2015-11-18 22:07:40 UTC
+ - Last updated: 2015-11-28 04:07:27 UTC
 </p>
 </div>
 </body>
