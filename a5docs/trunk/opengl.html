@@ -116,6 +116,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="#al_get_opengl_texture">al_get_opengl_texture</a></li>
 <li><a href="#al_get_opengl_texture_size">al_get_opengl_texture_size</a></li>
 <li><a href="#al_get_opengl_texture_position">al_get_opengl_texture_position</a></li>
+<li><a href="#al_get_opengl_program_object">al_get_opengl_program_object</a></li>
 <li><a href="#al_get_opengl_fbo">al_get_opengl_fbo</a></li>
 <li><a href="#al_remove_opengl_fbo">al_remove_opengl_fbo</a></li>
 <li><a href="#al_have_opengl_extension">al_have_opengl_extension</a></li>
@@ -181,6 +182,10 @@ texture = al_get_opengl_texture(bitmap);
 <p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/ogl_bitmap.c#L1186">al_get_opengl_texture_position</a></p>
 <p>Returns the u/v coordinates for the top/left corner of the bitmap within the used texture, in pixels.</p>
 <p>See also: <a href="opengl.html#al_get_opengl_texture_size">al_get_opengl_texture_size</a></p>
+<h1 id="al_get_opengl_program_object">al_get_opengl_program_object</h1>
+<pre class="sourceCode c"><code class="sourceCode c">GLuint al_get_opengl_program_object(ALLEGRO_SHADER *shader)</code></pre>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/ogl_shader.c#L503">al_get_opengl_program_object</a></p>
+<p>Returns the OpenGL program object associated with this shader, if the platform is <code>ALLEGRO_SHADER_GLSL</code>. Otherwise, returns 0.</p>
 <h1 id="al_get_opengl_fbo">al_get_opengl_fbo</h1>
 <pre class="sourceCode c"><code class="sourceCode c">GLuint al_get_opengl_fbo(ALLEGRO_BITMAP *bitmap)</code></pre>
 <p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/ogl_bitmap.c#L1136">al_get_opengl_fbo</a></p>
@@ -235,7 +240,7 @@ texture = al_get_opengl_texture(bitmap);
 <p>Any extension which appears in the section is treated as not available (it does not matter if you set it to 0 or any other value).</p>
 <p class="timestamp">
 Allegro version 5.1.13 (GIT)
- - Last updated: 2015-11-28 04:07:30 UTC
+ - Last updated: 2015-11-29 00:07:44 UTC
 </p>
 </div>
 </body>
