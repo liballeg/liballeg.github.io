@@ -881,7 +881,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <h2 id="al_get_audio_stream_event_source">al_get_audio_stream_event_source</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_EVENT_SOURCE *al_get_audio_stream_event_source(
    ALLEGRO_AUDIO_STREAM *stream)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_stream.c#L868https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_stream.c#L869">al_get_audio_stream_event_source</a></p>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_stream.c#L874https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_stream.c#L875">al_get_audio_stream_event_source</a></p>
 <p>Retrieve the associated event source.</p>
 <p>See <a href="audio.html#al_get_audio_stream_fragment">al_get_audio_stream_fragment</a> for a description of the ALLEGRO_EVENT_AUDIO_STREAM_FRAGMENT event that audio streams emit.</p>
 <h2 id="al_drain_audio_stream">al_drain_audio_stream</h2>
@@ -891,7 +891,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p>See also: <a href="audio.html#al_destroy_audio_stream">al_destroy_audio_stream</a></p>
 <h2 id="al_rewind_audio_stream">al_rewind_audio_stream</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_rewind_audio_stream(ALLEGRO_AUDIO_STREAM *stream)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_stream.c#L779">al_rewind_audio_stream</a></p>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_stream.c#L785">al_rewind_audio_stream</a></p>
 <p>Set the streaming file playing position to the beginning. Returns true on success. Currently this can only be called on streams created with <a href="audio.html#al_load_audio_stream">al_load_audio_stream</a>, <a href="audio.html#al_load_audio_stream_f">al_load_audio_stream_f</a> and the format-specific functions underlying those functions.</p>
 <h2 id="al_get_audio_stream_frequency">al_get_audio_stream_frequency</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">unsigned</span> <span class="dt">int</span> al_get_audio_stream_frequency(<span class="dt">const</span> ALLEGRO_AUDIO_STREAM *stream)</code></pre>
@@ -1013,24 +1013,24 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p>See also: <a href="audio.html#al_get_audio_stream_fragment">al_get_audio_stream_fragment</a>, <a href="audio.html#al_get_audio_stream_fragments">al_get_audio_stream_fragments</a></p>
 <h2 id="al_seek_audio_stream_secs">al_seek_audio_stream_secs</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_seek_audio_stream_secs(ALLEGRO_AUDIO_STREAM *stream, <span class="dt">double</span> time)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_stream.c#L796">al_seek_audio_stream_secs</a></p>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_stream.c#L802">al_seek_audio_stream_secs</a></p>
 <p>Set the streaming file playing position to time. Returns true on success. Currently this can only be called on streams created with <a href="audio.html#al_load_audio_stream">al_load_audio_stream</a>, <a href="audio.html#al_load_audio_stream_f">al_load_audio_stream_f</a> and the format-specific functions underlying those functions.</p>
 <p>See also: <a href="audio.html#al_get_audio_stream_position_secs">al_get_audio_stream_position_secs</a>, <a href="audio.html#al_get_audio_stream_length_secs">al_get_audio_stream_length_secs</a></p>
 <h2 id="al_get_audio_stream_position_secs">al_get_audio_stream_position_secs</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">double</span> al_get_audio_stream_position_secs(ALLEGRO_AUDIO_STREAM *stream)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_stream.c#L813">al_get_audio_stream_position_secs</a></p>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_stream.c#L819">al_get_audio_stream_position_secs</a></p>
 <p>Return the position of the stream in seconds. Currently this can only be called on streams created with <a href="audio.html#al_load_audio_stream">al_load_audio_stream</a>.</p>
 <p>See also: <a href="audio.html#al_get_audio_stream_length_secs">al_get_audio_stream_length_secs</a></p>
 <h2 id="al_get_audio_stream_length_secs">al_get_audio_stream_length_secs</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">double</span> al_get_audio_stream_length_secs(ALLEGRO_AUDIO_STREAM *stream)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_stream.c#L830">al_get_audio_stream_length_secs</a></p>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_stream.c#L836">al_get_audio_stream_length_secs</a></p>
 <p>Return the length of the stream in seconds, if known. Otherwise returns zero.</p>
 <p>Currently this can only be called on streams created with <a href="audio.html#al_load_audio_stream">al_load_audio_stream</a>, <a href="audio.html#al_load_audio_stream_f">al_load_audio_stream_f</a> and the format-specific functions underlying those functions.</p>
 <p>See also: <a href="audio.html#al_get_audio_stream_position_secs">al_get_audio_stream_position_secs</a></p>
 <h2 id="al_set_audio_stream_loop_secs">al_set_audio_stream_loop_secs</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_set_audio_stream_loop_secs(ALLEGRO_AUDIO_STREAM *stream,
    <span class="dt">double</span> start, <span class="dt">double</span> end)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_stream.c#L847https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_stream.c#L848">al_set_audio_stream_loop_secs</a></p>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_stream.c#L853https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_stream.c#L854">al_set_audio_stream_loop_secs</a></p>
 <p>Sets the loop points for the stream in seconds. Currently this can only be called on streams created with <a href="audio.html#al_load_audio_stream">al_load_audio_stream</a>, <a href="audio.html#al_load_audio_stream_f">al_load_audio_stream_f</a> and the format-specific functions underlying those functions.</p>
 <h1 id="audio-file-io">Audio file I/O</h1>
 <h2 id="al_register_sample_loader">al_register_sample_loader</h2>
@@ -1233,7 +1233,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p>Since: 5.1.1</p>
 <p class="timestamp">
 Allegro version 5.1.13 (GIT)
- - Last updated: 2015-12-16 06:07:34 UTC
+ - Last updated: 2015-12-17 07:07:19 UTC
 </p>
 </div>
 </body>
