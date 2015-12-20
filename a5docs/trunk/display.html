@@ -537,7 +537,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Set the title on a display.</p>
 <p>See also: <a href="display.html#al_set_display_icon">al_set_display_icon</a>, <a href="display.html#al_set_display_icons">al_set_display_icons</a></p>
 <h2 id="al_set_new_window_title">al_set_new_window_title</h2>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_new_window_title(<span class="dt">char</span> *title)</code></pre>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_new_window_title(<span class="dt">const</span> <span class="dt">char</span> *title)</code></pre>
 <p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/tls.c#L192">al_set_new_window_title</a></p>
 <p>Set the title that will be used when a new display is created. Allegro uses a static buffer of <a href="display.html#allegro_new_window_title_max_size">ALLEGRO_NEW_WINDOW_TITLE_MAX_SIZE</a> to store this, so the length of the titme you set must be less than this.</p>
 <p>See also: <a href="display.html#al_set_window_title">al_set_window_title</a>, <a href="display.html#al_get_new_window_title">al_get_new_window_title</a>, <a href="display.html#al_create_display">al_create_display</a>, <a href="display.html#allegro_new_window_title_max_size">ALLEGRO_NEW_WINDOW_TITLE_MAX_SIZE</a></p>
@@ -610,7 +610,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="display.html#al_set_clipboard_text">al_set_clipboard_text</a>, <a href="display.html#al_get_clipboard_text">al_get_clipboard_text</a></p>
 <p class="timestamp">
 Allegro version 5.1.13 (GIT)
- - Last updated: 2015-12-17 07:07:10 UTC
+ - Last updated: 2015-12-20 02:08:49 UTC
 </p>
 </div>
 </body>
