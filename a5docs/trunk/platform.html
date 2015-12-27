@@ -139,13 +139,13 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <pre class="sourceCode c"><code class="sourceCode c"> <span class="ot">#include &lt;allegro5/allegro_windows.h&gt;</span></code></pre>
 <h2 id="al_get_win_window_handle">al_get_win_window_handle</h2>
 <pre class="sourceCode c"><code class="sourceCode c">HWND al_get_win_window_handle(ALLEGRO_DISPLAY *display)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/win/wwindow.c#L1290">al_get_win_window_handle</a></p>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/win/wwindow.c#L1296">al_get_win_window_handle</a></p>
 <p>Returns the handle to the window that the passed display is using.</p>
 <h2 id="al_win_add_window_callback">al_win_add_window_callback</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_win_add_window_callback(ALLEGRO_DISPLAY *display,
    bool (*callback)(ALLEGRO_DISPLAY *display, UINT message, WPARAM wparam,
    LPARAM lparam, LRESULT *result, <span class="dt">void</span> *userdata), <span class="dt">void</span> *userdata)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/win/wwindow.c#L1318https://github.com/liballeg/allegro5/blob/5.1/src/win/wwindow.c#L1319https://github.com/liballeg/allegro5/blob/5.1/src/win/wwindow.c#L1320">al_win_add_window_callback</a></p>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/win/wwindow.c#L1324https://github.com/liballeg/allegro5/blob/5.1/src/win/wwindow.c#L1325https://github.com/liballeg/allegro5/blob/5.1/src/win/wwindow.c#L1326">al_win_add_window_callback</a></p>
 <p>The specified callback function will intercept the window's message before Allegro processes it. If the callback function consumes the event, then it should return true. In that case, Allegro will not do anything with the event.</p>
 <p>Optionally, you may use <code>result</code> to customize what Allegro will return return in response to this event. By default, Allegro returns <code>TRUE</code>.</p>
 <p>The <code>userdata</code> pointer can be used to supply additional context to the callback function.</p>
@@ -156,7 +156,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <pre class="sourceCode c"><code class="sourceCode c">bool al_win_remove_window_callback(ALLEGRO_DISPLAY *display,
    bool (*callback)(ALLEGRO_DISPLAY *display, UINT message, WPARAM wparam,
    LPARAM lparam, LRESULT *result, <span class="dt">void</span> *userdata), <span class="dt">void</span> *userdata)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/win/wwindow.c#L1347https://github.com/liballeg/allegro5/blob/5.1/src/win/wwindow.c#L1348https://github.com/liballeg/allegro5/blob/5.1/src/win/wwindow.c#L1349">al_win_remove_window_callback</a></p>
+<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/win/wwindow.c#L1353https://github.com/liballeg/allegro5/blob/5.1/src/win/wwindow.c#L1354https://github.com/liballeg/allegro5/blob/5.1/src/win/wwindow.c#L1355">al_win_remove_window_callback</a></p>
 <p>Removes the callback that was previously registered with <a href="platform.html#al_win_add_window_callback">al_win_add_window_callback</a>. The <code>userdata</code> pointer must be the same as what was used during the registration of the callback.</p>
 <p>Returns true if the callback was removed.</p>
 <p>Since: 5.1.2</p>
@@ -226,7 +226,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.12</p>
 <p class="timestamp">
 Allegro version 5.1.13 (GIT)
- - Last updated: 2015-12-20 02:08:57 UTC
+ - Last updated: 2015-12-27 07:07:32 UTC
 </p>
 </div>
 </body>
