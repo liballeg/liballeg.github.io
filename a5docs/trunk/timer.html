@@ -134,90 +134,90 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <pre class="sourceCode c"><code class="sourceCode c"> <span class="ot">#include &lt;allegro5/allegro.h&gt;</span></code></pre>
 <h1 id="allegro_timer">ALLEGRO_TIMER</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_TIMER ALLEGRO_TIMER;</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/timer.h#L45">ALLEGRO_TIMER</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/timer.h#L45">Source Code</a></p>
 <p>This is an abstract data type representing a timer object.</p>
 <h1 id="allegro_usecs_to_secs">ALLEGRO_USECS_TO_SECS</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#define ALLEGRO_USECS_TO_SECS(x)      ((x) / 1000000.0)</span></code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/timer.h#L28">ALLEGRO_USECS_TO_SECS</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/timer.h#L28">Source Code</a></p>
 <p>Convert microseconds to seconds.</p>
 <h1 id="allegro_msecs_to_secs">ALLEGRO_MSECS_TO_SECS</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#define ALLEGRO_MSECS_TO_SECS(x)      ((x) / 1000.0)</span></code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/timer.h#L32">ALLEGRO_MSECS_TO_SECS</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/timer.h#L32">Source Code</a></p>
 <p>Convert milliseconds to seconds.</p>
 <h1 id="allegro_bps_to_secs">ALLEGRO_BPS_TO_SECS</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#define ALLEGRO_BPS_TO_SECS(x)        (1.0 / (x))</span></code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/timer.h#L36">ALLEGRO_BPS_TO_SECS</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/timer.h#L36">Source Code</a></p>
 <p>Convert beats per second to seconds.</p>
 <h1 id="allegro_bpm_to_secs">ALLEGRO_BPM_TO_SECS</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#define ALLEGRO_BPM_TO_SECS(x)        (60.0 / (x))</span></code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/timer.h#L40">ALLEGRO_BPM_TO_SECS</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/timer.h#L40">Source Code</a></p>
 <p>Convert beats per minute to seconds.</p>
 <h1 id="al_create_timer">al_create_timer</h1>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_TIMER *al_create_timer(<span class="dt">double</span> speed_secs)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L220">al_create_timer</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L220">Source Code</a></p>
 <p>Allocates and initializes a timer. If successful, a pointer to a new timer object is returned, otherwise NULL is returned. <em>speed_secs</em> is in seconds per &quot;tick&quot;, and must be positive. The new timer is initially stopped.</p>
 <p>Usage note: typical granularity is on the order of microseconds, but with some drivers might only be milliseconds.</p>
 <p>See also: <a href="timer.html#al_start_timer">al_start_timer</a>, <a href="timer.html#al_destroy_timer">al_destroy_timer</a></p>
 <h1 id="al_start_timer">al_start_timer</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_start_timer(ALLEGRO_TIMER *timer)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L263">al_start_timer</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L263">Source Code</a></p>
 <p>Start the timer specified. From then, the timer's counter will increment at a constant rate, and it will begin generating events. Starting a timer that is already started does nothing. Starting a timer that was stopped will reset the timer's counter, effectively restarting the timer from the beginning.</p>
 <p>See also: <a href="timer.html#al_stop_timer">al_stop_timer</a>, <a href="timer.html#al_get_timer_started">al_get_timer_started</a>, <a href="timer.html#al_resume_timer">al_resume_timer</a></p>
 <h1 id="al_resume_timer">al_resume_timer</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_resume_timer(ALLEGRO_TIMER *timer)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L272">al_resume_timer</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L272">Source Code</a></p>
 <p>Resume the timer specified. From then, the timer's counter will increment at a constant rate, and it will begin generating events. Resuming a timer that is already started does nothing. Resuming a stopped timer will not reset the timer's counter (unlike al_start_timer).</p>
 <p>See also: <a href="timer.html#al_start_timer">al_start_timer</a>, <a href="timer.html#al_stop_timer">al_stop_timer</a>, <a href="timer.html#al_get_timer_started">al_get_timer_started</a></p>
 <h1 id="al_stop_timer">al_stop_timer</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_stop_timer(ALLEGRO_TIMER *timer)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L281">al_stop_timer</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L281">Source Code</a></p>
 <p>Stop the timer specified. The timer's counter will stop incrementing and it will stop generating events. Stopping a timer that is already stopped does nothing.</p>
 <p>See also: <a href="timer.html#al_start_timer">al_start_timer</a>, <a href="timer.html#al_get_timer_started">al_get_timer_started</a>, <a href="timer.html#al_resume_timer">al_resume_timer</a></p>
 <h1 id="al_get_timer_started">al_get_timer_started</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_get_timer_started(<span class="dt">const</span> ALLEGRO_TIMER *timer)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L314">al_get_timer_started</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L314">Source Code</a></p>
 <p>Return true if the timer specified is currently started.</p>
 <h1 id="al_destroy_timer">al_destroy_timer</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_destroy_timer(ALLEGRO_TIMER *timer)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L247">al_destroy_timer</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L247">Source Code</a></p>
 <p>Uninstall the timer specified. If the timer is started, it will automatically be stopped before uninstallation. It will also automatically unregister the timer with any event queues.</p>
 <p>Does nothing if passed the NULL pointer.</p>
 <p>See also: <a href="timer.html#al_create_timer">al_create_timer</a></p>
 <h1 id="al_get_timer_count">al_get_timer_count</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int64_t</span> al_get_timer_count(<span class="dt">const</span> ALLEGRO_TIMER *timer)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L357">al_get_timer_count</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L357">Source Code</a></p>
 <p>Return the timer's counter value. The timer can be started or stopped.</p>
 <p>See also: <a href="timer.html#al_set_timer_count">al_set_timer_count</a></p>
 <h1 id="al_set_timer_count">al_set_timer_count</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_timer_count(ALLEGRO_TIMER *timer, <span class="dt">int64_t</span> new_count)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L368">al_set_timer_count</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L368">Source Code</a></p>
 <p>Set the timer's counter value. The timer can be started or stopped. The count value may be positive or negative, but will always be incremented by +1 at each tick.</p>
 <p>See also: <a href="timer.html#al_get_timer_count">al_get_timer_count</a>, <a href="timer.html#al_add_timer_count">al_add_timer_count</a></p>
 <h1 id="al_add_timer_count">al_add_timer_count</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_add_timer_count(ALLEGRO_TIMER *timer, <span class="dt">int64_t</span> diff)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L383">al_add_timer_count</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L383">Source Code</a></p>
 <p>Add <em>diff</em> to the timer's counter value. This is similar to writing:</p>
 <pre class="sourceCode c"><code class="sourceCode c">al_set_timer_count(timer, al_get_timer_count(timer) + diff);</code></pre>
 <p>except that the addition is performed atomically, so no ticks will be lost.</p>
 <p>See also: <a href="timer.html#al_set_timer_count">al_set_timer_count</a></p>
 <h1 id="al_get_timer_speed">al_get_timer_speed</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">double</span> al_get_timer_speed(<span class="dt">const</span> ALLEGRO_TIMER *timer)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L325">al_get_timer_speed</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L325">Source Code</a></p>
 <p>Return the timer's speed, in seconds. (The same value passed to <a href="timer.html#al_create_timer">al_create_timer</a> or <a href="timer.html#al_set_timer_speed">al_set_timer_speed</a>.)</p>
 <p>See also: <a href="timer.html#al_set_timer_speed">al_set_timer_speed</a></p>
 <h1 id="al_set_timer_speed">al_set_timer_speed</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_timer_speed(ALLEGRO_TIMER *timer, <span class="dt">double</span> new_speed_secs)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L336">al_set_timer_speed</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L336">Source Code</a></p>
 <p>Set the timer's speed, i.e. the rate at which its counter will be incremented when it is started. This can be done when the timer is started or stopped. If the timer is currently running, it is made to look as though the speed change occurred precisely at the last tick.</p>
 <p><em>speed_secs</em> has exactly the same meaning as with <a href="timer.html#al_create_timer">al_create_timer</a>.</p>
 <p>See also: <a href="timer.html#al_get_timer_speed">al_get_timer_speed</a></p>
 <h1 id="al_get_timer_event_source">al_get_timer_event_source</h1>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_EVENT_SOURCE *al_get_timer_event_source(ALLEGRO_TIMER *timer)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L426">al_get_timer_event_source</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/timernu.c#L426">Source Code</a></p>
 <p>Retrieve the associated event source. Timers will generate events of type <a href="events.html#allegro_event_timer">ALLEGRO_EVENT_TIMER</a>.</p>
 <p class="timestamp">
 Allegro version 5.1.13 (GIT)
- - Last updated: 2015-12-27 07:07:30 UTC
+ - Last updated: 2016-01-01 19:07:28 UTC
 </p>
 </div>
 </body>

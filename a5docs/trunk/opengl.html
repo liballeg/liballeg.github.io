@@ -130,7 +130,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <pre class="sourceCode c"><code class="sourceCode c"> <span class="ot">#include &lt;allegro5/allegro_opengl.h&gt;</span></code></pre>
 <h1 id="al_get_opengl_extension_list">al_get_opengl_extension_list</h1>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_OGL_EXT_LIST *al_get_opengl_extension_list(<span class="dt">void</span>)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/extensions.c#L932">al_get_opengl_extension_list</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/extensions.c#L932">Source Code</a></p>
 <p>Returns the list of OpenGL extensions supported by Allegro, for the given display.</p>
 <p>Allegro will keep information about all extensions it knows about in a structure returned by <code>al_get_opengl_extension_list</code>.</p>
 <p>For example:</p>
@@ -142,7 +142,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>In case you want to manually check for extensions and load function pointers yourself (say, in case the Allegro developers did not include it yet), you can use the <a href="opengl.html#al_have_opengl_extension">al_have_opengl_extension</a> and <a href="opengl.html#al_get_opengl_proc_address">al_get_opengl_proc_address</a> functions instead.</p>
 <h1 id="al_get_opengl_proc_address">al_get_opengl_proc_address</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> *al_get_opengl_proc_address(<span class="dt">const</span> <span class="dt">char</span> *name)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/extensions.c#L583">al_get_opengl_proc_address</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/extensions.c#L583">Source Code</a></p>
 <p>Helper to get the address of an OpenGL symbol</p>
 <p>Example:</p>
 <p>How to get the function <em>glMultiTexCoord3fARB</em> that comes with ARB's Multitexture extension:</p>
@@ -164,7 +164,7 @@ glMultiTexCoord3fARB = (MULTI_TEX_FUNC) al_get_opengl_proc_address(
 <p>A pointer to the symbol if available or NULL otherwise.</p>
 <h1 id="al_get_opengl_texture">al_get_opengl_texture</h1>
 <pre class="sourceCode c"><code class="sourceCode c">GLuint al_get_opengl_texture(ALLEGRO_BITMAP *bitmap)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/ogl_bitmap.c#L1089">al_get_opengl_texture</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/ogl_bitmap.c#L1089">Source Code</a></p>
 <p>Returns the OpenGL texture id internally used by the given bitmap if it uses one, else 0.</p>
 <p>Example:</p>
 <pre class="sourceCode c"><code class="sourceCode c">bitmap = al_load_bitmap(<span class="st">&quot;my_texture.png&quot;</span>);
@@ -173,22 +173,22 @@ texture = al_get_opengl_texture(bitmap);
     glBindTexture(GL_TEXTURE_2D, texture);</code></pre>
 <h1 id="al_get_opengl_texture_size">al_get_opengl_texture_size</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_get_opengl_texture_size(ALLEGRO_BITMAP *bitmap, <span class="dt">int</span> *w, <span class="dt">int</span> *h)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/ogl_bitmap.c#L1162">al_get_opengl_texture_size</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/ogl_bitmap.c#L1162">Source Code</a></p>
 <p>Retrieves the size of the texture used for the bitmap. This can be different from the bitmap size if OpenGL only supports power-of-two sizes or if it is a sub-bitmap.</p>
 <p>Returns true on success, false on failure. Zero width and height are returned if the bitmap is not an OpenGL bitmap.</p>
 <p>See also: <a href="opengl.html#al_get_opengl_texture_position">al_get_opengl_texture_position</a></p>
 <h1 id="al_get_opengl_texture_position">al_get_opengl_texture_position</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_get_opengl_texture_position(ALLEGRO_BITMAP *bitmap, <span class="dt">int</span> *u, <span class="dt">int</span> *v)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/ogl_bitmap.c#L1186">al_get_opengl_texture_position</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/ogl_bitmap.c#L1186">Source Code</a></p>
 <p>Returns the u/v coordinates for the top/left corner of the bitmap within the used texture, in pixels.</p>
 <p>See also: <a href="opengl.html#al_get_opengl_texture_size">al_get_opengl_texture_size</a></p>
 <h1 id="al_get_opengl_program_object">al_get_opengl_program_object</h1>
 <pre class="sourceCode c"><code class="sourceCode c">GLuint al_get_opengl_program_object(ALLEGRO_SHADER *shader)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/ogl_shader.c#L503">al_get_opengl_program_object</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/ogl_shader.c#L503">Source Code</a></p>
 <p>Returns the OpenGL program object associated with this shader, if the platform is <code>ALLEGRO_SHADER_GLSL</code>. Otherwise, returns 0.</p>
 <h1 id="al_get_opengl_fbo">al_get_opengl_fbo</h1>
 <pre class="sourceCode c"><code class="sourceCode c">GLuint al_get_opengl_fbo(ALLEGRO_BITMAP *bitmap)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/ogl_bitmap.c#L1136">al_get_opengl_fbo</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/ogl_bitmap.c#L1136">Source Code</a></p>
 <p>Returns the OpenGL FBO id internally used by the given bitmap if it uses one, otherwise returns zero. No attempt will be made to create an FBO if the bitmap is not owned by the current display.</p>
 <p>The FBO returned by this function will only be freed when the bitmap is destroyed, or if you call <a href="opengl.html#al_remove_opengl_fbo">al_remove_opengl_fbo</a> on the bitmap.</p>
 <blockquote>
@@ -197,12 +197,12 @@ texture = al_get_opengl_texture(bitmap);
 <p>See also: <a href="opengl.html#al_remove_opengl_fbo">al_remove_opengl_fbo</a>, <a href="graphics.html#al_set_target_bitmap">al_set_target_bitmap</a></p>
 <h1 id="al_remove_opengl_fbo">al_remove_opengl_fbo</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_remove_opengl_fbo(ALLEGRO_BITMAP *bitmap)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/ogl_bitmap.c#L1102">al_remove_opengl_fbo</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/ogl_bitmap.c#L1102">Source Code</a></p>
 <p>Explicitly free an OpenGL FBO created for a bitmap, if it has one. Usually you do not need to worry about freeing FBOs, unless you use <a href="opengl.html#al_get_opengl_fbo">al_get_opengl_fbo</a>.</p>
 <p>See also: <a href="opengl.html#al_get_opengl_fbo">al_get_opengl_fbo</a>, <a href="graphics.html#al_set_target_bitmap">al_set_target_bitmap</a></p>
 <h1 id="al_have_opengl_extension">al_have_opengl_extension</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_have_opengl_extension(<span class="dt">const</span> <span class="dt">char</span> *extension)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/extensions.c#L565">al_have_opengl_extension</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/extensions.c#L565">Source Code</a></p>
 <p>This function is a helper to determine whether an OpenGL extension is available on the given display or not.</p>
 <p>Example:</p>
 <pre class="sourceCode c"><code class="sourceCode c">bool packedpixels = al_have_opengl_extension(<span class="st">&quot;GL_EXT_packed_pixels&quot;</span>);</code></pre>
@@ -210,13 +210,13 @@ texture = al_get_opengl_texture(bitmap);
 <p>Returns true if the extension is available; false otherwise.</p>
 <h1 id="al_get_opengl_version">al_get_opengl_version</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">uint32_t</span> al_get_opengl_version(<span class="dt">void</span>)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/extensions.c#L221">al_get_opengl_version</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/extensions.c#L221">Source Code</a></p>
 <p>Returns the OpenGL or OpenGL ES version number of the client (the computer the program is running on), for the current display. &quot;1.0&quot; is returned as 0x01000000, &quot;1.2.1&quot; is returned as 0x01020100, and &quot;1.2.2&quot; as 0x01020200, etc.</p>
 <p>A valid OpenGL context must exist for this function to work, which means you may <em>not</em> call it before <a href="display.html#al_create_display">al_create_display</a>.</p>
 <p>See also: <a href="opengl.html#al_get_opengl_variant">al_get_opengl_variant</a></p>
 <h1 id="al_get_opengl_variant">al_get_opengl_variant</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_opengl_variant(<span class="dt">void</span>)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/extensions.c#L239">al_get_opengl_variant</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/extensions.c#L239">Source Code</a></p>
 <p>Returns the variant or type of OpenGL used on the running platform. This function can be called before creating a display or setting properties for new displays. Possible values are:</p>
 <dl>
 <dt>ALLEGRO_DESKTOP_OPENGL</dt>
@@ -229,7 +229,7 @@ texture = al_get_opengl_texture(bitmap);
 <p>See also: <a href="opengl.html#al_get_opengl_version">al_get_opengl_version</a></p>
 <h1 id="al_set_current_opengl_context">al_set_current_opengl_context</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_current_opengl_context(ALLEGRO_DISPLAY *display)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/ogl_display.c#L81">al_set_current_opengl_context</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/opengl/ogl_display.c#L81">Source Code</a></p>
 <p>Make the OpenGL context associated with the given display current for the calling thread. If there is a current target bitmap which belongs to a different OpenGL context, the target bitmap will be changed to NULL.</p>
 <p>Normally you do not need to use this function, as the context will be made current when you call <a href="graphics.html#al_set_target_bitmap">al_set_target_bitmap</a> or <a href="graphics.html#al_set_target_backbuffer">al_set_target_backbuffer</a>. You might need it if you created an OpenGL &quot;forward compatible&quot; context. Then <a href="display.html#al_get_backbuffer">al_get_backbuffer</a> only returns NULL, so it would not work to pass that to <a href="graphics.html#al_set_target_bitmap">al_set_target_bitmap</a>.</p>
 <h1 id="opengl-configuration">OpenGL configuration</h1>
@@ -240,7 +240,7 @@ texture = al_get_opengl_texture(bitmap);
 <p>Any extension which appears in the section is treated as not available (it does not matter if you set it to 0 or any other value).</p>
 <p class="timestamp">
 Allegro version 5.1.13 (GIT)
- - Last updated: 2015-12-27 07:07:32 UTC
+ - Last updated: 2016-01-01 19:07:30 UTC
 </p>
 </div>
 </body>

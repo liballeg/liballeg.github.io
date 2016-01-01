@@ -137,7 +137,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Currently we have an ffmpeg backend and a Ogg backend (Theora + Vorbis). See <a href="http://ffmpeg.org/" class="uri">http://ffmpeg.org/</a> and <a href="http://xiph.org/" class="uri">http://xiph.org/</a> for installation instructions, licensing information and supported video formats.</p>
 <h1 id="allegro_video_event_type">ALLEGRO_VIDEO_EVENT_TYPE</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">enum</span> ALLEGRO_VIDEO_EVENT_TYPE</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/allegro5/allegro_video.h#L35">ALLEGRO_VIDEO_EVENT_TYPE</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/allegro5/allegro_video.h#L35">Source Code</a></p>
 <ul>
 <li>ALLEGRO_EVENT_VIDEO_FRAME_SHOW - This event is sent when it is time to show a new frame. Once you receive this event, you can draw the current frame (as returned by <a href="video.html#al_get_video_frame">al_get_video_frame</a>). <a href="video.html#al_get_video_frame">al_get_video_frame</a> will continue returning the same frame until the next ALLEGRO_EVENT_VIDEO_FRAME_SHOW is sent.</li>
 <li>ALLEGRO_EVENT_VIDEO_FINISHED - This event is sent when the video is finished. Depending on the backend, it may be possible to seek to an earlier part of the video and set the video to play to resume playback.</li>
@@ -145,7 +145,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.0</p>
 <h1 id="allegro_video_position_type">ALLEGRO_VIDEO_POSITION_TYPE</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">enum</span> ALLEGRO_VIDEO_POSITION_TYPE ALLEGRO_VIDEO_POSITION_TYPE;</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/allegro5/allegro_video.h#L51">ALLEGRO_VIDEO_POSITION_TYPE</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/allegro5/allegro_video.h#L51">Source Code</a></p>
 <p>Used with <a href="video.html#al_get_video_position">al_get_video_position</a> to specify which position to retrieve. If these get out of sync, audio and video may be out of sync in the display of the video.</p>
 <ul>
 <li><p>ALLEGRO_VIDEO_POSITION_ACTUAL - The amount of time the video has been playing. If the video has audio then this value can be ahead of ALLEGRO_VIDEO_POSITION_VIDEO_DECODE when video decoding lags.</p></li>
@@ -155,79 +155,79 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.11</p>
 <h1 id="al_init_video_addon">al_init_video_addon</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_init_video_addon(<span class="dt">void</span>)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L256">al_init_video_addon</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L256">Source Code</a></p>
 <p>Initializes the video addon.</p>
 <p>Since: 5.1.12</p>
 <h1 id="al_shutdown_video_addon">al_shutdown_video_addon</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_shutdown_video_addon(<span class="dt">void</span>)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L292">al_shutdown_video_addon</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L292">Source Code</a></p>
 <p>Shut down the video addon. This is done automatically at program exit, but can be called any time the user wishes as well.</p>
 <p>Since: 5.1.12</p>
 <h1 id="al_get_allegro_video_version">al_get_allegro_video_version</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">uint32_t</span> al_get_allegro_video_version(<span class="dt">void</span>)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L306">al_get_allegro_video_version</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L306">Source Code</a></p>
 <p>Returns the (compiled) version of the addon, in the same format as <a href="system.html#al_get_allegro_version">al_get_allegro_version</a>.</p>
 <p>Since: 5.1.12</p>
 <h1 id="al_open_video">al_open_video</h1>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_VIDEO *al_open_video(<span class="dt">char</span> <span class="dt">const</span> *filename)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L94">al_open_video</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L94">Source Code</a></p>
 <p>Reads a video file. This does not start streaming yet but reads the meta info so you can query e.g. the size or audio rate.</p>
 <p>Since: 5.1.0</p>
 <h1 id="al_close_video">al_close_video</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_close_video(ALLEGRO_VIDEO *video)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L127">al_close_video</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L127">Source Code</a></p>
 <p>Closes the video and frees all allocated resources. The video pointer is invalid after the function returns.</p>
 <p>Since: 5.1.0</p>
 <h1 id="al_start_video">al_start_video</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_start_video(ALLEGRO_VIDEO *video, ALLEGRO_MIXER *mixer)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L149">al_start_video</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L149">Source Code</a></p>
 <p>Starts streaming the video from the beginning.</p>
 <p>Since: 5.1.0</p>
 <h1 id="al_start_video_with_voice">al_start_video_with_voice</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_start_video_with_voice(ALLEGRO_VIDEO *video, ALLEGRO_VOICE *voice)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L160">al_start_video_with_voice</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L160">Source Code</a></p>
 <p>Like <a href="video.html#al_start_video">al_start_video</a> but audio is routed to the provided voice.</p>
 <p>Since: 5.1.0</p>
 <h1 id="al_get_video_event_source">al_get_video_event_source</h1>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_EVENT_SOURCE *al_get_video_event_source(ALLEGRO_VIDEO *video)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L141">al_get_video_event_source</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L141">Source Code</a></p>
 <p>Get an event source for the video. The possible events are described under <a href="video.html#allegro_video_event_type">ALLEGRO_VIDEO_EVENT_TYPE</a>.</p>
 <p>Since: 5.1.0</p>
 <h1 id="al_set_video_playing">al_set_video_playing</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_video_playing(ALLEGRO_VIDEO *video, bool play)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L171">al_set_video_playing</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L171">Source Code</a></p>
 <p>Paused or resumes playback.</p>
 <p>Since: 5.1.12</p>
 <h1 id="al_is_video_playing">al_is_video_playing</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_is_video_playing(ALLEGRO_VIDEO *video)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L183">al_is_video_playing</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L183">Source Code</a></p>
 <p>Returns true if the video is currently playing.</p>
 <p>Since: 5.1.12</p>
 <h1 id="al_get_video_audio_rate">al_get_video_audio_rate</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">double</span> al_get_video_audio_rate(ALLEGRO_VIDEO *video)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L224">al_get_video_audio_rate</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L224">Source Code</a></p>
 <p>Returns the audio rate of the video, in Hz.</p>
 <p>Since: 5.1.0</p>
 <h1 id="al_get_video_fps">al_get_video_fps</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">double</span> al_get_video_fps(ALLEGRO_VIDEO *video)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L232">al_get_video_fps</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L232">Source Code</a></p>
 <p>Returns the speed of the video in frames per second. Often this will not be an integer value.</p>
 <p>Since: 5.1.0</p>
 <h1 id="al_get_video_scaled_width">al_get_video_scaled_width</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">float</span> al_get_video_scaled_width(ALLEGRO_VIDEO *video)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L240">al_get_video_scaled_width</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L240">Source Code</a></p>
 <p>Returns the width with which the video frame should be drawn. Videos often do not use square pixels, so this will may return a value larger than the width of the frame bitmap.</p>
 <p>Since: 5.1.12</p>
 <p>See also: <a href="video.html#al_get_video_frame">al_get_video_frame</a></p>
 <h1 id="al_get_video_scaled_height">al_get_video_scaled_height</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">float</span> al_get_video_scaled_height(ALLEGRO_VIDEO *video)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L248">al_get_video_scaled_height</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L248">Source Code</a></p>
 <p>Returns the height with which the video frame should be drawn. Videos often do not use square pixels, so this will may return a value larger than the height of the frame bitmap.</p>
 <p>See also: <a href="video.html#al_get_video_frame">al_get_video_frame</a></p>
 <p>Since: 5.1.12</p>
 <h1 id="al_get_video_frame">al_get_video_frame</h1>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_BITMAP *al_get_video_frame(ALLEGRO_VIDEO *video)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L192">al_get_video_frame</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L192">Source Code</a></p>
 <p>Returns the current video frame. The bitmap is owned by the video so do not attempt to free it. The bitmap will stay valid until the next call to al_get_video_frame.</p>
 <p>Videos often do not use square pixels so the recommended way to draw a video frame would be using code like this:</p>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">float</span> scale = <span class="fl">1.0</span>; <span class="co">/* Adjust this to fit your target bitmap dimensions. */</span>
@@ -241,17 +241,17 @@ al_draw_scaled_bitmap(frame, <span class="dv">0</span>, <span class="dv">0</span
 <p>See also: <a href="video.html#al_get_video_scaled_width">al_get_video_scaled_width</a>, <a href="video.html#al_get_video_scaled_height">al_get_video_scaled_height</a></p>
 <h1 id="al_get_video_position">al_get_video_position</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">double</span> al_get_video_position(ALLEGRO_VIDEO *video, ALLEGRO_VIDEO_POSITION_TYPE which)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L202">al_get_video_position</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L202">Source Code</a></p>
 <p>Returns the current position of the video stream in seconds since the beginning. The parameter is one of the <a href="video.html#allegro_video_position_type">ALLEGRO_VIDEO_POSITION_TYPE</a> constants.</p>
 <p>Since: 5.1.0</p>
 <h1 id="al_seek_video">al_seek_video</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_seek_video(ALLEGRO_VIDEO *video, <span class="dt">double</span> pos_in_seconds)</code></pre>
-<p>Source Code: <a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L215">al_seek_video</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L215">Source Code</a></p>
 <p>Seek to a different position in the video. Right now this does not work very well in the ffmpeg backend when seeking backwards and will often lose audio/video synchronization if doing so.</p>
 <p>Since: 5.1.0</p>
 <p class="timestamp">
 Allegro version 5.1.13 (GIT)
- - Last updated: 2015-12-27 07:07:37 UTC
+ - Last updated: 2016-01-01 19:07:35 UTC
 </p>
 </div>
 </body>
