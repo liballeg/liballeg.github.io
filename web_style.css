@@ -10,14 +10,13 @@ pre {
     border: 1px solid #e0e0e0;
     background-color: #f8f8fa;
     padding: 0.5em;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    border-radius: 5px;
 }
 
 code {
     font-family: monospace;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    font-size: 13pt;
+    border-radius: 5px;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a {
@@ -68,8 +67,9 @@ table {
     background-color: #f8f8fa;
     border: solid 1px #ccc;
     border-spacing: 0;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    width: 100%;
+    border-radius: 5px;
+    border-collapse:separate;
 }
 
 table th {
@@ -86,29 +86,57 @@ th, td {
     border-right: solid 1px #ccc;
 }
 
+/* Get the table corners looking ok... */
+tr:only-child td:first-child {
+    border-radius: 5px 0 0 5px !important;
+}
+
+tr:only-child td:last-child {
+    border-radius: 0 5px 5px 0 !important;
+}
+
+tr:last-child td:first-child {
+    border-radius: 0 0 0 5px;
+}
+
+tr:last-child td:last-child {
+    border-radius: 0 0 5px 0;
+}
+
+td:last-child {
+    border-right: none;
+}
+
+th:first-child {
+    border-radius: 5px 0 0 0;
+}
+
+th:last-child {
+    border-right: none;
+    border-radius: 0 5px 0 0;
+}
+
 tr.odd {
     background-color: #e8e8e8;
 }
 
-/* Header - need to undo some of the table properties because I couldn't
- * figure out how to lay out the title with only CSS :(
- */
-table#header {
+#header {
     background-color: #f4f4f4;
     border: none;
     border-bottom: solid 1px #ddd;
     margin-bottom: 0.5em;
-    -moz-border-radius: 0;
-    -webkit-border-radius: 0;
+    display:block;
+    height:75px;
 }
 
-table#header td {
-    border: none;
+#header_container {
+    width: 62.2em;
 }
 
 #logo {
-    margin-top: 5px;
-    margin-left: 3px;
+    margin-top: 13px;
+    margin-left: 6px;
+    float:left;
 }
 
 #title {
@@ -116,8 +144,8 @@ table#header td {
     font-weight: bold;
     font-style: italic;
     font-size: x-large;
-    vertical-align: middle;
-    text-align:center;
+    line-height:70px;
+    text-align:right;
 }
 
 #search {
@@ -129,15 +157,14 @@ table#header td {
     border: solid 1px #999;
     padding-left: 6px;
     padding-right: 6px;
-    -moz-border-radius:	10px;
-    -webkit-border-radius: 10px;
+    border-radius: 10px;
 }
 
 #search select {
     margin-left: 0.3em;
     padding-left: 0.5em;
     background-color: #fe9;
-    -webkit-border-radius: 1px;
+    border-radius: 1px;
 }
 
 #search input[name=submit] {
@@ -164,8 +191,7 @@ table#header td {
     margin-right: 0.5em;
     margin-bottom: 1em;
     line-height: 120%;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    border-radius: 5px;
 }
 
 #sidebar ul {

@@ -12,61 +12,52 @@
   />
 </head>
 <body>
-<table id="header" width="100%">
-<tr>
-<td>
+<div id="header">
+<div id="header_container">
 <img id="logo" src="images/logo.png" alt="Allegro" height="58" width="186" />
-</td>
-<td id="title">
-A game programming library
-</td>
-<td align="right">
-<!-- Hide language choices until at least one other translation is complete.
-<div class="sellang">
-[English](index.html)
-[español](es/index.html)
+<div id="title">
+<p>A game programming library</p>
 </div>
--->
-</tr>
-</table>
+</div>
+</div>
 <div id="left">
 <div id="sidebar">
 <ul>
-<li>Allegro
+<li><strong>Allegro</strong>
 <ul>
-<li><a href="news.html">News</a></li>
-<li><a href="readme.html">Introduction</a></li>
+<li><a href="index.html">About</a></li>
+<li><a href="git.html">Git repository</a></li>
 <li><a href="license.html">License</a></li>
 <li><a href="bindings.html">Language bindings</a></li>
 </ul></li>
-<li>Downloads
+<li><strong>Downloads</strong>
 <ul>
 <li><strong><a href="download.html">Latest version</a></strong></li>
-<li><a href="git.html">GIT</a></li>
 <li><a href="old.html">Older versions</a></li>
-<li><a href="addons.html">Addons</a></li>
+<li><a href="addons.html">Extra addons</a></li>
 </ul></li>
-<li>Documentation
+<li><strong>Documentation</strong>
 <ul>
-<li><strong><a href="api.html">API</a></strong> — <a href="http://liballeg.org/a5docs/trunk/">5.1</a></li>
+<li><strong><a href="http://liballeg.org/a5docs/trunk/">Latest version</a></strong></li>
+<li><a href="api.html">All versions</a></li>
 <li><a href="docs.html">Tutorials</a></li>
 <li><a href="books.html">Books</a></li>
 <li><a href="http://wiki.allegro.cc/">Wiki</a></li>
 </ul></li>
-<li>Support
+<li><strong>Support</strong>
 <ul>
 <li><a href="http://www.allegro.cc/forums/">Forums</a></li>
 <li><a href="maillist.html">Mailing lists</a></li>
 <li><a href="https://github.com/liballeg/allegro5/issues">Bug tracker</a></li>
 <li><a href="irc.html">IRC</a></li>
 </ul></li>
-<li>Community
+<li><strong>Community</strong>
 <ul>
 <li><strong><a href="http://www.allegro.cc/">Allegro.cc</a></strong></li>
 </ul></li>
-<li>Misc
+<li><strong>Misc</strong>
 <ul>
-<li><a href="stabledocs/en/thanks.html">Contributors</a></li>
+<li><a href="readme.html">History</a></li>
 <li><a href="oldnews.html">Older news</a></li>
 <li><a href="logos.html">Logos</a></li>
 <li><a href="digmid.html">DIGMID</a></li>
@@ -86,11 +77,32 @@ A game programming library
 </div>
 <!-- left -->
 <div id="content">
-<h1 id="latest-version">Latest version</h1>
-<p>Here you can download either the modern Allegro 5 library, or the classical Allegro 4 library. Allegro 5 is <em>not</em> backwards compatible with Allegro 4.</p>
+<h1 id="downloads">Downloads</h1>
+<p>Here you can download releases of the Allegro 5 library.</p>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="16%" />
+<col width="14%" />
+<col width="14%" />
+<col width="15%" />
+<col width="24%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="center"><a href="#source"><strong>Source</strong></a></td>
+<td align="center"><a href="#windows"><strong>Windows</strong></a></td>
+<td align="center"><a href="#osx"><strong>MacOS X</strong></a></td>
+<td align="center"><a href="#linux"><strong>Linux</strong></a></td>
+<td align="center"><a href="#iphone"><strong>iPhone</strong></a></td>
+<td align="center"><a href="#misc"><strong>Miscellaneous files</strong></a></td>
+</tr>
+</tbody>
+</table>
 <p>Instructions on how to build Allegro for each of the supported platforms are included in the source packages, either in the README files, or in the <code>docs/build</code> subdirectory.</p>
-<p>Since version 3.12, Allegro has adopted this versioning scheme: The first number indicates a major version; differences here usually mean that a lot of things have changed. The second number indicates if the release is stable (even number) or unstable (odd number). Finally the third number marks smaller differences between releases. A fourth number is used if we need to fix a minor mistake found in a previous release.</p>
-<h2 id="allegro-5.0-source-releases-stable">Allegro 5.0 source releases (stable)</h2>
+<p>Additional installation instructions can be found on the <a href="https://wiki.allegro.cc/index.php?title=Getting_Started#Installing_Allegro">wiki</a>.</p>
+<p>There are two major versions of Allegro. The stable 5.0 releases maintain source and binary compatibility. The unstable/work-in-progress 5.1 releases contain provisional features which may be removed at any time, so they don't maintain any compatibility with each other, except that all are source compatible with 5.0. Despite the API instability, Allegro 5.1 tends to receive more bug fixes and is thus a perfectly usable version for development. In particular, only version 5.1 supports Android development.</p>
+<h2 id="source">Allegro 5.0 source releases (stable)</h2>
 <p>Allegro 5.0 supports <strong>Unix</strong> (Linux, FreeBSD, etc.), <strong>Windows</strong>, <strong>MacOS X</strong> and <strong>iPhone</strong>. You can read the <a href="changes.html">full change log</a>.</p>
 <table>
 <colgroup>
@@ -128,7 +140,6 @@ A game programming library
 </tr>
 </tbody>
 </table>
-<p>See <a href="#windows-binaries">below</a> for third party Windows binaries.</p>
 <h2 id="allegro-5.1-source-releases-unstable">Allegro 5.1 source releases (unstable)</h2>
 <p>The 5.1 branch is source compatible, but not binary compatible, with the stable 5.0 branch. It contains provisional new features which are <em>subject to change at any time</em>. You can read the <a href="changes-unstable.html">changes since 5.0</a>.</p>
 <table>
@@ -167,13 +178,75 @@ A game programming library
 </tr>
 </tbody>
 </table>
-<h2 id="allegro-4.4-source-releases">Allegro 4.4 source releases</h2>
-<p>Allegro 4.4 supports <strong>Unix</strong> (Linux, FreeBSD, etc.), <strong>Windows</strong>, <strong>MacOS X</strong> and <strong>Haiku/BeOS</strong>. You can read the <a href="stabledocs/en/changes.html">full change log</a>.</p>
+<h2 id="windows">Windows Binaries</h2>
+<p>There are several official and unofficial ways to obtain Windows binaries of Allegro releases. See the <a href="https://wiki.allegro.cc/index.php?title=Getting_Started#Windows">wiki tutorial</a> for installation instructions.</p>
 <table>
 <colgroup>
 <col width="26%" />
+<col width="73%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Site</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><a href="https://www.nuget.org/packages/Allegro/">Nuget</a></td>
+<td align="left">The <code>Allegro</code> package on Nuget contains the official binaries in a format that is easy to use from MSVC.</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="http://download.gna.org/allegro/allegro-unstable-bin/">Allegro 5.1 binary packages</a></td>
+<td align="left">The <code>allegro-unstable-bin</code> directory contains several binary distributions of Allegro for Windows.</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="http://download.gna.org/allegro/allegro-deps/">Allegro 5 dependencies</a></td>
+<td align="left">The <code>allegro-deps</code> directory contains contains pre-compiled Allegro dependencies for Windows.</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="http://www.allegro.cc/files/">www.allegro.cc/files</a></td>
+<td align="left">Matthew Leverton hosts Windows binary packages for many different compilers. The 5.0 binaries are produced by a different process from the standard build system. <strong>Unofficial.</strong></td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="http://devpaks.org/">devpaks.org</a></td>
+<td align="left">Michal Molhanec mantains a Devpak repository, where you can get a package of the precompiled library for MinGW and Dev-C++. <strong>Unofficial.</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="osx">MacOS X binaries</h2>
+<p>Allegro 5 can be found in the <code>allegro</code> package on <a href="http://brew.sh/">homebrew</a>. Use the <code>--devel</code> switch to install a 5.1.x release. See the <a href="https://wiki.allegro.cc/index.php?title=Installing_with_homebrew">wiki tutorial</a> for more details.</p>
+<h2 id="linux">Ubuntu PPA</h2>
+<p>For Linux distributions based on Ubuntu (and Ubuntu itself), you can download binary packages for Allegro 5 by adding the following PPAs to your software sources, and then installing the relevant packages. See the <a href="https://wiki.allegro.cc/index.php?title=Install_Allegro_from_Ubuntu_PPAs">wiki tutorial</a> for more details.</p>
+<table>
+<colgroup>
+<col width="38%" />
+<col width="61%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">PPA</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><a href="https://launchpad.net/~allegro/+archive/ubuntu/5.0">Stable version (5.0.x) PPA</a></td>
+<td align="left">Use this PPA to get the stable release binary and development packages.</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://launchpad.net/~allegro/+archive/ubuntu/5.1">Unstable version (5.1.x) PPA</a></td>
+<td align="left">Use this PPA to get the unstable release binary and development packages.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="iphone">IPhone binaries</h2>
+<p>Currently you need to compile Allegro from source for iPhone. These binaries allow you to avoid having to do that for the dependencies.</p>
+<table>
+<colgroup>
+<col width="27%" />
 <col width="6%" />
-<col width="66%" />
+<col width="65%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -184,71 +257,23 @@ A game programming library
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><a href="http://download.gna.org/allegro/allegro/4.4.2/allegro-4.4.2.zip">allegro-4.4.2.zip</a></td>
-<td align="left">4.8M</td>
-<td align="left">Source code for all platforms in DOS/Windows friendly format.</td>
+<td align="left"><a href="http://download.gna.org/allegro/files/freetype-iphone-2.3.12-bin.zip">freetype-iphone-2.3.12-bin.zip</a></td>
+<td align="left">1.3M</td>
+<td align="left">Freetype libraries and headers compiled for IPhone. Drop these into the deps folder and CMake should pick them up.</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="http://download.gna.org/allegro/allegro/4.4.2/allegro-4.4.2.tar.gz">allegro-4.4.2.tar.gz</a></td>
-<td align="left">4.5M</td>
-<td align="left">Source code for all platforms in Unix friendly format.</td>
+<td align="left"><a href="http://download.gna.org/allegro/files/physfs-1.0.2-iphone.zip">physfs-1.0.2-iphone.zip</a></td>
+<td align="left">165K</td>
+<td align="left">PhysFS libraries and headers compiled for IPhone. Drop these into the deps folder and CMake should pick them up.</td>
 </tr>
 <tr class="odd">
-<td align="left"><a href="http://download.gna.org/allegro/allegro/4.4.2/allegro-4.4.2.7z">allegro-4.4.2.7z</a></td>
-<td align="left">3.0M</td>
-<td align="left">Source code for all platforms in DOS/Windows friendly format.</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="http://download.gna.org/allegro/allegro/">Browse all files</a></td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left"><a href="http://download.gna.org/allegro/files/vorbis-iphone.zip">vorbis-iphone.zip</a></td>
+<td align="left">280K</td>
+<td align="left">Ogg Vorbis libraries and headers compiled for IPhone. Drop these into the deps folder and CMake should pick them up.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="allegro-4.2-source-releases">Allegro 4.2 source releases</h2>
-<p>Allegro 4.2 supports <strong>Unix</strong> (Linux, FreeBSD, etc.), <strong>Windows</strong>, <strong>MacOS X</strong>, <strong>Haiku/BeOS</strong>, <strong>DOS</strong> and <strong>QNX</strong>.</p>
-<table>
-<colgroup>
-<col width="26%" />
-<col width="6%" />
-<col width="66%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Filename</th>
-<th align="left">Size</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><a href="http://download.gna.org/allegro/allegro/4.2.3.1/all4231.zip">all4231.zip</a></td>
-<td align="left">3.8M</td>
-<td align="left">Source code for all platforms in DOS/Windows friendly format.</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="http://download.gna.org/allegro/allegro/4.2.3.1/allegro-4.2.3.1.tar.gz">allegro-4.2.3.1.tar.gz</a></td>
-<td align="left">3.1M</td>
-<td align="left">Source code for all platforms in Unix friendly format.</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="http://download.gna.org/allegro/allegro/4.2.3.1/all4231_diff.zip">all4231_diff.zip</a></td>
-<td align="left">139k</td>
-<td align="left">This file is a diff that can be installed over a clean copy of the <strong>4.2.3</strong> version of Allegro to update it to the current version.</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="http://download.gna.org/allegro/allegro/4.2.3.1/allegro-enduser-4.2.3.1.tar.gz">allegro-enduser-4.2.3.1.tar.gz</a></td>
-<td align="left">863k</td>
-<td align="left">This version contains the base library, without documentation or example programs. It's targeted at those who want to run Allegro programs written by other people. If you want to develop programs yourself, you will have to download the full source code version. <strong>Only for Linux/Unix.</strong></td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="http://download.gna.org/allegro/allegro/">Browse all files</a></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<h2 id="miscellaneous-files">Miscellaneous files</h2>
+<h2 id="misc">Miscellaneous files</h2>
 <table>
 <colgroup>
 <col width="26%" />
@@ -292,101 +317,6 @@ A game programming library
 <td align="left"><a href="http://download.gna.org/allegro/files/dx9mgw.zip">dx9mgw.zip</a></td>
 <td align="left">4180k</td>
 <td align="left">This file contains necessary DirectX files for compiling Allegro 5.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="macos-x-binaries">MacOS X binaries</h2>
-<p>Allegro 5 can be found in the <code>allegro</code> package on <a href="http://brew.sh/">homebrew</a>. Use the <code>--devel</code> switch to install a 5.1.x release.</p>
-<h2 id="iphone-binaries">IPhone binaries</h2>
-<table>
-<colgroup>
-<col width="27%" />
-<col width="6%" />
-<col width="65%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Filename</th>
-<th align="left">Size</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><a href="http://download.gna.org/allegro/files/freetype-iphone-2.3.12-bin.zip">freetype-iphone-2.3.12-bin.zip</a></td>
-<td align="left">1.3M</td>
-<td align="left">Freetype libraries and headers compiled for IPhone. Drop these into the deps folder and CMake should pick them up.</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="http://download.gna.org/allegro/files/physfs-1.0.2-iphone.zip">physfs-1.0.2-iphone.zip</a></td>
-<td align="left">165K</td>
-<td align="left">PhysFS libraries and headers compiled for IPhone. Drop these into the deps folder and CMake should pick them up.</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="http://download.gna.org/allegro/files/vorbis-iphone.zip">vorbis-iphone.zip</a></td>
-<td align="left">280K</td>
-<td align="left">Ogg Vorbis libraries and headers compiled for IPhone. Drop these into the deps folder and CMake should pick them up.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="windows-binaries">Windows Binaries</h2>
-<p>Allegro can be installed for MSVC using NuGet. Allegro's package is called <code>Allegro</code>, see the package <a href="https://www.nuget.org/packages/Allegro/">description</a> for more details.</p>
-<p>Also, there are some additional binaries here:</p>
-<table>
-<colgroup>
-<col width="26%" />
-<col width="73%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Site</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><a href="http://download.gna.org/allegro/allegro-unstable-bin/">Allegro 5.1 binary packages</a></td>
-<td align="left">The allegro-unstable-bin directory contains several binary distributions of Allegro for Windows.</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="http://download.gna.org/allegro/allegro-deps/">Allegro 5 dependencies</a></td>
-<td align="left">The allegro-deps directory contains contains pre-compiled Allegro dependencies for Windows.</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="http://download.gna.org/allegro/allegro-bin/">Allegro binary package</a></td>
-<td align="left">The allegro-bin directory contains several binary distributions of Allegro for Windows. For Allegro <strong>4.2.2</strong>.</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="http://www.allegro.cc/files/">www.allegro.cc/files</a></td>
-<td align="left">Matthew Leverton hosts Windows binary packages for many different compilers. For Allegro <strong>4.2</strong> and <strong>5.0</strong>. The 5.0 binaries are produced by a different process from the standard build system.</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="http://devpaks.org/">devpaks.org</a></td>
-<td align="left">Michal Molhanec mantains a Devpak repository, where you can get a package of the precompiled library for MinGW and Dev-C++. Note that the Allegro Devpaks are also mirrored in the allegro-bin directory. If the Devpak site is down, check the previous entry's link.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="ubuntu-ppa">Ubuntu PPA</h2>
-<p>For Linux distributions based on Ubuntu (and Ubuntu itself), you can download binary packages for Allegro 5 by adding the following PPAs to your software sources, and then installing the relevant packages:</p>
-<table>
-<colgroup>
-<col width="38%" />
-<col width="61%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">PPA</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><a href="https://launchpad.net/~allegro/+archive/ubuntu/5.0">Stable version (5.0.x) PPA</a></td>
-<td align="left">Use this PPA to get the stable release binary and development packages.</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="https://launchpad.net/~allegro/+archive/ubuntu/5.1">Unstable version (5.1.x) PPA</a></td>
-<td align="left">Use this PPA to get the unstable release binary and development packages.</td>
 </tr>
 </tbody>
 </table>

@@ -12,61 +12,52 @@
   />
 </head>
 <body>
-<table id="header" width="100%">
-<tr>
-<td>
+<div id="header">
+<div id="header_container">
 <img id="logo" src="images/logo.png" alt="Allegro" height="58" width="186" />
-</td>
-<td id="title">
-A game programming library
-</td>
-<td align="right">
-<!-- Hide language choices until at least one other translation is complete.
-<div class="sellang">
-[English](index.html)
-[español](es/index.html)
+<div id="title">
+<p>A game programming library</p>
 </div>
--->
-</tr>
-</table>
+</div>
+</div>
 <div id="left">
 <div id="sidebar">
 <ul>
-<li>Allegro
+<li><strong>Allegro</strong>
 <ul>
-<li><a href="news.html">News</a></li>
-<li><a href="readme.html">Introduction</a></li>
+<li><a href="index.html">About</a></li>
+<li><a href="git.html">Git repository</a></li>
 <li><a href="license.html">License</a></li>
 <li><a href="bindings.html">Language bindings</a></li>
 </ul></li>
-<li>Downloads
+<li><strong>Downloads</strong>
 <ul>
 <li><strong><a href="download.html">Latest version</a></strong></li>
-<li><a href="git.html">GIT</a></li>
 <li><a href="old.html">Older versions</a></li>
-<li><a href="addons.html">Addons</a></li>
+<li><a href="addons.html">Extra addons</a></li>
 </ul></li>
-<li>Documentation
+<li><strong>Documentation</strong>
 <ul>
-<li><strong><a href="api.html">API</a></strong> — <a href="http://liballeg.org/a5docs/trunk/">5.1</a></li>
+<li><strong><a href="http://liballeg.org/a5docs/trunk/">Latest version</a></strong></li>
+<li><a href="api.html">All versions</a></li>
 <li><a href="docs.html">Tutorials</a></li>
 <li><a href="books.html">Books</a></li>
 <li><a href="http://wiki.allegro.cc/">Wiki</a></li>
 </ul></li>
-<li>Support
+<li><strong>Support</strong>
 <ul>
 <li><a href="http://www.allegro.cc/forums/">Forums</a></li>
 <li><a href="maillist.html">Mailing lists</a></li>
 <li><a href="https://github.com/liballeg/allegro5/issues">Bug tracker</a></li>
 <li><a href="irc.html">IRC</a></li>
 </ul></li>
-<li>Community
+<li><strong>Community</strong>
 <ul>
 <li><strong><a href="http://www.allegro.cc/">Allegro.cc</a></strong></li>
 </ul></li>
-<li>Misc
+<li><strong>Misc</strong>
 <ul>
-<li><a href="stabledocs/en/thanks.html">Contributors</a></li>
+<li><a href="readme.html">History</a></li>
 <li><a href="oldnews.html">Older news</a></li>
 <li><a href="logos.html">Logos</a></li>
 <li><a href="digmid.html">DIGMID</a></li>
@@ -86,10 +77,20 @@ A game programming library
 </div>
 <!-- left -->
 <div id="content">
-<div id="newsintro">
-<p>Allegro 4 and Allegro 5 are cross-platform, <a href="license.html">open source</a>, game programming libraries, primarily for C and C++ developers. Read more details on the <a href="readme.html">introductory</a> page. This is the official web site.</p>
-</div>
-<!-- newsintro -->
+<h1 id="welcome-to-allegro">Welcome to Allegro!</h1>
+<p>Allegro is a cross-platform library mainly aimed at video game and multimedia programming. It handles common, low-level tasks such as creating windows, accepting user input, loading data, drawing images, playing sounds, etc. and generally abstracting away the underlying platform. However, Allegro is <em>not</em> a game engine: you are free to design and structure your program as you like.</p>
+<p>Allegro 5 has the following additional features:</p>
+<ul>
+<li>Supported on Windows, Linux, Mac OSX, iPhone and Android<sup>†</sup></li>
+<li>User-friendly, intuitive C API usable from C++ and many other languages</li>
+<li>Hardware accelerated bitmap and graphical primitive drawing support (via OpenGL or Direct3D)</li>
+<li>Audio recording<sup>†</sup> support</li>
+<li>Font loading and drawing</li>
+<li>Video playback<sup>†</sup></li>
+<li>Abstractions over shaders<sup>†</sup> and low-level polygon drawing</li>
+<li>And <a href="http://liballeg.org/a5docs/trunk/getting_started.html">more</a>!</li>
+</ul>
+<p><sup>†</sup> <em>5.1.x only</em></p>
 <!-- we must use raw HTML to avoid pandoc creating a div -->
 <h1 id="news">News</h1>
 <h2 id="allegro-on-nuget">2015-12-23 - Allegro on NuGet!</h2>
