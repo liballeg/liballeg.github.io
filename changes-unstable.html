@@ -81,6 +81,179 @@
 <h1 class="title">Allegro changelog for 5.1.x series</h1>
 </div>
 <p>See <code>changes-5.0.txt</code> for changes in Allegro 5.0.x. These lists serve as summaries; the full histories are in the git repository.</p>
+<h1 id="changes-from-5.1.12-to-5.1.13-january-2016">Changes from 5.1.12 to 5.1.13 (January 2016)</h1>
+<p>The main developers this time were: Julian Smythe, Elias Pschernig and Peter Hull.</p>
+<p>Graphics:</p>
+<ul>
+<li>Add <code>al_get_opengl_program_object</code> (SiegeLord).</li>
+</ul>
+<p>Input:</p>
+<ul>
+<li>Fix spurious triggering of the mouse grab key when it wasn't otherwise set (SiegeLord).</li>
+</ul>
+<p>Android port:</p>
+<ul>
+<li><p>Avoid multiple HALT/RESUME events on Android (Max Savenkov).</p></li>
+<li><p>Implement <code>al_get_monitor_info</code> for Android (Reuben Bell).</p></li>
+<li><p>Fix Android crash on file access.</p></li>
+<li><p>Implement ALLEGRO_FULLSCREEN_WINDOW on Android.</p></li>
+<li><p>Fix crash if display is destroyed while the app is switched out.</p></li>
+<li><p>Add support for x86_64 Android.</p></li>
+<li><p>Add <code>al_android_set_apk_fs_interface</code>.</p></li>
+</ul>
+<p>Linux port:</p>
+<ul>
+<li><p>Allow using OpenGL ES in X11.</p></li>
+<li><p>Fix the initial display size not being correct sometimes (SiegeLord).</p></li>
+<li><p>Fix a race condition in the XInput joystick driver (Trent Gamblin).</p></li>
+</ul>
+<p>OSX port:</p>
+<ul>
+<li><p>Fix various memory leaks.</p></li>
+<li><p>Fix <code>al_set_window_title</code>.</p></li>
+<li><p>Fix a lot of decrepid and deprecated code.</p></li>
+<li><p>Fix single buffer flip display (SiegeLord).</p></li>
+</ul>
+<p>Windows port:</p>
+<ul>
+<li><p>Fix Windows UNC path handling.</p></li>
+<li><p>Fix clipboard nul-termination issues (Trent Gamblin).</p></li>
+<li><p>Set the window title immediately upon window creation (SiegeLord).</p></li>
+</ul>
+<p>Build system:</p>
+<ul>
+<li><p>Define CMAKE_FIND_ROOT_PATH for i686-w64-mingw32 cross compiler (Martijn van Iersel).</p></li>
+<li><p>Allow building with older CMakes again (SiegeLord).</p></li>
+<li><p>Do not catche compile tests' failure (Bruce Pascoe).</p></li>
+<li><p>Add a way to statically link the runtime with MinGW (SiegeLord).</p></li>
+<li><p>Don't link the MSVC C runtime at all when requesting a static runtime and building a static library (SiegeLord).</p></li>
+</ul>
+<p>Documentation:</p>
+<ul>
+<li><p>Add links to the source code of the definitions of the most API entries.</p></li>
+<li><p>Fix sidebar generation with modern Pandoc (Boris Carvajal).</p></li>
+</ul>
+<p>Python:</p>
+<ul>
+<li><p>Fix ordering issue for HAPTIC* structs.</p></li>
+<li><p>Fix missing ALLEGRO_PRIM_ATTR_NUM.</p></li>
+</ul>
+<p>Other:</p>
+<ul>
+<li><p>Add a 'none' debug level to turn off logging entirely in debug builds (SiegeLord).</p></li>
+<li><p>Reconfigure logging after the configuration files are loaded (SiegeLord).</p></li>
+<li><p>Fix al_set_new_window_title() off-by-1 (Bruce Pascoe).</p></li>
+<li><p>Don't call al_get_time() before system is installed (SiegeLord).</p></li>
+</ul>
+<p>Audio addon:</p>
+<ul>
+<li><p>Add <code>al_get_default_voice</code> and <code>al_set_default_voice</code>.</p></li>
+<li><p>Flush the pulse audio stream rather than draining it, fixing some audio breaks (SiegeLord).</p></li>
+<li><p>Fill audio stream fragments with silence in the audio addon rather than in the acodec addon, fixing some garbage output (SiegeLord).</p></li>
+<li><p>Fix possible deadlock when destroying audio streams (SiegeLord).</p></li>
+</ul>
+<p>Acodec addon:</p>
+<ul>
+<li><p>Don't read past the audio chunk's end when streaming wav files (SiegeLord).</p></li>
+<li><p>Turn off allegro_acodec dynamic loading by default, fixing a common footgun (Bruce Pascoe).</p></li>
+</ul>
+<p>Image addon:</p>
+<ul>
+<li>An enormous amount of work supporting reading of esoteric (and not) BMP format variants (palletted, GIMP-style, etc). New tests were added using the manual bmp suites.</li>
+</ul>
+<p>Native dialog addon:</p>
+<ul>
+<li><p>Update code to work with modern OSX versions.</p></li>
+<li><p>Clean up menu handling on OSX.</p></li>
+</ul>
+<h1 id="changes-from-5.1.11-to-5.1.12-september-2015">Changes from 5.1.11 to 5.1.12 (September 2015)</h1>
+<p>The main developers this time were: Bruce Pascoe, Beoran, Elias Pschernig, SiegeLord, Trent Gamblin.</p>
+<p>Graphics:</p>
+<ul>
+<li><p>Add <code>al_set_blend_color</code> and <code>al_set_blender</code>, for additional blending modes.</p></li>
+<li><p>Add <code>ALLEGRO_MAXIMIZED</code> display flag.</p></li>
+<li><p>Add <code>al_reparent_bitmap</code>, <code>al_get_bitmap_x/y</code>. This allows changing the offset of a sub-bitmap.</p></li>
+<li><p>Make <code>ALLEGRO_PIXEL_FORMAT_ANY_NO_ALPHA</code> actually pick a format without an alpha channel.</p></li>
+<li><p>Add <code>al_premul_rgba</code> and <code>al_premul_rgba_f</code> convenience functions for dealing with pre-multiplied alpha blending mode.</p></li>
+</ul>
+<p>Input:</p>
+<ul>
+<li><p>Fix key auto-repeat on modern X11 versions.</p></li>
+<li><p>Fix mis-detection of some joysticks on Android.</p></li>
+</ul>
+<p>Android port:</p>
+<ul>
+<li>Fix a crash when minimizing the app before Allegro has been initialized.</li>
+</ul>
+<p>iOS port:</p>
+<p>Linux port:</p>
+<ul>
+<li>Add <code>al_get_x_window_id</code> (Robert MacGregor)</li>
+</ul>
+<p>OSX port:</p>
+<ul>
+<li>Fix some deprecated API usage.</li>
+</ul>
+<p>Windows port:</p>
+<ul>
+<li>Fix a dangling pointer issue resulting in crashes when resizing on Windows
+<ol start="10" style="list-style-type: decimal">
+<li></li>
+</ol></li>
+</ul>
+<p>Build system:</p>
+<ul>
+<li><p>Build with multiple processors when using MSVC.</p></li>
+<li><p>Make XInput2/touch input optional on Linux.</p></li>
+</ul>
+<p>Documentation:</p>
+<ul>
+<li><p>Various documentation improvements.</p></li>
+<li><p>Fix some badly formatted flags (Rodolfo Lam).</p></li>
+</ul>
+<p>Other:</p>
+<ul>
+<li><p>Allow injecting Allegro events into event queses using <code>al_emit_user_event</code> (Ryan Roden-Corrent)</p></li>
+<li><p>Add <code>al_set_new_window_title</code> and <code>al_get_new_window_title</code>.</p></li>
+<li><p>Add <code>al_get_clipboard_text</code>, <code>al_set_clipboard_text</code> and <code>al_clipboard_has_text</code>.</p></li>
+<li><p>Add <code>al_resume_timer</code> (Ryan Roden-Corrent).</p></li>
+<li><p>Add <code>al_get_cpu_count</code> and <code>al_get_ram_size</code>.</p></li>
+</ul>
+<p>Audio addon:</p>
+<ul>
+<li><p>Add multiple voice support for the AQueue driver.</p></li>
+<li><p>Fix a bug when <code>al_restore_default_mixer</code> was called multiple times.</p></li>
+</ul>
+<p>Color addon:</p>
+<p>Font addon:</p>
+<ul>
+<li><p>Add <code>al_draw_glyph</code>, <code>al_get_glyph_width</code>, <code>al_get_glyph_dimensions</code> and <code>al_get_glyph_advance</code>. These functions are useful when additional control is needed when drawing text.</p></li>
+<li><p>Add <code>al_set_fallback_font</code>.</p></li>
+</ul>
+<p>Image addon:</p>
+<ul>
+<li><p>Add <code>al_register_bitmap_identifier</code>, <code>al_identify_bitmap</code> and <code>al_identify_bitmap_f</code>. This allows detecting the bitmap type by looking at the initial few bytes in the file rather than relying solely on the extension.</p></li>
+<li><p>Allow saving bitmaps with uppercase extensions (Daniel).</p></li>
+</ul>
+<p>Native dialog addon:</p>
+<ul>
+<li>Fix crashes when creating menus with sub-menus (Todd Cope).</li>
+</ul>
+<p>Video addon:</p>
+<ul>
+<li><p>Allow using both Ffmpeg and Theora backends simultaneously.</p></li>
+<li><p>Reduce latency of <code>al_get_video_frame</code> for the Theora backend.</p></li>
+<li><p>Make the Theora backend send the <code>ALLEGRO_VIDEO_FRAME_SHOW</code> events.</p></li>
+<li><p>Rename <code>al_get_video_width/height</code> to <code>al_get_video_scaled_width/height</code> which now return the aspect corrected size of the video frame.</p></li>
+<li><p>Rename <code>al_pause_video/al_is_video_paused</code> to <code>al_get/set_video_playing</code>.</p></li>
+<li><p>Add <code>ALLEGRO_EVENT_VIDEO_FINISHED</code> event.</p></li>
+<li><p>Remove <code>ALLEGRO_EVENT_VIDEO_FRAME_ALLOC</code> event.</p></li>
+<li><p>Remove <code>al_get_video_aspect_ratio</code>.</p></li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>New examples: ex_reparent, ex_inject_events, ex_clipboard, ex_cpu, ex_timer_pause.</li>
+</ul>
 <h1 id="changes-from-5.1.10-to-5.1.11-june-2015">Changes from 5.1.10 to 5.1.11 (June 2015)</h1>
 <p>The main developers this time were: SiegeLord, Trent Gamblin.</p>
 <p>Input:</p>
