@@ -192,10 +192,10 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>You should not save files here unless the user expects it, usually by explicit permission.</p>
 </dd>
 <dt>ALLEGRO_USER_DATA_PATH</dt>
-<dd>If your program saves any data that the user doesn't need to access externally, then you should place it here. This is generally the least intrusive place to store data.
+<dd>If your program saves any data that the user doesn't need to access externally, then you should place it here. This is generally the least intrusive place to store data. This path will usually not be present on the file system, so make sure to create it before writing to it.
 </dd>
 <dt>ALLEGRO_USER_SETTINGS_PATH</dt>
-<dd>If you are saving configuration files (especially if the user may want to edit them outside of your program), then you should place them here.
+<dd>If you are saving configuration files (especially if the user may want to edit them outside of your program), then you should place them here. This path will usually not be present on the file system, so make sure to create it before writing to it.
 </dd>
 <dt>ALLEGRO_EXENAME_PATH</dt>
 <dd>The full path to the executable.
@@ -277,7 +277,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.12</p>
 <p class="timestamp">
 Allegro version 5.1.14 (GIT)
- - Last updated: 2016-01-24 21:07:20 UTC
+ - Last updated: 2016-02-18 05:07:07 UTC
 </p>
 </div>
 </body>
