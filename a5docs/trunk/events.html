@@ -153,6 +153,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="#al_destroy_event_queue">al_destroy_event_queue</a></li>
 <li><a href="#al_register_event_source">al_register_event_source</a></li>
 <li><a href="#al_unregister_event_source">al_unregister_event_source</a></li>
+<li><a href="#al_is_event_source_registered">al_is_event_source_registered</a></li>
 <li><a href="#al_pause_event_queue">al_pause_event_queue</a></li>
 <li><a href="#al_is_event_queue_paused">al_is_event_queue_paused</a></li>
 <li><a href="#al_is_event_queue_empty">al_is_event_queue_empty</a></li>
@@ -669,70 +670,77 @@ al_emit_user_event(&amp;my_event_source, &amp;my_event, NULL);</code></pre>
 <h1 id="al_register_event_source">al_register_event_source</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_register_event_source(ALLEGRO_EVENT_QUEUE *queue,
    ALLEGRO_EVENT_SOURCE *source)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L147https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L148">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L160https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L161">Source Code</a></p>
 <p>Register the event source with the event queue specified. An event source may be registered with any number of event queues simultaneously, or none. Trying to register an event source with the same event queue more than once does nothing.</p>
 <p>See also: <a href="events.html#al_unregister_event_source">al_unregister_event_source</a>, <a href="events.html#allegro_event_source">ALLEGRO_EVENT_SOURCE</a></p>
 <h1 id="al_unregister_event_source">al_unregister_event_source</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_unregister_event_source(ALLEGRO_EVENT_QUEUE *queue,
    ALLEGRO_EVENT_SOURCE *source)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L167https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L168">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L180https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L181">Source Code</a></p>
 <p>Unregister an event source with an event queue. If the event source is not actually registered with the event queue, nothing happens.</p>
 <p>If the queue had any events in it which originated from the event source, they will no longer be in the queue after this call.</p>
 <p>See also: <a href="events.html#al_register_event_source">al_register_event_source</a></p>
+<h1 id="al_is_event_source_registered">al_is_event_source_registered</h1>
+<pre class="sourceCode c"><code class="sourceCode c">bool al_is_event_source_registered(ALLEGRO_EVENT_QUEUE *queue, 
+      ALLEGRO_EVENT_SOURCE *source)</code></pre>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L146https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L147">Source Code</a></p>
+<p>Return true if the event source is registered.</p>
+<p>See also: <a href="events.html#al_register_event_source">al_register_event_source</a></p>
+<p>Since: 5.1.14</p>
 <h1 id="al_pause_event_queue">al_pause_event_queue</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_pause_event_queue(ALLEGRO_EVENT_QUEUE *queue, bool pause)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L194">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L207">Source Code</a></p>
 <p>Pause or resume accepting new events into the event queue (to resume, pass false for <code>pause</code>). Events already in the queue are unaffected.</p>
 <p>While a queue is paused, any events which would be entered into the queue are simply ignored. This is an alternative to unregistering then re-registering all event sources from the event queue, if you just need to prevent events piling up in the queue for a while.</p>
 <p>See also: <a href="events.html#al_is_event_queue_paused">al_is_event_queue_paused</a></p>
 <p>Since: 5.1.0</p>
 <h1 id="al_is_event_queue_paused">al_is_event_queue_paused</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_is_event_queue_paused(<span class="dt">const</span> ALLEGRO_EVENT_QUEUE *queue)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L207">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L220">Source Code</a></p>
 <p>Return true if the event queue is paused.</p>
 <p>See also: <a href="events.html#al_pause_event_queue">al_pause_event_queue</a></p>
 <p>Since: 5.1.0</p>
 <h1 id="al_is_event_queue_empty">al_is_event_queue_empty</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_is_event_queue_empty(ALLEGRO_EVENT_QUEUE *queue)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L234">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L247">Source Code</a></p>
 <p>Return true if the event queue specified is currently empty.</p>
 <p>See also: <a href="events.html#al_get_next_event">al_get_next_event</a>, <a href="events.html#al_peek_next_event">al_peek_next_event</a></p>
 <h1 id="al_get_next_event">al_get_next_event</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_get_next_event(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT *ret_event)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L282">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L295">Source Code</a></p>
 <p>Take the next event out of the event queue specified, and copy the contents into <code>ret_event</code>, returning true. The original event will be removed from the queue. If the event queue is empty, return false and the contents of <code>ret_event</code> are unspecified.</p>
 <p>See also: <a href="events.html#allegro_event">ALLEGRO_EVENT</a>, <a href="events.html#al_peek_next_event">al_peek_next_event</a>, <a href="events.html#al_wait_for_event">al_wait_for_event</a></p>
 <h1 id="al_peek_next_event">al_peek_next_event</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_peek_next_event(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT *ret_event)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L307">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L320">Source Code</a></p>
 <p>Copy the contents of the next event in the event queue specified into <code>ret_event</code> and return true. The original event packet will remain at the head of the queue. If the event queue is actually empty, this function returns false and the contents of <code>ret_event</code> are unspecified.</p>
 <p>See also: <a href="events.html#allegro_event">ALLEGRO_EVENT</a>, <a href="events.html#al_get_next_event">al_get_next_event</a>, <a href="events.html#al_drop_next_event">al_drop_next_event</a></p>
 <h1 id="al_drop_next_event">al_drop_next_event</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_drop_next_event(ALLEGRO_EVENT_QUEUE *queue)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L332">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L345">Source Code</a></p>
 <p>Drop (remove) the next event from the queue. If the queue is empty, nothing happens. Returns true if an event was dropped.</p>
 <p>See also: <a href="events.html#al_flush_event_queue">al_flush_event_queue</a>, <a href="events.html#al_is_event_queue_empty">al_is_event_queue_empty</a></p>
 <h1 id="al_flush_event_queue">al_flush_event_queue</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_flush_event_queue(ALLEGRO_EVENT_QUEUE *queue)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L355">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L368">Source Code</a></p>
 <p>Drops all events, if any, from the queue.</p>
 <p>See also: <a href="events.html#al_drop_next_event">al_drop_next_event</a>, <a href="events.html#al_is_event_queue_empty">al_is_event_queue_empty</a></p>
 <h1 id="al_wait_for_event">al_wait_for_event</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_wait_for_event(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT *ret_event)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L381">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L394">Source Code</a></p>
 <p>Wait until the event queue specified is non-empty. If <code>ret_event</code> is not NULL, the first event in the queue will be copied into <code>ret_event</code> and removed from the queue. If <code>ret_event</code> is NULL the first event is left at the head of the queue.</p>
 <p>See also: <a href="events.html#allegro_event">ALLEGRO_EVENT</a>, <a href="events.html#al_wait_for_event_timed">al_wait_for_event_timed</a>, <a href="events.html#al_wait_for_event_until">al_wait_for_event_until</a>, <a href="events.html#al_get_next_event">al_get_next_event</a></p>
 <h1 id="al_wait_for_event_timed">al_wait_for_event_timed</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_wait_for_event_timed(ALLEGRO_EVENT_QUEUE *queue,
    ALLEGRO_EVENT *ret_event, <span class="dt">float</span> secs)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L408https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L409">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L421https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L422">Source Code</a></p>
 <p>Wait until the event queue specified is non-empty. If <code>ret_event</code> is not NULL, the first event in the queue will be copied into <code>ret_event</code> and removed from the queue. If <code>ret_event</code> is NULL the first event is left at the head of the queue.</p>
 <p><code>secs</code> determines approximately how many seconds to wait. If the call times out, false is returned. Otherwise, if an event ocurred, true is returned.</p>
 <p>See also: <a href="events.html#allegro_event">ALLEGRO_EVENT</a>, <a href="events.html#al_wait_for_event">al_wait_for_event</a>, <a href="events.html#al_wait_for_event_until">al_wait_for_event_until</a></p>
 <h1 id="al_wait_for_event_until">al_wait_for_event_until</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_wait_for_event_until(ALLEGRO_EVENT_QUEUE *queue,
    ALLEGRO_EVENT *ret_event, ALLEGRO_TIMEOUT *timeout)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L430https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L431">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L443https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L444">Source Code</a></p>
 <p>Wait until the event queue specified is non-empty. If <code>ret_event</code> is not NULL, the first event in the queue will be copied into <code>ret_event</code> and removed from the queue. If <code>ret_event</code> is NULL the first event is left at the head of the queue.</p>
 <p><code>timeout</code> determines how long to wait. If the call times out, false is returned. Otherwise, if an event ocurred, true is returned.</p>
 <p>See also: <a href="events.html#allegro_event">ALLEGRO_EVENT</a>, <a href="time.html#allegro_timeout">ALLEGRO_TIMEOUT</a>, <a href="time.html#al_init_timeout">al_init_timeout</a>, <a href="events.html#al_wait_for_event">al_wait_for_event</a>, <a href="events.html#al_wait_for_event_timed">al_wait_for_event_timed</a></p>
@@ -785,7 +793,7 @@ THING *create_thing(<span class="dt">void</span>)
 <p>See also: <a href="events.html#allegro_user_event">ALLEGRO_USER_EVENT</a>, <a href="events.html#al_unref_user_event">al_unref_user_event</a></p>
 <h1 id="al_unref_user_event">al_unref_user_event</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_unref_user_event(ALLEGRO_USER_EVENT *event)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L689">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L702">Source Code</a></p>
 <p>Decrease the reference count of a user-defined event. This must be called on any user event that you get from <a href="events.html#al_get_next_event">al_get_next_event</a>, <a href="events.html#al_peek_next_event">al_peek_next_event</a>, <a href="events.html#al_wait_for_event">al_wait_for_event</a>, etc. which is reference counted. This function does nothing if the event is not reference counted.</p>
 <p>See also: <a href="events.html#al_emit_user_event">al_emit_user_event</a>, <a href="events.html#allegro_user_event">ALLEGRO_USER_EVENT</a></p>
 <h1 id="al_get_event_source_data">al_get_event_source_data</h1>
@@ -800,7 +808,7 @@ THING *create_thing(<span class="dt">void</span>)
 <p>See also: <a href="events.html#al_get_event_source_data">al_get_event_source_data</a></p>
 <p class="timestamp">
 Allegro version 5.1.14 (GIT)
- - Last updated: 2016-01-24 21:07:15 UTC
+ - Last updated: 2016-02-19 04:09:06 UTC
 </p>
 </div>
 </body>
