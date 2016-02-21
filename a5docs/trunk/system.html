@@ -137,7 +137,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Initialize the Allegro system. No other Allegro functions can be called before this (with one or two exceptions).</p>
 <p>The version field should always be set to ALLEGRO_VERSION_INT.</p>
 <p>If atexit_ptr is non-NULL, and if hasn't been done already, <a href="system.html#al_uninstall_system">al_uninstall_system</a> will be registered as an atexit function.</p>
-<p>Returns true if Allegro was successfully initialized by this function call (or already was initialized previously), false if Allegro cannot be used.</p>
+<p>Returns true if Allegro was successfully initialized by this function call (or already was initialized previously), false if Allegro cannot be used. A common reason for this function to fail is when the version of Allegro you compiled your game against is not compatible with the version of the shared libraries that were found on the system.</p>
 <p>See also: <a href="system.html#al_init">al_init</a></p>
 <h1 id="al_init">al_init</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#define al_init()    (al_install_system(ALLEGRO_VERSION_INT, atexit))</span></code></pre>
@@ -277,7 +277,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.12</p>
 <p class="timestamp">
 Allegro version 5.1.14 (GIT)
- - Last updated: 2016-02-19 04:09:12 UTC
+ - Last updated: 2016-02-21 09:07:06 UTC
 </p>
 </div>
 </body>
