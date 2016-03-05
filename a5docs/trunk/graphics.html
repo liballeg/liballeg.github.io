@@ -472,6 +472,7 @@ al_draw_tinted_bitmap(bmp, c, <span class="dv">0</span>, <span class="dv">0</spa
 <p>If you create a bitmap without ALLEGRO_MEMORY_BITMAP set but there is no current display, a temporary memory bitmap will be created instead. You can later convert all such bitmap to video bitmap and assign to a display by calling <a href="graphics.html#al_convert_bitmaps">al_convert_bitmaps</a>.</p>
 <p>On some platforms the contents of video bitmaps may be lost when your application loses focus. Allegro has an internal mechanism to restore the contents of these video bitmaps, but it is not foolproof (sometimes bitmap contents can get lost permanently) and has performance implications. If you are using a bitmap as an intermediate buffer this mechanism may be wasteful. In this case, if you do not want Allegro to manage the bitmap contents for you, you can disable this mechanism by creating the bitmap with the ALLEGRO_NO_PRESERVE_TEXTURE flag. The bitmap contents are lost when you get the ALLEGRO_EVENT_DISPLAY_LOST and ALLEGRO_EVENT_DISPLAY_HALT_DRAWING and a should be restored when you get the ALLEGRO_EVENT_DISPLAY_FOUND and when you call <a href="display.html#al_acknowledge_drawing_resume">al_acknowledge_drawing_resume</a> (after ALLEGRO_EVENT_DISPLAY_RESUME_DRAWING event). You can use those events to implement your own bitmap content restoration mechanism if Allegro's does not work well enough for you (for example, you can reload them all from disk).</p>
 <p><em>Note</em>: The contents of a newly created bitmap are undefined - you need to clear the bitmap or make sure all pixels get overwritten before drawing it.</p>
+<p>When you are done with using the bitmap you must call <a href="graphics.html#al_destroy_bitmap">al_destroy_bitmap</a> on it to free any resources allocated for it.</p>
 <p>See also: <a href="graphics.html#al_set_new_bitmap_format">al_set_new_bitmap_format</a>, <a href="graphics.html#al_set_new_bitmap_flags">al_set_new_bitmap_flags</a>, <a href="graphics.html#al_clone_bitmap">al_clone_bitmap</a>, <a href="graphics.html#al_create_sub_bitmap">al_create_sub_bitmap</a>, <a href="graphics.html#al_convert_bitmaps">al_convert_bitmaps</a>, <a href="graphics.html#al_destroy_bitmap">al_destroy_bitmap</a></p>
 <h2 id="al_create_sub_bitmap">al_create_sub_bitmap</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_BITMAP *al_create_sub_bitmap(ALLEGRO_BITMAP *parent,
@@ -482,7 +483,8 @@ al_draw_tinted_bitmap(bmp, c, <span class="dv">0</span>, <span class="dv">0</spa
 <p>See the discussion in <a href="display.html#al_get_backbuffer">al_get_backbuffer</a> about using sub-bitmaps of the backbuffer.</p>
 <p>The parent bitmap's clipping rectangles are ignored.</p>
 <p>If a sub-bitmap was not or cannot be created then NULL is returned.</p>
-<p>Note that destroying parents of sub-bitmaps will not destroy the sub-bitmaps; instead the sub-bitmaps become invalid and should no longer be used.</p>
+<p>When you are done with using the sub-bitmap you must call <a href="graphics.html#al_destroy_bitmap">al_destroy_bitmap</a> on it to free any resources allocated for it.</p>
+<p>Note that destroying parents of sub-bitmaps will not destroy the sub-bitmaps; instead the sub-bitmaps become invalid and should no longer be used for drawing - they still must be destroyed with <a href="graphics.html#al_destroy_bitmap">al_destroy_bitmap</a> however. It does not matter whether you destroy a sub-bitmap before or after its parent otherwise.</p>
 <p>See also: <a href="graphics.html#al_create_bitmap">al_create_bitmap</a></p>
 <h2 id="al_clone_bitmap">al_clone_bitmap</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_BITMAP *al_clone_bitmap(ALLEGRO_BITMAP *bitmap)</code></pre>
@@ -1258,7 +1260,7 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <p>See also: <a href="graphics.html#allegro_render_state">ALLEGRO_RENDER_STATE</a>, <a href="graphics.html#allegro_render_function">ALLEGRO_RENDER_FUNCTION</a>, <a href="graphics.html#allegro_write_mask_flags">ALLEGRO_WRITE_MASK_FLAGS</a></p>
 <p class="timestamp">
 Allegro version 5.1.14 (GIT)
- - Last updated: 2016-03-04 07:07:11 UTC
+ - Last updated: 2016-03-05 16:56:52 UTC
 </p>
 </div>
 </body>
