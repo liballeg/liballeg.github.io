@@ -261,7 +261,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.5</p>
 <h1 id="al_get_cpu_count">al_get_cpu_count</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_cpu_count(<span class="dt">void</span>)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/cpu.c#L50">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/cpu.c#L51">Source Code</a></p>
 <p>Returns the number of CPU cores that the system Allegro is running on has and which could be detected, or a negative number if detection failed. Even if a positive number is returned, it might be that it is not correct. For example, Allegro running on a virtual machine will return the amount of CPU's of the VM, and not that of the underlying system.</p>
 <p>Furthermore even if the number is correct, this only gives you information about the total CPU cores of the system Allegro runs on. The amount of cores available to your program may be less due to circumstances such as programs that are currently running.</p>
 <p>Therefore, it's best to use this for advisory purposes only. It is certainly a bad idea to make your program exclusive to systems for which this function returns a certain &quot;desirable&quot; number.</p>
@@ -269,7 +269,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.12</p>
 <h1 id="al_get_ram_size">al_get_ram_size</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_ram_size(<span class="dt">void</span>)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/cpu.c#L77">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/cpu.c#L78">Source Code</a></p>
 <p>Returns the size in MB of the random access memory that the system Allegro is running on has and which could be detected, or a negative number if detection failed. Even if a positive number is returned, it might be that it is not correct. For example, Allegro running on a virtual machine will return the amount of RAM of the VM, and not that of the underlying system.</p>
 <p>Furthermore even if the number is correct, this only gives you information about the total physical memory of the system Allegro runs on. The memory available to your program may be less or more than what this function returns due to circumstances such as virtual memory, and other programs that are currently running.</p>
 <p>Therefore, it's best to use this for advisory purposes only. It is certainly a bad idea to make your program exclusive to systems for which this function returns a certain &quot;desirable&quot; number.</p>
@@ -277,7 +277,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.12</p>
 <p class="timestamp">
 Allegro version 5.1.14 (GIT)
- - Last updated: 2016-03-09 05:30:16 UTC
+ - Last updated: 2016-03-11 06:07:34 UTC
 </p>
 </div>
 </body>
