@@ -212,15 +212,18 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <dd><p>Prefer a windowed mode.</p>
 <p>Under multi-head X (not XRandR/TwinView), the use of more than one adapter is impossible due to bugs in X and GLX. <a href="display.html#al_create_display">al_create_display</a> will fail if more than one adapter is attempted to be used.</p>
 </dd>
-<dt>ALLEGRO_FULLSCREEN</dt>
-<dd><p>Prefer a fullscreen mode.</p>
-<p>Under X the use of more than one FULLSCREEN display when using multi-head X, or true Xinerama is not possible due to bugs in X and GLX, display creation will fail if more than one adapter is attempted to be used.</p>
-</dd>
 <dt>ALLEGRO_FULLSCREEN_WINDOW</dt>
 <dd><p>Make the window span the entire screen. Unlike ALLEGRO_FULLSCREEN this will never attempt to modify the screen resolution. Instead the pixel dimensions of the created display will be the same as the desktop.</p>
 <p>The passed width and height are only used if the window is switched out of fullscreen mode later but will be ignored initially.</p>
 <p>Under Windows and X11 a fullscreen display created with this flag will behave differently from one created with the ALLEGRO_FULLSCREEN flag - even if the ALLEGRO_FULLSCREEN display is passed the desktop dimensions. The exact difference is platform dependent, but some things which may be different is how alt-tab works, how fast you can toggle between fullscreen/windowed mode or how additional monitors behave while your display is in fullscreen mode.</p>
 <p>Additionally under X, the use of more than one adapter in multi-head mode or with true Xinerama enabled is impossible due to bugs in X/GLX, creation will fail if more than one adapter is attempted to be used.</p>
+</dd>
+<dt>ALLEGRO_FULLSCREEN</dt>
+<dd><p>Prefer a fullscreen mode.</p>
+<p>Under X the use of more than one FULLSCREEN display when using multi-head X, or true Xinerama is not possible due to bugs in X and GLX, display creation will fail if more than one adapter is attempted to be used.</p>
+<blockquote>
+<p><em>Note:</em> Prefer using ALLEGRO_FULLSCREEN_WINDOW as it typically provides a better user experience as the monitor doesn't change resolution and switching away from your game via Alt-Tab works smoothly. ALLEGRO_FULLSCREEN is typically less well supported compared to ALLEGRO_FULLSCREEN_WINDOW.</p>
+</blockquote>
 </dd>
 <dt>ALLEGRO_RESIZABLE</dt>
 <dd>The display is resizable (only applicable if combined with ALLEGRO_WINDOWED).
@@ -610,7 +613,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="display.html#al_set_clipboard_text">al_set_clipboard_text</a>, <a href="display.html#al_get_clipboard_text">al_get_clipboard_text</a></p>
 <p class="timestamp">
 Allegro version 5.1.14 (GIT)
- - Last updated: 2016-03-19 05:07:08 UTC
+ - Last updated: 2016-03-20 22:07:06 UTC
 </p>
 </div>
 </body>
