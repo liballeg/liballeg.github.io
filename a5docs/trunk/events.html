@@ -736,6 +736,7 @@ al_emit_user_event(&amp;my_event_source, &amp;my_event, NULL);</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L421">Source Code</a></p>
 <p>Wait until the event queue specified is non-empty. If <code>ret_event</code> is not NULL, the first event in the queue will be copied into <code>ret_event</code> and removed from the queue. If <code>ret_event</code> is NULL the first event is left at the head of the queue.</p>
 <p><code>secs</code> determines approximately how many seconds to wait. If the call times out, false is returned. Otherwise, if an event ocurred, true is returned.</p>
+<p>For compatibility with all platforms, <code>secs</code> must be 2,147,483.647 seconds or less.</p>
 <p>See also: <a href="events.html#allegro_event">ALLEGRO_EVENT</a>, <a href="events.html#al_wait_for_event">al_wait_for_event</a>, <a href="events.html#al_wait_for_event_until">al_wait_for_event_until</a></p>
 <h1 id="al_wait_for_event_until">al_wait_for_event_until</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_wait_for_event_until(ALLEGRO_EVENT_QUEUE *queue,
@@ -743,6 +744,7 @@ al_emit_user_event(&amp;my_event_source, &amp;my_event, NULL);</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/events.c#L443">Source Code</a></p>
 <p>Wait until the event queue specified is non-empty. If <code>ret_event</code> is not NULL, the first event in the queue will be copied into <code>ret_event</code> and removed from the queue. If <code>ret_event</code> is NULL the first event is left at the head of the queue.</p>
 <p><code>timeout</code> determines how long to wait. If the call times out, false is returned. Otherwise, if an event ocurred, true is returned.</p>
+<p>For compatibility with all platforms, <code>timeout</code> must be 2,147,483.647 seconds or less.</p>
 <p>See also: <a href="events.html#allegro_event">ALLEGRO_EVENT</a>, <a href="time.html#allegro_timeout">ALLEGRO_TIMEOUT</a>, <a href="time.html#al_init_timeout">al_init_timeout</a>, <a href="events.html#al_wait_for_event">al_wait_for_event</a>, <a href="events.html#al_wait_for_event_timed">al_wait_for_event_timed</a></p>
 <h1 id="al_init_user_event_source">al_init_user_event_source</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_init_user_event_source(ALLEGRO_EVENT_SOURCE *src)</code></pre>
@@ -808,7 +810,7 @@ THING *create_thing(<span class="dt">void</span>)
 <p>See also: <a href="events.html#al_get_event_source_data">al_get_event_source_data</a></p>
 <p class="timestamp">
 Allegro version 5.1.14 (GIT)
- - Last updated: 2016-03-24 04:07:12 UTC
+ - Last updated: 2016-03-24 06:07:07 UTC
 </p>
 </div>
 </body>

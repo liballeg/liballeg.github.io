@@ -132,6 +132,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_init_timeout(ALLEGRO_TIMEOUT *timeout, <span class="dt">double</span> seconds)</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/unix/utime.c#L76">Source Code</a></p>
 <p>Set timeout value of some number of seconds after the function call.</p>
+<p>For compatibility with all platforms, <code>seconds</code> must be 2,147,483.647 seconds or less.</p>
 <p>See also: <a href="time.html#allegro_timeout">ALLEGRO_TIMEOUT</a>, <a href="events.html#al_wait_for_event_until">al_wait_for_event_until</a></p>
 <h1 id="al_rest">al_rest</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_rest(<span class="dt">double</span> seconds)</code></pre>
@@ -141,7 +142,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>might pause for something like 10ms. Also see the section on Timer routines for easier ways to time your program without using up all CPU.</p>
 <p class="timestamp">
 Allegro version 5.1.14 (GIT)
- - Last updated: 2016-03-24 04:07:18 UTC
+ - Last updated: 2016-03-24 06:07:08 UTC
 </p>
 </div>
 </body>
