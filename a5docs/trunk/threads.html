@@ -152,7 +152,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="al_create_thread">al_create_thread</h1>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_THREAD *al_create_thread(
    <span class="dt">void</span> *(*proc)(ALLEGRO_THREAD *thread, <span class="dt">void</span> *arg), <span class="dt">void</span> *arg)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/threads.c#L115https://github.com/liballeg/allegro5/blob/5.1/src/threads.c#L116">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/threads.c#L115">Source Code</a></p>
 <p>Spawn a new thread which begins executing <code>proc</code>. The new thread is passed its own thread handle and the value <code>arg</code>.</p>
 <p>Returns a pointer to the thread on success. Otherwise, returns NULL if there was an error.</p>
 <p>See also: <a href="threads.html#al_start_thread">al_start_thread</a>, <a href="threads.html#al_join_thread">al_join_thread</a>.</p>
@@ -248,7 +248,7 @@ al_unlock_mutex(mutex);</code></pre>
 <h1 id="al_wait_cond_until">al_wait_cond_until</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_wait_cond_until(ALLEGRO_COND *cond, ALLEGRO_MUTEX *mutex,
    <span class="dt">const</span> ALLEGRO_TIMEOUT *timeout)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/threads.c#L372https://github.com/liballeg/allegro5/blob/5.1/src/threads.c#L373">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/threads.c#L372">Source Code</a></p>
 <p>Like <a href="threads.html#al_wait_cond">al_wait_cond</a> but the call can return if the absolute time passes <code>timeout</code> before the condition is signalled.</p>
 <p>Returns zero on success, non-zero if the call timed out.</p>
 <p>See also: <a href="threads.html#al_wait_cond">al_wait_cond</a></p>
@@ -268,7 +268,7 @@ al_unlock_mutex(mutex);</code></pre>
 <p>See also: <a href="threads.html#al_broadcast_cond">al_broadcast_cond</a>.</p>
 <p class="timestamp">
 Allegro version 5.1.14 (GIT)
- - Last updated: 2016-03-19 05:07:15 UTC
+ - Last updated: 2016-03-24 04:07:18 UTC
 </p>
 </div>
 </body>

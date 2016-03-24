@@ -215,34 +215,34 @@ al_destroy_config(cfg);</code></pre>
 <h1 id="al_add_config_comment">al_add_config_comment</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_add_config_comment(ALLEGRO_CONFIG *config,
    <span class="dt">const</span> <span class="dt">char</span> *section, <span class="dt">const</span> <span class="dt">char</span> *comment)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L225https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L226">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L225">Source Code</a></p>
 <p>Add a comment in a section of a configuration. If the section doesn't yet exist, it will be created. The section can be NULL or &quot;&quot; for the global section.</p>
 <p>The comment may or may not begin with a hash character. Any newlines in the comment string will be replaced by space characters.</p>
 <p>See also: <a href="config.html#al_add_config_section">al_add_config_section</a></p>
 <h1 id="al_get_config_value">al_get_config_value</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">const</span> <span class="dt">char</span> *al_get_config_value(<span class="dt">const</span> ALLEGRO_CONFIG *config,
    <span class="dt">const</span> <span class="dt">char</span> *section, <span class="dt">const</span> <span class="dt">char</span> *key)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L268https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L269">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L268">Source Code</a></p>
 <p>Gets a pointer to an internal character buffer that will only remain valid as long as the ALLEGRO_CONFIG structure is not destroyed. Copy the value if you need a copy. The section can be NULL or &quot;&quot; for the global section. Returns NULL if the section or key do not exist.</p>
 <p>See also: <a href="config.html#al_set_config_value">al_set_config_value</a></p>
 <h1 id="al_set_config_value">al_set_config_value</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_config_value(ALLEGRO_CONFIG *config,
    <span class="dt">const</span> <span class="dt">char</span> *section, <span class="dt">const</span> <span class="dt">char</span> *key, <span class="dt">const</span> <span class="dt">char</span> *value)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L164https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L165">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L164">Source Code</a></p>
 <p>Set a value in a section of a configuration. If the section doesn't yet exist, it will be created. If a value already existed for the given key, it will be overwritten. The section can be NULL or &quot;&quot; for the global section.</p>
 <p>For consistency with the on-disk format of config files, any leading and trailing whitespace will be stripped from the value. If you have significant whitespace you wish to preserve, you should add your own quote characters and remove them when reading the values back in.</p>
 <p>See also: <a href="config.html#al_get_config_value">al_get_config_value</a></p>
 <h1 id="al_remove_config_key">al_remove_config_key</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_remove_config_key(ALLEGRO_CONFIG *config, <span class="dt">char</span> <span class="dt">const</span> *section,
    <span class="dt">char</span> <span class="dt">const</span> *key)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L702https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L703">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L702">Source Code</a></p>
 <p>Remove a key and its associated value in a section of a configuration.</p>
 <p>Returns true if the entry was removed, or false if the entry did not exist.</p>
 <p>Since: 5.1.5</p>
 <h1 id="al_get_first_config_section">al_get_first_config_section</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">char</span> <span class="dt">const</span> *al_get_first_config_section(ALLEGRO_CONFIG <span class="dt">const</span> *config,
    ALLEGRO_CONFIG_SECTION **iterator)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L588https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L589">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L588">Source Code</a></p>
 <p>Returns the name of the first section in the given config file. Usually this will return an empty string for the global section, even it contains no values. The <code>iterator</code> parameter will receive an opaque iterator which is used by <a href="config.html#al_get_next_config_section">al_get_next_config_section</a> to iterate over the remaining sections.</p>
 <p>The returned string and the iterator are only valid as long as no change is made to the passed ALLEGRO_CONFIG.</p>
 <p>See also: <a href="config.html#al_get_next_config_section">al_get_next_config_section</a></p>
@@ -254,7 +254,7 @@ al_destroy_config(cfg);</code></pre>
 <h1 id="al_get_first_config_entry">al_get_first_config_entry</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">char</span> <span class="dt">const</span> *al_get_first_config_entry(ALLEGRO_CONFIG <span class="dt">const</span> *config,
    <span class="dt">char</span> <span class="dt">const</span> *section, ALLEGRO_CONFIG_ENTRY **iterator)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L619https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L620">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L619">Source Code</a></p>
 <p>Returns the name of the first key in the given section in the given config or NULL if the section is empty. The <code>iterator</code> works like the one for <a href="config.html#al_get_first_config_section">al_get_first_config_section</a>.</p>
 <p>The returned string and the iterator are only valid as long as no change is made to the passed <a href="config.html#allegro_config">ALLEGRO_CONFIG</a>.</p>
 <p>See also: <a href="config.html#al_get_next_config_entry">al_get_next_config_entry</a></p>
@@ -265,7 +265,7 @@ al_destroy_config(cfg);</code></pre>
 <h1 id="al_merge_config">al_merge_config</h1>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_CONFIG *al_merge_config(<span class="dt">const</span> ALLEGRO_CONFIG *cfg1,
     <span class="dt">const</span> ALLEGRO_CONFIG *cfg2)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L530https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L531">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/config.c#L530">Source Code</a></p>
 <p>Merge two configuration structures, and return the result as a new configuration. Values in configuration 'cfg2' override those in 'cfg1'. Neither of the input configuration structures are modified. Comments from 'cfg2' are not retained.</p>
 <p>See also: <a href="config.html#al_merge_config_into">al_merge_config_into</a></p>
 <h1 id="al_merge_config_into">al_merge_config_into</h1>
@@ -275,7 +275,7 @@ al_destroy_config(cfg);</code></pre>
 <p>See also: <a href="config.html#al_merge_config">al_merge_config</a></p>
 <p class="timestamp">
 Allegro version 5.1.14 (GIT)
- - Last updated: 2016-03-19 05:07:08 UTC
+ - Last updated: 2016-03-24 04:07:11 UTC
 </p>
 </div>
 </body>

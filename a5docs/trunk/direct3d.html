@@ -179,20 +179,20 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="al_set_d3d_device_release_callback">al_set_d3d_device_release_callback</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_d3d_device_release_callback(
    <span class="dt">void</span> (*callback)(ALLEGRO_DISPLAY *display))</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/win/d3d_disp.cpp#L206https://github.com/liballeg/allegro5/blob/5.1/src/win/d3d_disp.cpp#L207">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/win/d3d_disp.cpp#L206">Source Code</a></p>
 <p>The callback will be called whenever a D3D device is reset (minimize, toggle fullscreen window, etc). In the callback you should release any d3d resources you have created yourself. The callback receives the affected display as a parameter.</p>
 <p>Pass NULL to disable the callback.</p>
 <p>Since: 5.1.0</p>
 <h1 id="al_set_d3d_device_restore_callback">al_set_d3d_device_restore_callback</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_d3d_device_restore_callback(
    <span class="dt">void</span> (*callback)(ALLEGRO_DISPLAY *display))</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/win/d3d_disp.cpp#L214https://github.com/liballeg/allegro5/blob/5.1/src/win/d3d_disp.cpp#L215">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/win/d3d_disp.cpp#L214">Source Code</a></p>
 <p>The callback will be called whenever a D3D device that has been reset is restored. In the callback you should restore any d3d resources you have created yourself. The callback receives the affected display as a parameter.</p>
 <p>Pass NULL to disable the callback.</p>
 <p>Since: 5.1.0</p>
 <p class="timestamp">
 Allegro version 5.1.14 (GIT)
- - Last updated: 2016-03-19 05:07:18 UTC
+ - Last updated: 2016-03-24 04:07:20 UTC
 </p>
 </div>
 </body>

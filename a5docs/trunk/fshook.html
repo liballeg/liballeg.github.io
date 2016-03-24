@@ -294,7 +294,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_for_each_fs_entry(ALLEGRO_FS_ENTRY *dir,
                          <span class="dt">int</span> (*callback)(ALLEGRO_FS_ENTRY *dir, <span class="dt">void</span> *extra),
                          <span class="dt">void</span> *extra)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/fshook.c#L242https://github.com/liballeg/allegro5/blob/5.1/src/fshook.c#L243https://github.com/liballeg/allegro5/blob/5.1/src/fshook.c#L244">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/fshook.c#L242">Source Code</a></p>
 <p>This function takes the <a href="fshook.html#allegro_fs_entry">ALLEGRO_FS_ENTRY</a> <code>dir</code>, which should represent a directory, and looks for any other file system entries that are in it. This function will then call the callback function <code>callback</code> once for every filesystem entry in the directory <code>dir</code>.</p>
 <p>The callback <code>callback</code> must be of type <code>int callback(ALLEGRO_FS_ENTRY * entry, void * extra)</code>. The <code>callback</code> will be called with a pointer to an <a href="fshook.html#allegro_fs_entry">ALLEGRO_FS_ENTRY</a> that matches one file or directory in <code>dir</code>, and the pointer passed in the <code>extra</code> parameter to <a href="fshook.html#al_for_each_fs_entry">al_for_each_fs_entry</a>.</p>
 <p>When <code>callback</code> returns <code>ALLEGRO_FOR_EACH_FS_ENTRY_STOP</code> or <code>ALLEGRO_FOR_EACH_FS_ENTRY_ERROR</code>, iteration will stop immediately and <a href="fshook.html#al_for_each_fs_entry">al_for_each_fs_entry</a> will return the value the <code>callback</code> returned.</p>
@@ -350,7 +350,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="state.html#al_store_state">al_store_state</a>, <a href="state.html#al_restore_state">al_restore_state</a>.</p>
 <p class="timestamp">
 Allegro version 5.1.14 (GIT)
- - Last updated: 2016-03-19 05:07:10 UTC
+ - Last updated: 2016-03-24 04:07:13 UTC
 </p>
 </div>
 </body>

@@ -363,7 +363,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="al_upload_haptic_effect">al_upload_haptic_effect</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_upload_haptic_effect(ALLEGRO_HAPTIC *hap,
    ALLEGRO_HAPTIC_EFFECT *effect, ALLEGRO_HAPTIC_EFFECT_ID *id)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/haptic.c#L286https://github.com/liballeg/allegro5/blob/5.1/src/haptic.c#L287">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/haptic.c#L286">Source Code</a></p>
 <p>Uploads the haptic effect to the device. The haptic effect must have been filled in completely and correctly. You must also pass in a pointer to a user allocated <a href="haptic.html#allegro_haptic_effect_id">ALLEGRO_HAPTIC_EFFECT_ID</a>. This <code>id</code> can be used to control playback of the effect. Returns true if the effect was successfully uploaded, false if not.</p>
 <p>The function <a href="haptic.html#al_get_max_haptic_effects">al_get_max_haptic_effects</a> returns how many effects can be uploaded to the device at the same time.</p>
 <p>The same haptic effect can be uploaded several times, as long as care is taken to pass in a different <a href="haptic.html#allegro_haptic_effect_id">ALLEGRO_HAPTIC_EFFECT_ID</a>.</p>
@@ -378,7 +378,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="al_upload_and_play_haptic_effect">al_upload_and_play_haptic_effect</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_upload_and_play_haptic_effect(ALLEGRO_HAPTIC *hap,
    ALLEGRO_HAPTIC_EFFECT *effect, ALLEGRO_HAPTIC_EFFECT_ID *id, <span class="dt">int</span> loop)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/haptic.c#L309https://github.com/liballeg/allegro5/blob/5.1/src/haptic.c#L310">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/haptic.c#L309">Source Code</a></p>
 <p>Uploads the haptic effect to the device and starts playback immediately. Returns true if the upload and playback were successful, false if either failed.</p>
 <p>In case false is returned, the haptic effect will be automatically released as if <a href="haptic.html#al_release_haptic_effect">al_release_haptic_effect</a> had been called, so there is no need to call it again manually in this case. However, if true is returned, it is necessary to call <a href="haptic.html#al_release_haptic_effect">al_release_haptic_effect</a> when the effect isn't needed anymore, to prevent the amount of available effects on the haptic devicefrom running out.</p>
 <p>Since: 5.1.8</p>
@@ -408,14 +408,14 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="al_rumble_haptic">al_rumble_haptic</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_rumble_haptic(ALLEGRO_HAPTIC *hap,
    <span class="dt">double</span> intensity, <span class="dt">double</span> duration, ALLEGRO_HAPTIC_EFFECT_ID *id)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/haptic.c#L356https://github.com/liballeg/allegro5/blob/5.1/src/haptic.c#L357">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/haptic.c#L356">Source Code</a></p>
 <p>Uploads a simple rumble effect to the haptic device and starts playback immediately. The parameter <code>intensity</code> is a relative magnitude between 0.0 and 1.0 that determines the intensity of the rumble effect. The <code>duration</code> determines the duration of the effect in seconds.</p>
 <p>You must also pass in a pointer to a user allocated <a href="haptic.html#allegro_haptic_effect_id">ALLEGRO_HAPTIC_EFFECT_ID</a>. It it is stored a reference to be used to control playback of the effect. Returns true if the rumble effect was successfully uploaded and started, false if not.</p>
 <p>In case false is returned, the rumble effect will be automatically released as if <a href="haptic.html#al_release_haptic_effect">al_release_haptic_effect</a> had been called, so there is no need to call it again manually in this case. However, if true is returned, it is necessary to call <a href="haptic.html#al_release_haptic_effect">al_release_haptic_effect</a> when the effect isn't needed anymore, to prevent the amount of available effects on the haptic device from running out.</p>
 <p>Since: 5.1.8</p>
 <p class="timestamp">
 Allegro version 5.1.14 (GIT)
- - Last updated: 2016-03-19 05:07:11 UTC
+ - Last updated: 2016-03-24 04:07:14 UTC
 </p>
 </div>
 </body>

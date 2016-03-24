@@ -241,7 +241,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h2 id="al_map_rgb">al_map_rgb</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_map_rgb(
    <span class="dt">unsigned</span> <span class="dt">char</span> r, <span class="dt">unsigned</span> <span class="dt">char</span> g, <span class="dt">unsigned</span> <span class="dt">char</span> b)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/pixels.c#L599https://github.com/liballeg/allegro5/blob/5.1/src/pixels.c#L600">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/pixels.c#L599">Source Code</a></p>
 <p>Convert r, g, b (ranging from 0-255) into an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a>, using 255 for alpha.</p>
 <p>See also: <a href="graphics.html#al_map_rgba">al_map_rgba</a>, <a href="graphics.html#al_map_rgba_f">al_map_rgba_f</a>, <a href="graphics.html#al_map_rgb_f">al_map_rgb_f</a></p>
 <h2 id="al_map_rgb_f">al_map_rgb_f</h2>
@@ -252,13 +252,13 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h2 id="al_map_rgba">al_map_rgba</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_map_rgba(
    <span class="dt">unsigned</span> <span class="dt">char</span> r, <span class="dt">unsigned</span> <span class="dt">char</span> g, <span class="dt">unsigned</span> <span class="dt">char</span> b, <span class="dt">unsigned</span> <span class="dt">char</span> a)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/pixels.c#L577https://github.com/liballeg/allegro5/blob/5.1/src/pixels.c#L578">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/pixels.c#L577">Source Code</a></p>
 <p>Convert r, g, b, a (ranging from 0-255) into an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a>.</p>
 <p>See also: <a href="graphics.html#al_map_rgb">al_map_rgb</a>, <a href="graphics.html#al_premul_rgba">al_premul_rgba</a>, <a href="graphics.html#al_map_rgb_f">al_map_rgb_f</a></p>
 <h2 id="al_premul_rgba">al_premul_rgba</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_premul_rgba(
    <span class="dt">unsigned</span> <span class="dt">char</span> r, <span class="dt">unsigned</span> <span class="dt">char</span> g, <span class="dt">unsigned</span> <span class="dt">char</span> b, <span class="dt">unsigned</span> <span class="dt">char</span> a)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/pixels.c#L588https://github.com/liballeg/allegro5/blob/5.1/src/pixels.c#L589">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/pixels.c#L588">Source Code</a></p>
 <p>This is a shortcut for <a href="graphics.html#al_map_rgba">al_map_rgba</a>(r * a / 255, g * a / 255, b * a / 255, a).</p>
 <p>By default Allegro uses pre-multiplied alpha for transparent blending of bitmaps and primitives (see <a href="graphics.html#al_load_bitmap_flags">al_load_bitmap_flags</a> for a discussion of that feature). This means that if you want to tint a bitmap or primitive to be transparent you need to multiply the color components by the alpha components when you pass them to this function. For example:</p>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> r = <span class="dv">255</span>;
@@ -292,7 +292,7 @@ al_draw_tinted_bitmap(bmp, c, <span class="dv">0</span>, <span class="dv">0</spa
 <h2 id="al_unmap_rgb">al_unmap_rgb</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_unmap_rgb(ALLEGRO_COLOR color,
    <span class="dt">unsigned</span> <span class="dt">char</span> *r, <span class="dt">unsigned</span> <span class="dt">char</span> *g, <span class="dt">unsigned</span> <span class="dt">char</span> *b)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/pixels.c#L657https://github.com/liballeg/allegro5/blob/5.1/src/pixels.c#L658">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/pixels.c#L657">Source Code</a></p>
 <p>Retrieves components of an ALLEGRO_COLOR, ignoring alpha. Components will range from 0-255.</p>
 <p>See also: <a href="graphics.html#al_unmap_rgba">al_unmap_rgba</a>, <a href="graphics.html#al_unmap_rgba_f">al_unmap_rgba_f</a>, <a href="graphics.html#al_unmap_rgb_f">al_unmap_rgb_f</a></p>
 <h2 id="al_unmap_rgb_f">al_unmap_rgb_f</h2>
@@ -303,13 +303,13 @@ al_draw_tinted_bitmap(bmp, c, <span class="dv">0</span>, <span class="dv">0</spa
 <h2 id="al_unmap_rgba">al_unmap_rgba</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_unmap_rgba(ALLEGRO_COLOR color,
    <span class="dt">unsigned</span> <span class="dt">char</span> *r, <span class="dt">unsigned</span> <span class="dt">char</span> *g, <span class="dt">unsigned</span> <span class="dt">char</span> *b, <span class="dt">unsigned</span> <span class="dt">char</span> *a)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/pixels.c#L645https://github.com/liballeg/allegro5/blob/5.1/src/pixels.c#L646">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/pixels.c#L645">Source Code</a></p>
 <p>Retrieves components of an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a>. Components will range from 0-255.</p>
 <p>See also: <a href="graphics.html#al_unmap_rgb">al_unmap_rgb</a>, <a href="graphics.html#al_unmap_rgba_f">al_unmap_rgba_f</a>, <a href="graphics.html#al_unmap_rgb_f">al_unmap_rgb_f</a></p>
 <h2 id="al_unmap_rgba_f">al_unmap_rgba_f</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_unmap_rgba_f(ALLEGRO_COLOR color,
    <span class="dt">float</span> *r, <span class="dt">float</span> *g, <span class="dt">float</span> *b, <span class="dt">float</span> *a)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/pixels.c#L668https://github.com/liballeg/allegro5/blob/5.1/src/pixels.c#L669">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/pixels.c#L668">Source Code</a></p>
 <p>Retrieves components of an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a>. Components will range from 0.0f-1.0f.</p>
 <p>See also: <a href="graphics.html#al_unmap_rgba">al_unmap_rgba</a>, <a href="graphics.html#al_unmap_rgb">al_unmap_rgb</a>, <a href="graphics.html#al_unmap_rgb_f">al_unmap_rgb_f</a></p>
 <h1 id="locking-and-pixel-formats">Locking and pixel formats</h1>
@@ -412,7 +412,7 @@ al_draw_tinted_bitmap(bmp, c, <span class="dv">0</span>, <span class="dv">0</spa
 <h2 id="al_lock_bitmap">al_lock_bitmap</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_LOCKED_REGION *al_lock_bitmap(ALLEGRO_BITMAP *bitmap,
    <span class="dt">int</span> format, <span class="dt">int</span> flags)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_lock.c#L126https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_lock.c#L127">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_lock.c#L126">Source Code</a></p>
 <p>Lock an entire bitmap for reading or writing. If the bitmap is a display bitmap it will be updated from system memory after the bitmap is unlocked (unless locked read only). Returns NULL if the bitmap cannot be locked, e.g. the bitmap was locked previously and not unlocked. This function also returns NULL if the <code>format</code> is a compressed format.</p>
 <p>Flags are:</p>
 <ul>
@@ -429,7 +429,7 @@ al_draw_tinted_bitmap(bmp, c, <span class="dv">0</span>, <span class="dv">0</spa
 <h2 id="al_lock_bitmap_region">al_lock_bitmap_region</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_LOCKED_REGION *al_lock_bitmap_region(ALLEGRO_BITMAP *bitmap,
    <span class="dt">int</span> x, <span class="dt">int</span> y, <span class="dt">int</span> width, <span class="dt">int</span> height, <span class="dt">int</span> format, <span class="dt">int</span> flags)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_lock.c#L25https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_lock.c#L26">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_lock.c#L25">Source Code</a></p>
 <p>Like <a href="graphics.html#al_lock_bitmap">al_lock_bitmap</a>, but only locks a specific area of the bitmap. If the bitmap is a video bitmap, only that area of the texture will be updated when it is unlocked. Locking only the region you indend to modify will be faster than locking the whole bitmap.</p>
 <blockquote>
 <p><em>Note:</em> Using the ALLEGRO_LOCK_WRITEONLY with a blocked pixel format (i.e. formats for which <a href="graphics.html#al_get_pixel_block_width">al_get_pixel_block_width</a> or <a href="graphics.html#al_get_pixel_block_height">al_get_pixel_block_height</a> do not return 1) requires you to have the region be aligned to the block width for optimal performance. If it is not, then the function will have to lock the region with the ALLEGRO_LOCK_READWRITE instead in order to pad this region with valid data.</p>
@@ -443,7 +443,7 @@ al_draw_tinted_bitmap(bmp, c, <span class="dv">0</span>, <span class="dv">0</spa
 <h2 id="al_lock_bitmap_blocked">al_lock_bitmap_blocked</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_LOCKED_REGION *al_lock_bitmap_blocked(ALLEGRO_BITMAP *bitmap,
    <span class="dt">int</span> flags)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_lock.c#L174https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_lock.c#L175">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_lock.c#L174">Source Code</a></p>
 <p>Like <a href="graphics.html#al_lock_bitmap">al_lock_bitmap</a>, but allows locking bitmaps with a blocked pixel format (i.e. a format for which <a href="graphics.html#al_get_pixel_block_width">al_get_pixel_block_width</a> or <a href="graphics.html#al_get_pixel_block_height">al_get_pixel_block_height</a> do not return 1) in that format. To that end, this function also does not allow format conversion. For bitmap formats with a block size of 1, this function is identical to calling <code>al_lock_bitmap(bmp, al_get_bitmap_format(bmp), flags)</code>.</p>
 <blockquote>
 <p><em>Note:</em> Currently there are no drawing functions that work when the bitmap is locked with a compressed format. <a href="graphics.html#al_get_pixel">al_get_pixel</a> will also not work.</p>
@@ -453,7 +453,7 @@ al_draw_tinted_bitmap(bmp, c, <span class="dv">0</span>, <span class="dv">0</spa
 <h2 id="al_lock_bitmap_region_blocked">al_lock_bitmap_region_blocked</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_LOCKED_REGION *al_lock_bitmap_region_blocked(ALLEGRO_BITMAP *bitmap,
    <span class="dt">int</span> x_block, <span class="dt">int</span> y_block, <span class="dt">int</span> width_block, <span class="dt">int</span> height_block, <span class="dt">int</span> flags)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_lock.c#L189https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_lock.c#L190">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_lock.c#L189">Source Code</a></p>
 <p>Like <a href="graphics.html#al_lock_bitmap_blocked">al_lock_bitmap_blocked</a>, but allows locking a sub-region, for performance. Unlike <a href="graphics.html#al_lock_bitmap_region">al_lock_bitmap_region</a> the region specified in terms of blocks and not pixels.</p>
 <p>Since: 5.1.9</p>
 <p>See also: <a href="graphics.html#al_lock_bitmap_region">al_lock_bitmap_region</a>, <a href="graphics.html#al_lock_bitmap_blocked">al_lock_bitmap_blocked</a></p>
@@ -477,7 +477,7 @@ al_draw_tinted_bitmap(bmp, c, <span class="dv">0</span>, <span class="dv">0</spa
 <h2 id="al_create_sub_bitmap">al_create_sub_bitmap</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_BITMAP *al_create_sub_bitmap(ALLEGRO_BITMAP *parent,
    <span class="dt">int</span> x, <span class="dt">int</span> y, <span class="dt">int</span> w, <span class="dt">int</span> h)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap.c#L407https://github.com/liballeg/allegro5/blob/5.1/src/bitmap.c#L408">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap.c#L407">Source Code</a></p>
 <p>Creates a sub-bitmap of the parent, at the specified coordinates and of the specified size. A sub-bitmap is a bitmap that shares drawing memory with a pre-existing (parent) bitmap, but possibly with a different size and clipping settings.</p>
 <p>The sub-bitmap may originate off or extend past the parent bitmap.</p>
 <p>See the discussion in <a href="display.html#al_get_backbuffer">al_get_backbuffer</a> about using sub-bitmaps of the backbuffer.</p>
@@ -639,7 +639,7 @@ ASSERT(al_get_parent_bitmap(b) == a &amp;&amp; al_get_parent_bitmap(c) == a);</c
 <h2 id="al_reparent_bitmap">al_reparent_bitmap</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_reparent_bitmap(ALLEGRO_BITMAP *bitmap, ALLEGRO_BITMAP *parent,
    <span class="dt">int</span> x, <span class="dt">int</span> y, <span class="dt">int</span> w, <span class="dt">int</span> h)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap.c#L454https://github.com/liballeg/allegro5/blob/5.1/src/bitmap.c#L455">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap.c#L454">Source Code</a></p>
 <p>For a sub-bitmap, changes the parent, position and size. This is the same as destroying the bitmap and re-creating it with <a href="graphics.html#al_create_sub_bitmap">al_create_sub_bitmap</a> - except the bitmap pointer stays the same. This has many uses, for example an animation player could return a single bitmap which can just be re-parented to different animation frames without having to re-draw the contents. Or a sprite atlas could re-arrange its sprites without having to invalidate all existing bitmaps.</p>
 <p>See also: <a href="graphics.html#al_create_sub_bitmap">al_create_sub_bitmap</a>, <a href="graphics.html#al_get_parent_bitmap">al_get_parent_bitmap</a></p>
 <p>Since: 5.1.12</p>
@@ -676,7 +676,7 @@ ASSERT(al_get_parent_bitmap(b) == a &amp;&amp; al_get_parent_bitmap(c) == a);</c
 <h2 id="al_draw_tinted_bitmap">al_draw_tinted_bitmap</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_draw_tinted_bitmap(ALLEGRO_BITMAP *bitmap, ALLEGRO_COLOR tint,
    <span class="dt">float</span> dx, <span class="dt">float</span> dy, <span class="dt">int</span> flags)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L137https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L138">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L137">Source Code</a></p>
 <p>Like <a href="graphics.html#al_draw_bitmap">al_draw_bitmap</a> but multiplies all colors in the bitmap with the given color. For example:</p>
 <pre class="sourceCode c"><code class="sourceCode c">al_draw_tinted_bitmap(bitmap, al_map_rgba_f(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>), x, y, <span class="dv">0</span>);</code></pre>
 <p>The above will draw the bitmap 50% transparently (r/g/b values need to be pre-multiplied with the alpha component with the default blend mode).</p>
@@ -687,7 +687,7 @@ ASSERT(al_get_parent_bitmap(b) == a &amp;&amp; al_get_parent_bitmap(c) == a);</c
 <h2 id="al_draw_bitmap_region">al_draw_bitmap_region</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_draw_bitmap_region(ALLEGRO_BITMAP *bitmap,
    <span class="dt">float</span> sx, <span class="dt">float</span> sy, <span class="dt">float</span> sw, <span class="dt">float</span> sh, <span class="dt">float</span> dx, <span class="dt">float</span> dy, <span class="dt">int</span> flags)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L156https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L157">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L156">Source Code</a></p>
 <p>Draws a region of the given bitmap to the target bitmap.</p>
 <ul>
 <li>sx - source x</li>
@@ -705,7 +705,7 @@ ASSERT(al_get_parent_bitmap(b) == a &amp;&amp; al_get_parent_bitmap(c) == a);</c
    ALLEGRO_COLOR tint,
    <span class="dt">float</span> sx, <span class="dt">float</span> sy, <span class="dt">float</span> sw, <span class="dt">float</span> sh, <span class="dt">float</span> dx, <span class="dt">float</span> dy,
    <span class="dt">int</span> flags)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L125https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L126https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L127https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L128">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L125">Source Code</a></p>
 <p>Like <a href="graphics.html#al_draw_bitmap_region">al_draw_bitmap_region</a> but multiplies all colors in the bitmap with the given color.</p>
 <p>See <a href="graphics.html#al_draw_bitmap">al_draw_bitmap</a> for a note on restrictions on which bitmaps can be drawn where.</p>
 <p>See also: <a href="graphics.html#al_draw_tinted_bitmap">al_draw_tinted_bitmap</a></p>
@@ -725,7 +725,7 @@ ASSERT(al_get_parent_bitmap(b) == a &amp;&amp; al_get_parent_bitmap(c) == a);</c
 <h2 id="al_draw_rotated_bitmap">al_draw_rotated_bitmap</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_draw_rotated_bitmap(ALLEGRO_BITMAP *bitmap,
    <span class="dt">float</span> cx, <span class="dt">float</span> cy, <span class="dt">float</span> dx, <span class="dt">float</span> dy, <span class="dt">float</span> angle, <span class="dt">int</span> flags)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L205https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L206">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L205">Source Code</a></p>
 <p>Draws a rotated version of the given bitmap to the target bitmap. The bitmap is rotated by 'angle' radians clockwise.</p>
 <p>The point at cx/cy relative to the upper left corner of the bitmap will be drawn at dx/dy and the bitmap is rotated around this point. If cx,cy is 0,0 the bitmap will rotate around its upper left corner.</p>
 <ul>
@@ -747,7 +747,7 @@ al_draw_rotated_bitmap(bitmap, w / <span class="dv">2</span>, h / <span class="d
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_draw_tinted_rotated_bitmap(ALLEGRO_BITMAP *bitmap,
    ALLEGRO_COLOR tint,
    <span class="dt">float</span> cx, <span class="dt">float</span> cy, <span class="dt">float</span> dx, <span class="dt">float</span> dy, <span class="dt">float</span> angle, <span class="dt">int</span> flags)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L194https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L195https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L196">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L194">Source Code</a></p>
 <p>Like <a href="graphics.html#al_draw_rotated_bitmap">al_draw_rotated_bitmap</a> but multiplies all colors in the bitmap with the given color.</p>
 <p>See <a href="graphics.html#al_draw_bitmap">al_draw_bitmap</a> for a note on restrictions on which bitmaps can be drawn where.</p>
 <p>See also: <a href="graphics.html#al_draw_tinted_bitmap">al_draw_tinted_bitmap</a></p>
@@ -755,7 +755,7 @@ al_draw_rotated_bitmap(bitmap, w / <span class="dv">2</span>, h / <span class="d
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_draw_scaled_rotated_bitmap(ALLEGRO_BITMAP *bitmap,
    <span class="dt">float</span> cx, <span class="dt">float</span> cy, <span class="dt">float</span> dx, <span class="dt">float</span> dy, <span class="dt">float</span> xscale, <span class="dt">float</span> yscale,
    <span class="dt">float</span> angle, <span class="dt">int</span> flags)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L244https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L245https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L246">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L244">Source Code</a></p>
 <p>Like <a href="graphics.html#al_draw_rotated_bitmap">al_draw_rotated_bitmap</a>, but can also scale the bitmap.</p>
 <p>The point at cx/cy in the bitmap will be drawn at dx/dy and the bitmap is rotated and scaled around this point.</p>
 <ul>
@@ -775,7 +775,7 @@ al_draw_rotated_bitmap(bitmap, w / <span class="dv">2</span>, h / <span class="d
    ALLEGRO_COLOR tint,
    <span class="dt">float</span> cx, <span class="dt">float</span> cy, <span class="dt">float</span> dx, <span class="dt">float</span> dy, <span class="dt">float</span> xscale, <span class="dt">float</span> yscale,
    <span class="dt">float</span> angle, <span class="dt">int</span> flags)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L215https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L216https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L217https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L218">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L215">Source Code</a></p>
 <p>Like <a href="graphics.html#al_draw_scaled_rotated_bitmap">al_draw_scaled_rotated_bitmap</a> but multiplies all colors in the bitmap with the given color.</p>
 <p>See <a href="graphics.html#al_draw_bitmap">al_draw_bitmap</a> for a note on restrictions on which bitmaps can be drawn where.</p>
 <p>See also: <a href="graphics.html#al_draw_tinted_bitmap">al_draw_tinted_bitmap</a></p>
@@ -785,7 +785,7 @@ al_draw_rotated_bitmap(bitmap, w / <span class="dv">2</span>, h / <span class="d
    ALLEGRO_COLOR tint,
    <span class="dt">float</span> cx, <span class="dt">float</span> cy, <span class="dt">float</span> dx, <span class="dt">float</span> dy, <span class="dt">float</span> xscale, <span class="dt">float</span> yscale,
    <span class="dt">float</span> angle, <span class="dt">int</span> flags)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L229https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L230https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L231https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L232https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L233">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L229">Source Code</a></p>
 <p>Like <a href="graphics.html#al_draw_tinted_scaled_rotated_bitmap">al_draw_tinted_scaled_rotated_bitmap</a> but you specify an area within the bitmap to be drawn.</p>
 <p>You can get the same effect with a sub bitmap:</p>
 <pre class="sourceCode c"><code class="sourceCode c">al_draw_tinted_scaled_rotated_bitmap(bitmap, sx, sy, sw, sh, tint,
@@ -802,7 +802,7 @@ al_draw_tinted_scaled_rotated_bitmap(sub_bitmap, tint, cx, cy,
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_draw_scaled_bitmap(ALLEGRO_BITMAP *bitmap,
    <span class="dt">float</span> sx, <span class="dt">float</span> sy, <span class="dt">float</span> sw, <span class="dt">float</span> sh,
    <span class="dt">float</span> dx, <span class="dt">float</span> dy, <span class="dt">float</span> dw, <span class="dt">float</span> dh, <span class="dt">int</span> flags)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L180https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L181https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L182">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L180">Source Code</a></p>
 <p>Draws a scaled version of the given bitmap to the target bitmap.</p>
 <ul>
 <li>sx - source x</li>
@@ -822,7 +822,7 @@ al_draw_tinted_scaled_rotated_bitmap(sub_bitmap, tint, cx, cy,
    ALLEGRO_COLOR tint,
    <span class="dt">float</span> sx, <span class="dt">float</span> sy, <span class="dt">float</span> sw, <span class="dt">float</span> sh,
    <span class="dt">float</span> dx, <span class="dt">float</span> dy, <span class="dt">float</span> dw, <span class="dt">float</span> dh, <span class="dt">int</span> flags)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L166https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L167https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L168https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L169">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_draw.c#L166">Source Code</a></p>
 <p>Like <a href="graphics.html#al_draw_scaled_bitmap">al_draw_scaled_bitmap</a> but multiplies all colors in the bitmap with the given color.</p>
 <p>See <a href="graphics.html#al_draw_bitmap">al_draw_bitmap</a> for a note on restrictions on which bitmaps can be drawn where.</p>
 <p>See also: <a href="graphics.html#al_draw_tinted_bitmap">al_draw_tinted_bitmap</a></p>
@@ -887,7 +887,7 @@ al_draw_line(x1, y1, x2, y2, color, <span class="dv">0</span>);</code></pre>
 <h2 id="al_get_separate_blender">al_get_separate_blender</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_get_separate_blender(<span class="dt">int</span> *op, <span class="dt">int</span> *src, <span class="dt">int</span> *dst,
    <span class="dt">int</span> *alpha_op, <span class="dt">int</span> *alpha_src, <span class="dt">int</span> *alpha_dst)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/tls.c#L586https://github.com/liballeg/allegro5/blob/5.1/src/tls.c#L587">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/tls.c#L586">Source Code</a></p>
 <p>Returns the active blender for the current thread. You can pass NULL for values you are not interested in.</p>
 <p>See also: <a href="graphics.html#al_set_separate_blender">al_set_separate_blender</a>, <a href="graphics.html#al_get_blender">al_get_blender</a></p>
 <h2 id="al_get_blend_color">al_get_blend_color</h2>
@@ -974,7 +974,7 @@ a = d.a * 0 + s.a * d.a</code></pre>
 <h2 id="al_set_separate_blender">al_set_separate_blender</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_separate_blender(<span class="dt">int</span> op, <span class="dt">int</span> src, <span class="dt">int</span> dst,
    <span class="dt">int</span> alpha_op, <span class="dt">int</span> alpha_src, <span class="dt">int</span> alpha_dst)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/tls.c#L534https://github.com/liballeg/allegro5/blob/5.1/src/tls.c#L535">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/tls.c#L534">Source Code</a></p>
 <p>Like <a href="graphics.html#al_set_blender">al_set_blender</a>, but allows specifying a separate blending operation for the alpha channel. This is useful if your target bitmap also has an alpha channel and the two alpha channels need to be combined in a different way than the color components.</p>
 <p>See also: <a href="graphics.html#al_set_blender">al_set_blender</a>, <a href="graphics.html#al_get_blender">al_get_blender</a>, <a href="graphics.html#al_get_separate_blender">al_get_separate_blender</a></p>
 <h2 id="al_set_blend_color">al_set_blend_color</h2>
@@ -1023,7 +1023,7 @@ a = d.a * 0 + s.a * d.a</code></pre>
 <h2 id="al_register_bitmap_loader">al_register_bitmap_loader</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_register_bitmap_loader(<span class="dt">const</span> <span class="dt">char</span> *extension,
    ALLEGRO_BITMAP *(*loader)(<span class="dt">const</span> <span class="dt">char</span> *filename, <span class="dt">int</span> flags))</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L128https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L129">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L128">Source Code</a></p>
 <p>Register a handler for <a href="graphics.html#al_load_bitmap">al_load_bitmap</a>. The given function will be used to handle the loading of bitmaps files with the given extension.</p>
 <p>The extension should include the leading dot ('.') character. It will be matched case-insensitively.</p>
 <p>The <code>loader</code> argument may be NULL to unregister an entry.</p>
@@ -1032,7 +1032,7 @@ a = d.a * 0 + s.a * d.a</code></pre>
 <h2 id="al_register_bitmap_saver">al_register_bitmap_saver</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_register_bitmap_saver(<span class="dt">const</span> <span class="dt">char</span> *extension,
    bool (*saver)(<span class="dt">const</span> <span class="dt">char</span> *filename, ALLEGRO_BITMAP *bmp))</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L137https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L138">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L137">Source Code</a></p>
 <p>Register a handler for <a href="graphics.html#al_save_bitmap">al_save_bitmap</a>. The given function will be used to handle the saving of bitmaps files with the given extension.</p>
 <p>The extension should include the leading dot ('.') character. It will be matched case-insensitively.</p>
 <p>The <code>saver</code> argument may be NULL to unregister an entry.</p>
@@ -1041,7 +1041,7 @@ a = d.a * 0 + s.a * d.a</code></pre>
 <h2 id="al_register_bitmap_loader_f">al_register_bitmap_loader_f</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_register_bitmap_loader_f(<span class="dt">const</span> <span class="dt">char</span> *extension,
    ALLEGRO_BITMAP *(*fs_loader)(ALLEGRO_FILE *fp, <span class="dt">int</span> flags))</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L146https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L147">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L146">Source Code</a></p>
 <p>Register a handler for <a href="graphics.html#al_load_bitmap_f">al_load_bitmap_f</a>. The given function will be used to handle the loading of bitmaps files with the given extension.</p>
 <p>The extension should include the leading dot ('.') character. It will be matched case-insensitively.</p>
 <p>The <code>fs_loader</code> argument may be NULL to unregister an entry.</p>
@@ -1050,7 +1050,7 @@ a = d.a * 0 + s.a * d.a</code></pre>
 <h2 id="al_register_bitmap_saver_f">al_register_bitmap_saver_f</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_register_bitmap_saver_f(<span class="dt">const</span> <span class="dt">char</span> *extension,
    bool (*fs_saver)(ALLEGRO_FILE *fp, ALLEGRO_BITMAP *bmp))</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L155https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L156">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L155">Source Code</a></p>
 <p>Register a handler for <a href="graphics.html#al_save_bitmap_f">al_save_bitmap_f</a>. The given function will be used to handle the saving of bitmaps files with the given extension.</p>
 <p>The extension should include the leading dot ('.') character. It will be matched case-insensitively.</p>
 <p>The <code>saver_f</code> argument may be NULL to unregister an entry.</p>
@@ -1142,7 +1142,7 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <h2 id="al_load_bitmap_flags_f">al_load_bitmap_flags_f</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_BITMAP *al_load_bitmap_flags_f(ALLEGRO_FILE *fp,
    <span class="dt">const</span> <span class="dt">char</span> *ident, <span class="dt">int</span> flags)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L264https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L265">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L264">Source Code</a></p>
 <p>Loads an image from an <a href="file.html#allegro_file">ALLEGRO_FILE</a> stream into a new <a href="graphics.html#allegro_bitmap">ALLEGRO_BITMAP</a>. The file type is determined by the passed 'ident' parameter, which is a file name extension including the leading dot. If (and only if) 'ident' is NULL, the file type is determined with <a href="graphics.html#al_identify_bitmap_f">al_identify_bitmap_f</a> instead.</p>
 <p>The flags parameter is the same as for <a href="graphics.html#al_load_bitmap_flags">al_load_bitmap_flags</a>.</p>
 <p>Returns NULL on error. The file remains open afterwards.</p>
@@ -1163,7 +1163,7 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <h2 id="al_save_bitmap_f">al_save_bitmap_f</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_save_bitmap_f(ALLEGRO_FILE *fp, <span class="dt">const</span> <span class="dt">char</span> *ident,
    ALLEGRO_BITMAP *bitmap)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L281https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L282">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L281">Source Code</a></p>
 <p>Saves an <a href="graphics.html#allegro_bitmap">ALLEGRO_BITMAP</a> to an <a href="file.html#allegro_file">ALLEGRO_FILE</a> stream. The file type is determined by the passed 'ident' parameter, which is a file name extension including the leading dot.</p>
 <p>Returns true on success, false on error. The file remains open afterwards.</p>
 <blockquote>
@@ -1173,7 +1173,7 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <h2 id="al_register_bitmap_identifier">al_register_bitmap_identifier</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_register_bitmap_identifier(<span class="dt">const</span> <span class="dt">char</span> *extension,
    bool (*identifier)(ALLEGRO_FILE *f))</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L164https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L165">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/bitmap_io.c#L164">Source Code</a></p>
 <p>Register an identify handler for <a href="graphics.html#al_identify_bitmap">al_identify_bitmap</a>. The given function will be used to detect files for the given extension. It will be called with a single argument of type <a href="file.html#allegro_file">ALLEGRO_FILE</a> which is a file handle opened for reading and located at the first byte of the file. The handler should try to read as few bytes as possible to safely determine if the given file contents correspond to the type with the extension and return true in that case, false otherwise. The file handle must not be closed but there is no need to reset it to the beginning.</p>
 <p>The extension should include the leading dot ('.') character. It will be matched case-insensitively.</p>
 <p>The <code>identifier</code> argument may be NULL to unregister an entry.</p>
@@ -1260,7 +1260,7 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <p>See also: <a href="graphics.html#allegro_render_state">ALLEGRO_RENDER_STATE</a>, <a href="graphics.html#allegro_render_function">ALLEGRO_RENDER_FUNCTION</a>, <a href="graphics.html#allegro_write_mask_flags">ALLEGRO_WRITE_MASK_FLAGS</a></p>
 <p class="timestamp">
 Allegro version 5.1.14 (GIT)
- - Last updated: 2016-03-19 05:07:10 UTC
+ - Last updated: 2016-03-24 04:07:14 UTC
 </p>
 </div>
 </body>
