@@ -104,11 +104,12 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="#drawing-primitives">Drawing primitives</a></li>
 <li><a href="#blending">Blending</a></li>
 <li><a href="#sound">Sound</a></li>
+<li><a href="#unstable-api">Unstable API</a></li>
 <li><a href="#not-the-end">Not the end</a></li>
 </ul>
 </div>
 <h1 id="introduction">Introduction</h1>
-<p>Welcome to Allegro 5.0!</p>
+<p>Welcome to Allegro 5!</p>
 <p>This short guide should point you at the parts of the API that you'll want to know about first. It's not a tutorial, as there isn't much discussion, only links into the manual. The rest you'll have to discover for yourself. Read the examples, and ask questions at <a href="http://www.allegro.cc/forums/">Allegro.cc</a>.</p>
 <p>There is an unofficial tutorial at <a href="http://wiki.allegro.cc/">the wiki</a>. Be aware that, being on the wiki, it may be a little out of date, but the changes should be minor. Hopefully more will sprout when things stabilise, as they did for earlier versions of Allegro.</p>
 <h1 id="structure-of-the-library-and-its-addons">Structure of the library and its addons</h1>
@@ -168,12 +169,15 @@ allegro_native_dialog -&gt; allegro</code></pre>
 <p>If the above sounds too simple and you can't help but think about clipping and latency issues, don't worry. Allegro gives you full control over how much or little you want its sound system to do. The <a href="audio.html#al_reserve_samples">al_reserve_samples</a> function mentioned above only sets up a default mixer and a number of sample instances but you don't need to use it.</p>
 <p>Instead, to get a &quot;direct connection&quot; to the sound system you would use an <a href="audio.html#allegro_voice">ALLEGRO_VOICE</a> (but depending on the platform only one such voice is guaranteed to be available and it might require a specific format of audio data). Therefore all sound can be first routed through an <a href="audio.html#allegro_mixer">ALLEGRO_MIXER</a> which is connected to such a voice (or another mixer) and will mix together all sample data fed to it.</p>
 <p>You can then directly stream real-time sample data to a mixer or a voice using an <a href="audio.html#allegro_audio_stream">ALLEGRO_AUDIO_STREAM</a> or play complete sounds using an <a href="audio.html#allegro_sample_instance">ALLEGRO_SAMPLE_INSTANCE</a>. The latter simply points to an <a href="audio.html#allegro_sample">ALLEGRO_SAMPLE</a> and will stream it for you.</p>
+<h1 id="unstable-api">Unstable API</h1>
+<p>Some of Allegro's API is marked as unstable, which means that future versions of Allegro it may change or even be removed entirely! If you want to experiment with unstable API, define <code>ALLEGRO_UNSTABLE</code> macro before including Allegro's headers.</p>
+<p>Note that when you define that macro, the version check performed by <a href="system.html#al_install_system">al_install_system</a> and <a href="system.html#al_init">al_init</a> becomes more scrict. See documentation of those functions for details.</p>
 <h1 id="not-the-end">Not the end</h1>
 <p>There's a heap of stuff we haven't even mentioned yet.</p>
 <p>Enjoy!</p>
 <p class="timestamp">
 Allegro version 5.1.14 (GIT)
- - Last updated: 2016-03-24 04:07:10 UTC
+ - Last updated: 2016-03-27 22:08:49 UTC
 </p>
 </div>
 </body>

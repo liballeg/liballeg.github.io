@@ -164,7 +164,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.0</p>
 <h1 id="allegro_mouse_emulation_mode">ALLEGRO_MOUSE_EMULATION_MODE</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">enum</span> ALLEGRO_MOUSE_EMULATION_MODE</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/touch_input.h#L70">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/include/allegro5/touch_input.h#L71">Source Code</a></p>
 <p>Type of mouse emulation to apply.</p>
 <dl>
 <dt>ALLEGRO_MOUSE_EMULATION_NONE</dt>
@@ -184,6 +184,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </dd>
 </dl>
 <p>Since: 5.1.0</p>
+<blockquote>
+<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> Seems of limited value, as touch input tends to have different semantics compared to mouse input.</p>
+</blockquote>
 <h1 id="al_install_touch_input">al_install_touch_input</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_install_touch_input(<span class="dt">void</span>)</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/touch_input.c#L43">Source Code</a></p>
@@ -212,12 +215,18 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/touch_input.c#L104">Source Code</a></p>
 <p>Sets the kind of mouse emulation for the touch input subsystem to perform.</p>
 <p>Since: 5.1.0</p>
+<blockquote>
+<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> Seems of limited value, as touch input tends to have different semantics compared to mouse input.</p>
+</blockquote>
 <p>See also: <a href="touch.html#allegro_mouse_emulation_mode">ALLEGRO_MOUSE_EMULATION_MODE</a>, <a href="touch.html#al_get_mouse_emulation_mode">al_get_mouse_emulation_mode</a>.</p>
 <h1 id="al_get_mouse_emulation_mode">al_get_mouse_emulation_mode</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_mouse_emulation_mode(<span class="dt">void</span>)</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/5.1/src/touch_input.c#L117">Source Code</a></p>
 <p>Returns the kind of mouse emulation which the touch input subsystem is set to perform.</p>
 <p>Since: 5.1.0</p>
+<blockquote>
+<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> Seems of limited value, as touch input tends to have different semantics compared to mouse input.</p>
+</blockquote>
 <p>See also: <a href="touch.html#allegro_mouse_emulation_mode">ALLEGRO_MOUSE_EMULATION_MODE</a>, <a href="touch.html#al_set_mouse_emulation_mode">al_set_mouse_emulation_mode</a>.</p>
 <h1 id="al_get_touch_input_event_source">al_get_touch_input_event_source</h1>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_EVENT_SOURCE *al_get_touch_input_event_source(<span class="dt">void</span>)</code></pre>
@@ -231,9 +240,12 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Returns the global touch input event source for emulated mouse events. This event source generates <a href="events.html#allegro_event_mouse_axes">emulated mouse events</a> that are based on touch events.</p>
 <p>See also: <a href="events.html#allegro_event_source">ALLEGRO_EVENT_SOURCE</a>, <a href="events.html#al_register_event_source">al_register_event_source</a></p>
 <p>Since: 5.1.0</p>
+<blockquote>
+<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> Seems of limited value, as touch input tends to have different semantics compared to mouse input.</p>
+</blockquote>
 <p class="timestamp">
 Allegro version 5.1.14 (GIT)
- - Last updated: 2016-03-24 04:07:19 UTC
+ - Last updated: 2016-03-27 22:08:58 UTC
 </p>
 </div>
 </body>

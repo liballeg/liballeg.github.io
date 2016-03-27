@@ -502,6 +502,9 @@ ALLEGRO_MENU *menu = al_build_menu(menu_info);</code></pre>
 <p>Toggles the specified menu item's flags. See <a href="native_dialog.html#al_insert_menu_item">al_insert_menu_item</a> for a description of the available flags.</p>
 <p>Returns a bitfield of only the specified flags that are set after the toggle. A flag that was not toggled will not be returned, even if it is set. Returns -1 if the id is invalid.</p>
 <p>Since: 5.1.0</p>
+<blockquote>
+<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> Redundant with <code>al_get/set_menu_item_flags</code>.</p>
+</blockquote>
 <p>See also: <a href="native_dialog.html#al_get_menu_item_flags">al_get_menu_item_flags</a>, <a href="native_dialog.html#al_set_menu_item_flags">al_set_menu_item_flags</a></p>
 <h2 id="al_get_menu_item_icon">al_get_menu_item_icon</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_BITMAP *al_get_menu_item_icon(ALLEGRO_MENU *menu, <span class="dt">int</span> pos)</code></pre>
@@ -586,7 +589,7 @@ ALLEGRO_MENU *menu = al_build_menu(menu_info);</code></pre>
 <p>See also: <a href="native_dialog.html#al_set_display_menu">al_set_display_menu</a></p>
 <p class="timestamp">
 Allegro version 5.1.14 (GIT)
- - Last updated: 2016-03-24 04:07:23 UTC
+ - Last updated: 2016-03-27 22:09:03 UTC
 </p>
 </div>
 </body>

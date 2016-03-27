@@ -290,7 +290,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="audio-types">Audio types</h1>
 <h2 id="allegro_audio_depth">ALLEGRO_AUDIO_DEPTH</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">enum</span> ALLEGRO_AUDIO_DEPTH</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L70">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L71">Source Code</a></p>
 <p>Sample depth and type as well as signedness. Mixers only use 32-bit signed float (-1..+1), or 16-bit signed integers. Signedness is determined by an &quot;unsigned&quot; bit-flag applied to the depth value.</p>
 <ul>
 <li>ALLEGRO_AUDIO_DEPTH_INT8</li>
@@ -307,13 +307,13 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <h2 id="allegro_audio_pan_none">ALLEGRO_AUDIO_PAN_NONE</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#define ALLEGRO_AUDIO_PAN_NONE      (-1000.0f)</span></code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L139">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L140">Source Code</a></p>
 <p>A special value for the pan property of sample instances and audio streams. Use this value to disable panning on sample instances and audio streams, and play them without attentuation implied by panning support.</p>
 <p>ALLEGRO_AUDIO_PAN_NONE is different from a pan value of 0.0 (centered) because, when panning is enabled, we try to maintain a constant sound power level as a sample is panned from left to right. A sound coming out of one speaker should sound as loud as it does when split over two speakers. As a consequence, a sample with pan value 0.0 will be 3 dB softer than the original level.</p>
 <p>(Please correct us if this is wrong.)</p>
 <h2 id="allegro_channel_conf">ALLEGRO_CHANNEL_CONF</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">enum</span> ALLEGRO_CHANNEL_CONF</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L95">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L96">Source Code</a></p>
 <p>Speaker configuration (mono, stereo, 2.1, etc).</p>
 <ul>
 <li>ALLEGRO_CHANNEL_CONF_1</li>
@@ -326,11 +326,11 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <h2 id="allegro_mixer">ALLEGRO_MIXER</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_MIXER ALLEGRO_MIXER;</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L168">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L169">Source Code</a></p>
 <p>A mixer mixes together attached streams into a single buffer. In the process, it converts channel configurations, sample frequencies and audio depths of the attached sample instances and audio streams accordingly. You can control the quality of this conversion using ALLEGRO_MIXER_QUALITY.</p>
 <h2 id="allegro_mixer_quality">ALLEGRO_MIXER_QUALITY</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">enum</span> ALLEGRO_MIXER_QUALITY</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L129">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L130">Source Code</a></p>
 <ul>
 <li>ALLEGRO_MIXER_QUALITY_POINT - point sampling</li>
 <li>ALLEGRO_MIXER_QUALITY_LINEAR - linear interpolation</li>
@@ -338,7 +338,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <h2 id="allegro_playmode">ALLEGRO_PLAYMODE</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">enum</span> ALLEGRO_PLAYMODE</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L117">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L118">Source Code</a></p>
 <p>Sample and stream playback mode.</p>
 <ul>
 <li>ALLEGRO_PLAYMODE_ONCE</li>
@@ -347,23 +347,23 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <h2 id="allegro_sample_id">ALLEGRO_SAMPLE_ID</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_SAMPLE_ID ALLEGRO_SAMPLE_ID;</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L148">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L149">Source Code</a></p>
 <p>An ALLEGRO_SAMPLE_ID represents a sample being played via <a href="audio.html#al_play_sample">al_play_sample</a>. It can be used to later stop the sample with <a href="audio.html#al_stop_sample">al_stop_sample</a>.</p>
 <h2 id="allegro_sample">ALLEGRO_SAMPLE</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_SAMPLE ALLEGRO_SAMPLE;</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L143">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L144">Source Code</a></p>
 <p>An ALLEGRO_SAMPLE object stores the data necessary for playing pre-defined digital audio. It holds a user-specified PCM data buffer and information about its format (data length, depth, frequency, channel configuration). You can have the same ALLEGRO_SAMPLE playing multiple times simultaneously.</p>
 <p>See also: <a href="audio.html#allegro_sample_instance">ALLEGRO_SAMPLE_INSTANCE</a></p>
 <h2 id="allegro_sample_instance">ALLEGRO_SAMPLE_INSTANCE</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_SAMPLE_INSTANCE ALLEGRO_SAMPLE_INSTANCE;</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L158">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L159">Source Code</a></p>
 <p>An ALLEGRO_SAMPLE_INSTANCE object represents a playable instance of a predefined sound effect. It holds information about how the effect should be played: These playback parameters consist of the looping mode, loop start/end points, playing position, speed, gain, pan and the playmode. Whether a sample instance is currently playing or paused is also one of its properties.</p>
 <p>An instance uses the data from an <a href="audio.html#allegro_sample">ALLEGRO_SAMPLE</a> object. Multiple instances may be created from the same ALLEGRO_SAMPLE. An ALLEGRO_SAMPLE must not be destroyed while there are instances which reference it.</p>
 <p>To actually produce audio output, an ALLEGRO_SAMPLE_INSTANCE must be attached to an <a href="audio.html#allegro_mixer">ALLEGRO_MIXER</a> which eventually reaches an <a href="audio.html#allegro_voice">ALLEGRO_VOICE</a> object.</p>
 <p>See also: <a href="audio.html#allegro_sample">ALLEGRO_SAMPLE</a></p>
 <h2 id="allegro_audio_stream">ALLEGRO_AUDIO_STREAM</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_AUDIO_STREAM ALLEGRO_AUDIO_STREAM;</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L163">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L164">Source Code</a></p>
 <p>An ALLEGRO_AUDIO_STREAM object is used to stream generated audio to the sound device, in real-time. This is done by reading from a buffer, which is split into a number of fragments. Whenever a fragment has finished playing, the user can refill it with new data.</p>
 <p>As with <a href="audio.html#allegro_sample_instance">ALLEGRO_SAMPLE_INSTANCE</a> objects, streams store information necessary for playback, so you may not play the same stream multiple times simultaneously. Streams also need to be attached to an <a href="audio.html#allegro_mixer">ALLEGRO_MIXER</a>, which, eventually, reaches an <a href="audio.html#allegro_voice">ALLEGRO_VOICE</a> object.</p>
 <p>While playing, you must periodically fill fragments with new audio data. To know when a new fragment is ready to be filled, you can either directly check with <a href="audio.html#al_get_available_audio_stream_fragments">al_get_available_audio_stream_fragments</a>, or listen to events from the stream.</p>
@@ -372,7 +372,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>If the stream is created by <a href="audio.html#al_load_audio_stream">al_load_audio_stream</a> then it will also generate an ALLEGRO_EVENT_AUDIO_STREAM_FINISHED event if it reaches the end of the file and is not set to loop.</p>
 <h2 id="allegro_voice">ALLEGRO_VOICE</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_VOICE ALLEGRO_VOICE;</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L173">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L174">Source Code</a></p>
 <p>A voice represents an audio device on the system, which may be a real device, or an abstract device provided by the operating system. To play back audio, you would attach a mixer, sample instance or audio stream to a voice.</p>
 <p>See also: <a href="audio.html#allegro_mixer">ALLEGRO_MIXER</a>, <a href="audio.html#allegro_sample">ALLEGRO_SAMPLE</a>, <a href="audio.html#allegro_audio_stream">ALLEGRO_AUDIO_STREAM</a></p>
 <h1 id="setting-up-audio">Setting up audio</h1>
@@ -1173,9 +1173,12 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p>Recording is supported by the ALSA, AudioQueue, DirectSound8, and PulseAudio drivers. Enumerating or choosing other recording devices is not yet supported.</p>
 <h2 id="allegro_audio_recorder">ALLEGRO_AUDIO_RECORDER</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_AUDIO_RECORDER ALLEGRO_AUDIO_RECORDER;</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L178">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L180">Source Code</a></p>
 <p>An opaque datatype that represents a recording device.</p>
 <p>Since: 5.1.1</p>
+<blockquote>
+<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> The API may need a slight redesign.</p>
+</blockquote>
 <h2 id="allegro_audio_recorder_event">ALLEGRO_AUDIO_RECORDER_EVENT</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_AUDIO_RECORDER_EVENT ALLEGRO_AUDIO_RECORDER_EVENT;</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/allegro5/allegro_audio.h#L58">Source Code</a></p>
@@ -1190,10 +1193,16 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 </ul>
 <p>Since 5.1.1</p>
 <p>See also: <a href="audio.html#al_get_audio_recorder_event">al_get_audio_recorder_event</a></p>
+<blockquote>
+<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> The API may need a slight redesign.</p>
+</blockquote>
 <h2 id="allegro_event_audio_recorder_fragment">ALLEGRO_EVENT_AUDIO_RECORDER_FRAGMENT</h2>
 <p>Sent after a user-specified number of samples have been recorded.</p>
 <p>You must always check the values for the buffer and samples as they are not guaranteed to be exactly what was originally specified.</p>
 <p>Since: 5.1.1</p>
+<blockquote>
+<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> The API may need a slight redesign.</p>
+</blockquote>
 <h2 id="al_create_audio_recorder">al_create_audio_recorder</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_AUDIO_RECORDER *al_create_audio_recorder(size_t fragment_count,
    <span class="dt">unsigned</span> <span class="dt">int</span> samples, <span class="dt">unsigned</span> <span class="dt">int</span> frequency,
@@ -1213,12 +1222,18 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p>The recorder will not record until you start it with <a href="audio.html#al_start_audio_recorder">al_start_audio_recorder</a>.</p>
 <p>On failure, returns NULL.</p>
 <p>Since: 5.1.1</p>
+<blockquote>
+<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> The API may need a slight redesign.</p>
+</blockquote>
 <h2 id="al_start_audio_recorder">al_start_audio_recorder</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_start_audio_recorder(ALLEGRO_AUDIO_RECORDER *r)</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/recorder.c#L89">Source Code</a></p>
 <p>Begin recording into the fragment buffer. Once a complete fragment has been captured (as specified in <a href="audio.html#al_create_audio_recorder">al_create_audio_recorder</a>), an <a href="audio.html#allegro_event_audio_recorder_fragment">ALLEGRO_EVENT_AUDIO_RECORDER_FRAGMENT</a> event will be triggered.</p>
 <p>Returns true if it was able to begin recording.</p>
 <p>Since: 5.1.1</p>
+<blockquote>
+<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> The API may need a slight redesign.</p>
+</blockquote>
 <h2 id="al_stop_audio_recorder">al_stop_audio_recorder</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_stop_audio_recorder(ALLEGRO_AUDIO_RECORDER *r)</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/recorder.c#L103">Source Code</a></p>
@@ -1226,30 +1241,45 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p>You may still receive a few events after you call this function as the device flushes the buffer.</p>
 <p>If you restart the recorder, it will begin recording at the beginning of the next fragment buffer.</p>
 <p>Since: 5.1.1</p>
+<blockquote>
+<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> The API may need a slight redesign.</p>
+</blockquote>
 <h2 id="al_is_audio_recorder_recording">al_is_audio_recorder_recording</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_is_audio_recorder_recording(ALLEGRO_AUDIO_RECORDER *r)</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/recorder.c#L115">Source Code</a></p>
 <p>Returns true if the audio recorder is currently capturing data and generating events.</p>
 <p>Since: 5.1.1</p>
+<blockquote>
+<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> The API may need a slight redesign.</p>
+</blockquote>
 <h2 id="al_get_audio_recorder_event">al_get_audio_recorder_event</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_AUDIO_RECORDER_EVENT *al_get_audio_recorder_event(ALLEGRO_EVENT *event)</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/recorder.c#L128">Source Code</a></p>
 <p>Returns the event as an <a href="audio.html#allegro_audio_recorder_event">ALLEGRO_AUDIO_RECORDER_EVENT</a>.</p>
 <p>Since: 5.1.1</p>
+<blockquote>
+<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> The API may need a slight redesign.</p>
+</blockquote>
 <h2 id="al_get_audio_recorder_event_source">al_get_audio_recorder_event_source</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_EVENT_SOURCE *al_get_audio_recorder_event_source(ALLEGRO_AUDIO_RECORDER *r)</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/recorder.c#L136">Source Code</a></p>
 <p>Returns the event source for the recorder that generates the various recording events.</p>
 <p>Since: 5.1.1</p>
+<blockquote>
+<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> The API may need a slight redesign.</p>
+</blockquote>
 <h2 id="al_destroy_audio_recorder">al_destroy_audio_recorder</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_destroy_audio_recorder(ALLEGRO_AUDIO_RECORDER *r)</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/recorder.c#L143">Source Code</a></p>
 <p>Destroys the audio recorder and frees all resources associated with it. It is safe to destroy a recorder that is recording.</p>
 <p>You may receive events after the recorder has been destroyed. They must be ignored, as the fragment buffer will no longer be valid.</p>
 <p>Since: 5.1.1</p>
+<blockquote>
+<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> The API may need a slight redesign.</p>
+</blockquote>
 <p class="timestamp">
 Allegro version 5.1.14 (GIT)
- - Last updated: 2016-03-24 04:07:21 UTC
+ - Last updated: 2016-03-27 22:09:01 UTC
 </p>
 </div>
 </body>

@@ -134,7 +134,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </div>
 <p>These functions are declared in the following header file. Link with allegro_video.</p>
 <pre class="sourceCode c"><code class="sourceCode c"> <span class="ot">#include &lt;allegro5/allegro_video.h&gt;</span></code></pre>
-<p>Currently we have an ffmpeg backend and a Ogg backend (Theora + Vorbis). See <a href="http://ffmpeg.org/" class="uri">http://ffmpeg.org/</a> and <a href="http://xiph.org/" class="uri">http://xiph.org/</a> for installation instructions, licensing information and supported video formats.</p>
+<p>Currently we have an Ogg backend (Theora + Vorbis). See <a href="http://xiph.org/" class="uri">http://xiph.org/</a> for installation instructions, licensing information and supported video formats.</p>
 <h1 id="allegro_video_event_type">ALLEGRO_VIDEO_EVENT_TYPE</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">enum</span> ALLEGRO_VIDEO_EVENT_TYPE</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/allegro5/allegro_video.h#L35">Source Code</a></p>
@@ -160,12 +160,12 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.12</p>
 <h1 id="al_shutdown_video_addon">al_shutdown_video_addon</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_shutdown_video_addon(<span class="dt">void</span>)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L292">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L278">Source Code</a></p>
 <p>Shut down the video addon. This is done automatically at program exit, but can be called any time the user wishes as well.</p>
 <p>Since: 5.1.12</p>
 <h1 id="al_get_allegro_video_version">al_get_allegro_video_version</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">uint32_t</span> al_get_allegro_video_version(<span class="dt">void</span>)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L306">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L292">Source Code</a></p>
 <p>Returns the (compiled) version of the addon, in the same format as <a href="system.html#al_get_allegro_version">al_get_allegro_version</a>.</p>
 <p>Since: 5.1.12</p>
 <h1 id="al_open_video">al_open_video</h1>
@@ -247,11 +247,11 @@ al_draw_scaled_bitmap(frame, <span class="dv">0</span>, <span class="dv">0</span
 <h1 id="al_seek_video">al_seek_video</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_seek_video(ALLEGRO_VIDEO *video, <span class="dt">double</span> pos_in_seconds)</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/video/video.c#L215">Source Code</a></p>
-<p>Seek to a different position in the video. Right now this does not work very well in the ffmpeg backend when seeking backwards and will often lose audio/video synchronization if doing so.</p>
+<p>Seek to a different position in the video. Currently only seeking to the beginning of the video is supported.</p>
 <p>Since: 5.1.0</p>
 <p class="timestamp">
 Allegro version 5.1.14 (GIT)
- - Last updated: 2016-03-24 04:07:25 UTC
+ - Last updated: 2016-03-27 22:09:05 UTC
 </p>
 </div>
 </body>
