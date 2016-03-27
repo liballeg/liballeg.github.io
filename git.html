@@ -83,10 +83,10 @@ A game programming library
 <p>You can clone the repository from either of these two URLs:</p>
 <pre><code>https://github.com/liballeg/allegro5.git
 git@github.com:liballeg/allegro5.git</code></pre>
-<p>By default you will be on the 5.1 branch. You can change the branch from your working tree like this:</p>
+<p>By default you will be on the master branch. You can change the branch from your working tree like this:</p>
 <pre><code>git checkout 5.0
 git checkout 4.4
-git checkout 5.1</code></pre>
+git checkout master</code></pre>
 <h2 id="usage">Usage</h2>
 <p>A quick reminder how to use git.</p>
 <p>To get the repository:</p>
@@ -96,15 +96,15 @@ git checkout 5.1</code></pre>
 git config --global user.email &quot;USERNAME@example.net&quot;</code></pre>
 <p>To make sure you're in the right branch and have the latest changes:</p>
 <pre><code>cd allegro
-git checkout 5.1
-git pull --rebase origin 5.1</code></pre>
+git checkout master
+git pull --rebase origin master</code></pre>
 <p>To locally commit your changes:</p>
 <pre><code>git add -p
 git commit -v</code></pre>
 <p>To share your local commit (send as attachments to the Allegro developers mailing list):</p>
 <pre><code>git format-patch HEAD^</code></pre>
-<p>For committers, to push changes on the local 5.1 branch to the remote 5.1 branch:</p>
-<pre><code>git push origin 5.1</code></pre>
+<p>For committers, to push changes on the local master branch to the remote master branch:</p>
+<pre><code>git push origin master</code></pre>
 <h2 id="test-results">Test results</h2>
 <p>Daily test results can be seen here: <a href="http://allegro5.org" class="uri">http://allegro5.org</a></p>
 </div>
