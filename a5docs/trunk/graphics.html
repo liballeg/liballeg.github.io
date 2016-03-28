@@ -504,7 +504,7 @@ al_draw_tinted_bitmap(bmp, c, <span class="dv">0</span>, <span class="dv">0</spa
 <p>If you create a bitmap when there is no current display (for example because you have not called <a href="display.html#al_create_display">al_create_display</a> in the current thread) and are using the ALLEGRO_CONVERT_BITMAP bitmap flag (which is set by default) then the bitmap will be created successfully, but as a memory bitmap. This function converts all such bitmaps to proper video bitmaps belonging to the current display.</p>
 <p>Note that video bitmaps get automatically converted back to memory bitmaps when the last display is destroyed.</p>
 <p>This operation will preserve all bitmap flags except ALLEGRO_VIDEO_BITMAP and ALLEGRO_MEMORY_BITMAP.</p>
-<p>Since: 5.1.14</p>
+<p>Since: 5.2.0</p>
 <p>See also: <a href="graphics.html#al_convert_bitmap">al_convert_bitmap</a>, <a href="graphics.html#al_create_bitmap">al_create_bitmap</a></p>
 <h2 id="al_destroy_bitmap">al_destroy_bitmap</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_destroy_bitmap(ALLEGRO_BITMAP *bitmap)</code></pre>
@@ -1259,8 +1259,8 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <p>Since: 5.1.2</p>
 <p>See also: <a href="graphics.html#allegro_render_state">ALLEGRO_RENDER_STATE</a>, <a href="graphics.html#allegro_render_function">ALLEGRO_RENDER_FUNCTION</a>, <a href="graphics.html#allegro_write_mask_flags">ALLEGRO_WRITE_MASK_FLAGS</a></p>
 <p class="timestamp">
-Allegro version 5.1.14 (GIT)
- - Last updated: 2016-03-27 22:08:53 UTC
+Allegro version 5.2.0 (GIT)
+ - Last updated: 2016-03-28 02:08:38 UTC
 </p>
 </div>
 </body>
