@@ -81,18 +81,24 @@ A game programming library
 <p>Allegro is a cross-platform library mainly aimed at video game and multimedia programming. It handles common, low-level tasks such as creating windows, accepting user input, loading data, drawing images, playing sounds, etc. and generally abstracting away the underlying platform. However, Allegro is <em>not</em> a game engine: you are free to design and structure your program as you like.</p>
 <p>Allegro 5 has the following additional features:</p>
 <ul>
-<li>Supported on Windows, Linux, Mac OSX, iPhone and Android<sup>†</sup></li>
+<li>Supported on Windows, Linux, Mac OSX, iPhone and Android</li>
 <li>User-friendly, intuitive C API usable from C++ and many other languages</li>
 <li>Hardware accelerated bitmap and graphical primitive drawing support (via OpenGL or Direct3D)</li>
-<li>Audio recording<sup>†</sup> support</li>
+<li>Audio recording support</li>
 <li>Font loading and drawing</li>
-<li>Video playback<sup>†</sup></li>
-<li>Abstractions over shaders<sup>†</sup> and low-level polygon drawing</li>
+<li>Video playback</li>
+<li>Abstractions over shaders and low-level polygon drawing</li>
 <li>And <a href="http://liballeg.org/a5docs/trunk/getting_started.html">more</a>!</li>
 </ul>
-<p><sup>†</sup> <em>5.1.x only</em></p>
 <!-- we must use raw HTML to avoid pandoc creating a div -->
 <h1 id="news">News</h1>
+<h2 id="allegro-5.2.0-released">2016-04-01 - Allegro 5.2.0 released!</h2>
+<p>After many years of development in the unstable branch, the next stable version of Allegro is ready for release! This version brings most of the features from the unstable branch, but now with a guarantee of backwards source and ABI compatibility. Allegro 5.2 is source but <em>not</em> binary compatible with 5.0.</p>
+<p>Allegro 5.2 is developed a little differently than 5.0 and 5.1 were. This version combines both unstable and stable APIs in one branch. The unstable branch is no more! Unstable APIs may be changed between versions, or even removed entirely. Because of this, to use them you must opt into this instability by defining <code>ALLEGRO_UNSTABLE</code> definition before including Allegro's headers.</p>
+<p>Combining the two branches will result in more rapid bug fixes and faster addition of new features.</p>
+<p>You can <a href="http://download.gna.org/allegro/allegro/5.2.0/">download</a> it from Gna.org. Additional packages for other platforms are available on the <a href="download.html">downloads</a> page.</p>
+<p>The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes-5.2.html">changes</a>.</p>
+<p>We would like to thank everyone who has contributed to Allegro during all these years, not only the developers, but the users who have tested pre-releases, reported bugs and submitted patches.</p>
 <h2 id="allegro-now-developed-on-the-master-branch.">2016-03-27 - Allegro now developed on the master branch.</h2>
 <p>Allegro's development has moved from '5.1' branch to the 'master' branch. Update your clones and scripts which pull the development version accordingly!</p>
 <h2 id="allegro-5.1.13.1-wip-released">2016-02-28 - Allegro 5.1.13.1 (WIP) released!</h2>

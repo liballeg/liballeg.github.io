@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Allegro changelog for 5.2.x series</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="web_style.css" type="text/css" />
+  <link rel="alternate" type="application/atom+xml"
+      href="feed_atom.xml" title="Allegro news"
+  />
+</head>
+<body>
+<div id="main_header">
+<div id="header_container">
+<img id="logo" src="images/logo.png" alt="Allegro" height="58" width="186" />
+<div id="title">
+A game programming library
+</div>
+</div>
+</div>
+<div id="left">
+<div id="sidebar">
+<ul>
+<li><strong>Allegro</strong>
+<ul>
+<li><a href="index.html">About</a></li>
+<li><a href="git.html">Git repository</a></li>
+<li><a href="license.html">License</a></li>
+<li><a href="bindings.html">Language bindings</a></li>
+</ul></li>
+<li><strong>Downloads</strong>
+<ul>
+<li><strong><a href="download.html">Latest version</a></strong></li>
+<li><a href="old.html">Older versions</a></li>
+<li><a href="addons.html">Extra addons</a></li>
+</ul></li>
+<li><strong>Documentation</strong>
+<ul>
+<li><strong><a href="http://liballeg.org/a5docs/trunk/">Latest version</a></strong></li>
+<li><a href="api.html">All versions</a></li>
+<li><a href="docs.html">Tutorials</a></li>
+<li><a href="books.html">Books</a></li>
+<li><a href="http://wiki.allegro.cc/">Wiki</a></li>
+</ul></li>
+<li><strong>Support</strong>
+<ul>
+<li><a href="http://www.allegro.cc/forums/">Forums</a></li>
+<li><a href="maillist.html">Mailing lists</a></li>
+<li><a href="https://github.com/liballeg/allegro5/issues">Bug tracker</a></li>
+<li><a href="irc.html">IRC</a></li>
+</ul></li>
+<li><strong>Community</strong>
+<ul>
+<li><strong><a href="http://www.allegro.cc/">Allegro.cc</a></strong></li>
+</ul></li>
+<li><strong>Misc</strong>
+<ul>
+<li><a href="readme.html">History</a></li>
+<li><a href="oldnews.html">Older news</a></li>
+<li><a href="logos.html">Logos</a></li>
+<li><a href="digmid.html">DIGMID</a></li>
+<li><a href="links.html">Links</a></li>
+<li><a href="mirrors.html">Mirrors</a></li>
+<li><a href="webmasters.html">Webmasters</a></li>
+<li><a href="humor.html">Humor</a></li>
+</ul></li>
+</ul>
+<!-- keep blank line for correct HTML -->
+</div>
+<!-- sidebar -->
+<div id="hosting">
+<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/> <a href="http://gna.org/projects/allegro">Gna project</a></p>
+</div>
+<!-- hosting -->
+</div>
+<!-- left -->
+<div id="content">
+<div id="header">
+<h1 class="title">Allegro changelog for 5.2.x series</h1>
+</div>
+<p>These lists serve as summaries; the full histories are in the git repository.</p>
+<h1 id="changes-from-5.1.13.1-to-5.2.0-april-2016">Changes from 5.1.13.1 to 5.2.0 (April 2016)</h1>
+<p>The main developers this time were: SiegeLord, Polybios, Mark Oates, Elias Pschernig and Jonathan Seeley.</p>
+<p>Core:</p>
+<ul>
+<li><p>Add <code>al_is_event_source_registered</code> (koro).</p></li>
+<li><p>Make destructors log messages more meaningful.</p></li>
+<li><p>Mouse emulation API for touch devices is now unstable.</p></li>
+<li><p>Rename <code>al_convert_bitmaps</code> to <code>al_convert_memory_bitmaps</code>.</p></li>
+</ul>
+<p>Input:</p>
+<ul>
+<li>Haptic API is now unstable.</li>
+</ul>
+<p>Android port:</p>
+<ul>
+<li>Fixed bogus display destruction on Android which previously caused zombie states.</li>
+</ul>
+<p>OSX port:</p>
+<ul>
+<li><p>Fix OSX mouse state position scaling.</p></li>
+<li><p>Fix other various scaling issues.</p></li>
+<li><p>Make toggling ALLEGRO_FRAMELESS work.</p></li>
+<li><p>Fix an issue where fullscreen windows would occasionally leave empty space for the titlebar.</p></li>
+<li><p>Fix incorrect debug assert in the audio addon.</p></li>
+</ul>
+<p>Windows port:</p>
+<ul>
+<li><p>Make Allegro apps DPI-aware by default, which means that they won't be scaled by the OS.</p></li>
+<li><p>Fix compilation for the CPU detection code on some compilers.</p></li>
+<li><p>Don't sync the D3D bitmap when locking with WRITE_ONLY.</p></li>
+<li><p>Remove dsound.dll runtime loading.</p></li>
+<li><p>Don't link xinput and d3dx9 libraries (they are still required at runtime though if you're using the relevant features).</p></li>
+<li><p>Fix a bug where al_wait_for_event_timed can block despite 0 timeout (Aldo Nunez).</p></li>
+</ul>
+<p>Build system:</p>
+<ul>
+<li>Install PDB files when building with MSVC.</li>
+</ul>
+<p>Documentation:</p>
+<ul>
+<li><p>Fix source links for API entries with multi-line prototypes.</p></li>
+<li><p>Make the readme look prettier on GitHub.</p></li>
+<li><p>Tons of assorted documentation improvements, especially for the audio addon.</p></li>
+</ul>
+<p>Other:</p>
+<ul>
+<li>Add a stability system where some unstable APIs need to be opted into by defining <code>ALLEGRO_UNSTABLE</code> before including Allegro headers.</li>
+</ul>
+<p>Audio addon:</p>
+<ul>
+<li><p>Fix sporadic deadlocks</p></li>
+<li><p>Recorder API is now unstable.</p></li>
+</ul>
+<p>Native dialog addon:</p>
+<ul>
+<li><code>al_toggle_menu_item_flags</code> is now unstable.</li>
+</ul>
+<p>TTF addon:</p>
+<ul>
+<li>Add an option to pre-cache the glyphs, useful for platforms where the current algorithm is buggy (typically some Android devices).</li>
+</ul>
+<p>Video addon:</p>
+<ul>
+<li>Temporarily remove FFmpeg backend, as it was too buggy, didn't build and was too hard to fix.</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li><p>Make <code>ex_vsync</code> less likely cause a seizure.</p></li>
+<li><p>Make <code>ex_draw_bitmap</code> and <code>ex_touch_input</code> switch in/out on Android.</p></li>
+<li><p>Add documentation to <code>ex_bitmap</code> (Daniel Johnson).</p></li>
+<li><p>Improve <code>ex_logo</code> text entry experience.</p></li>
+</ul>
+<!-- vi: set sts=3 sw=3 et: -->
+</div>
+<!-- content -->
+<div id="footer">
+<div id="contact">
+<p><a href="webmasters.html">Contact the webmasters</a></p>
+</div>
+<!-- contact -->
+<p><a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
+    height="33" width="88" vspace="1" hspace="1" /> </a> <a href="http://www.anybrowser.org/campaign/"> <img src="images/anyb.png" border="0" alt="Viewable with any browser"
+    height="31" width="88" vspace="1" hspace="1" /> </a></p>
+</div>
+<!-- footer -->
+</body>
+</html>
