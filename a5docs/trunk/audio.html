@@ -637,7 +637,7 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_set_sample_instance_speed">al_set_sample_instance_speed</a></p>
 <h2 id="al_set_sample_instance_speed">al_set_sample_instance_speed</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_set_sample_instance_speed(ALLEGRO_SAMPLE_INSTANCE *spl, <span class="dt">float</span> val)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_instance.c#L406">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_instance.c#L407">Source Code</a></p>
 <p>Set the relative playback speed of the sample instance. 1.0 means normal speed.</p>
 <p>Return true on success, false on failure. Will fail if the sample instance is attached directly to a voice.</p>
 <p>See also: <a href="audio.html#al_get_sample_instance_speed">al_get_sample_instance_speed</a></p>
@@ -648,7 +648,7 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_set_sample_instance_gain">al_set_sample_instance_gain</a></p>
 <h2 id="al_set_sample_instance_gain">al_set_sample_instance_gain</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_set_sample_instance_gain(ALLEGRO_SAMPLE_INSTANCE *spl, <span class="dt">float</span> val)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_instance.c#L447">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_instance.c#L448">Source Code</a></p>
 <p>Set the playback gain of the sample instance.</p>
 <p>Returns true on success, false on failure. Will fail if the sample instance is attached directly to a voice.</p>
 <p>See also: <a href="audio.html#al_get_sample_instance_gain">al_get_sample_instance_gain</a></p>
@@ -659,7 +659,7 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_set_sample_instance_pan">al_set_sample_instance_pan</a>.</p>
 <h2 id="al_set_sample_instance_pan">al_set_sample_instance_pan</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_set_sample_instance_pan(ALLEGRO_SAMPLE_INSTANCE *spl, <span class="dt">float</span> val)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_instance.c#L478">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_instance.c#L479">Source Code</a></p>
 <p>Set the pan value on a sample instance. A value of -1.0 means to play the sample only through the left speaker; +1.0 means only through the right speaker; 0.0 means the sample is centre balanced. A special value <a href="audio.html#allegro_audio_pan_none">ALLEGRO_AUDIO_PAN_NONE</a> disables panning and plays the sample at its original level. This will be louder than a pan value of 0.0.</p>
 <blockquote>
 <p>Note: panning samples with more than two channels doesn't work yet.</p>
@@ -679,7 +679,7 @@ default voice &lt;-- default mixer &lt;---         .
 <h2 id="al_set_sample_instance_playmode">al_set_sample_instance_playmode</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_set_sample_instance_playmode(ALLEGRO_SAMPLE_INSTANCE *spl,
    ALLEGRO_PLAYMODE val)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_instance.c#L513">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_instance.c#L514">Source Code</a></p>
 <p>Set the playback mode of the sample instance.</p>
 <p>Returns true on success, false on failure.</p>
 <p>See also: <a href="audio.html#allegro_playmode">ALLEGRO_PLAYMODE</a>, <a href="audio.html#al_get_sample_instance_playmode">al_get_sample_instance_playmode</a></p>
@@ -690,7 +690,7 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_set_sample_instance_playing">al_set_sample_instance_playing</a></p>
 <h2 id="al_set_sample_instance_playing">al_set_sample_instance_playing</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_set_sample_instance_playing(ALLEGRO_SAMPLE_INSTANCE *spl, bool val)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_instance.c#L542">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_instance.c#L543">Source Code</a></p>
 <p>Change whether the sample instance is playing.</p>
 <p>The instance does not need to be attached to anything (since: 5.1.8).</p>
 <p>Returns true on success, false on failure.</p>
@@ -702,19 +702,19 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_attach_sample_instance_to_mixer">al_attach_sample_instance_to_mixer</a>, <a href="audio.html#al_attach_sample_instance_to_voice">al_attach_sample_instance_to_voice</a>, <a href="audio.html#al_detach_sample_instance">al_detach_sample_instance</a></p>
 <h2 id="al_detach_sample_instance">al_detach_sample_instance</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_detach_sample_instance(ALLEGRO_SAMPLE_INSTANCE *spl)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_instance.c#L570">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_instance.c#L571">Source Code</a></p>
 <p>Detach the sample instance from whatever it's attached to, if anything.</p>
 <p>Returns true on success.</p>
 <p>See also: <a href="audio.html#al_attach_sample_instance_to_mixer">al_attach_sample_instance_to_mixer</a>, <a href="audio.html#al_attach_sample_instance_to_voice">al_attach_sample_instance_to_voice</a>, <a href="audio.html#al_get_sample_instance_attached">al_get_sample_instance_attached</a></p>
 <h2 id="al_get_sample">al_get_sample</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_SAMPLE *al_get_sample(ALLEGRO_SAMPLE_INSTANCE *spl)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_instance.c#L647">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_instance.c#L648">Source Code</a></p>
 <p>Return the sample data that the sample instance plays.</p>
 <p>Note this returns a pointer to an internal structure, <em>not</em> the <a href="audio.html#allegro_sample">ALLEGRO_SAMPLE</a> that you may have passed to <a href="audio.html#al_set_sample">al_set_sample</a>. However, the sample buffer of the returned ALLEGRO_SAMPLE will be the same as the one that was used to create the sample (passed to <a href="audio.html#al_create_sample">al_create_sample</a>). You can use <a href="audio.html#al_get_sample_data">al_get_sample_data</a> on the return value to retrieve and compare it.</p>
 <p>See also: <a href="audio.html#al_set_sample">al_set_sample</a></p>
 <h2 id="al_set_sample">al_set_sample</h2>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_set_sample(ALLEGRO_SAMPLE_INSTANCE *spl, ALLEGRO_SAMPLE *data)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_instance.c#L582">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/audio/kcm_instance.c#L583">Source Code</a></p>
 <p>Change the sample data that a sample instance plays. This can be quite an involved process.</p>
 <p>First, the sample is stopped if it is not already.</p>
 <p>Next, if data is NULL, the sample is detached from its parent (if any).</p>
@@ -1278,8 +1278,8 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> The API may need a slight redesign.</p>
 </blockquote>
 <p class="timestamp">
-Allegro version 5.2.0 (GIT)
- - Last updated: 2016-03-28 02:15:13 UTC
+Allegro version 5.2.1 (GIT)
+ - Last updated: 2016-04-02 04:07:27 UTC
 </p>
 </div>
 </body>
