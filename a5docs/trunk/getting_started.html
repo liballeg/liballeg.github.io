@@ -170,14 +170,14 @@ allegro_native_dialog -&gt; allegro</code></pre>
 <p>Instead, to get a &quot;direct connection&quot; to the sound system you would use an <a href="audio.html#allegro_voice">ALLEGRO_VOICE</a> (but depending on the platform only one such voice is guaranteed to be available and it might require a specific format of audio data). Therefore all sound can be first routed through an <a href="audio.html#allegro_mixer">ALLEGRO_MIXER</a> which is connected to such a voice (or another mixer) and will mix together all sample data fed to it.</p>
 <p>You can then directly stream real-time sample data to a mixer or a voice using an <a href="audio.html#allegro_audio_stream">ALLEGRO_AUDIO_STREAM</a> or play complete sounds using an <a href="audio.html#allegro_sample_instance">ALLEGRO_SAMPLE_INSTANCE</a>. The latter simply points to an <a href="audio.html#allegro_sample">ALLEGRO_SAMPLE</a> and will stream it for you.</p>
 <h1 id="unstable-api">Unstable API</h1>
-<p>Some of Allegro's API is marked as unstable, which means that future versions of Allegro it may change or even be removed entirely! If you want to experiment with unstable API, define <code>ALLEGRO_UNSTABLE</code> macro before including Allegro's headers.</p>
+<p>Some of Allegro's API is marked as unstable, which means that in future versions of Allegro it may change or even be removed entirely! If you want to experiment with the unstable API, define <code>ALLEGRO_UNSTABLE</code> macro before including Allegro's headers.</p>
 <p>Note that when you define that macro, the version check performed by <a href="system.html#al_install_system">al_install_system</a> and <a href="system.html#al_init">al_init</a> becomes more scrict. See documentation of those functions for details.</p>
 <h1 id="not-the-end">Not the end</h1>
 <p>There's a heap of stuff we haven't even mentioned yet.</p>
 <p>Enjoy!</p>
 <p class="timestamp">
 Allegro version 5.2.1 (GIT)
- - Last updated: 2016-04-03 21:08:47 UTC
+ - Last updated: 2016-04-05 06:07:09 UTC
 </p>
 </div>
 </body>
