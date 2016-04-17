@@ -406,13 +406,13 @@ bbh |   |    **  |       bbh +---+-------+
 <p><a href="https://github.com/liballeg/allegro5/blob/5.1/addons/font/text.c#L400">Source Code</a></p>
 <p>This function returns by how much the x position should be advanced for left to right text drawing when the glyph that corresponds to codepoint1 has been drawn, and the glyph that corresponds to codepoint2 will be the next to be drawn. This takes into consideration the horizontal advance width of the glyph that corresponds with codepoint1 as well as the kerning between the glyphs of codepoint1 and codepoint2.</p>
 <p>Kerning is the process of adjusting the spacing between glyphs in a font, to obtain a more visually pleasing result. Kerning adjusts the space between two individual glyphs with an offset determined by the author of the font.</p>
-<p>If you pass ALLEGRO_NO_KERNING as codepoint1 then al_get_glyph_advance will return 0. this cn be useful when drawing the first character of a string in a loop.</p>
+<p>If you pass ALLEGRO_NO_KERNING as codepoint1 then al_get_glyph_advance will return 0. this can be useful when drawing the first character of a string in a loop.</p>
 <p>Pass ALLEGRO_NO_KERNING as codepoint2 to get the horizontal advance width of the glyph that corresponds to codepoint1 without taking any kerning into consideration. This can be used, for example, when drawing the last character of a string in a loop.</p>
 <p>This function will return zero if the glyph of codepoint1 is not present in the <code>font</code>. If the glyph of codepoint2 is not present in the font, the horizontal advance width of the glyph that corresponds to codepoint1 without taking any kerning into consideration is returned.</p>
 <p>When drawing a string one glyph at the time from the left to the right with kerning, the x position of the glyph should be incremented by the result of <a href="font.html#al_get_glyph_advance">al_get_glyph_advance</a> applied to the previous glyph drawn and the next glyph to draw.</p>
 <p>Note that the return value of this function is a recommended advance for optimal readability for left to right text determined by the author of the font. However, if you like, you may want to draw the glyphs of the font narrower or wider to each other than what <a href="font.html#al_get_glyph_advance">al_get_glyph_advance</a> returns for style or effect.</p>
 <p>In the figure below is an example of what the result of al_get_glyph_advance may be like for two glypphs <code>A</code> and <code>l</code> of the same font that has kerning for the &quot;Al&quot; pair, without and with the ALLEGRO_NO_KERNING flag.</p>
-<pre><code>al_get_glyph_advance(font, &#39;A&#39;, &#39;l&#39;, 0)
+<pre><code>al_get_glyph_advance(font, &#39;A&#39;, &#39;l&#39;)
      ___|___                  
     /       \  
     -------------            
@@ -424,7 +424,7 @@ bbh |   |    **  |       bbh +---+-------+
     -------------
     
     
-al_get_glyph_advance(font, &#39;A&#39;, &#39;l&#39;, ALLEGRO_NO_KERNING)    
+al_get_glyph_advance(font, &#39;A&#39;, ALLEGRO_NO_KERNING)
      ____|____
     /         \  
     ---------------
@@ -618,7 +618,7 @@ al_grab_font_from_bitmap(bitmap, <span class="dv">4</span>, ranges)</code></pre>
 <p>Returns the (compiled) version of the addon, in the same format as <a href="system.html#al_get_allegro_version">al_get_allegro_version</a>.</p>
 <p class="timestamp">
 Allegro version 5.2.1 (GIT)
- - Last updated: 2016-04-16 23:07:23 UTC
+ - Last updated: 2016-04-17 03:07:06 UTC
 </p>
 </div>
 </body>
