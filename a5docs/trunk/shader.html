@@ -297,7 +297,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="shader.html#al_use_shader">al_use_shader</a></p>
 <h1 id="al_set_shader_matrix">al_set_shader_matrix</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_set_shader_matrix(<span class="dt">const</span> <span class="dt">char</span> *name,
-   ALLEGRO_TRANSFORM *matrix)</code></pre>
+   <span class="dt">const</span> ALLEGRO_TRANSFORM *matrix)</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/src/shader.c#L258">Source Code</a></p>
 <p>Sets a matrix uniform of the current target bitmap's shader.</p>
 <p>Returns true on success. Otherwise returns false, e.g. if the uniform by that name does not exist in the shader.</p>
@@ -326,7 +326,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="shader.html#al_use_shader">al_use_shader</a></p>
 <h1 id="al_set_shader_int_vector">al_set_shader_int_vector</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_set_shader_int_vector(<span class="dt">const</span> <span class="dt">char</span> *name,
-   <span class="dt">int</span> num_components, <span class="dt">int</span> *i, <span class="dt">int</span> num_elems)</code></pre>
+   <span class="dt">int</span> num_components, <span class="dt">const</span> <span class="dt">int</span> *i, <span class="dt">int</span> num_elems)</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/src/shader.c#L319">Source Code</a></p>
 <p>Sets an integer vector array uniform of the current target bitmap's shader. The 'num_components' parameter can take one of the values 1, 2, 3 or 4. If it is 1 then an array of 'num_elems' integer elements is added. Otherwise each added array element is assumed to be a vector with 2, 3 or 4 components in it.</p>
 <p>For example, if you have a GLSL uniform declared as <code>uniform ivec3 flowers[4]</code> or an HLSL uniform declared as <code>uniform int3 flowers[4]</code>, then you'd use this function from your code like so:</p>
@@ -344,7 +344,7 @@ al_set_shader_int_vector(<span class="st">&quot;flowers&quot;</span>, <span clas
 <p>See also: <a href="shader.html#al_set_shader_float_vector">al_set_shader_float_vector</a>, <a href="shader.html#al_use_shader">al_use_shader</a></p>
 <h1 id="al_set_shader_float_vector">al_set_shader_float_vector</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_set_shader_float_vector(<span class="dt">const</span> <span class="dt">char</span> *name,
-   <span class="dt">int</span> num_components, <span class="dt">float</span> *f, <span class="dt">int</span> num_elems)</code></pre>
+   <span class="dt">int</span> num_components, <span class="dt">const</span> <span class="dt">float</span> *f, <span class="dt">int</span> num_elems)</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/src/shader.c#L340">Source Code</a></p>
 <p>Same as <a href="shader.html#al_set_shader_int_vector">al_set_shader_int_vector</a> except all values are float instead of int.</p>
 <p>Since: 5.1.0</p>
@@ -358,7 +358,7 @@ al_set_shader_int_vector(<span class="st">&quot;flowers&quot;</span>, <span clas
 <p>See also: <a href="shader.html#al_attach_shader_source">al_attach_shader_source</a></p>
 <p class="timestamp">
 Allegro version 5.2.1 (GIT)
- - Last updated: 2016-07-04 21:09:01 UTC
+ - Last updated: 2016-07-17 04:32:08 UTC
 </p>
 </div>
 </body>
