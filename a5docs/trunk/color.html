@@ -149,6 +149,12 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_color_hsl(<span class="dt">float</span> h, <span class="dt">float</span> s, <span class="dt">float</span> l)</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L428">Source Code</a></p>
 <p>Return an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a> structure from HSL (hue, saturation, lightness) values.</p>
+<p>Parameters:</p>
+<ul>
+<li>hue - Color hue angle in the range 0..360</li>
+<li>saturation - Color saturation in the range 0..1</li>
+<li>lightness - Color lightness in the range 0..1</li>
+</ul>
 <p>See also: <a href="color.html#al_color_hsl_to_rgb">al_color_hsl_to_rgb</a>, <a href="color.html#al_color_hsv">al_color_hsv</a></p>
 <h1 id="al_color_hsl_to_rgb">al_color_hsl_to_rgb</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_hsl_to_rgb(<span class="dt">float</span> hue, <span class="dt">float</span> saturation, <span class="dt">float</span> lightness,
@@ -157,16 +163,22 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Convert values in HSL color model to RGB color model.</p>
 <p>Parameters:</p>
 <ul>
-<li>hue - Color hue angle in the range 0..360.</li>
-<li>saturation - Color saturation in the range 0..1.</li>
-<li>lightness - Color lightness in the range 0..1.</li>
-<li>red, green, blue - returned RGB values in the range 0..1.</li>
+<li>hue - Color hue angle in the range 0..360</li>
+<li>saturation - Color saturation in the range 0..1</li>
+<li>lightness - Color lightness in the range 0..1</li>
+<li>red, green, blue - returned RGB values in the range 0..1</li>
 </ul>
 <p>See also: <a href="color.html#al_color_rgb_to_hsl">al_color_rgb_to_hsl</a>, <a href="color.html#al_color_hsl">al_color_hsl</a>, <a href="color.html#al_color_hsv_to_rgb">al_color_hsv_to_rgb</a></p>
 <h1 id="al_color_hsv">al_color_hsv</h1>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_color_hsv(<span class="dt">float</span> h, <span class="dt">float</span> s, <span class="dt">float</span> v)</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L331">Source Code</a></p>
 <p>Return an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a> structure from HSV (hue, saturation, value) values.</p>
+<p>Parameters:</p>
+<ul>
+<li>hue - Color hue angle in the range 0..360</li>
+<li>saturation - Color saturation in the range 0..1</li>
+<li>value - Color value in the range 0..1</li>
+</ul>
 <p>See also: <a href="color.html#al_color_hsv_to_rgb">al_color_hsv_to_rgb</a>, <a href="color.html#al_color_hsl">al_color_hsl</a></p>
 <h1 id="al_color_hsv_to_rgb">al_color_hsv_to_rgb</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_hsv_to_rgb(<span class="dt">float</span> hue, <span class="dt">float</span> saturation, <span class="dt">float</span> value,
@@ -175,10 +187,10 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Convert values in HSV color model to RGB color model.</p>
 <p>Parameters:</p>
 <ul>
-<li>hue - Color hue angle in the range 0..360.</li>
-<li>saturation - Color saturation in the range 0..1.</li>
-<li>value - Color value in the range 0..1.</li>
-<li>red, green, blue - returned RGB values in the range 0..1.</li>
+<li>hue - Color hue angle in the range 0..360</li>
+<li>saturation - Color saturation in the range 0..1</li>
+<li>value - Color value in the range 0..1</li>
+<li>red, green, blue - returned RGB values in the range 0..1</li>
 </ul>
 <p>See also: <a href="color.html#al_color_rgb_to_hsv">al_color_rgb_to_hsv</a>, <a href="color.html#al_color_hsv">al_color_hsv</a>, <a href="color.html#al_color_hsl_to_rgb">al_color_hsl_to_rgb</a></p>
 <h1 id="al_color_html">al_color_html</h1>
@@ -286,7 +298,7 @@ K = 0</code></pre>
 <p>Returns the (compiled) version of the addon, in the same format as <a href="system.html#al_get_allegro_version">al_get_allegro_version</a>.</p>
 <p class="timestamp">
 Allegro version 5.2.1 (GIT)
- - Last updated: 2016-07-20 01:07:24 UTC
+ - Last updated: 2016-07-20 04:07:09 UTC
 </p>
 </div>
 </body>
