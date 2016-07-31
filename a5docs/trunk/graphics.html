@@ -1340,16 +1340,22 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <p>On some platforms, notably Windows Direct3D and Android, textures may be lost at any time for events such as display resize or switching out of the app. On those platforms, bitmaps created without the ALLEGRO_NO_PRESERVE_TEXTURE flag automatically get backed up to system memory every time al_flip_display is called.</p>
 <p>This function gives you more control over when your bitmaps get backed up. By calling this function after modifying a bitmap, you can make sure the bitmap is backed up right away instead of during the next flip.</p>
 <p>Since: 5.2.1</p>
+<blockquote>
+<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> This API is new and subject to refinement.</p>
+</blockquote>
 <p>See also: <a href="graphics.html#al_backup_dirty_bitmaps">al_backup_dirty_bitmaps</a>, <a href="graphics.html#al_create_bitmap">al_create_bitmap</a></p>
 <h2 id="al_backup_dirty_bitmaps">al_backup_dirty_bitmaps</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_backup_dirty_bitmaps(ALLEGRO_DISPLAY *display)</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/src/display.c#L629">Source Code</a></p>
 <p>Backs up all of a display's bitmaps to system memory.</p>
 <p>Since: 5.2.1</p>
+<blockquote>
+<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> This API is new and subject to refinement.</p>
+</blockquote>
 <p>See also: <a href="graphics.html#al_backup_dirty_bitmap">al_backup_dirty_bitmap</a></p>
 <p class="timestamp">
 Allegro version 5.2.1 (GIT)
- - Last updated: 2016-07-28 02:08:01 UTC
+ - Last updated: 2016-07-31 19:09:03 UTC
 </p>
 </div>
 </body>
