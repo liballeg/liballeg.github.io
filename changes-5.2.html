@@ -81,6 +81,93 @@ A game programming library
 <h1 class="title">Allegro changelog for 5.2.x series</h1>
 </div>
 <p>These lists serve as summaries; the full histories are in the git repository.</p>
+<h1 id="changes-from-5.2.0-to-5.2.1-july-2016">Changes from 5.2.0 to 5.2.1 (July 2016)</h1>
+<p>The main developers this time were: Elias Pschernig, Trent Gamblin, SiegeLord, Ryan Roden-Corrent, Boris Carvajal and Peter Hull.</p>
+<p>Core:</p>
+<ul>
+<li><p>Optimize bitmap holding a bit (Bruce Pascoe).</p></li>
+<li><p>Add <code>al_get/set_depth/samples</code> (OpenGL only for now).</p></li>
+<li><p>Optimize destruction performance when you have thousands of objects (e.g. sub-bitmaps).</p></li>
+<li><p>Use low floating point precision for the OpenGL fragment shaders, which helps performance a lot on mobile platforms.</p></li>
+<li><p>Don't stop and join the timer thread when stopping the last timer (prevents unnecessary delay in this situation on some platforms).</p></li>
+<li><p>Add <code>al_backup_dirty_bitmap</code> and <code>al_backup_dirty_bitmaps</code> to more finely control when bitmap context backup is performed.</p></li>
+</ul>
+<p>Android port:</p>
+<ul>
+<li><p>Fix Android app issues when woken up during sleep.</p></li>
+<li><p>Specify the Android toolchain file on the command line now. ANDROID_NDK_TOOLCHAIN_ROOT now has to be specified in an environment variable.</p></li>
+</ul>
+<p>OSX port:</p>
+<ul>
+<li><p>Improve joystick enumeration (Todd Cope).</p></li>
+<li><p>Make <code>al_set_new_window_title</code> work correctly.</p></li>
+<li><p>Don't send duplicate mouse move events.</p></li>
+<li><p>Fix mouse warping behavior.</p></li>
+<li><p>Exit fullscreen mode if ALLEGRO_FULLSCREEN_WINDOW is set when destroying a display (otherwise if you destroy and recreate display without terminating the program, a white window kicks around).</p></li>
+</ul>
+<p>iOS port:</p>
+<ul>
+<li><p>Make it compile again.</p></li>
+<li><p>Don't backup textures as it is unnecessary.</p></li>
+<li><p>Update minimum iOS to version to 6.1.</p></li>
+<li><p>Disable the native png loader in favor of libpng, as it is broken on Apple's end.</p></li>
+<li><p>Create library when creating the archive.</p></li>
+</ul>
+<p>Windows port:</p>
+<ul>
+<li><p>Fix the D3D target bitmap bug.</p></li>
+<li><p>Clear display to black right away to avoid an ugly white flash.</p></li>
+</ul>
+<p>Raspberry Pi port:</p>
+<ul>
+<li>Fix system cursor support.</li>
+</ul>
+<p>Linux port:</p>
+<ul>
+<li>Make <code>al_set_new_window_title</code> work correctly.</li>
+</ul>
+<p>Build system:</p>
+<ul>
+<li><p>Use PROJECT_SOURCE_DIR and PROJECT_BINARY_DIR instead of CMAKE_SOURCE_DIR and CMAKE_BINARY_DIR. This lets you use Allegro as a sub-project in your CMake project.</p></li>
+<li><p>Fix GDIPlus finding in cmake-gui (Bruce Pascoe).</p></li>
+<li><p>Add .gitignore and ignore build/ dir (Mark Oates).</p></li>
+<li><p>Fix building examples with non-Allegro dependencies with the monolith build.</p></li>
+</ul>
+<p>Documentation:</p>
+<ul>
+<li>Various documentation updates (Daniel Johnson and others).</li>
+</ul>
+<p>Other:</p>
+<ul>
+<li><p>Add more <code>#include</code> statements in Allegro headers, so it's easier to use them in isolation (Jordan Woehr).</p></li>
+<li><p>Allow marking tests as being hardware only.</p></li>
+<li><p>Prefix some private Allegro macros and types to not pollute the namespace.</p></li>
+<li><p>Make set_shader_uniform api const-correct (Bruce Pascoe).</p></li>
+</ul>
+<p>Audio addon:</p>
+<ul>
+<li>Adjust loop end position when calling <code>al_set_sample_instance_length</code>.</li>
+</ul>
+<p>Acodec addon:</p>
+<ul>
+<li><p>Allow file-backed audio streams to be restarted after they finish.</p></li>
+<li><p>Add Opus codec support.</p></li>
+</ul>
+<p>Image addon:</p>
+<ul>
+<li>Fail gracefully if not built with PNG/JPG loaders.</li>
+</ul>
+<p>Native dialog addon:</p>
+<p>Font addon:</p>
+<ul>
+<li><p>Make <code>al_get_text_dimensions</code> and <code>al_get_glyph_dimensions</code> return exact bounding boxes (koro).</p></li>
+<li><p>Add <code>ALLEGRO_GLYPH</code> structure and <code>al_get_glyph</code>, allowing for some additional optimization when drawing fonts.</p></li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li><p>Add more controls to <code>ex_audio_props</code>.</p></li>
+<li><p>Add an example of using Enet with Allegro.</p></li>
+</ul>
 <h1 id="changes-from-5.1.13.1-to-5.2.0-april-2016">Changes from 5.1.13.1 to 5.2.0 (April 2016)</h1>
 <p>The main developers this time were: SiegeLord, Polybios, Mark Oates, Elias Pschernig and Jonathan Seeley.</p>
 <p>Core:</p>

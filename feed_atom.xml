@@ -3,8 +3,15 @@
 <title>Allegro news</title>
 <link href="http://liballeg.org/"/>
 <link rel="self" href="http://liballeg.org/feed_atom.xml"/>
-<updated>2016-04-02T00:07:04-04:00</updated>
+<updated>2016-08-01T01:07:08-04:00</updated>
 <id>urn:uuid:661257c2-82a0-4510-b2be-0f6b010807b9</id>
+<entry>
+<title>Allegro 5.2.1 released!</title>
+<author><name>Allegro developers</name></author>
+<link href="http://liballeg.org/"/>
+<id>urn:uuid:5dbad54e-1277-44b6-8c82-d8b058702d49</id>
+<updated>2016-07-31T21:33:11-07:00</updated>
+</entry>
 <entry>
 <title>Allegro 5.2.0 released!</title>
 <author><name>Allegro developers</name></author>
