@@ -1,0 +1,251 @@
+
+   Date: 2003-04-19. This is a text only snapshot of the web
+   
+    http://www.allegro.cc/forums/view_thread.php?_id=256501
+    
+   made by Grzegorz Adam Hankiewicz (gradha@users.sourceforge.net) with the
+   software ELinks 0.5pre0.CVS - Text WWW browser, which you can find at
+   
+    http://elinks.or.cz/
+   
+   The purpose of the snapshot is to provide an alternative version if the
+   main server fails or the original copy is deleted. The snapshot has been
+   render to 78 characters of width with the ISO-8859-1 character codepage.
+
+     --------------------------------------------------------------------
+
+   Allegro.cc   Bookmark - 'Stick' this thread at the top of   Allegro.cc   
+              your list. Send to Top - Force this thread back  Forums »     
+                       to the top of everyone's list.          Allegro      
+                 forum home | recent threads | search | my     Development  
+                             profile | log out                 » Future of  
+                                                               Allegro      
+                                                                            
+   jump to last read break                                                  
+                                                                            
+   Future of Allegro                                                        
+                     Posted on 2003-04-01 08:12   View Profile              
+                     After some deliberation, the people on the Allegro 5   
+                     discussion list have decided that Allegro 5 is not     
+                     worth pursuing. Hence, it has been scrapped. Not that  
+                     it really took off anyway, so nothing much was lost.   
+                                                                            
+   Peter Wang        However, there has been some discussion about Allegro  
+   Member# 23        4 on the developers list, too. Unfortunately, it looks 
+   April 2000        like 4.0.3 will be the final release ever. Sad, but    
+                     true.                                                  
+                                                                            
+                     Note that there are plenty of alternatives around, and 
+                     the source code is available so anyone who feels up to 
+                     it can take over maintenance, if they so wish.         
+                                                                            
+                     So long Allegators. See you over at www.libsdl.org.    
+   spellcaster       Posted on 2003-04-01 08:17   View Profile              
+   Member# 1,493     Î want to add that I'm a girl.                         
+   September 2001    --                                                     
+                     Always waiting for a new demo release of Chaos Funk    
+      spellcaster                                                           
+   Plucky                                                                   
+   Member# 1,346     Posted on 2003-04-01 08:29   View Profile              
+   May 2001          Yes, yes we already know. Your thirty-nine hundred     
+                     some odd posts already gave this away.                 
+        Plucky                                                              
+                     Posted on 2003-04-01 08:40   View Profile              
+                     Yes, I'd like to announce that I'm giving up on Linux  
+   Thomas Fjellstrom and Perl to go to Windows and VB.Net.                  
+   Member# 476                                                              
+   June 2000         --                                                     
+                     Thomas Fjellstrom - [Email] - [Website] - [Webpage]    
+   Thomas Fjellstrom - Fav web comics: Penny Arcade - Megatokyo - PvP -     
+                     Life Of Riley - Reallife                               
+                     - Isn't it funny how some people will take every       
+                     opprotunity to talk about thier beloved pet?           
+                     Posted on 2003-04-01 08:53   View Profile              
+                     No surprise there TF, considering your comments just a 
+                     few days ago:                                          
+   Plucky                                                                   
+   Member# 1,346       Thomas said:                                         
+   May 2001                                                                 
+                       --------------------------------------------------   
+        Plucky                                                              
+                       that is Linux's fault... I've had my fun with        
+                       crashing Linux as well!                              
+                                                                            
+                       --------------------------------------------------   
+   Steve Terry       Posted on 2003-04-01 09:16   View Profile              
+   Member# 1,989     Huh... I missed something major here.....              
+   March 2002                                                               
+                     [ My Website | Skinnable GUI 0.8.0 (02/20/03) ]        
+      Steve Terry    CAREER OBJECTIVE:                                      
+                     70 |3e @ l337 P|2099|2@mm3|2 do0d                      
+   spellcaster       Posted on 2003-04-01 09:24   View Profile              
+   Member# 1,493     The date, maybe?                                       
+   September 2001    --                                                     
+                     Always waiting for a new demo release of Chaos Funk    
+      spellcaster                                                           
+                     Posted on 2003-04-01 12:45   View Profile              
+                     See now, if people had listened to me when I said the  
+                     API was already perfect, you guys wouldn't have wasted 
+                     time on this wild goose chase ::)                      
+   23yrold3yrold                                                            
+   Member# 1,134     (waits for his post to get edited)                     
+   March 2001                                                               
+                     --                                                     
+     23yrold3yrold   Chris Barry - finally saw The Matrix. To clarify; I    
+                     was meant to be impressed, right?                      
+                     [ My Game | My Site | My Journal | Allegro FAQ |       
+                     Pixelate | Vivace | AGDN | Foolish Faith ]             
+                     Work for the best, prepare for the worst, expect       
+                     nothing, and you will always be content.               
+                     Posted on 2003-04-01 13:32   View Profile              
+   Mars              Oh my, so we won't get 5d graphics and mind control?   
+   Member# 971       :(                                                     
+   February 2001                                                            
+                     --                                                     
+         Mars        This post was brought to you by Mr. Gerlach, God of    
+                     War.                                                   
+   kazzmir           Posted on 2003-04-01 16:00   View Profile              
+   Member# 1,786     Ive been using SDL the whole time anyway.              
+   December 2001     BWAAHAHAHAHH!                                          
+                     -----                                                  
+        kazzmir      A witty saying proves nothing.                         
+                     Raptor                                                 
+                     Posted on 2003-04-01 16:59   View Profile              
+                                                                            
+                       Quote:                                               
+                                                                            
+                       --------------------------------------------------   
+                                                                            
+                       the people on the Allegro 5 discussion list have     
+                       decided that Allegro 5 is not worth pursuing.        
+                                                                            
+                       --------------------------------------------------   
+   Bob                                                                      
+   Member# 699       Peter neglected to mention the reason for this         
+   September 2000    decision. In fact, this decision was taken because I   
+                     assumed control of the development of Allegro. I have  
+          Bob        always been unhappy with the direction Allegro was     
+                     taking, so I took over and fired all the other         
+                     open-source developers working on it. Henceforth, the  
+                     former game programming library shall be known as      
+                     Bobllegro.                                             
+                                                                            
+                     --                                                     
+                     - Bob                                                  
+                     [ Webpage | Allegro FAQ | Coding Tricks ]              
+                     The world is being silently polluted by Dihydrogen     
+                     Monoxide!                                              
+                     Posted on 2003-04-01 17:12   View Profile              
+                     We should let that EGreg guy from #allegro take over.  
+                     Then it can be Allegregro.                             
+                                                                            
+                     I should also like to announce that I'm not going to   
+                     finish my SEKRIT PROJACT. It's so nearly finished, but 
+   Bruce Perry       there's one sound effect I'm having trouble creating,  
+   Member# 270       and it's just not worth the effort. I may do an        
+   April 2000        unfinished release at some point, but don't hold your  
+                     breath.                                                
+      Bruce Perry                                                           
+                     --                                                     
+                     [ DUMB - a Freeware IT/XM/S3M/MOD player library, with 
+                     filters and click removal ]                            
+                     [ Set Up Us The Bomb !!! - a team effort | Sheep 2,    
+                     featuring real piano music ]                           
+                     <KimmoA> Bananas don't have skin · <KimmoA> They have  
+                     shell                                                  
+                     Posted on 2003-04-01 19:36   View Profile              
+                     Bruce: lol...                                          
+   Steve Terry                                                              
+   Member# 1,989     Damn time zone change.. it wasn't the first here when  
+   March 2002        I posted that, otherwise I would of known. I feel      
+                     stupid now...                                          
+      Steve Terry                                                           
+                     [ My Website | Skinnable GUI 0.8.0 (02/20/03) ]        
+                     CAREER OBJECTIVE:                                      
+                     70 |3e @ l337 P|2099|2@mm3|2 do0d                      
+                     Posted on 2003-04-01 21:14   View Profile              
+                                                                            
+                       spellcaster said:                                    
+                                                                            
+                       --------------------------------------------------   
+                                                                            
+                       Î want to add that I'm a girl.                       
+                                                                            
+                       --------------------------------------------------   
+                                                                            
+                     No i'm sorry, there isn't time.                        
+                                                                            
+   JaTeR             ;D                                                     
+   Member# 2,088                                                            
+   March 2002        (yes, thats monty python)                              
+                                                                            
+         JaTeR         23 said:                                             
+                                                                            
+                       --------------------------------------------------   
+                                                                            
+                       (waits for his post to get edited)                   
+                                                                            
+                       --------------------------------------------------   
+                                                                            
+                     what? your still into the transformer porn? ;)         
+                                                                            
+                     JaTeR                                                  
+                                                                            
+                     --                                                     
+                     Still spreading that sunshine!                         
+                     Posted on 2003-04-01 21:46   View Profile              
+                     Remember The Allegro 5 thread from 1 April last year?  
+                     23 kept trying to spoil the joke, so his posts were    
+                     edited back and forth by him and Matthew, until        
+                     Matthew got fed up and removed his editing rights. I   
+   Bruce Perry       have some rather interesting IRC logs from that era,   
+   Member# 270       but I shan't post them. Mainly because I'm hungry.     
+   April 2000        Mmm. I like cheese. And bread.                         
+                                                                            
+      Bruce Perry    --                                                     
+                     [ DUMB - a Freeware IT/XM/S3M/MOD player library, with 
+                     filters and click removal ]                            
+                     [ Set Up Us The Bomb !!! - a team effort | Sheep 2,    
+                     featuring real piano music ]                           
+                     <KimmoA> Bananas don't have skin · <KimmoA> They have  
+                     shell                                                  
+   Paul Pridham                                                             
+   Member# 250       Posted on 2003-04-01 22:51   View Profile              
+   April 2000        Bob: What's the ETA on a Bobllegro beta release? Can't 
+                     wait!                                                  
+     Paul Pridham                                                           
+                     Posted on 2003-04-01 23:27   View Profile              
+                     Mmmmm pie...                                           
+   paranoima         Now that 5 has been scraped, I'm going to fork off     
+   Member# 1,380     Allegro Development and make an all pie version. Pie   
+   June 2001         Pie Pie Pie.                                           
+                                                                            
+       paranoima     Pie-llgro version 1.0 coming soon ;D                   
+                                                                            
+                     Website|Email                                          
+                     Posted on 2003-04-02 05:47   View Profile              
+                     Oh my goodness, that's great, I never looked at the    
+   Harry Carey       LZip page last year.... lol....                        
+   Member# 562                                                              
+   August 2000       -Steve                                                 
+                     ----                                                   
+      Harry Carey    Holy Cow!                                              
+                     [ Loaded on MP3.com] [ Loaded on Geocities] .. very    
+                     cool band ;)                                           
+                                                                            
+                                                                            
+                                                                            
+   Bookmark - 'Stick' this thread at  [___________________________________] 
+   the top of your list. Subscribe -                                 [ Go ] 
+   Receive e-mail notifications. Send                                       
+   to Top - Force this thread back to                                       
+   the top of everyone's list. Hide                                         
+   Thread - You won't see this thread                                       
+   again until someone else posts.                                          
+   Kill Thread - You will never see                                         
+   this thread again.                                                       
+
+                  Copyright ©1999-2003, by Matthew Leverton
+
+                You are visitor #1,204,040 since January 1999.
+            This page has been viewed 381 times since March 2002.

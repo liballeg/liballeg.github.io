@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+   <head>
+      <title>Allegro/STL Tutorial: chapter 2</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+      <meta name="author" content="Ove K&aring;ven">
+   </head>
+   <body text="#000000" bgcolor="#FFFFFF" link="#0000EF" vlink="#51188E" alink="#FF0000">
+<H1>Chapter 2</H1>
+<H2>2. Preparing our game</H2>
+<H3>2.1 What do we need?</H3>
+A game consists of many components, like graphics, sound, input device
+management, data file management, etc. Allegro can deal with all of these.
+But it can't deal with the design; you must have a good design before you
+can use Allegro to create games. In this tutorial, we are going to make
+a helicopter game, where we control a helicopter on a mission to bomb
+beyond known reality every tank that dares to show its ugly warhead on
+the game screen.
+<P>
+Let's begin with the backdrop. For simplicity, we will have a static
+unmovable backdrop. However, to show how to use Allegro drawing functions,
+we will generate it from within our main program, using some cool shades.
+<P>
+First, we need the cool shades. That is, we need to have a game palette
+first. (In this tutorial, we will be working in 256-color modes.) We can
+create a palette using any appropriate sprite editor or paint program.
+The palette I will use is within the Allegro datafile below. Use the Allegro
+Grabber utility to see it.
+<P>
+<A HREF="../ovehk_stl_tutorial.zip">Download the tutorial datafile</A>
+<H3>2.2 The Grabber</H3>
+<CODE>GRABBER.EXE</CODE> resides in the <CODE>TOOLS</CODE> subdirectory of
+your Allegro directory. To make it easier to use, either put this directory
+into your <CODE>PATH</CODE> in <CODE>AUTOEXEC.BAT</CODE>, or copy
+<CODE>GRABBER.EXE</CODE> into somewhere that is already in the PATH, like
+your DJGPP <CODE>BIN</CODE> directory. This will make it easier for you to
+start the Grabber from your project directory.
+<P>
+When you have downloaded the tutorial datafile and placed it into your
+project directory, start Grabber. From the <CODE>File</CODE> menu, select
+<CODE>Load</CODE>, and load <CODE>TUTORIAL.DAT</CODE>. (You could also have
+specified the datafile on the command line.) The datafile elements of our
+game is now listed. You may look through them now, and note the convenience
+of having everything in one datafile, but for more details about how the
+Grabber works, consult its help system. For now, though, we just need it
+to generate the header file <CODE>tutorial.h</CODE>. From the
+<CODE>File</CODE> menu, choose <CODE>Save</CODE>. Once saved, close the
+Grabber by choosing <CODE>Quit</CODE>.
+<H3>2.3 The Datafile</H3>
+As you have now seen, all the data objects we need, like graphics and sounds,
+are contained in the datafile. The Grabber also created a header file
+(<CODE>tutorial.h</CODE>) that our main program can use to reference
+specific objects within the datafile whenever it needs to use them.
+<P>
+But how is it actually used? To see how, we'll write some more code.
+Start RHIDE again. Note that RHIDE will this time automatically load your
+project, since it's the only project existing in the directory. (This may
+cause troubles if you use the <CODE>Save Options</CODE> feature improperly,
+since options are saved in a project file, but that's another matter.)
+<P>
+Now change your program to read:
+<PRE>
+#include &lt;allegro.h&gt;
+#include "tutorial.h"
+
+DATAFILE* data;
+
+int main()
+{
+ allegro_init();
+ install_keyboard();
+
+ data=load_datafile("tutorial.dat");
+
+ set_gfx_mode(GFX_VGA,320,200,0,0);
+
+ set_palette((RGB*)data[TUT_GAMEPAL].dat);
+
+ textout_centre(screen,font,"Ready. Beep.",160,100,255);
+ readkey();
+ return 0;
+}
+</PRE>
+Let's go through this program and see what it actually does. First,
+obviously, is the #include directives, that loads the definitions we
+need. <CODE>tutorial.h</CODE>, the one Grabber created, contains the
+TUT_GAMEPAL definition. Then we define a global variable, <CODE>data</CODE>,
+that is a pointer to DATAFILE entries. In the main program, we initialize
+Allegro with <CODE>allegro_init()</CODE>, install Allegro's keyboard
+subsystem with <CODE>install_keyboard()</CODE>, then load the datafile
+into memory, and assigns it to our global variable <CODE>data</CODE>.
+<CODE>load_datafile()</CODE> takes care of everything necessary to load
+it, including allocating memory, decompressing, and converting, and returns
+a pointer to the loaded and ready-to-use datafile.
+<P>
+If you are used to real-mode compilers, remember that DJGPP is a 32-bit
+protected-mode compiler, so we are working in a flat address space,
+with virtual memory and all, so there is no need to worry about exhausting
+memory by keeping the entire datafile loaded (unless your datafile is
+approaching something like 50 megabytes, of course).
+<P>
+After we have entered VGA 320x200 256-color graphics mode (mode 13h) with
+<CODE>set_gfx_mode()</CODE>, we then sets the palette from the datafile.
+As you can see, data points to an array of DATAFILE structures, of which the
+<CODE>dat</CODE> field points to the actual data. Since <CODE>dat</CODE> is
+a <CODE>void *</CODE> pointer, we need to explicitly cast it to the
+appropriate data type, otherwise the compiler will complain that ANSI C++
+forbids implicit casting. <CODE>set_palette()</CODE> expects an argument
+of type <CODE>RGB *</CODE>.
+<P>
+Then we output the usual text at the center of the screen and waits for
+a key, as before.
+<P>
+We can now proceed to the <A HREF="tut3.html">next chapter</A>
+
+</body>
+</html>

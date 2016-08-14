@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+   <head>
+      <title>Cofre con oro...</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+      <meta name="author" content="Shawn Hargreaves">
+      <meta name="translator" content="Grzegorz Adam Hankiewicz">
+   </head>
+   <body text="#000000" bgcolor="#FFFFFF" link="#0000EF" vlink="#51188E" alink="#FF0000">
+
+<center><h1><b>
+...<font color="#FF0000">a</font><font color="#FF4000">l</font> <font color="#FF8000">f</font><font color="#FFC000">i</font><font color="#FFFF00">n</font><font color="#A0FF00">a</font><font color="#60FF00">l</font> <font color="#00FF00">d</font><font color="#00FF60">e</font><font color="#00FFA0">l</font> <font color="#00FFFF">a</font><font color="#00A0FF">r</font><font color="#0060FF">c</font><font color="#0000FF">o</font><font color="#6000FF">i</font><font color="#A000FF">r</font><font color="#FF00FF">i</font><font color="#FF00A0">s</font><font color="#FF0060">.</font>
+</b></h1><p><h3><i>
+<font color="#3366FF">Aprendiendo a usar truecolor con Allegro</font>
+</i></h3></center>
+<p>
+<hr>
+<p>
+<i>
+Comentario de 1998: escribí esto hace tiempo cuando Allegro 3.0 estaba
+alcanzando el estado de beta, para beneficio de aquellos acostumbrados a
+las antiguas funciones de 256 colores que querían aprender las diferencias
+respecto a los modos truecolor. Si las palabras le parecen raras a
+veces, es porque esto está orientado a explicar nuevas características
+a usuarios experimentados, en vez de ser un tutorial para novatos. Pero
+como probablemente pueda servir en ambos casos, dejo esto aquí.
+</i><p><br>
+Bueno, hemos llegado. Mucho código gráfico nuevo, millones de
+colores adicionales, y el fin de esas apestosas imágenes de 8 bits con
+paletas. Realmente no hay tantas nuevas funciones: es más una cuestión
+del comportamiento de las viejas que ahora hacen diferentes cosas. Por
+supuesto los detalles puede encontrarlos en la documentación principal
+de la librería, pero creo que esta guía puede resultar útil como rápida
+introducción a aquellos familiarizados con la API de 256 colores,
+y simplemente necesitan conocer las diferencias respecto a los modos
+truecolor. Asi que, ¿cómo se usa una resolución truecolor?
+<p>
+<hr>
+<p>
+<b>Respuesta corta:</b>
+<p>
+Llame set_color_depth() antes de set_gfx_mode().
+<p>
+<hr>
+<p>
+<b>Respuesta media:</b>
+<p>
+Llame set_color_depth() al comienzo de su programa (antes de
+set_gfx_mode(), y antes de leer ningún gráfico de disco).
+<p>
+Use la función makecol() (o makecol15(), makecol16(), etc, si sabe
+que estará usando una profundidad de color específica), para convertir
+valores de intensidades en rojo, verde y azul, al formato usado por el
+hardware de vídeo, y entonces pasar el entero resultante a cualquiera
+de las funciones de dibujado.
+<p>
+Use rosa fucsia (rojo y azul al máximo, verde a cero) en vez del cero para
+marcar pixels transparentes.
+<p>
+<hr>
+<p>
+<b>Respuesta larga:</b>
+<p>
+Aparte del modo estándar con paleta de 8 bits, Allegro ahora soporta
+resoluciones hicolor de 15 y 16 bits y truecolor de 24 y 32 bits. En modos
+de 15 bits, hay 5 bits para el rojo, verde y azul, y un bit sin usar para
+alinear el tamaño de cada pixel. En modos de 16 bits hay 5 para rojo y
+azul, y 6 bits para el verde. En modos de 24 bits cada pixel se compone
+de tres bytes, uno para rojo, verde y azul (¡esto tiende a enlentecer las
+cosas debido a datos mal alineados!), y los modos de 32 bits son iguales
+que los de 24 pero añadiendo un byte por pixel para alinear las cosas.
+<p>
+Los modos que pueda usar dependerán de su tarjeta gráfica y su driver
+VESA. La mayoría de las tarjetas soportan resoluciones tanto de 15 como
+16 bits, pero si le resulta posible le recomiendo que soporte ambas (no
+es tan difícil...) en el caso de que alguna no esté disponible. Algunas
+tarjetas soportan truecolor de 24 y 32 bits, por lo que escoge entre 24
+(ahorra memoria) o 32 (más rápido), pero muchas tarjetas antiguas no
+tienen modo de 32 bits y las nuevas no soportan los 24 bits. Respecto
+a las resoluciones que puede usar, la mayoría de las tarjetas soportan
+todas las resoluciones SVGA estándar, y con UniVBE también puede obtener
+modos truecolor de baja resolución como 320x200, 320x240, etc. En una
+tarjeta con una mega de RAM de vídeo podrá usar modos hicolor de 640x480,
+y también 800x600 si tiene un framebuffer lineal. Con dos megas de RAM de
+vídeo podrá usar modos hicolor de 640x480 con dos páginas, 800x600 hicolor
+(dos páginas si tiene un framebuffer lineal), y 1024x768 hicolor, además
+de 640x480 truecolor (también 800x600 truecolor si tiene un framebuffer
+lineal). Con cuatro megas de RAM de vídeo casi todo es posible :-)
+<p>
+Allegro mantiene un ajuste global de la profundidad de color, que
+puede ser cambiado llamando a set_color_depth(nueva_profundidad). Esto
+no hace mucho por sí mismo, pero afectará a las siguientes llamadas a
+set_gfx_mode(), create_bitmap(), y cualquiera de los comandos que cargan
+ficheros de datos, así que normalmente lo usará una vez al comienzo de
+su programa para especificar la profundidad de color con la que quiere
+trabajar.
+<p>
+Todos los valores de pixels truecolor se pasan a las funciones de dibujado
+como enteros normales, igual que en los modos de ocho bits. El formato de
+los bits individuales dentro de cada pixel puede variar dependiendo de la
+resolución, asi que debería evitar usar constantes en su programa (con
+la excepción de todo a ceros para negro y todo a unos para blanco). En
+su lugar, utilice la función makecol() para empaquetar los valores rojo,
+verde y azul (en el rango 0-255) al formato correcto para la profundidad
+de color actual, o las versiones más rápidas makecol15(), makecol16(),
+etc, si está seguro de la profundidad de color que está usando. Use
+getr(), getg(), y getb(), o las más veloces getr15(), getr16(), etc,
+para extraer las componentes individuales de color del valor de un
+pixel. Todas estas funciones dependen del formato de bits empleado (RGB
+o BGR), el cual no se conoce hasta que llame a set_gfx_mode(), por lo que
+siempre debería establecer un modo gráfico antes de usar estas rutinas.
+<p>
+Los objetos bitmap pueden leerse desde ficheros de datos (cualquier
+profundidad), ficheros .PCX (8 o 24 bits), ficheros .BMP (8 o 24 bits),
+ficheros .LBM (8 bits), y ficheros TGA (8, 15, o 24 bits). Por defecto
+los datos serán convertidos a la profundidad de color actual, pero puede
+evitar la conversión llamando a set_color_conversion(). Las rutinas
+cargadoras de imágenes necesitan conocer el formato de pixel usado
+por su tarjeta de vídeo, así que necesita establecer el modo de video
+antes de cargar nada (si carga imágenes mientras esta en modo texto,
+su programa sufrirá fallos extraños al mostrar los colores erróneos
+en ciertas tarjetas gráficas). Si usa ficheros de datos compilados con
+gráficos truecolor, deberá llamar fixup_datafile() tras establecer el modo
+de vídeo, para asegurarse de que los datos estan en el formato correcto.
+<p>
+Para hacer pixels transparentes en los sprites, no puede usar el cero
+en modos truecolor, ya que a diferencia de las imágenes con paleta de
+256 colores, éste se usa para los pixels negros. En su lugar, Allegro
+usa rosa fucsia (rojo y azul al máximo, verde a cero). Puede obtener
+este valor llamando makecol(0xFF, 0, 0xFF), o usando las constantes
+específicas de cada profundidad de color, MASK_COLOR_8, MASK_COLOR_15,
+MASK_COLOR_16, etc, o si desea conocer el color transparente de un bitmap,
+use bitmap_mask_color(bmp).
+<p>
+En general, Allegro está diseñado para ser usado sólo con una
+profundidad de color a la vez, así que llamará set_color_depth() una vez
+y almacenará todos sus bitmaps en el mismo formato. Si quiere mezclar
+diferentes formatos de pixel, puede usar create_bitmap_ex() en lugar de
+create_bitmap(), y llamar bitmap_color_depth() para preguntar por el
+formato específico de la imágen. La mayoría de las rutinas gráficas
+requieren que todos sus parámetros sean del mismo formato (ej: no
+puede escalar un bitmap de 15 bits sobre un bitmap destino de 24), pero
+hay tres excepciones: blit() puede copiar entre bitmaps de cualquier
+formato, convirtiendo los datos según sea requerido, draw_sprite()
+puede dibujar imágenes de 256 colores en destinos de cualquier formato,
+y draw_character() _siempre_ usa bitmaps origen de 256 colores, sin
+importar el formato destino. Expandir una imagen de 256 colores en un
+destino truecolor es muy rápido (¡obviamente antes de la conversión
+deberá haber activado la paleta correcta!). Convertir entre diferentes
+formatos truecolor es algo más lento, y reducir imágenes truecolor a 256
+colores es muy lento (aunque puede acelerarse de forma significativa si
+antes ajusta la tabla global rgb_map antes de la conversión).
+<p>
+No hay paleta hardware en modos truecolor, así que las funciones
+para hacer fundidos no funcionan. Sin embargo sigue pudiendo llamar
+a set_palette() para especificar la paleta que será usada en las
+conversiones de bitmaps entre 256 colores y formatos truecolor. Hay
+un array global llamado palette_color[] que contiene los valores de
+cada entrada de la paleta en el formato correcto para el modo de vídeo
+actual. Asi que si está en modo truecolor y quiere dibujar una línea
+usando el color #3 de la paleta actual, pase palette_color[3] como
+parámetro de color a la función line().
+<p>
+La translucidez funciona de forma totalmente diferente en modos
+truecolor: la tabla color_map ya no se usa. En su lugar, debe llamar
+a set_blender_mode() or set_trans_blender() antes de dibujar objetos
+translúcidos o iluminados.
+<p>
+Si quiere acceder directamente al contenido de un bitmap truecolor, puede
+usar la tabla bmp-&gt;line[] o la función bmp_write_line() como en un modo
+de 256 colores.  En modos de 15 y 16 bits debe transformar el puntero a un
+(unsigned short *) antes de deferenciarlo, o usar la función _farpokew(),
+y en modos de 32 bits debe transformar el puntero a un (unsigned long*)
+o usar _farpokel(). En modos de 24 bits el pixel consiste de tres bytes,
+lo que dificulta su acceso: podría usar tres escrituras consecutivas
+en una línea de datos de 8 bits, o convertir y usar una escritura a un
+short y otra a un byte extra por separado.
+<p>
+Las funciones inline _putpixel() y _getpixel() sólo funcionan en modos de
+256 colores, y las rutinas de dibujado de polígonos 3d tampoco soportan
+resoluciones truecolor. Todas las demás funciones gráficas funcionarán
+en cualquier modo.
+<p>
+Si quiere usar las rutinas GUI en modo truecolor, debe ajustar las
+variables globales gui_fg_color, gui_mg_color, y gui_bg_color a valores
+sensatos (los que devuelve la función makecol(), típicamente negro,
+gris y blanco respectivamente).
+<p>
+Espero que alguien encuentre este documento útil (porque en caso
+contrario he desperdiciado toda mi mañana escribiéndolo :-) Mande
+cualquier comentario, pregunta, problema, etc a
+<a href="mailto:shawn@talula.demon.co.uk">shawn@talula.demon.co.uk</a>.
+
+
+</body>
+</html>

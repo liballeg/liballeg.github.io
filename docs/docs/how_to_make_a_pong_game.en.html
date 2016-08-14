@@ -1,0 +1,643 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>How to make a Pong Game, by Sheraz Mahmood</title>
+    <h1>How to make a Pong Game, by
+    <a href="mailto:smahmood@uwaterloo.ca">Sheraz Mahmood</a>
+    </h1>
+    <p>Ok first off we are trying to make pong
+    (using DJGPP and ALLEGRO), this is going to be a 2 player
+    game (2 paddles). How does this game work will we have a ball
+    which is bouncing around on the screen, and you must stop it
+    from going off your side of the screen using a paddle. To start
+    off we have to make the paddles and the ball for the
+    game.
+    <center>
+      <img src="how_to_make_a_pong_game/ball.png" width="43" height="42"
+           border="0" alt="Ball graphic"><br>BALL<br>
+       <img src="how_to_make_a_pong_game/bar.png" width="5" height="50"
+            border="0" alt="Paddle graphic"><br>PADDLE<br>
+    </center>
+    <p>Hay look there they are (you are going to have to convert
+    these into bmp files for allegro to read them). If you already
+    don't know this allegro can take files such as pictures,
+    sounds, etc and put them in a nice neat file which can be used
+    in a game or other things. To do this we have to load up
+    GRABBER.EXE. Click on "Objects" now goto "NEW" then select RLE
+    SPRITE. You should now be asked for a name put in "BALL". Now
+    do that again and for the name now put "BAR". Now this time
+    when you goto "NEW" choose PALLETE. Name this "PAL"
+    <p>As you can probably see that everything that you have done
+    has had a result on side list. Click on the first thing on the
+    list (Should be the "BALL". Now goto "File" and select read
+    BMP, now go find the file which has the picture of the BALL.
+    When you have done that go back to "OBJECTS" and select GRAB.
+    You should now select the size of the picture and it is done
+    you now have your first sprite in the datafile. Now select the
+    second item in the list should be "BAR". Now do what we just
+    did with the BALL to the BAR. When you have done that select
+    the PALLETE and now just choose "GRAB" form the "OBJECTS" menu.
+    When you have done this in the place where it says "header" put
+    down "pong.h". Now one last thing to do select "File" and then
+    save. Save the file in the same place where you are going to
+    have the source code.
+    <p>If you have not gotten this, don't worry about it, the only
+    reason that I did it was to show you how to use "GRABBER.EXE".
+    Anyways I have done all of this for you and saved it in a zip
+    file (plus the zip has the source code and the sound sample for
+    the game.) which you can download at the end of the article.
+    <h2>STARTING OUT:</h2>
+    <p>Load up RHIDE or another editor to use with DJGPP. I will
+    not explain how to use RHIDE but will tell you how to add
+    ALLEGRO into your porgrams in RHIDE. Ok we have to make a new
+    project. Select "PROJECT" now select "Open Project". Goto where
+    the GRABBER DATA file is and put in "pong" in the file name and
+    click ok. Now you have a new project. Now click on "Options"
+    then "libraries", put in "ALLEG" in the first spot and select
+    the button beside it then click on "OK". Now select "PROJECT"
+    and then "add item". Put in "pong.c", and now select "OK".
+    There ladies and gental men we have our first project.
+    <h2>ON WITH THE GAME:</h2>
+    <p>You should now be in the editor window with the "pong.c"
+    file loaded. We need to first start off by including the files
+    that are required for the game.<br>
+    <br>
+<pre>
+<code>   /*Used for the standerd input/output functions*/
+   #include &lt;stdio.h&gt;
+   #include &lt;stdlib.h&gt;
+   
+   /*Allegro function header file*/
+   #include &lt;allegro.h&gt;
+   
+   /*Pong header file*/
+   #include "pong.h"
+</code>
+</pre>
+    You are probably wondering what the "pong.h" file is for. Well
+    when you created (or not) the datafile in the grabber utility it
+    created a header file to store all the information of the
+    datafile. We will be using this header file to get the data off
+    of the datafile.Now the main function. If you type this all up
+    and then execute it, it would run the program then exit (most
+    likely you will not see much). Now lets load up the pong
+    datafile. To start off we first have to make a global variable
+    for all the other functions to use 
+<pre>
+<code>   int main(void)
+   {
+      /*Init Allegro equipment*/
+      allegro_init();
+   
+      /*Install the timer*/
+      install_timer();
+   
+      /*Install the keyboard*/
+      install_keyboard();
+   
+      /*Initizlise the joystick*/
+      initialise_joystick();
+   
+      /*Install the mouse*/
+      install_mouse();
+   
+      /*Set the sound system*/
+      printf("Setting up the Sound.");
+   
+      if(install_sound(DIGI_AUTODETECT,MIDI_AUTODETECT,NULL) != 0) {
+         /*Shutdown Allegro*/
+         allegro_exit();
+         /*Print error message*/
+         printf("Error setting up Sound\n%s\n\n", allegro_error);
+         exit(1);
+      }
+   
+      /*Set the graphice mode*/
+      printf("Setting up graphics mode 640x480.\n");
+      
+      if (set_gfx_mode(GFX_AUTODETECT, 640, 480, 0, 0) != 0) {
+         /*Shutdown Allegro*/
+         allegro_exit();
+         /*Print error message*/
+         printf("Error setting graphics mode\n%s\n\n", allegro_error);
+         exit(1);
+      }
+      
+      /*Shut down Allegro*/
+      allegro_exit();
+      
+      return 0;
+   }
+</code>
+</pre>
+    There it is the main function. Well if you have not already
+    guessed from reading the code that we have just Initizlised the
+    allegro library, installed the timer function, installed the
+    keyboard, initilized the joystick, installed the mouse, setup
+    the sound card, set the graphics, and last of all exited the
+    whole program. <br>
+     
+<pre>
+<code>      /*Get the Pong DataFile*/
+      DATAFILE *pong_datafile=NULL;
+</code>
+</pre>
+    <br>
+     
+    <p>This should be before the main function. Now lets open the
+    datafile, this should go in the main function.<br>
+<pre>
+<code>      .
+      .
+      .
+      
+      /*Install the mouse*/
+      install_mouse();
+      
+      if((pong_datafile=load_datafile("pong.dat"))==NULL) {
+         /*Shutdown Allegro*/
+         allegro_exit();
+         /*Print error message*/
+         printf("Error loading \"pong.dat\"\n%s\n\n", allegro_error);
+         exit(1);
+      }
+      
+      .
+      .
+      .
+</code>
+</pre>
+    <br>
+     <br>
+     
+    <p>What this basicly does is load the datafile "pong.dat" into
+    the pointer variable "pong_datafile" then it checks it see if
+    it was loaded proparly. If it was not then it exits ALLEGRO
+    then prints out an error message and then exits the whole
+    program.<br>
+    <p>Ok so far you shoud have this.
+<pre>
+<code>   #include &lt;stdio.h&gt;
+   #include &lt;stdlib.h&gt;
+   #include &lt;allegro.h&gt;
+   
+   /*Include the pong header file for the finding things in the datafile*/
+   #include "pong.h"
+   
+   /*Get the Pong DataFile*/
+   DATAFILE *pong_datafile=NULL;
+   
+   int main(void)
+   {
+      /*Init Allegro equipment*/
+      allegro_init();
+      
+      /*Install the timer*/
+      install_timer();
+      
+      /*Install the keyboard*/
+      install_keyboard();
+      
+      /*Initizlise the joystick*/
+      initialise_joystick();
+      
+      /*Install the mouse*/
+      install_mouse();
+      
+      if((pong_datafile=load_datafile("pong.dat"))==NULL) {
+         /*Shutdown Allegro*/
+         allegro_exit();
+         /*Print error message*/
+         printf("Error loading \"pong.dat\"\n%s\n\n", allegro_error);
+         exit(1);
+      }
+      /*Set the sound system*/
+      printf("Setting up the Sound.");
+      if(install_sound(DIGI_AUTODETECT,MIDI_AUTODETECT,NULL) != 0) {
+         /*Shutdown Allegro*/
+         allegro_exit();
+         /*Print error message*/
+         printf("Error setting up Sound\n%s\n\n", allegro_error);
+         exit(1);
+      
+      }
+      
+      /*Set the graphice mode*/
+      printf("Setting up graphics mode 640x480.\n");
+      
+      if (set_gfx_mode(GFX_AUTODETECT, 640, 480, 0, 0) != 0) {
+         /*Shutdown Allegro*/
+         allegro_exit();
+         /*Print error message*/
+         printf("Error setting graphics mode\n%s\n\n",
+         allegro_error);
+         exit(1);
+      }
+      
+      /*Shut down Allegro*/
+      allegro_exit();
+      
+      return 0;
+   }
+</code>
+</pre>
+    <br>
+     
+    <p>Now its time to set up the direction constants. These
+    constants tell us the direction that the ball will be
+    traviling.<br>
+<pre>
+<code>      /*Direction consts*/
+      #define DOWN_RIGHT   0
+      #define UP_RIGHT     1
+      #define DOWN_LEFT    2
+      #define UP_LEFT      3
+</code>
+</pre>
+    <p>This should go after including the header files (at least
+    that is where I like them to be). Basicly what these constants
+    tell us is just the direction so if you were to pick direction
+    0 it would be DOWN_RIGHT, or direction UP_RIGHT which would be
+    1.<br>
+    <p>Now on to the direction variable, this variable is used to
+    set the direction that the ball is traviling. Along with this I
+    will set the x and y positions of the ball.<br>
+<pre>
+<code>
+      int ball_x; //The location of the Ball
+      int ball_y; //The location of the Ball
+      int direction=0; //The direction the Ball is going
+</code>
+</pre>
+    <p>Now its time to setup the variables for the two paddles that
+    the players will be using.<br>
+<pre>
+<code>
+      int bar1_y=30; //Player 1 Bar position
+      int bar2_y=430; //Player 2 Bar position
+</code>
+</pre>
+    <br>
+     
+    <p>You might be wondering why I have bar1_y=30 and bar2_y=430.
+    Well my reason is that the position of the player 1 bar will be
+    in to the top most corner of the screen which is 30 (this is
+    becasue the first 30 y pixels are taken to show the score). And
+    player 2 will have its bar at the botton mose corner (the reason
+    why this is not 430 because the bar is 50 pixels high and
+    430+50=480 which is the height of the screen.<br>
+    <p>Now onto the the score variables.<br>
+<pre>
+<code>
+      int score_p1=0; //Player 1 score
+      int score_p2=0; //Plater 2 score
+</code>
+</pre>
+    <br>
+     
+    <p>This I belive is pretty self explanotary. The speed
+    variables are next these variables are used to set the speed
+    that the ball will be traviling, so lets set them.<br>
+<pre>
+<code>      int speed=2; //The speed of the Ball
+      int amout_of_hits=0; //Used to set the speed of the Ball
+</code>
+</pre>
+    <p>Ok the first variable "speed" is the used as the current
+    speed and the speed that will be changed. Now the second
+    variable "amount_of_hits" is used to set the speed of the ball,
+    this is done by finding the remander of the amount of hits
+    divided by 10. Now onto the graphics of the game.<br>
+    <br>
+    <h2>Double Buffering:</h2>
+    <p>Double buffering is a nice little technique which reduces
+    flickering. Normally when you would write something you would
+    display what ever you wanted to go onto the screen, this would
+    cause the screen to flicker because when every you would
+    display something you would have to clear the whole sreen then
+    display it. But using double buffering what you would do is put
+    everthing that you wanted to display on a virtual screen (a
+    bitmap in the memory) and then copy that whole virtual screen
+    to the acctual screen.<br>
+    <p>Lets create the double buffering feature for the game. Ok
+    lets start off by creating the Virtual screen.<br>
+<pre>
+<code>      BITMAP *buffer; //The screen buffer of double buffering
+</code>
+</pre>
+    <p>Ok so we have the virtual screen. Now what do we do, well we
+    will have to create and clear the buffer. To do this all we
+    have to do is put these lines after we load up the pallete in
+    the main function:<br>
+<pre>
+<code>      .
+      .
+      .
+      
+      /*Set the pallete for the sprites*/
+      set_pallete(pong_datafile[pong_pal].dat);
+      
+      /*Clear and Create the buffer*/
+      buffer=Create_bitmap(640,480);
+      clear(buffer);
+      
+      .
+      .
+      .
+</code>
+</pre>
+    <p>Now lets place the ball in the center of the screen.<br>
+<pre>
+<code>      .
+      .
+      .
+      
+      /*Set the pallete for the sprites*/
+      set_pallete(pong_datafile[pong_pal].dat);
+      
+      /*Clear and Create the buffer*/
+      buffer=Create_bitmap(640,480);
+      clear(buffer);
+      
+      /*Set he Ball position*/
+      ball_x=SCREEN_W/2;
+      ball_y=35;
+      
+      .
+      .
+      .
+</code>
+</pre>
+    <p>Now we start off by creating a function called
+    pong_game(void). What does this function do? It controls all
+    that is going on in the game. Here it is:<br>
+<pre>
+<code>   void pong_game(void)
+   {
+      /*Set the first random direction the ball will be traviling*/
+      direction=random_direction();
+      
+      /*Play the game while the ESC key is not pressed*/
+      while(!key[KEY_ESC]) {
+         /*Move the Ball*/
+         move_ball();
+         /*Respond to the input*/
+         key_respond();
+         
+         /*Put the information on the Screen*/
+         textout(buffer,pong_datafile[pong_text].dat,"Player 1 Score:",
+                 150,0,254);
+         textout(buffer,pong_datafile[pong_text].dat,itoa(score_p1,NULL,10),
+                 text_length(pong_datafile[pong_text].dat,
+                 "Player 1 Score:")+150,0,10);
+         textout(buffer,pong_datafile[pong_text].dat,"Player 2 Score:",
+                 350,0,254);
+         textout(buffer,pong_datafile[pong_text].dat,itoa(score_p2,NULL,10),
+                 text_length(pong_datafile[pong_text].dat,
+                             "Player 2 Score:")+350,0,10);
+         textout(buffer,pong_datafile[pong_text].dat,"keyboard",0,0,255);
+         textout(buffer,pong_datafile[pong_text].dat,"joystick",
+                 640-text_length(pong_datafile[pong_text].dat,"joystick"),
+                 0,255);
+         /*Draw a line to set the boundries*/
+         line(buffer,0,30,640,30,10);
+         
+         /*Put the buffer screen on the screen*/
+         blit(buffer,screen,0,0,0,0,640,480);
+         
+         /*Clear the buffer*/
+         clear(buffer);
+      }
+      return;
+   }
+</code>
+</pre>
+    <br>
+     
+    <p>Don't worry about the first part, I will explain all of that
+    later. All I really want to explain is that it puts up the
+    information about the users like the score and which side is
+    for the joystick and which is the one for the keyboard. At the
+    end the buffer is copyed to the screen and then the buffer is
+    erased, note not the screen (this is what reduces
+    flickering).<br>
+    <p>Ok what do we have now. Currently the program opens and then
+    does all the graphics stuff and the sound stuff and the input
+    devices stuff. After all of that is done we have to load up the
+    pong_game function, we do that by putting the line
+    <code>pong_game();</code> in the main function, mainly after we
+    set up the buffer and the ball position. So it goes like this:
+<pre>
+<code>      /*Set the pallete for the sprites*/
+      set_pallete(pong_datafile[pong_pal].dat);
+      
+      /*Clear and Create the buffer*/
+      buffer=create_bitmap(640,480);
+      clear(buffer);
+      
+      /*Set the Ball position*/
+      ball_x=SCREEN_W/2;
+      ball_y=35;
+      
+      /*Play the Game*/
+      pong_game();
+</code>
+</pre>
+    <br>
+     <br>
+     
+    <p>Now it is time to put together the random_direction
+    function. The purpose of this is to return a random direction
+    that the balls will be traviling (you remember the direction
+    constants that we put together before). Here it is:<br>
+<pre>
+<code>   int random_direction(void)
+   {
+      return random()%3;
+   }
+</code>
+</pre>
+    <p>That is not that hard. If you are wondering why is have
+    random()%3; well the reason is that we have the direction from
+    numbers 0 to 3 which is 4 numbers. So the random function will
+    return a number and we will find a remainder which is mod by
+    3.<br>
+    <p>Well there is the random function now on to the boing
+    function. What is this you may ask well this is the function
+    that will play a music file (This music file is in the zip that
+    I have along with this document). Here it is:<br>
+<pre>
+<code>   void boing(void)
+   {
+      play_sample(pong_datafile[pong_boing].dat,255,255,1000,0);
+      return;
+   }
+</code>
+</pre>
+    <br>
+     
+    <p>The play_sample function is involved with the allegro
+    library. The play_sample function reads the sound sample from
+    the datafile and then plays it in both speakers, then the
+    second last argument means that it will be played at normal
+    speed and the last argument tells us that it will not loop.<br>
+    <p>Now for the second last function it is called move_ball:<br>
+    <br>
+<pre>
+<code>   void move_ball(void)
+   {
+      /*Set the speed according to the amout of hits*/
+      if(amout_of_hits%10==0 &amp;&amp; amout_of_hits!=0) {
+         speed++;
+         amout_of_hits++;
+      }
+   
+      /*Respond to the direction the ball is traviling*/
+      switch(direction) {
+         case DOWN_RIGHT:
+            ball_x+=speed;
+            ball_y+=speed;
+            if(ball_x&gt;600) {
+               if((ball_y&gt;=bar2_y-20) &amp;&amp;( ball_y&lt;=bar2_y+65)) {
+                  direction=DOWN_LEFT;
+                  amout_of_hits++;
+                  boing();
+               }
+               else {
+                  score_p1++;
+                  ball_x=SCREEN_W/2;
+                  ball_y=35;
+                  direction=random_direction();
+               }
+            }
+            else {
+               if(ball_y&gt;420)
+               direction=UP_RIGHT;
+            }
+            break;
+         case UP_LEFT:
+            ball_x-=speed;
+            ball_y-=speed;
+            if(ball_x&lt;5) {
+               if((ball_y&gt;=bar1_y-20) &amp;&amp;( ball_y&lt;=bar1_y+65)) {
+                  direction=UP_RIGHT;
+                  amout_of_hits++;
+                  boing();
+               }
+               else {
+                  direction=random_direction();
+                  score_p2++;
+                  ball_x=SCREEN_W/2;
+                  ball_y=35;
+               }
+            }
+            else {
+               if(ball_y&lt;30)
+               direction=DOWN_LEFT;
+            }
+            break;
+         case UP_RIGHT:
+            ball_x+=speed;
+            ball_y-=speed;
+            if(ball_x&gt;600) {
+               if((ball_y&gt;=bar2_y-20) &amp;&amp;( ball_y&lt;=bar2_y+65)) {
+                  direction=UP_LEFT;
+                  amout_of_hits++;
+                  boing();
+               }
+               else {
+                  score_p1++;
+                  ball_x=SCREEN_W/2;
+                  ball_y=35;
+                  direction=random_direction();
+               }
+            }
+            else if(ball_y&lt;30)
+               direction=DOWN_RIGHT;
+            break;
+         case DOWN_LEFT:
+            ball_x-=speed;
+            ball_y+=speed;
+            if(ball_x&lt;5) {
+               if((ball_y&gt;=bar1_y-20) &amp;&amp;( ball_y&lt;=bar1_y+65)) {
+                  direction=DOWN_RIGHT;
+                  amout_of_hits++;
+                  boing();
+               }
+               else {
+                  score_p2++;
+                  ball_x=SCREEN_W/2;
+                  ball_y=35;
+                  direction=random_direction();
+               }
+            }
+            else {
+               if(ball_y&gt;420)
+                  direction=UP_LEFT;
+            }
+      }
+      /*Display the ball*/
+      draw_rle_sprite(buffer,pong_datafile[pong_ball].dat,ball_x,ball_y);
+      
+      return;
+   }
+</code>
+</pre>
+    Move ball checks to see if the ball has gone over any of the
+    users sides and then moves the ball according to the speed that
+    is provided. At the end it adds 1 to the number of hits. 
+<pre>
+<code>   void key_respond(void)
+   {
+      /*Update the joystick*/
+      
+      poll_joystick();
+      
+      /*Respond to the input*/
+      if(key[KEY_DOWN])
+         bar1_y+=6+up_ran_speed;
+      
+      if(key[KEY_UP])
+         bar1_y-=6+up_ran_speed;
+      
+      if(bar1_y&lt;=30)
+         bar1_y=30;
+      
+      if(bar1_y&gt;430)
+         bar1_y=430;
+      
+      if(joy_down || key[KEY_Z])
+         bar2_y+=6+up_ran_speed;
+      
+      if(joy_up || key[KEY_A])
+         bar2_y-=6+up_ran_speed;
+      
+      if(bar2_y&lt;=30)
+         bar2_y=30;
+      
+      if(bar2_y&gt;430)
+         bar2_y=430;
+      /*Display the bars on the screen*/
+      draw_rle_sprite(buffer,pong_datafile[pong_bar].dat,0,bar1_y);
+      draw_rle_sprite(buffer,pong_datafile[pong_bar].dat,635,bar2_y);
+      
+      return;
+   }
+</code>
+</pre>
+    This is the last function in the pong game. What it does it
+    check to see what input the users have given to the players and
+    then reacts to them. So if the users pushs the up arrow then
+    the paddle on his side will go up or no move if it can not move
+    anymore. I must also add that where the computer checks to see
+    if the joystick up or down botton is pressed it also checks to
+    see if the A and Z keys were pressed (in case you don't have a
+    joystick).<br>
+     
+    <p>Basicly when you put all these functions together you get
+    the whole game. which can be found in this zip file.
+    <center>
+      <a href="how_to_make_a_pong_game/pong.zip">PONG.ZIP</a> (9541 bytes)
+    </center>
+    <h4>Author: <a href="mailto:smahmood@uwaterloo.ca">Sheraz Mahmood</a>
+    </h4>
+</body></html>

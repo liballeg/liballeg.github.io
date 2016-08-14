@@ -1,0 +1,125 @@
+
+   Date: 2003-12-13. This is a text only snapshot of the web
+   
+    http://quark.physics.uwo.ca/~harwood/humor10.html
+    
+   made by Grzegorz Adam Hankiewicz (gradha@users.sourceforge.net) with the
+   software ELinks 0.5pre12.CVS - Text WWW browser, which you can find at
+   
+    http://elinks.or.cz/
+   
+   The purpose of the snapshot is to provide an alternative version if the
+   main server fails or the original copy is deleted. The snapshot has been
+   render to 78 characters of width with the ISO-8859-1 character codepage.
+
+     --------------------------------------------------------------------
+
+  THE LESSER-KNOWN PROGRAMMING LANGUAGES #2: RENE
+
+   Named after the famous French philosopher and mathematician Rene
+   DesCartes, RENE is a language used for artificial intelligence. The
+   language is being developed at the Chicago Center of Machine Politics
+   and Programming under a grant from the Jane Byrne Victory Fund. A
+   spokesman described the language as "Just as great as dis [sic] city of
+   ours."
+   The center is very pleased with progress to date. They say they have
+   almost succeeded in getting a VAX to think. However, sources inside the
+   organization say that each time the machine fails to think it ceases to
+   exist.
+
+  THE LESSER-KNOWN PROGRAMMING LANGUAGES #5: VALGOL
+
+   From its modest beginnings in Southern California's San Fernando Valley,
+   VALGOL is enjoying a dramatic surge of popularity across the industry.
+
+   Here is a sample program:
+   LIKE, Y*KNOW(I MEAN)START
+   IF PIZZA = LIKE BITCHEN AND GUY = LIKE TUBULAR AND
+   VALLEY GIRL = LIKE GRODY**MAX(FERSURE)**2 THEN
+   FOR I = LIKE 1 TO OH*MAYBE 100
+   DO*WAH - (DITTY**2)
+   BARF(I)=TOTALLY GROSS(OUT)
+   SURE
+   LIKE BAG THIS PROGRAM
+   REALLY
+   LIKE TOTALLY (Y*KNOW)
+   IM*SURE
+   GOTO THE MALL
+
+   When the user makes a syntax error, the interpreter displays the
+   message:
+   GAG ME WITH A SPOON!!
+
+   THE LESSER-KNOWN PROGRAMMING LANGUAGES #8: LAIDBACK
+
+   This language was developed at the Marin County Center for T'ai Chi,
+   Mellowness and Computer Programming (now defunct), as an alternative to
+   the more intense atmosphere in nearby Silicon Valley. The center was
+   ideal for programmers who liked to soak in hot tubs while they worked.
+   Unfortunately few programmers could survive there because the center
+   outlawed Pizza and Coca-Cola in favor of Tofu and Perrier.
+   Many mourn the demise of LAIDBACK because of its reputation as a gentle
+   and non-threatening language since all error messages are in lower case.
+   For example, LAIDBACK responded to syntax errors with the message: "i
+   hate to bother you, but i just can't relate to that. can you find the
+   time to try it again?"
+
+  THE LESSER-KNOWN PROGRAMMING LANGUAGES #10 -- SIMPLE
+
+   SIMPLE is an acronym for Sheer Idiot's Monopurpose Programming Language
+   Environment. This language, developed at the Hanover College for
+   Technological Misfits, was designed to make it impossible to write code
+   with errors in it. The statements are, therefore, confined to BEGIN, END
+   and STOP. No matter how you arrange the statements, you can't make a
+   syntax error. Programs written in SIMPLE do nothing useful. Thus they
+   achieve the results of programs written in other languages without the
+   tedious, frustrating process of testing and debugging.
+
+  THE LESSER-KNOWN PROGRAMMING LANGUAGES #12 -- LITHP
+
+   This otherwise unremarkable language is distinguished by the absence of
+   an "S" in its character set; users must substitute "TH". LITHP is said
+   to be useful in protheththing lithtth.
+
+  THE LESSER-KNOWN PROGRAMMING LANGUAGES #13 -- SLOBOL
+
+   SLOBOL is best known for the speed, or lack of it, of its compiler.
+   Although many compilers allow you to take a coffee break while they
+   compile, SLOBOL compilers allow you to travel to Bolivia to pick the
+   coffee. Forty-three programmers are known to have died of boredom
+   sitting at their terminals while waiting for a SLOBOL program to
+   compile. Weary SLOBOL programmers often turn to a related (but
+   infinitely faster) language, COCAINE.
+
+  THE LESSER-KNOWN PROGRAMMING LANGUAGES #17 -- SARTRE
+
+   Named after the late existential philosopher, SARTRE is an extremely
+   unstructured language. Statements in SARTRE have no purpose; they just
+   are. Thus SARTRE programs are left to define their own functions. SARTRE
+   programmers tend to be boring and depressed, and are no fun at parties.
+
+  THE LESSER-KNOWN PROGRAMMING LANGUAGES #18 -- C-
+
+   This language was named for the grade received by its creator when he
+   submitted it as a class project in a graduate programming class. C- is
+   best described as a "low-level" programming language. In fact, the
+   language generally requires more C- statements than machine-code
+   statements to execute a given task. In this respect, it is very similar
+   to COBOL.
+
+  THE LESSER-KNOWN PROGRAMMING LANGUAGES #19 -- FIFTH
+
+   FIFTH is a precision mathematical language in which the data types refer
+   to quantity. The data types range from CC, OUNCE, SHOT, and JIGGER to
+   FIFTH (hence the name of the language), LITER, MAGNUM and BLOTTO.
+   Commands refer to ingredients such as CHABLIS, CHARDONNAY, CABERNET,
+   GIN, VERMOUTH, VODKA, SCOTCH, and WHATEVERSAROUND.
+   The many versions of the FIFTH language reflect the sophistication and
+   financial status of its users. Commands in the ELITE dialect include
+   VSOP and LAFITE, while commands in the GUTTER dialect include HOOTCH and
+   RIPPLE. The latter is a favorite of frustrated FORTH programmers who end
+   up using this language.
+
+   -------------------------------------------------------------------------
+
+   Back to main humour page.

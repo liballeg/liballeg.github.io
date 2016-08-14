@@ -1,0 +1,518 @@
+
+   Date: 2003-04-19. This is a text only snapshot of the web
+   
+    http://www.allegro.cc/forums/view_thread.php?_id=206624
+    
+   made by Grzegorz Adam Hankiewicz (gradha@users.sourceforge.net) with the
+   software ELinks 0.5pre0.CVS - Text WWW browser, which you can find at
+   
+    http://elinks.or.cz/
+   
+   The purpose of the snapshot is to provide an alternative version if the
+   main server fails or the original copy is deleted. The snapshot has been
+   render to 78 characters of width with the ISO-8859-1 character codepage.
+
+     --------------------------------------------------------------------
+
+Allegro.cc  Bookmark - 'Stick' this thread at the top of your list.  Allegro.cc   
+              Send to Top - Force this thread back to the top of     Forums »     
+                               everyone's list.                      Allegro      
+            forum home | recent threads | search | my profile | log  Development  
+                                      out                            » Allegro 5  
+                                                                     Development  
+                                                                     Discussion   
+                                                                                  
+jump to last read break                                                           
+                                                                                  
+Allegro 5 Development Discussion                                                  
+              Posted on 2002-09-14 01:11   View Profile                           
+              ...is now going to be via e-mail. This is ease the bandwidth on     
+              modem users, or cell-phone-web users.                               
+                                                                                  
+Bob           See here for how to subscribe:                                      
+Member# 699   http://lists.sourceforge.net/lists/listinfo/alleg-bigfive           
+September                                                                         
+2000          Oh yeah, if you don't want to post, but just read what's going on,  
+              you can always visit the archive:                                   
+     Bob      http://sourceforge.net/mailarchive/forum.php?forum_id=11854         
+                                                                                  
+              --                                                                  
+              - Bob                                                               
+              [ Webpage | Allegro FAQ | Coding Tricks ]                           
+              The world is being silently polluted by Dihydrogen Monoxide!        
+Rafal Szyja   Posted on 2002-09-16 18:33   View Profile                           
+Member# 2,408 hmm.. allegro 5 is coming up?                                       
+June 2002                                                                         
+              _____________________________________________________________       
+ Rafal Szyja  My website: http://rafalszyja.republika.pl                          
+              Gadugadu:3646465                                                    
+              Posted on 2002-09-18 12:39   View Profile                           
+              Why in the Allegro 5 version                                        
+                                                                                  
+              DOS port removed?                                                   
+                                                                                  
+takis76       can you give me instructions how to create my                       
+Member# 1,419                                                                     
+July 2001     own makefile for compilation in DJGPP and DOS                       
+                                                                                  
+   takis76    DOS is very usefull why you removed it?                             
+                                                                                  
+              And how to make a DOS port version? by myselft?                     
+                                                                                  
+              where can i download the Version 5 of Allegro?                      
+                                                                                  
+              Thanx                                                               
+Yves          Posted on 2002-09-18 13:16   View Profile                           
+Manuelpillai  dos is good but is steadily dying, just switch to linux or windows  
+Member# 1,770 2k+                                                                 
+December 2001 ----------------                                                    
+              1 w4nn4 b3 4 l33t g4M3-pr0gr4mM1Ng d00D.                            
+    Yves      I FINALLY GOT A WEBSITE!!                                           
+Manuelpillai                                                                      
+              Posted on 2002-09-18 15:15   View Profile                           
+              Or just keep using Allegro 4.x if you insist on DOS support.        
+                                                                                  
+              I think (not sure) the DOS port is being dropped from 5.0 because   
+              the new rewrite has features DOS doesn't support easily, or at all. 
+              Someone else can come up with a list, but I believe it includes     
+23yrold3yrold things like dual-monitor support. So you really can't port it.      
+Member# 1,134 That's, y'know, why it's being dropped                              
+March 2001                                                                        
+              Stick with 4.x.                                                     
+23yrold3yrold                                                                     
+              --                                                                  
+              Chris Barry - finally saw The Matrix. To clarify; I was meant to be 
+              impressed, right?                                                   
+              [ My Game | My Site | My Journal | Allegro FAQ | Pixelate | Vivace  
+              | AGDN | Foolish Faith ]                                            
+              Work for the best, prepare for the worst, expect nothing, and you   
+              will always be content.                                             
+Bob           Posted on 2002-09-18 15:29   View Profile                           
+Member# 699   Who said the DOS port would be removed?                             
+September                                                                         
+2000          --                                                                  
+              - Bob                                                               
+     Bob      [ Webpage | Allegro FAQ | Coding Tricks ]                           
+              The world is being silently polluted by Dihydrogen Monoxide!        
+              Posted on 2002-09-18 17:49   View Profile                           
+              That's what lwithers said the last time this came up. If it's not   
+              being dropped, then where on Earth are people getting this from?    
+23yrold3yrold It's very confusing                                                 
+Member# 1,134                                                                     
+March 2001    --                                                                  
+              Chris Barry - finally saw The Matrix. To clarify; I was meant to be 
+23yrold3yrold impressed, right?                                                   
+              [ My Game | My Site | My Journal | Allegro FAQ | Pixelate | Vivace  
+              | AGDN | Foolish Faith ]                                            
+              Work for the best, prepare for the worst, expect nothing, and you   
+              will always be content.                                             
+Grzegorz Adam                                                                     
+Hankiewicz    Posted on 2002-09-18 18:35   View Profile Edit Post                 
+Member# 12    DOS support is obviously going to be removed, so developers can     
+April 2000    concentrate on more interesting platform targets like Spectrum 128K 
+              (48K support will come in 5.2).                                     
+Grzegorz Adam                                                                     
+ Hankiewicz                                                                       
+Matthew       Posted on 2002-09-18 19:44   View Profile                           
+Leverton      And I've been working on the C64 port. Although currently, it       
+Member# 1     requires the 256K ram expansion card.                               
+April 2000                                                                        
+              --                                                                  
+   Matthew    Matthew Leverton - http://www.leverton.cc - RTFM                    
+  Leverton                                                                        
+              Posted on 2002-09-18 22:13   View Profile                           
+Richard       How can you possibly consider doing a Spectrum Port?? ..... When    
+Phipps        you haven't invited the esteemed Matt Smith to help you?! His       
+Member# 1,632 knowledge (and famous spectrum games) will be invaluable to you     
+November 2001 all..                                                               
+                                                                                  
+   Richard    --                                                                  
+   Phipps                                                                         
+              My website and Chaos Funk currently resides at : www.shadecat.com.  
+              Posted on 2002-09-18 22:32   View Profile                           
+              C64? Dang it, how long will I have to wait for VIC-20 support?      
+David Grace                                                                       
+Member# 42    I mean, you Allegro gods should be able to do plenty inside of 4k.  
+April 2000    (Though I hear you can gain another 384 bytes by using the cassette 
+              IO buffer.)                                                         
+ David Grace  _______________________________                                     
+              =-= Gaping Wolf Software =-=                                        
+              =-= Project Yiff-X * HalfLight: Crusade * HalfLight: Anniversary    
+              Edition * HalfLight * G-Fighter =-=                                 
+              Posted on 2002-09-18 23:02   View Profile                           
+              Bah. That's time wasted that could be spent on DC/XBox/GBA ports.   
+              (I can't tell if you guys are being serious or not )                
+23yrold3yrold                                                                     
+Member# 1,134 --                                                                  
+March 2001    Chris Barry - finally saw The Matrix. To clarify; I was meant to be 
+              impressed, right?                                                   
+23yrold3yrold [ My Game | My Site | My Journal | Allegro FAQ | Pixelate | Vivace  
+              | AGDN | Foolish Faith ]                                            
+              Work for the best, prepare for the worst, expect nothing, and you   
+              will always be content.                                             
+              Posted on 2002-09-18 23:18   View Profile                           
+              Yes, Chris. I'm sure that Allegro is being ported to 20-yer-old     
+Goodbytes     computers. While we're at it, why don't we do a UNIVAC port too?    
+Member# 448   --                                                                  
+June 2000     ~Goodbytes                                                          
+              Not for all the tea in China! Well, I might for all the tea in      
+  Goodbytes   China, or the rice--no, that's ridiculous--the preserved ginger     
+              then--no, let's say half the tea, the ginger, a shipment of         
+              shark-fin soup double-discounted just to take it off your hands...  
+              Website || The Ninja Dave Comic Archives                            
+              Posted on 2002-09-18 23:21   View Profile                           
+              If you have a UNIVAC, I'd like to see you not go insane while       
+Thomas        porting allegro to it heck allegro's driver vtables probably fill   
+Fjellstrom    up its memory.                                                      
+Member# 476                                                                       
+June 2000     --                                                                  
+              Thomas Fjellstrom - [Email] - [Website] - [Webpage]                 
+   Thomas     - Fav web comics: Penny Arcade - Megatokyo - PvP - Life Of Riley -  
+ Fjellstrom   Reallife                                                            
+              - Isn't it funny how some people will take every opprotunity to     
+              talk about thier beloved pet?                                       
+lwithers      Posted on 2002-09-19 01:09   View Profile                           
+Member# 630   Sorry, I never said the DOS support would be dropped. In fact I     
+September     made it explicitly clear that I was *not* saying whether there      
+2000          would or would not be DOS support. Please read more carefully.      
+              Posted on 2002-09-19 01:49   View Profile                           
+              I didn't say you said that; I said you said what Bob said. Please   
+              read more carefully                                                 
+23yrold3yrold                                                                     
+Member# 1,134 --                                                                  
+March 2001    Chris Barry - finally saw The Matrix. To clarify; I was meant to be 
+              impressed, right?                                                   
+23yrold3yrold [ My Game | My Site | My Journal | Allegro FAQ | Pixelate | Vivace  
+              | AGDN | Foolish Faith ]                                            
+              Work for the best, prepare for the worst, expect nothing, and you   
+              will always be content.                                             
+              Posted on 2002-09-19 03:54   View Profile                           
+Daniel        Wow! C64 had a 256K ram upgrade? Was there any games that took      
+Schlyder      advantage of it? I still remember the disk drive I bought. Best     
+Member# 257   hardware upgrade ever!!! :-) No more half-hours waiting for         
+April 2000    Gauntlet to crash just before it finished loading. :-)              
+                                                                                  
+   Daniel     This new mailing list got me thinking. If it can be set up so       
+  Schlyder    easily, why isn't the Allegro conductors list moved to Sourceforge  
+              so it can be archived? Would be nice...                             
+              Posted on 2002-09-19 19:29   View Profile                           
+              Yeah... C64 support - that's GOOD - YOU KNOW -                      
+              this is in fact the best 8bit computer on the GLOBE! I'm not        
+              kidding !!!                                                         
+                                                                                  
+              but why you are going to remove DOS support in the future ? as YOU  
+Rafal Szyja   said - DOS port is the most stable ONE!                             
+Member# 2,408                                                                     
+June 2002     are you MAD or WHAT?                                                
+              DOS is cool!                                                        
+ Rafal Szyja  Allegro is cool!                                                    
+                                                                                  
+              ALLEGRO+DOS IS COOL!                                                
+                                                                                  
+              _____________________________________________________________       
+              My website: http://rafalszyja.republika.pl                          
+              Gadugadu:3646465                                                    
+              Posted on 2002-09-19 20:09   View Profile                           
+              I propose.. the future:                                             
+                                                                                  
+              Spectrum Allegro v1.0                                               
+              ---------------------                                               
+                                                                                  
+              A complete graphic library for the popular Spectrum Computer!       
+              Amazing basic style commands and a wide range of features. It's now 
+              possible for ordinary people to create amazing games with a simple  
+              knowledge of basic/machine code.                                    
+                                                                                  
+              Check out the included examples on tapes 33-38 of the 63 tape set   
+              by some famous allegro coders:                                      
+                                                                                  
+              * Johan Peitz contributed a port of his icy tower to the Spectrum.  
+              Featuring highly detailed 2 colour graphics and a special theme     
+              song in 3 warbly chip sound channels based on the original ingame   
+              music. How high can you flip the screen up the tower?               
+                                                                                  
+              * Richard Phipps contributed SpeccyPaint, a 2 colour masterpiece of 
+              a paint program. Featuring an internal buffer of 1 bit graphics     
+              shown on an entirely different 1 bit buffer. Amazing contrast       
+              control, choose from black and white with a full 1 bit range.       
+              Richard also contributed to the core routines with some important   
+              hacks, patches and bug fixes to get around his original bugs and    
+              mistakes.                                                           
+                                                                                  
+Richard       * Bob contributed his powerful SBlend routines. Amazing alpha blend 
+Phipps        effects in full 1 bit colour. All at incredibly fast speeds for a   
+Member# 1,632 1MHZ machine. Frame rate for full screen blends is now approaching  
+November 2001 2FPM in the latest version!                                         
+                                                                                  
+   Richard    * Thomas Fjellstrom created the special linux speccy setup,         
+   Phipps     CrashHat. (Warning, most versions will require a special tape       
+              player capable of playing tapes bigger than 128k).                  
+                                                                                  
+              * 23yrdold3yrold created the demo game. A flip screen Monty Mole on 
+              the run platform game with special curved platforms. Chris is also  
+              the author of the Spectrum demo A Brief History of Spam. Featuring  
+              the worlds longest ever spamming scrolltext. Weighing in at a       
+              massive 96 hours due to very clever compression and random          
+              repeating sections.                                                 
+                                                                                  
+              * Thomas Harte contributed to the special DirectS overlay           
+              functions, enabling the spectrum version of Allegro to work on      
+              normal TV's!                                                        
+                                                                                  
+              * Shawn Hargreaves wrote most of the core routines in specially     
+              optimised Z80 machine code. He was helpfully assisted by            
+              Spellcaster and Thomas Harte for the final core library, after they 
+              decided to rewrite 5 earlier versions of the core routines due to   
+              'internal disagreements' of a DirectS nature.                       
+                                                                                  
+              * Matt Smith generously provided the fast and creative sprite       
+              routines. As well as the palette control routines. See Example 5,   
+              "Scrolling Dot Rope" for a special routine created by Matt.         
+                                                                                  
+              Try Spectrum Allegro now!                                           
+                                                                                  
+              --                                                                  
+                                                                                  
+              My website and Chaos Funk currently resides at : www.shadecat.com.  
+              Posted on 2002-09-20 01:20   View Profile                           
+              DOS, KQ and Tench Forever!!!!                                       
+                                                                                  
+                Quote:                                                            
+                                                                                  
+                ---------------------------------------------------------------   
+                                                                                  
+                DC/XBox/GBA ports.                                                
+                                                                                  
+                ---------------------------------------------------------------   
+                                                                                  
+dudaskank     Yes!!! GBA too!!!                                                   
+Member# 561                                                                       
+July 2000       Quote:                                                            
+                                                                                  
+  dudaskank     ---------------------------------------------------------------   
+                                                                                  
+                because the new rewrite has features DOS doesn't support easily   
+                                                                                  
+                ---------------------------------------------------------------   
+                                                                                  
+              What rewrites?                                                      
+                                                                                  
+              No need for another signature                                       
+                                                                                  
+              Eduardo "Dudaskank"                                                 
+              [ Home Page | dudaskank@yahoo.com | ICQ: 157528738 ]                
+              [ Tetris 1.1 | MJpgAlleg 2.3 ]                                      
+              Posted on 2002-09-20 01:32   View Profile                           
+                                                                                  
+                Quote:                                                            
+                                                                                  
+                ---------------------------------------------------------------   
+                                                                                  
+                What rewrites?                                                    
+                                                                                  
+Thomas          ---------------------------------------------------------------   
+Fjellstrom                                                                        
+Member# 476   Allegro 5 will have an entierly new API. And some of the new        
+June 2000     features won't be supported under DOS..                             
+                                                                                  
+   Thomas     Richard> ROFLMAO.                                                   
+ Fjellstrom                                                                       
+              btw. whats a 'special linux speccy setup'?                          
+                                                                                  
+              --                                                                  
+              Thomas Fjellstrom - [Email] - [Website] - [Webpage]                 
+              - Fav web comics: Penny Arcade - Megatokyo - PvP - Life Of Riley -  
+              Reallife                                                            
+              - Isn't it funny how some people will take every opprotunity to     
+              talk about thier beloved pet?                                       
+              Posted on 2002-09-20 01:58   View Profile                           
+                                                                                  
+                Quote:                                                            
+                                                                                  
+                ---------------------------------------------------------------   
+                                                                                  
+                Allegro 5 will have an entierly new API.                          
+                                                                                  
+                ---------------------------------------------------------------   
+                                                                                  
+              This is why I wonder when people say things like "The DOS port is   
+              staying in Allegro 5.0 since it's already done and works great".    
+              Since AFAIK a lot of the code is being redone from scratch, that    
+              argument kinda falls flat ....                                      
+                                                                                  
+                Quote:                                                            
+23yrold3yrold                                                                     
+Member# 1,134   ---------------------------------------------------------------   
+March 2001                                                                        
+                Yes, Chris. I'm sure that Allegro is being ported to 20-yer-old   
+23yrold3yrold   computers.                                                        
+                                                                                  
+                ---------------------------------------------------------------   
+                                                                                  
+              If someone who loves the Spectrum 128K or something and can do it,  
+              I wouldn't doubt it. Hell, Shawn ported Allegro to the X-Box just   
+              for fun. That's h4rdc0r3!!                                          
+                                                                                  
+              Mind you, I have no clue what a Spectrum 128K is (hardware idiot,   
+              remember?) Is this the first wave of Palladium systems?             
+                                                                                  
+              --                                                                  
+              Chris Barry - finally saw The Matrix. To clarify; I was meant to be 
+              impressed, right?                                                   
+              [ My Game | My Site | My Journal | Allegro FAQ | Pixelate | Vivace  
+              | AGDN | Foolish Faith ]                                            
+              Work for the best, prepare for the worst, expect nothing, and you   
+              will always be content.                                             
+              Posted on 2002-09-20 02:01   View Profile                           
+                                                                                  
+                Quote:                                                            
+                                                                                  
+                ---------------------------------------------------------------   
+                                                                                  
+                Since AFAIK a lot of the code is being redone from scratch, that  
+Thomas          argument kinda falls flat                                         
+Fjellstrom                                                                        
+Member# 476     ---------------------------------------------------------------   
+June 2000                                                                         
+              Alot of the code will not be rewritten, like the drivers for        
+   Thomas     hardware etc... The reason for the new API is so that features can  
+ Fjellstrom   be added in a non-hackish way, like having multiple 'screen's.      
+                                                                                  
+              --                                                                  
+              Thomas Fjellstrom - [Email] - [Website] - [Webpage]                 
+              - Fav web comics: Penny Arcade - Megatokyo - PvP - Life Of Riley -  
+              Reallife                                                            
+              - Isn't it funny how some people will take every opprotunity to     
+              talk about thier beloved pet?                                       
+              Posted on 2002-09-20 23:58   View Profile                           
+              Thank you Thomas.. It seems like you are the only one who got the   
+              Spectrum Allegro Joke.. :P :D                                       
+                                                                                  
+              Chris: The Spectrum was the first mass produced home computer in    
+              Britain. Made by a technological genius, but unfortunately he was   
+              also a business bufoon.                                             
+                                                                                  
+              (If you want some proof of his skills, he also invented the worlds  
+              first portable TV (before LCD technology was available), the worlds 
+              first Digital display watch (LED's rather than LCD's) and other     
+              things, such as the first electric bikes/scooters (you can't call   
+              the C5 a car!)..                                                    
+                                                                                  
+              :)                                                                  
+Richard                                                                           
+Phipps        Anyway, the speccy (or spectrum):                                   
+Member# 1,632                                                                     
+November 2001 It was out before the C64 and the atari/apple computers. It had 2   
+              colour graphics, but each 8 x 8 character block could have it's own 
+   Richard    choice of 2 colours. The resolution was better than C64/Atari       
+   Phipps     Computers because of the low colours too..                          
+                                                                                  
+              If you want to see some pics of the games, have a look at:          
+                                                                                  
+              http://members.tripod.com/ssh_web/                                  
+                                                                                  
+              (you can tell it was a popular computer because this site has       
+              ingame screenshots from 749 games.. :) )                            
+                                                                                  
+              And to my mind, Matt Smith created one of the greatest ever games   
+              on it... yes I am a Jet Set Willy fan! ;)                           
+                                                                                  
+              Sorry Matt, but.. bows down! ;D                                     
+                                                                                  
+              --                                                                  
+                                                                                  
+              My website and Chaos Funk currently resides at : www.shadecat.com.  
+              Posted on 2002-09-21 01:04   View Profile                           
+              I think you undersell the Spectrum a bit. Remember also that it had 
+              a CPU that was substantially faster (not just in cycle terms, in    
+              terms of what you could calculate in the real world) and more       
+              flexible than that of the Atari/Apple. This, coupled with the fact  
+              that it had a genuine frame buffer made it much nicer for most      
+              types of graphics above the simple sprite/background sort - see the 
+Thomas Harte  way that isometric games were pioneered on the Spectrum, and some   
+Member# 33    popular 3d titles such as Virus have their only 8bit incarnation on 
+April 2000    the Spectrum. Even if the Spectrum version is rubbish!              
+                                                                                  
+Thomas Harte  People who are still making ZX Spectrum demos seem to be able to    
+              match anything I could do on a 486 PC, including voxel landscapes,  
+              fast filled polygon worlds with environment mapping, and so on.     
+                                                                                  
+              If you really want to make things unbearable for yourself, you can  
+              see it all via my Allegro powered Spectrum emulator, long dead and  
+              never allegro.cc listed, but kept for no apparent reason at         
+              http://www.btinternet.com/~t.harte/SoftySoft/prevproj.htm.          
+              Posted on 2002-09-21 01:06   View Profile                           
+                                                                                  
+                Quote:                                                            
+                                                                                  
+                ---------------------------------------------------------------   
+                                                                                  
+Yves            GBA too!!!                                                        
+Manuelpillai                                                                      
+Member# 1,770   ---------------------------------------------------------------   
+December 2001                                                                     
+              YES! Gba support is more of a must, there already exists a free gcc 
+    Yves      compiler for GBA. I tried coding for the GBA, but i quickly got     
+Manuelpillai  annoyed because doing some basic stuff like clearing the screen,    
+              displaying and loading images were a pain in the a$$. All in all i  
+              ended up quitting GBA coding, so we _SHOULD_ make a GBA port.       
+              Ppl (not just the underground 8 bit coders) would acctually be      
+              interested in coding for it.                                        
+              ----------------                                                    
+              1 w4nn4 b3 4 l33t g4M3-pr0gr4mM1Ng d00D.                            
+              I FINALLY GOT A WEBSITE!!                                           
+              Posted on 2002-09-21 01:11   View Profile                           
+              Don't you need some sort of hardware for GBA coding though? Flash   
+              cards or somethng? I would still prefer the DC. Nothing would bring 
+              me greater joy than playing a creation of mine on a big-screen TV   
+              8) Plus it's just got more oomph; anything I can code for GBA I can 
+              code for my PC. The DC on the other hand can do some very nice      
+23yrold3yrold graphics; that alone makes me salivate.                             
+Member# 1,134                                                                     
+March 2001    Of course, I understand the user base for GBA is probably bigger    
+              than DC. How about PS2 then? ;)                                     
+23yrold3yrold                                                                     
+              --                                                                  
+              Chris Barry - finally saw The Matrix. To clarify; I was meant to be 
+              impressed, right?                                                   
+              [ My Game | My Site | My Journal | Allegro FAQ | Pixelate | Vivace  
+              | AGDN | Foolish Faith ]                                            
+              Work for the best, prepare for the worst, expect nothing, and you   
+              will always be content.                                             
+              Posted on 2002-09-21 01:23   View Profile                           
+              No, you can program for the GBA using just one lead, thanks to the  
+              hardware GBA feature intended to allow link up games with only one  
+Thomas Harte  cartridge.                                                          
+Member# 33                                                                        
+April 2000    I would get into it if I could afford a GBA and trusted my money to 
+              the cable suppliers.                                                
+Thomas Harte                                                                      
+              Also, we'll already have an instant PS2 port once an SDL driver for 
+              Allegro is written. I hope to write one for Allegro 5 if no-one     
+              else will.                                                          
+              Posted on 2002-09-21 05:04   View Profile                           
+              You don't even need a lead to program games for the GBA, just       
+Eskimo Ninja  compile them into the GBA ROM format, and use an emulator (I use    
+Member# 1,256 Boycott Advance) to run them...                                     
+April 2001                                                                        
+              ___________________________________________________________________ 
+Eskimo Ninja  Eskimo Ninja                                                        
+              eskimo.8m.net | tile game tutorial | pixelate diary                 
+              A true ninja is a master of himself and his environment.            
+                                                                                  
+                                                                                  
+                                                                                  
+Bookmark - 'Stick' this thread at    [___________________________________] [ Go ] 
+the top of your list. Subscribe -                                                 
+Receive e-mail notifications. Send                                                
+to Top - Force this thread back to                                                
+the top of everyone's list. Hide                                                  
+Thread - You won't see this thread                                                
+again until someone else posts. Kill                                              
+Thread - You will never see this                                                  
+thread again.                                                                     
+
+                  Copyright ©1999-2003, by Matthew Leverton
+
+                You are visitor #1,203,958 since January 1999.
+            This page has been viewed 475 times since March 2002.

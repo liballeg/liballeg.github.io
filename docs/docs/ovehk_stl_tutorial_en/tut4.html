@@ -1,0 +1,361 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+   <head>
+      <title>Allegro/STL Tutorial: chapter 4</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+      <meta name="author" content="Ove K&aring;ven">
+   </head>
+   <body text="#000000" bgcolor="#FFFFFF" link="#0000EF" vlink="#51188E" alink="#FF0000">
+<H1>Chapter 4</H1>
+<H2>4. OOP Basics</H2>
+<H3>4.1 Object-Oriented Programming</H3>
+The OOP paradigm is based on the human way to think of things, that each
+object in the known universe has within itself its properties and its
+potential, that they are mostly self-contained entities. This is also
+using in programming, since programs are often required to deal with a
+lot of components of different kinds, where it can be an advantage to let
+each of these become a self-contained object that can largely take care of
+itself without depending on the main program to know how to do everything
+the object has to do (encapsulation). This is especially useful in game
+programming, since every detail in the game can be taken care of by its
+own encapsulated OOP object quite independently from other objects. This
+lets each other has its own mind independent from the others, and relieves
+the main game loop from having to know anything about what the objects are
+actually doing.
+<P>
+So, what we are going to do is to write an OOP backbone that we can base
+our game objects on, and then use it to write an action game. We will need
+to make an object base class, and find some way of managing all the
+independent objects so that they can be used. The latter is where STL
+comes in. But first, we need to know to make a basic object class.
+<H3>4.2 C++ Classes</H3>
+The C++ programming language has much to offer when it comes to OOP
+programming. (Of course, there might be better languages when it comes
+to OOP, but only C++ is (mostly) compatible with the widely-used C, in
+which Allegro was written.) We will start with a basic class definition
+for our helicopter object.
+<PRE>
+class chopper {
+public:
+ int X,Y;
+};
+</PRE>
+In many ways, this is a lot like a <CODE>struct</CODE>, and can be used in
+much the same way:
+<PRE>
+#include &lt;allegro.h&gt;
+#include "tutorial.h"
+
+#define MIN_Y 8
+
+DATAFILE*data;
+BITMAP*backdrop,*framebuf;
+
+class chopper {
+public:
+ int X,Y;
+};
+
+int main()
+{
+ allegro_init();
+ install_keyboard();
+ initialise_joystick();
+
+ data=load_datafile("tutorial.dat");
+
+ set_gfx_mode(GFX_VGA,320,200,0,0);
+
+ set_palette((RGB*)data[TUT_GAMEPAL].dat);
+
+ // create 320x192 backdrop
+ backdrop=create_bitmap(320,192);
+ for (int Y=0; Y&lt;128; Y++) hline(backdrop,0,Y,319, (Y/2)+128);
+ for (int Y=128; Y&lt;192; Y++) hline(backdrop,0,Y,319, ((Y-128)/2)+192);
+
+ // create 320x200 double buffer
+ framebuf=create_bitmap(320,200);
+ clear(framebuf);
+
+ chopper Hero;
+ Hero.X=0; Hero.Y=100;
+ while (!key[KEY_ESC]) {
+  // build frame
+  blit(backdrop,framebuf,0,0,0,MIN_Y,320,200);
+  draw_rle_sprite(framebuf,(RLE_SPRITE*)data[TUT_CHOPPER].dat,Hero.X,Hero.Y);
+  // display frame
+  vsync();
+  blit(framebuf,screen,0,0,0,0,320,200);
+  // get user input
+  poll_joystick();
+  if (key[KEY_LEFT]||joy_left) Hero.X--;
+  if (key[KEY_RIGHT]||joy_right) Hero.X++;
+  if (key[KEY_UP]||joy_up) Hero.Y--;
+  if (key[KEY_DOWN]||joy_down) Hero.Y++;
+ }
+ return 0;
+}
+</PRE>
+but there is in fact a difference, as you would see if you tried to do
+<PRE>
+ chopper Hero={0,100};
+</PRE>
+The <CODE>Hero</CODE> object is an instance of the <CODE>chopper</CODE>
+class, and not just a plain structure, thus it would not work.
+<P>
+What the <B>public</B> clause means is that whatever is defined in
+the class (or struct) after it, will be accessible to code outside the class
+definition as well, which is necessary for parts of the class that isn't
+self-contained. Since this class isn't self-contained at all yet, both
+fields (X and Y) have to be marked <B>public</B>.
+<P>
+As a first step towards making the object self-contained, we will now move
+the drawing and input code into it.
+<PRE>
+#include &lt;allegro.h&gt;
+#include "tutorial.h"
+
+#define MIN_Y 8
+
+DATAFILE*data;
+BITMAP*backdrop,*framebuf;
+
+class chopper {
+public:
+ int X,Y;
+ void draw(BITMAP*dest) {
+  draw_rle_sprite(dest,(RLE_SPRITE*)data[TUT_CHOPPER].dat,X,Y);
+ }
+ void input();
+};
+
+void chopper::input()
+{
+ if (key[KEY_LEFT]||joy_left) X--;
+ if (key[KEY_RIGHT]||joy_right) X++;
+ if (key[KEY_UP]||joy_up) Y--;
+ if (key[KEY_DOWN]||joy_down) Y++;
+}
+
+int main()
+{
+ allegro_init();
+ install_keyboard();
+ initialise_joystick();
+
+ data=load_datafile("tutorial.dat");
+
+ set_gfx_mode(GFX_VGA,320,200,0,0);
+
+ set_palette((RGB*)data[TUT_GAMEPAL].dat);
+
+ // create 320x192 backdrop
+ backdrop=create_bitmap(320,192);
+ for (int Y=0; Y&lt;128; Y++) hline(backdrop,0,Y,319, (Y/2)+128);
+ for (int Y=128; Y&lt;192; Y++) hline(backdrop,0,Y,319, ((Y-128)/2)+192);
+
+ // create 320x200 double buffer
+ framebuf=create_bitmap(320,200);
+ clear(framebuf);
+
+ chopper Hero;
+ Hero.X=0; Hero.Y=100;
+ while (!key[KEY_ESC]) {
+  // build frame
+  blit(backdrop,framebuf,0,0,0,MIN_Y,320,200);
+  Hero.draw(framebuf);
+  // display frame
+  vsync();
+  blit(framebuf,screen,0,0,0,0,320,200);
+  // get user input
+  poll_joystick();
+  Hero.input();
+ }
+ return 0;
+}
+</PRE>
+This demonstrates two ways of defining a method. Both
+<CODE>chopper::draw()</CODE> and <CODE>chopper::input()</CODE> are methods.
+Methods are much like functions, except that they operate on an object.
+<CODE>chopper::draw()</CODE> is declared and defined inline, this is often
+useful to avoid unnecessary method call overhead.
+<H3>4.3 Constructors</H3>
+Clearly, we've come a long way towards the encapsulation we want, since
+the main game loop doesn't have to bother about the coordinates within
+the object, but still we need to set the initial position. So we should
+write a method for setting the initial position, but for this we will
+use a special method, the constructor. The constructor of an object
+is always called when it is created, and similarly there is a destructor
+that will be called when it is destroyed. C++ automatically constructs
+an object when you define a variable of the object type, and destroys it
+when it goes out of scope, so it's not necessary to do this manually
+for automatic variables, like our variable <CODE>Hero</CODE>.
+<P>
+We will define two constructors, the default constructor that sets a default
+initial position, and a constructor where it is possible to specify the
+initial position explicitly. C++ allows several functions, methods, and
+operators with the same name but with different parameter lists to coexist,
+a feature called "overloading", where the compiler automatically chooses
+the right function according to the given parameters. We will use this
+feature to have two different constructors. Change the class definition
+to read:
+<PRE>
+class chopper {
+ int X,Y;
+public:
+ chopper() { X=Y=0; }
+ chopper(int _X,int _Y) { X=_X; Y=_Y; }
+ void draw(BITMAP*dest) {
+  draw_rle_sprite(dest,(RLE_SPRITE*)data[TUT_CHOPPER].dat,X,Y);
+ }
+ void input();
+};
+</PRE>
+Then remove the line
+<PRE>
+ Hero.X=0; Hero.Y=100;
+</PRE>
+and try it. The object is now completely encapsulated, the main loop doesn't
+know anything about X or Y. We have therefore taken them away from under the
+<B>public</B> clause; they are thus now <B>private</B> to the object, and
+hidden from everything else. Note that the helicopter now starts at the top
+left of the screen, because we put the default position in the default
+constructor to be 0,0. To try the alternate constructor, replace
+<PRE>
+ chopper Hero;
+</PRE>
+with
+<PRE>
+ chopper Hero(50,100);
+</PRE>
+This will still define the variable <CODE>Hero</CODE> to be of the
+data type <CODE>chopper</CODE>, but since <CODE>chopper</CODE> is a class,
+its constructor must be called when it is created. This means that we will
+call the constructor that takes two integer values and use it, giving the
+values 50 and 100, instead of using the default constructor. This alternate
+constructor happens to set the initial position to the given values.
+<H3>4.4 Inheritance</H3>
+One of the most important advantages OOP has over traditional procedural
+programming, is the concept of inheritance. This means that it is possible
+to write a base class with all the basic and abstract functionality,
+variables, and common interface you need, and then write derived classes
+that inherits everything the base class has, and adds its own functionality.
+Not only can this reduce the amount of coding by letting any derived class
+use the base class's functionality when it needs to, thus simplifying
+implementation of similar classes and structures, but there is also another
+very important implication: the derived class is compatible with the base
+class, and can be used in place of the base class. This allows a system
+to override any of the base class functionality it wants, and use the new
+objects where the base class would be used, thus adapting it to its own
+needs. For us, this is very important; we can make an array of pointers to
+base class objects, and go through this array at any time, calling the
+methods of its elements. Depending on which derived class is present in
+this array, the individual objects can respond in completely different ways
+to each other, without the calling code having to know anything about it.
+<P>
+So, what we are going to do is to write a base class that we can use as a
+foundation for our game elements. We will also use the Allegro-defined
+<CODE>fix</CODE> data type here, to enable sprites to move a fractional
+amount of pixels per frame. This will enable objects to move slower than
+one pixel per frame without standing totally still. Also, we won't bother
+to have a default constructor.
+<PRE>
+class sprite {
+protected:
+ fix X,Y;
+public:
+ sprite(fix _X,fix _Y) { X=_X; Y=_Y; }
+ virtual ~sprite() {}
+ virtual void draw(BITMAP*dest) {}
+ virtual void animate() {}
+};
+</PRE>
+The <B>protected</B> clause is similar to <B>private</B>, except that it
+allows derived classes to access the elements defined <B>protected</B>.
+We have now also declared the methods <B>virtual</B>, which means that they
+are encoded into the object structure in such a way that they can be
+overridden transparently by derived classes, even if the code that uses
+the object thinks it's an instance the base class.
+<P>
+When we use this base class, this is how our program will look like.
+<PRE>
+#include &lt;allegro.h&gt;
+#include "tutorial.h"
+
+#define MIN_Y 8
+
+DATAFILE*data;
+BITMAP*backdrop,*framebuf;
+
+class sprite {
+protected:
+ fix X,Y;
+public:
+ sprite(fix _X,fix _Y) { X=_X; Y=_Y; }
+ virtual ~sprite() {}
+ virtual void draw(BITMAP*dest) {}
+ virtual void animate() {}
+};
+
+class chopper : public sprite {
+public:
+ chopper(fix _X,fix _Y) : sprite(_X,_Y) {}
+ virtual void draw(BITMAP*dest) {
+  draw_rle_sprite(dest,(RLE_SPRITE*)data[TUT_CHOPPER].dat,X,Y);
+ }
+ virtual void animate();
+};
+
+void chopper::animate()
+{
+ // seems postfix operators aren't defined for the fix class
+ if (key[KEY_LEFT]||joy_left) --X;
+ if (key[KEY_RIGHT]||joy_right) ++X;
+ if (key[KEY_UP]||joy_up) --Y;
+ if (key[KEY_DOWN]||joy_down) ++Y;
+}
+
+int main()
+{
+ allegro_init();
+ install_keyboard();
+ initialise_joystick();
+
+ data=load_datafile("tutorial.dat");
+
+ set_gfx_mode(GFX_VGA,320,200,0,0);
+
+ set_palette((RGB*)data[TUT_GAMEPAL].dat);
+
+ // create 320x192 backdrop
+ backdrop=create_bitmap(320,192);
+ for (int Y=0; Y&lt;128; Y++) hline(backdrop,0,Y,319, (Y/2)+128);
+ for (int Y=128; Y&lt;192; Y++) hline(backdrop,0,Y,319, ((Y-128)/2)+192);
+
+ // create 320x200 double buffer
+ framebuf=create_bitmap(320,200);
+ clear(framebuf);
+
+ chopper Hero(50,100);
+ while (!key[KEY_ESC]) {
+  // build frame
+  blit(backdrop,framebuf,0,0,0,MIN_Y,320,200);
+  Hero.draw(framebuf);
+  // display frame
+  vsync();
+  blit(framebuf,screen,0,0,0,0,320,200);
+  // get user input
+  poll_joystick();
+  Hero.animate();
+ }
+ return 0;
+}
+</PRE>
+As you can see, you use colons to inherit a base class, as well as to use
+an inherited constructor. The base class is inherited <B>public</B> to make
+public members of the base class remain public, and not turned private.
+<P>
+To learn more, proceed to the <A HREF="tut5.html">next chapter</A>
+
+</body>
+</html>

@@ -1,0 +1,524 @@
+
+   Date: 2003-05-02. This is a text only snapshot of the web
+   
+    http://www.allegro.cc/forums/view_thread.php?_id=262904
+    
+   made by Grzegorz Adam Hankiewicz (gradha@users.sourceforge.net) with the
+   software ELinks 0.5pre0.CVS - Text WWW browser, which you can find at
+   
+    http://elinks.or.cz/
+   
+   The purpose of the snapshot is to provide an alternative version if the
+   main server fails or the original copy is deleted. The snapshot has been
+   render to 78 characters of width with the ISO-8859-1 character codepage.
+
+     --------------------------------------------------------------------
+
+   Allegro.cc  Post Reply Bookmark - 'Stick' this thread at   Allegro.cc
+	      the top of your list. Send to Top - Force this  Forums »
+		thread back to the top of everyone's list.    Off-Topic
+		 forum home | recent threads | search | my    Ordeals »
+			     profile | log out                Infrequently
+							      Asked
+							      Questions in
+							      comp.lang.c
+
+   jump to last read break
+
+   Infrequently Asked Questions in comp.lang.c
+		  Posted on 2003-04-27 23:18   View Profile
+		  Just a bit of fun this - the comp.lang.c IAQ
+		  (Infrequently Asked Questions).
+   Andrei Ellman
+   Member# 3,434  http://www.plethora.net/~seebs/faqs/c-iaq.html
+   April 2003
+		  ;D
+   Andrei Ellman
+		  AE.
+
+		  --
+		  Don't let the illegitimates turn you into carbon.
+		  Posted on 2003-04-28 00:07   View Profile
+		  Some of those are pretty funny. Now, anyway.
+		  When I was first learning C though, that page would have
+   Derezo         been helpful! ;D
+   Member# 1,666  _______________________________________________________
+   April 2001     Derezo the Kamikaze - [STIFFU*]
+		  Announcer: "We start with authentic letter graded meat,
+       Derezo     and process the hell outta it. 'Til it's good enough for
+		  Krusty."
+		  Krusty: "Try my new Krusty Ribwich. MmmMMmmM! I don't
+		  mind the taste!"
+		  Posted on 2003-04-28 11:02   View Profile
+		  LOL!
+
+		    Quote:
+
+		    -----------------------------------------------------
+   Evert
+   Member# 794      10.7: Can I declare main as void, to shut off these
+   November 2000    annoying ``main returns no value'' messages? (I'm
+		    calling exit(), so main doesn't return.)
+       Evert
+		    Certainly. You can also declare it as double. It may
+		    not compile, or it may crash, but who cares? No lousy
+		    bunch of whining lusers is going to tell *you* what to
+		    do.
+
+		    -----------------------------------------------------
+		  Posted on 2003-04-28 13:02   View Profile
+
+		    Quote:
+
+		    -----------------------------------------------------
+
+		    2.3: How does struct passing and returning work?
+		    The structures are put into the low part of the VGA
+		    card's VRAM. They are then removed before the next
+		    video update. This is why struct passing was not
+		    supported for a long time; VGA cards were prohibitively
+   CGamesPlay       expensive.
+   Member# 2,559
+   July 2002        If you try to pass very large structures on the stack,
+		    you may see odd screen graphics.
+     CGamesPlay
+		    -----------------------------------------------------
+
+		  So that's why my app wasn't working properly! :P
+
+		  --
+		  Speedhack '03:
+		  http://www14.brinkster.com/rpatters/speedhack/
+
+		  Ryan Patterson -
+		  http://www14.brinkster.com/rpatters/temp/downloads.html
+		  allegro.cc | allegrodeveloper.org | Pixelate
+		  Posted on 2003-04-28 15:07   View Profile
+		  Ah, good. Just what I need to fend off the newbs. Andrei,
+		  I love you. ;D
+   Bruce Perry
+   Member# 270    --
+   April 2000     [ DUMB - a Freeware IT/XM/S3M/MOD player library, with
+		  filters and click removal ]
+    Bruce Perry   [ Set Up Us The Bomb !!! - a team effort | Sheep 2,
+		  featuring real piano music ]
+		  <KimmoA> Bananas don't have skin · <KimmoA> They have
+		  shell
+		  <_phate_> what is the difference between .it and .mp3?
+		  Posted on 2003-04-28 15:11   View Profile
+
+		    Quote:
+
+		    -----------------------------------------------------
+
+		    1.6: I finally figured out the syntax for declaring
+		    pointers to functions, but now how do I initialize one?
+
+		    With the assignment operator. You were perhaps
+		    expecting a screwdriver?
+
+		    -----------------------------------------------------
+
+		  Heh :)
+
+		    Quote:
+
+		    -----------------------------------------------------
+
+		    1.8: What's the auto keyword good for?
+
+		    Declaring vehicles.
+   23yrold3yrold
+   Member# 1,134    -----------------------------------------------------
+   March 2001
+		  Ha! In C++ we can build vehicle objects from scratch! C++
+   23yrold3yrold  IS T3H B357357!!11`1
+
+		    Quote:
+
+		    -----------------------------------------------------
+
+		    2.10: Can I initialize unions?
+
+		    Depends. They may go on strike when provoked. Luckily,
+		    if your program involves air traffic control, the ISO
+		    standard guarantees that Ronald Reagan will fire any
+		    unions that go on strike, and replace them with
+		    structs, which should be close enough.
+
+		    -----------------------------------------------------
+
+		  ;D
+
+		  --
+		  Chris Barry - Optimus Rhyme; oh yes ...
+		  [ My Game | My Site | My Journal | Allegro FAQ | Pixelate
+		  | Vivace | AGDN | Foolish Faith ]
+		  Work for the best, prepare for the worst, expect nothing,
+		  and you will always be content.
+		  Posted on 2003-04-28 15:17   View Profile
+
+		    23yrold3yrold said:
+
+		    -----------------------------------------------------
+
+		    Ha! In C++ we can build vehicle objects from scratch!
+
+   Bruce Perry      -----------------------------------------------------
+   Member# 270
+   April 2000     Reinvent the wheel, why don't you. ;)
+
+    Bruce Perry   *runs*
+
+		  --
+		  [ DUMB - a Freeware IT/XM/S3M/MOD player library, with
+		  filters and click removal ]
+		  [ Set Up Us The Bomb !!! - a team effort | Sheep 2,
+		  featuring real piano music ]
+		  <KimmoA> Bananas don't have skin · <KimmoA> They have
+		  shell
+		  <_phate_> what is the difference between .it and .mp3?
+		  Posted on 2003-04-28 15:23   View Profile
+		  *runs down BP in his CTank: public CMilitaryVehicle:
+   23yrold3yrold  public CVehicle: public CAuto*
+   Member# 1,134
+   March 2001     --
+		  Chris Barry - Optimus Rhyme; oh yes ...
+   23yrold3yrold  [ My Game | My Site | My Journal | Allegro FAQ | Pixelate
+		  | Vivace | AGDN | Foolish Faith ]
+		  Work for the best, prepare for the worst, expect nothing,
+		  and you will always be content.
+   Trumgottist    Posted on 2003-04-28 17:19   View Profile
+   Member# 95     A public military vehicle? What is the world coming to?
+   April 2000     --
+		  "I always prefer to believe the best of everybody - it
+    Trumgottist   saves so much time." - Rudyard Kipling
+		  Posted on 2003-04-28 18:32   View Profile
+		  My favourite so far:
+
+		  "5.9: How would I initialize an entire array from
+		  standard input?
+
+		  You have to use a loop. For instance, the following code
+		  reads the numbers zero through 99 into the array a.
+
+   Bruce Perry    for (i = 0; i < 100; ++i)
+   Member# 270            a[i] = (scanf, ("%d", i));
+   April 2000     Make sure to include <stdio.h>, or this may not work."
+
+    Bruce Perry   ;D
+
+		  --
+		  [ DUMB - a Freeware IT/XM/S3M/MOD player library, with
+		  filters and click removal ]
+		  [ Set Up Us The Bomb !!! - a team effort | Sheep 2,
+		  featuring real piano music ]
+		  <KimmoA> Bananas don't have skin · <KimmoA> They have
+		  shell
+		  <_phate_> what is the difference between .it and .mp3?
+   Irrelevant     Posted on 2003-04-28 19:08   View Profile
+   Member# 2,382  Ummm... That's just nonsense. :-/
+   May 2002
+		  /*--------------------*\
+     Irrelevant   Allegus Irrelius: Beware! This strange beast is capable
+		  of deviating with astonishing speed and accuracy.
+		  Posted on 2003-04-28 19:27   View Profile
+		  No. That code works. Try it. ;)
+
+   Bruce Perry    --
+   Member# 270    [ DUMB - a Freeware IT/XM/S3M/MOD player library, with
+   April 2000     filters and click removal ]
+		  [ Set Up Us The Bomb !!! - a team effort | Sheep 2,
+    Bruce Perry   featuring real piano music ]
+		  <KimmoA> Bananas don't have skin · <KimmoA> They have
+		  shell
+		  <_phate_> what is the difference between .it and .mp3?
+		  Posted on 2003-04-28 19:30   View Profile
+		  Actually, no. IIRC, scanf returns the number of
+		  successfully assigned values, not the values themselves.
+   23yrold3yrold  So it would be an array of a hundred one's.
+   Member# 1,134
+   March 2001     --
+		  Chris Barry - Optimus Rhyme; oh yes ...
+   23yrold3yrold  [ My Game | My Site | My Journal | Allegro FAQ | Pixelate
+		  | Vivace | AGDN | Foolish Faith ]
+		  Work for the best, prepare for the worst, expect nothing,
+		  and you will always be content.
+		  Posted on 2003-04-28 20:05   View Profile
+		  Exactly. Nyah. :P
+
+		  It couldn't return the vals themselves, because then what
+		  would it return from:
+
+		  int foo;
+		  float bar;
+   Irrelevant     scanf("%i%f", &foo, &bar);
+   Member# 2,382  Anyway, even if it did return the values, every loop it
+   May 2002       would ask you for a number and reset i.
+
+     Irrelevant   ...and you'd also get a typecasting error (from int to
+		  int *). :P
+
+		  As I said, it's nonsense. S'got too many holes.
+
+		  It's still funny, though. ;D
+
+		  /*--------------------*\
+		  Allegus Irrelius: Beware! This strange beast is capable
+		  of deviating with astonishing speed and accuracy.
+		  Posted on 2003-04-28 21:12   View Profile
+		  "and reset i."
+		  No, if you entered 99, it would stop the loop, if you
+   CGamesPlay     entered <99, it would keep going.
+   Member# 2,559
+   July 2002      --
+		  Speedhack '03:
+     CGamesPlay   http://www14.brinkster.com/rpatters/speedhack/
+
+		  Ryan Patterson -
+		  http://www14.brinkster.com/rpatters/temp/downloads.html
+		  allegro.cc | allegrodeveloper.org | Pixelate
+   Trumgottist    Posted on 2003-04-28 21:15   View Profile
+   Member# 95     Note the spare comma and then see the note on that FAQ
+   April 2000     entry.
+		  --
+    Trumgottist   "I always prefer to believe the best of everybody - it
+		  saves so much time." - Rudyard Kipling
+		  Posted on 2003-04-28 21:22   View Profile
+		  for (i = 0; i < 100; ++i)
+   spellcaster            a[i] = (scanf, ("%d", i));
+   Member# 1,493  is equal to
+   September 2001 for (i = 0; i < 100; ++i)
+			  a[i] = i;
+    spellcaster
+		  read the code, Luke.
+		  --
+		  Always waiting for a new demo release of Chaos Funk
+		  Posted on 2003-04-28 21:23   View Profile
+		  Whoops. Missed the comma. :-X
+
+   23yrold3yrold  That's messed up; someone want to explain to me what's
+   Member# 1,134  going on there?
+   March 2001
+		  --
+   23yrold3yrold  Chris Barry - Optimus Rhyme; oh yes ...
+		  [ My Game | My Site | My Journal | Allegro FAQ | Pixelate
+		  | Vivace | AGDN | Foolish Faith ]
+		  Work for the best, prepare for the worst, expect nothing,
+		  and you will always be content.
+		  Posted on 2003-04-28 21:26   View Profile
+   spellcaster    What's the problem?
+   Member# 1,493  scanf is called, the return value is discarded. "%d" is
+   September 2001 just a string and would return itself, if there woudln't
+		  be yet another comma which makes sure that i is returned.
+    spellcaster
+		  --
+		  Always waiting for a new demo release of Chaos Funk
+		  Posted on 2003-04-28 23:36   View Profile
+
+		    Quote:
+
+		    -----------------------------------------------------
+
+		    ...and you'd also get a typecasting error (from int to
+		    int *). :P
+
+		    -----------------------------------------------------
+
+		  No you wouldn't. It's one of the optional arguments, so a
+		  plain ANSI C compiler will just take its type at face
+		  value (after doing some promotions like char,short->int
+		  and float->double). GCC will warn if you want, because it
+		  knows how scanf and similar functions are supposed to
+		  work. However, it won't do any conversions; it would be
+		  violating the ANSI C standard if it did.
+
+		  Don't worry guys, I didn't get it straight away either. I
+   Bruce Perry    had to read the note too. ;)
+   Member# 270
+   April 2000     OK, here's the deal. scanf is NOT called; all that
+		  happens is the code takes a pointer to scanf. When you
+    Bruce Perry   get a comma, the left-hand expression is evaluated first
+		  and discarded (useful if it has a side-effect), and then
+		  the right-hand expression is evaluated. The whole
+		  expression has the value of the right-hand subexpression.
+		  Likewise, the "%d" (actually a pointer to such a string
+		  stored in read-only memory) is discarded, and the i is
+		  returned.
+
+		  So, give or take a couple of 'left-hand blah of comma has
+		  no effect' warnings (not an accurate quote ;) ), it
+		  compiles and does exactly what it says on the tin. :)
+
+		  PWNED. ;D
+
+		  --
+		  [ DUMB - a Freeware IT/XM/S3M/MOD player library, with
+		  filters and click removal ]
+		  [ Set Up Us The Bomb !!! - a team effort | Sheep 2,
+		  featuring real piano music ]
+		  <KimmoA> Bananas don't have skin · <KimmoA> They have
+		  shell
+		  <_phate_> what is the difference between .it and .mp3?
+		  Posted on 2003-04-29 00:08   View Profile
+		  Glad everyone seems to be enjoying the C IAQ. ;D
+
+		  After a bit of Googling around, I have found some IAQs
+		  for some other languages.
+
+		    * C++
+		    * Perl
+   Andrei Ellman
+   Member# 3,434  The following are also IAQs, but these are more serious
+   April 2003     than the above two.
+
+   Andrei Ellman    * Java
+		    * Java (again)
+		    * Python
+		    * Objective C
+
+		  Enjoy.
+
+		  --
+		  Don't let the illegitimates turn you into carbon.
+		  Posted on 2003-04-29 00:19   View Profile
+		  Bah. the perl one is somewhat lame... but I like th atoi
+		  subroutine ;)
+
+		  # Q: How do I convert a string to a number?
+		  # A: Use this atoi function:
+
+			  sub atoi {
+			    my $t;
+			    foreach my $d (split(//, shift())) {
+			      $t = $t * 10 + $d;
+			    }
+			  }
+
+			  $number = atoi("123");
+
+		  Or:
+		  # Q: How do I get the length of a variable?
+		  # A: Use
+			  length('$variable');
+		  # to find out how long a variable is.
+
+		    Quote:
+
+		    -----------------------------------------------------
+
+		    Q: Can I get a YACC grammar for the Perl language?
+		    A: Sorry, but as you must surely be aware by now, the
+		    only animals supported by Perl are ruminants such as
+		    camels and llamas. However, Yacc support may be
+		    forthcoming with version 5.007.
+
+		    Q: What are all those $@%* signs for?
+		    A: Watch your $@*$!% mouth, buddy!
+
+		    -----------------------------------------------------
+
+		  Ok Ok.. The ones near the end are pretty good... But the
+		  first few are totally lame.
+
+		    Quote:
+
+		    -----------------------------------------------------
+
+		    Q: How do I block warnings?
+		    A: The simplest way is to do:
+		    close STDERR;
+
+		    -----------------------------------------------------
+   Thomas
+   Fjellstrom       Quote:
+   Member# 476
+   June 2000        -----------------------------------------------------
+
+       Thomas       Q: How can I find out whether a number is odd?
+     Fjellstrom     A:
+		    sub odd {
+		    my $number = shift;
+		    return !even ($number);
+		    }
+
+		    Q: How can I find out whether a number is even?
+		    A:
+		    sub even {
+		    my $number = abs shift;
+		    return 1 if $number == 0;
+		    return odd ($number - 1);
+		    }
+
+		    -----------------------------------------------------
+
+		  Those are good ;D
+
+		  :o
+
+		    Quote:
+
+		    -----------------------------------------------------
+
+		    Q: Perldoc isn't running properly. Where can I find the
+		    documentation?
+		    A:
+		    perldoc perldoc
+
+		    -----------------------------------------------------
+
+		  Ok.. the next one is just bad. Funny. But just wrong.
+
+		    Quote:
+
+		    -----------------------------------------------------
+
+		    Q: What's the difference between single quoted strings
+		    and double quoted strings?
+		    A: Single quoted strings act like q(); double quoted
+		    strings act like qq().
+
+		    -----------------------------------------------------
+
+		  --
+		  Thomas Fjellstrom - [Email] - [Website] - [Webpage]
+		  - Fav web comics: Penny Arcade - Megatokyo - PvP - Life
+		  Of Riley - Reallife - Gene Catlow
+		  Coke is the bane of humanity!!! So just why do I drink
+		  the stuff?
+		  Posted on 2003-04-29 00:28   View Profile
+
+		    Quote:
+
+		    -----------------------------------------------------
+
+   23yrold3yrold    scanf is NOT called
+   Member# 1,134
+   March 2001       -----------------------------------------------------
+
+   23yrold3yrold  That's what I thought; Spellcaster confused me :P
+
+		  --
+		  Chris Barry - Optimus Rhyme; oh yes ...
+		  [ My Game | My Site | My Journal | Allegro FAQ | Pixelate
+		  | Vivace | AGDN | Foolish Faith ]
+		  Work for the best, prepare for the worst, expect nothing,
+		  and you will always be content.
+
+
+
+   Post Reply Bookmark - 'Stick' this [___________________________________]
+   thread at the top of your list.                                   [ Go ]
+   Subscribe - Receive e-mail
+   notifications. Send to Top - Force
+   this thread back to the top of
+   everyone's list. Hide Thread - You
+   won't see this thread again until
+   someone else posts. Kill Thread -
+   You will never see this thread
+   again.
+
+		  Copyright ©1999-2003, by Matthew Leverton
+
+		You are visitor #1,224,916 since January 1999.
+	    This page has been viewed 260 times since March 2002.

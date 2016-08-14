@@ -1,0 +1,313 @@
+
+   Date: 2003-04-19. This is a text only snapshot of the web
+   
+    http://www.allegro.cc/forums/view_thread.php?_id=175954
+    
+   made by Grzegorz Adam Hankiewicz (gradha@users.sourceforge.net) with the
+   software ELinks 0.5pre0.CVS - Text WWW browser, which you can find at
+   
+    http://elinks.or.cz/
+   
+   The purpose of the snapshot is to provide an alternative version if the
+   main server fails or the original copy is deleted. The snapshot has been
+   render to 78 characters of width with the ISO-8859-1 character codepage.
+
+     --------------------------------------------------------------------
+
+   Allegro.cc   Bookmark - 'Stick' this thread at the top of   Allegro.cc   
+              your list. Send to Top - Force this thread back  Forums »     
+                       to the top of everyone's list.          Allegro      
+                 forum home | recent threads | search | my     Development  
+                             profile | log out                 » Allegro 5  
+                                                               released!    
+                                                                            
+   jump to last read break                                                  
+                                                                            
+   Allegro 5 released!                                                      
+                     Posted on 2002-04-01 23:31   View Profile              
+                     The move from 4.0 to 5.0 went quicker than expected,   
+                     so I'm happy to anounce the release of Allegro 5.0!    
+                                                                            
+                     What's new:                                            
+                     - New API                                              
+                     - Multiscreen/Multiwindow support                      
+                     - DirectX 8 drivers                                    
+                     - Video playback and encoding                          
+                     - Merge of FBlend, AllegroGL, DUMB, JGMOD, libnet,     
+                     GNE, ppcol, AllegroMP3, AllegPeg and PMask.            
+                     - Speech synthesis/recognition                         
+                     - Removed duplicate API entries (no more masked_blit   
+                     nor draw_sprite or equivalent)                         
+                     - DOS port was removed due to lack of support for new  
+   Bob               DirectX 8 drivers                                      
+   Member# 699       - 4D graphics                                          
+   September 2000    - Ports to the X-Box and GameCube.                     
+                     - PHP support                                          
+          Bob        - Hardware accelerated mind control                    
+                     - We're better than SDL now.                           
+                     - New distribution format. To save space, we're using  
+                     LZip compression. zip and tar.gz formats should follow 
+                     shortly.                                               
+                                                                            
+                     You can download it right here:                        
+                     http://prdownloads.sourceforge.net/alleg/all50.lzip    
+                                                                            
+                     Edit: posted new feature list.                         
+                                                                            
+                     --                                                     
+                     - Bob                                                  
+                     [ Webpage | Allegro FAQ | Coding Tricks ]              
+                     The world is being silently polluted by Dihydrogen     
+                     Monoxide!                                              
+                     Posted on 2002-04-02 00:32   View Profile              
+                     How well does the X-Box port work? Did Shawn           
+                     contribute to this or something.                       
+                                                                            
+                     No DOS support is a bummer though...                   
+   23yrold3yrold                                                            
+   Member# 1,134     For some reason this new compression type doesn't work 
+   March 2001        for me! Will someone please release a zip version too? 
+                                                                            
+     23yrold3yrold   --                                                     
+                     Chris Barry - finally saw The Matrix. To clarify; I    
+                     was meant to be impressed, right?                      
+                     [ My Game | My Site | My Journal | Allegro FAQ |       
+                     Pixelate | Vivace | AGDN | Foolish Faith ]             
+                     Work for the best, prepare for the worst, expect       
+                     nothing, and you will always be content.               
+                     Posted on 2002-04-02 00:40   View Profile              
+                     Yeah, Shawn dropped by and merged in his X-Box port    
+                     that he was building the whole time.                   
+                                                                            
+   Bob               About the compression, we know of some issues with the 
+   Member# 699       decompression program. Hopefully those will be         
+   September 2000    resolved soon so we can fully use LZip.                
+                                                                            
+          Bob        --                                                     
+                     - Bob                                                  
+                     [ Webpage | Allegro FAQ | Coding Tricks ]              
+                     The world is being silently polluted by Dihydrogen     
+                     Monoxide!                                              
+                     Posted on 2002-04-02 01:11   View Profile              
+                     Chris: You're not extracting it properly. You need to  
+   X-G               use Kazaa, or else it'll conflict with c:\pr0n and     
+   Member# 856       BonziBuddy. There was a feedback doc in this           
+   December 2000     somewhere, but I lost it.                              
+                                                                            
+          X-G        --                                                     
+                     <TDRH> No it isn't. You can tell a fiesta from an      
+                     escort at a hundred paces                              
+                     <PyroBoy> not if your blind                            
+                     Posted on 2002-04-02 01:20   View Profile              
+                     My pr0n folder is on my drive D (my C drive is too     
+                     small...) Does this matter?                            
+                                                                            
+   23yrold3yrold     But I want Bonzi, because that is going to be my next  
+   Member# 1,134     avator. Good guess , btw.                              
+   March 2001                                                               
+                     --                                                     
+     23yrold3yrold   Chris Barry - finally saw The Matrix. To clarify; I    
+                     was meant to be impressed, right?                      
+                     [ My Game | My Site | My Journal | Allegro FAQ |       
+                     Pixelate | Vivace | AGDN | Foolish Faith ]             
+                     Work for the best, prepare for the worst, expect       
+                     nothing, and you will always be content.               
+                     Posted on 2002-04-02 01:26   View Profile              
+                     Chris: Well, DUH. There's no 'D' in Allegro, of COURSE 
+   X-G               it won't work. And Bonzi is already too hairy to get a 
+   Member# 856       beard. God, he looks like the offspring of Chewbacca   
+   December 2000     and the teletubbies on speed.                          
+                                                                            
+          X-G        --                                                     
+                     <TDRH> No it isn't. You can tell a fiesta from an      
+                     escort at a hundred paces                              
+                     <PyroBoy> not if your blind                            
+                     Posted on 2002-04-02 01:32   View Profile              
+                     This is confusing. I was using mIRC to create the      
+   Bob               archive...                                             
+   Member# 699                                                              
+   September 2000    --                                                     
+                     - Bob                                                  
+          Bob        [ Webpage | Allegro FAQ | Coding Tricks ]              
+                     The world is being silently polluted by Dihydrogen     
+                     Monoxide!                                              
+                     Posted on 2002-04-02 01:47   View Profile              
+                     I thought it wasn't done till the summer? But that's   
+   MindCode          cool! Is Shawn breaking contract by making an x-box    
+   Member# 2,031     port?                                                  
+   March 2002                                                               
+                     I can't get lzip to work. Can someone explain it to    
+       MindCode      me.                                                    
+                     ______________________________________                 
+                     Frag The Planet                                        
+                     Posted on 2002-04-02 01:49   View Profile              
+   sicgamemaker      lzip stole my idea! but my lossy compression works     
+   Member# 1,365     better, you just have to know how to use it Chris.     
+   June 2001                                                                
+                     its a cool concept and i glad to see allegro supports  
+     sicgamemaker    it now.                                                
+                     _______________________                                
+                     [Insert signature here]                                
+                     Posted on 2002-04-02 02:09   View Profile              
+                     Chris: Hm. If IRC, there was a bug in Pr0nloader that  
+   X-G               made it download teletubby pr0n all the time, thus     
+   Member# 856       effectively breaking down Bonzi.                       
+   December 2000                                                            
+                     --                                                     
+          X-G        <TDRH> No it isn't. You can tell a fiesta from an      
+                     escort at a hundred paces                              
+                     <PyroBoy> not if your blind                            
+                     Posted on 2002-04-02 02:22   View Profile              
+                     The new version is quite cool.                         
+                     I'm using a multi node quicktime as the menu for my    
+                     current game right now, which is pretty cool, since    
+                     you can now script your menus...                       
+                                                                            
+                     There seems to be a problem with the sound after using 
+                     al_video_play_overlay(). After playing a short MPEG, I 
+                     get some strange distortions with in game audio.       
+                                                                            
+                     But this is just nitpicking. It's great work, and the  
+                     project converter works like a breeze. After some      
+   spellcaster       small manual code adjustments, everything worked like  
+   Member# 1,493     a charm.                                               
+   September 2001    It's cool that FLI/FLCs are auto converted to MPEG2 if 
+                     lame is installed.                                     
+      spellcaster                                                           
+                     The speech API seems not to work correctly. Do I have  
+                     to install some other packages first?                  
+                                                                            
+                     4d gfx.. hm. While I think it's a cool name, it's a    
+                     bit misleading. If I understand it correctly it's      
+                     "just" a bone system which allows for time based       
+                     modifiers. (Not sure here, I just run the demo...)     
+                                                                            
+                     Nice work.                                             
+                                                                            
+                     --                                                     
+                     Always waiting for a new demo release of Chaos Funk    
+                     Posted on 2002-04-02 02:26   View Profile              
+                     Well, for 4d graphics, you tend to lose a lot of the   
+                     effect, since you're projecting them back into a 2D    
+                     display. However, with the advent of 3D displays, 4D   
+   Bob               graphics technology will be developing. Since Allegro  
+   Member# 699       already supports 4D graphics, this makes it the        
+   September 2000    library of choice for developing the first and best 4D 
+                     games.                                                 
+          Bob                                                               
+                     --                                                     
+                     - Bob                                                  
+                     [ Webpage | Allegro FAQ | Coding Tricks ]              
+                     The world is being silently polluted by Dihydrogen     
+                     Monoxide!                                              
+                     Posted on 2002-04-02 02:44   View Profile              
+   Yves Manuelpillai I dont have linux! Im running windowze, so can         
+   Member# 1,770     somebody actually make a zip file for me? Is this file 
+   December 2001     an update from 4.01 to 5? If not, lzip must be hell of 
+                     a compression algorithm!                               
+   Yves Manuelpillai ----------------                                       
+                     1 w4nn4 b3 4 l33t g4M3-pr0gr4mM1Ng d00D.               
+                     I FINALLY GOT A WEBSITE!!                              
+                     Posted on 2002-04-02 02:45   View Profile              
+                     Just me? or the instructions for lzip a little         
+                     lacking. Someone, for THE LOVE OF GOD give me a little 
+   MindCode          help here.                                             
+   Member# 2,031                                                            
+   March 2002        Either that or give me a zip. (I've had an allegro     
+                     craving since the api proposal, and It must be         
+       MindCode      filled!)                                               
+                                                                            
+                     P.S. i hope this aint an april fools joke.             
+                     ______________________________________                 
+                     Frag The Planet                                        
+                     Posted on 2002-04-02 02:59   View Profile              
+   Yves Manuelpillai This better not be a joke, im getting really desperate 
+   Member# 1,770     to try the new allegro! SOMEBODY PLEASE MAKE A ZIP     
+   December 2001     VERSION OF IT!!!!!                                     
+                     ----------------                                       
+   Yves Manuelpillai 1 w4nn4 b3 4 l33t g4M3-pr0gr4mM1Ng d00D.               
+                     I FINALLY GOT A WEBSITE!!                              
+                     Posted on 2002-04-02 03:00   View Profile              
+                     What EXACTLY is 4D? Width, Height, Depth... What else  
+   DanTheKat         IS there!?                                             
+   Member# 1,990                                                            
+   March 2002        Looking at previous posts I don't see that this can be 
+                     April foos.                                            
+       DanTheKat                                                            
+                     // Dan the Kat                                         
+                     A creature Dan has been drawing for a few years has    
+                     finally made it in avatar form                         
+                     Posted on 2002-04-02 03:00   View Profile              
+                     I was sure the instructions for un-lzipping were in    
+   Bob               the LZip FAQ.                                          
+   Member# 699                                                              
+   September 2000    --                                                     
+                     - Bob                                                  
+          Bob        [ Webpage | Allegro FAQ | Coding Tricks ]              
+                     The world is being silently polluted by Dihydrogen     
+                     Monoxide!                                              
+                     Posted on 2002-04-02 03:02   View Profile              
+                     I never got it to work... I even burnned a lot of my   
+                     transformers pr0n to a cd-rom.                         
+   23yrold3yrold                                                            
+   Member# 1,134     --                                                     
+   March 2001        Chris Barry - finally saw The Matrix. To clarify; I    
+                     was meant to be impressed, right?                      
+     23yrold3yrold   [ My Game | My Site | My Journal | Allegro FAQ |       
+                     Pixelate | Vivace | AGDN | Foolish Faith ]             
+                     Work for the best, prepare for the worst, expect       
+                     nothing, and you will always be content.               
+                     Posted on 2002-04-02 03:05   View Profile              
+                     The zipped version is rather larger. Why don't you use 
+                     lzip? I simply used a single disk linux distro which I 
+                     have just for exacty this purpose (running cool linux  
+   spellcaster       proggies).                                             
+   Member# 1,493                                                            
+   September 2001    But I think a win version of lzip is in the works.     
+                                                                            
+      spellcaster    EDIT: Dan, the 4th dimension is time. From what I've   
+                     seen in the demos, it allows you to specify the        
+                     modification of a model over a given time.             
+                                                                            
+                     --                                                     
+                     Always waiting for a new demo release of Chaos Funk    
+                     Posted on 2002-04-02 03:15   View Profile              
+                     spellcaster: No, it's actually a fourth spacial        
+                     dimention. The 4D mesh is then projected back to a 3D  
+                     space, which is then projected to a 2D screen. With 3D 
+                     displays, we can skip that last step and get to see    
+                     all the cool stuff that 4D can bring.                  
+                     I do admit that Allegro currently fakes the fourth     
+                     dimention by introducing space-time relativity in the  
+                     transformation equations. We think that this would     
+   Bob               better model the back-projection from 4D to 2D. Of     
+   Member# 699       course, there is an optional switch to revert to       
+   September 2000    regular "linear" transforms, for 3D displays.          
+                                                                            
+          Bob        23yrold3yrold: Oh please. It's not because *you* were  
+                     unable to unzip Allegro 5 that it doesn't exist. The   
+                     fact that it was released on April 1 is purely         
+                     coincidental.                                          
+                                                                            
+                     --                                                     
+                     - Bob                                                  
+                     [ Webpage | Allegro FAQ | Coding Tricks ]              
+                     The world is being silently polluted by Dihydrogen     
+                     Monoxide!                                              
+                                                                            
+                                                                            
+                                                                            
+   Bookmark - 'Stick' this thread at  [___________________________________] 
+   the top of your list. Subscribe -                                 [ Go ] 
+   Receive e-mail notifications. Send                                       
+   to Top - Force this thread back to                                       
+   the top of everyone's list. Hide                                         
+   Thread - You won't see this thread                                       
+   again until someone else posts.                                          
+   Kill Thread - You will never see                                         
+   this thread again.                                                       
+
+                  Copyright ©1999-2003, by Matthew Leverton
+
+                You are visitor #1,203,950 since January 1999.
+           This page has been viewed 2,263 times since March 2002.

@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+   <head>
+      <title>Allegro/STL Tutorial: chapter 7</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+      <meta name="author" content="Ove K&aring;ven">
+   </head>
+   <body text="#000000" bgcolor="#FFFFFF" link="#0000EF" vlink="#51188E" alink="#FF0000">
+<H1>Chapter 7</H1>
+<H2>7. Action</H2>
+If you downloaded the tutorial data file before Section 2 of this chapter
+was written (Feb 28), please <A HREF="../ovehk_stl_tutorial.zip">redownload</A> it (don't
+forget to regenerate <CODE>tutorial.h</CODE>), because three sound effects
+have been added to it to support Section 2. There will also be another update
+to support Section 3 soon.
+<H3>7.1 Explosions</H3>
+There are few action games without any explosions, and we don't really want
+to be worse, we want A LOT of explosions. We can't have any of that fully
+armed bombs falling into the ground and magically vanishing without an
+explosion, can we? Now, an explosion effect is an independent effect that
+can be triggered by a bomb, but then exists independent of it. Thus, we
+need to write an explosion class, and launch one whenever the bomb hits
+the ground.
+<P>
+Since the code is getting large, I will not show it in its entirety
+unnecessarily. So, at the top, add
+<PRE>
+#define BOOM_DELAY 5
+</PRE>
+and add this class before the <CODE>projectile</CODE> class
+<PRE>
+class explosion : public sprite {
+ int frame,delay,magnitude;
+public:
+ explosion(fix _X,fix _Y,int mag)
+  : sprite(_X,_Y,(RLE_SPRITE*)data[TUT_BOOM1].dat) {
+  magnitude=mag; frame=0; delay=0;
+ }
+ virtual void draw(BITMAP*dest) {
+  draw_rle_sprite(dest,image,X-image-&gt;w/2,Y-image-&gt;h/2);
+ }
+ virtual bool animate() {
+  if ((delay++)&gt;BOOM_DELAY) {
+   if ((frame++)&gt;magnitude) return TRUE;
+   image=(RLE_SPRITE*)data[TUT_BOOM1+frame].dat;
+   delay=0;
+  }
+  return FALSE;
+ }
+};
+</PRE>
+Here, the <CODE>magnitude</CODE> field tells how many frames of the
+explosions should be shown, and the <CODE>draw()</CODE> method is
+overridden to show the explosion with X,Y representing the center
+position instead of the top-left position of the sprites, mostly because
+our explosion sprites have different sizes but they are all centered.
+<P>
+To make it easy for the code to choose which graphics to show, we have
+ordered the sprites (in the data file) by numbering each <CODE>BOOM</CODE>
+sprite, thus making it easy to choose the correct image by just adding the
+frame number we want to <CODE>BOOM1</CODE>, and showing that. Since the
+Grabber automatically sorts the data file, this is very handy for animations
+where several frames has to be shown in sequence.
+<P>
+Now, we need an explosion to be activated when a bomb hits the ground,
+so we will need to change the <CODE>projectile</CODE> class to:
+<PRE>
+class projectile : public sprite {
+ fix DX,DY;
+ int force;
+public:
+ projectile(fix _X,fix _Y,fix _DX,fix _DY,RLE_SPRITE*img,int power)
+  : sprite(_X,_Y,img) { DX=_DX; DY=_DY; force=power; }
+ virtual bool animate() {
+  move(DX,DY); DY+=GRAVITY;
+  if (Y+image-&gt;h&gt;=MAX_Y) {
+   sprites.push_back(new explosion(X+image-&gt;w/2,Y+image-&gt;h,force/2));
+   return TRUE;
+  } else return FALSE;
+ }
+};
+</PRE>
+When a bomb hits the ground now, it will spawn an explosion with a magnitude
+that is one half of the assigned explosive power (which we set to 5 for a
+bomb, so the magnitude will be 2).
+<H3>7.2 Sound Effects</H3>
+With Allegro, this is trivial. First, we must install sound support. After
+<CODE>install_keyboard();</CODE> (or wherever) in <CODE>main()</CODE>, insert
+<PRE>
+ install_sound(DIGI_AUTODETECT,MIDI_NONE,NULL);
+</PRE>
+to install the Allegro Sound System. Now, we will trigger a neat explosion
+sound whenever an explosion is set off. Change the <CODE>explosion</CODE>
+constructor to read:
+<PRE>
+ explosion(fix _X,fix _Y,int mag)
+  : sprite(_X,_Y,(RLE_SPRITE*)data[TUT_BOOM1].dat) {
+  magnitude=mag; frame=0; delay=0;
+  stop_sample((SAMPLE*)data[TUT_BANG0].dat);
+  play_sample((SAMPLE*)data[TUT_BANG0].dat,255,(256*(int)X)/SCREEN_W,1000,FALSE);
+ }
+</PRE>
+Here, we stop any previously playing explosion sounds (otherwise the result
+might get *very* loud and distorted, especially considering the quantity of
+bombs we are able to pour out), then start a new one. The loudness is here
+255 (max), the pan (0-255) is set according to the X position of the
+explosion for those lucky enough to have a stereo sound card, and the
+frequency is normalized (1000), and it should not loop. (The <CODE>int</CODE>
+typecast in the pan calculation is for avoiding a fixed-point overflow.)
+<P>
+For fun, you may try the other two sound effects I put in the datafile,
+<CODE>TUT_BANG1</CODE> and <CODE>TUT_BANG2</CODE>, but these were sampled
+from videos by a friend, so they are probably copyrighted.
+<H3>7.3 Enemies</H3>
+<H3>7.4 Collision Detection</H3>
+These have not been written yet. Please be patient.
+Meanwhile, try <A HREF="http://www.grandgent.com/gfoot/vivace/">Allegro Vivace</A>,
+the related <A HREF="http://www.grandgent.com/gfoot/htpg/">How To Program Games</A>,
+<A HREF="http://www.grandgent.com/allegro/faq/">Allegro FAQ and Coding Techniques</A>,
+<A HREF="http://www.sgi.com/tech/stl/">SGI STL Reference</A>, and so on.
+<P>
+If you have any suggestions for improvement so far, send them to
+<A HREF="mailto:ovek@arcticnet.no">ovek@arcticnet.no</A>
+
+</body>
+</html>

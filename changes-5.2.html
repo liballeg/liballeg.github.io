@@ -81,6 +81,21 @@ A game programming library
 <h1 class="title">Allegro changelog for 5.2.x series</h1>
 </div>
 <p>These lists serve as summaries; the full histories are in the git repository.</p>
+<h1 id="changes-from-5.2.1-to-5.2.1.1-august-2016">Changes from 5.2.1 to 5.2.1.1 (August 2016)</h1>
+<p>The main developers this time were: Trent Gamblin, SiegeLord.</p>
+<p>Core:</p>
+<ul>
+<li><p>Enforce backwards compatibility in the version check, rather than erroneously allowing forwards compatiblity.</p></li>
+<li><p>Temporarily remove new extensions in ALLEGRO_OGL_EXT_LIST as that broke ABI compatibility.</p></li>
+</ul>
+<p>OSX port:</p>
+<ul>
+<li>Temporarily revert changes in joystick detection, as it did not interact well with some joysticks.</li>
+</ul>
+<p>Windows port:</p>
+<ul>
+<li>Fix the clear display to black right away to avoid an ugly white flash change.</li>
+</ul>
 <h1 id="changes-from-5.2.0-to-5.2.1-july-2016">Changes from 5.2.0 to 5.2.1 (July 2016)</h1>
 <p>The main developers this time were: Elias Pschernig, Trent Gamblin, SiegeLord, Ryan Roden-Corrent, Boris Carvajal and Peter Hull.</p>
 <p>Core:</p>

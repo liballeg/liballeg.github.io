@@ -1,0 +1,1195 @@
+
+   Date: 2003-12-13. This is a text only snapshot of the web
+   
+    http://www.yuksrus.com/programr.html
+    
+   made by Grzegorz Adam Hankiewicz (gradha@users.sourceforge.net) with the
+   software ELinks 0.5pre12.CVS - Text WWW browser, which you can find at
+   
+    http://elinks.or.cz/
+   
+   The purpose of the snapshot is to provide an alternative version if the
+   main server fails or the original copy is deleted. The snapshot has been
+   render to 78 characters of width with the ISO-8859-1 character codepage.
+
+     --------------------------------------------------------------------
+
+			       Programmer Jokes
+
+
+  "Programming is like sex:
+  One mistake and you have to support for a lifetime."
+
+
+
+
+  Top 17 Programmer's Terminologies
+
+  1. A NUMBER OF DIFFERENT APPROACHES ARE BEING TRIED
+   - We are still pissing in the wind.
+
+  2. EXTENSIVE REPORT IS BEING PREPARED ON A FRESH APPROACH TO
+     THE PROBLEM
+   -  We just hired three kids fresh out of college.
+
+  3. CLOSE PROJECT COORDINATION
+   - We know who to blame.
+
+  4. MAJOR TECHNOLOGICAL BREAKTHROUGH
+   - It works OK, but looks very hi-tech.
+
+  5. CUSTOMER SATISFACTION IS DELIVERED ASSURED
+   - We are so far behind schedule the customer is happy to
+     get it delivered.
+
+  6. PRELIMINARY OPERATIONAL TESTS WERE INCONCLUSIVE
+   - The darn thing blew up when we threw the switch.
+
+  7. TEST RESULTS WERE EXTREMELY GRATIFYING
+   - We are so surprised that the stupid thing works.
+
+  8. THE ENTIRE CONCEPT WILL HAVE TO BE ABANDONED
+   - The only person who understood the thing quit.
+
+  9. IT IS IN THE PROCESS
+   - It is so wrapped up in red tape that the situation
+     is about hopeless.
+
+  10. WE WILL LOOK INTO IT
+   - Forget it!  We have enough problems for now.
+
+  11. PLEASE NOTE AND INITIAL
+   - Let's spread the responsibility for the screw up.
+
+  12. GIVE US THE BENEFIT OF YOUR THINKING
+   - We'll listen to what you have to say as long as it
+     doesn't interfere with what we've already done.
+
+  13. GIVE US YOUR INTERPRETATION
+   - I can't wait to hear this bull!
+
+  14. SEE ME or LET'S DISCUSS
+   - Come into my office, I'm lonely.
+
+  15. ALL NEW
+   - Code not interchangeable with the previous design.
+
+  16. YEARS OF DEVELOPMENT
+   - It finally worked!
+
+  17. LOW MAINTENANCE
+   - Impossible to fix if broken.
+
+
+
+
+    Jesus and Satan have an argument as to who is the better
+  programmer.  This goes on for a few hours until they come
+  to an agreement to hold a contest, with God as the Judge.
+  They set themselves before their computers and begin. They
+  type furiously, lines of code streaming up the screen, for
+  several hours straight.  Seconds before the end of the
+  competition, a bolt of lightning strikes, taking out the
+  electricity.  Moments later, the power is restored, and God
+  announces that the contest is over.  He asks Satan to show
+  what he has come up with.
+    Satin is visibly upset and cries, "I have nothing, I lost
+  it all when the power went out."
+    "Very well, then, " says God, "let us see if Jesus fared
+  any better."
+    Jesus enters a command, and the screen comes to life in
+  vivid display, the voices of an angelic choir pours forth
+  from the speakers.
+    Satan is astonished.  He stutters, "B-b-but how?! I lost
+  everything yet Jesus' program is Intact!  How did he do it?"
+    God Chuckles,  "Everybody knows...Jesus Saves."
+
+
+
+
+  IF GOD WERE A COMPUTER PROGRAMMER...
+
+   Some important theological questions can best be answered by
+   thinking of God as a computer programmer:
+
+   Q: Did God really create the world in seven days?
+   A: He did it in six days and nights while living on cola and
+   candy bars. On the seventh day he went home and found out his
+   girlfriend had left him.
+
+   Q: What causes God to intervene in earthly affairs?
+   A: If a critical error occurs, the system pages him automatically
+   and he logs on from home to try to bring it up. Otherwise, things
+   can wait until tomorrow.
+
+   Q: How come the Age of Miracles ended?
+   A: That was the development phase of the project.  Now we're in the
+   maintenance phase.
+
+   Q: Who is Satan?
+   A: Satan is an MIS director who takes credit for more powers than he
+   actually possesses, so nonprogrammers become scared of him. God
+   thinks he's irritating but irrelevant.
+
+   Q: Why does God allow evil to happen?
+   A: God thought he eliminated evil in one of the earlier revs.
+
+   Q: How can I protect myself from evil?
+   A: Change your password every month and don't make it a name, a
+   common word, or a date like your birthday.
+
+   Q: If I pray to God, will he listen?
+   A: You can waste his time telling him what to do, or you can just
+   get off his back and let him program.
+
+   Q: Some people claim they hear the voice of God. Is this true?
+   A: They are much more likely to receive email.
+
+   Q: Does God control everything that happens in my life?
+   A: He could, if he used the debugger, but it's tedious to step through
+      all those variables.
+
+   Q: Does God know everything?
+   A: He likes to think so, but he is often amazed to find out what goes
+      on in the overnite job.
+
+   Q: Will there be another Universe after the Big Bang?
+   A: A lot of people are drawing things on the white board, but
+      personally, God doubts that it will ever be implemented.
+
+   Q: What is the role of sinners?
+   A: Sinners are the people who find new an imaginative ways to mess up
+      the system when God has made it idiot-proof.
+
+   Q: Where will I go after I die?
+   A: Onto a DAT tape.
+
+   Q: Will I be reincarnated?
+   A: Not unless there is a special need to recreate you.  And searching
+      those .tar files is a major hassle, so if there is a request for you,
+      God will just say that the tape has been lost.
+
+   Q: Am I unique and special in the universe?
+   A: There are over 10,000 major university and corporate sites running
+      exact duplicates of you in the present release version.
+
+   Q: What is the purpose of the universe?
+   A: God created it because he values elegance and simplicity, but then
+      the users and managers demanded he tack all this senseless stuff onto
+      it and now everything is more complicated and expensive than ever.
+
+   Q: What is the one true religion?
+   A: All systems have their advantages and disadvantages, so just pick
+      the one that best suits your needs and don't let anyone put you down.
+
+   Q: Is God angry that we crucified him?
+   A: Let's just say he's not going to any more meetings if he can help
+      it, because that last one with the twelve managers and the food
+      turned out to be murder.
+
+   Q: Some people say God is Love.
+   A: That is not a question.  Please restate your query in the form of a
+      question.
+
+
+
+   - The Programmers' Cheer -
+  Shift to the left, shift to the right!
+  Pop up, push down, byte, byte, byte!
+
+
+
+  Q. Somebody asked me "What happens to programmers when they die?"
+
+  A: They get deallocated?
+     Their values become undefined?
+     The get re-intialized?
+     Their structues break down?
+     they become WORM food...
+     They start dropping bits........
+     They branch to a new address!
+     Their social system resources are released?
+     They dump core? (a coredump is the result of an abort(ion))
+
+
+
+  PROGRAMMERS' DRINKING SONG
+
+   100 little bugs in the code,
+   100 bugs in the code,
+   fix one bug, compile it again,
+   101 little bugs in the code.
+
+   101 little bugs in the code.....
+     (Repeat until BUGS = 0)
+
+
+
+
+  Real Programmers Don't Eat Quiche (They Can't Even Spell Quiche)
+
+  Real Programmers....
+
+    Don't eat quiche. They  don't even know  how to  spell quiche.
+  They like Twinkies, Coke, and palate-scorching Szechwan food.
+
+    Don't write applications programs. They program right down to
+  the bare metal. Applications programs are for dullards who can't
+  do systems programming.
+
+    Don't comment their code. If it was hard to write, it should be
+  hard to understand and even harder to modify.
+
+    Don't draw flowcharts. Flowcharts are, after all, the illiterate's
+  form of documentation. Cavemen drew flowcharts; look how much it did
+  for them.
+
+    Don't use COBOL. COBOL is for wimpy applications programmers.
+
+    Don't use FORTRAN. FORTRAN is for wimpy engineers who wear white
+  socks, pipe stress freaks, and crystallography weenies. They get
+  excited over finite state analysis and nuclear reactor simulation.
+
+    Don't use LOGO. In fact, no programmer uses LOGO after reaching
+  puberty.
+
+    Don't use APL, unless the whole program can be written on one line.
+
+    Don't use LISP. Only effeminate programmers use more parentheses
+  than actual code.
+
+    Don't use Pascal, BLISS, Ada, or any of those sissy-pinko computer
+  science languages. Strong typing is a crutch for people with weak
+  memories.
+
+    Never work 9 to 5. If any real programmers are around at 9 a.m.,
+  it's because they were up all night.
+
+    Don't play tennis or any other sport that requires a change of
+  clothes. Mountain climbing is OK though, and real programmers often
+  wear climbing boots to work in case a mountain should suddenly spring
+  up in the middle of the machine room.
+
+    Don't like the team programming concept. Unless, of course, they
+  are the Chief Programmer.
+
+    Have no use for managers. Managers are a necessary evil. Managers
+  are for dealing with personal bozos, bean counters, senior planners,
+  and other mental defectives.
+
+    Don't drive clapped out Mavericks. They prefer BMWs, Lincolns, or
+  pick-up trucks with floor shifts. Fast motorcycles are highly regarded.
+
+    Like vending machine popcorn. Coders pop it in the microwave oven.
+  Real programmers use the heat given off by the CPU. They can tell what
+  job is running just by listening to the rate the corn is popping.
+
+    Know every nuance of every instruction and use them all in every
+  real program. Puppy architects won't allow execute instructions to
+  address another execute as the target instruction. Real programmers
+  despise such petty restrictions.
+
+    Don't bring brown bag lunches to work. If the vending machine sells
+  it, they eat it. If the vending machine doesn't sell it they don't eat
+  it. Vending machines don't sell quiche.
+
+
+
+
+    An engineer, a mathematician, and a computer programmer are driving
+  down the road when the car they are in gets a flat tire.  The engineer
+  says that they should buy a new car. The mathematician says they should
+  sell the old tire and buy a new one.  The computer programmer says they
+  should drive the car around the block and see if the tire fixes itself.
+
+
+
+
+    Assembler programs are written with short abbreviations called
+  MNEMONICS, in other words instead of writing GOTO, the programmer
+  writes JMP or even BRA (branch).
+    These instructions are frequently abbreviated into total
+  incomprehensibility. Of course, we all know that abbreviations are
+  arbitrary.  Anyone who has spent any time programming in assembler
+  knows that all computers can be programmed using an undocumented set
+  of instructions.  Frequently when an error is made writing a program
+  in assembler a user can actually see the program executing the
+  undocumented instructions. These instructions vary from machine from
+  machine, but all computers have a certain set of them in common.  As
+  a service to humanity, I am here revealing these common instructions
+  for the first time.
+
+  ARG: Agree to Run Garbage
+  BDM: Branch and Destroy Memory
+  CMN: Convert to Mayan Numerals
+  DDS: Damage Disk and Stop
+  EMR: Emit Microwave Radiation
+  ETO: Emulate Toaster Oven
+  FSE: Fake Serious Error
+  GSI: Garble Subsequent Instructions
+  GQS: Go Quarter Speed
+  HEM: Hide Evidence of Malfunction
+  IDD: Inhale Dust and Die
+  IKI: Ignore Keyboard Input
+  IMU: Irradiate and Mutate User
+  JPF: Jam Paper Feed
+  JUM: Jeer at Users Mistake
+  KFP: Kindle Fire in Printer
+  LNM: Launch Nuclear Missiles
+  MAW: Make Aggravating Whine
+  NNI: Neglect Next Instruction
+  OBU: Overheat and Burn if Unattended
+  PNG: Pass Noxious Gas
+  QWF: Quit Working Forever
+  QVC: Question Valid Command
+  RWD: Read Wrong Device
+  SCE: Simulate Correct Execution
+  SDJ: Send Data to Japan
+  TTC: Tangle Tape and Crash
+  UBC: Use Bad Chip
+  VDP: Violate Design Parameters
+  VMB: Verify and Make Bad
+  WAF: Warn After Fact
+  XID: eXchange Instruction with Data
+  YII: Yield to Irresistible Impulse
+  ZAM: Zero All Memory
+  PI : Punch Invalid
+  POPI: Punch Operator Immediately
+  RASC: Read And Shred Card
+  RPM: Read Programmers Mind
+  RSSC: Reduce Speed, Step Carefully  (for improved accuracy)
+  RTAB: Rewind Tape and Break
+  RWDSK: ReWind DiSK
+  SPSW: Scramble Program Status Word
+  SRSD: Seek Record and Scar Disk
+  WBT: Water Binary Tree
+
+
+
+
+    Three men, a physican, a engineer and a computer scientist, are
+  travelling in a car. Suddenly, the car starts to smoke and stops.
+  The three atonished men try to solve the problem:
+
+  Physican says:
+   This is obviously a classic problem of torque. It has been overloaded
+  the elasticity limit of the main axis.
+
+  Engineer says:
+   Let's be serious! The matter is that it has been burned the spark of
+  the connecting rod to the dynamo of the radiator. I can easily repair
+  it by hammering.
+
+  Computer scientist says:
+   What if we get off the car, wait a minute, and then get in and try again?
+
+
+
+  Why is a good programmer like a Knight?
+  They both live by their code.
+
+
+
+  Q: Why do programmers always get Christmas and Halloween mixed up?
+  A: Because DEC 25 = OCT 31
+
+
+
+  Top 25 Explanations by Programmers when their programs don't work.
+
+   1. Strange...
+   2. I've never heard about that.
+   3. It did work yesterday.
+   4. Well, the program needs some fixing.
+   5. How is this possible?
+   6. The machine seems to be broken.
+   7. Has the operating system been updated?
+   8. The user has made an error again.
+   9. There is something wrong in your test data.
+  10. I have not touched that module!
+  11. Yes yes, it will be ready in time.
+  12. You must have the wrong executable.
+  13. Oh, it's just a feature.
+  14. I'm almost ready.
+  15. Of course, I just have to do these small fixes.
+  16. It will be done in no time at all.
+  17. It's just some unlucky coincidense.
+  18. I can't test everything!
+  19. THIS can't do THAT.
+  20. Didn't I fix it already?
+  21. It's already there, but it has not been tested.
+  22. It works, but it's not been tested.
+  23. Somebody must have changed my code.
+  24. There must be a virus in the application software.
+  25. Even though it does not work, how does it feel?
+
+
+
+  The Lesser-known Programming Languages
+
+   SIMPLE
+    SIMPLE is an acronym for Sheer Idiot's Monopurpose Programming
+  Language Environment. This language, developed at the Hanover College
+  for Technological Misfits, was designed to make it impossible to write
+  code with errors in it. The statements are, therefore, confined to
+  BEGIN, END and STOP. No matter how you arrange the statements, you
+  can't make a syntax error. Programs written in SIMPLE do nothing
+  useful. Thus they achieve the results of programs written in other
+  languages without the tedious, frustrating process of testing and
+  debugging.
+
+   LITHP
+    This otherwise unremarkable language is distinguished by the absence
+  of an "S" in its character set; users must substitute "TH". LITHP is
+  said to be useful in protheththing lithtth.
+
+   SLOBOL
+    SLOBOL is best known for the speed, or lack of it, of its compiler.
+  Although many compilers allow you to take a coffee break while they
+  compile, SLOBOL compilers allow you to travel to Bolivia to pick the
+  coffee. Forty-three programmers are known to have died of boredom
+  sitting at their terminals while waiting for a SLOBOL program to
+  compile. Weary SLOBOL programmers often turn to a related (but
+  infinitely faster) language, COCAINE.
+
+   SARTRE
+  Named after the late existential philosopher, SARTRE is an extremely
+  unstructured language. Statements in SARTRE have no purpose; they just
+  are. Thus SARTRE programs are left to define their own functions.
+  SARTRE programmers tend to be boring and depressed, and are no fun at
+  parties.
+
+   C-
+    This language was named for the grade received by its creator when
+  he submitted it as a class project in a graduate programming class.
+  C- is best described as a "low-level" programming language. In fact,
+  the language generally requires more C- statements than machine-code
+  statements to execute a given task. In this respect, it is very
+  similar to COBOL.
+
+   FIFTH
+    FIFTH is a precision mathematical language in which the data types
+  refer to quantity. The data types range from CC, OUNCE, SHOT, and
+  JIGGER to FIFTH (hence the name of the language), LITER, MAGNUM and
+  BLOTTO. Commands refer to ingredients such as CHABLIS, CHARDONNAY,
+  CABERNET, GIN, VERMOUTH, VODKA, SCOTCH, and WHATEVERSAROUND. The many
+  versions of the FIFTH language reflect the sophistication and
+  financial status of its users. Commands in the ELITE dialect include
+  VSOP and LAFITE, while commands in the GUTTER dialect include HOOTCH
+  and RIPPLE. The latter is a favorite of frustrated FORTH programmers
+  who end up using this language.
+
+
+
+
+  The Top 16 April Fool's Day Pranks to Pull on Programmers
+  16> Using their e-mail address, post a request for penpals to the
+      alt.prison.bodypiercing newsgroup.
+
+  15> Three words: electric mouse buzzer.
+
+  14> Assign them to the new "Heaven's Gate" project.
+
+  13> "Look, Bill Gates!!  Ha!  Made ya look!"
+
+  12> Put them in the same room with a member of the opposite sex.
+
+  11> "Have you got Prince Albert in a LAN?"
+
+  10> Tell them that "everyone knows Star Trek transporter technology
+      is bogus."
+
+   9> 10 GOTO 10
+
+   7> Swap their monitor for a large cardboard box with handpuppets.
+      Watch the fur fly!
+
+   6> Announce that annual raises will be based on a subjective test
+      of one's ability to "schmooze the way the butt-kissers in
+      Marketing do."
+
+   8> Intercept their daily Top 5 List, then remove #8 and re-insert
+      it between #5 and #6.
+
+   5> Pretend to "discover" a Fox TV website with a now-out-of-date
+      win a weekend with Gillian Anderson of X-Files contest.
+
+   4> Every hour, on the hour, forward them a warning about the
+      "Good Times" virus.
+
+   3> Call her up and ask if her program is running, and when she
+      says "yes," tell her "Well you better go catch it!"
+
+   2> Replace all the Jolt in the soda machine with Perrier and V8.
+
+   1> Special announcement: "Forget Java -- Starting immediately,
+      all coding will be done in COBOL."
+
+
+
+
+  The truth about C++ revealed
+
+    Don't know if this is true or not... but it's funny either way.
+
+    On the 1st of January, 1998, Bjarne Stroustrup gave an interview
+  to the IEEE's 'Computer' magazine.
+
+    Naturally, the editors thought he would be giving a retrospective
+  view of seven years of object-oriented design, using the language
+  he created.
+    By the end of the interview, the interviewer got more than he had
+  bargained for and, subsequently, the editor decided to suppress its
+  contents, 'for the good of the industry' but, as with many of these
+  things, there was a leak.
+
+  Here is a complete transcript of what was was said, unedited, and
+  unrehearsed, so it isn't as neat as planned interviews.
+
+  You will find it interesting...
+
+  Interviewer: Well, it's been a few years since you changed the world
+  of software design, how does it feel, looking back?
+
+  Stroustrup: Actually, I was thinking about those days, just before
+  you arrived. Do you remember?  Everyone was writing 'C' and, the
+  trouble was, they were pretty damn good at it. Universities got
+  pretty good at teaching it, too. They were turning out competent
+   - I stress the word 'competent' - graduates at a phenomenal rate.
+  That's what caused the problem.
+
+  Interviewer: Problem?
+
+  Stroustrup: Yes, problem. Remember when everyone wrote Cobol?
+
+  Interviewer: Of course, I did too
+
+  Stroustrup: Well, in the beginning, these guys were like demi-gods.
+  Their salaries were high, and they were treated like royalty.
+
+  Interviewer: Those were the days, eh?
+
+  Stroustrup: Right. So what happened? IBM got sick of it, and invested
+  millions in training programmers, till they were a dime a dozen.
+
+  Interviewer: That's why I got out. Salaries dropped within a year, to
+  the point where being a journalist actually paid better.
+
+  Stroustrup: Exactly. Well, the same happened with 'C' programmers.
+
+  Interviewer: I see, but what's the point?
+
+  Stroustrup: Well, one day, when I was sitting in my office, I thought
+  of this little scheme, which would redress the balance a little. I
+  thought 'I wonder what would happen, if there were a language so
+  complicated, so difficult to learn, that nobody would ever be able
+  to swamp the market with programmers?  Actually, I got some of the
+  ideas from X10, you know, X windows. That was such a bitch of a
+  graphics system, that it only just ran on those Sun 3/60 things.
+  They had all the ingredients for what I wanted. A really ridiculously
+  complex syntax, obscure functions, and pseudo-OO structure. Even now,
+  nobody writes raw X-windows code. Motif is the only way to go if you
+  want to retain your sanity.
+
+  Interviewer: You're kidding...?
+
+  Stroustrup: Not a bit of it. In fact, there was another problem. Unix
+  was written in 'C', which meant that any 'C' programmer could very
+  easily become a systems programmer. Remember what a mainframe systems
+  programmer used to earn?
+
+  Interviewer: You bet I do, that's what I used to do.
+
+  Stroustrup: OK, so this new language had to divorce itself from Unix,
+  by hiding all the system calls that bound the two together so nicely.
+  This would enable guys who only knew about DOS to earn a decent living
+  too.
+
+  Interviewer: I don't believe you said that...
+
+  Stroustrup: Well, it's been long enough, now, and I believe most people
+  have figured out for themselves that C++ is a waste of time but, I must
+  say, it's taken them a lot longer than I thought it would.
+
+  Interviewer: So how exactly did you do it?
+
+  Stroustrup: It was only supposed to be a joke, I never thought people
+  would take the book seriously. Anyone with half a brain can see that
+  object-oriented programming is counter-intuitive, illogical and
+  inefficient.
+
+  Interviewer: What?
+
+  Stroustrup: And as for 're-useable code' - when did you ever hear of
+  a company re-using its code?
+
+  Interviewer: Well, never, actually, but...
+
+  Stroustrup: There you are then. Mind you, a few tried, in the early
+  days. There was this Oregon company - Mentor Graphics, I think they
+  were called - really caught a cold trying to rewrite everything in
+  C++ in about '90 or '91. I felt sorry for them really, but I thought
+  people would learn from their mistakes.
+
+  Interviewer: Obviously, they didn't?
+
+  Stroustrup: Not in the slightest. Trouble is, most companies hush-up
+  all their major blunders, and explaining a $30 million loss to the
+  shareholders would have been difficult. Give them their due, though,
+  they made it work in the end.
+
+  Interviewer: They did?  Well, there you are then, it proves O-O works.
+
+  Stroustrup: Well, almost. The executable was so huge, it took five
+  minutes to load, on an HP workstation, with 128MB of RAM. Then it ran
+  like treacle. Actually, I thought this would be a major stumbling-block,
+  and I'd get found out within a week, but nobody cared. Sun and HP were
+  only too glad to sell enormously powerful boxes, with huge resources
+  just to run trivial programs. You know, when we had our first C++
+  compiler, at AT&T, I compiled 'Hello World', and couldn't believe
+  the size of the executable. 2.1MB
+
+  Interviewer: What? Well, compilers have come a long way, since then.
+
+  Stroustrup: They have?  Try it on the latest version of g++ - you won't
+  get much change out of half a megabyte. Also, there are several quite
+  recent examples for you, from all over the world. British Telecom had
+  a major disaster on their hands but, luckily, managed to scrap the
+  whole thing and start again. They were luckier than Australian Telecom.
+  Now I hear that Siemens is building a dinosaur, and getting more and
+  more worried as the size of the hardware gets bigger, to accommodate
+  the executables. Isn't multiple inheritance a joy?
+
+  Interviewer: Yes, but C++ is basically a sound language.
+
+  Stroustrup: You really believe that, don't you?  Have you ever
+  sat down and worked on a C++ project?  Here's what happens: First,
+  I've put in enough pitfalls to make sure that only the most trivial
+  projects will work first time. Take operator overloading. At the end
+  of the project, almost every module has it, usually, because guys
+  feel they really should do it, as it was in their training course.
+  The same operator then means something totally different in every
+  module. Try pulling that lot together, when you have a hundred or
+  so modules. And as for data hiding. God, I sometimes can't help
+  laughing when I hear about the problems companies have making their
+  modules talk to each other. I think the word 'synergistic' was
+  specially invented to twist the knife in a project manager's ribs.
+
+  Interviewer: I have to say, I'm beginning to be quite appalled at
+  all this. You say you did it to raise programmers' salaries? That's
+  obscene.
+
+  Stroustrup: Not really. Everyone has a choice. I didn't expect the
+  thing to get so much out of hand. Anyway, I basically succeeded.
+  C++ is dying off now, but programmers still get high salaries -
+  especially those poor devils who have to maintain all this crap.
+  You do realise, it's impossible to maintain a large C++ software
+  module if you didn't actually write it?
+
+  Interviewer: How come?
+
+  Stroustrup: You are out of touch, aren't you?  Remember the typedef?
+
+  Interviewer: Yes, of course.
+
+  Stroustrup: Remember how long it took to grope through the header files
+  only to find that 'RoofRaised' was a double precision number?  Well,
+  imagine how long it takes to find all the implicit typedefs in all
+  the Classes in a major project.
+
+  Interviewer: So how do you reckon you've succeeded?
+
+  Stroustrup: Remember the length of the average-sized 'C' project?
+  About 6 months. Not nearly long enough for a guy with a wife and
+  kids to earn enough to have a decent standard of living. Take the
+  same project, design it in C++ and what do you get?  I'll tell you.
+  One to two years. Isn't that great? All that job security, just
+  through one mistake of judgement. And another thing. The universities
+  haven't been teaching 'C' for such a long time, there's now a shortage
+  of decent 'C' programmers. Especially those who know anything about
+  Unix systems programming. How many guys would know what to do with
+  'malloc', when they've used 'new' all these years - and never bothered
+  to check the return code. In fact, most C++ programmers throw away their
+  return codes. Whatever happened to good ol' '-1'?  At least you knew you
+  had an error, without bogging the thing down in all that 'throw' 'catch'
+  'try' stuff.
+
+  Interviewer: But, surely, inheritance does save a lot of time?
+
+  Stroustrup: Does it? Have you ever noticed the difference between a
+  'C' project plan, and a C++ project plan?  The planning stage for a
+  C++ project is three times as long. Precisely to make sure that
+  everything which should be inherited is, and what shouldn't isn't.
+  Then, they still get it wrong. Whoever heard of memory leaks in a
+  'C' program?  Now finding them is a major industry. Most companies
+  give up, and send the product out, knowing it leaks like a sieve,
+  simply to avoid the expense of tracking them all down.
+
+  Interviewer: There are tools...
+
+  Stroustrup: Most of which were written in C++.
+
+  Interviewer: If we publish this, you'll probably get lynched, you
+  do realise that?
+
+  Stroustrup: I doubt it. As I said, C++ is way past its peak now, and
+  no company in its right mind would start a C++ project without a pilot
+  trial. That should convince them that it's the road to disaster. If not,
+  they deserve all they get. You know, I tried to convince Dennis Ritchie
+  to rewrite Unix in C++.
+
+  Interviewer: Oh my God. What did he say?
+
+  Stroustrup: Well, luckily, he has a good sense of humor. I think both
+  he and Brian figured out what I was doing, in the early days, but never
+  let on.  He said he'd help me write a C++ version of DOS, if I was
+  interested.
+
+  Interviewer: Were you?
+
+  Stroustrup: Actually, I did write DOS in C++, I'll give you a demo
+  when we're through. I have it running on a Sparc 20 in the computer
+  room.  Goes like a rocket on 4 CPU's, and only takes up 70 megs of
+  disk.
+
+  Interviewer: What's it like on a PC?
+
+  Stroustrup: Now you're kidding. Haven't you ever seen Windows '95?
+  I think of that as my biggest success. Nearly blew the game before
+  I was ready, though.
+
+  Interviewer: You know, that idea of a Unix++ has really got me
+  thinking. Somewhere out there, there's a guy going to try it.
+
+  Stroustrup: Not after they read this interview.
+
+  Interviewer: I'm sorry, but I don't see us being able to publish
+  any of this.
+
+  Stroustrup: But it's the story of the century. I only want to be
+  remembered by my fellow programmers, for what I've done for them.
+  You know how much a C++ guy can get these days?
+
+  Interviewer: Last I heard, a really top guy is worth $70-$80 an hour.
+
+  Stroustrup: See? And I bet he earns it. Keeping track of all the
+  gotchas I put into C++ is no easy job. And, as I said before, every
+  C++ programmer feels bound by some mystic promise to use every damn
+  element of the language on every project. Actually, that really annoys
+  me sometimes, even though it serves my original purpose. I almost like
+  the language after all this time.
+
+  Interviewer: You mean you didn't before?
+
+  Stroustrup: Hated it. It even looks clumsy, don't you agree? But when
+  the book royalties started to come in... well, you get the picture.
+
+  Interviewer:  Just a minute. What about references?  You must admit,
+  you improved on 'C' pointers.
+
+  Stroustrup: Hmm. I've always wondered about that. Originally, I
+  thought I had. Then, one day I was discussing this with a guy who'd
+  written C++ from the beginning. He said he could never remember
+  whether his variables were referenced or dereferenced, so he always
+  used pointers. He said the little asterisk always reminded him.
+
+  Interviewer: Well, at this point, I usually say 'thank you very much'
+  but it hardly seems adequate.
+
+  Stroustrup: Promise me you'll publish this. My conscience is getting
+  the better of me these days.
+
+  Interviewer: I'll let you know, but I think I know what my editor
+  will say.
+
+  Stroustrup: Who'd believe it anyway? Although, can you send me a
+  copy of that tape?
+
+  Interviewer: I can do that.
+
+
+
+
+  Selecting a Programming Language Made Easy
+  by  Daniel Solomon & David Rosenblueth
+
+    With such a large selection of programming languages it can be
+  difficult to choose one for a particular project.  Reading the manuals
+  to evaluate the languages is a time consuming process.  On the other
+  hand, most people already have a fairly good idea of how various
+  automobiles compare.  So in order to assist those trying to choose a
+  language, we have prepared a chart that matches programming languages
+  with comparable automobiles.
+
+  Assembler       - A formula I race car.  Very fast but difficult to
+		    drive and maintain.
+
+  FORTRAN II      - A Model T Ford.  Once it was the king of the road.
+
+  FORTRAN IV      - A Model A Ford.
+
+  FORTRAN 77      - a six-cylinder Ford Fairlane with standard
+		    transmission and no seat belts.
+
+  COBOL           - A delivery van.  It's bulky and ugly but it does
+		    the work.
+
+  BASIC           - A second-hand Rambler with a rebuilt engine and
+		    patched upholstery.  Your dad bought it for you
+		    to learn to drive. You'll ditch it as soon as
+		    you can afford a new one.
+
+  PL/I            - A Cadillac convertable with automatic transmission,
+		    a two-tone paint job, white-wall tires, chrome
+		    exhaust pipes, and fuzzy dice hanging in the
+		    windshield.
+
+  C               - A black Firebird, the all macho car. Comes with
+		    optional seatbelt (lint) and optional fuzz buster
+		    (escape to assembler).
+
+  ALGOL 60        - An Austin Mini. Boy that's a small car.
+
+  Pascal          - A Volkswagon Beetle.  It's small but sturdy. Was
+		    once popular with intellectual types.
+
+  Modula II       - A Volkswagon Rabbit with a trailer hitch.
+
+  ALGOL 68        - An Aston Martin.  An impressive car but not just
+		    anyone can drive it.
+
+  LISP            - An electric car. It's simple but slow. Seat belts
+		    are not available.
+
+  PROLOG/LUCID    - Prototype concept cars.
+
+  Maple/MACSYMA   - All-terrain vehicles.
+
+  FORTH           - A go-cart.
+
+  LOGO            - A kiddie's replica of a Rolls Royce. Comes with a
+		    real engine and a working horn.
+
+  APL             - A double-decker bus. It takes rows and columns of
+		    passengers to the same place all at the same time
+		    but it drives only in reverse and is instrumented
+		    in Greek.
+
+  Ada             - An army-green Mercedes-Benz staff car. Power
+		    steering, power brakes, and automatic transmission
+		    are standard. No other colors or options are
+		    available.  If it's good enough for generals, it's
+		    good enough for you.
+
+
+
+  Having Choosen you language Just how easy (or Not!!) is it to use??.
+
+  TASK :- To Shoot Yourself In The Foot
+
+  C:      You shoot yourself in the foot.
+
+  C++:    You accidentally create a dozen instances of yourself and shoot
+	  them all in the foot. Providing emergency medical assistance is
+	  impossible since you can't tell which are bitwise copies and
+	  which are just pointing at others and saying, "That's me, over
+	  there."
+
+  FORTRAN: You shoot yourself in each toe, iteratively, until you run out
+	   of toes, then you read in the next foot and repeat. If you run
+	   out of bullets, you continue with the attempts to shoot
+	   yourself anyways because you have no exception-handling
+	   capability.
+
+  Pascal: The compiler won't let you shoot yourself in the foot.
+
+  Ada:    After correctly packing your foot, you attempt to concurrently
+	  load the gun, pull the trigger, scream, and shoot yourself in
+	  the foot. When you try, however, you discover you can't because
+	  your foot is of the wrong type.
+
+  COBOL:  Using a COLT 45 HANDGUN, AIM gun at LEG.FOOT, THEN place
+	  ARM.HAND.FINGER on HANDGUN.TRIGGER and SQUEEZE. THEN return
+	  HANDGUN to HOLSTER. CHECK whether shoelace needs to be re-tied.
+
+  LISP:   You shoot yourself in the appendage which holds the gun with
+	  which you shoot yourself in the appendage which holds the gun
+	  with which you shoot yourself in the appendage which holds the
+	  gun with which you shoot yourself in the appendage which holds
+	  the gun with which you shoot yourself in the appendage which
+	  holds the gun with which you shoot yourself in the appendage
+	  which holds...
+
+  FORTH:  Foot in yourself shoot.
+
+  Prolog: You tell your program that you want to be shot in the foot. The
+	  program figures out how to do it, but the syntax doesn't permit
+	  it to explain it to you.
+
+  BASIC:  Shoot yourself in the foot with a water pistol. On large
+	  systems, continue until entire lower body is waterlogged.
+
+  Visual Basic: You'll really only _appear_ to have shot yourself in
+		the foot, but you'll have had so much fun doing it that
+		you won't care.
+
+  HyperTalk: Put the first bullet of gun into foot left of leg of you.
+	     Answer the result.
+
+  Motif:  You spend days writing a UIL description of your foot, the
+	  bullet, its trajectory, and the intricate scrollwork on the
+	  ivory handles of the gun. When you finally get around to
+	  pulling the trigger, the gun jams.
+
+  APL:    You shoot yourself in the foot, then spend all day figuring
+	  out how to do it in fewer characters.
+
+  SNOBOL: If you succeed, shoot yourself in the left foot. If you fail,
+	  shoot yourself in the right foot.
+
+  Unix:   % ls
+	  foot.c foot.h foot.o toe.c toe.o
+	  % rm * .o
+	  rm:.o no such file or directory
+	  % ls
+	  %
+
+  Concurrent Euclid: You shoot yourself in somebody else's foot.
+
+  370 JCL: You send your foot down to MIS and include a 400-page document
+	   explaining exactly how you want it to be shot. Three years
+	   later, your foot comes back deep-fried.
+
+  Paradox: Not only can you shoot yourself in the foot, your users
+	   can, too.
+
+  Access: You try to point the gun at your foot, but it shoots holes
+	  in all your Borland distribution diskettes instead.
+
+  Revelation: You're sure you're going to be able to shoot yourself
+	      in the foot, just as soon as you figure out what all
+	      these nifty little bullet-thingies are for.
+
+  Assembler: You try to shoot yourself in the foot, only to discover
+	     you must first invent the gun, the bullet, the trigger,
+	     and your foot.
+
+  Modula2: After realizing that you can't actually accomplish anything
+	   in this language, you shoot yourself in the head.
+
+  VMS:
+  $ MOUNT/DENSITY=.45/LABEL=BULLET/MESSAGE="BYE" BULLET:
+     :BULLET$GUN SYS$BULLET
+  $SET GUN/LOAD/SAFETY=OFF/SIGHT=NONE/HAND=LEFT/CHAMBER=1/ACTION=
+    AUTOMATIC/LOG/ALL/FULL SYS$GUN_3$DUA3:Õ000000ÊGUN.GNU
+  $ SHOOT/LOG/AUTO SYS$GUN SYS$SYSTEM:ÕFOOTÊFOOT.FOOT
+
+  %DCL-W-ACTIMAGE, error activating image GUN
+  -CLI-E-IMGNAME, image file $3$DUA240:ÕGUNÊGUN.EXE;1
+  -IMGACT-F-NOTNATIVE, image is not an OpenVMS Alpha AXP image
+  oh well, almost..
+
+  FORTH: Foot in yourself shoot.
+	  self dup >foot shoot
+
+
+
+
+  PROGRAMMING LANGUAGES ARE LIKE WOMEN
+  by Daniel J. Salomon
+
+    There are so many programming languages available that it can be
+  very difficult to get to know them all well enough to pick the right
+  one for you. On the other hand most men know what kind of woman appeals
+  to them. So here is a handy guide for many of the popular programming
+  languages that describes what kind of women they would be if programming
+  languages were women.
+
+  Assembler
+    A female track star who holds all the world speed records. She is
+  hard and bumpy, and so is not that pleasant to embrace.  She can cook
+  up any meal, but needs a complete and detailed recipe.  She is not
+  beautiful or educated, and speaks in monosyllables like "MOV, JUMP,
+  INC".  She has a fierce and violent temper that make her the choice
+  of last resort.
+
+  FORTRAN
+    Your grey-haired grandmother.  People make fun of her just because
+  she is old, but if you take the time to listen, you can learn from her
+  experiences and her mistakes.  During her lifetime she has acquired
+  many useful skills in sewing and cooking (subroutine libraries) That
+  no younger women can match, so be thankful she is still around. She
+  has a notoriously bad temper and when angered will start yelling and
+  throwing dishes. It was mostly her bad temper that made grandad search
+  for another wife.
+
+  COBOL
+    A plump secretary.  She talks far too much, and most of what she says
+  can be ignored.  She works hard and long hours, but can't handle really
+  complicated jobs.  She has a short and unpredictable temper, so no one
+  really likes working with her.  She can cook meals for a huge family,
+  but only knows bland recipes.
+
+  BASIC
+    The horny divorcee that lives next door.  Her specialty is seducing
+  young boys and it seems she is always readily available for them. She
+  teaches them many amazing things, or at least they seem amazing because
+  it is their) first experience.  She is not that young herself, but
+  because she was their first lover the boys always remember her fondly.
+  Her cooking and sewing skills are mediocre, but largely irrelevant,
+  it's the frolicking that the boys like.  The opinion that adults have
+  of Mrs.  BASIC is varied. Shockingly, some fathers actually introduce
+  their own sons to this immoral woman!  But generally the more righteous
+  adults try to correct the badly influenced young men by introducing them
+  to well behaved women like Miss Pascal.
+
+  PL/I
+    A bordello madam.  She wears silk dresses, diamonds, furs and red high
+  heels.  At one time she seemed very attractive, but now she just seems
+  overweight and tacky. Tastes change.
+
+  C
+    A lady executive.  An avid jogger, very healthy, and not too
+  talkative. Is an good cook if you like spicy food.  Unless you double
+  check everything you say (through LINT) you can unleash her fierce
+  temper. Her daughter C++ is still quite young and prone to tantrums,
+  but it seems that she will grow up into a fine young woman of milder
+  temper and more sophisticated character.
+
+  ALGOL 60
+    Your father's wartime sweetheart, petite, well proportioned, and
+  sweet tempered. She disappeared mysteriously during the war, but
+  your dad still talks about her shapely form and their steamy romance.
+  He never actually tasted much of her cooking.
+
+  Pascal
+    A grammar school teacher, and Algol 60's younger sister.  Like her
+  sister she is petite and attractive, but very bossy.  She is a good
+  cook but only if the recipe requires no more than one pot (module).
+
+  Modula II
+    A high-school teacher and Pascal's daughter.  Very much like her
+  mother, but she has learned to cook with more than one pot.
+
+  ALGOL 68
+    Algol 60's niece.  A high-society woman, well educated and terse.
+  Few men can fully understand her when she talks, and her former lovers
+  still discuss her mysterious personality.  She is very choosy about her
+  romances and won't take just any man as her lover.  She hasn't been seen
+  lately, and rumor has it that she died in a fall from an ivory tower.
+
+  LISP
+    She is an aging beatnik, who lives in a rural commune with her hippie
+  cousins SMALLTALK and FORTH.  Many men (mostly college students) who
+  have visited the farmhouse,-- enthusiastically praise the natural food,
+  and perpetual love-ins that take place there.  Others criticize the long
+  cooking times, and the abnormal sexual postures (prefix and postfix).
+  Although these women seldom have full-time jobs, when they do work,
+  their employers praise them for their imagination, but usually not for
+  their efficiency.
+
+  APL
+    A fancy caterer specializing in Greek food.  She can cook delicious
+  meals for rows and rows of tables with dozens of people at each table.
+  She doesn't talk much, as that would just slow her work down.  Few
+  people can understand her recipes, since they are in a foreign language,
+  and are all recorded in mirror writing.
+
+  LOGO
+    A grade-school art teacher.  She is just the kind of teacher that you
+  wish you had when you were young.  She is shapely and patient, but not
+  an interesting conversationalist.  She can cook up delicious kiddie
+  snacks, but not full-course meals.
+
+  LUCID & PROLOG
+    These clever teenagers show a new kind of cooking skill. They can
+  cook-up fine meals without the use of recipes, working solely from a
+  description of the desired meal (declarative cooking).  Many men are
+  fascinated by this and have already proposed marriage.  Others complain
+  that the girls work very slowly, and that often the description of the
+  meal must be just as long as a recipe would be.  It is hard to predict
+  what these girls will be like when they are fully mature.
+
+  Ada
+    A WAC colonel built like an amazon.  She is always setting strict
+  rules, but if you follow them, she keeps her temper.  She is quite
+  talkative, always spouting army regulations, and using obscure military
+  talk.  You gotta love her though, because the army says so.
+
+
+
+  Computer Language Breakthrough
+
+    Bell Laboratories has formally announced what it believes is
+  the ultimate computer science language. Described by Iusi Nogoto,
+  the foremost Japanese fourth generation language expert, as "the
+  only truly elegant computer language ever devised." NULL, as it is
+  known, was developed by the same department that originally invented
+  the wrong number, the busy signal, and the phrase, "The number you
+  have reached is not in service." NULL is the culmination of five
+  years of work by a team of language designers and computer science
+  mathematicians. The final breakthrough occurred when operating system
+  expert Hugh Nicks suggested that if removing GO TO"s was good then
+  why not scrap IF statements as well, since they usually required
+  typing too many characters anyway. This brilliant concept was extended
+  through a series of complex mathematical theorems that form the basis
+  of the NULL language. Put in layman"s terms by Sally Kahn-Vallee,
+  electrical engineer and PROM reader, "Like we first we tossed out the
+  bath water, then the baby, and like finally the whole tub." The elegance
+  and conciseness of NULL can thus be proven to be a direct consequence
+  of the fact that the language as defined contains no statements at all.
+  While at first glance this may seem a drawback, in fact, it is a major
+  improvement over any other language.  A few of the numerous reasons
+  are:
+
+   1. Highly structured constructs.
+
+   2. Advanced data hiding techniques.
+
+   3. A NULL compiler can  be written first in NULL with out ever needing
+      to be written in a lower level language.
+
+   4. Since there are no statements to compile, in fact, no compiler need
+      ever be written in the first place, saving time and money.
+
+   5. Since there will be no compilers, no new releases will ever be
+      issued hence maintenance is reduced.
+
+   6. NULL programs are highly portable and totally machine independent.
+
+   7. NULL programs compile and execute rapidly. An important point to
+      note is that with the addition of a small  amount of language
+      dependent code,  e.g. PROC/END etc.,  all  NULL programs can be
+      compiled by  any other language compiler.
+
+   8. Since there will never be new releases of NULL, all programs are
+      upwardly and downwardly compatible.
+
+   9. NULL can be parsed top-down, bottom-up, left-right, right-left,
+      inside-out, and over-easy.
+
+  10. NULL programs are both self-documenting for clarity and self-
+      concealing for security.
+
+  11. NULL programmers are easy to find and once found can be fired
+      since they are not needed.
+
+  12. If desired, specialized NULL hardware  could be designed
+      implementing the code in firmware. Of course, such hardware may
+      require years of development. One suggestion from Bell"s VLSI
+      experts Nora  and Andy Gates was to take an existing available
+      chip and remove all  the instructions except NOP.  While this
+      should work in theory,  they acknowledged  that it is probably
+      not the most efficient implementation.
+
+    These are just a few of the many  ways NULL is superior to all
+  current computer languages. You can, no doubt, think of more. For
+  further reading consult any of the numerous books and articles by
+  Donald Knuth, David Parnas,  and of course, the basis of all modern
+  computer language theory, "The Emperor"s New Clothes."
+
+				+-----------+
+				||View Stats|
+				+-----------+
+
+			   Yinga.net Free Counters!
