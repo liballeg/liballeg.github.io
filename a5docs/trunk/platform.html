@@ -128,6 +128,8 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="#al_android_set_apk_file_interface">al_android_set_apk_file_interface</a></li>
 <li><a href="#al_android_set_apk_fs_interface">al_android_set_apk_fs_interface</a></li>
 <li><a href="#al_android_get_os_version">al_android_get_os_version</a></li>
+<li><a href="#al_android_get_jni_env">al_android_get_jni_env</a></li>
+<li><a href="#al_android_get_activity">al_android_get_activity</a></li>
 </ul></li>
 <li><a href="#x11">X11</a><ul>
 <li><a href="#al_get_x_window_id">al_get_x_window_id</a></li>
@@ -216,6 +218,24 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p><a href="https://github.com/liballeg/allegro5/blob/master/src/android/android_system.c#L600">Source Code</a></p>
 <p>Returns a pointer to a static buffer that contains the version string of the Android platform that the calling Allegro program is running on.</p>
 <p>Since: 5.1.2</p>
+<h2 id="al_android_get_jni_env">al_android_get_jni_env</h2>
+<pre class="sourceCode c"><code class="sourceCode c">JNIEnv *al_android_get_jni_env(<span class="dt">void</span>)</code></pre>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/android/android_system.c#L653">Source Code</a></p>
+<p>Returns the Android JNI environment used by Allegro to call into Java. As a convenience this function provides it to the user so there is no need to obtain it yourself.</p>
+<p>For example if you have a Java method &quot;void send(String message)&quot; in your activity class, you could call it like this from C code:</p>
+<pre class="sourceCode c"><code class="sourceCode c">JNIEnv * env = al_android_get_jni_env();
+jclass class_id = (* env)-&gt;GetObjectClass(env, al_android_get_activity());
+jmethodID method_id = (* env)-&gt;GetMethodID(env, class_id, <span class="st">&quot;send&quot;</span>,
+    <span class="st">&quot;(Ljava/lang/String;)V&quot;</span>);
+jstring jdata = (* env)-&gt;NewStringUTF(env, <span class="st">&quot;Hello Java!&quot;</span>);
+(* env)-&gt;CallVoidMethod(env, al_android_get_activity(), method_id, jdata);
+(* env)-&gt;DeleteLocalRef(env, jdata);</code></pre>
+<p>Since: 5.2.2</p>
+<h2 id="al_android_get_activity">al_android_get_activity</h2>
+<pre class="sourceCode c"><code class="sourceCode c">jobject al_android_get_activity(<span class="dt">void</span>)</code></pre>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/android/android_system.c#L660">Source Code</a></p>
+<p>Returns the Java Android activity used by Allegro. This is the same object created by Android from the class you specify in your manifest and either an instance of AllegroActivity or a derived class.</p>
+<p>Since: 5.2.2</p>
 <h1 id="x11">X11</h1>
 <p>These functions are declared in the following header file:</p>
 <pre class="sourceCode c"><code class="sourceCode c"> <span class="ot">#include &lt;allegro5/allegro_x.h&gt;</span></code></pre>
@@ -226,7 +246,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.12</p>
 <p class="timestamp">
 Allegro version 5.2.2 (GIT)
- - Last updated: 2016-09-26 02:09:45 UTC
+ - Last updated: 2016-09-28 00:08:02 UTC
 </p>
 </div>
 </body>
