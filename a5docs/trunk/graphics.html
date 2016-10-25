@@ -921,6 +921,7 @@ al_draw_tinted_scaled_rotated_bitmap(sub_bitmap, tint, cx, cy,
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_target_bitmap(ALLEGRO_BITMAP *bitmap)</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L394">Source Code</a></p>
 <p>This function selects the bitmap to which all subsequent drawing operations in the calling thread will draw to. To return to drawing to a display, set the backbuffer of the display as the target bitmap, using <a href="display.html#al_get_backbuffer">al_get_backbuffer</a>. As a convenience, you may also use <a href="graphics.html#al_set_target_backbuffer">al_set_target_backbuffer</a>.</p>
+<p>Each allegro bitmap maintains two transformation matrices associated with it for drawing onto the bitmap. There is a view matrix and a projection matrix. When you call al_set_target_bitmap, these will be made current for the bitmap, affecting global OpenGL and DirectX states depending on the driver in use.</p>
 <p>Each video bitmap is tied to a display. When a video bitmap is set to as the target bitmap, the display that the bitmap belongs to is automatically made &quot;current&quot; for the calling thread (if it is not current already). Then drawing other bitmaps which are tied to the same display can be hardware accelerated.</p>
 <p>A single display cannot be current for multiple threads simultaneously. If you need to release a display, so it is not current for the calling thread, call <code>al_set_target_bitmap(NULL);</code></p>
 <p>Setting a memory bitmap as the target bitmap will not change which display is current for the calling thread.</p>
@@ -1355,7 +1356,7 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <p>See also: <a href="graphics.html#al_backup_dirty_bitmap">al_backup_dirty_bitmap</a></p>
 <p class="timestamp">
 Allegro version 5.2.2 (GIT)
- - Last updated: 2016-09-28 00:07:55 UTC
+ - Last updated: 2016-10-25 05:07:07 UTC
 </p>
 </div>
 </body>
