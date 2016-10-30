@@ -170,12 +170,12 @@ al_identity_transform(&amp;T);
 al_compose_transform(&amp;T, &amp;T1);
 al_compose_transform(&amp;T, &amp;T2);
 
-al_use_transform(T);</code></pre>
+al_use_transform(&amp;T);</code></pre>
 <p>it does exactly the same as:</p>
 <pre class="sourceCode c"><code class="sourceCode c">al_identity_transform(&amp;T);
 al_scale_transform(&amp;T, <span class="dv">2</span>, <span class="dv">2</span>);
 al_translate_transform(&amp;T, <span class="dv">100</span>, <span class="dv">0</span>);
-al_use_transform(T);</code></pre>
+al_use_transform(&amp;T);</code></pre>
 <h1 id="allegro_transform">ALLEGRO_TRANSFORM</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_TRANSFORM ALLEGRO_TRANSFORM;</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/include/allegro5/transformations.h#L12">Source Code</a></p>
@@ -449,7 +449,7 @@ al_use_transform(&amp;t);</code></pre>
 <p>See also: <a href="transformations.html#al_horizontal_shear_transform">al_horizontal_shear_transform</a></p>
 <p class="timestamp">
 Allegro version 5.2.2 (GIT)
- - Last updated: 2016-09-28 00:08:01 UTC
+ - Last updated: 2016-10-30 19:07:07 UTC
 </p>
 </div>
 </body>
