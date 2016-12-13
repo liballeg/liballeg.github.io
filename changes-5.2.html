@@ -81,6 +81,63 @@ A game programming library
 <h1 class="title">Allegro changelog for 5.2.x series</h1>
 </div>
 <p>These lists serve as summaries; the full histories are in the git repository.</p>
+<h1 id="changes-from-5.2.1.1-to-5.2.2-december-2016">Changes from 5.2.1.1 to 5.2.2 (December 2016)</h1>
+<p>The main developers this time were: Trent Gamblin, SiegeLord, Elias Pschernig.</p>
+<p>Core:</p>
+<ul>
+<li><p>Don't accumulate time in the timer while it is stopped.</p></li>
+<li><p>Use dynamic OpenGL ES checks, so binaries produced on newer platforms don't crash on older ones.</p></li>
+<li><p>Destabilize the OpenGL extensions API (BREAKING CHANGE!).</p></li>
+</ul>
+<p>Raspberry Pi port:</p>
+<ul>
+<li><p>Add various optimizations.</p></li>
+<li><p>Fix <code>al_set_mouse_xy</code> under X.</p></li>
+</ul>
+<p>Android port:</p>
+<ul>
+<li><p>Fix buffer overrun and memory leak in the clipboard support.</p></li>
+<li><p>Add WANT_GLES3 to disable some of the newer features on platforms where they aren't supported.</p></li>
+<li><p>Fix build in Android versions below 3.1.</p></li>
+<li><p>Fix a crash when activity is destroyed/paused.</p></li>
+<li><p>Allow building for android mips, arm64 and mips64.</p></li>
+<li><p>Add <code>al_android_get_jni_env</code> and <code>al_android_get_activity</code> utility functions.</p></li>
+<li><p>Update manifest files for newer Android versions.</p></li>
+</ul>
+<p>Windows port:</p>
+<ul>
+<li>Handle keyboard input properly when Ctrl is pressed (Tobias Scheuer).</li>
+</ul>
+<p>Hurd port:</p>
+<ul>
+<li>Define a fallback PATH_MAX (Andreas Rönnquist).</li>
+</ul>
+<p>OSX port:</p>
+<ul>
+<li><p>Clear window to black when going in/out of fullscreen.</p></li>
+<li><p>Fix window centering when going out of FULLSCREEN_WINDOW mode.</p></li>
+<li><p>Fix OSX 10.12 build.</p></li>
+<li><p>Allow 32 bit builds on OSX (MarcusCalhoun-Lopez).</p></li>
+</ul>
+<p>Build system:</p>
+<ul>
+<li><p>Fix issues with building on GCC6 on Windows.</p></li>
+<li><p>Fix source directory littering while configuring the Android build.</p></li>
+</ul>
+<p>Python binding:</p>
+<ul>
+<li>Add support Python 3 (Gabriel Queiroz).</li>
+</ul>
+<p>Documentation:</p>
+<ul>
+<li><p>Document the behavior of <code>al_set_target_bitmap</code> with respect to transformations (Edgar Reynaldo).</p></li>
+<li><p>Fix typo in <code>al_use_transform</code> docs (Ryan Roden-Corrent).</p></li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li><p>Add kerning to the <code>al_get_glyph</code> example in ex_ttf.</p></li>
+<li><p>Various fixes in ex_camera (Erich Erstu).</p></li>
+</ul>
 <h1 id="changes-from-5.2.1-to-5.2.1.1-august-2016">Changes from 5.2.1 to 5.2.1.1 (August 2016)</h1>
 <p>The main developers this time were: Trent Gamblin, SiegeLord.</p>
 <p>Core:</p>
