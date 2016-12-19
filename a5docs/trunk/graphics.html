@@ -499,7 +499,7 @@ al_draw_tinted_bitmap(bmp, c, <span class="dv">0</span>, <span class="dv">0</spa
 <h2 id="al_clone_bitmap">al_clone_bitmap</h2>
 <pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_BITMAP *al_clone_bitmap(ALLEGRO_BITMAP *bitmap)</code></pre>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/src/bitmap.c#L661">Source Code</a></p>
-<p>Create a new bitmap with <a href="graphics.html#al_create_bitmap">al_create_bitmap</a>, and copy the pixel data from the old bitmap across. If the new bitmap is a memory bitmap, its projection bitmap is reset to be orthographic.</p>
+<p>Create a new bitmap with <a href="graphics.html#al_create_bitmap">al_create_bitmap</a>, and copy the pixel data from the old bitmap across. The newly created bitmap will be created with the current new bitmap flags, and not the ones that were used to create the original bitmap. If the new bitmap is a memory bitmap, its projection bitmap is reset to be orthographic.</p>
 <p>See also: <a href="graphics.html#al_create_bitmap">al_create_bitmap</a>, <a href="graphics.html#al_set_new_bitmap_format">al_set_new_bitmap_format</a>, <a href="graphics.html#al_set_new_bitmap_flags">al_set_new_bitmap_flags</a>, <a href="graphics.html#al_convert_bitmap">al_convert_bitmap</a></p>
 <h2 id="al_convert_bitmap">al_convert_bitmap</h2>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_convert_bitmap(ALLEGRO_BITMAP *bitmap)</code></pre>
@@ -1355,8 +1355,8 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 </blockquote>
 <p>See also: <a href="graphics.html#al_backup_dirty_bitmap">al_backup_dirty_bitmap</a></p>
 <p class="timestamp">
-Allegro version 5.2.2 (GIT)
- - Last updated: 2016-12-10 08:08:09 UTC
+Allegro version 5.2.3 (GIT)
+ - Last updated: 2016-12-19 01:07:06 UTC
 </p>
 </div>
 </body>
