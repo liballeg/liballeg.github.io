@@ -133,6 +133,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="#al_set_path_filename">al_set_path_filename</a></li>
 <li><a href="#al_set_path_extension">al_set_path_extension</a></li>
 <li><a href="#al_path_cstr">al_path_cstr</a></li>
+<li><a href="#al_path_ustr">al_path_ustr</a></li>
 <li><a href="#al_make_path_canonical">al_make_path_canonical</a></li>
 </ul>
 </div>
@@ -151,7 +152,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="path.html#al_create_path">al_create_path</a>, <a href="path.html#al_destroy_path">al_destroy_path</a></p>
 <h1 id="al_destroy_path">al_destroy_path</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_destroy_path(ALLEGRO_PATH *path)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L422">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L429">Source Code</a></p>
 <p>Free a path structure. Does nothing if passed NULL.</p>
 <p>See also: <a href="path.html#al_create_path">al_create_path</a>, <a href="path.html#al_create_path_for_directory">al_create_path_for_directory</a></p>
 <h1 id="al_clone_path">al_clone_path</h1>
@@ -175,7 +176,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="path.html#al_join_paths">al_join_paths</a></p>
 <h1 id="al_get_path_drive">al_get_path_drive</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">const</span> <span class="dt">char</span> *al_get_path_drive(<span class="dt">const</span> ALLEGRO_PATH *path)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L474">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L481">Source Code</a></p>
 <p>Return the drive letter on a path, or the empty string if there is none.</p>
 <p>The &quot;drive letter&quot; is only used on Windows, and is usually a string like &quot;c:&quot;, but may be something like &quot;\\Computer Name&quot; in the case of UNC (Uniform Naming Convention) syntax.</p>
 <h1 id="al_get_path_num_components">al_get_path_num_components</h1>
@@ -195,25 +196,25 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Returns the last directory component, or NULL if there are no directory components.</p>
 <h1 id="al_get_path_filename">al_get_path_filename</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">const</span> <span class="dt">char</span> *al_get_path_filename(<span class="dt">const</span> ALLEGRO_PATH *path)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L497">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L504">Source Code</a></p>
 <p>Return the filename part of the path, or the empty string if there is none.</p>
 <p>The returned pointer is valid only until the filename part of the path is modified in any way, or until the path is destroyed.</p>
 <p>See also: <a href="path.html#al_get_path_basename">al_get_path_basename</a>, <a href="path.html#al_get_path_extension">al_get_path_extension</a>, <a href="path.html#al_get_path_component">al_get_path_component</a></p>
 <h1 id="al_get_path_basename">al_get_path_basename</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">const</span> <span class="dt">char</span> *al_get_path_basename(<span class="dt">const</span> ALLEGRO_PATH *path)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L542">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L549">Source Code</a></p>
 <p>Return the basename, i.e. filename with the extension removed. If the filename doesn't have an extension, the whole filename is the basename. If there is no filename part then the empty string is returned.</p>
 <p>The returned pointer is valid only until the filename part of the path is modified in any way, or until the path is destroyed.</p>
 <p>See also: <a href="path.html#al_get_path_filename">al_get_path_filename</a>, <a href="path.html#al_get_path_extension">al_get_path_extension</a></p>
 <h1 id="al_get_path_extension">al_get_path_extension</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">const</span> <span class="dt">char</span> *al_get_path_extension(<span class="dt">const</span> ALLEGRO_PATH *path)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L507">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L514">Source Code</a></p>
 <p>Return a pointer to the start of the extension of the filename, i.e. everything from the final dot ('.') character onwards. If no dot exists, returns an empty string.</p>
 <p>The returned pointer is valid only until the filename part of the path is modified in any way, or until the path is destroyed.</p>
 <p>See also: <a href="path.html#al_get_path_filename">al_get_path_filename</a>, <a href="path.html#al_get_path_basename">al_get_path_basename</a></p>
 <h1 id="al_set_path_drive">al_set_path_drive</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_path_drive(ALLEGRO_PATH *path, <span class="dt">const</span> <span class="dt">char</span> *drive)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L461">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L468">Source Code</a></p>
 <p>Set the drive string on a path. The drive may be NULL, which is equivalent to setting the drive string to the empty string.</p>
 <p>See also: <a href="path.html#al_get_path_drive">al_get_path_drive</a></p>
 <h1 id="al_append_path_component">al_append_path_component</h1>
@@ -244,12 +245,12 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="path.html#al_remove_path_component">al_remove_path_component</a></p>
 <h1 id="al_set_path_filename">al_set_path_filename</h1>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_path_filename(ALLEGRO_PATH *path, <span class="dt">const</span> <span class="dt">char</span> *filename)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L484">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L491">Source Code</a></p>
 <p>Set the optional filename part of the path. The filename may be NULL, which is equivalent to setting the filename to the empty string.</p>
 <p>See also: <a href="path.html#al_set_path_extension">al_set_path_extension</a>, <a href="path.html#al_get_path_filename">al_get_path_filename</a></p>
 <h1 id="al_set_path_extension">al_set_path_extension</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_set_path_extension(ALLEGRO_PATH *path, <span class="dt">char</span> <span class="dt">const</span> *extension)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L522">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L529">Source Code</a></p>
 <p>Replaces the extension of the path with the given one, i.e. replaces everything from the final dot ('.') character onwards, including the dot. If the filename of the path has no extension, the given one is appended. Usually the new extension you supply should include a leading dot.</p>
 <p>Returns false if the path contains no filename part, i.e. the filename part is the empty string.</p>
 <p>See also: <a href="path.html#al_set_path_filename">al_set_path_filename</a>, <a href="path.html#al_get_path_extension">al_get_path_extension</a></p>
@@ -258,15 +259,23 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L413">Source Code</a></p>
 <p>Convert a path to its string representation, i.e. optional drive, followed by directory components separated by 'delim', followed by an optional filename.</p>
 <p>To use the current native path separator, use ALLEGRO_NATIVE_PATH_SEP for 'delim'.</p>
-<p>The returned pointer is valid only until the path is modified in any way, or until the path is destroyed.</p>
+<p>The returned pointer is valid only until the path is modified in any way, or until the path is destroyed. This returns a null-terminated string. If you need an ALLEGRO_USTR instead, use <a href="path.html#al_path_ustr">al_path_ustr</a>.</p>
+<p>See also: <a href="path.html#al_path_ustr">al_path_ustr</a></p>
+<h1 id="al_path_ustr">al_path_ustr</h1>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">const</span> ALLEGRO_USTR *al_path_ustr(<span class="dt">const</span> ALLEGRO_PATH *path, <span class="dt">char</span> delim)</code></pre>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L420">Source Code</a></p>
+<p>Convert a path to its string representation, i.e. optional drive, followed by directory components separated by 'delim', followed by an optional filename.</p>
+<p>To use the current native path separator, use ALLEGRO_NATIVE_PATH_SEP for 'delim'.</p>
+<p>The returned pointer is valid only until the path is modified in any way, or until the path is destroyed. This returns an ALLEGRO_USTR. If you need a null-terminated string instead, use <a href="path.html#al_path_cstr">al_path_cstr</a>.</p>
+<p>See also: <a href="path.html#al_path_cstr">al_path_cstr</a></p>
 <h1 id="al_make_path_canonical">al_make_path_canonical</h1>
 <pre class="sourceCode c"><code class="sourceCode c">bool al_make_path_canonical(ALLEGRO_PATH *path)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L559">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/path.c#L566">Source Code</a></p>
 <p>Removes any leading '..' directory components in absolute paths. Removes all '.' directory components.</p>
 <p>Note that this does <em>not</em> collapse &quot;x/../y&quot; sections into &quot;y&quot;. This is by design. If &quot;/foo&quot; on your system is a symlink to &quot;/bar/baz&quot;, then &quot;/foo/../quux&quot; is actually &quot;/bar/quux&quot;, not &quot;/quux&quot; as a naive removal of &quot;..&quot; components would give you.</p>
 <p class="timestamp">
 Allegro version 5.2.3 (GIT)
- - Last updated: 2016-12-28 06:09:03 UTC
+ - Last updated: 2017-01-13 03:09:04 UTC
 </p>
 </div>
 </body>
