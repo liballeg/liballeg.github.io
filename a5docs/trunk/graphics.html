@@ -540,12 +540,14 @@ al_draw_tinted_bitmap(bmp, c, <span class="dv">0</span>, <span class="dv">0</spa
 <dl>
 <dt>ALLEGRO_MEMORY_BITMAP</dt>
 <dd><p>Create a bitmap residing in system memory. Operations on, and with, memory bitmaps will not be hardware accelerated. However, direct pixel access can be relatively quick compared to video bitmaps, which depend on the display driver in use.</p>
-<p><em>Note</em>: Allegro's software rendering routines are currently very unoptimised.</p>
+<p><em>Note</em>: Allegro's software rendering routines are currently somewhat unoptimised.</p>
+<p><em>Note:</em> Combining ALLEGRO_VIDEO_BITMAP and ALLEGRO_MEMORY_BITMAP flags is invalid.</p>
 </dd>
 <dt>ALLEGRO_VIDEO_BITMAP</dt>
 <dd><p>Creates a bitmap that resides in the video card memory. These types of bitmaps receive the greatest benefit from hardware acceleration.</p>
 <p><em>Note</em>: Creating a video bitmap will fail if there is no current display or the current display driver cannot create the bitmap. The latter will happen if for example the format or dimensions are not supported.</p>
 <p><em>Note:</em> Bitmaps created with this flag will be converted to memory bitmaps when the last display is destroyed. In most cases it is therefore easier to use the ALLEGRO_CONVERT_BITMAP flag instead.</p>
+<p><em>Note:</em> Combining ALLEGRO_VIDEO_BITMAP and ALLEGRO_MEMORY_BITMAP flags is invalid.</p>
 </dd>
 <dt>ALLEGRO_CONVERT_BITMAP</dt>
 <dd><p>This is the default. It will try to create a video bitmap and if that fails create a memory bitmap. Bitmaps created with this flag when there is no active display will be converted to video bitmaps next time a display is created. They also will remain video bitmaps if the last display is destroyed and then another is created again. Since 5.1.0.</p>
@@ -1356,7 +1358,7 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <p>See also: <a href="graphics.html#al_backup_dirty_bitmap">al_backup_dirty_bitmap</a></p>
 <p class="timestamp">
 Allegro version 5.2.3 (GIT)
- - Last updated: 2017-01-13 03:09:01 UTC
+ - Last updated: 2017-01-14 18:07:05 UTC
 </p>
 </div>
 </body>
