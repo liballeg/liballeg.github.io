@@ -415,18 +415,24 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>The touch input device registered a new touch.</p>
 <dl>
 <dt>touch.display (ALLEGRO_DISPLAY)</dt>
-<dd>The display which was touched. touch.id (int)
+<dd>The display which was touched.
 </dd>
-<dd>An identifier for this touch. If supported by the device it will stay the same for events from the same finger until the touch ends. touch.x (float)
+<dt>touch.id (int)</dt>
+<dd>An identifier for this touch. If supported by the device it will stay the same for events from the same finger until the touch ends.
 </dd>
-<dd>The x coordinate of the touch in pixels. touch.y (float)
+<dt>touch.x (float)</dt>
+<dd>The x coordinate of the touch in pixels.
 </dd>
-<dd>The y coordinate of the touch in pixels. touch.dx (float)
+<dt>touch.y (float)</dt>
+<dd>The y coordinate of the touch in pixels.
 </dd>
-<dd>Movement speed in pixels in x direction. touch.dy (float)
+<dt>touch.dx (float)</dt>
+<dd>Movement speed in pixels in x direction.
 </dd>
-<dd>Movement speed in pixels in y direction. touch.primary (bool)
+<dt>touch.dy (float)</dt>
+<dd>Movement speed in pixels in y direction.
 </dd>
+<dt>touch.primary (bool)</dt>
 <dd>Whether this is the only/first touch or an additional touch.
 </dd>
 </dl>
@@ -810,7 +816,7 @@ THING *create_thing(<span class="dt">void</span>)
 <p>See also: <a href="events.html#al_get_event_source_data">al_get_event_source_data</a></p>
 <p class="timestamp">
 Allegro version 5.2.3 (GIT)
- - Last updated: 2017-01-15 00:07:14 UTC
+ - Last updated: 2017-01-21 05:30:10 UTC
 </p>
 </div>
 </body>
