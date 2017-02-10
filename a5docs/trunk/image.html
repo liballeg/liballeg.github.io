@@ -7,23 +7,41 @@
   <title>Image I/O addon</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
+div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
   </style>
   <link rel="stylesheet" href="pandoc.css" type="text/css" />
   <script type="text/javascript" src="autosuggest.js"></script>
@@ -117,25 +135,25 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 </div>
 <p>These functions are declared in the following header file. Link with allegro_image.</p>
-<pre class="sourceCode c"><code class="sourceCode c"> <span class="ot">#include &lt;allegro5/allegro_image.h&gt;</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"> <span class="pp">#include </span><span class="im">&lt;allegro5/allegro_image.h&gt;</span></code></pre></div>
 <h1 id="al_init_image_addon">al_init_image_addon</h1>
-<pre class="sourceCode c"><code class="sourceCode c">bool al_init_image_addon(<span class="dt">void</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_init_image_addon(<span class="dt">void</span>)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/image/iio.c#L14">Source Code</a></p>
 <p>Initializes the image addon. This registers bitmap format handlers for <a href="graphics.html#al_load_bitmap">al_load_bitmap</a>, <a href="graphics.html#al_load_bitmap_f">al_load_bitmap_f</a>, <a href="graphics.html#al_save_bitmap">al_save_bitmap</a>, <a href="graphics.html#al_save_bitmap_f">al_save_bitmap_f</a>.</p>
 <p>The following types are built into the Allegro image addon and guaranteed to be available: BMP, DDS, PCX, TGA. Every platform also supports JPEG and PNG via external dependencies.</p>
 <p>Other formats may be available depending on the operating system and installed libraries, but are not guaranteed and should not be assumed to be universally available.</p>
 <p>The DDS format is only supported to load from, and only if the DDS file contains textures compressed in the DXT1, DXT3 and DXT5 formats. Note that when loading a DDS file, the created bitmap will always be a video bitmap and will have the pixel format matching the format in the file.</p>
 <h1 id="al_shutdown_image_addon">al_shutdown_image_addon</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_shutdown_image_addon(<span class="dt">void</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_shutdown_image_addon(<span class="dt">void</span>)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/image/iio.c#L141">Source Code</a></p>
 <p>Shut down the image addon. This is done automatically at program exit, but can be called any time the user wishes as well.</p>
 <h1 id="al_get_allegro_image_version">al_get_allegro_image_version</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">uint32_t</span> al_get_allegro_image_version(<span class="dt">void</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">uint32_t</span> al_get_allegro_image_version(<span class="dt">void</span>)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/image/iio.c#L149">Source Code</a></p>
 <p>Returns the (compiled) version of the addon, in the same format as <a href="system.html#al_get_allegro_version">al_get_allegro_version</a>.</p>
 <p class="timestamp">
 Allegro version 5.2.3 (GIT)
- - Last updated: 2017-02-10 01:09:43 UTC
+ - Last updated: 2017-02-10 04:07:32 UTC
 </p>
 </div>
 </body>

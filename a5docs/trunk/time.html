@@ -7,23 +7,41 @@
   <title>Time routines</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
+div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
   </style>
   <link rel="stylesheet" href="pandoc.css" type="text/css" />
   <script type="text/javascript" src="autosuggest.js"></script>
@@ -118,31 +136,31 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 </div>
 <p>These functions are declared in the main Allegro header file:</p>
-<pre class="sourceCode c"><code class="sourceCode c"> <span class="ot">#include &lt;allegro5/allegro.h&gt;</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"> <span class="pp">#include </span><span class="im">&lt;allegro5/allegro.h&gt;</span></code></pre></div>
 <h1 id="allegro_timeout">ALLEGRO_TIMEOUT</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_TIMEOUT ALLEGRO_TIMEOUT;</code></pre>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_TIMEOUT ALLEGRO_TIMEOUT;</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/include/allegro5/altime.h#L12">Source Code</a></p>
 <p>Represent a timeout value. The size of the structure is known so it can be statically allocated. The contents are private.</p>
 <p>See also: <a href="time.html#al_init_timeout">al_init_timeout</a></p>
 <h1 id="al_get_time">al_get_time</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">double</span> al_get_time(<span class="dt">void</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">double</span> al_get_time(<span class="dt">void</span>)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/src/unix/utime.c#L48">Source Code</a></p>
 <p>Return the number of seconds since the Allegro library was initialised. The return value is undefined if Allegro is uninitialised. The resolution depends on the used driver, but typically can be in the order of microseconds.</p>
 <h1 id="al_init_timeout">al_init_timeout</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_init_timeout(ALLEGRO_TIMEOUT *timeout, <span class="dt">double</span> seconds)</code></pre>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_init_timeout(ALLEGRO_TIMEOUT *timeout, <span class="dt">double</span> seconds)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/src/unix/utime.c#L76">Source Code</a></p>
 <p>Set timeout value of some number of seconds after the function call.</p>
 <p>For compatibility with all platforms, <code>seconds</code> must be 2,147,483.647 seconds or less.</p>
 <p>See also: <a href="time.html#allegro_timeout">ALLEGRO_TIMEOUT</a>, <a href="events.html#al_wait_for_event_until">al_wait_for_event_until</a></p>
 <h1 id="al_rest">al_rest</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_rest(<span class="dt">double</span> seconds)</code></pre>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_rest(<span class="dt">double</span> seconds)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/src/unix/utime.c#L63">Source Code</a></p>
 <p>Waits for the specified number of seconds. This tells the system to pause the current thread for the given amount of time. With some operating systems, the accuracy can be in the order of 10ms. That is, even</p>
-<pre class="sourceCode c"><code class="sourceCode c">al_rest(<span class="fl">0.000001</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">al_rest(<span class="fl">0.000001</span>)</code></pre></div>
 <p>might pause for something like 10ms. Also see the section on Timer routines for easier ways to time your program without using up all CPU.</p>
 <p class="timestamp">
 Allegro version 5.2.3 (GIT)
- - Last updated: 2017-02-10 01:09:38 UTC
+ - Last updated: 2017-02-10 04:07:23 UTC
 </p>
 </div>
 </body>

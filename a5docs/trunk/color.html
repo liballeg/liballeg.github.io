@@ -7,23 +7,41 @@
   <title>Color addon</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
+div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
   </style>
   <link rel="stylesheet" href="pandoc.css" type="text/css" />
   <script type="text/javascript" src="autosuggest.js"></script>
@@ -126,28 +144,47 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="#al_color_rgb_to_hsl">al_color_rgb_to_hsl</a></li>
 <li><a href="#al_color_rgb_to_hsv">al_color_rgb_to_hsv</a></li>
 <li><a href="#al_color_rgb_to_name">al_color_rgb_to_name</a></li>
+<li><a href="#al_color_rgb_to_xyz">al_color_rgb_to_xyz</a></li>
+<li><a href="#al_color_xyz">al_color_xyz</a></li>
+<li><a href="#al_color_xyz_to_rgb">al_color_xyz_to_rgb</a></li>
+<li><a href="#al_color_rgb_to_xyy">al_color_rgb_to_xyy</a></li>
+<li><a href="#al_color_xyy">al_color_xyy</a></li>
+<li><a href="#al_color_xyy_to_rgb">al_color_xyy_to_rgb</a></li>
+<li><a href="#al_color_rgb_to_lab">al_color_rgb_to_lab</a></li>
+<li><a href="#al_color_lab">al_color_lab</a></li>
+<li><a href="#al_color_lab_to_rgb">al_color_lab_to_rgb</a></li>
+<li><a href="#al_color_rgb_to_lch">al_color_rgb_to_lch</a></li>
+<li><a href="#al_color_lch">al_color_lch</a></li>
+<li><a href="#al_color_lch_to_rgb">al_color_lch_to_rgb</a></li>
+<li><a href="#al_color_distance_ciede2000_lab">al_color_distance_ciede2000_lab</a></li>
 <li><a href="#al_color_rgb_to_yuv">al_color_rgb_to_yuv</a></li>
 <li><a href="#al_color_yuv">al_color_yuv</a></li>
 <li><a href="#al_color_yuv_to_rgb">al_color_yuv_to_rgb</a></li>
 <li><a href="#al_get_allegro_color_version">al_get_allegro_color_version</a></li>
+<li><a href="#al_is_color_valid">al_is_color_valid</a></li>
 </ul>
 </div>
 <p>These functions are declared in the following header file. Link with allegro_color.</p>
-<pre class="sourceCode c"><code class="sourceCode c"> <span class="ot">#include &lt;allegro5/allegro_color.h&gt;</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"> <span class="pp">#include </span><span class="im">&lt;allegro5/allegro_color.h&gt;</span></code></pre></div>
+<p>When converting between certain color spaces, RGB colors are implicitly assumed to mean sRGB.</p>
+<p>sRGB is a standard which maps RGB colors to absolute colors. sRGB is very close to RGB values on a monitor which has a gamma value of 2.2. For example when the red component of a color is 0.5, the monitor will use a brightness of pow(0.5, 2.2) or about 22% - and not 50%. The reason is that human eyes can distinguish better between dark colors than between bright colors, and so if a pixel of the monitor is lit up to 22% of its maximum power it already will appear at half brightness to a human eye.</p>
+<p>sRGB improves upon simple gamma correction by taking differences between the three color channels into account as well. In general, most monitors nowadays try to be close to the sRGB specification. And so if in an Allegro game you display something with color</p>
+<p>al_map_rgb_f(0.5, 0.5, 0,5)</p>
+<p>then it will appear at about half brightness (even though the actual brightness output of the monitor will be less than half).</p>
 <h1 id="al_color_cmyk">al_color_cmyk</h1>
-<pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_color_cmyk(<span class="dt">float</span> c, <span class="dt">float</span> m, <span class="dt">float</span> y, <span class="dt">float</span> k)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L472">Source Code</a></p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_color_cmyk(<span class="dt">float</span> c, <span class="dt">float</span> m, <span class="dt">float</span> y, <span class="dt">float</span> k)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L480">Source Code</a></p>
 <p>Return an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a> structure from CMYK values (cyan, magenta, yellow, black).</p>
 <p>See also: <a href="color.html#al_color_cmyk_to_rgb">al_color_cmyk_to_rgb</a>, <a href="color.html#al_color_rgb_to_cmyk">al_color_rgb_to_cmyk</a></p>
 <h1 id="al_color_cmyk_to_rgb">al_color_cmyk_to_rgb</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_cmyk_to_rgb(<span class="dt">float</span> cyan, <span class="dt">float</span> magenta, <span class="dt">float</span> yellow,
-    <span class="dt">float</span> key, <span class="dt">float</span> *red, <span class="dt">float</span> *green, <span class="dt">float</span> *blue)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L438">Source Code</a></p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_cmyk_to_rgb(<span class="dt">float</span> cyan, <span class="dt">float</span> magenta, <span class="dt">float</span> yellow,
+    <span class="dt">float</span> key, <span class="dt">float</span> *red, <span class="dt">float</span> *green, <span class="dt">float</span> *blue)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L446">Source Code</a></p>
 <p>Convert CMYK values to RGB values.</p>
 <p>See also: <a href="color.html#al_color_cmyk">al_color_cmyk</a>, <a href="color.html#al_color_rgb_to_cmyk">al_color_rgb_to_cmyk</a></p>
 <h1 id="al_color_hsl">al_color_hsl</h1>
-<pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_color_hsl(<span class="dt">float</span> h, <span class="dt">float</span> s, <span class="dt">float</span> l)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L428">Source Code</a></p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_color_hsl(<span class="dt">float</span> h, <span class="dt">float</span> s, <span class="dt">float</span> l)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L436">Source Code</a></p>
 <p>Return an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a> structure from HSL (hue, saturation, lightness) values.</p>
 <p>Parameters:</p>
 <ul>
@@ -157,9 +194,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <p>See also: <a href="color.html#al_color_hsl_to_rgb">al_color_hsl_to_rgb</a>, <a href="color.html#al_color_hsv">al_color_hsv</a></p>
 <h1 id="al_color_hsl_to_rgb">al_color_hsl_to_rgb</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_hsl_to_rgb(<span class="dt">float</span> hue, <span class="dt">float</span> saturation, <span class="dt">float</span> lightness,
-   <span class="dt">float</span> *red, <span class="dt">float</span> *green, <span class="dt">float</span> *blue)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L359">Source Code</a></p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_hsl_to_rgb(<span class="dt">float</span> hue, <span class="dt">float</span> saturation, <span class="dt">float</span> lightness,
+   <span class="dt">float</span> *red, <span class="dt">float</span> *green, <span class="dt">float</span> *blue)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L367">Source Code</a></p>
 <p>Convert values in HSL color model to RGB color model.</p>
 <p>Parameters:</p>
 <ul>
@@ -170,8 +207,8 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <p>See also: <a href="color.html#al_color_rgb_to_hsl">al_color_rgb_to_hsl</a>, <a href="color.html#al_color_hsl">al_color_hsl</a>, <a href="color.html#al_color_hsv_to_rgb">al_color_hsv_to_rgb</a></p>
 <h1 id="al_color_hsv">al_color_hsv</h1>
-<pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_color_hsv(<span class="dt">float</span> h, <span class="dt">float</span> s, <span class="dt">float</span> v)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L331">Source Code</a></p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_color_hsv(<span class="dt">float</span> h, <span class="dt">float</span> s, <span class="dt">float</span> v)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L339">Source Code</a></p>
 <p>Return an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a> structure from HSV (hue, saturation, value) values.</p>
 <p>Parameters:</p>
 <ul>
@@ -181,9 +218,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <p>See also: <a href="color.html#al_color_hsv_to_rgb">al_color_hsv_to_rgb</a>, <a href="color.html#al_color_hsl">al_color_hsl</a></p>
 <h1 id="al_color_hsv_to_rgb">al_color_hsv_to_rgb</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_hsv_to_rgb(<span class="dt">float</span> hue, <span class="dt">float</span> saturation, <span class="dt">float</span> value,
-   <span class="dt">float</span> *red, <span class="dt">float</span> *green, <span class="dt">float</span> *blue)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L258">Source Code</a></p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_hsv_to_rgb(<span class="dt">float</span> hue, <span class="dt">float</span> saturation, <span class="dt">float</span> value,
+   <span class="dt">float</span> *red, <span class="dt">float</span> *green, <span class="dt">float</span> *blue)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L266">Source Code</a></p>
 <p>Convert values in HSV color model to RGB color model.</p>
 <p>Parameters:</p>
 <ul>
@@ -194,8 +231,8 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <p>See also: <a href="color.html#al_color_rgb_to_hsv">al_color_rgb_to_hsv</a>, <a href="color.html#al_color_hsv">al_color_hsv</a>, <a href="color.html#al_color_hsl_to_rgb">al_color_hsl_to_rgb</a></p>
 <h1 id="al_color_html">al_color_html</h1>
-<pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_color_html(<span class="dt">char</span> <span class="dt">const</span> *string)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L560">Source Code</a></p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_color_html(<span class="dt">char</span> <span class="dt">const</span> *string)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L568">Source Code</a></p>
 <p>Interprets an HTML-style hex number (e.g. #00faff) as a color. The accepted format is the same as <a href="color.html#al_color_html_to_rgb">al_color_html_to_rgb</a>.</p>
 <p>Returns the interpreted color, or <code>al_map_rgba(0, 0, 0, 0)</code> if the string could not be parsed.</p>
 <blockquote>
@@ -203,9 +240,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </blockquote>
 <p>See also: <a href="color.html#al_color_html_to_rgb">al_color_html_to_rgb</a>, <a href="color.html#al_color_rgb_to_html">al_color_rgb_to_html</a></p>
 <h1 id="al_color_html_to_rgb">al_color_html_to_rgb</h1>
-<pre class="sourceCode c"><code class="sourceCode c">bool al_color_html_to_rgb(<span class="dt">char</span> <span class="dt">const</span> *string,
-   <span class="dt">float</span> *red, <span class="dt">float</span> *green, <span class="dt">float</span> *blue)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L530">Source Code</a></p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_color_html_to_rgb(<span class="dt">char</span> <span class="dt">const</span> *string,
+   <span class="dt">float</span> *red, <span class="dt">float</span> *green, <span class="dt">float</span> *blue)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L538">Source Code</a></p>
 <p>Interprets an HTML-style hex number (e.g. #00faff) as a color. The only accepted formats are &quot;#RRGGBB&quot; and &quot;RRGGBB&quot; where R, G, B are hexadecimal digits [0-9A-Fa-f].</p>
 <p>Returns true on success, false on failure. On failure all components are set to zero.</p>
 <blockquote>
@@ -213,9 +250,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </blockquote>
 <p>See also: <a href="color.html#al_color_html">al_color_html</a>, <a href="color.html#al_color_rgb_to_html">al_color_rgb_to_html</a></p>
 <h1 id="al_color_rgb_to_html">al_color_rgb_to_html</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_rgb_to_html(<span class="dt">float</span> red, <span class="dt">float</span> green, <span class="dt">float</span> blue,
-    <span class="dt">char</span> *string)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L520">Source Code</a></p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_rgb_to_html(<span class="dt">float</span> red, <span class="dt">float</span> green, <span class="dt">float</span> blue,
+    <span class="dt">char</span> *string)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L528">Source Code</a></p>
 <p>Create an HTML-style string representation of an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a>, e.g. #00faff.</p>
 <p>Parameters:</p>
 <ul>
@@ -223,18 +260,18 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>string - A pointer to a buffer of at least 8 bytes, into which the result will be written (including the NUL terminator).</li>
 </ul>
 <p>Example:</p>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">char</span> html[<span class="dv">8</span>];
-al_color_rgb_to_html(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, html);</code></pre>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">char</span> html[<span class="dv">8</span>];
+al_color_rgb_to_html(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, html);</code></pre></div>
 <p>Now html will contain &quot;#ff0000&quot;.</p>
 <p>See also: <a href="color.html#al_color_html">al_color_html</a>, <a href="color.html#al_color_html_to_rgb">al_color_html_to_rgb</a></p>
 <h1 id="al_color_name">al_color_name</h1>
-<pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_color_name(<span class="dt">char</span> <span class="dt">const</span> *name)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L246">Source Code</a></p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_color_name(<span class="dt">char</span> <span class="dt">const</span> *name)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L254">Source Code</a></p>
 <p>Return an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a> with the given name. If the color is not found then black is returned.</p>
 <p>See <a href="color.html#al_color_name_to_rgb">al_color_name_to_rgb</a> for the list of names.</p>
 <h1 id="al_color_name_to_rgb">al_color_name_to_rgb</h1>
-<pre class="sourceCode c"><code class="sourceCode c">bool al_color_name_to_rgb(<span class="dt">char</span> <span class="dt">const</span> *name, <span class="dt">float</span> *r, <span class="dt">float</span> *g, <span class="dt">float</span> *b)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L202">Source Code</a></p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_color_name_to_rgb(<span class="dt">char</span> <span class="dt">const</span> *name, <span class="dt">float</span> *r, <span class="dt">float</span> *g, <span class="dt">float</span> *b)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L210">Source Code</a></p>
 <p>Parameters:</p>
 <ul>
 <li>name - The (lowercase) name of the color.</li>
@@ -248,9 +285,9 @@ al_color_rgb_to_html(<span class="dv">1</span>, <span class="dv">0</span>, <span
 <p>Returns: true if a name from the list above was passed, else false.</p>
 <p>See also: <a href="color.html#al_color_name">al_color_name</a></p>
 <h1 id="al_color_rgb_to_cmyk">al_color_rgb_to_cmyk</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_rgb_to_cmyk(<span class="dt">float</span> red, <span class="dt">float</span> green, <span class="dt">float</span> blue,
-   <span class="dt">float</span> *cyan, <span class="dt">float</span> *magenta, <span class="dt">float</span> *yellow, <span class="dt">float</span> *key)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L450">Source Code</a></p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_rgb_to_cmyk(<span class="dt">float</span> red, <span class="dt">float</span> green, <span class="dt">float</span> blue,
+   <span class="dt">float</span> *cyan, <span class="dt">float</span> *magenta, <span class="dt">float</span> *yellow, <span class="dt">float</span> *key)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L458">Source Code</a></p>
 <p>Each RGB color can be represented in CMYK with a K component of 0 with the following formula:</p>
 <pre><code>C = 1 - R
 M = 1 - G
@@ -259,46 +296,146 @@ K = 0</code></pre>
 <p>This function will instead find the representation with the maximal value for K and minimal color components.</p>
 <p>See also: <a href="color.html#al_color_cmyk">al_color_cmyk</a>, <a href="color.html#al_color_cmyk_to_rgb">al_color_cmyk_to_rgb</a></p>
 <h1 id="al_color_rgb_to_hsl">al_color_rgb_to_hsl</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_rgb_to_hsl(<span class="dt">float</span> red, <span class="dt">float</span> green, <span class="dt">float</span> blue,
-   <span class="dt">float</span> *hue, <span class="dt">float</span> *saturation, <span class="dt">float</span> *lightness)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L381">Source Code</a></p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_rgb_to_hsl(<span class="dt">float</span> red, <span class="dt">float</span> green, <span class="dt">float</span> blue,
+   <span class="dt">float</span> *hue, <span class="dt">float</span> *saturation, <span class="dt">float</span> *lightness)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L389">Source Code</a></p>
 <p>Given an RGB triplet with components in the range 0..1, return the hue in degrees from 0..360 and saturation and lightness in the range 0..1.</p>
 <p>See also: <a href="color.html#al_color_hsl_to_rgb">al_color_hsl_to_rgb</a>, <a href="color.html#al_color_hsl">al_color_hsl</a></p>
 <h1 id="al_color_rgb_to_hsv">al_color_rgb_to_hsv</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_rgb_to_hsv(<span class="dt">float</span> red, <span class="dt">float</span> green, <span class="dt">float</span> blue,
-   <span class="dt">float</span> *hue, <span class="dt">float</span> *saturation, <span class="dt">float</span> *value)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L286">Source Code</a></p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_rgb_to_hsv(<span class="dt">float</span> red, <span class="dt">float</span> green, <span class="dt">float</span> blue,
+   <span class="dt">float</span> *hue, <span class="dt">float</span> *saturation, <span class="dt">float</span> *value)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L294">Source Code</a></p>
 <p>Given an RGB triplet with components in the range 0..1, return the hue in degrees from 0..360 and saturation and value in the range 0..1.</p>
 <p>See also: <a href="color.html#al_color_hsv_to_rgb">al_color_hsv_to_rgb</a>, <a href="color.html#al_color_hsv">al_color_hsv</a></p>
 <h1 id="al_color_rgb_to_name">al_color_rgb_to_name</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">char</span> <span class="dt">const</span> *al_color_rgb_to_name(<span class="dt">float</span> r, <span class="dt">float</span> g, <span class="dt">float</span> b)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L221">Source Code</a></p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">char</span> <span class="dt">const</span> *al_color_rgb_to_name(<span class="dt">float</span> r, <span class="dt">float</span> g, <span class="dt">float</span> b)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L229">Source Code</a></p>
 <p>Given an RGB triplet with components in the range 0..1, find a color name describing it approximately.</p>
 <p>See also: <a href="color.html#al_color_name_to_rgb">al_color_name_to_rgb</a>, <a href="color.html#al_color_name">al_color_name</a></p>
+<h1 id="al_color_rgb_to_xyz">al_color_rgb_to_xyz</h1>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_rgb_to_xyz(<span class="dt">float</span> red, <span class="dt">float</span> green, <span class="dt">float</span> blue,
+   <span class="dt">float</span> *x, <span class="dt">float</span> *y, <span class="dt">float</span> *z)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L621">Source Code</a></p>
+<p>Convert RGB values to XYZ color space.</p>
+<p>See also: <a href="color.html#al_color_xyz">al_color_xyz</a>, <a href="color.html#al_color_xyz_to_rgb">al_color_xyz_to_rgb</a></p>
+<h1 id="al_color_xyz">al_color_xyz</h1>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_color_xyz(<span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">float</span> z)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L635">Source Code</a></p>
+<p>Return an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a> structure from XYZ values. The CIE 1931 XYZ color space consists of three components in the range 0..1. The Y component corresponds to luminance and the X and Z components define the color.</p>
+<p>RGB components are always assumed to be in sRGB space.</p>
+<blockquote>
+<p><em>Note:</em></p>
+<p>The XYZ color space can represent more colors than are visible in sRGB and therefore conversion may result in RGB values outside of the 0..1 range. You can check for that case with <a href="color.html#al_is_color_valid">al_is_color_valid</a>.</p>
+</blockquote>
+<p>See also: <a href="color.html#al_color_xyz_to_rgb">al_color_xyz_to_rgb</a>, <a href="color.html#al_color_rgb_to_xyz">al_color_rgb_to_xyz</a></p>
+<h1 id="al_color_xyz_to_rgb">al_color_xyz_to_rgb</h1>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_xyz_to_rgb(<span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">float</span> z,
+    <span class="dt">float</span> *red, <span class="dt">float</span> *green, <span class="dt">float</span> *blue)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L607">Source Code</a></p>
+<p>Convert XYZ color values to RGB color space.</p>
+<p>See also: <a href="color.html#al_color_xyz">al_color_xyz</a>, <a href="color.html#al_color_rgb_to_xyz">al_color_rgb_to_xyz</a></p>
+<h1 id="al_color_rgb_to_xyy">al_color_rgb_to_xyy</h1>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_rgb_to_xyy(<span class="dt">float</span> red, <span class="dt">float</span> green, <span class="dt">float</span> blue,
+   <span class="dt">float</span> *x, <span class="dt">float</span> *y, <span class="dt">float</span> *y2)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L739">Source Code</a></p>
+<p>Convert RGB values to xyY color space.</p>
+<p>See also: <a href="color.html#al_color_xyy">al_color_xyy</a>, <a href="color.html#al_color_xyy_to_rgb">al_color_xyy_to_rgb</a></p>
+<h1 id="al_color_xyy">al_color_xyy</h1>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_color_xyy(<span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">float</span> y2)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L751">Source Code</a></p>
+<p>Return an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a> structure from xyY values. The Y component in the xyY color space is the same as the Y in XYZ.</p>
+<p>However the x and y values are computed from XYZ like this:</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">x = X / (X + Y + Z)
+y = Y / (X + Y + Z)</code></pre></div>
+<p>See also: <a href="color.html#al_color_xyy_to_rgb">al_color_xyy_to_rgb</a>, <a href="color.html#al_color_rgb_to_xyy">al_color_rgb_to_xyy</a></p>
+<h1 id="al_color_xyy_to_rgb">al_color_xyy_to_rgb</h1>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_xyy_to_rgb(<span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">float</span> y2,
+    <span class="dt">float</span> *red, <span class="dt">float</span> *green, <span class="dt">float</span> *blue)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L728">Source Code</a></p>
+<p>Convert xyY color values to RGB color space.</p>
+<p>See also: <a href="color.html#al_color_xyy">al_color_xyy</a>, <a href="color.html#al_color_rgb_to_xyy">al_color_rgb_to_xyy</a></p>
+<h1 id="al_color_rgb_to_lab">al_color_rgb_to_lab</h1>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_rgb_to_lab(<span class="dt">float</span> red, <span class="dt">float</span> green, <span class="dt">float</span> blue,
+   <span class="dt">float</span> *l, <span class="dt">float</span> *a, <span class="dt">float</span> *b)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L669">Source Code</a></p>
+<p>Convert RGB values to L*a*b* color space.</p>
+<p>See also: <a href="color.html#al_color_lab">al_color_lab</a>, <a href="color.html#al_color_lab_to_rgb">al_color_lab_to_rgb</a></p>
+<h1 id="al_color_lab">al_color_lab</h1>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_color_lab(<span class="dt">float</span> l, <span class="dt">float</span> a, <span class="dt">float</span> b)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L685">Source Code</a></p>
+<p>Return an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a> structure from CIE L*a*b* values. The L* component corresponds to luminance from 0..1. The a* and b* components are in the range -1..+1.</p>
+<blockquote>
+<p><em>Note:</em></p>
+<p>The L*a*b* color space can represent more colors than are visible in sRGB and therefore conversion may result in RGB values outside of the 0..1 range. You can check for that case with <a href="color.html#al_is_color_valid">al_is_color_valid</a>.</p>
+</blockquote>
+<blockquote>
+<p><em>Note:</em></p>
+</blockquote>
+<blockquote>
+<p>In some literature the range of L* is 0 to 100 and a* and b* are from -100 to +100. In that case divide all components by 100 before passing them to this function.</p>
+</blockquote>
+<p>See also: <a href="color.html#al_color_lab_to_rgb">al_color_lab_to_rgb</a>, <a href="color.html#al_color_rgb_to_lab">al_color_rgb_to_lab</a></p>
+<h1 id="al_color_lab_to_rgb">al_color_lab_to_rgb</h1>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_lab_to_rgb(<span class="dt">float</span> l, <span class="dt">float</span> a, <span class="dt">float</span> b,
+    <span class="dt">float</span> *red, <span class="dt">float</span> *green, <span class="dt">float</span> *blue)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L657">Source Code</a></p>
+<p>Convert CIE L*a*b* color values to RGB color space.</p>
+<p>See also: <a href="color.html#al_color_lab">al_color_lab</a>, <a href="color.html#al_color_rgb_to_lab">al_color_rgb_to_lab</a></p>
+<h1 id="al_color_rgb_to_lch">al_color_rgb_to_lch</h1>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_rgb_to_lch(<span class="dt">float</span> red, <span class="dt">float</span> green, <span class="dt">float</span> blue,
+   <span class="dt">float</span> *l, <span class="dt">float</span> *c, <span class="dt">float</span> *h)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L706">Source Code</a></p>
+<p>Convert RGB values to CIE LCH color space.</p>
+<p>See also: <a href="color.html#al_color_lch">al_color_lch</a>, <a href="color.html#al_color_lch_to_rgb">al_color_lch_to_rgb</a></p>
+<h1 id="al_color_lch">al_color_lch</h1>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_color_lch(<span class="dt">float</span> l, <span class="dt">float</span> c, <span class="dt">float</span> h)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L718">Source Code</a></p>
+<p>Return an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a> structure from CIE LCH values. LCH colors are very similar to HSL, with the same meaning of L and H and C corresponding to S. However LCH is more visually uniform. Furthermore, this function expects the angle for H in radians and not in degree.</p>
+<p>The CIE LCH color space is a cylindrical representation of the L*a*b* color space. The L component is the same and C and H are computed like this:</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">C = sqrt(a * a + b * b)
+H = atan2(b, a)</code></pre></div>
+<p>See also: <a href="color.html#al_color_lch_to_rgb">al_color_lch_to_rgb</a>, <a href="color.html#al_color_rgb_to_lch">al_color_rgb_to_lch</a></p>
+<h1 id="al_color_lch_to_rgb">al_color_lch_to_rgb</h1>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_lch_to_rgb(<span class="dt">float</span> l, <span class="dt">float</span> c, <span class="dt">float</span> h,
+    <span class="dt">float</span> *red, <span class="dt">float</span> *green, <span class="dt">float</span> *blue)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L695">Source Code</a></p>
+<p>Convert CIE LCH color values to RGB color space.</p>
+<p>See also: <a href="color.html#al_color_lch">al_color_lch</a>, <a href="color.html#al_color_rgb_to_lch">al_color_rgb_to_lch</a></p>
+<h1 id="al_color_distance_ciede2000_lab">al_color_distance_ciede2000_lab</h1>
+<p><a href="">Source Code</a></p>
+<p>This function computes the CIEDE2000 color difference between two RGB colors. This is a visually uniform color difference, unlike for example the RGB distance.</p>
+<p>When using the RGB distance (Euklidean distance between two RGB triplets) there can be color pairs with the same distance, where the colors of one pair appear to be almost the same color, while the colors of the other pair look quite different. This is improved by using the L*a*b* color space which was designed with perceptual uniformity in mind. However it still is not completely uniform. The CIEDE2000 formula contains some additional transformations to fix that.</p>
+<p>The returned color distance is roughly in the range 0 (identical color) to 1 (completely different color) - but values greater than one are possible.</p>
+<blockquote>
+<p>Note: This function uses <a href="color.html#al_color_lab">al_color_lab</a> internally which defines the L component to be in the range 0..1 (and not 0..100 as is sometimes seen).</p>
+</blockquote>
 <h1 id="al_color_rgb_to_yuv">al_color_rgb_to_yuv</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_rgb_to_yuv(<span class="dt">float</span> red, <span class="dt">float</span> green, <span class="dt">float</span> blue,
-   <span class="dt">float</span> *y, <span class="dt">float</span> *u, <span class="dt">float</span> *v)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L496">Source Code</a></p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_rgb_to_yuv(<span class="dt">float</span> red, <span class="dt">float</span> green, <span class="dt">float</span> blue,
+   <span class="dt">float</span> *y, <span class="dt">float</span> *u, <span class="dt">float</span> *v)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L504">Source Code</a></p>
 <p>Convert RGB values to YUV color space.</p>
 <p>See also: <a href="color.html#al_color_yuv">al_color_yuv</a>, <a href="color.html#al_color_yuv_to_rgb">al_color_yuv_to_rgb</a></p>
 <h1 id="al_color_yuv">al_color_yuv</h1>
-<pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_color_yuv(<span class="dt">float</span> y, <span class="dt">float</span> u, <span class="dt">float</span> v)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L510">Source Code</a></p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_color_yuv(<span class="dt">float</span> y, <span class="dt">float</span> u, <span class="dt">float</span> v)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L518">Source Code</a></p>
 <p>Return an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a> structure from YUV values.</p>
 <p>See also: <a href="color.html#al_color_yuv_to_rgb">al_color_yuv_to_rgb</a>, <a href="color.html#al_color_rgb_to_yuv">al_color_rgb_to_yuv</a></p>
 <h1 id="al_color_yuv_to_rgb">al_color_yuv_to_rgb</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_yuv_to_rgb(<span class="dt">float</span> y, <span class="dt">float</span> u, <span class="dt">float</span> v,
-    <span class="dt">float</span> *red, <span class="dt">float</span> *green, <span class="dt">float</span> *blue)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L482">Source Code</a></p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_color_yuv_to_rgb(<span class="dt">float</span> y, <span class="dt">float</span> u, <span class="dt">float</span> v,
+    <span class="dt">float</span> *red, <span class="dt">float</span> *green, <span class="dt">float</span> *blue)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L490">Source Code</a></p>
 <p>Convert YUV color values to RGB color space.</p>
 <p>See also: <a href="color.html#al_color_yuv">al_color_yuv</a>, <a href="color.html#al_color_rgb_to_yuv">al_color_rgb_to_yuv</a></p>
 <h1 id="al_get_allegro_color_version">al_get_allegro_color_version</h1>
-<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">uint32_t</span> al_get_allegro_color_version(<span class="dt">void</span>)</code></pre>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L573">Source Code</a></p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">uint32_t</span> al_get_allegro_color_version(<span class="dt">void</span>)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/color/color.c#L581">Source Code</a></p>
 <p>Returns the (compiled) version of the addon, in the same format as <a href="system.html#al_get_allegro_version">al_get_allegro_version</a>.</p>
+<h1 id="al_is_color_valid">al_is_color_valid</h1>
+<p><a href="">Source Code</a></p>
+<p>Checks if all component of the color are between 0 and 1. Some of the color conversions in this addon support color spaces with more colors than can be represented in sRGB and when converted to RGB will result in invalid color components outside the 0..1 range.</p>
 <p class="timestamp">
 Allegro version 5.2.3 (GIT)
- - Last updated: 2017-02-10 01:09:42 UTC
+ - Last updated: 2017-02-10 04:07:31 UTC
 </p>
 </div>
 </body>
