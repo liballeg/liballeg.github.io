@@ -277,11 +277,12 @@ al_color_rgb_to_html(<span class="dv">1</span>, <span class="dv">0</span>, <span
 <li>name - The (lowercase) name of the color.</li>
 <li>r, g, b - If one of the recognized color names below is passed, the corresponding RGB values in the range 0..1 are written.</li>
 </ul>
-<p>The recognized names are:</p>
+<p>The 148 recognized names are:</p>
 <blockquote>
-<p>aliceblue, antiquewhite, aqua, aquamarine, azure, beige, bisque, black, blanchedalmond, blue, blueviolet, brown, burlywood, cadetblue, chartreuse, chocolate, coral, cornflowerblue, cornsilk, crimson, cyan, darkblue, darkcyan, darkgoldenrod, darkgray, darkgreen, darkkhaki, darkmagenta, darkolivegreen, darkorange, darkorchid, darkred, darksalmon, darkseagreen, darkslateblue, darkslategray, darkturquoise, darkviolet, deeppink, deepskyblue, dimgray, dodgerblue, firebrick, floralwhite, forestgreen, fuchsia, gainsboro, ghostwhite, goldenrod, gold, gray, green, greenyellow, honeydew, hotpink, indianred, indigo, ivory, khaki, lavenderblush, lavender, lawngreen, lemonchiffon, lightblue, lightcoral, lightcyan, lightgoldenrodyellow, lightgreen, lightgrey, lightpink, lightsalmon, lightseagreen, lightskyblue, lightslategray, lightsteelblue, lightyellow, lime, limegreen, linen, magenta, maroon, mediumaquamarine, mediumblue, mediumorchid, mediumpurple, mediumseagreen, mediumslateblue, mediumspringgreen, mediumturquoise, mediumvioletred, midnightblue, mintcream, mistyrose, moccasin, avajowhite, navy, oldlace, olive, olivedrab, orange, orangered, orchid, palegoldenrod, palegreen, paleturquoise, palevioletred, papayawhip, peachpuff, peru, pink, plum, powderblue, purple, purwablue, red, rosybrown, royalblue, saddlebrown, salmon, sandybrown, seagreen, seashell, sienna, silver, skyblue, slateblue, slategray, snow, springgreen, steelblue, tan, teal, thistle, tomato, turquoise, violet, wheat, white, whitesmoke, yellow, yellowgreen</p>
+<p>aliceblue, antiquewhite, aqua, aquamarine, azure, beige, bisque, black, blanchedalmond, blue, blueviolet, brown, burlywood, cadetblue, chartreuse, chocolate, coral, cornflowerblue, cornsilk, crimson, cyan, darkblue, darkcyan, darkgoldenrod, darkgray, darkgreen, darkkhaki, darkmagenta, darkolivegreen, darkorange, darkorchid, darkred, darksalmon, darkseagreen, darkslateblue, darkslategray, darkturquoise, darkviolet, deeppink, deepskyblue, dimgray, dodgerblue, firebrick, floralwhite, forestgreen, fuchsia, gainsboro, ghostwhite, goldenrod, gold, gray, green, greenyellow, honeydew, hotpink, indianred, indigo, ivory, khaki, lavenderblush, lavender, lawngreen, lemonchiffon, lightblue, lightcoral, lightcyan, lightgoldenrodyellow, lightgreen, lightgrey, lightpink, lightsalmon, lightseagreen, lightskyblue, lightslategray, lightsteelblue, lightyellow, lime, limegreen, linen, magenta, maroon, mediumaquamarine, mediumblue, mediumorchid, mediumpurple, mediumseagreen, mediumslateblue, mediumspringgreen, mediumturquoise, mediumvioletred, midnightblue, mintcream, mistyrose, moccasin, avajowhite, navy, oldlace, olive, olivedrab, orange, orangered, orchid, palegoldenrod, palegreen, paleturquoise, palevioletred, papayawhip, peachpuff, peru, pink, plum, powderblue, purple, rebeccapurple, red, rosybrown, royalblue, saddlebrown, salmon, sandybrown, seagreen, seashell, sienna, silver, skyblue, slateblue, slategray, snow, springgreen, steelblue, tan, teal, thistle, tomato, turquoise, violet, wheat, white, whitesmoke, yellow, yellowgreen</p>
 </blockquote>
-<p>They are taken from <a href="http://www.w3.org/TR/2010/PR-css3-color-20101028/#svg-color" class="uri">http://www.w3.org/TR/2010/PR-css3-color-20101028/#svg-color</a>.</p>
+<p>They are taken from CSS: <a href="https://www.w3.org/TR/css-color-4/" class="uri">https://www.w3.org/TR/css-color-4/</a></p>
+<p>Note that these 9 colors have two names and so there are only 139 distinct colors: aqua = cyan, darkgray = darkgrey, darkslategray = darkslategrey, dimgray = dimgrey, fuchsia = purple, gray = grey, lightgray = lightgrey, lightslategray = lightslategrey, slategray = slategrey</p>
 <p>Returns: true if a name from the list above was passed, else false.</p>
 <p>See also: <a href="color.html#al_color_name">al_color_name</a></p>
 <h1 id="al_color_rgb_to_cmyk">al_color_rgb_to_cmyk</h1>
@@ -435,7 +436,7 @@ H = atan2(b, a)</code></pre></div>
 <p>Checks if all component of the color are between 0 and 1. Some of the color conversions in this addon support color spaces with more colors than can be represented in sRGB and when converted to RGB will result in invalid color components outside the 0..1 range.</p>
 <p class="timestamp">
 Allegro version 5.2.3 (GIT)
- - Last updated: 2017-02-20 22:08:00 UTC
+ - Last updated: 2017-02-21 14:07:09 UTC
 </p>
 </div>
 </body>
