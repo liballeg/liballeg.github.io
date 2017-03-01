@@ -305,6 +305,39 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Mixers mix several sample instances and/or audio streams into a single output buffer, converting sample data with differing formats according to their output parameters (frequency, depth, channels) in the process. In order to play several samples/streams at once reliably, you will need at least one mixer. A mixer that is not (indirectly) attached to a voice will remain silent. For most use cases, one (default) mixer attached to a single voice will be sufficient. You may attach mixers to other mixers in order to create complex audio chains.</p>
 <p>Samples (<a href="audio.html#allegro_sample">ALLEGRO_SAMPLE</a>) just represent &quot;passive&quot; buffers for sample data in memory. In order to play a sample, a sample instance (<a href="audio.html#allegro_sample_instance">ALLEGRO_SAMPLE_INSTANCE</a>) needs to be created and attached to a mixer (or voice). Sample instances control <em>how</em> the underlying samples are played. Several playback parameters (position, speed, gain, pan, playmode, playing/paused) can be adjusted. Particularly, multiple instances may be created from the same sample, e.g. with different parameters.</p>
 <p>Audio streams (see above) are similar to sample instances insofar as they respond to the same playback parameters and have to be attached to mixers or voices. A single audio stream can only be played once simultaneously.</p>
+<p>For example, consider the following configuration of the audio system.</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_VOICE* voice = al_create_voice(<span class="dv">44100</span>, ALLEGRO_AUDIO_DEPTH_INT16,
+    ALLEGRO_CHANNEL_CONF_2);
+
+ALLEGRO_MIXER* mixer_1 = al_create_mixer(<span class="dv">44100</span>, ALLEGRO_AUDIO_DEPTH_FLOAT32,
+    ALLEGRO_CHANNEL_CONF_2);
+ALLEGRO_MIXER* mixer_2 = al_create_mixer(<span class="dv">44100</span>, ALLEGRO_AUDIO_DEPTH_FLOAT32,
+    ALLEGRO_CHANNEL_CONF_2);
+
+<span class="co">/* Load a stream, the stream starts in a playing state and just needs</span>
+<span class="co"> * to be attached to actually output sound. */</span>
+ALLEGRO_AUDIO_STREAM* stream = al_load_audio_stream(<span class="st">&quot;music.ogg&quot;</span>, <span class="dv">4</span>, <span class="dv">2048</span>);
+
+<span class="co">/* The sample needs sample instances to output sound. */</span>
+ALLEGRO_SAMPLE* sample = al_load_sample(<span class="st">&quot;sound.wav&quot;</span>)
+ALLEGRO_SAMPLE_INSTANCE* instance_1 = al_create_sample_instance(sample);
+ALLEGRO_SAMPLE_INSTANCE* instance_2 = al_create_sample_instance(sample);
+
+<span class="co">/* Attach everything up (see diagram). */</span>
+al_attach_mixer_to_voice(mixer_1, voice);
+al_attach_mixer_to_mixer(mixer_2, mixer_1);
+al_attach_audio_stream_to_mixer(stream, mixer_1);
+al_attach_sample_instance_to_mixer(instance_1, mixer_2);
+al_attach_sample_instance_to_mixer(instance_2, mixer_2);
+
+<span class="co">/* Play two copies of the sound simultaneously. */</span>
+al_set_sample_instance_playing(instance_1, true);
+al_set_sample_instance_playing(instance_2, true);</code></pre></div>
+<div class="figure">
+<img src="images/audio.png" alt="An example configuration of the audio system to play music and a sound." />
+<p class="caption"><em>An example configuration of the audio system to play music and a sound.</em></p>
+</div>
+<p>Since we have two mixers, with the sample instances connected to a different mixer than the audio stream, you can control the volume of all the instances independently from the music by setting the gain of the mixer / stream. Having two sample instances lets you play two copies of the sample simultaneously.</p>
 <p>With this in mind, another look at <a href="audio.html#al_reserve_samples">al_reserve_samples</a> and <a href="audio.html#al_play_sample">al_play_sample</a> is due: What the former does internally is to create a specified number of sample instances that are &quot;empty&quot; at first, i.e. with no sample data set. When al_play_sample is called, it'll use one of these internal sample instances that is not currently playing to play the requested sample. All of these sample instances will be attached to the default mixer, which can be changed via <a href="audio.html#al_set_default_mixer">al_set_default_mixer</a>.</p>
 <p>See <a href="audio.html#audio-recording">Audio recording</a> for Allegro's audio recording API, which is, as of now, still unstable and subject to change.</p>
 <h1 id="audio-types">Audio types</h1>
@@ -1327,7 +1360,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 </blockquote>
 <p class="timestamp">
 Allegro version 5.2.3 (GIT)
- - Last updated: 2017-02-26 03:09:10 UTC
+ - Last updated: 2017-03-01 05:07:09 UTC
 </p>
 </div>
 </body>
