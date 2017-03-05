@@ -613,7 +613,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h2 id="al_get_clipboard_text">al_get_clipboard_text</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">char</span> *al_get_clipboard_text(ALLEGRO_DISPLAY *display)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/src/clipboard.c#L29">Source Code</a></p>
-<p>This function returns a pointer to a string, allocated with <a href="memory.html#al_malloc">al_malloc</a> with the text contents of the clipboard if available. If not text is available on the clipboard then this function returns NULL. You must call <a href="memory.html#al_free">al_free</a> on the returned pointer when you don't need it anymore.</p>
+<p>This function returns a pointer to a string, allocated with <a href="memory.html#al_malloc">al_malloc</a> with the text contents of the clipboard if available. If no text is available on the clipboard then this function returns NULL. You must call <a href="memory.html#al_free">al_free</a> on the returned pointer when you don't need it anymore.</p>
 <p>Beware that text on the clipboard on Windows may be in Windows format, that is, it may have carriage return newline combinations for the line endings instead of regular newlines for the line endings on Linux or OSX.</p>
 <p>Since: 5.1.12</p>
 <p>See also: <a href="display.html#al_set_clipboard_text">al_set_clipboard_text</a>, <a href="display.html#al_clipboard_has_text">al_clipboard_has_text</a></p>
@@ -631,7 +631,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="display.html#al_set_clipboard_text">al_set_clipboard_text</a>, <a href="display.html#al_get_clipboard_text">al_get_clipboard_text</a></p>
 <p class="timestamp">
 Allegro version 5.2.3 (GIT)
- - Last updated: 2017-02-26 03:08:56 UTC
+ - Last updated: 2017-03-05 15:07:06 UTC
 </p>
 </div>
 </body>
