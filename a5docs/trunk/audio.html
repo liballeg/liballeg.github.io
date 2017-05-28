@@ -484,7 +484,7 @@ default voice &lt;-- default mixer &lt;---         .
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_VOICE *al_create_voice(<span class="dt">unsigned</span> <span class="dt">int</span> freq,
    ALLEGRO_AUDIO_DEPTH depth, ALLEGRO_CHANNEL_CONF chan_conf)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/audio/kcm_voice.c#L65">Source Code</a></p>
-<p>Creates a voice structure and allocates a voice from the digital sound driver. The passed frequency, sample format and channel configuration are used as a hint to what kind of data will be sent to the voice. However, the underlying sound driver is free to use non-matching values. For example, it may be the native format of the sound hardware.</p>
+<p>Creates a voice structure and allocates a voice from the digital sound driver. The passed frequency (in Hz), sample format and channel configuration are used as a hint to what kind of data will be sent to the voice. However, the underlying sound driver is free to use non-matching values. For example, it may be the native format of the sound hardware.</p>
 <p>If a mixer is attached to the voice, the mixer will handle the conversion of all its input streams to the voice format and care does not have to be taken for this. However if you access the voice directly, make sure to not rely on the parameters passed to this function, but instead query the returned voice for the actual settings.</p>
 <p>See also: <a href="audio.html#al_destroy_voice">al_destroy_voice</a></p>
 <h2 id="al_destroy_voice">al_destroy_voice</h2>
@@ -522,7 +522,7 @@ default voice &lt;-- default mixer &lt;---         .
 <h2 id="al_get_voice_frequency">al_get_voice_frequency</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">unsigned</span> <span class="dt">int</span> al_get_voice_frequency(<span class="dt">const</span> ALLEGRO_VOICE *voice)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/audio/kcm_voice.c#L402">Source Code</a></p>
-<p>Return the frequency of the voice, e.g. 44100.</p>
+<p>Return the frequency of the voice (in Hz), e.g. 44100.</p>
 <h2 id="al_get_voice_channels">al_get_voice_channels</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_CHANNEL_CONF al_get_voice_channels(<span class="dt">const</span> ALLEGRO_VOICE *voice)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/audio/kcm_voice.c#L430">Source Code</a></p>
@@ -611,7 +611,7 @@ default voice &lt;-- default mixer &lt;---         .
 <h2 id="al_get_sample_frequency">al_get_sample_frequency</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">unsigned</span> <span class="dt">int</span> al_get_sample_frequency(<span class="dt">const</span> ALLEGRO_SAMPLE *spl)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/audio/kcm_sample.c#L431">Source Code</a></p>
-<p>Return the frequency of the sample.</p>
+<p>Return the frequency (in Hz) of the sample.</p>
 <p>See also: <a href="audio.html#al_get_sample_channels">al_get_sample_channels</a>, <a href="audio.html#al_get_sample_depth">al_get_sample_depth</a>, <a href="audio.html#al_get_sample_length">al_get_sample_length</a>, <a href="audio.html#al_get_sample_data">al_get_sample_data</a></p>
 <h2 id="al_get_sample_length">al_get_sample_length</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">unsigned</span> <span class="dt">int</span> al_get_sample_length(<span class="dt">const</span> ALLEGRO_SAMPLE *spl)</code></pre></div>
@@ -659,7 +659,7 @@ default voice &lt;-- default mixer &lt;---         .
 <h2 id="al_get_sample_instance_frequency">al_get_sample_instance_frequency</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">unsigned</span> <span class="dt">int</span> al_get_sample_instance_frequency(<span class="dt">const</span> ALLEGRO_SAMPLE_INSTANCE *spl)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/audio/kcm_instance.c#L234">Source Code</a></p>
-<p>Return the frequency of the sample instance's sample data.</p>
+<p>Return the frequency (in Hz) of the sample instance's sample data.</p>
 <h2 id="al_get_sample_instance_length">al_get_sample_instance_length</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">unsigned</span> <span class="dt">int</span> al_get_sample_instance_length(<span class="dt">const</span> ALLEGRO_SAMPLE_INSTANCE *spl)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/audio/kcm_instance.c#L244">Source Code</a></p>
@@ -801,7 +801,7 @@ al_set_sample_instance_channel_matrix(instance, matrix);</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_MIXER *al_create_mixer(<span class="dt">unsigned</span> <span class="dt">int</span> freq,
    ALLEGRO_AUDIO_DEPTH depth, ALLEGRO_CHANNEL_CONF chan_conf)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/audio/kcm_mixer.c#L609">Source Code</a></p>
-<p>Creates a mixer to attach sample instances, audio streams, or other mixers to. It will mix into a buffer at the requested frequency and channel count.</p>
+<p>Creates a mixer to attach sample instances, audio streams, or other mixers to. It will mix into a buffer at the requested frequency (in Hz) and channel count.</p>
 <p>The only supported audio depths are ALLEGRO_AUDIO_DEPTH_FLOAT32 and ALLEGRO_AUDIO_DEPTH_INT16 (not yet complete).</p>
 <p>To actually produce any output, the mixer will have to be attached to a voice.</p>
 <p>Returns true on success, false on error.</p>
@@ -863,12 +863,12 @@ al_set_sample_instance_channel_matrix(instance, matrix);</code></pre></div>
 <h2 id="al_get_mixer_frequency">al_get_mixer_frequency</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">unsigned</span> <span class="dt">int</span> al_get_mixer_frequency(<span class="dt">const</span> ALLEGRO_MIXER *mixer)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/audio/kcm_mixer.c#L849">Source Code</a></p>
-<p>Return the mixer frequency.</p>
+<p>Return the mixer frequency (in Hz).</p>
 <p>See also: <a href="audio.html#al_set_mixer_frequency">al_set_mixer_frequency</a></p>
 <h2 id="al_set_mixer_frequency">al_set_mixer_frequency</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_set_mixer_frequency(ALLEGRO_MIXER *mixer, <span class="dt">unsigned</span> <span class="dt">int</span> val)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/audio/kcm_mixer.c#L919">Source Code</a></p>
-<p>Set the mixer frequency. This will only work if the mixer is not attached to anything.</p>
+<p>Set the mixer frequency (in Hz). This will only work if the mixer is not attached to anything.</p>
 <p>Returns true on success, false on failure.</p>
 <p>See also: <a href="audio.html#al_get_mixer_frequency">al_get_mixer_frequency</a></p>
 <h2 id="al_get_mixer_channels">al_get_mixer_channels</h2>
@@ -986,7 +986,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <h2 id="al_get_audio_stream_frequency">al_get_audio_stream_frequency</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">unsigned</span> <span class="dt">int</span> al_get_audio_stream_frequency(<span class="dt">const</span> ALLEGRO_AUDIO_STREAM *stream)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/audio/kcm_stream.c#L186">Source Code</a></p>
-<p>Return the stream frequency.</p>
+<p>Return the stream frequency (in Hz).</p>
 <h2 id="al_get_audio_stream_channels">al_get_audio_stream_channels</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_CHANNEL_CONF al_get_audio_stream_channels(
    <span class="dt">const</span> ALLEGRO_AUDIO_STREAM *stream)</code></pre></div>
@@ -1360,7 +1360,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 </blockquote>
 <p class="timestamp">
 Allegro version 5.2.3 (GIT)
- - Last updated: 2017-05-23 04:32:36 UTC
+ - Last updated: 2017-05-28 04:30:33 UTC
 </p>
 </div>
 </body>
