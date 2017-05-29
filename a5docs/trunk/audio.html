@@ -130,6 +130,11 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <div id="TOC">
 <ul>
 <li><a href="#audio-types">Audio types</a><ul>
+<li><a href="#allegro_audio_event_type">ALLEGRO_AUDIO_EVENT_TYPE</a><ul>
+<li><a href="#allegro_event_audio_stream_fragment">ALLEGRO_EVENT_AUDIO_STREAM_FRAGMENT</a></li>
+<li><a href="#allegro_event_audio_stream_finished">ALLEGRO_EVENT_AUDIO_STREAM_FINISHED</a></li>
+<li><a href="#allegro_event_audio_recorder_fragment">ALLEGRO_EVENT_AUDIO_RECORDER_FRAGMENT</a></li>
+</ul></li>
 <li><a href="#allegro_audio_depth">ALLEGRO_AUDIO_DEPTH</a></li>
 <li><a href="#allegro_audio_pan_none">ALLEGRO_AUDIO_PAN_NONE</a></li>
 <li><a href="#allegro_channel_conf">ALLEGRO_CHANNEL_CONF</a></li>
@@ -285,7 +290,6 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="#audio-recording">Audio recording</a><ul>
 <li><a href="#allegro_audio_recorder">ALLEGRO_AUDIO_RECORDER</a></li>
 <li><a href="#allegro_audio_recorder_event">ALLEGRO_AUDIO_RECORDER_EVENT</a></li>
-<li><a href="#allegro_event_audio_recorder_fragment">ALLEGRO_EVENT_AUDIO_RECORDER_FRAGMENT</a></li>
 <li><a href="#al_create_audio_recorder">al_create_audio_recorder</a></li>
 <li><a href="#al_start_audio_recorder">al_start_audio_recorder</a></li>
 <li><a href="#al_stop_audio_recorder">al_stop_audio_recorder</a></li>
@@ -341,6 +345,21 @@ al_set_sample_instance_playing(instance_2, true);</code></pre></div>
 <p>With this in mind, another look at <a href="audio.html#al_reserve_samples">al_reserve_samples</a> and <a href="audio.html#al_play_sample">al_play_sample</a> is due: What the former does internally is to create a specified number of sample instances that are &quot;empty&quot; at first, i.e. with no sample data set. When al_play_sample is called, it'll use one of these internal sample instances that is not currently playing to play the requested sample. All of these sample instances will be attached to the default mixer, which can be changed via <a href="audio.html#al_set_default_mixer">al_set_default_mixer</a>.</p>
 <p>See <a href="audio.html#audio-recording">Audio recording</a> for Allegro's audio recording API, which is, as of now, still unstable and subject to change.</p>
 <h1 id="audio-types">Audio types</h1>
+<p>Events sent by <a href="audio.html#al_get_audio_stream_event_source">al_get_audio_stream_event_source</a> or <a href="audio.html#al_get_audio_recorder_event_source">al_get_audio_recorder_event_source</a>.</p>
+<h2 id="allegro_audio_event_type">ALLEGRO_AUDIO_EVENT_TYPE</h2>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="kw">enum</span> ALLEGRO_AUDIO_EVENT_TYPE</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/audio/allegro5/allegro_audio.h#L43">Source Code</a></p>
+<h3 id="allegro_event_audio_stream_fragment">ALLEGRO_EVENT_AUDIO_STREAM_FRAGMENT</h3>
+<p>Sent when a stream fragment is ready to be filled in. See <a href="audio.html#al_get_audio_stream_fragment">al_get_audio_stream_fragment</a>.</p>
+<h3 id="allegro_event_audio_stream_finished">ALLEGRO_EVENT_AUDIO_STREAM_FINISHED</h3>
+<p>Sent when a stream is finished.</p>
+<h3 id="allegro_event_audio_recorder_fragment">ALLEGRO_EVENT_AUDIO_RECORDER_FRAGMENT</h3>
+<p>Sent after a user-specified number of samples have been recorded. Convert this to <a href="audio.html#allegro_audio_recorder_event">ALLEGRO_AUDIO_RECORDER_EVENT</a> via <a href="audio.html#al_get_audio_recorder_event">al_get_audio_recorder_event</a>.</p>
+<p>You must always check the values for the buffer and samples as they are not guaranteed to be exactly what was originally specified.</p>
+<p>Since: 5.1.1</p>
+<blockquote>
+<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> The API may need a slight redesign.</p>
+</blockquote>
 <h2 id="allegro_audio_depth">ALLEGRO_AUDIO_DEPTH</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="kw">enum</span> ALLEGRO_AUDIO_DEPTH</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/audio/allegro5/allegro_audio.h#L71">Source Code</a></p>
@@ -421,9 +440,9 @@ al_set_sample_instance_playing(instance_2, true);</code></pre></div>
 <p>An ALLEGRO_AUDIO_STREAM object is used to stream generated audio to the sound device, in real-time. This is done by reading from a buffer, which is split into a number of fragments. Whenever a fragment has finished playing, the user can refill it with new data.</p>
 <p>As with <a href="audio.html#allegro_sample_instance">ALLEGRO_SAMPLE_INSTANCE</a> objects, streams store information necessary for playback, so you may not play the same stream multiple times simultaneously. Streams also need to be attached to an <a href="audio.html#allegro_mixer">ALLEGRO_MIXER</a>, which, eventually, reaches an <a href="audio.html#allegro_voice">ALLEGRO_VOICE</a> object.</p>
 <p>While playing, you must periodically fill fragments with new audio data. To know when a new fragment is ready to be filled, you can either directly check with <a href="audio.html#al_get_available_audio_stream_fragments">al_get_available_audio_stream_fragments</a>, or listen to events from the stream.</p>
-<p>You can register an audio stream event source to an event queue; see <a href="audio.html#al_get_audio_stream_event_source">al_get_audio_stream_event_source</a>. An ALLEGRO_EVENT_AUDIO_STREAM_FRAGMENT event is generated whenever a new fragment is ready. When you receive an event, use <a href="audio.html#al_get_audio_stream_fragment">al_get_audio_stream_fragment</a> to obtain a pointer to the fragment to be filled. The size and format are determined by the parameters passed to <a href="audio.html#al_create_audio_stream">al_create_audio_stream</a>.</p>
+<p>You can register an audio stream event source to an event queue; see <a href="audio.html#al_get_audio_stream_event_source">al_get_audio_stream_event_source</a>. An <a href="audio.html#allegro_event_audio_stream_fragment">ALLEGRO_EVENT_AUDIO_STREAM_FRAGMENT</a> event is generated whenever a new fragment is ready. When you receive an event, use <a href="audio.html#al_get_audio_stream_fragment">al_get_audio_stream_fragment</a> to obtain a pointer to the fragment to be filled. The size and format are determined by the parameters passed to <a href="audio.html#al_create_audio_stream">al_create_audio_stream</a>.</p>
 <p>If you're late with supplying new data, the stream will be silent until new data is provided. You must call <a href="audio.html#al_drain_audio_stream">al_drain_audio_stream</a> when you're finished with supplying data to the stream.</p>
-<p>If the stream is created by <a href="audio.html#al_load_audio_stream">al_load_audio_stream</a> then it will also generate an ALLEGRO_EVENT_AUDIO_STREAM_FINISHED event if it reaches the end of the file and is not set to loop.</p>
+<p>If the stream is created by <a href="audio.html#al_load_audio_stream">al_load_audio_stream</a> then it will also generate an <a href="audio.html#allegro_event_audio_stream_finished">ALLEGRO_EVENT_AUDIO_STREAM_FINISHED</a> event if it reaches the end of the file and is not set to loop.</p>
 <h2 id="allegro_voice">ALLEGRO_VOICE</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_VOICE ALLEGRO_VOICE;</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/audio/allegro5/allegro_audio.h#L174">Source Code</a></p>
@@ -973,7 +992,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
    ALLEGRO_AUDIO_STREAM *stream)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/audio/kcm_stream.c#L893">Source Code</a></p>
 <p>Retrieve the associated event source.</p>
-<p>See <a href="audio.html#al_get_audio_stream_fragment">al_get_audio_stream_fragment</a> for a description of the ALLEGRO_EVENT_AUDIO_STREAM_FRAGMENT event that audio streams emit.</p>
+<p>See <a href="audio.html#al_get_audio_stream_fragment">al_get_audio_stream_fragment</a> for a description of the <a href="audio.html#allegro_event_audio_stream_fragment">ALLEGRO_EVENT_AUDIO_STREAM_FRAGMENT</a> event that audio streams emit.</p>
 <h2 id="al_drain_audio_stream">al_drain_audio_stream</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_drain_audio_stream(ALLEGRO_AUDIO_STREAM *stream)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/audio/kcm_stream.c#L166">Source Code</a></p>
@@ -1082,7 +1101,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p>If the stream is ready for new data, the function will return the address of an internal buffer to be filled with audio data. The length and format of the buffer are specified with <a href="audio.html#al_create_audio_stream">al_create_audio_stream</a> or can be queried with the various functions described here. Once the buffer is filled, you must signal this to Allegro by passing the buffer to <a href="audio.html#al_set_audio_stream_fragment">al_set_audio_stream_fragment</a>.</p>
 <p>If the stream is not ready for new data, the function will return NULL.</p>
 <blockquote>
-<p><em>Note:</em> If you listen to events from the stream, an ALLEGRO_EVENT_AUDIO_STREAM_FRAGMENT event will be generated whenever a new fragment is ready. However, getting an event is <em>not</em> a guarantee that <a href="audio.html#al_get_audio_stream_fragment">al_get_audio_stream_fragment</a> will not return NULL, so you still must check for it.</p>
+<p><em>Note:</em> If you listen to events from the stream, an <a href="audio.html#allegro_event_audio_stream_fragment">ALLEGRO_EVENT_AUDIO_STREAM_FRAGMENT</a> event will be generated whenever a new fragment is ready. However, getting an event is <em>not</em> a guarantee that <a href="audio.html#al_get_audio_stream_fragment">al_get_audio_stream_fragment</a> will not return NULL, so you still must check for it.</p>
 </blockquote>
 <p>See also: <a href="audio.html#al_set_audio_stream_fragment">al_set_audio_stream_fragment</a>, <a href="audio.html#al_get_audio_stream_event_source">al_get_audio_stream_event_source</a>, <a href="audio.html#al_get_audio_stream_frequency">al_get_audio_stream_frequency</a>, <a href="audio.html#al_get_audio_stream_channels">al_get_audio_stream_channels</a>, <a href="audio.html#al_get_audio_stream_depth">al_get_audio_stream_depth</a>, <a href="audio.html#al_get_audio_stream_length">al_get_audio_stream_length</a></p>
 <h2 id="al_set_audio_stream_fragment">al_set_audio_stream_fragment</h2>
@@ -1277,13 +1296,6 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <blockquote>
 <p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> The API may need a slight redesign.</p>
 </blockquote>
-<h2 id="allegro_event_audio_recorder_fragment">ALLEGRO_EVENT_AUDIO_RECORDER_FRAGMENT</h2>
-<p>Sent after a user-specified number of samples have been recorded.</p>
-<p>You must always check the values for the buffer and samples as they are not guaranteed to be exactly what was originally specified.</p>
-<p>Since: 5.1.1</p>
-<blockquote>
-<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> The API may need a slight redesign.</p>
-</blockquote>
 <h2 id="al_create_audio_recorder">al_create_audio_recorder</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_AUDIO_RECORDER *al_create_audio_recorder(<span class="dt">size_t</span> fragment_count,
    <span class="dt">unsigned</span> <span class="dt">int</span> samples, <span class="dt">unsigned</span> <span class="dt">int</span> frequency,
@@ -1360,7 +1372,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 </blockquote>
 <p class="timestamp">
 Allegro version 5.2.3 (GIT)
- - Last updated: 2017-05-28 04:30:33 UTC
+ - Last updated: 2017-05-29 04:31:00 UTC
 </p>
 </div>
 </body>

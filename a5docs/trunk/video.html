@@ -129,7 +129,10 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </div>
 <div id="TOC">
 <ul>
-<li><a href="#allegro_video_event_type">ALLEGRO_VIDEO_EVENT_TYPE</a></li>
+<li><a href="#allegro_video_event_type">ALLEGRO_VIDEO_EVENT_TYPE</a><ul>
+<li><a href="#allegro_event_video_frame_show">ALLEGRO_EVENT_VIDEO_FRAME_SHOW</a></li>
+<li><a href="#allegro_event_video_finished">ALLEGRO_EVENT_VIDEO_FINISHED</a></li>
+</ul></li>
 <li><a href="#allegro_video_position_type">ALLEGRO_VIDEO_POSITION_TYPE</a></li>
 <li><a href="#al_init_video_addon">al_init_video_addon</a></li>
 <li><a href="#al_shutdown_video_addon">al_shutdown_video_addon</a></li>
@@ -156,10 +159,22 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="allegro_video_event_type">ALLEGRO_VIDEO_EVENT_TYPE</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="kw">enum</span> ALLEGRO_VIDEO_EVENT_TYPE</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/video/allegro5/allegro_video.h#L35">Source Code</a></p>
-<ul>
-<li>ALLEGRO_EVENT_VIDEO_FRAME_SHOW - This event is sent when it is time to show a new frame. Once you receive this event, you can draw the current frame (as returned by <a href="video.html#al_get_video_frame">al_get_video_frame</a>). <a href="video.html#al_get_video_frame">al_get_video_frame</a> will continue returning the same frame until the next ALLEGRO_EVENT_VIDEO_FRAME_SHOW is sent.</li>
-<li>ALLEGRO_EVENT_VIDEO_FINISHED - This event is sent when the video is finished. Depending on the backend, it may be possible to seek to an earlier part of the video and set the video to play to resume playback.</li>
-</ul>
+<p>Events sent by <a href="video.html#al_get_video_event_source">al_get_video_event_source</a>.</p>
+<h2 id="allegro_event_video_frame_show">ALLEGRO_EVENT_VIDEO_FRAME_SHOW</h2>
+<p>This event is sent when it is time to show a new frame. Once you receive this event, you can draw the current frame (as returned by <a href="video.html#al_get_video_frame">al_get_video_frame</a>). <a href="video.html#al_get_video_frame">al_get_video_frame</a> will continue returning the same frame until the next ALLEGRO_EVENT_VIDEO_FRAME_SHOW is sent.</p>
+<dl>
+<dt>user.data1 (ALLEGRO_VIDEO *)</dt>
+<dd>The video which generated the event.
+</dd>
+</dl>
+<p>Since: 5.1.0</p>
+<h2 id="allegro_event_video_finished">ALLEGRO_EVENT_VIDEO_FINISHED</h2>
+<p>This event is sent when the video is finished. Depending on the backend, it may be possible to seek to an earlier part of the video and set the video to play to resume playback.</p>
+<dl>
+<dt>user.data1 (ALLEGRO_VIDEO *)</dt>
+<dd>The video which generated the event.
+</dd>
+</dl>
 <p>Since: 5.1.0</p>
 <h1 id="allegro_video_position_type">ALLEGRO_VIDEO_POSITION_TYPE</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">enum</span> ALLEGRO_VIDEO_POSITION_TYPE ALLEGRO_VIDEO_POSITION_TYPE;</code></pre></div>
@@ -269,7 +284,7 @@ al_draw_scaled_bitmap(frame, <span class="dv">0</span>, <span class="dv">0</span
 <p>Since: 5.1.0</p>
 <p class="timestamp">
 Allegro version 5.2.3 (GIT)
- - Last updated: 2017-05-23 04:32:42 UTC
+ - Last updated: 2017-05-29 04:31:05 UTC
 </p>
 </div>
 </body>
