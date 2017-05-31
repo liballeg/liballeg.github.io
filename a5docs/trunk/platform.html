@@ -160,13 +160,13 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"> <span class="pp">#include </span><span class="im">&lt;allegro5/allegro_windows.h&gt;</span></code></pre></div>
 <h2 id="al_get_win_window_handle">al_get_win_window_handle</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">HWND al_get_win_window_handle(ALLEGRO_DISPLAY *display)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/win/wwindow.c#L1337">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/win/wwindow.c#L1376">Source Code</a></p>
 <p>Returns the handle to the window that the passed display is using.</p>
 <h2 id="al_win_add_window_callback">al_win_add_window_callback</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_win_add_window_callback(ALLEGRO_DISPLAY *display,
    bool (*callback)(ALLEGRO_DISPLAY *display, UINT message, WPARAM wparam,
    LPARAM lparam, LRESULT *result, <span class="dt">void</span> *userdata), <span class="dt">void</span> *userdata)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/win/wwindow.c#L1365">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/win/wwindow.c#L1404">Source Code</a></p>
 <p>The specified callback function will intercept the window's message before Allegro processes it. If the callback function consumes the event, then it should return true. In that case, Allegro will not do anything with the event.</p>
 <p>Optionally, you may use <code>result</code> to customize what Allegro will return return in response to this event. By default, Allegro returns <code>TRUE</code>.</p>
 <p>The <code>userdata</code> pointer can be used to supply additional context to the callback function.</p>
@@ -177,7 +177,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_win_remove_window_callback(ALLEGRO_DISPLAY *display,
    bool (*callback)(ALLEGRO_DISPLAY *display, UINT message, WPARAM wparam,
    LPARAM lparam, LRESULT *result, <span class="dt">void</span> *userdata), <span class="dt">void</span> *userdata)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/win/wwindow.c#L1394">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/win/wwindow.c#L1433">Source Code</a></p>
 <p>Removes the callback that was previously registered with <a href="platform.html#al_win_add_window_callback">al_win_add_window_callback</a>. The <code>userdata</code> pointer must be the same as what was used during the registration of the callback.</p>
 <p>Returns true if the callback was removed.</p>
 <p>Since: 5.1.2</p>
@@ -186,7 +186,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"> <span class="pp">#include </span><span class="im">&lt;allegro5/allegro_osx.h&gt;</span></code></pre></div>
 <h2 id="al_osx_get_window">al_osx_get_window</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">NSWindow* al_osx_get_window(ALLEGRO_DISPLAY *display)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/macosx/osxgl.m#L2362">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/macosx/osxgl.m#L2424">Source Code</a></p>
 <p>Retrieves the NSWindow handle associated with the Allegro display.</p>
 <p>Since: 5.0.8, 5.1.3</p>
 <h1 id="iphone">iPhone</h1>
@@ -276,7 +276,7 @@ jstring jdata = (* env)-&gt;NewStringUTF(env, <span class="st">&quot;Hello Java!
 <p>Since: 5.2.1.2</p>
 <p class="timestamp">
 Allegro version 5.2.3 (GIT)
- - Last updated: 2017-05-29 04:30:59 UTC
+ - Last updated: 2017-05-31 04:32:37 UTC
 </p>
 </div>
 </body>
