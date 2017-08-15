@@ -584,6 +584,9 @@ default voice &lt;-- default mixer &lt;---         .
    ALLEGRO_CHANNEL_CONF chan_conf, bool free_buf)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/audio/kcm_sample.c#L135">Source Code</a></p>
 <p>Create a sample data structure from the supplied buffer. If <code>free_buf</code> is true then the buffer will be freed with <a href="memory.html#al_free">al_free</a> when the sample data structure is destroyed. For portability (especially Windows), the buffer should have been allocated with <a href="memory.html#al_malloc">al_malloc</a>. Otherwise you should free the sample data yourself.</p>
+<p>A sample that is referred to by the <code>samples</code> parameter refers to a sequence channel intensities. E.g. if you're making a stereo sample with the <code>samples</code> set to 4, then the layout of the data in <code>buf</code> will be:</p>
+<pre><code>LRLRLRLR</code></pre>
+<p>Where L and R are the intensities for the left and right channels respectively. A single sample, then, refers to the LR pair in this example.</p>
 <p>To allocate a buffer of the correct size, you can use something like this:</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> sample_size = al_get_channel_count(chan_conf)
                   * al_get_audio_depth_size(depth);
@@ -984,11 +987,14 @@ al_set_sample_instance_channel_matrix(instance, matrix);</code></pre></div>
 <p>Parameters:</p>
 <ul>
 <li><p>fragment_count - How many fragments to use for the audio stream. Usually only two fragments are required - splitting the audio buffer in two halves. But it means that the only time when new data can be supplied is whenever one half has finished playing. When using many fragments, you usually will use fewer samples for one, so there always will be (small) fragments available to be filled with new data.</p></li>
-<li><p>frag_samples - The size of a fragment in samples. See note below.</p></li>
+<li><p>frag_samples - The size of a fragment in samples. See note and explanation below.</p></li>
 <li><p>freq - The frequency, in Hertz.</p></li>
 <li><p>depth - Must be one of the values listed for <a href="audio.html#allegro_audio_depth">ALLEGRO_AUDIO_DEPTH</a>.</p></li>
 <li><p>chan_conf - Must be one of the values listed for <a href="audio.html#allegro_channel_conf">ALLEGRO_CHANNEL_CONF</a>.</p></li>
 </ul>
+<p>A sample that is referred to by the <em>frag_samples</em> parameter refers to a sequence channel intensities. E.g. if you're making a stereo stream with the <em>frag_samples</em> set to 4, then the layout of the data in the fragment will be:</p>
+<pre><code>LRLRLRLR</code></pre>
+<p>Where L and R are the intensities for the left and right channels respectively. A single sample, then, refers to the LR pair in this example.</p>
 <p>The choice of <em>fragment_count</em>, <em>frag_samples</em> and <em>freq</em> directly influences the audio delay. The delay in seconds can be expressed as:</p>
 <pre><code>delay = fragment_count * frag_samples / freq</code></pre>
 <p>This is only the delay due to Allegro's streaming, there may be additional delay caused by sound drivers and/or hardware.</p>
@@ -1395,7 +1401,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 </blockquote>
 <p class="timestamp">
 Allegro version 5.2.3 (GIT)
- - Last updated: 2017-07-22 04:30:43 UTC
+ - Last updated: 2017-08-15 04:30:08 UTC
 </p>
 </div>
 </body>
