@@ -412,21 +412,21 @@ ALLEGRO_MENU *menu = al_build_menu(menu_info);</code></pre></div>
 <p>See also: <a href="native_dialog.html#al_build_menu">al_build_menu</a></p>
 <h2 id="al_create_menu">al_create_menu</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_MENU *al_create_menu(<span class="dt">void</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L299">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L292">Source Code</a></p>
 <p>Creates a menu container that can hold menu items.</p>
 <p>Returns <code>NULL</code> on failure.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="native_dialog.html#al_create_popup_menu">al_create_popup_menu</a>, <a href="native_dialog.html#al_build_menu">al_build_menu</a></p>
 <h2 id="al_create_popup_menu">al_create_popup_menu</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_MENU *al_create_popup_menu(<span class="dt">void</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L318">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L311">Source Code</a></p>
 <p>Creates a menu container for popup menus. Only the root (outermost) menu should be created with this function. Sub menus of popups should be created with <a href="native_dialog.html#al_create_menu">al_create_menu</a>.</p>
 <p>Returns <code>NULL</code> on failure.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="native_dialog.html#al_create_menu">al_create_menu</a>, <a href="native_dialog.html#al_build_menu">al_build_menu</a></p>
 <h2 id="al_build_menu">al_build_menu</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_MENU *al_build_menu(ALLEGRO_MENU_INFO *info)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L356">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L349">Source Code</a></p>
 <p>Builds a menu based on the specifications of a sequence of <code>ALLEGRO_MENU_INFO</code> elements.</p>
 <p>Returns a pointer to the root <code>ALLEGRO_MENU</code>, or <code>NULL</code> on failure. To gain access to the other menus and items, you will need to search for them using <a href="native_dialog.html#al_find_menu_item">al_find_menu_item</a>.</p>
 <p>Since: 5.1.0</p>
@@ -434,14 +434,14 @@ ALLEGRO_MENU *menu = al_build_menu(menu_info);</code></pre></div>
 <h2 id="al_append_menu_item">al_append_menu_item</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_append_menu_item(ALLEGRO_MENU *parent, <span class="dt">char</span> <span class="dt">const</span> *title, <span class="dt">uint16_t</span> id,
    <span class="dt">int</span> flags, ALLEGRO_BITMAP *icon, ALLEGRO_MENU *submenu)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L368">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L361">Source Code</a></p>
 <p>Appends a menu item to the end of the menu. See <a href="native_dialog.html#al_insert_menu_item">al_insert_menu_item</a> for more information.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="native_dialog.html#al_insert_menu_item">al_insert_menu_item</a>, <a href="native_dialog.html#al_remove_menu_item">al_remove_menu_item</a></p>
 <h2 id="al_insert_menu_item">al_insert_menu_item</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_insert_menu_item(ALLEGRO_MENU *parent, <span class="dt">int</span> pos, <span class="dt">char</span> <span class="dt">const</span> *title,
    <span class="dt">uint16_t</span> id, <span class="dt">int</span> flags, ALLEGRO_BITMAP *icon, ALLEGRO_MENU *submenu)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L380">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L373">Source Code</a></p>
 <p>Inserts a menu item at the spot specified. See the introductory text for a detailed explanation of how the <code>pos</code> parameter is interpreted.</p>
 <p>The <code>parent</code> menu can be a popup menu or a regular menu. To underline one character in the <code>title</code>, prefix it with an ampersand.</p>
 <p>The <code>flags</code> can be any combination of:</p>
@@ -463,7 +463,7 @@ ALLEGRO_MENU *menu = al_build_menu(menu_info);</code></pre></div>
 <p>See also: <a href="native_dialog.html#al_append_menu_item">al_append_menu_item</a>, <a href="native_dialog.html#al_remove_menu_item">al_remove_menu_item</a></p>
 <h2 id="al_remove_menu_item">al_remove_menu_item</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_remove_menu_item(ALLEGRO_MENU *menu, <span class="dt">int</span> pos)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L447">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L439">Source Code</a></p>
 <p>Removes the specified item from the menu and destroys it. If the item contains a sub-menu, it too is destroyed. Any references to it are invalidated. If you want to preserve that sub-menu, you should first make a copy with <a href="native_dialog.html#al_clone_menu">al_clone_menu</a>.</p>
 <p>This is safe to call on a menu that is currently being displayed.</p>
 <p>Returns <code>true</code> if an item was removed.</p>
@@ -471,52 +471,52 @@ ALLEGRO_MENU *menu = al_build_menu(menu_info);</code></pre></div>
 <p>See also: <a href="native_dialog.html#al_append_menu_item">al_append_menu_item</a>, <a href="native_dialog.html#al_insert_menu_item">al_insert_menu_item</a>, <a href="native_dialog.html#al_destroy_menu">al_destroy_menu</a></p>
 <h2 id="al_clone_menu">al_clone_menu</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_MENU *al_clone_menu(ALLEGRO_MENU *menu)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L342">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L335">Source Code</a></p>
 <p>Makes a copy of a menu so that it can be reused on another display. The menu being cloned can be anything: a regular menu, a popup menu, or a sub-menu.</p>
 <p>Returns the cloned menu.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="native_dialog.html#al_clone_menu_for_popup">al_clone_menu_for_popup</a></p>
 <h2 id="al_clone_menu_for_popup">al_clone_menu_for_popup</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_MENU *al_clone_menu_for_popup(ALLEGRO_MENU *menu)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L349">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L342">Source Code</a></p>
 <p>Exactly like <a href="native_dialog.html#al_clone_menu">al_clone_menu</a>, except that the copy is for a popup menu.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="native_dialog.html#al_clone_menu">al_clone_menu</a></p>
 <h2 id="al_destroy_menu">al_destroy_menu</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_destroy_menu(ALLEGRO_MENU *menu)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L628">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L620">Source Code</a></p>
 <p>Destroys an entire menu, including its sub-menus. Any references to it or a sub-menu are no longer valid. It is safe to call this on a menu that is currently being displayed.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="native_dialog.html#al_remove_menu_item">al_remove_menu_item</a></p>
 <h2 id="al_get_menu_item_caption">al_get_menu_item_caption</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">const</span> <span class="dt">char</span> *al_get_menu_item_caption(ALLEGRO_MENU *menu, <span class="dt">int</span> pos)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L501">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L493">Source Code</a></p>
 <p>Returns the caption associated with the menu item. It is valid as long as the caption is not modified.</p>
 <p>Returns <code>NULL</code> if the item was not found.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="native_dialog.html#al_set_menu_item_caption">al_set_menu_item_caption</a></p>
 <h2 id="al_set_menu_item_caption">al_set_menu_item_caption</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_menu_item_caption(ALLEGRO_MENU *menu, <span class="dt">int</span> pos, <span class="dt">const</span> <span class="dt">char</span> *caption)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L514">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L506">Source Code</a></p>
 <p>Updates the menu item caption with the new <code>caption</code>. This will invalidate any previous calls to <a href="native_dialog.html#al_get_menu_item_caption">al_get_menu_item_caption</a>.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="native_dialog.html#al_get_menu_item_caption">al_get_menu_item_caption</a></p>
 <h2 id="al_get_menu_item_flags">al_get_menu_item_flags</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_menu_item_flags(ALLEGRO_MENU *menu, <span class="dt">int</span> pos)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L531">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L523">Source Code</a></p>
 <p>Returns the currently set flags. See <a href="native_dialog.html#al_insert_menu_item">al_insert_menu_item</a> for a description of the available flags.</p>
 <p>Returns -1 if the item was not found.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="native_dialog.html#al_set_menu_item_flags">al_set_menu_item_flags</a>, <a href="native_dialog.html#al_toggle_menu_item_flags">al_toggle_menu_item_flags</a></p>
 <h2 id="al_set_menu_item_flags">al_set_menu_item_flags</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_menu_item_flags(ALLEGRO_MENU *menu, <span class="dt">int</span> pos, <span class="dt">int</span> flags)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L543">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L535">Source Code</a></p>
 <p>Updates the menu item's flags. See <a href="native_dialog.html#al_insert_menu_item">al_insert_menu_item</a> for a description of the available flags.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="native_dialog.html#al_get_menu_item_flags">al_get_menu_item_flags</a>, <a href="native_dialog.html#al_toggle_menu_item_flags">al_toggle_menu_item_flags</a></p>
 <h2 id="al_toggle_menu_item_flags">al_toggle_menu_item_flags</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_toggle_menu_item_flags(ALLEGRO_MENU *menu, <span class="dt">int</span> pos, <span class="dt">int</span> flags)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L569">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L561">Source Code</a></p>
 <p>Toggles the specified menu item's flags. See <a href="native_dialog.html#al_insert_menu_item">al_insert_menu_item</a> for a description of the available flags.</p>
 <p>Returns a bitfield of only the specified flags that are set after the toggle. A flag that was not toggled will not be returned, even if it is set. Returns -1 if the id is invalid.</p>
 <p>Since: 5.1.0</p>
@@ -526,21 +526,21 @@ ALLEGRO_MENU *menu = al_build_menu(menu_info);</code></pre></div>
 <p>See also: <a href="native_dialog.html#al_get_menu_item_flags">al_get_menu_item_flags</a>, <a href="native_dialog.html#al_set_menu_item_flags">al_set_menu_item_flags</a></p>
 <h2 id="al_get_menu_item_icon">al_get_menu_item_icon</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_BITMAP *al_get_menu_item_icon(ALLEGRO_MENU *menu, <span class="dt">int</span> pos)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L596">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L588">Source Code</a></p>
 <p>Returns the icon associated with the menu. It is safe to draw to the returned bitmap, but you must call <a href="native_dialog.html#al_set_menu_item_icon">al_set_menu_item_icon</a> in order for the changes to be applied.</p>
 <p>Returns <code>NULL</code> if the item was not found or if it has no icon.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="native_dialog.html#al_set_menu_item_icon">al_set_menu_item_icon</a></p>
 <h2 id="al_set_menu_item_icon">al_set_menu_item_icon</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_menu_item_icon(ALLEGRO_MENU *menu, <span class="dt">int</span> pos, ALLEGRO_BITMAP *icon)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L609">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L601">Source Code</a></p>
 <p>Sets the icon for the specified menu item. The menu assumes ownership of the <code>ALLEGRO_BITMAP</code> and may invalidate the pointer, so you must clone it if you wish to continue using it.</p>
 <p>If a video bitmap is passed, it will automatically be converted to a memory bitmap, so it is preferrable to pass a memory bitmap.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="native_dialog.html#al_get_menu_item_icon">al_get_menu_item_icon</a>, <a href="graphics.html#al_clone_bitmap">al_clone_bitmap</a></p>
 <h2 id="al_find_menu">al_find_menu</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_MENU *al_find_menu(ALLEGRO_MENU *haystack, <span class="dt">uint16_t</span> id)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L464">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L456">Source Code</a></p>
 <p>Searches in the <code>haystack</code> menu for any submenu with the given <code>id</code>. (Note that this only represents a literal ID, and cannot be used as an index.)</p>
 <p>Returns the menu, if found. Otherwise returns <code>NULL</code>.</p>
 <p>Since: 5.1.0</p>
@@ -548,7 +548,7 @@ ALLEGRO_MENU *menu = al_build_menu(menu_info);</code></pre></div>
 <h2 id="al_find_menu_item">al_find_menu_item</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_find_menu_item(ALLEGRO_MENU *haystack, <span class="dt">uint16_t</span> id, ALLEGRO_MENU **menu,
    <span class="dt">int</span> *index)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L474">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L466">Source Code</a></p>
 <p>Searches in the <code>haystack</code> menu for an item with the given <code>id</code>. (Note that this only represents a literal ID, and cannot be used as an index.)</p>
 <p>If <code>menu</code> and <code>index</code> are not <code>NULL</code>, they will be set as the parent menu containing the item and the zero-based (positive) index of the item. (If the menu item was not found, then their values are undefined.)</p>
 <p>Returns true if the menu item was found.</p>
@@ -556,32 +556,32 @@ ALLEGRO_MENU *menu = al_build_menu(menu_info);</code></pre></div>
 <p>See also: <a href="native_dialog.html#al_find_menu">al_find_menu</a></p>
 <h2 id="al_get_default_menu_event_source">al_get_default_menu_event_source</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_EVENT_SOURCE *al_get_default_menu_event_source(<span class="dt">void</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L671">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L663">Source Code</a></p>
 <p>Returns the default event source used for menu clicks. If a menu was not given its own event source via <a href="native_dialog.html#al_enable_menu_event_source">al_enable_menu_event_source</a>, then it will use this default source.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="events.html#al_register_event_source">al_register_event_source</a>, <a href="native_dialog.html#al_enable_menu_event_source">al_enable_menu_event_source</a>, <a href="native_dialog.html#al_disable_menu_event_source">al_disable_menu_event_source</a></p>
 <h2 id="al_enable_menu_event_source">al_enable_menu_event_source</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_EVENT_SOURCE *al_enable_menu_event_source(ALLEGRO_MENU *menu)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L678">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L670">Source Code</a></p>
 <p>Enables a unique event source for this menu. It and all of its sub-menus will use this event source. (It is safe to call this multiple times on the same menu.)</p>
 <p>Returns the event source.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="events.html#al_register_event_source">al_register_event_source</a>, <a href="native_dialog.html#al_get_default_menu_event_source">al_get_default_menu_event_source</a>, <a href="native_dialog.html#al_disable_menu_event_source">al_disable_menu_event_source</a></p>
 <h2 id="al_disable_menu_event_source">al_disable_menu_event_source</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_disable_menu_event_source(ALLEGRO_MENU *menu)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L692">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L684">Source Code</a></p>
 <p>Disables a unique event source for the menu, causing it to use the default event source.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="native_dialog.html#al_get_default_menu_event_source">al_get_default_menu_event_source</a>, <a href="native_dialog.html#al_enable_menu_event_source">al_enable_menu_event_source</a></p>
 <h2 id="al_get_display_menu">al_get_display_menu</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_MENU *al_get_display_menu(ALLEGRO_DISPLAY *display)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L704">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L696">Source Code</a></p>
 <p>Returns the menu associated with the <code>display</code>, or <code>NULL</code> if it does not have a menu.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="native_dialog.html#al_set_display_menu">al_set_display_menu</a></p>
 <h2 id="al_set_display_menu">al_set_display_menu</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_set_display_menu(ALLEGRO_DISPLAY *display, ALLEGRO_MENU *menu)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L722">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L714">Source Code</a></p>
 <p>Associates the <code>menu</code> with the <code>display</code> and shows it. If there was a previous menu associated with the display, it will be destroyed. If you don't want that to happen, you should first remove the menu with <a href="native_dialog.html#al_remove_display_menu">al_remove_display_menu</a>.</p>
 <p>If the menu is already attached to a display, it will not be attached to the new display. If <code>menu</code> is <code>NULL</code>, the current menu will still be destroyed.</p>
 <blockquote>
@@ -592,7 +592,7 @@ ALLEGRO_MENU *menu = al_build_menu(menu_info);</code></pre></div>
 <p>See also: <a href="native_dialog.html#al_create_menu">al_create_menu</a>, <a href="native_dialog.html#al_remove_display_menu">al_remove_display_menu</a></p>
 <h2 id="al_popup_menu">al_popup_menu</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_popup_menu(ALLEGRO_MENU *popup, ALLEGRO_DISPLAY *display)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L785">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L777">Source Code</a></p>
 <p>Displays a context menu next to the mouse cursor. The menu must have been created with <a href="native_dialog.html#al_create_popup_menu">al_create_popup_menu</a>. It generates events just like a regular display menu does. It is possible that the menu will be canceled without any selection being made.</p>
 <p>The <code>display</code> parameter indicates which window the menu is associated with (when you process the menu click event), but does not actually affect where the menu is located on the screen.</p>
 <p>Returns <code>true</code> if the context menu was displayed.</p>
@@ -600,14 +600,14 @@ ALLEGRO_MENU *menu = al_build_menu(menu_info);</code></pre></div>
 <p>See also: <a href="native_dialog.html#al_create_popup_menu">al_create_popup_menu</a></p>
 <h2 id="al_remove_display_menu">al_remove_display_menu</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_MENU *al_remove_display_menu(ALLEGRO_DISPLAY *display)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L803">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L795">Source Code</a></p>
 <p>Detaches the menu associated with the display and returns it. The menu can then be used on a different display.</p>
 <p>If you simply want to destroy the active menu, you can call <a href="native_dialog.html#al_set_display_menu">al_set_display_menu</a> with a <code>NULL</code> menu.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="native_dialog.html#al_set_display_menu">al_set_display_menu</a></p>
 <p class="timestamp">
 Allegro version 5.2.3 (GIT)
- - Last updated: 2017-09-11 04:30:55 UTC
+ - Last updated: 2017-09-21 03:07:56 UTC
 </p>
 </div>
 </body>
