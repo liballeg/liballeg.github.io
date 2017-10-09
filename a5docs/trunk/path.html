@@ -285,6 +285,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Convert a path to its string representation, i.e. optional drive, followed by directory components separated by 'delim', followed by an optional filename.</p>
 <p>To use the current native path separator, use ALLEGRO_NATIVE_PATH_SEP for 'delim'.</p>
 <p>The returned pointer is valid only until the path is modified in any way, or until the path is destroyed. This returns an ALLEGRO_USTR. If you need a null-terminated string instead, use <a href="path.html#al_path_cstr">al_path_cstr</a>.</p>
+<p>Since: 5.2.3</p>
 <p>See also: <a href="path.html#al_path_cstr">al_path_cstr</a></p>
 <h1 id="al_make_path_canonical">al_make_path_canonical</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_make_path_canonical(ALLEGRO_PATH *path)</code></pre></div>
@@ -293,7 +294,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Note that this does <em>not</em> collapse &quot;x/../y&quot; sections into &quot;y&quot;. This is by design. If &quot;/foo&quot; on your system is a symlink to &quot;/bar/baz&quot;, then &quot;/foo/../quux&quot; is actually &quot;/bar/quux&quot;, not &quot;/quux&quot; as a naive removal of &quot;..&quot; components would give you.</p>
 <p class="timestamp">
 Allegro version 5.2.3 (GIT)
- - Last updated: 2017-09-21 04:30:37 UTC
+ - Last updated: 2017-10-09 00:09:30 UTC
 </p>
 </div>
 </body>

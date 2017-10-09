@@ -977,6 +977,9 @@ al_set_sample_instance_channel_matrix(instance, matrix);</code></pre></div>
    <span class="dt">void</span> *pp_callback_userdata)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/audio/kcm_mixer.c#L830">Source Code</a></p>
 <p>Sets a post-processing filter function that's called after the attached streams have been mixed. The buffer's format will be whatever the mixer was created with. The sample count and user-data pointer is also passed.</p>
+<blockquote>
+<p><em>Note:</em> The callback is called from a dedicated audio thread.</p>
+</blockquote>
 <h1 id="stream-functions">Stream functions</h1>
 <h2 id="al_create_audio_stream">al_create_audio_stream</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_AUDIO_STREAM *al_create_audio_stream(<span class="dt">size_t</span> fragment_count,
@@ -1401,7 +1404,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 </blockquote>
 <p class="timestamp">
 Allegro version 5.2.3 (GIT)
- - Last updated: 2017-09-21 04:30:41 UTC
+ - Last updated: 2017-10-09 00:09:35 UTC
 </p>
 </div>
 </body>

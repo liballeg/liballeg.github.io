@@ -266,6 +266,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/dialog.c#L117">Source Code</a></p>
 <p>Show a native GUI message box. This can be used for example to display an error message if creation of an initial display fails. The display may be NULL, otherwise the given display is treated as the parent if possible.</p>
 <p>The message box will have a single &quot;OK&quot; button and use the style informative dialog boxes usually have on the native system. If the <code>buttons</code> parameter is not NULL, you can instead specify the button text in a string, with buttons separated by a vertical bar (|).</p>
+<blockquote>
+<p><em>Note:</em> <code>buttons</code> parameter is currently unimplemented on Windows.</p>
+</blockquote>
 <p>The flags available are:</p>
 <dl>
 <dt>ALLEGRO_MESSAGEBOX_WARN</dt>
@@ -607,7 +610,7 @@ ALLEGRO_MENU *menu = al_build_menu(menu_info);</code></pre></div>
 <p>See also: <a href="native_dialog.html#al_set_display_menu">al_set_display_menu</a></p>
 <p class="timestamp">
 Allegro version 5.2.3 (GIT)
- - Last updated: 2017-09-21 04:30:44 UTC
+ - Last updated: 2017-10-09 00:09:38 UTC
 </p>
 </div>
 </body>
