@@ -81,6 +81,114 @@ A game programming library
 <h1 class="title">Allegro changelog for 5.2.x series</h1>
 </div>
 <p>These lists serve as summaries; the full histories are in the git repository.</p>
+<h1 id="changes-from-5.2.2-to-5.2.3-october-2017">Changes from 5.2.2 to 5.2.3 (October 2017)</h1>
+<p>The main developers this time were: Elias Pschernig, SiegeLord, Sebastian Krzyszkowiak, Vitaliy V. Tokarev, Simon Naarmann, Bruno Félix Rezende Ribeiro, Trent Gamblin).</p>
+<p>Core:</p>
+<ul>
+<li><p>Add <code>al_path_ustr</code> (Bruce Pascoe).</p></li>
+<li><p>Handle NULL sections more gracefully with the config API.</p></li>
+<li><p>Add missing <code>glStencilMaskSeparate prototype</code> (Aaron Bolyard).</p></li>
+<li><p>Add <code>al_clear_keyboard_state</code>.</p></li>
+<li><p>Don't add blank lines before config sections when writing them out.</p></li>
+<li><p>Fix <code>fs_stdio_read_directory</code> appending an extra slash.</p></li>
+<li><p>Fix <code>al_set_window_constraints</code> when the flag ALLEGRO_MAXIMIZED is set.</p></li>
+<li><p>Fix <code>al_set_clipping_rectangle</code> when out-of-bounds (Bruce Pascoe).</p></li>
+<li><p>Enable blocked locking of S3TC formats unconditionally.</p></li>
+</ul>
+<p>Raspberry Pi port:</p>
+<ul>
+<li>Set default file interface when attempting to read /boot/config.txt.</li>
+</ul>
+<p>Android port:</p>
+<ul>
+<li><p>Replace the old build system that used deprecated tools with a new Gradle-based system.</p></li>
+<li><p>Work around crashes on some Androids when an FBO is bound during <code>egl_SwapBuffers</code>.</p></li>
+<li><p>Fix LocalRef leak when opening files using APK interface.</p></li>
+<li><p>Remove -Wno-psabi switches from Toolchain-android.cmake.</p></li>
+</ul>
+<p>Linux port:</p>
+<ul>
+<li><p>Make three finger salute and LED toggle configurable.</p></li>
+<li><p>Fix KEY_CHAR events under X11 with compose key enabled.</p></li>
+<li><p>Fix clearing the <code>ALLEGRO_MAXIMIZED</code> flag under X11.</p></li>
+<li><p>Add <code>al_x_set_initial_icon</code>.</p></li>
+<li><p>Free wm_hints in <code>set_initial_icon</code>.</p></li>
+<li><p>Read Allegro system config from ~/.allegro5rc on Unix.</p></li>
+</ul>
+<p>Windows port:</p>
+<ul>
+<li><p>Make bitmap contents persist again after device loss.</p></li>
+<li><p>Add large file support for MSVC.</p></li>
+<li><p>Only test cooperative lavel if device is known to be lost.</p></li>
+<li><p>Don't leak the <code>D3DEffect</code> when attaching multiple sources.</p></li>
+<li><p>Fix <code>al_get_monitor_info</code> (Tobias Scheuer).</p></li>
+</ul>
+<p>OSX port:</p>
+<ul>
+<li><p>Various fixes for OSX 10.6.</p></li>
+<li><p>Fix some Bluetooth mice on OS X (Tom Bass).</p></li>
+<li><p>Fixed deprecation warning when starting OSX console app (Tom Bass).</p></li>
+<li><p>Fix OSX magic main with the LTO switch (Evert Glebbeek).</p></li>
+</ul>
+<p>Audio addon:</p>
+<ul>
+<li><p>Allow setting the buffer size for ALSA.</p></li>
+<li><p>Don't apply gain twice for sample instances and streams when pan is not <code>ALLEGRO_PAN_NONE</code>.</p></li>
+<li><p>Disallow attaching mixers with different channel configurations.</p></li>
+<li><p>Add <code>al_set_sample_instance_channel_matrix</code> and <code>al_set_audio_stream_channel_matrix</code>.</p></li>
+<li><p>Don't free the extra pointer in DirectSound if voice fails to play for some reason.</p></li>
+<li><p>Add <code>al_lock_sample_id</code> and <code>al_unlock_sample_id</code>.</p></li>
+<li><p>For OpenAL, detach from buffers before deleting.</p></li>
+<li><p>Return true when seeking mod audio streams.</p></li>
+</ul>
+<p>Acodec addon:</p>
+<ul>
+<li><p>Free audio stream buffer in flac_stream_close.</p></li>
+<li><p>Add DUMB 2.0 support.</p></li>
+</ul>
+<p>Color addon:</p>
+<ul>
+<li><p>Add XYZ, xyY, Lab and LCH color spaces.</p></li>
+<li><p>Remove &quot;purwablue&quot; named color, add &quot;rebeccablue&quot;.</p></li>
+</ul>
+<p>Native dialog addon:</p>
+<ul>
+<li><p>Improve save dialogs under GTK driver.</p></li>
+<li><p>Improved path behavior in GTK native file dialog ([bk]door.maus).</p></li>
+<li><p>Enable <code>ALLEGRO_FILECHOOSER_FOLDER</code> On Linux (Todd Cope).</p></li>
+<li><p>Use unique ids to identify menu items internally, fixing their event sources.</p></li>
+<li><p>Make the native message box return 2 on Windows when cancel is pressed.</p></li>
+</ul>
+<p>Image addon:</p>
+<ul>
+<li><p>Set compression level to <code>Z_DEFAULT_COMPRESSION</code> in png saver by default.</p></li>
+<li><p>Make PNG, JPEG compression level configurable.</p></li>
+<li><p>Make PNG gamma value configurable.</p></li>
+<li><p>Add WebP support with libwebp.</p></li>
+</ul>
+<p>Video addon:</p>
+<ul>
+<li>Allow calling <code>al_init_video_addon</code> after <code>al_shutdown_video_addon</code> was called.</li>
+</ul>
+<p>Build system:</p>
+<ul>
+<li><p>Detect and link optional FreeType dependencies.</p></li>
+<li><p>Add a CMake option to prefer static dependencies.</p></li>
+<li><p>Fix SDL platform build.</p></li>
+</ul>
+<p>Python binding:</p>
+<ul>
+<li>Fix some corrupted regexps in the generation script (verderten).</li>
+</ul>
+<p>Documentation:</p>
+<ul>
+<li>Lots of improvements as usual (Edgar Reynaldo, Mark Oates, twobit).</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li><p>Fix various issues with <code>ex_curl</code>.</p></li>
+<li><p>Fix memory leak in <code>ex_audio_simple</code> (Rm Beer).</p></li>
+</ul>
 <h1 id="changes-from-5.2.1.1-to-5.2.2-december-2016">Changes from 5.2.1.1 to 5.2.2 (December 2016)</h1>
 <p>The main developers this time were: Trent Gamblin, SiegeLord, Elias Pschernig.</p>
 <p>Core:</p>
