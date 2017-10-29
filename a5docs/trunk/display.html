@@ -424,7 +424,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_BITMAP *al_get_backbuffer(ALLEGRO_DISPLAY *display)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/src/display.c#L174">Source Code</a></p>
 <p>Return a special bitmap representing the back-buffer of the display.</p>
-<p>Care should be taken when using the backbuffer bitmap (and its sub-bitmaps) as the source bitmap (e.g as the bitmap argument to <a href="graphics.html#al_draw_bitmap">al_draw_bitmap</a>). Only untransformed operations are hardware accelerated. These consist of <a href="graphics.html#al_draw_bitmap">al_draw_bitmap</a> and <a href="graphics.html#al_draw_bitmap_region">al_draw_bitmap_region</a> when the current transformation is the identity. If the tranformation is not the identity, or some other drawing operation is used, the call will be routed through the memory bitmap routines, which are slow. If you need those operations to be accelerated, then first copy a region of the backbuffer into a temporary bitmap (via the <a href="graphics.html#al_draw_bitmap">al_draw_bitmap</a> and <a href="graphics.html#al_draw_bitmap_region">al_draw_bitmap_region</a>), and then use that temporary bitmap as the source bitmap.</p>
+<p>Care should be taken when using the backbuffer bitmap (and its sub-bitmaps) as the source bitmap (e.g as the bitmap argument to <a href="graphics.html#al_draw_bitmap">al_draw_bitmap</a>). Only untransformed operations are hardware accelerated. These consist of <a href="graphics.html#al_draw_bitmap">al_draw_bitmap</a> and <a href="graphics.html#al_draw_bitmap_region">al_draw_bitmap_region</a> when the current transformation is the identity. If the transformation is not the identity, or some other drawing operation is used, the call will be routed through the memory bitmap routines, which are slow. If you need those operations to be accelerated, then first copy a region of the backbuffer into a temporary bitmap (via the <a href="graphics.html#al_draw_bitmap">al_draw_bitmap</a> and <a href="graphics.html#al_draw_bitmap_region">al_draw_bitmap_region</a>), and then use that temporary bitmap as the source bitmap.</p>
 <h2 id="al_flip_display">al_flip_display</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_flip_display(<span class="dt">void</span>)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/src/display.c#L187">Source Code</a></p>
@@ -645,8 +645,8 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.12</p>
 <p>See also: <a href="display.html#al_set_clipboard_text">al_set_clipboard_text</a>, <a href="display.html#al_get_clipboard_text">al_get_clipboard_text</a></p>
 <p class="timestamp">
-Allegro version 5.2.3 (GIT)
- - Last updated: 2017-10-09 00:09:24 UTC
+Allegro version 5.2.4 (GIT)
+ - Last updated: 2017-10-29 04:30:45 UTC
 </p>
 </div>
 </body>
