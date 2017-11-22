@@ -377,7 +377,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <span class="co"># SCREEN_GAMMA (if available), otherwise fallback to a value of 2.2</span>
 <span class="co"># (a good guess for PC monitors, and the value for sRGB colourspace).</span>
 <span class="co"># Otherwise, the value is taken as-is.</span>
-<span class="dt">png_screen_gamma </span><span class="ot">=</span><span class="st"> -</span><span class="fl">1.0</span>
+<span class="dt">png_screen_gamma </span><span class="ot">=</span><span class="st"> </span><span class="fl">-1.0</span>
 
 <span class="co"># Compression level for PNG files. Possible values: 0-9, &quot;best&quot;, &quot;fastest&quot;,</span>
 <span class="co"># &quot;none&quot; or &quot;default&quot; (a sane compromise between size and speed).</span>
@@ -480,12 +480,12 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="al_register_assert_handler">al_register_assert_handler</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_register_assert_handler(<span class="dt">void</span> (*handler)(<span class="dt">char</span> <span class="dt">const</span> *expr,
    <span class="dt">char</span> <span class="dt">const</span> *file, <span class="dt">int</span> line, <span class="dt">char</span> <span class="dt">const</span> *func))</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/debug.c#L364">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/debug.c#L365">Source Code</a></p>
 <p>Register a function to be called when an internal Allegro assertion fails. Pass NULL to reset to the default behaviour, which is to do whatever the standard <code>assert()</code> macro does.</p>
 <p>Since: 5.0.6, 5.1.0</p>
 <h1 id="al_register_trace_handler">al_register_trace_handler</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_register_trace_handler(<span class="dt">void</span> (*handler)(<span class="dt">char</span> <span class="dt">const</span> *))</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/debug.c#L373">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/debug.c#L374">Source Code</a></p>
 <p>Register a callback which is called whenever Allegro writes something to its log files. The default logging to allegro.log is disabled while this callback is active. Pass NULL to revert to the default logging.</p>
 <p>This function may be called prior to al_install_system.</p>
 <p>See the example allegro5.cfg for documentation on how to configure the used debug channels, logging levels and trace format.</p>
@@ -507,8 +507,8 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>This function may be called prior to <a href="system.html#al_install_system">al_install_system</a> or <a href="system.html#al_init">al_init</a>.</p>
 <p>Since: 5.1.12</p>
 <p class="timestamp">
-Allegro version 5.2.3 (GIT)
- - Last updated: 2017-10-09 00:09:31 UTC
+Allegro version 5.2.4 (GIT)
+ - Last updated: 2017-11-22 05:30:43 UTC
 </p>
 </div>
 </body>

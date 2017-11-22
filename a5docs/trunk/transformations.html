@@ -240,7 +240,7 @@ al_use_transform(&amp;T);</code></pre></div>
 <p>Sets the projection transformation to be used for the the drawing operations on the target bitmap (each bitmap maintains its own projection transformation). Every drawing operation after this call will be transformed using this transformation. To return default behavior, call this function with an orthographic transform like so:</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_TRANSFORM trans;
 al_identity_transform(&amp;trans);
-al_orthographic_transform(&amp;trans, <span class="dv">0</span>, <span class="dv">0</span>, -<span class="fl">1.0</span>, al_get_bitmap_width(bitmap),
+al_orthographic_transform(&amp;trans, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">-1.0</span>, al_get_bitmap_width(bitmap),
                           al_get_bitmap_height(bitmap), <span class="fl">1.0</span>);
 
 al_set_target_bitmap(bitmap);
@@ -332,7 +332,7 @@ al_use_transform(&amp;t);</code></pre></div>
 <p>Another example which will simply re-create the identity matrix:</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">al_build_camera_transform(&amp;t,
     <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,
-    <span class="dv">0</span>, <span class="dv">0</span>, -<span class="dv">1</span>,
+    <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">-1</span>,
     <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>);</code></pre></div>
 <p>An example where the up vector will cause the camera to lean (roll) by 45 degrees:</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">al_build_camera_transform(&amp;t,
@@ -466,8 +466,8 @@ al_use_transform(&amp;t);</code></pre></div>
 <p>Since: 5.1.7</p>
 <p>See also: <a href="transformations.html#al_horizontal_shear_transform">al_horizontal_shear_transform</a></p>
 <p class="timestamp">
-Allegro version 5.2.3 (GIT)
- - Last updated: 2017-10-09 00:09:33 UTC
+Allegro version 5.2.4 (GIT)
+ - Last updated: 2017-11-22 05:30:45 UTC
 </p>
 </div>
 </body>
