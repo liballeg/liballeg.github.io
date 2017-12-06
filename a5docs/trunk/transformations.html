@@ -146,6 +146,8 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="#al_scale_transform">al_scale_transform</a></li>
 <li><a href="#al_transform_coordinates">al_transform_coordinates</a></li>
 <li><a href="#al_transform_coordinates_3d">al_transform_coordinates_3d</a></li>
+<li><a href="#al_transform_coordinates_4d">al_transform_coordinates_4d</a></li>
+<li><a href="#al_transform_coordinates_3d_projective">al_transform_coordinates_3d_projective</a></li>
 <li><a href="#al_compose_transform">al_compose_transform</a></li>
 <li><a href="#al_orthographic_transform">al_orthographic_transform</a></li>
 <li><a href="#al_perspective_transform">al_perspective_transform</a></li>
@@ -391,11 +393,36 @@ al_use_transform(&amp;t);</code></pre></div>
 <li>trans - Transformation to use</li>
 <li>x, y, z - Pointers to the coordinates</li>
 </ul>
+<p>Note: If you are using a projection transform you most likely will want to use <a href="transformations.html#al_transform_coordinates_3d_projective">al_transform_coordinates_3d_projective</a> instead.</p>
 <p>Since 5.1.9</p>
 <p>See also: <a href="transformations.html#al_use_transform">al_use_transform</a>, <a href="transformations.html#al_transform_coordinates">al_transform_coordinates</a></p>
+<h1 id="al_transform_coordinates_4d">al_transform_coordinates_4d</h1>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_transform_coordinates_4d(<span class="dt">const</span> ALLEGRO_TRANSFORM *trans,
+   <span class="dt">float</span> *x, <span class="dt">float</span> *y, <span class="dt">float</span> *z, <span class="dt">float</span> *w)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/transformations.c#L440">Source Code</a></p>
+<p>Transform x, y, z, w coordinates.</p>
+<p><em>Parameters:</em></p>
+<ul>
+<li>trans - Transformation to use</li>
+<li>x, y, z, w - Pointers to the coordinates</li>
+</ul>
+<p>Since 5.2.4</p>
+<p>See also: <a href="transformations.html#al_use_transform">al_use_transform</a>, <a href="transformations.html#al_transform_coordinates">al_transform_coordinates</a>, <a href="transformations.html#al_transform_coordinates_3d">al_transform_coordinates_3d</a></p>
+<h1 id="al_transform_coordinates_3d_projective">al_transform_coordinates_3d_projective</h1>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_transform_coordinates_3d_projective(<span class="dt">const</span> ALLEGRO_TRANSFORM *trans,
+   <span class="dt">float</span> *x, <span class="dt">float</span> *y, <span class="dt">float</span> *z)</code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/transformations.c#L467">Source Code</a></p>
+<p>Transform x, y, z as homogeneous coordinates. This is the same as using <a href="transformations.html#al_transform_coordinates_4d">al_transform_coordinates_4d</a> with the w coordinate set to 1, then dividing x, y, z by the resulting w. This will provide the same coordinates Allegro will draw to when a projective transform is in effect as set with <a href="transformations.html#al_use_projection_transform">al_use_projection_transform</a>.</p>
+<p><em>Parameters:</em></p>
+<ul>
+<li>trans - Transformation to use</li>
+<li>x, y, z - Pointers to the coordinates</li>
+</ul>
+<p>Since 5.2.4</p>
+<p>See also: <a href="transformations.html#al_use_transform">al_use_transform</a>, <a href="transformations.html#al_transform_coordinates">al_transform_coordinates</a>, <a href="transformations.html#al_transform_coordinates_3d">al_transform_coordinates_3d</a>, <a href="transformations.html#al_use_projection_transform">al_use_projection_transform</a></p>
 <h1 id="al_compose_transform">al_compose_transform</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_compose_transform(ALLEGRO_TRANSFORM *trans, <span class="dt">const</span> ALLEGRO_TRANSFORM *other)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/transformations.c#L440">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/transformations.c#L479">Source Code</a></p>
 <p>Compose (combine) two transformations by a matrix multiplication.</p>
 <pre><code>trans := trans other</code></pre>
 <p>Note that the order of matrix multiplications is important. The effect of applying the combined transform will be as if first applying <code>trans</code> and then applying <code>other</code> and not the other way around.</p>
@@ -409,7 +436,7 @@ al_use_transform(&amp;t);</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_orthographic_transform(ALLEGRO_TRANSFORM *trans,
    <span class="dt">float</span> left, <span class="dt">float</span> top, <span class="dt">float</span> n,
    <span class="dt">float</span> right, <span class="dt">float</span> bottom, <span class="dt">float</span> f)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/transformations.c#L486">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/transformations.c#L525">Source Code</a></p>
 <p>Combines the given transformation with an orthographic transformation which maps the screen rectangle to the given left/top and right/bottom coordinates. near/far is the z-buffer range, if there is no z-buffer you can set it to -1/1.</p>
 <p>Since: 5.1.3</p>
 <p>See also: <a href="transformations.html#al_use_projection_transform">al_use_projection_transform</a>, <a href="transformations.html#al_perspective_transform">al_perspective_transform</a></p>
@@ -417,7 +444,7 @@ al_use_transform(&amp;t);</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_perspective_transform(ALLEGRO_TRANSFORM *trans,
    <span class="dt">float</span> left, <span class="dt">float</span> top, <span class="dt">float</span> n,
    <span class="dt">float</span> right, <span class="dt">float</span> bottom, <span class="dt">float</span> f)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/transformations.c#L547">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/transformations.c#L586">Source Code</a></p>
 <p>Like <a href="transformations.html#al_orthographic_transform">al_orthographic_transform</a> but honors perspective. If everything is at a z-position of -near it will look the same as with an orthographic transformation.</p>
 <p>To use a specific horizontal field of view you can use the relation:</p>
 <pre><code>tan(hfov / 2) = (right - left) / 2 / near</code></pre>
@@ -440,12 +467,12 @@ al_use_transform(&amp;t);</code></pre></div>
 <h1 id="al_rotate_transform_3d">al_rotate_transform_3d</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_rotate_transform_3d(ALLEGRO_TRANSFORM *trans,
    <span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">float</span> z, <span class="dt">float</span> angle)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/transformations.c#L511">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/transformations.c#L550">Source Code</a></p>
 <p>Combines the given transformation with a transformation which rotates coordinates around the given vector by the given angle in radians.</p>
 <p>Since: 5.1.3</p>
 <h1 id="al_horizontal_shear_transform">al_horizontal_shear_transform</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_horizontal_shear_transform(ALLEGRO_TRANSFORM* trans, <span class="dt">float</span> theta)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/transformations.c#L572">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/transformations.c#L611">Source Code</a></p>
 <p>Apply a horizontal shear to the transform</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -456,7 +483,7 @@ al_use_transform(&amp;t);</code></pre></div>
 <p>See also: <a href="transformations.html#al_vertical_shear_transform">al_vertical_shear_transform</a></p>
 <h1 id="al_vertical_shear_transform">al_vertical_shear_transform</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_vertical_shear_transform(ALLEGRO_TRANSFORM* trans, <span class="dt">float</span> theta)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/transformations.c#L586">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/transformations.c#L625">Source Code</a></p>
 <p>Apply a vertical shear to the transform</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -467,7 +494,7 @@ al_use_transform(&amp;t);</code></pre></div>
 <p>See also: <a href="transformations.html#al_horizontal_shear_transform">al_horizontal_shear_transform</a></p>
 <p class="timestamp">
 Allegro version 5.2.4 (GIT)
- - Last updated: 2017-11-22 05:30:45 UTC
+ - Last updated: 2017-12-06 16:09:24 UTC
 </p>
 </div>
 </body>
