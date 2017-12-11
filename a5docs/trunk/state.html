@@ -168,12 +168,12 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Flags which can be passed to <a href="state.html#al_store_state">al_store_state</a>/<a href="state.html#al_restore_state">al_restore_state</a> as bit combinations. See <a href="state.html#al_store_state">al_store_state</a> for the list of flags.</p>
 <h1 id="al_restore_state">al_restore_state</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_restore_state(ALLEGRO_STATE <span class="dt">const</span> *state)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L755">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L764">Source Code</a></p>
 <p>Restores part of the state of the current thread from the given <a href="state.html#allegro_state">ALLEGRO_STATE</a> object.</p>
 <p>See also: <a href="state.html#al_store_state">al_store_state</a>, <a href="state.html#allegro_state_flags">ALLEGRO_STATE_FLAGS</a></p>
 <h1 id="al_store_state">al_store_state</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_store_state(ALLEGRO_STATE *state, <span class="dt">int</span> flags)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L687">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L696">Source Code</a></p>
 <p>Stores part of the state of the current thread in the given <a href="state.html#allegro_state">ALLEGRO_STATE</a> object. The flags parameter can take any bit-combination of these flags:</p>
 <ul>
 <li>ALLEGRO_STATE_NEW_DISPLAY_PARAMETERS - new_display_format, new_display_refresh_rate, new_display_flags</li>
@@ -191,16 +191,16 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="al_get_errno">al_get_errno</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_errno(<span class="dt">void</span>)
 GETTER(allegro_errno, <span class="dv">0</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L919">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L928">Source Code</a></p>
 <p>Some Allegro functions will set an error number as well as returning an error code. Call this function to retrieve the last error number set for the calling thread.</p>
 <h1 id="al_set_errno">al_set_errno</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_errno(<span class="dt">int</span> errnum)
 SETTER(allegro_errno, errnum)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L924">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L933">Source Code</a></p>
 <p>Set the error number for the calling thread.</p>
 <p class="timestamp">
 Allegro version 5.2.4 (GIT)
- - Last updated: 2017-12-06 16:09:22 UTC
+ - Last updated: 2017-12-11 05:30:37 UTC
 </p>
 </div>
 </body>

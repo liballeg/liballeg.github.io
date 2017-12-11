@@ -543,17 +543,17 @@ al_draw_tinted_bitmap(bmp, c, <span class="dv">0</span>, <span class="dv">0</spa
 <p>See also: <a href="graphics.html#al_create_bitmap">al_create_bitmap</a></p>
 <h2 id="al_get_new_bitmap_flags">al_get_new_bitmap_flags</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_new_bitmap_flags(<span class="dt">void</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L674">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L683">Source Code</a></p>
 <p>Returns the flags used for newly created bitmaps.</p>
 <p>See also: <a href="graphics.html#al_set_new_bitmap_flags">al_set_new_bitmap_flags</a></p>
 <h2 id="al_get_new_bitmap_format">al_get_new_bitmap_format</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_new_bitmap_format(<span class="dt">void</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L661">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L670">Source Code</a></p>
 <p>Returns the format used for newly created bitmaps.</p>
 <p>See also: <a href="graphics.html#allegro_pixel_format">ALLEGRO_PIXEL_FORMAT</a>, <a href="graphics.html#al_set_new_bitmap_format">al_set_new_bitmap_format</a></p>
 <h2 id="al_set_new_bitmap_flags">al_set_new_bitmap_flags</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_new_bitmap_flags(<span class="dt">int</span> flags)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L634">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L643">Source Code</a></p>
 <p>Sets the flags to use for newly created bitmaps. Valid flags are:</p>
 <dl>
 <dt>ALLEGRO_MEMORY_BITMAP</dt>
@@ -594,19 +594,19 @@ al_draw_tinted_bitmap(bmp, c, <span class="dv">0</span>, <span class="dv">0</spa
 <p>See also: <a href="graphics.html#al_get_new_bitmap_flags">al_get_new_bitmap_flags</a>, <a href="graphics.html#al_get_bitmap_flags">al_get_bitmap_flags</a></p>
 <h2 id="al_add_new_bitmap_flag">al_add_new_bitmap_flag</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_add_new_bitmap_flag(<span class="dt">int</span> flag)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L648">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L657">Source Code</a></p>
 <p>A convenience function which does the same as</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">al_set_new_bitmap_flags(al_get_new_bitmap_flags() | flag);</code></pre></div>
 <p>See also: <a href="graphics.html#al_set_new_bitmap_flags">al_set_new_bitmap_flags</a>, <a href="graphics.html#al_get_new_bitmap_flags">al_get_new_bitmap_flags</a>, <a href="graphics.html#al_get_bitmap_flags">al_get_bitmap_flags</a></p>
 <h2 id="al_set_new_bitmap_format">al_set_new_bitmap_format</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_new_bitmap_format(<span class="dt">int</span> format)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L621">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L630">Source Code</a></p>
 <p>Sets the pixel format (<a href="graphics.html#allegro_pixel_format">ALLEGRO_PIXEL_FORMAT</a>) for newly created bitmaps. The default format is 0 and means the display driver will choose the best format.</p>
 <p>See also: <a href="graphics.html#allegro_pixel_format">ALLEGRO_PIXEL_FORMAT</a>, <a href="graphics.html#al_get_new_bitmap_format">al_get_new_bitmap_format</a>, <a href="graphics.html#al_get_bitmap_format">al_get_bitmap_format</a></p>
 <h2 id="al_set_new_bitmap_depth">al_set_new_bitmap_depth</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_new_bitmap_depth(<span class="dt">int</span> depth)
 SETTER(new_bitmap_depth, depth)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L934">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L943">Source Code</a></p>
 <p>Sets the depthbuffer depth used by newly created bitmaps (on the current thread) if they are used with <a href="graphics.html#al_set_target_bitmap">al_set_target_bitmap</a>. 0 means no depth-buffer will be created when drawing into the bitmap, which is the default.</p>
 <p>Since: 5.2.1</p>
 <blockquote>
@@ -615,7 +615,7 @@ SETTER(new_bitmap_depth, depth)</code></pre></div>
 <h2 id="al_get_new_bitmap_depth">al_get_new_bitmap_depth</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_new_bitmap_depth(<span class="dt">void</span>)
 GETTER(new_bitmap_depth, <span class="dv">0</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L929">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L938">Source Code</a></p>
 <p>Returns the value currently set with <a href="graphics.html#al_set_new_bitmap_depth">al_set_new_bitmap_depth</a> on the current thread or 0 if none was set.</p>
 <p>Since: 5.2.1</p>
 <blockquote>
@@ -624,7 +624,7 @@ GETTER(new_bitmap_depth, <span class="dv">0</span>)</code></pre></div>
 <h2 id="al_set_new_bitmap_samples">al_set_new_bitmap_samples</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_new_bitmap_samples(<span class="dt">int</span> samples)
 SETTER(new_bitmap_samples, samples)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L944">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L953">Source Code</a></p>
 <p>Sets the multi-sampling samples used by newly created bitmaps (on the current thread) if they are used with <a href="graphics.html#al_set_target_bitmap">al_set_target_bitmap</a>. 0 means multi-sampling will not be used when drawing into the bitmap, which is the default. 1 means multi-sampling will be used but only using a single sample per pixel (so usually there will be no visual difference to not using multi-sampling at all).</p>
 <blockquote>
 <p><em>Note:</em> Some platforms have restrictions on when the multi-sampling buffer for a bitmap is realized, i.e. down-scaled back to the actual bitmap dimensions. This may only happen after a call to <a href="graphics.html#al_set_target_bitmap">al_set_target_bitmap</a>. So for example:</p>
@@ -646,7 +646,7 @@ al_lock_bitmap(multisample, ...)
 <h2 id="al_get_new_bitmap_samples">al_get_new_bitmap_samples</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_new_bitmap_samples(<span class="dt">void</span>)
 GETTER(new_bitmap_samples, <span class="dv">0</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L939">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L948">Source Code</a></p>
 <p>Returns the value currently set with <a href="graphics.html#al_set_new_bitmap_samples">al_set_new_bitmap_samples</a> on the current thread or 0 if none was set.</p>
 <p>Since: 5.2.1</p>
 <blockquote>
@@ -923,7 +923,7 @@ al_draw_tinted_scaled_rotated_bitmap(sub_bitmap, tint, cx, cy,
 <p>See also: <a href="graphics.html#al_draw_tinted_bitmap">al_draw_tinted_bitmap</a></p>
 <h2 id="al_get_target_bitmap">al_get_target_bitmap</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_BITMAP *al_get_target_bitmap(<span class="dt">void</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L500">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L509">Source Code</a></p>
 <p>Return the target bitmap of the calling thread.</p>
 <p>See also: <a href="graphics.html#al_set_target_bitmap">al_set_target_bitmap</a></p>
 <h2 id="al_put_pixel">al_put_pixel</h2>
@@ -939,7 +939,7 @@ al_draw_tinted_scaled_rotated_bitmap(sub_bitmap, tint, cx, cy,
 <h1 id="target-bitmap">Target bitmap</h1>
 <h2 id="al_set_target_bitmap">al_set_target_bitmap</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_target_bitmap(ALLEGRO_BITMAP *bitmap)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L394">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L403">Source Code</a></p>
 <p>This function selects the bitmap to which all subsequent drawing operations in the calling thread will draw to. To return to drawing to a display, set the backbuffer of the display as the target bitmap, using <a href="display.html#al_get_backbuffer">al_get_backbuffer</a>. As a convenience, you may also use <a href="graphics.html#al_set_target_backbuffer">al_set_target_backbuffer</a>.</p>
 <p>Each allegro bitmap maintains two transformation matrices associated with it for drawing onto the bitmap. There is a view matrix and a projection matrix. When you call al_set_target_bitmap, these will be made current for the bitmap, affecting global OpenGL and DirectX states depending on the driver in use.</p>
 <p>Each video bitmap is tied to a display. When a video bitmap is set to as the target bitmap, the display that the bitmap belongs to is automatically made &quot;current&quot; for the calling thread (if it is not current already). Then drawing other bitmaps which are tied to the same display can be hardware accelerated.</p>
@@ -967,35 +967,35 @@ al_draw_line(x1, y1, x2, y2, color, <span class="dv">0</span>);</code></pre></di
 <p>See also: <a href="graphics.html#al_get_target_bitmap">al_get_target_bitmap</a>, <a href="graphics.html#al_set_target_backbuffer">al_set_target_backbuffer</a></p>
 <h2 id="al_set_target_backbuffer">al_set_target_backbuffer</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_target_backbuffer(ALLEGRO_DISPLAY *display)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L491">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L500">Source Code</a></p>
 <p>Same as <code>al_set_target_bitmap(al_get_backbuffer(display));</code></p>
 <p>See also: <a href="graphics.html#al_set_target_bitmap">al_set_target_bitmap</a>, <a href="display.html#al_get_backbuffer">al_get_backbuffer</a></p>
 <h2 id="al_get_current_display">al_get_current_display</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_DISPLAY *al_get_current_display(<span class="dt">void</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L381">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L390">Source Code</a></p>
 <p>Return the display that is &quot;current&quot; for the calling thread, or NULL if there is none.</p>
 <p>See also: <a href="graphics.html#al_set_target_bitmap">al_set_target_bitmap</a></p>
 <h1 id="blending-modes">Blending modes</h1>
 <h2 id="al_get_blender">al_get_blender</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_get_blender(<span class="dt">int</span> *op, <span class="dt">int</span> *src, <span class="dt">int</span> *dst)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L565">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L574">Source Code</a></p>
 <p>Returns the active blender for the current thread. You can pass NULL for values you are not interested in.</p>
 <p>See also: <a href="graphics.html#al_set_blender">al_set_blender</a>, <a href="graphics.html#al_get_separate_blender">al_get_separate_blender</a></p>
 <h2 id="al_get_separate_blender">al_get_separate_blender</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_get_separate_blender(<span class="dt">int</span> *op, <span class="dt">int</span> *src, <span class="dt">int</span> *dst,
    <span class="dt">int</span> *alpha_op, <span class="dt">int</span> *alpha_src, <span class="dt">int</span> *alpha_dst)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L587">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L596">Source Code</a></p>
 <p>Returns the active blender for the current thread. You can pass NULL for values you are not interested in.</p>
 <p>See also: <a href="graphics.html#al_set_separate_blender">al_set_separate_blender</a>, <a href="graphics.html#al_get_blender">al_get_blender</a></p>
 <h2 id="al_get_blend_color">al_get_blend_color</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_COLOR al_get_blend_color(<span class="dt">void</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L574">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L583">Source Code</a></p>
 <p>Returns the color currently used for constant color blending (white by default).</p>
 <p>See also: <a href="graphics.html#al_set_blend_color">al_set_blend_color</a>, <a href="graphics.html#al_set_blender">al_set_blender</a></p>
 <p>Since: 5.1.12</p>
 <h2 id="al_set_blender">al_set_blender</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_blender(<span class="dt">int</span> op, <span class="dt">int</span> src, <span class="dt">int</span> dst)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L513">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L522">Source Code</a></p>
 <p>Sets the function to use for blending for the current thread.</p>
 <p>Blending means, the source and destination colors are combined in drawing operations.</p>
 <p>Assume the source color (e.g. color of a rectangle to draw, or pixel of a bitmap to draw) is given as its red/green/blue/alpha components (if the bitmap has no alpha it always is assumed to be fully opaque, so 255 for 8-bit or 1.0 for floating point): <em>s = s.r, s.g, s.b, s.a</em>. And this color is drawn to a destination, which already has a color: <em>d = d.r, d.g, d.b, d.a</em>.</p>
@@ -1071,12 +1071,12 @@ a = d.a * 0 + s.a * d.a</code></pre>
 <h2 id="al_set_separate_blender">al_set_separate_blender</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_separate_blender(<span class="dt">int</span> op, <span class="dt">int</span> src, <span class="dt">int</span> dst,
    <span class="dt">int</span> alpha_op, <span class="dt">int</span> alpha_src, <span class="dt">int</span> alpha_dst)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L535">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L544">Source Code</a></p>
 <p>Like <a href="graphics.html#al_set_blender">al_set_blender</a>, but allows specifying a separate blending operation for the alpha channel. This is useful if your target bitmap also has an alpha channel and the two alpha channels need to be combined in a different way than the color components.</p>
 <p>See also: <a href="graphics.html#al_set_blender">al_set_blender</a>, <a href="graphics.html#al_get_blender">al_get_blender</a>, <a href="graphics.html#al_get_separate_blender">al_get_separate_blender</a></p>
 <h2 id="al_set_blend_color">al_set_blend_color</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_blend_color(ALLEGRO_COLOR color)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L522">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/tls.c#L531">Source Code</a></p>
 <p>Sets the color to use for blending when using the ALLEGRO_CONST_COLOR or ALLEGRO_INVERSE_CONST_COLOR blend functions. See <a href="graphics.html#al_set_blender">al_set_blender</a> for more information.</p>
 <p>See also: <a href="graphics.html#al_set_blender">al_set_blender</a>, <a href="graphics.html#al_get_blend_color">al_get_blend_color</a></p>
 <p>Since: 5.1.12</p>
@@ -1378,7 +1378,7 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <p>See also: <a href="graphics.html#al_backup_dirty_bitmap">al_backup_dirty_bitmap</a></p>
 <p class="timestamp">
 Allegro version 5.2.4 (GIT)
- - Last updated: 2017-12-06 16:09:18 UTC
+ - Last updated: 2017-12-11 05:30:34 UTC
 </p>
 </div>
 </body>
