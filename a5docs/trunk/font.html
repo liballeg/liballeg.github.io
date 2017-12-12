@@ -208,7 +208,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
    <span class="dt">int</span> offset_y;             <span class="co">// y offset to draw the glyph at</span>
    <span class="dt">int</span> advance;              <span class="co">// number of pixels to advance after this character</span>
 } ALLEGRO_GLYPH;</code></pre></div>
-<p>bitmap may be a sub-bitmap in the case of color fonts.</p>
+<p>bitmap may be a sub-bitmap in the case of color fonts. Bitmap can also be NULL in which case nothing should be drawn (sometimes true for whitespace characters in TTF fonts).</p>
 <p>kerning should be added to the x position you draw to if you want your text kerned and depends on which codepoints <a href="font.html#al_get_glyph">al_get_glyph</a> was called with.</p>
 <p>Glyphs are tightly packed onto the bitmap, so you need to add offset_x and offset_y to your draw position for the text to look right.</p>
 <p>advance is the number of pixels to add to your x position to advance to the next character in a string and includes kerning.</p>
@@ -676,7 +676,7 @@ al_grab_font_from_bitmap(bitmap, <span class="dv">4</span>, ranges)</code></pre>
 <p>See also: <a href="font.html#allegro_glyph">ALLEGRO_GLYPH</a></p>
 <p class="timestamp">
 Allegro version 5.2.4 (GIT)
- - Last updated: 2017-12-11 05:30:43 UTC
+ - Last updated: 2017-12-12 05:30:09 UTC
 </p>
 </div>
 </body>
