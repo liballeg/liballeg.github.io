@@ -595,22 +595,25 @@ ALLEGRO_MENU *menu = al_build_menu(menu_info);</code></pre></div>
 <p>See also: <a href="native_dialog.html#al_create_menu">al_create_menu</a>, <a href="native_dialog.html#al_remove_display_menu">al_remove_display_menu</a></p>
 <h2 id="al_popup_menu">al_popup_menu</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_popup_menu(ALLEGRO_MENU *popup, ALLEGRO_DISPLAY *display)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L785">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L805">Source Code</a></p>
 <p>Displays a context menu next to the mouse cursor. The menu must have been created with <a href="native_dialog.html#al_create_popup_menu">al_create_popup_menu</a>. It generates events just like a regular display menu does. It is possible that the menu will be canceled without any selection being made.</p>
 <p>The <code>display</code> parameter indicates which window the menu is associated with (when you process the menu click event), but does not actually affect where the menu is located on the screen.</p>
 <p>Returns <code>true</code> if the context menu was displayed.</p>
+<blockquote>
+<p><em>Note:</em> On Linux this function will fail if any of the mouse keys are held down. I.e. it will only reliably work if you handle it in <code>ALLEGRO_MOUSE_BUTTON_UP</code> events and even then only if that event corresponds to the final mouse button that was pressed.</p>
+</blockquote>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="native_dialog.html#al_create_popup_menu">al_create_popup_menu</a></p>
 <h2 id="al_remove_display_menu">al_remove_display_menu</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_MENU *al_remove_display_menu(ALLEGRO_DISPLAY *display)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L803">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/addons/native_dialog/menu.c#L829">Source Code</a></p>
 <p>Detaches the menu associated with the display and returns it. The menu can then be used on a different display.</p>
 <p>If you simply want to destroy the active menu, you can call <a href="native_dialog.html#al_set_display_menu">al_set_display_menu</a> with a <code>NULL</code> menu.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="native_dialog.html#al_set_display_menu">al_set_display_menu</a></p>
 <p class="timestamp">
 Allegro version 5.2.4 (GIT)
- - Last updated: 2017-12-11 05:30:44 UTC
+ - Last updated: 2018-01-22 20:42:23 UTC
 </p>
 </div>
 </body>

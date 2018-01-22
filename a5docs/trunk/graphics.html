@@ -699,7 +699,7 @@ GETTER(new_bitmap_samples, <span class="dv">0</span>)</code></pre></div>
 <p>See also: <a href="graphics.html#al_lock_bitmap">al_lock_bitmap</a>, <a href="graphics.html#al_lock_bitmap_region">al_lock_bitmap_region</a>, <a href="graphics.html#al_unlock_bitmap">al_unlock_bitmap</a></p>
 <h2 id="al_is_compatible_bitmap">al_is_compatible_bitmap</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_is_compatible_bitmap(ALLEGRO_BITMAP *bitmap)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/display.c#L249">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/display.c#L250">Source Code</a></p>
 <p>D3D and OpenGL allow sharing a texture in a way so it can be used for multiple windows. Each <a href="graphics.html#allegro_bitmap">ALLEGRO_BITMAP</a> created with <a href="graphics.html#al_create_bitmap">al_create_bitmap</a> however is usually tied to a single ALLEGRO_DISPLAY. This function can be used to know if the bitmap is compatible with the given display, even if it is a different display to the one it was created with. It returns true if the bitmap is compatible (things like a cached texture version can be used) and false otherwise (blitting in the current display will be slow).</p>
 <p>The only time this function is useful is if you are using multiple windows and need accelerated blitting of the same bitmaps to both.</p>
 <p>Returns true if the bitmap is compatible with the current display, false otherwise. If there is no current display, false is returned.</p>
@@ -1107,13 +1107,13 @@ a = d.a * 0 + s.a * d.a</code></pre>
 <h1 id="deferred-drawing">Deferred drawing</h1>
 <h2 id="al_hold_bitmap_drawing">al_hold_bitmap_drawing</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_hold_bitmap_drawing(bool hold)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/display.c#L494">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/display.c#L495">Source Code</a></p>
 <p>Enables or disables deferred bitmap drawing. This allows for efficient drawing of many bitmaps that share a parent bitmap, such as sub-bitmaps from a tilesheet or simply identical bitmaps. Drawing bitmaps that do not share a parent is less efficient, so it is advisable to stagger bitmap drawing calls such that the parent bitmap is the same for large number of those calls. While deferred bitmap drawing is enabled, the only functions that can be used are the bitmap drawing functions and font drawing functions. Changing the state such as the blending modes will result in undefined behaviour. One exception to this rule are the non-projection transformations. It is possible to set a new transformation while the drawing is held.</p>
 <p>No drawing is guaranteed to take place until you disable the hold. Thus, the idiom of this function's usage is to enable the deferred bitmap drawing, draw as many bitmaps as possible, taking care to stagger bitmaps that share parent bitmaps, and then disable deferred drawing. As mentioned above, this function also works with bitmap and truetype fonts, so if multiple lines of text need to be drawn, this function can speed things up.</p>
 <p>See also: <a href="graphics.html#al_is_bitmap_drawing_held">al_is_bitmap_drawing_held</a></p>
 <h2 id="al_is_bitmap_drawing_held">al_is_bitmap_drawing_held</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_is_bitmap_drawing_held(<span class="dt">void</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/display.c#L530">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/display.c#L531">Source Code</a></p>
 <p>Returns whether the deferred bitmap drawing mode is turned on or off.</p>
 <p>See also: <a href="graphics.html#al_hold_bitmap_drawing">al_hold_bitmap_drawing</a></p>
 <h1 id="image-io">Image I/O</h1>
@@ -1352,7 +1352,7 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <p>See also: <a href="graphics.html#al_set_render_state">al_set_render_state</a></p>
 <h2 id="al_set_render_state">al_set_render_state</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_render_state(ALLEGRO_RENDER_STATE state, <span class="dt">int</span> value)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/display.c#L592">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/display.c#L593">Source Code</a></p>
 <p>Set one of several render attributes; see <a href="graphics.html#allegro_render_state">ALLEGRO_RENDER_STATE</a> for details.</p>
 <p>This function does nothing if the target bitmap is a memory bitmap.</p>
 <p>Since: 5.1.2</p>
@@ -1369,7 +1369,7 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <p>See also: <a href="graphics.html#al_backup_dirty_bitmaps">al_backup_dirty_bitmaps</a>, <a href="graphics.html#al_create_bitmap">al_create_bitmap</a></p>
 <h2 id="al_backup_dirty_bitmaps">al_backup_dirty_bitmaps</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_backup_dirty_bitmaps(ALLEGRO_DISPLAY *display)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/display.c#L630">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/display.c#L631">Source Code</a></p>
 <p>Backs up all of a display's bitmaps to system memory.</p>
 <p>Since: 5.2.1</p>
 <blockquote>
@@ -1378,7 +1378,7 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <p>See also: <a href="graphics.html#al_backup_dirty_bitmap">al_backup_dirty_bitmap</a></p>
 <p class="timestamp">
 Allegro version 5.2.4 (GIT)
- - Last updated: 2017-12-11 05:30:34 UTC
+ - Last updated: 2018-01-22 20:42:16 UTC
 </p>
 </div>
 </body>
