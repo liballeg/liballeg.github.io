@@ -234,12 +234,12 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.13</p>
 <h2 id="al_android_get_os_version">al_android_get_os_version</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">const</span> <span class="dt">char</span> *al_android_get_os_version(<span class="dt">void</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/android/android_system.c#L600">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/android/android_system.c#L595">Source Code</a></p>
 <p>Returns a pointer to a static buffer that contains the version string of the Android platform that the calling Allegro program is running on.</p>
 <p>Since: 5.1.2</p>
 <h2 id="al_android_get_jni_env">al_android_get_jni_env</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">JNIEnv *al_android_get_jni_env(<span class="dt">void</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/android/android_system.c#L653">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/android/android_system.c#L643">Source Code</a></p>
 <p>Returns the Android JNI environment used by Allegro to call into Java. As a convenience this function provides it to the user so there is no need to obtain it yourself.</p>
 <p>For example if you have a Java method &quot;void send(String message)&quot; in your activity class, you could call it like this from C code:</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">JNIEnv * env = al_android_get_jni_env();
@@ -255,7 +255,7 @@ jstring jdata = (* env)-&gt;NewStringUTF(env, <span class="st">&quot;Hello Java!
 </blockquote>
 <h2 id="al_android_get_activity">al_android_get_activity</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">jobject al_android_get_activity(<span class="dt">void</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/android/android_system.c#L660">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/android/android_system.c#L650">Source Code</a></p>
 <p>Returns the Java Android activity used by Allegro. This is the same object created by Android from the class you specify in your manifest and either an instance of AllegroActivity or a derived class.</p>
 <p>Since: 5.2.2</p>
 <blockquote>
@@ -279,7 +279,7 @@ jstring jdata = (* env)-&gt;NewStringUTF(env, <span class="st">&quot;Hello Java!
 </blockquote>
 <p class="timestamp">
 Allegro version 5.2.4 (GIT)
- - Last updated: 2018-01-22 20:42:21 UTC
+ - Last updated: 2018-01-24 05:30:51 UTC
 </p>
 </div>
 </body>

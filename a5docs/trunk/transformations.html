@@ -437,7 +437,9 @@ al_use_transform(&amp;t);</code></pre></div>
    <span class="dt">float</span> left, <span class="dt">float</span> top, <span class="dt">float</span> n,
    <span class="dt">float</span> right, <span class="dt">float</span> bottom, <span class="dt">float</span> f)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/src/transformations.c#L525">Source Code</a></p>
-<p>Combines the given transformation with an orthographic transformation which maps the screen rectangle to the given left/top and right/bottom coordinates. near/far is the z-buffer range, if there is no z-buffer you can set it to -1/1.</p>
+<p>Combines the given transformation with an orthographic transformation which maps the screen rectangle to the given left/top and right/bottom coordinates.</p>
+<p>near/far is the z range, coordinates outside of that range will get clipped. Normally -1/1 is fine because all 2D graphics will have a z coordinate of 0. However if you for example do al_draw_rectangle(0, 0, 100, 100) and rotate around the x axis (&quot;towards the screen&quot;) make sure your z range allows values from -100 to 100 or the rotated rectangle will get clipped.</p>
+<p>Also, if you are using a depth buffer the z range decides the depth resolution. For example if you have a 16 bit depth buffer there are only 65536 discrete depth values. So if your near/far is set to -1000000/1000000 most of the z positions would not result in separate depth values which could lead to artifacts.</p>
 <p>Since: 5.1.3</p>
 <p>See also: <a href="transformations.html#al_use_projection_transform">al_use_projection_transform</a>, <a href="transformations.html#al_perspective_transform">al_perspective_transform</a></p>
 <h1 id="al_perspective_transform">al_perspective_transform</h1>
@@ -469,6 +471,7 @@ al_use_transform(&amp;t);</code></pre></div>
    <span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">float</span> z, <span class="dt">float</span> angle)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/src/transformations.c#L550">Source Code</a></p>
 <p>Combines the given transformation with a transformation which rotates coordinates around the given vector by the given angle in radians.</p>
+<p>Note: The vector is assumed to be of unit length (otherwise it will also incur a scale).</p>
 <p>Since: 5.1.3</p>
 <h1 id="al_horizontal_shear_transform">al_horizontal_shear_transform</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_horizontal_shear_transform(ALLEGRO_TRANSFORM* trans, <span class="dt">float</span> theta)</code></pre></div>
@@ -494,7 +497,7 @@ al_use_transform(&amp;t);</code></pre></div>
 <p>See also: <a href="transformations.html#al_horizontal_shear_transform">al_horizontal_shear_transform</a></p>
 <p class="timestamp">
 Allegro version 5.2.4 (GIT)
- - Last updated: 2018-01-22 20:42:20 UTC
+ - Last updated: 2018-01-24 05:30:50 UTC
 </p>
 </div>
 </body>
