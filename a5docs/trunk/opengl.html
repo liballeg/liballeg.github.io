@@ -185,7 +185,7 @@ glMultiTexCoord3fARB = (MULTI_TEX_FUNC) al_get_opengl_proc_address(
 <p>A pointer to the symbol if available or NULL otherwise.</p>
 <h1 id="al_get_opengl_texture">al_get_opengl_texture</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">GLuint al_get_opengl_texture(ALLEGRO_BITMAP *bitmap)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/opengl/ogl_bitmap.c#L1123">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/opengl/ogl_bitmap.c#L1127">Source Code</a></p>
 <p>Returns the OpenGL texture id internally used by the given bitmap if it uses one, else 0.</p>
 <p>Example:</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bitmap = al_load_bitmap(<span class="st">&quot;my_texture.png&quot;</span>);
@@ -194,13 +194,13 @@ texture = al_get_opengl_texture(bitmap);
     glBindTexture(GL_TEXTURE_2D, texture);</code></pre></div>
 <h1 id="al_get_opengl_texture_size">al_get_opengl_texture_size</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_get_opengl_texture_size(ALLEGRO_BITMAP *bitmap, <span class="dt">int</span> *w, <span class="dt">int</span> *h)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/opengl/ogl_bitmap.c#L1189">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/opengl/ogl_bitmap.c#L1193">Source Code</a></p>
 <p>Retrieves the size of the texture used for the bitmap. This can be different from the bitmap size if OpenGL only supports power-of-two sizes or if it is a sub-bitmap.</p>
 <p>Returns true on success, false on failure. Zero width and height are returned if the bitmap is not an OpenGL bitmap.</p>
 <p>See also: <a href="opengl.html#al_get_opengl_texture_position">al_get_opengl_texture_position</a></p>
 <h1 id="al_get_opengl_texture_position">al_get_opengl_texture_position</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_get_opengl_texture_position(ALLEGRO_BITMAP *bitmap, <span class="dt">int</span> *u, <span class="dt">int</span> *v)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/opengl/ogl_bitmap.c#L1213">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/opengl/ogl_bitmap.c#L1217">Source Code</a></p>
 <p>Returns the u/v coordinates for the top/left corner of the bitmap within the used texture, in pixels.</p>
 <p>See also: <a href="opengl.html#al_get_opengl_texture_size">al_get_opengl_texture_size</a></p>
 <h1 id="al_get_opengl_program_object">al_get_opengl_program_object</h1>
@@ -209,7 +209,7 @@ texture = al_get_opengl_texture(bitmap);
 <p>Returns the OpenGL program object associated with this shader, if the platform is <code>ALLEGRO_SHADER_GLSL</code>. Otherwise, returns 0.</p>
 <h1 id="al_get_opengl_fbo">al_get_opengl_fbo</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">GLuint al_get_opengl_fbo(ALLEGRO_BITMAP *bitmap)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/opengl/ogl_bitmap.c#L1163">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/opengl/ogl_bitmap.c#L1167">Source Code</a></p>
 <p>Returns the OpenGL FBO id internally used by the given bitmap if it uses one, otherwise returns zero. No attempt will be made to create an FBO if the bitmap is not owned by the current display.</p>
 <p>The FBO returned by this function will only be freed when the bitmap is destroyed, or if you call <a href="opengl.html#al_remove_opengl_fbo">al_remove_opengl_fbo</a> on the bitmap.</p>
 <blockquote>
@@ -218,7 +218,7 @@ texture = al_get_opengl_texture(bitmap);
 <p>See also: <a href="opengl.html#al_remove_opengl_fbo">al_remove_opengl_fbo</a>, <a href="graphics.html#al_set_target_bitmap">al_set_target_bitmap</a></p>
 <h1 id="al_remove_opengl_fbo">al_remove_opengl_fbo</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_remove_opengl_fbo(ALLEGRO_BITMAP *bitmap)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/master/src/opengl/ogl_bitmap.c#L1136">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/master/src/opengl/ogl_bitmap.c#L1140">Source Code</a></p>
 <p>Explicitly free an OpenGL FBO created for a bitmap, if it has one. Usually you do not need to worry about freeing FBOs, unless you use <a href="opengl.html#al_get_opengl_fbo">al_get_opengl_fbo</a>.</p>
 <p>See also: <a href="opengl.html#al_get_opengl_fbo">al_get_opengl_fbo</a>, <a href="graphics.html#al_set_target_bitmap">al_set_target_bitmap</a></p>
 <h1 id="al_have_opengl_extension">al_have_opengl_extension</h1>
@@ -261,7 +261,7 @@ texture = al_get_opengl_texture(bitmap);
 <p>Any extension which appears in the section is treated as not available (it does not matter if you set it to 0 or any other value).</p>
 <p class="timestamp">
 Allegro version 5.2.4 (GIT)
- - Last updated: 2018-01-24 05:30:52 UTC
+ - Last updated: 2018-01-26 05:31:04 UTC
 </p>
 </div>
 </body>
