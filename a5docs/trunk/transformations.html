@@ -264,6 +264,9 @@ al_use_projection_transform(&amp;trans);</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/master/src/transformations.c#L128">Source Code</a></p>
 <p>Returns the inverse of the current transformation of the target bitmap. If there is no target bitmap, this function returns NULL.</p>
 <p>This is similar to calling <code>al_invert_transform(al_get_current_transform())</code> but the result of this function is cached.</p>
+<blockquote>
+<p><em>Note</em>: Allegro's transformation inversion functions work correctly only with 2D transformations.</p>
+</blockquote>
 <p>Since: 5.1.0</p>
 <h1 id="al_invert_transform">al_invert_transform</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_invert_transform(ALLEGRO_TRANSFORM *trans)</code></pre></div>
@@ -273,6 +276,9 @@ al_use_projection_transform(&amp;trans);</code></pre></div>
 <ul>
 <li>trans - Transformation to invert</li>
 </ul>
+<blockquote>
+<p><em>Note</em>: Allegro's transformation inversion functions work correctly only with 2D transformations.</p>
+</blockquote>
 <p>See also: <a href="transformations.html#al_check_inverse">al_check_inverse</a></p>
 <h1 id="al_check_inverse">al_check_inverse</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_check_inverse(<span class="dt">const</span> ALLEGRO_TRANSFORM *trans, <span class="dt">float</span> tol)</code></pre></div>
@@ -286,6 +292,9 @@ al_use_projection_transform(&amp;trans);</code></pre></div>
 <li>tol - Tolerance</li>
 </ul>
 <p><em>Returns:</em> 1 if the transformation is invertible, 0 otherwise</p>
+<blockquote>
+<p><em>Note</em>: Allegro's transformation inversion functions work correctly only with 2D transformations.</p>
+</blockquote>
 <p>See also: <a href="transformations.html#al_invert_transform">al_invert_transform</a></p>
 <h1 id="al_identity_transform">al_identity_transform</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_identity_transform(ALLEGRO_TRANSFORM *trans)</code></pre></div>
@@ -497,7 +506,7 @@ al_use_transform(&amp;t);</code></pre></div>
 <p>See also: <a href="transformations.html#al_horizontal_shear_transform">al_horizontal_shear_transform</a></p>
 <p class="timestamp">
 Allegro version 5.2.4 (GIT)
- - Last updated: 2018-01-29 05:30:52 UTC
+ - Last updated: 2018-02-11 05:30:09 UTC
 </p>
 </div>
 </body>
