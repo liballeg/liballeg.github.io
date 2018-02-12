@@ -339,8 +339,13 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <span class="co"># Default is &#39;default&#39;.</span>
 <span class="dt">capture_device</span><span class="ot">=</span><span class="kw">default</span>
 
-<span class="co"># Set the buffer size (in samples)</span>
+<span class="co"># Set the period size (in samples)</span>
+<span class="co"># Note that this is erroneously called &#39;buffer_size&#39; for backwards</span>
+<span class="co"># compatibility.</span>
 <span class="dt">buffer_size</span><span class="ot">=</span><span class="dv">32</span>
+
+<span class="co"># Set the buffer size (in samples)</span>
+<span class="dt">buffer_size2</span><span class="ot">=</span><span class="dv">2048</span>
 
 <span class="kw">[pulseaudio]</span>
 
@@ -351,6 +356,10 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 
 <span class="co"># Set the DirectSound buffer size (in samples)</span>
 <span class="dt">buffer_size </span><span class="ot">=</span><span class="st"> </span><span class="dv">8192</span>
+
+<span class="co"># Which window to attach the device to. Can be &#39;desktop&#39;, or &#39;foreground&#39;. Try</span>
+<span class="co"># flipping this if there are issues initializing audio.</span>
+<span class="dt">window </span><span class="ot">=</span><span class="st"> desktop</span>
 
 <span class="kw">[opengl]</span>
 
@@ -451,6 +460,10 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <span class="co"># Set to 0 to disable function names in log files.</span>
 <span class="dt">functions</span><span class="ot">=</span><span class="dv">1</span>
 
+<span class="kw">[x11]</span>
+<span class="co"># Can be fullscreen_only, always, never</span>
+<span class="dt">bypass_compositor </span><span class="ot">=</span><span class="st"> fullscreen_only</span>
+
 <span class="kw">[xkeymap]</span>
 <span class="co"># Override X11 keycode. The below example maps X11 code 52 (Y) to Allegro</span>
 <span class="co"># code 26 (Z) and X11 code 29 (Z) to Allegro code 25 (Y).</span>
@@ -516,7 +529,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.12</p>
 <p class="timestamp">
 Allegro version 5.2.4 (GIT)
- - Last updated: 2018-01-29 05:30:50 UTC
+ - Last updated: 2018-02-12 03:10:28 UTC
 </p>
 </div>
 </body>
