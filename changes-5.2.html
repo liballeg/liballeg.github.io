@@ -81,6 +81,73 @@ A game programming library
 <h1 class="title">Allegro changelog for 5.2.x series</h1>
 </div>
 <p>These lists serve as summaries; the full histories are in the git repository.</p>
+<h1 id="changes-from-5.2.3-to-5.2.4-february-2018">Changes from 5.2.3 to 5.2.4 (February 2018)</h1>
+<p>The main developers this time were: Sebastian Krzyszkowiak, Elias Pschernig, SiegeLord</p>
+<p>Core:</p>
+<ul>
+<li><p>Fix errors when reading/writing 0 byte buffers (Bruce Pascoe).</p></li>
+<li><p>Re-initialize TLS when Allegro is installed (Issue #865).</p></li>
+<li><p>Add <code>al_transform_coordinates_4d</code>.</p></li>
+<li><p>Don't initialize the trace mutex multiple times (Issue #874).</p></li>
+<li><p>Fix 3D (non-projection) transforms with <code>al_hold_bitmap_drawing</code>.</p></li>
+</ul>
+<p>Raspberry Pi port:</p>
+<ul>
+<li>Fix compilation on RPI.</li>
+</ul>
+<p>Android port:</p>
+<ul>
+<li><p>Remove limit on the working directory length.</p></li>
+<li><p>Fix <code>ALLEGRO_MAXIMIZED</code> flag.</p></li>
+<li><p>Fix build with older Android NDKs.</p></li>
+<li><p>Remove <code>glClear</code> hack for Android 2.1.</p></li>
+</ul>
+<p>Linux port:</p>
+<ul>
+<li>Make compositor bypass configurable in X11, and bypass only when fullscreen by default.</li>
+</ul>
+<p>OSX port:</p>
+<ul>
+<li>Fix a few OSX retina scaling issues (Issue #851).</li>
+</ul>
+<p>Audio addon:</p>
+<ul>
+<li><p>Fix ALSA lag.</p></li>
+<li><p>Add an option to use the desktop window when initializing DirectSound (Issue #877).</p></li>
+</ul>
+<p>Font addon:</p>
+<ul>
+<li>Add support for bmfont format.</li>
+</ul>
+<p>Native dialog addon:</p>
+<ul>
+<li><p>Resize the display on Windows when hiding/showing the menu (Issue #860).</p></li>
+<li><p>Detect when <code>al_popup_menu</code> fails to actually work under GTK (Issue #808).</p></li>
+<li><p>Don't clear the top-level menu when destroying the popup menu.</p></li>
+</ul>
+<p>Build system:</p>
+<ul>
+<li><p>Don't link in libm on MSVC for DUMB (Issue #847).</p></li>
+<li><p>Don't use the LOCATION property (Issue #847).</p></li>
+<li><p>Don't use SYSTEM for DirectX includes.</p></li>
+<li><p>Add hints for mingw-w64 path locations for DirectX includes/libs.</p></li>
+</ul>
+<p>Python binding:</p>
+<ul>
+<li>Fix the Python code-generation scripts to run under Python 2.</li>
+</ul>
+<p>Lua binding:</p>
+<ul>
+<li>Add script to generate LuaJIT C API for Allegro 5 (BQ).</li>
+</ul>
+<p>Documentation:</p>
+<ul>
+<li>Many improvements (Andreas Rönnquist, others)</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>Add a texture to the skybox in <code>ex_camera</code>.</li>
+</ul>
 <h1 id="changes-from-5.2.2-to-5.2.3-october-2017">Changes from 5.2.2 to 5.2.3 (October 2017)</h1>
 <p>The main developers this time were: Elias Pschernig, SiegeLord, Sebastian Krzyszkowiak, Vitaliy V. Tokarev, Simon Naarmann, Bruno Félix Rezende Ribeiro, Trent Gamblin).</p>
 <p>Core:</p>
