@@ -367,7 +367,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="font.html#al_get_text_dimensions">al_get_text_dimensions</a></p>
 <h2 id="al_get_allegro_font_version">al_get_allegro_font_version</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">uint32_t</span> al_get_allegro_font_version(<span class="dt">void</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/font/font.c#L485">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/font/font.c#L487">Source Code</a></p>
 <p>Returns the (compiled) version of the addon, in the same format as <a href="system.html#al_get_allegro_version">al_get_allegro_version</a>.</p>
 <h2 id="al_get_font_ranges">al_get_font_ranges</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> al_get_font_ranges(ALLEGRO_FONT *f, <span class="dt">int</span> ranges_count, <span class="dt">int</span> *ranges)</code></pre></div>
@@ -543,7 +543,7 @@ al_get_glyph_advance(font, &#39;A&#39;, ALLEGRO_NO_KERNING)
 <h2 id="al_grab_font_from_bitmap">al_grab_font_from_bitmap</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_FONT *al_grab_font_from_bitmap(ALLEGRO_BITMAP *bmp,
    <span class="dt">int</span> ranges_n, <span class="dt">const</span> <span class="dt">int</span> ranges[])</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/font/fontbmp.c#L202">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/font/fontbmp.c#L206">Source Code</a></p>
 <p>Creates a new font from an Allegro bitmap. You can delete the bitmap after the function returns as the font will contain a copy for itself.</p>
 <p>Parameters:</p>
 <ul>
@@ -577,13 +577,13 @@ al_grab_font_from_bitmap(bitmap, <span class="dv">4</span>, ranges)</code></pre>
 <p>See also: <a href="graphics.html#al_load_bitmap">al_load_bitmap</a>, <a href="font.html#al_grab_font_from_bitmap">al_grab_font_from_bitmap</a></p>
 <h2 id="al_load_bitmap_font">al_load_bitmap_font</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_FONT *al_load_bitmap_font(<span class="dt">const</span> <span class="dt">char</span> *fname)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/font/fontbmp.c#L177">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/font/fontbmp.c#L181">Source Code</a></p>
 <p>Load a bitmap font from a file. This is done by first calling <a href="graphics.html#al_load_bitmap_flags">al_load_bitmap_flags</a> and then <a href="font.html#al_grab_font_from_bitmap">al_grab_font_from_bitmap</a>.</p>
 <p>If you wanted to load an old A4 font, for example, it would be better to load the bitmap yourself in order to call <a href="graphics.html#al_convert_mask_to_alpha">al_convert_mask_to_alpha</a> on it before passing it to <a href="font.html#al_grab_font_from_bitmap">al_grab_font_from_bitmap</a>.</p>
 <p>See also: <a href="font.html#al_load_bitmap_font_flags">al_load_bitmap_font_flags</a>, <a href="font.html#al_load_font">al_load_font</a>, <a href="graphics.html#al_load_bitmap_flags">al_load_bitmap_flags</a></p>
 <h2 id="al_load_bitmap_font_flags">al_load_bitmap_font_flags</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_FONT *al_load_bitmap_font_flags(<span class="dt">const</span> <span class="dt">char</span> *fname, <span class="dt">int</span> flags)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/font/fontbmp.c#L193">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/font/fontbmp.c#L197">Source Code</a></p>
 <p>Like <a href="font.html#al_load_bitmap_font">al_load_bitmap_font</a> but additionally takes a flags parameter which is a bitfield containing a combination of the following:</p>
 <dl>
 <dt>ALLEGRO_NO_PREMULTIPLIED_ALPHA</dt>
@@ -593,7 +593,7 @@ al_grab_font_from_bitmap(bitmap, <span class="dv">4</span>, ranges)</code></pre>
 <p>See also: <a href="font.html#al_load_bitmap_font">al_load_bitmap_font</a>, <a href="graphics.html#al_load_bitmap_flags">al_load_bitmap_flags</a></p>
 <h2 id="al_create_builtin_font">al_create_builtin_font</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_FONT *al_create_builtin_font(<span class="dt">void</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/font/stdfont.c#L442">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/font/stdfont.c#L447">Source Code</a></p>
 <p>Creates a monochrome bitmap font (8x8 pixels per character).</p>
 <p>This font is primarily intended to be used for displaying information in environments or during early runtime states where no external font data is available or loaded (e.g. for debugging).</p>
 <p>The builtin font contains the following unicode character ranges:</p>
@@ -610,16 +610,16 @@ al_grab_font_from_bitmap(bitmap, <span class="dv">4</span>, ranges)</code></pre>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"> <span class="pp">#include </span><span class="im">&lt;allegro5/allegro_ttf.h&gt;</span></code></pre></div>
 <h2 id="al_init_ttf_addon">al_init_ttf_addon</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_init_ttf_addon(<span class="dt">void</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/ttf/ttf.c#L1097">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/ttf/ttf.c#L1104">Source Code</a></p>
 <p>Call this after <a href="font.html#al_init_font_addon">al_init_font_addon</a> to make <a href="font.html#al_load_font">al_load_font</a> recognize &quot;.ttf&quot; and other formats supported by <a href="font.html#al_load_ttf_font">al_load_ttf_font</a>.</p>
 <p>Returns true on success, false on failure.</p>
 <h2 id="al_shutdown_ttf_addon">al_shutdown_ttf_addon</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_shutdown_ttf_addon(<span class="dt">void</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/ttf/ttf.c#L1132">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/ttf/ttf.c#L1139">Source Code</a></p>
 <p>Unloads the ttf addon again. You normally don't need to call this.</p>
 <h2 id="al_load_ttf_font">al_load_ttf_font</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_FONT *al_load_ttf_font(<span class="dt">char</span> <span class="dt">const</span> *filename, <span class="dt">int</span> size, <span class="dt">int</span> flags)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/ttf/ttf.c#L972">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/ttf/ttf.c#L977">Source Code</a></p>
 <p>Loads a TrueType font from a file using the FreeType library. Quoting from the FreeType FAQ this means support for many different font formats:</p>
 <p><em>TrueType, OpenType, Type1, CID, CFF, Windows FON/FNT, X11 PCF, and others</em></p>
 <p>The <code>size</code> parameter determines the size the font will be rendered at, specified in pixels. The standard font size is measured in <em>units per EM</em>, if you instead want to specify the size as the total height of glyphs in pixels, pass it as a negative value.</p>
@@ -636,7 +636,7 @@ al_grab_font_from_bitmap(bitmap, <span class="dv">4</span>, ranges)</code></pre>
 <h2 id="al_load_ttf_font_f">al_load_ttf_font_f</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_FONT *al_load_ttf_font_f(ALLEGRO_FILE *file,
     <span class="dt">char</span> <span class="dt">const</span> *filename, <span class="dt">int</span> size, <span class="dt">int</span> flags)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/ttf/ttf.c#L823">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/ttf/ttf.c#L828">Source Code</a></p>
 <p>Like <a href="font.html#al_load_ttf_font">al_load_ttf_font</a>, but the font is read from the file handle. The filename is only used to find possible additional files next to a font file.</p>
 <blockquote>
 <p><em>Note:</em> The file handle is owned by the returned ALLEGRO_FONT object and must not be freed by the caller, as FreeType expects to be able to read from it at a later time.</p>
@@ -644,7 +644,7 @@ al_grab_font_from_bitmap(bitmap, <span class="dv">4</span>, ranges)</code></pre>
 <h2 id="al_load_ttf_font_stretch">al_load_ttf_font_stretch</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_FONT *al_load_ttf_font_stretch(<span class="dt">char</span> <span class="dt">const</span> *filename, <span class="dt">int</span> w, <span class="dt">int</span> h,
    <span class="dt">int</span> flags)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/ttf/ttf.c#L980">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/ttf/ttf.c#L985">Source Code</a></p>
 <p>Like <a href="font.html#al_load_ttf_font">al_load_ttf_font</a>, except it takes separate width and height parameters instead of a single size parameter.</p>
 <p>If the height is a positive value, and the width zero or positive, then font will be stretched according to those parameters. The width must not be negative if the height is positive.</p>
 <p>As with <a href="font.html#al_load_ttf_font">al_load_ttf_font</a>, the height may be a negative value to specify the total height in pixels. Then the width must also be a negative value, or zero.</p>
@@ -654,7 +654,7 @@ al_grab_font_from_bitmap(bitmap, <span class="dv">4</span>, ranges)</code></pre>
 <h2 id="al_load_ttf_font_stretch_f">al_load_ttf_font_stretch_f</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_FONT *al_load_ttf_font_stretch_f(ALLEGRO_FILE *file,
     <span class="dt">char</span> <span class="dt">const</span> *filename, <span class="dt">int</span> w, <span class="dt">int</span> h, <span class="dt">int</span> flags)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/ttf/ttf.c#L832">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/ttf/ttf.c#L837">Source Code</a></p>
 <p>Like <a href="font.html#al_load_ttf_font_stretch">al_load_ttf_font_stretch</a>, but the font is read from the file handle. The filename is only used to find possible additional files next to a font file.</p>
 <blockquote>
 <p><em>Note:</em> The file handle is owned by the returned ALLEGRO_FONT object and must not be freed by the caller, as FreeType expects to be able to read from it at a later time.</p>
@@ -663,7 +663,7 @@ al_grab_font_from_bitmap(bitmap, <span class="dv">4</span>, ranges)</code></pre>
 <p>See also: <a href="font.html#al_load_ttf_font_stretch">al_load_ttf_font_stretch</a></p>
 <h2 id="al_get_allegro_ttf_version">al_get_allegro_ttf_version</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">uint32_t</span> al_get_allegro_ttf_version(<span class="dt">void</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/ttf/ttf.c#L1149">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/ttf/ttf.c#L1156">Source Code</a></p>
 <p>Returns the (compiled) version of the addon, in the same format as <a href="system.html#al_get_allegro_version">al_get_allegro_version</a>.</p>
 <h2 id="al_get_glyph">al_get_glyph</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_get_glyph(<span class="dt">const</span> ALLEGRO_FONT *f, <span class="dt">int</span> prev_codepoint, <span class="dt">int</span> codepoint, ALLEGRO_GLYPH *glyph)</code></pre></div>
@@ -676,7 +676,7 @@ al_grab_font_from_bitmap(bitmap, <span class="dv">4</span>, ranges)</code></pre>
 <p>See also: <a href="font.html#allegro_glyph">ALLEGRO_GLYPH</a></p>
 <p class="timestamp">
 Allegro version 5.2.5 (GIT)
- - Last updated: 2018-03-05 05:30:29 UTC
+ - Last updated: 2018-03-08 05:30:57 UTC
 </p>
 </div>
 </body>

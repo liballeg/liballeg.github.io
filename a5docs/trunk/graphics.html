@@ -1228,7 +1228,7 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <p>See also: <a href="graphics.html#al_load_bitmap">al_load_bitmap</a></p>
 <h2 id="al_load_bitmap_f">al_load_bitmap_f</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_BITMAP *al_load_bitmap_f(ALLEGRO_FILE *fp, <span class="dt">const</span> <span class="dt">char</span> *ident)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/src/bitmap_io.c#L247">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/src/bitmap_io.c#L249">Source Code</a></p>
 <p>Loads an image from an <a href="file.html#allegro_file">ALLEGRO_FILE</a> stream into a new <a href="graphics.html#allegro_bitmap">ALLEGRO_BITMAP</a>. The file type is determined by the passed 'ident' parameter, which is a file name extension including the leading dot. If (and only if) 'ident' is NULL, the file type is determined with <a href="graphics.html#al_identify_bitmap_f">al_identify_bitmap_f</a> instead.</p>
 <p>This is the same as calling <a href="graphics.html#al_load_bitmap_flags_f">al_load_bitmap_flags_f</a> with 0 for the flags parameter.</p>
 <p>Returns NULL on error. The file remains open afterwards.</p>
@@ -1239,7 +1239,7 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <h2 id="al_load_bitmap_flags_f">al_load_bitmap_flags_f</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_BITMAP *al_load_bitmap_flags_f(ALLEGRO_FILE *fp,
    <span class="dt">const</span> <span class="dt">char</span> *ident, <span class="dt">int</span> flags)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/src/bitmap_io.c#L264">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/src/bitmap_io.c#L266">Source Code</a></p>
 <p>Loads an image from an <a href="file.html#allegro_file">ALLEGRO_FILE</a> stream into a new <a href="graphics.html#allegro_bitmap">ALLEGRO_BITMAP</a>. The file type is determined by the passed 'ident' parameter, which is a file name extension including the leading dot. If (and only if) 'ident' is NULL, the file type is determined with <a href="graphics.html#al_identify_bitmap_f">al_identify_bitmap_f</a> instead.</p>
 <p>The flags parameter is the same as for <a href="graphics.html#al_load_bitmap_flags">al_load_bitmap_flags</a>.</p>
 <p>Returns NULL on error. The file remains open afterwards.</p>
@@ -1260,7 +1260,7 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <h2 id="al_save_bitmap_f">al_save_bitmap_f</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_save_bitmap_f(ALLEGRO_FILE *fp, <span class="dt">const</span> <span class="dt">char</span> *ident,
    ALLEGRO_BITMAP *bitmap)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/src/bitmap_io.c#L281">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/src/bitmap_io.c#L283">Source Code</a></p>
 <p>Saves an <a href="graphics.html#allegro_bitmap">ALLEGRO_BITMAP</a> to an <a href="file.html#allegro_file">ALLEGRO_FILE</a> stream. The file type is determined by the passed 'ident' parameter, which is a file name extension including the leading dot.</p>
 <p>Returns true on success, false on error. The file remains open afterwards.</p>
 <blockquote>
@@ -1279,13 +1279,13 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <p>See also: <a href="graphics.html#al_identify_bitmap">al_identify_bitmap</a></p>
 <h2 id="al_identify_bitmap">al_identify_bitmap</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">char</span> <span class="dt">const</span> *al_identify_bitmap(<span class="dt">char</span> <span class="dt">const</span> *filename)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/src/bitmap_io.c#L307">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/src/bitmap_io.c#L309">Source Code</a></p>
 <p>This works exactly as <a href="graphics.html#al_identify_bitmap_f">al_identify_bitmap_f</a> but you specify the filename of the file for which to detect the type and not a file handle. The extension, if any, of the passed filename is not taken into account - only the file contents.</p>
 <p>Since: 5.1.12</p>
 <p>See also: <a href="image.html#al_init_image_addon">al_init_image_addon</a>, <a href="graphics.html#al_identify_bitmap_f">al_identify_bitmap_f</a>, <a href="graphics.html#al_register_bitmap_identifier">al_register_bitmap_identifier</a></p>
 <h2 id="al_identify_bitmap_f">al_identify_bitmap_f</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">char</span> <span class="dt">const</span> *al_identify_bitmap_f(ALLEGRO_FILE *fp)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/src/bitmap_io.c#L296">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/src/bitmap_io.c#L298">Source Code</a></p>
 <p>Tries to guess the bitmap file type of the open ALLEGRO_FILE by reading the first few bytes. By default Allegro cannot recognize any file types, but calling <a href="image.html#al_init_image_addon">al_init_image_addon</a> will add detection of (some of) the types it can read. You can also use <a href="graphics.html#al_register_bitmap_identifier">al_register_bitmap_identifier</a> to add identification for custom file types.</p>
 <p>Returns a pointer to a static string with a file extension for the type, including the leading dot. For example &quot;.png&quot; or &quot;.jpg&quot;. Returns NULL if the bitmap type cannot be determined.</p>
 <p>Since: 5.1.12</p>
@@ -1378,7 +1378,7 @@ al_draw_bitmap(tmp_buffer, <span class="dv">0</span>, <span class="dv">0</span>,
 <p>See also: <a href="graphics.html#al_backup_dirty_bitmap">al_backup_dirty_bitmap</a></p>
 <p class="timestamp">
 Allegro version 5.2.5 (GIT)
- - Last updated: 2018-03-05 05:30:19 UTC
+ - Last updated: 2018-03-08 05:30:47 UTC
 </p>
 </div>
 </body>
