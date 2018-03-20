@@ -1249,7 +1249,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p>See also: <a href="audio.html#al_register_sample_loader">al_register_sample_loader</a>, <a href="acodec.html#al_init_acodec_addon">al_init_acodec_addon</a></p>
 <h2 id="al_load_sample_f">al_load_sample_f</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_SAMPLE *al_load_sample_f(ALLEGRO_FILE* fp, <span class="dt">const</span> <span class="dt">char</span> *ident)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/audio/audio_io.c#L273">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/audio/audio_io.c#L279">Source Code</a></p>
 <p>Loads an audio file from an <a href="file.html#allegro_file">ALLEGRO_FILE</a> stream into an <a href="audio.html#allegro_sample">ALLEGRO_SAMPLE</a>. The file type is determined by the passed 'ident' parameter, which is a file name extension including the leading dot.</p>
 <p>Note that this stores the entire file in memory at once, which may be time consuming. To read the file as it is needed, use <a href="audio.html#al_load_audio_stream_f">al_load_audio_stream_f</a>.</p>
 <p>Returns the sample on success, NULL on failure. The file remains open afterwards.</p>
@@ -1260,7 +1260,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <h2 id="al_load_audio_stream">al_load_audio_stream</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_AUDIO_STREAM *al_load_audio_stream(<span class="dt">const</span> <span class="dt">char</span> *filename,
    <span class="dt">size_t</span> buffer_count, <span class="dt">unsigned</span> <span class="dt">int</span> samples)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/audio/audio_io.c#L291">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/audio/audio_io.c#L300">Source Code</a></p>
 <p>Loads an audio file from disk as it is needed.</p>
 <p>Unlike regular streams, the one returned by this function need not be fed by the user; the library will automatically read more of the file as it is needed. The stream will contain <em>buffer_count</em> buffers with <em>samples</em> samples.</p>
 <p>The audio stream will start in the playing state. It should be attached to a voice or mixer to generate any output. See <a href="audio.html#allegro_audio_stream">ALLEGRO_AUDIO_STREAM</a> for more details.</p>
@@ -1272,7 +1272,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <h2 id="al_load_audio_stream_f">al_load_audio_stream_f</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_AUDIO_STREAM *al_load_audio_stream_f(ALLEGRO_FILE* fp, <span class="dt">const</span> <span class="dt">char</span> *ident,
    <span class="dt">size_t</span> buffer_count, <span class="dt">unsigned</span> <span class="dt">int</span> samples)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/audio/audio_io.c#L315">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/audio/audio_io.c#L328">Source Code</a></p>
 <p>Loads an audio file from <a href="file.html#allegro_file">ALLEGRO_FILE</a> stream as it is needed.</p>
 <p>Unlike regular streams, the one returned by this function need not be fed by the user; the library will automatically read more of the file as it is needed. The stream will contain <em>buffer_count</em> buffers with <em>samples</em> samples.</p>
 <p>The file type is determined by the passed 'ident' parameter, which is a file name extension including the leading dot.</p>
@@ -1284,7 +1284,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p>See also: <a href="audio.html#al_load_audio_stream">al_load_audio_stream</a>, <a href="audio.html#al_register_audio_stream_loader_f">al_register_audio_stream_loader_f</a>, <a href="acodec.html#al_init_acodec_addon">al_init_acodec_addon</a></p>
 <h2 id="al_save_sample">al_save_sample</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_save_sample(<span class="dt">const</span> <span class="dt">char</span> *filename, ALLEGRO_SAMPLE *spl)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/audio/audio_io.c#L334">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/audio/audio_io.c#L350">Source Code</a></p>
 <p>Writes a sample into a file. Currently, wav is the only supported format, and the extension must be &quot;.wav&quot;.</p>
 <p>Returns true on success, false on error.</p>
 <blockquote>
@@ -1293,7 +1293,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p>See also: <a href="audio.html#al_save_sample_f">al_save_sample_f</a>, <a href="audio.html#al_register_sample_saver">al_register_sample_saver</a>, <a href="acodec.html#al_init_acodec_addon">al_init_acodec_addon</a></p>
 <h2 id="al_save_sample_f">al_save_sample_f</h2>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_save_sample_f(ALLEGRO_FILE *fp, <span class="dt">const</span> <span class="dt">char</span> *ident, ALLEGRO_SAMPLE *spl)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/audio/audio_io.c#L355">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/addons/audio/audio_io.c#L377">Source Code</a></p>
 <p>Writes a sample into a <a href="file.html#allegro_file">ALLEGRO_FILE</a> filestream. Currently, wav is the only supported format, and the extension must be &quot;.wav&quot;.</p>
 <p>Returns true on success, false on error. The file remains open afterwards.</p>
 <blockquote>
@@ -1404,7 +1404,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 </blockquote>
 <p class="timestamp">
 Allegro version 5.2.5 (GIT)
- - Last updated: 2018-03-08 05:30:55 UTC
+ - Last updated: 2018-03-20 04:30:42 UTC
 </p>
 </div>
 </body>
