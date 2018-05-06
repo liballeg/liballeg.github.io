@@ -239,7 +239,7 @@ al_use_transform(&amp;T);</code></pre></div>
 <h1 id="al_use_projection_transform">al_use_projection_transform</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_use_projection_transform(<span class="dt">const</span> ALLEGRO_TRANSFORM *trans)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/src/transformations.c#L74">Source Code</a></p>
-<p>Sets the projection transformation to be used for the the drawing operations on the target bitmap (each bitmap maintains its own projection transformation). Every drawing operation after this call will be transformed using this transformation. To return default behavior, call this function with an orthographic transform like so:</p>
+<p>Sets the projection transformation to be used for the drawing operations on the target bitmap (each bitmap maintains its own projection transformation). Every drawing operation after this call will be transformed using this transformation. To return default behavior, call this function with an orthographic transform like so:</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_TRANSFORM trans;
 al_identity_transform(&amp;trans);
 al_orthographic_transform(&amp;trans, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">-1.0</span>, al_get_bitmap_width(bitmap),
@@ -251,7 +251,7 @@ al_use_projection_transform(&amp;trans);</code></pre></div>
 <p>This function does nothing if there is no target bitmap. This function also does nothing if the bitmap is a memory bitmap (i.e. memory bitmaps always use an orthographic transform like the snippet above). Note that the projection transform will be reset to default if a video bitmap is converted to a memory bitmap. Additionally, if the bitmap in question is the backbuffer, it's projection transformation will be reset to default if it is resized. Lastly, when you draw a memory bitmap to a video bitmap with a custom projection transform, this transformation will be ignored (i.e. it'll be as if the projection transform of the target bitmap was temporarily reset to default).</p>
 <p>The parameter is passed by reference as an optimization to avoid the overhead of stack copying. The reference will not be stored in the Allegro library so it is safe to pass references to local variables.</p>
 <p>Since: 5.1.9</p>
-<p>See also: <a href="transformations.html#al_get_current_projection_transform">al_get_current_projection_transform</a></p>
+<p>See also: <a href="transformations.html#al_get_current_projection_transform">al_get_current_projection_transform</a>, <a href="transformations.html#al_perspective_transform">al_perspective_transform</a>, <a href="transformations.html#al_orthographic_transform">al_orthographic_transform</a></p>
 <h1 id="al_get_current_projection_transform">al_get_current_projection_transform</h1>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">const</span> ALLEGRO_TRANSFORM *al_get_current_projection_transform(<span class="dt">void</span>)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/src/transformations.c#L116">Source Code</a></p>
@@ -421,12 +421,30 @@ al_use_transform(&amp;t);</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_transform_coordinates_3d_projective(<span class="dt">const</span> ALLEGRO_TRANSFORM *trans,
    <span class="dt">float</span> *x, <span class="dt">float</span> *y, <span class="dt">float</span> *z)</code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/1d4d6398dab792f7264280c50277812b0659d394/src/transformations.c#L467">Source Code</a></p>
-<p>Transform x, y, z as homogeneous coordinates. This is the same as using <a href="transformations.html#al_transform_coordinates_4d">al_transform_coordinates_4d</a> with the w coordinate set to 1, then dividing x, y, z by the resulting w. This will provide the same coordinates Allegro will draw to when a projective transform is in effect as set with <a href="transformations.html#al_use_projection_transform">al_use_projection_transform</a>.</p>
+<p>Transform x, y, z as homogeneous coordinates. This is the same as using <a href="transformations.html#al_transform_coordinates_4d">al_transform_coordinates_4d</a> with the w coordinate set to 1, then dividing x, y, z by the resulting w. This will provide the same normalized coordinates Allegro will draw to when a projective transform is in effect as set with <a href="transformations.html#al_use_projection_transform">al_use_projection_transform</a>. To get the actual pixel coordinates from those translate and scale like so (w and h would be the pixel dimensions of the target bitmap):</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">x = w / <span class="dv">2</span> + x * w / <span class="dv">2</span>
+y = h / <span class="dv">2</span> - y * h / <span class="dv">2</span></code></pre></div>
 <p><em>Parameters:</em></p>
 <ul>
 <li>trans - Transformation to use</li>
 <li>x, y, z - Pointers to the coordinates</li>
 </ul>
+<p>Example:</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_TRANSFORM t2;
+al_copy_transform(&amp;t2, al_get_current_transform());
+al_compose_transform(&amp;t2, al_get_current_projection_transform());
+
+ALLEGRO_TRANSFORM t3;
+al_identity_transform(&amp;t3);
+al_scale_transform(&amp;t3, <span class="fl">0.5</span>, <span class="fl">-0.5</span>);
+al_translate_transform(&amp;t3, <span class="fl">0.5</span>, <span class="fl">0.5</span>);
+al_scale_transform(&amp;t3, al_get_bitmap_width(al_get_target_bitmap()),
+                   al_get_bitmap_height(al_get_target_bitmap()));
+
+al_transform_coordinates_3d_projective(&amp;t2, &amp;x, &amp;y, &amp;z);
+<span class="co">// x, y now contain normalized coordinates</span>
+al_transform_coordinates(&amp;t3, &amp;x, &amp;y);
+<span class="co">// x, y now contain pixel coordinates</span></code></pre></div>
 <p>Since 5.2.4</p>
 <p>See also: <a href="transformations.html#al_use_transform">al_use_transform</a>, <a href="transformations.html#al_transform_coordinates">al_transform_coordinates</a>, <a href="transformations.html#al_transform_coordinates_3d">al_transform_coordinates_3d</a>, <a href="transformations.html#al_use_projection_transform">al_use_projection_transform</a></p>
 <h1 id="al_compose_transform">al_compose_transform</h1>
@@ -449,6 +467,7 @@ al_use_transform(&amp;t);</code></pre></div>
 <p>Combines the given transformation with an orthographic transformation which maps the screen rectangle to the given left/top and right/bottom coordinates.</p>
 <p>near/far is the z range, coordinates outside of that range will get clipped. Normally -1/1 is fine because all 2D graphics will have a z coordinate of 0. However if you for example do al_draw_rectangle(0, 0, 100, 100) and rotate around the x axis (&quot;towards the screen&quot;) make sure your z range allows values from -100 to 100 or the rotated rectangle will get clipped.</p>
 <p>Also, if you are using a depth buffer the z range decides the depth resolution. For example if you have a 16 bit depth buffer there are only 65536 discrete depth values. So if your near/far is set to -1000000/1000000 most of the z positions would not result in separate depth values which could lead to artifacts.</p>
+<p>The result of applying this transformation to coordinates will be to normalize visible coordinates into the cube from -1/-1/-1 to 1/1/1. Such a transformation is mostly useful for passing it to <a href="transformations.html#al_use_projection_transform">al_use_projection_transform</a> - see that function for an example use.</p>
 <p>Since: 5.1.3</p>
 <p>See also: <a href="transformations.html#al_use_projection_transform">al_use_projection_transform</a>, <a href="transformations.html#al_perspective_transform">al_perspective_transform</a></p>
 <h1 id="al_perspective_transform">al_perspective_transform</h1>
@@ -459,6 +478,63 @@ al_use_transform(&amp;t);</code></pre></div>
 <p>Like <a href="transformations.html#al_orthographic_transform">al_orthographic_transform</a> but honors perspective. If everything is at a z-position of -near it will look the same as with an orthographic transformation.</p>
 <p>To use a specific horizontal field of view you can use the relation:</p>
 <pre><code>tan(hfov / 2) = (right - left) / 2 / near</code></pre>
+<p>and therefore</p>
+<pre><code>near = (right - left) / 2 / tan(hfov / 2)</code></pre>
+<p>Example 1:</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">   <span class="dt">float</span> w = <span class="dv">800</span>, h = <span class="dv">450</span>; <span class="co">// assume our display is 800 x 450</span>
+   <span class="dt">float</span> fov = tan(<span class="dv">90</span> * ALLEGRO_PI / <span class="dv">180</span> / <span class="dv">2</span>); <span class="co">// 90 degree field of view</span>
+
+   <span class="co">// Our projection goes from 0/0 to w/h with the near parameter set</span>
+   <span class="co">// for a 90 degree horizontal viewing angle.</span>
+   ALLEGRO_TRANSFORM projection;
+   al_identity_transform(&amp;projection);
+   al_perspective_transform(&amp;projection, <span class="dv">0</span>, <span class="dv">0</span>,
+    w / <span class="dv">2</span> / fov,
+    w, h,
+    <span class="dv">2000</span>);
+   al_use_projection_transform(&amp;projection);
+
+   <span class="co">// Set the camera z to +400 (which is exactly the near distance)</span>
+   ALLEGRO_TRANSFORM camera;
+   al_build_camera_transform(&amp;camera, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">400</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>);
+   al_use_transform(&amp;camera);
+
+   <span class="co">// This will draw two rectangles at the left and right edge of the</span>
+   <span class="co">// screen and vertically centered. The x distance between them is 800</span>
+   <span class="co">// units, but the camera transform moves them 400 along z, so with</span>
+   <span class="co">// a 90° viewing angle both are visible.</span>
+   al_draw_filled_rectangle(<span class="dv">0</span>, <span class="dv">200</span>, <span class="dv">50</span>, <span class="dv">250</span>, red;
+   al_draw_filled_rectangle(<span class="dv">750</span>, <span class="dv">200</span>, <span class="dv">800</span>, <span class="dv">250</span>, red);</code></pre></div>
+<p>Example 2:</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">   <span class="dt">float</span> w = <span class="dv">800</span>, h = <span class="dv">450</span>; <span class="co">// assume our display is 800 x 450</span>
+   <span class="dt">float</span> fov = tan(<span class="dv">90</span> * ALLEGRO_PI / <span class="dv">180</span> / <span class="dv">2</span>); <span class="co">// 90 degree field of view</span>
+   <span class="dt">float</span> aspect = h / w;
+   <span class="dt">float</span> zoom = <span class="dv">2</span>; <span class="co">// enlarge x 2</span>
+
+   <span class="co">// This projection is very different from the one in the first example.</span>
+   <span class="co">// Here we map the left and right edge of the screen to -1 and +1. And</span>
+   <span class="co">// the y axis goes from -1 at the bottom to +1 at the top, scaled by</span>
+   <span class="co">// the aspect ratio. We also add a zoom parameter so we can control</span>
+   <span class="co">// the visible portion of the scene independent of the field of view.</span>
+   ALLEGRO_TRANSFORM projection;
+   al_identity_transform(&amp;projection);
+   al_perspective_transform(&amp;projection,
+      <span class="dv">-1</span> / zoom, aspect / zoom,
+      <span class="dv">1</span> / fov,
+      <span class="dv">1</span> / zoom, -aspect / zoom,
+      <span class="dv">2000</span>);
+   al_use_projection_transform(&amp;projection);
+
+   <span class="co">// Moves everything by -4 in the z direction.</span>
+   ALLEGRO_TRANSFORM camera;
+   al_build_camera_transform(&amp;camera, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>);
+   al_use_transform(&amp;camera);
+
+   <span class="co">// At a z distance of 4 with a 90° hfov everything would be scaled</span>
+   <span class="co">// down to 25%. However we also zoom 2-fold, so the final scaling is</span>
+   <span class="co">// 50%. This rectangle therefore will appear at a size of 400 x 225</span>
+   <span class="co">// pixel (assuming the display is 800 x 450).</span>
+   al_draw_filled_rectangle(-<span class="dv">1</span>, <span class="dv">-1</span>, <span class="dv">1</span>, <span class="dv">1</span>, red);</code></pre></div>
 <p>Since: 5.1.3</p>
 <p>See also: <a href="transformations.html#al_use_projection_transform">al_use_projection_transform</a>, <a href="transformations.html#al_orthographic_transform">al_orthographic_transform</a></p>
 <h1 id="al_translate_transform_3d">al_translate_transform_3d</h1>
@@ -506,7 +582,7 @@ al_use_transform(&amp;t);</code></pre></div>
 <p>See also: <a href="transformations.html#al_horizontal_shear_transform">al_horizontal_shear_transform</a></p>
 <p class="timestamp">
 Allegro version 5.2.5 (GIT)
- - Last updated: 2018-03-20 04:30:39 UTC
+ - Last updated: 2018-05-06 04:30:09 UTC
 </p>
 </div>
 </body>
