@@ -1,49 +1,80 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>Event system and events</title>
-  <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
-  <link rel="stylesheet" href="pandoc.css" type="text/css" />
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="pandoc.css" />
   <script type="text/javascript" src="autosuggest.js"></script>
   <script type="text/javascript" src="search_index.js"></script>
 </head>
@@ -124,10 +155,10 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </div>
 </div>
 <div class="content">
-<div id="header">
+<header>
 <h1 class="title">Event system and events</h1>
-</div>
-<div id="TOC">
+</header>
+<nav id="TOC">
 <ul>
 <li><a href="#allegro_event">ALLEGRO_EVENT</a><ul>
 <li><a href="#allegro_event_joystick_axis">ALLEGRO_EVENT_JOYSTICK_AXIS</a></li>
@@ -189,19 +220,19 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="#al_get_event_source_data">al_get_event_source_data</a></li>
 <li><a href="#al_set_event_source_data">al_set_event_source_data</a></li>
 </ul>
-</div>
+</nav>
 <p>These functions are declared in the main Allegro header file:</p>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"> <span class="pp">#include </span><span class="im">&lt;allegro5/allegro.h&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" data-line-number="1"> <span class="pp">#include </span><span class="im">&lt;allegro5/allegro.h&gt;</span></a></code></pre></div>
 <p>Events are generated by event sources. Most notably, each of the input subsystems provides an event source, but also timers, displays, and audio streams will generate events.</p>
 <p>Event sources are registered to event queues which aggregate events from multiple sources. A single event source can also be registered to multiple event queues.</p>
 <p>Event queues can then be queried for events. In particular, it is possible to wait until events become available in order to save CPU time. You can combine this with <a href="timer.html#allegro_timer">timers</a> to make your main-loop run at a specific speed without wasting CPU time or missing events.</p>
 <p>In addition to the predefined event types, Allegro also allows for user-defined events that can be generated by user-defined event sources.</p>
 <p>The appropriate reaction to an event is determined by examining the fields of the <a href="events.html#allegro_event">ALLEGRO_EVENT</a> union according to the event type.</p>
-<p>In addition to the events sent by Allegro core, there's also events send by the addons, see <a href="audio.html#allegro_audio_event_type">ALLEGRO_AUDIO_EVENT_TYPE</a> and <a href="video.html#allegro_video_event_type">ALLEGRO_VIDEO_EVENT_TYPE</a>.</p>
+<p>In addition to the events sent by Allegro core, there’s also events send by the addons, see <a href="audio.html#allegro_audio_event_type">ALLEGRO_AUDIO_EVENT_TYPE</a> and <a href="video.html#allegro_video_event_type">ALLEGRO_VIDEO_EVENT_TYPE</a>.</p>
 <h1 id="allegro_event">ALLEGRO_EVENT</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">union</span> ALLEGRO_EVENT ALLEGRO_EVENT;</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/include/allegro5/events.h#L202">Source Code</a></p>
-<p>An ALLEGRO_EVENT is a union of all builtin event structures, i.e. it is an object large enough to hold the data of any event type. All events have the following fields in common:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">typedef</span> <span class="kw">union</span> ALLEGRO_EVENT ALLEGRO_EVENT;</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/include/allegro5/events.h#L202">Source Code</a></p>
+<p>An ALLEGRO_EVENT is a union of all builtin event structures, i.e. it is an object large enough to hold the data of any event type. All events have the following fields in common:</p>
 <dl>
 <dt>type (ALLEGRO_EVENT_TYPE)</dt>
 <dd>Indicates the type of event.
@@ -222,7 +253,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <dd>The joystick which generated the event. This is not the same as the event source <code>joystick.source</code>.
 </dd>
 <dt>joystick.stick (int)</dt>
-<dd>The stick number, counting from zero. Axes on a joystick are grouped into &quot;sticks&quot;.
+<dd>The stick number, counting from zero. Axes on a joystick are grouped into “sticks”.
 </dd>
 <dt>joystick.axis (int)</dt>
 <dd>The axis number on the stick, counting from zero.
@@ -283,12 +314,12 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <dd>The code corresponding to the physical key which was last pressed. See the <a href="keyboard.html#key-codes">Key codes</a> section for the list of ALLEGRO_KEY_* constants.
 </dd>
 <dt>keyboard.unichar (int)</dt>
-<dd><p>A Unicode code point (character). This <em>may</em> be zero or negative if the event was generated for a non-visible &quot;character&quot;, such as an arrow or Function key. In that case you can act upon the <code>keycode</code> field.</p>
+<dd><p>A Unicode code point (character). This <em>may</em> be zero or negative if the event was generated for a non-visible “character”, such as an arrow or Function key. In that case you can act upon the <code>keycode</code> field.</p>
 <p>Some special keys will set the <code>unichar</code> field to their standard ASCII values: Tab=9, Return=13, Escape=27. In addition if you press the Control key together with A to Z the <code>unichar</code> field will have the values 1 to 26. For example Ctrl-A will set <code>unichar</code> to 1 and Ctrl-H will set it to 8.</p>
 <p>As of Allegro 5.0.2 there are some inconsistencies in the treatment of Backspace (8 or 127) and Delete (127 or 0) keys on different platforms. These can be worked around by checking the <code>keycode</code> field.</p>
 </dd>
 <dt>keyboard.modifiers (unsigned)</dt>
-<dd>This is a bitfield of the modifier keys which were pressed when the event occurred. See &quot;Keyboard modifier flags&quot; for the constants.
+<dd>This is a bitfield of the modifier keys which were pressed when the event occurred. See “Keyboard modifier flags” for the constants.
 </dd>
 <dt>keyboard.repeat (bool)</dt>
 <dd>Indicates if this is a repeated character.
@@ -298,7 +329,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </dd>
 </dl>
 <blockquote>
-<p><em>Note</em>: in many input methods, characters are <em>not</em> entered one-for-one with physical key presses. Multiple key presses can combine to generate a single character, e.g. apostrophe + e may produce 'é'. Fewer key presses can also generate more characters, e.g. macro sequences expanding to common phrases.</p>
+<p><em>Note</em>: in many input methods, characters are <em>not</em> entered one-for-one with physical key presses. Multiple key presses can combine to generate a single character, e.g. apostrophe + e may produce ‘é’. Fewer key presses can also generate more characters, e.g. macro sequences expanding to common phrases.</p>
 </blockquote>
 <h2 id="allegro_event_mouse_axes">ALLEGRO_EVENT_MOUSE_AXES</h2>
 <p>One or more mouse axis values changed.</p>
@@ -485,16 +516,16 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <dd>The display which was exposed.
 </dd>
 <dt>display.x (int)</dt>
-<dd>  display.y (int)
+<dd>The X position of the top-left corner of the rectangle which was exposed.
 </dd>
-<dd> 
-</dd>
-<dd>The top-left corner of the rectangle which was exposed.
+<dt>display.y (int)</dt>
+<dd>The Y position of the top-left corner of the rectangle which was exposed.
 </dd>
 <dt>display.width (int)</dt>
-<dd>  display.height (int)
+<dd>The width of the rectangle which was exposed.
 </dd>
-<dd>The width and height of the rectangle which was exposed.
+<dt>display.height (int)</dt>
+<dd>The height of the rectangle which was exposed.
 </dd>
 </dl>
 <blockquote>
@@ -507,9 +538,10 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <dd>The display which was resized.
 </dd>
 <dt>display.x (int)</dt>
-<dd>  display.y (int)
+<dd>The X position of the top-left corner of the display.
 </dd>
-<dd>The position of the top-level corner of the display.
+<dt>display.y (int)</dt>
+<dd>The Y position of the top-left corner of the display.
 </dd>
 <dt>display.width (int)</dt>
 <dd>The new width of the display.
@@ -527,9 +559,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </dd>
 </dl>
 <h2 id="allegro_event_display_lost">ALLEGRO_EVENT_DISPLAY_LOST</h2>
-<p>When using Direct3D, displays can enter a &quot;lost&quot; state. In that state, drawing calls are ignored, and upon entering the state, bitmap's pixel data can become undefined. Allegro does its best to preserve the correct contents of bitmaps (see the ALLEGRO_NO_PRESERVE_TEXTURE flag) and restore them when the device is &quot;found&quot; (see <a href="events.html#allegro_event_display_found">ALLEGRO_EVENT_DISPLAY_FOUND</a>). However, this is not 100% fool proof (see discussion in <a href="graphics.html#al_create_bitmap">al_create_bitmap</a>'s documentation).</p>
+<p>When using Direct3D, displays can enter a “lost” state. In that state, drawing calls are ignored, and upon entering the state, bitmap’s pixel data can become undefined. Allegro does its best to preserve the correct contents of bitmaps (see the ALLEGRO_NO_PRESERVE_TEXTURE flag) and restore them when the device is “found” (see <a href="events.html#allegro_event_display_found">ALLEGRO_EVENT_DISPLAY_FOUND</a>). However, this is not 100% fool proof (see discussion in <a href="graphics.html#al_create_bitmap">al_create_bitmap</a>’s documentation).</p>
 <blockquote>
-<p><em>Note:</em> This event merely means that the display was lost, that is, DirectX suddenly lost the contents of all video bitmaps. In particular, you can keep calling drawing functions -- they just most likely won't do anything. If Allegro's restoration of the bitmaps works well for you then no further action is required when you receive this event.</p>
+<p><em>Note:</em> This event merely means that the display was lost, that is, DirectX suddenly lost the contents of all video bitmaps. In particular, you can keep calling drawing functions – they just most likely won’t do anything. If Allegro’s restoration of the bitmaps works well for you then no further action is required when you receive this event.</p>
 </blockquote>
 <dl>
 <dt>display.source (ALLEGRO_DISPLAY *)</dt>
@@ -544,7 +576,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </dd>
 </dl>
 <h2 id="allegro_event_display_switch_out">ALLEGRO_EVENT_DISPLAY_SWITCH_OUT</h2>
-<p>The window is no longer active, that is the user might have clicked into another window or &quot;tabbed&quot; away. In response to this event you might want to call <a href="keyboard.html#al_clear_keyboard_state">al_clear_keyboard_state</a> (possibly passing display.source as its argument) in order to prevent Allegro's keyboard state from getting out of sync.</p>
+<p>The window is no longer active, that is the user might have clicked into another window or “tabbed” away. In response to this event you might want to call <a href="keyboard.html#al_clear_keyboard_state">al_clear_keyboard_state</a> (possibly passing display.source as its argument) in order to prevent Allegro’s keyboard state from getting out of sync.</p>
 <dl>
 <dt>display.source (ALLEGRO_DISPLAY *)</dt>
 <dd>The display which was switched out of.
@@ -610,8 +642,8 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </dd>
 </dl>
 <h1 id="allegro_user_event">ALLEGRO_USER_EVENT</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_USER_EVENT ALLEGRO_USER_EVENT;</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/include/allegro5/events.h#L186">Source Code</a></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_USER_EVENT ALLEGRO_USER_EVENT;</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/include/allegro5/events.h#L186">Source Code</a></p>
 <p>An event structure that can be emitted by user event sources. These are the public fields:</p>
 <ul>
 <li>ALLEGRO_EVENT_SOURCE *source;</li>
@@ -629,189 +661,189 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>ev.user.data4</li>
 </ul>
 <p>To create a new user event you would do this:</p>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_EVENT_SOURCE my_event_source;
-ALLEGRO_EVENT my_event;
-<span class="dt">float</span> some_var;
-
-al_init_user_event_source(&amp;my_event_source);
-
-my_event.user.type = ALLEGRO_GET_EVENT_TYPE(<span class="ch">&#39;M&#39;</span>,<span class="ch">&#39;I&#39;</span>,<span class="ch">&#39;N&#39;</span>,<span class="ch">&#39;E&#39;</span>);
-my_event.user.data1 = <span class="dv">1</span>;
-my_event.user.data2 = &amp;some_var;
-
-al_emit_user_event(&amp;my_event_source, &amp;my_event, NULL);</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb4-1" data-line-number="1">ALLEGRO_EVENT_SOURCE my_event_source;</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">ALLEGRO_EVENT my_event;</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="dt">float</span> some_var;</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">al_init_user_event_source(&amp;my_event_source);</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">my_event.user.type = ALLEGRO_GET_EVENT_TYPE(<span class="ch">&#39;M&#39;</span>,<span class="ch">&#39;I&#39;</span>,<span class="ch">&#39;N&#39;</span>,<span class="ch">&#39;E&#39;</span>);</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">my_event.user.data1 = <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">my_event.user.data2 = &amp;some_var;</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">al_emit_user_event(&amp;my_event_source, &amp;my_event, NULL);</a></code></pre></div>
 <p>Event type identifiers for user events are assigned by the user. Please see the documentation for <a href="events.html#allegro_get_event_type">ALLEGRO_GET_EVENT_TYPE</a> for the rules you should follow when assigning identifiers.</p>
 <p>See also: <a href="events.html#al_emit_user_event">al_emit_user_event</a>, <a href="events.html#allegro_get_event_type">ALLEGRO_GET_EVENT_TYPE</a>, <a href="events.html#al_init_user_event_source">al_init_user_event_source</a></p>
 <h1 id="allegro_event_queue">ALLEGRO_EVENT_QUEUE</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_EVENT_QUEUE ALLEGRO_EVENT_QUEUE;</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/include/allegro5/events.h#L243">Source Code</a></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_EVENT_QUEUE ALLEGRO_EVENT_QUEUE;</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/include/allegro5/events.h#L243">Source Code</a></p>
 <p>An event queue holds events that have been generated by event sources that are registered with the queue. Events are stored in the order they are generated. Access is in a strictly FIFO (first-in-first-out) order.</p>
 <p>See also: <a href="events.html#al_create_event_queue">al_create_event_queue</a>, <a href="events.html#al_destroy_event_queue">al_destroy_event_queue</a></p>
 <h1 id="allegro_event_source">ALLEGRO_EVENT_SOURCE</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_EVENT_SOURCE ALLEGRO_EVENT_SOURCE;</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/include/allegro5/events.h#L72">Source Code</a></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_EVENT_SOURCE ALLEGRO_EVENT_SOURCE;</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/include/allegro5/events.h#L72">Source Code</a></p>
 <p>An event source is any object which can generate events. For example, an ALLEGRO_DISPLAY can generate events, and you can get the ALLEGRO_EVENT_SOURCE pointer from an ALLEGRO_DISPLAY with <a href="display.html#al_get_display_event_source">al_get_display_event_source</a>.</p>
-<p>You may create your own &quot;user&quot; event sources that emit custom events.</p>
+<p>You may create your own “user” event sources that emit custom events.</p>
 <p>See also: <a href="events.html#allegro_event">ALLEGRO_EVENT</a>, <a href="events.html#al_init_user_event_source">al_init_user_event_source</a>, <a href="events.html#al_emit_user_event">al_emit_user_event</a></p>
 <h1 id="allegro_event_type">ALLEGRO_EVENT_TYPE</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="dt">unsigned</span> <span class="dt">int</span> ALLEGRO_EVENT_TYPE;</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/include/allegro5/events.h#L13">Source Code</a></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">typedef</span> <span class="dt">unsigned</span> <span class="dt">int</span> ALLEGRO_EVENT_TYPE;</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/include/allegro5/events.h#L13">Source Code</a></p>
 <p>An integer used to distinguish between different types of events.</p>
 <p>See also: <a href="events.html#allegro_event">ALLEGRO_EVENT</a>, <a href="events.html#allegro_get_event_type">ALLEGRO_GET_EVENT_TYPE</a>, <a href="events.html#allegro_event_type_is_user">ALLEGRO_EVENT_TYPE_IS_USER</a></p>
 <h1 id="allegro_get_event_type">ALLEGRO_GET_EVENT_TYPE</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="pp">#define ALLEGRO_GET_EVENT_TYPE(a, b, c, d)   AL_ID(a, b, c, d)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/include/allegro5/events.h#L67">Source Code</a></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="pp">#define ALLEGRO_GET_EVENT_TYPE(a, b, c, d)   AL_ID(a, b, c, d)</span></a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/include/allegro5/events.h#L67">Source Code</a></p>
 <p>Make an event type identifier, which is a 32-bit integer. Usually, but not necessarily, this will be made from four 8-bit character codes, for example:</p>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="er">#defin  MY_EVENT_TYPE   ALLEGRO_GET_EVENT_TYPE(&#39;M&#39;,&#39;I&#39;,&#39;N&#39;,&#39;E&#39;)</span></code></pre></div>
-<p>IDs less than 1024 are reserved for Allegro or its addons. Don't use anything lower than <code>ALLEGRO_GET_EVENT_TYPE(0, 0, 4, 0)</code>.</p>
-<p>You should try to make your IDs unique so they don't clash with any 3rd party code you may be using. Be creative. Numbering from 1024 is not creative.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="er">#defin  MY_EVENT_TYPE   ALLEGRO_GET_EVENT_TYPE(&#39;M&#39;,&#39;I&#39;,&#39;N&#39;,&#39;E&#39;)</span></a></code></pre></div>
+<p>IDs less than 1024 are reserved for Allegro or its addons. Don’t use anything lower than <code>ALLEGRO_GET_EVENT_TYPE(0, 0, 4, 0)</code>.</p>
+<p>You should try to make your IDs unique so they don’t clash with any 3rd party code you may be using. Be creative. Numbering from 1024 is not creative.</p>
 <p>If you need multiple identifiers, you could define them like this:</p>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="er">#defin  BASE_EVENT   ALLEGRO_GET_EVENT_TYPE(&#39;M&#39;,&#39;I&#39;,&#39;N&#39;,&#39;E&#39;)</span>
-<span class="er">#defin  BARK_EVENT   (BASE_EVENT + 0)</span>
-<span class="er">#defin  MEOW_EVENT   (BASE_EVENT + 1)</span>
-<span class="er">#defin  SQUAWK_EVENT (BASE_EVENT + 2)</span>
-
-<span class="co">/* Alternatively */</span>
-<span class="kw">enum</span> {
-   BARK_EVENT = ALLEGRO_GET_EVENT_TYPE(<span class="ch">&#39;M&#39;</span>,<span class="ch">&#39;I&#39;</span>,<span class="ch">&#39;N&#39;</span>,<span class="ch">&#39;E&#39;</span>),
-   MEOW_EVENT,
-   SQUAWK_EVENT
-};</code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="er">#defin  BASE_EVENT   ALLEGRO_GET_EVENT_TYPE(&#39;M&#39;,&#39;I&#39;,&#39;N&#39;,&#39;E&#39;)</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="er">#defin  BARK_EVENT   (BASE_EVENT + 0)</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="er">#defin  MEOW_EVENT   (BASE_EVENT + 1)</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="er">#defin  SQUAWK_EVENT (BASE_EVENT + 2)</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">/* Alternatively */</span></a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="kw">enum</span> {</a>
+<a class="sourceLine" id="cb10-8" data-line-number="8">   BARK_EVENT = ALLEGRO_GET_EVENT_TYPE(<span class="ch">&#39;M&#39;</span>,<span class="ch">&#39;I&#39;</span>,<span class="ch">&#39;N&#39;</span>,<span class="ch">&#39;E&#39;</span>),</a>
+<a class="sourceLine" id="cb10-9" data-line-number="9">   MEOW_EVENT,</a>
+<a class="sourceLine" id="cb10-10" data-line-number="10">   SQUAWK_EVENT</a>
+<a class="sourceLine" id="cb10-11" data-line-number="11">};</a></code></pre></div>
 <p>See also: <a href="events.html#allegro_event">ALLEGRO_EVENT</a>, <a href="events.html#allegro_user_event">ALLEGRO_USER_EVENT</a>, <a href="events.html#allegro_event_type_is_user">ALLEGRO_EVENT_TYPE_IS_USER</a></p>
 <h1 id="allegro_event_type_is_user">ALLEGRO_EVENT_TYPE_IS_USER</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="pp">#define ALLEGRO_EVENT_TYPE_IS_USER(t)        ((t) &gt;= 512)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/include/allegro5/events.h#L62">Source Code</a></p>
-<p>A macro which evaluates to true if the event type is not a builtin event type, i.e. one of those described in <a href="events.html#allegro_event_type">ALLEGRO_EVENT_TYPE</a>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="pp">#define ALLEGRO_EVENT_TYPE_IS_USER(t)        ((t) &gt;= 512)</span></a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/include/allegro5/events.h#L62">Source Code</a></p>
+<p>A macro which evaluates to true if the event type is not a builtin event type, i.e. one of those described in <a href="events.html#allegro_event_type">ALLEGRO_EVENT_TYPE</a>.</p>
 <h1 id="al_create_event_queue">al_create_event_queue</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">ALLEGRO_EVENT_QUEUE *al_create_event_queue(<span class="dt">void</span>)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/events.c#L90">Source Code</a></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb12-1" data-line-number="1">ALLEGRO_EVENT_QUEUE *al_create_event_queue(<span class="dt">void</span>)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/events.c#L90">Source Code</a></p>
 <p>Create a new, empty event queue, returning a pointer to the newly created object if successful. Returns NULL on error.</p>
 <p>See also: <a href="events.html#al_register_event_source">al_register_event_source</a>, <a href="events.html#al_destroy_event_queue">al_destroy_event_queue</a>, <a href="events.html#allegro_event_queue">ALLEGRO_EVENT_QUEUE</a></p>
 <h1 id="al_destroy_event_queue">al_destroy_event_queue</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_destroy_event_queue(ALLEGRO_EVENT_QUEUE *queue)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/events.c#L120">Source Code</a></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="dt">void</span> al_destroy_event_queue(ALLEGRO_EVENT_QUEUE *queue)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/events.c#L120">Source Code</a></p>
 <p>Destroy the event queue specified. All event sources currently registered with the queue will be automatically unregistered before the queue is destroyed.</p>
 <p>See also: <a href="events.html#al_create_event_queue">al_create_event_queue</a>, <a href="events.html#allegro_event_queue">ALLEGRO_EVENT_QUEUE</a></p>
 <h1 id="al_register_event_source">al_register_event_source</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_register_event_source(ALLEGRO_EVENT_QUEUE *queue,
-   ALLEGRO_EVENT_SOURCE *source)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/events.c#L161">Source Code</a></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="dt">void</span> al_register_event_source(ALLEGRO_EVENT_QUEUE *queue,</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">   ALLEGRO_EVENT_SOURCE *source)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/events.c#L161">Source Code</a></p>
 <p>Register the event source with the event queue specified. An event source may be registered with any number of event queues simultaneously, or none. Trying to register an event source with the same event queue more than once does nothing.</p>
 <p>See also: <a href="events.html#al_unregister_event_source">al_unregister_event_source</a>, <a href="events.html#allegro_event_source">ALLEGRO_EVENT_SOURCE</a></p>
 <h1 id="al_unregister_event_source">al_unregister_event_source</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_unregister_event_source(ALLEGRO_EVENT_QUEUE *queue,
-   ALLEGRO_EVENT_SOURCE *source)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/events.c#L181">Source Code</a></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="dt">void</span> al_unregister_event_source(ALLEGRO_EVENT_QUEUE *queue,</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">   ALLEGRO_EVENT_SOURCE *source)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/events.c#L181">Source Code</a></p>
 <p>Unregister an event source with an event queue. If the event source is not actually registered with the event queue, nothing happens.</p>
 <p>If the queue had any events in it which originated from the event source, they will no longer be in the queue after this call.</p>
 <p>See also: <a href="events.html#al_register_event_source">al_register_event_source</a></p>
 <h1 id="al_is_event_source_registered">al_is_event_source_registered</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_is_event_source_registered(ALLEGRO_EVENT_QUEUE *queue, 
-      ALLEGRO_EVENT_SOURCE *source)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/events.c#L147">Source Code</a></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="dt">bool</span> al_is_event_source_registered(ALLEGRO_EVENT_QUEUE *queue, </a>
+<a class="sourceLine" id="cb16-2" data-line-number="2">      ALLEGRO_EVENT_SOURCE *source)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/events.c#L147">Source Code</a></p>
 <p>Return true if the event source is registered.</p>
 <p>See also: <a href="events.html#al_register_event_source">al_register_event_source</a></p>
 <p>Since: 5.2.0</p>
 <h1 id="al_pause_event_queue">al_pause_event_queue</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_pause_event_queue(ALLEGRO_EVENT_QUEUE *queue, bool pause)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/events.c#L208">Source Code</a></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="dt">void</span> al_pause_event_queue(ALLEGRO_EVENT_QUEUE *queue, <span class="dt">bool</span> pause)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/events.c#L208">Source Code</a></p>
 <p>Pause or resume accepting new events into the event queue (to resume, pass false for <code>pause</code>). Events already in the queue are unaffected.</p>
 <p>While a queue is paused, any events which would be entered into the queue are simply ignored. This is an alternative to unregistering then re-registering all event sources from the event queue, if you just need to prevent events piling up in the queue for a while.</p>
 <p>See also: <a href="events.html#al_is_event_queue_paused">al_is_event_queue_paused</a></p>
 <p>Since: 5.1.0</p>
 <h1 id="al_is_event_queue_paused">al_is_event_queue_paused</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_is_event_queue_paused(<span class="dt">const</span> ALLEGRO_EVENT_QUEUE *queue)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/events.c#L221">Source Code</a></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="dt">bool</span> al_is_event_queue_paused(<span class="dt">const</span> ALLEGRO_EVENT_QUEUE *queue)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/events.c#L221">Source Code</a></p>
 <p>Return true if the event queue is paused.</p>
 <p>See also: <a href="events.html#al_pause_event_queue">al_pause_event_queue</a></p>
 <p>Since: 5.1.0</p>
 <h1 id="al_is_event_queue_empty">al_is_event_queue_empty</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_is_event_queue_empty(ALLEGRO_EVENT_QUEUE *queue)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/events.c#L248">Source Code</a></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="dt">bool</span> al_is_event_queue_empty(ALLEGRO_EVENT_QUEUE *queue)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/events.c#L248">Source Code</a></p>
 <p>Return true if the event queue specified is currently empty.</p>
 <p>See also: <a href="events.html#al_get_next_event">al_get_next_event</a>, <a href="events.html#al_peek_next_event">al_peek_next_event</a></p>
 <h1 id="al_get_next_event">al_get_next_event</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_get_next_event(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT *ret_event)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/events.c#L296">Source Code</a></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="dt">bool</span> al_get_next_event(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT *ret_event)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/events.c#L296">Source Code</a></p>
 <p>Take the next event out of the event queue specified, and copy the contents into <code>ret_event</code>, returning true. The original event will be removed from the queue. If the event queue is empty, return false and the contents of <code>ret_event</code> are unspecified.</p>
 <p>See also: <a href="events.html#allegro_event">ALLEGRO_EVENT</a>, <a href="events.html#al_peek_next_event">al_peek_next_event</a>, <a href="events.html#al_wait_for_event">al_wait_for_event</a></p>
 <h1 id="al_peek_next_event">al_peek_next_event</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_peek_next_event(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT *ret_event)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/events.c#L321">Source Code</a></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="dt">bool</span> al_peek_next_event(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT *ret_event)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/events.c#L321">Source Code</a></p>
 <p>Copy the contents of the next event in the event queue specified into <code>ret_event</code> and return true. The original event packet will remain at the head of the queue. If the event queue is actually empty, this function returns false and the contents of <code>ret_event</code> are unspecified.</p>
 <p>See also: <a href="events.html#allegro_event">ALLEGRO_EVENT</a>, <a href="events.html#al_get_next_event">al_get_next_event</a>, <a href="events.html#al_drop_next_event">al_drop_next_event</a></p>
 <h1 id="al_drop_next_event">al_drop_next_event</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_drop_next_event(ALLEGRO_EVENT_QUEUE *queue)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/events.c#L346">Source Code</a></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="dt">bool</span> al_drop_next_event(ALLEGRO_EVENT_QUEUE *queue)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/events.c#L346">Source Code</a></p>
 <p>Drop (remove) the next event from the queue. If the queue is empty, nothing happens. Returns true if an event was dropped.</p>
 <p>See also: <a href="events.html#al_flush_event_queue">al_flush_event_queue</a>, <a href="events.html#al_is_event_queue_empty">al_is_event_queue_empty</a></p>
 <h1 id="al_flush_event_queue">al_flush_event_queue</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_flush_event_queue(ALLEGRO_EVENT_QUEUE *queue)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/events.c#L369">Source Code</a></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="dt">void</span> al_flush_event_queue(ALLEGRO_EVENT_QUEUE *queue)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/events.c#L369">Source Code</a></p>
 <p>Drops all events, if any, from the queue.</p>
 <p>See also: <a href="events.html#al_drop_next_event">al_drop_next_event</a>, <a href="events.html#al_is_event_queue_empty">al_is_event_queue_empty</a></p>
 <h1 id="al_wait_for_event">al_wait_for_event</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_wait_for_event(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT *ret_event)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/events.c#L395">Source Code</a></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="dt">void</span> al_wait_for_event(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT *ret_event)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/events.c#L395">Source Code</a></p>
 <p>Wait until the event queue specified is non-empty. If <code>ret_event</code> is not NULL, the first event in the queue will be copied into <code>ret_event</code> and removed from the queue. If <code>ret_event</code> is NULL the first event is left at the head of the queue.</p>
 <p>See also: <a href="events.html#allegro_event">ALLEGRO_EVENT</a>, <a href="events.html#al_wait_for_event_timed">al_wait_for_event_timed</a>, <a href="events.html#al_wait_for_event_until">al_wait_for_event_until</a>, <a href="events.html#al_get_next_event">al_get_next_event</a></p>
 <h1 id="al_wait_for_event_timed">al_wait_for_event_timed</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_wait_for_event_timed(ALLEGRO_EVENT_QUEUE *queue,
-   ALLEGRO_EVENT *ret_event, <span class="dt">float</span> secs)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/events.c#L422">Source Code</a></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="dt">bool</span> al_wait_for_event_timed(ALLEGRO_EVENT_QUEUE *queue,</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">   ALLEGRO_EVENT *ret_event, <span class="dt">float</span> secs)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/events.c#L422">Source Code</a></p>
 <p>Wait until the event queue specified is non-empty. If <code>ret_event</code> is not NULL, the first event in the queue will be copied into <code>ret_event</code> and removed from the queue. If <code>ret_event</code> is NULL the first event is left at the head of the queue.</p>
 <p><code>secs</code> determines approximately how many seconds to wait. If the call times out, false is returned. Otherwise, if an event ocurred, true is returned.</p>
 <p>For compatibility with all platforms, <code>secs</code> must be 2,147,483.647 seconds or less.</p>
 <p>See also: <a href="events.html#allegro_event">ALLEGRO_EVENT</a>, <a href="events.html#al_wait_for_event">al_wait_for_event</a>, <a href="events.html#al_wait_for_event_until">al_wait_for_event_until</a></p>
 <h1 id="al_wait_for_event_until">al_wait_for_event_until</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_wait_for_event_until(ALLEGRO_EVENT_QUEUE *queue,
-   ALLEGRO_EVENT *ret_event, ALLEGRO_TIMEOUT *timeout)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/events.c#L444">Source Code</a></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="dt">bool</span> al_wait_for_event_until(ALLEGRO_EVENT_QUEUE *queue,</a>
+<a class="sourceLine" id="cb26-2" data-line-number="2">   ALLEGRO_EVENT *ret_event, ALLEGRO_TIMEOUT *timeout)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/events.c#L444">Source Code</a></p>
 <p>Wait until the event queue specified is non-empty. If <code>ret_event</code> is not NULL, the first event in the queue will be copied into <code>ret_event</code> and removed from the queue. If <code>ret_event</code> is NULL the first event is left at the head of the queue.</p>
 <p><code>timeout</code> determines how long to wait. If the call times out, false is returned. Otherwise, if an event ocurred, true is returned.</p>
 <p>For compatibility with all platforms, <code>timeout</code> must be 2,147,483.647 seconds or less.</p>
 <p>See also: <a href="events.html#allegro_event">ALLEGRO_EVENT</a>, <a href="time.html#allegro_timeout">ALLEGRO_TIMEOUT</a>, <a href="time.html#al_init_timeout">al_init_timeout</a>, <a href="events.html#al_wait_for_event">al_wait_for_event</a>, <a href="events.html#al_wait_for_event_timed">al_wait_for_event_timed</a></p>
 <h1 id="al_init_user_event_source">al_init_user_event_source</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_init_user_event_source(ALLEGRO_EVENT_SOURCE *src)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/evtsrc.c#L195">Source Code</a></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="dt">void</span> al_init_user_event_source(ALLEGRO_EVENT_SOURCE *src)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/evtsrc.c#L195">Source Code</a></p>
 <p>Initialise an event source for emitting user events. The space for the event source must already have been allocated.</p>
 <p>One possible way of creating custom event sources is to derive other structures with ALLEGRO_EVENT_SOURCE at the head, e.g.</p>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> THING THING;
-
-<span class="kw">struct</span> THING {
-    ALLEGRO_EVENT_SOURCE event_source;
-    <span class="dt">int</span> field1;
-    <span class="dt">int</span> field2;
-    <span class="co">/* etc. */</span>
-};
-
-THING *create_thing(<span class="dt">void</span>)
-{
-    THING *thing = malloc(<span class="kw">sizeof</span>(THING));
-
-    <span class="cf">if</span> (thing) {
-        al_init_user_event_source(&amp;thing-&gt;event_source);
-        thing-&gt;field1 = <span class="dv">0</span>;
-        thing-&gt;field2 = <span class="dv">0</span>;
-    }
-
-    <span class="cf">return</span> thing;
-}</code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">typedef</span> <span class="kw">struct</span> THING THING;</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="kw">struct</span> THING {</a>
+<a class="sourceLine" id="cb28-4" data-line-number="4">    ALLEGRO_EVENT_SOURCE event_source;</a>
+<a class="sourceLine" id="cb28-5" data-line-number="5">    <span class="dt">int</span> field1;</a>
+<a class="sourceLine" id="cb28-6" data-line-number="6">    <span class="dt">int</span> field2;</a>
+<a class="sourceLine" id="cb28-7" data-line-number="7">    <span class="co">/* etc. */</span></a>
+<a class="sourceLine" id="cb28-8" data-line-number="8">};</a>
+<a class="sourceLine" id="cb28-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb28-10" data-line-number="10">THING *create_thing(<span class="dt">void</span>)</a>
+<a class="sourceLine" id="cb28-11" data-line-number="11">{</a>
+<a class="sourceLine" id="cb28-12" data-line-number="12">    THING *thing = malloc(<span class="kw">sizeof</span>(THING));</a>
+<a class="sourceLine" id="cb28-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb28-14" data-line-number="14">    <span class="cf">if</span> (thing) {</a>
+<a class="sourceLine" id="cb28-15" data-line-number="15">        al_init_user_event_source(&amp;thing-&gt;event_source);</a>
+<a class="sourceLine" id="cb28-16" data-line-number="16">        thing-&gt;field1 = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb28-17" data-line-number="17">        thing-&gt;field2 = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb28-18" data-line-number="18">    }</a>
+<a class="sourceLine" id="cb28-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb28-20" data-line-number="20">    <span class="cf">return</span> thing;</a>
+<a class="sourceLine" id="cb28-21" data-line-number="21">}</a></code></pre></div>
 <p>The advantage here is that the THING pointer will be the same as the ALLEGRO_EVENT_SOURCE pointer. Events emitted by the event source will have the event source pointer as the <code>source</code> field, from which you can get a pointer to a THING by a simple cast (after ensuring checking the event is of the correct type).</p>
 <p>However, it is only one technique and you are not obliged to use it.</p>
 <p>The user event source will never be destroyed automatically. You must destroy it manually with <a href="events.html#al_destroy_user_event_source">al_destroy_user_event_source</a>.</p>
 <p>See also: <a href="events.html#allegro_event_source">ALLEGRO_EVENT_SOURCE</a>, <a href="events.html#al_destroy_user_event_source">al_destroy_user_event_source</a>, <a href="events.html#al_emit_user_event">al_emit_user_event</a>, <a href="events.html#allegro_user_event">ALLEGRO_USER_EVENT</a></p>
 <h1 id="al_destroy_user_event_source">al_destroy_user_event_source</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_destroy_user_event_source(ALLEGRO_EVENT_SOURCE *src)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/evtsrc.c#L206">Source Code</a></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="dt">void</span> al_destroy_user_event_source(ALLEGRO_EVENT_SOURCE *src)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/evtsrc.c#L206">Source Code</a></p>
 <p>Destroy an event source initialised with <a href="events.html#al_init_user_event_source">al_init_user_event_source</a>.</p>
 <p>This does not free the memory, as that was user allocated to begin with.</p>
 <p>See also: <a href="events.html#allegro_event_source">ALLEGRO_EVENT_SOURCE</a></p>
 <h1 id="al_emit_user_event">al_emit_user_event</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">bool al_emit_user_event(ALLEGRO_EVENT_SOURCE *src,
-   ALLEGRO_EVENT *event, <span class="dt">void</span> (*dtor)(ALLEGRO_USER_EVENT *))</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/evtsrc.c#L217">Source Code</a></p>
-<p>Emit an event from a user event source. The event source must have been initialised with <a href="events.html#al_init_user_event_source">al_init_user_event_source</a>. Returns <code>false</code> if the event source isn't registered with any queues, hence the event wouldn't have been delivered into any queues.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="dt">bool</span> al_emit_user_event(ALLEGRO_EVENT_SOURCE *src,</a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">   ALLEGRO_EVENT *event, <span class="dt">void</span> (*dtor)(ALLEGRO_USER_EVENT *))</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/evtsrc.c#L217">Source Code</a></p>
+<p>Emit an event from a user event source. The event source must have been initialised with <a href="events.html#al_init_user_event_source">al_init_user_event_source</a>. Returns <code>false</code> if the event source isn’t registered with any queues, hence the event wouldn’t have been delivered into any queues.</p>
 <p>Events are <em>copied</em> in and out of event queues, so after this function returns the memory pointed to by <code>event</code> may be freed or reused. Some fields of the event being passed in may be modified by the function.</p>
 <p>Reference counting will be performed if <code>dtor</code> is not NULL. Whenever a copy of the event is made, the reference count increases. You need to call <a href="events.html#al_unref_user_event">al_unref_user_event</a> to decrease the reference count once you are done with a user event that you have received from <a href="events.html#al_get_next_event">al_get_next_event</a>, <a href="events.html#al_peek_next_event">al_peek_next_event</a>, <a href="events.html#al_wait_for_event">al_wait_for_event</a>, etc.</p>
 <p>Once the reference count drops to zero <code>dtor</code> will be called with a copy of the event as an argument. It should free the resources associated with the event, but <em>not</em> the event itself (since it is just a copy).</p>
@@ -819,23 +851,23 @@ THING *create_thing(<span class="dt">void</span>)
 <p>You can use al_emit_user_event to emit both user and non-user events from your user event source. Note that emitting input events will not update the corresponding input device states. For example, you may emit an event of type <a href="events.html#allegro_event_key_down">ALLEGRO_EVENT_KEY_DOWN</a>, but it will not update the <a href="keyboard.html#allegro_keyboard_state">ALLEGRO_KEYBOARD_STATE</a> returned by <a href="keyboard.html#al_get_keyboard_state">al_get_keyboard_state</a>.</p>
 <p>See also: <a href="events.html#allegro_user_event">ALLEGRO_USER_EVENT</a>, <a href="events.html#al_unref_user_event">al_unref_user_event</a></p>
 <h1 id="al_unref_user_event">al_unref_user_event</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_unref_user_event(ALLEGRO_USER_EVENT *event)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/events.c#L703">Source Code</a></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="dt">void</span> al_unref_user_event(ALLEGRO_USER_EVENT *event)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/events.c#L703">Source Code</a></p>
 <p>Decrease the reference count of a user-defined event. This must be called on any user event that you get from <a href="events.html#al_get_next_event">al_get_next_event</a>, <a href="events.html#al_peek_next_event">al_peek_next_event</a>, <a href="events.html#al_wait_for_event">al_wait_for_event</a>, etc. which is reference counted. This function does nothing if the event is not reference counted.</p>
 <p>See also: <a href="events.html#al_emit_user_event">al_emit_user_event</a>, <a href="events.html#allegro_user_event">ALLEGRO_USER_EVENT</a></p>
 <h1 id="al_get_event_source_data">al_get_event_source_data</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">intptr_t</span> al_get_event_source_data(<span class="dt">const</span> ALLEGRO_EVENT_SOURCE *source)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/evtsrc.c#L274">Source Code</a></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="dt">intptr_t</span> al_get_event_source_data(<span class="dt">const</span> ALLEGRO_EVENT_SOURCE *source)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/evtsrc.c#L274">Source Code</a></p>
 <p>Returns the abstract user data associated with the event source. If no data was previously set, returns NULL.</p>
 <p>See also: <a href="events.html#al_set_event_source_data">al_set_event_source_data</a></p>
 <h1 id="al_set_event_source_data">al_set_event_source_data</h1>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> al_set_event_source_data(ALLEGRO_EVENT_SOURCE *source, <span class="dt">intptr_t</span> data)</code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/bb0bec395a89a2e14e928a4c7a0699bbb3db2b92/src/evtsrc.c#L264">Source Code</a></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="dt">void</span> al_set_event_source_data(ALLEGRO_EVENT_SOURCE *source, <span class="dt">intptr_t</span> data)</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/6f95450e70715587899df31135c37c798f73fde9/src/evtsrc.c#L264">Source Code</a></p>
 <p>Assign the abstract user data to the event source. Allegro does not use the data internally for anything; it is simply meant as a convenient way to associate your own data or objects with events.</p>
 <p>See also: <a href="events.html#al_get_event_source_data">al_get_event_source_data</a></p>
 <p class="timestamp">
-Allegro version 5.2.5 (GIT)
- - Last updated: 2018-08-06 04:32:37 UTC
+Allegro version 5.2.6 (GIT)
+ - Last updated: 2019-03-04 02:28:58 UTC
 </p>
 </div>
 </body>

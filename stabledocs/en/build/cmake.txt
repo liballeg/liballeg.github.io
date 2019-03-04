@@ -22,8 +22,7 @@
    environment and generate makefiles or workspaces for you.  You may pass some
    options to customise the build (see later), but the defaults should be fine.
    You may need to tell CMake which type of files it should generate, using the
-   -G option. You can call CMake using the --help option to see a list of 
-   available generators.
+   -G option.
 
    Examples (you only need one):
    
@@ -81,9 +80,6 @@
    
    WANT_<addon> (default: on)
       Whether you want to build/install each particular addon.
-   
-   WANT_EXAMPLES (default: off)
-      Whether you want the specified addon's example programs to be built.
    
    WANT_FRAMEWORKS (default: off)
      On Mac OS X, whether to build and install frameworks instead of

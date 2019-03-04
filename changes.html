@@ -1,12 +1,17 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>Allegro - Recent changes – Allegro changelog for 5.0.x series</title>
-  <style type="text/css">code{white-space: pre;}</style>
-  <link rel="stylesheet" href="web_style.css" type="text/css" />
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="web_style.css" />
   <link rel="alternate" type="application/atom+xml"
       href="feed_atom.xml" title="Allegro news"
   />
@@ -77,9 +82,9 @@ A game programming library
 </div>
 <!-- left -->
 <div id="content">
-<div id="header">
+<header>
 <h1 class="title">Allegro changelog for 5.0.x series</h1>
-</div>
+</header>
 <p>See <code>changes._tx</code> for changes in earlier versions of Allegro. These lists serve as summaries; the full histories are in the git repository.</p>
 <h1 id="changes-from-5.0.10-to-5.0.11-january-2015">Changes from 5.0.10 to 5.0.11 (January 2015)</h1>
 <p>The main developers this time were: SiegeLord and Peter Wang.</p>
@@ -105,9 +110,9 @@ A game programming library
 </ul>
 <p>Displays:</p>
 <ul>
-<li><p>Don't crash in al_create_display if there is no display driver.</p></li>
-<li><p>Don't crash at shutdown if there is no display driver (Windows).</p></li>
-<li><p>Don't fail init if both D3D, GL drivers unavailable (Windows).</p></li>
+<li><p>Don’t crash in al_create_display if there is no display driver.</p></li>
+<li><p>Don’t crash at shutdown if there is no display driver (Windows).</p></li>
+<li><p>Don’t fail init if both D3D, GL drivers unavailable (Windows).</p></li>
 <li><p>Run fullscreen toggle on main thread (OS X).</p></li>
 <li><p>Destroy the backbuffer bitmap when destroying the display (OS X).</p></li>
 <li><p>Switch to new NSTrackingArea API (OS X).</p></li>
@@ -123,7 +128,7 @@ A game programming library
 <p>Input:</p>
 <ul>
 <li><p>al_set_mouse_xy on Windows resulted in the mouse getting set to the wrong position in windowed modes.</p></li>
-<li><p>Scale the user supplied mouse cursor if it's too big (Windows).</p></li>
+<li><p>Scale the user supplied mouse cursor if it’s too big (Windows).</p></li>
 <li><p>Fix mouse warping on OS X.</p></li>
 <li><p>Fix mouse warping in Linux evdev mouse driver.</p></li>
 </ul>
@@ -174,7 +179,7 @@ A game programming library
 </ul>
 <p>Displays:</p>
 <ul>
-<li><p>Fix al_set/get_window position on Windows so getting/setting to the same position continuosly doesn't move the window. (Michael Swiger)</p></li>
+<li><p>Fix al_set/get_window position on Windows so getting/setting to the same position continuosly doesn’t move the window. (Michael Swiger)</p></li>
 <li><p>Add al_set_display_icons (plural). Implemented on X11 and Windows.</p></li>
 <li><p>Made al_get_display_mode return the closest thing to a pixel format possible with the WGL driver (tobing).</p></li>
 <li><p>Move WGL context destruction out of the message pump thread and into the user/main thread.</p></li>
@@ -192,7 +197,7 @@ A game programming library
 </ul>
 <p>Input:</p>
 <ul>
-<li>Partially fix mouse buttons &quot;sticking&quot; on Mac, e.g. holding the mouse and toggling fullscreen window.</li>
+<li>Partially fix mouse buttons “sticking” on Mac, e.g. holding the mouse and toggling fullscreen window.</li>
 </ul>
 <p>Filesystem:</p>
 <ul>
@@ -210,7 +215,7 @@ A game programming library
 <p>Image I/O addon:</p>
 <ul>
 <li><p>Fixed loading interlaced .png files with libpng.</p></li>
-<li><p>Use Allegro built-in loaders in preference to OS X loaders for BMP/TGA/PCX. The OS X TGA loader doesn't support alpha and this is also more consistent.</p></li>
+<li><p>Use Allegro built-in loaders in preference to OS X loaders for BMP/TGA/PCX. The OS X TGA loader doesn’t support alpha and this is also more consistent.</p></li>
 <li><p>Restored ability of the native OSX image loader to load grayscale pictures.</p></li>
 </ul>
 <p>Native dialog addon:</p>
@@ -251,7 +256,7 @@ A game programming library
 <li><p>Fix bug where setting the mouse cursor had no effect when the mouse was captured (mouse button held down).</p></li>
 <li><p>Fix windows not having a minimise button when set to windowed state from fullscreen window state.</p></li>
 <li><p>Respect ALLEGRO_FRAMELESS flag properly when toggling from fullscreen window state to windowed state (Windows).</p></li>
-<li><p>Don't generate DISPLAY_LOST events when resizing a fullscreen display.</p></li>
+<li><p>Don’t generate DISPLAY_LOST events when resizing a fullscreen display.</p></li>
 <li><p>Scale window icon to sizes returned by GetSystemMetrics (Windows).</p></li>
 <li><p>Fixed ALLEGRO_FULLSCREEN_WINDOW under OS X.</p></li>
 <li><p>Added al_osx_get_window function (Dennis Gooden).</p></li>
@@ -263,7 +268,7 @@ A game programming library
 <li><p>Avoid null pointer dereference when setting a target bitmap after its video_texture has already been released (D3D).</p></li>
 <li><p>Lock bitmap to prevent slowness when creating a cursor from a non-memory bitmap on Windows.</p></li>
 <li><p>Conditionally lock bitmap when creating cursor on X11 (previously it did so even if already locked).</p></li>
-<li><p>Don't use NSOpenGLPFAAccelerated unnecessarily (OS X).</p></li>
+<li><p>Don’t use NSOpenGLPFAAccelerated unnecessarily (OS X).</p></li>
 </ul>
 <p>Input:</p>
 <ul>
@@ -279,9 +284,9 @@ A game programming library
 </ul>
 <p>Image addon:</p>
 <ul>
-<li><p>Don't include native image loader source files in builds with the native image loaders disabled (OSX, iOS).</p></li>
+<li><p>Don’t include native image loader source files in builds with the native image loaders disabled (OSX, iOS).</p></li>
 <li><p>Added a missing autorelease-pool to the OSX bitmap saving function (sleepywind).</p></li>
-<li><p>Fix OSX native image loader for loading not-premultiplied RGB data. Previously the data was &quot;de-multiplied&quot;, with possibly all information lost.</p></li>
+<li><p>Fix OSX native image loader for loading not-premultiplied RGB data. Previously the data was “de-multiplied”, with possibly all information lost.</p></li>
 <li><p>Fix OSX native image loader for loading bitmaps without an alpha channel. They appeared completely black previously.</p></li>
 </ul>
 <p>Font addons:</p>
@@ -345,14 +350,14 @@ A game programming library
 </ul>
 <p>OpenGL:</p>
 <ul>
-<li><p>Texture should be 'complete' (min/mag and wrap set) before glTexImage2D.</p></li>
+<li><p>Texture should be ‘complete’ (min/mag and wrap set) before glTexImage2D.</p></li>
 <li><p>Fixed a bug in al_unlock_bitmap where the pixel alignment mistakenly was used as row length.</p></li>
 <li><p>Fixed typo in names of some OpenGL extension functions.</p></li>
 <li><p>Display list of OpenGL extensions in allegro.log also for OpenGL 3.0.</p></li>
 </ul>
 <p>Direct3D:</p>
 <ul>
-<li>Fixed a bug in the D3D driver where separate alpha blending was being tested for when it shouldn't have been (Max Savenkov).</li>
+<li>Fixed a bug in the D3D driver where separate alpha blending was being tested for when it shouldn’t have been (Max Savenkov).</li>
 </ul>
 <p>Input:</p>
 <ul>
@@ -385,7 +390,7 @@ A game programming library
 <li><p>Add ex_resample_test.</p></li>
 <li><p>ex_audio_props: Add bidir button.</p></li>
 <li><p>ex_joystick_events: Support hotplugging and fix display of 3-axis sticks.</p></li>
-<li><p>Add test_driver --no-display flag. (Tobias Hansen)</p></li>
+<li><p>Add test_driver –no-display flag. (Tobias Hansen)</p></li>
 </ul>
 <p>Other:</p>
 <ul>
@@ -410,12 +415,12 @@ A game programming library
 <p>Displays:</p>
 <ul>
 <li><p>Set ALLEGRO_MINIMIZED display flag on Windows (Zac Evans).</p></li>
-<li><p>Don't generate bogus resize events after restoring minimised window on Windows.</p></li>
+<li><p>Don’t generate bogus resize events after restoring minimised window on Windows.</p></li>
 <li><p>Fixed bug on Windows where two SWITCH_IN events were fired when window was minimized/restored (Michael Swiger).</p></li>
 <li><p>Fixed inverted al_toggle_display_flag(ALLEGRO_NOFRAME) logic under Windows as well as a bug where repeatedly setting the flag to on would make the window grow bigger and bigger (Michael Swiger).</p></li>
 <li><p>Fixed inverted al_toggle_display_flag(ALLEGRO_NOFRAME) logic in X11.</p></li>
 <li><p>Prevent a deadlock during display creation on X.</p></li>
-<li><p>Fallback to the 'old' visual selection method on X instead of crashing if the 'new' visual selection doesn't work.</p></li>
+<li><p>Fallback to the ‘old’ visual selection method on X instead of crashing if the ‘new’ visual selection doesn’t work.</p></li>
 </ul>
 <p>Input:</p>
 <ul>
@@ -424,8 +429,8 @@ A game programming library
 <p>Filesystem:</p>
 <ul>
 <li><p>Added al_fopen_slice.</p></li>
-<li><p>Added al_set_exe_name which allows overriding Allegro's idea of the path to the current executable.</p></li>
-<li><p>Make al_get_standard_path(ALLEGRO_TEMP_PATH) treat the value of TMPDIR et al. as a directory name even without a trailing slash. (Unix)</p></li>
+<li><p>Added al_set_exe_name which allows overriding Allegro’s idea of the path to the current executable.</p></li>
+<li><p>Make al_get_standard_path(ALLEGRO_TEMP_PATH) treat the value of TMPDIR et al. as a directory name even without a trailing slash. (Unix)</p></li>
 <li><p>Make stdio al_fopen implementation set proper errno on failure.</p></li>
 </ul>
 <p>Audio addons:</p>
@@ -446,7 +451,7 @@ A game programming library
 <ul>
 <li><p>Added al_load_ttf_font_stretch functions (tobing).</p></li>
 <li><p>Added ALLEGRO_TTF_NO_AUTOHINT font loading flag to disable the Auto Hinter which is enabled by default in newer version of FreeType (Michał Cichoń).</p></li>
-<li><p>Clear locked region so pixel borders aren't random garbage that can be seen sometimes with linear filtering on.</p></li>
+<li><p>Clear locked region so pixel borders aren’t random garbage that can be seen sometimes with linear filtering on.</p></li>
 <li><p>Unlock glyph cache page at end of text_length and get_text_dimensions (jmasterx).</p></li>
 </ul>
 <p>Examples:</p>
@@ -466,7 +471,7 @@ A game programming library
 <p>Graphics:</p>
 <ul>
 <li><p>Fixed several instances of windows being positioned wrong on Windows: regular windows, WGL FULLSCREEN_WINDOW, and ALLEGRO_NOFRAME windows.</p></li>
-<li><p>Don't re-bind the FBO in al_set_target_bitmap if the new target bitmap shares the parent bitmap with the new target bitmap (Paul Suntsov).</p></li>
+<li><p>Don’t re-bind the FBO in al_set_target_bitmap if the new target bitmap shares the parent bitmap with the new target bitmap (Paul Suntsov).</p></li>
 <li><p>Zero out fake refresh rate information from the nvidia proprietary driver on X11 (Peter Wang).</p></li>
 <li><p>Implemented the ALLEGRO_FULLSCREEN_WINDOW flag for iOS.</p></li>
 </ul>
@@ -475,7 +480,7 @@ A game programming library
 <li><p>Make al_set_mouse_xy work in fullscreen on Windows.</p></li>
 <li><p>Fixed a race condition in al_init_joystick.</p></li>
 <li><p>Fixed problem on OS X where having two identical gamepads attached would cause joystick initialization to hang (Thanks to Todd Cope for pointing it out.)</p></li>
-<li><p>Fixed iphone joystick events (it assumed a call to al_get_joystick but that's not required when using events).</p></li>
+<li><p>Fixed iphone joystick events (it assumed a call to al_get_joystick but that’s not required when using events).</p></li>
 </ul>
 <p>TTF fonts:</p>
 <ul>
@@ -491,7 +496,7 @@ A game programming library
 </ul>
 <p>Other:</p>
 <ul>
-<li><p>Use .../Library/Application Support for ALLEGRO_USER_SETTINGS_PATH and ALLEGRO_USER_DATA_PATH on iOS.</p></li>
+<li><p>Use …/Library/Application Support for ALLEGRO_USER_SETTINGS_PATH and ALLEGRO_USER_DATA_PATH on iOS.</p></li>
 <li><p>Listen for applicationDidBecomeActive and applicationWillResignActive instead of applicationWillEnterForeground and applicationDidEnterBackground on iOS. This makes all of the common situations where you want to pause your game work, such as the lock button.</p></li>
 <li><p>Fix some memory leaks on iOS.</p></li>
 </ul>
@@ -511,13 +516,13 @@ A game programming library
 <p>Graphics:</p>
 <ul>
 <li><p>Save memory in OpenGL case by freeing bitmap memory after uploading a texture. Use a temporary buffer when converting lock buffer back to native texture format.</p></li>
-<li><p>Don't release or refresh memory or sub-bitmaps when D3D device gets lost/found.</p></li>
+<li><p>Don’t release or refresh memory or sub-bitmaps when D3D device gets lost/found.</p></li>
 <li><p>Do not set D3D sub bitmaps to modified when first creating them. This can cause major slowdowns when creating a lot of sub-bitmaps and is likely responsible for slow font performance/startup when using D3D.</p></li>
 <li><p>Fix incorrect number of display formats in D3D (tobing).</p></li>
 <li><p>Honor ALLEGRO_VSYNC in the WGL driver.</p></li>
 <li><p>Make titlebar icons the right size on Windows.</p></li>
 <li><p>Fix typo causing weird results of al_get_monitor_info on X.</p></li>
-<li><p>Don't setup FBO for a sub-bitmap whose parent is locked.</p></li>
+<li><p>Don’t setup FBO for a sub-bitmap whose parent is locked.</p></li>
 <li><p>Specialise ADD/ONE/INVERSE_ALPHA blend mode software scanline drawers.</p></li>
 <li><p>Toggle ALLEGRO_VIDEO_BITMAP flag off when creating a memory bitmap (both bits were previously on).</p></li>
 <li><p>Add null bitmap assertion to al_clone_bitmap.</p></li>
@@ -533,7 +538,7 @@ A game programming library
 </ul>
 <p>Audio addons:</p>
 <ul>
-<li><p>Don't mix into a global temporary sample buffer, causing noise when two separate mixers are trying to run in parallel.</p></li>
+<li><p>Don’t mix into a global temporary sample buffer, causing noise when two separate mixers are trying to run in parallel.</p></li>
 <li><p>Make it possible to start/stop an audio stream which is attached to a voice.</p></li>
 <li><p>ALSA voices could not be resumed after being stopped, because the update threads quit as soon as a voice is stopped.</p></li>
 <li><p>OpenAL backend did not handle the case where _al_voice_update returns less than a full buffer.</p></li>
@@ -546,7 +551,7 @@ A game programming library
 <p>TTF addon:</p>
 <ul>
 <li><p>Reduce memory usage.</p></li>
-<li><p>Don't make multiple passes over strings when computing text dimensions.</p></li>
+<li><p>Don’t make multiple passes over strings when computing text dimensions.</p></li>
 </ul>
 <p>Build system:</p>
 <ul>
@@ -619,7 +624,7 @@ A game programming library
 <p>Graphics:</p>
 <ul>
 <li><p>Automatically destroy framebuffer objects (FBOs) created for non-memory bitmaps after a while. This solves the problem of running out of resources if you set many different target bitmaps.</p></li>
-<li><p>Make al_get_opengl_fbo attempt to create an FBO if one doesn't exist.</p></li>
+<li><p>Make al_get_opengl_fbo attempt to create an FBO if one doesn’t exist.</p></li>
 <li><p>Avoid very small textures in Direct3D.</p></li>
 <li><p>Do not sync from memory when first creating/uploading a bitmap (D3D).</p></li>
 <li><p>Try to fix the problem of the taskbar appearing above fullscreen windows on Windows.</p></li>
@@ -643,7 +648,7 @@ A game programming library
 </ul>
 <p>Build system:</p>
 <ul>
-<li><p>Force &quot;default&quot; visibility of _al_mangled_main on OS X, otherwise the dynamic linker cannot find the symbol if building with XCode4 (Owen Anderson and Peter Hull).</p></li>
+<li><p>Force “default” visibility of _al_mangled_main on OS X, otherwise the dynamic linker cannot find the symbol if building with XCode4 (Owen Anderson and Peter Hull).</p></li>
 <li><p>Generated pkg-config files should take into account LIB_SUFFIX variable (Cristian Morales Vega).</p></li>
 <li><p>Update allegro_font pkg-config file to not require allegro_primitives.</p></li>
 </ul>
@@ -684,8 +689,8 @@ A game programming library
 </ul>
 <p>Keyboard:</p>
 <ul>
-<li><p>Don't send KEY_CHAR events for modifier and dead keys (with contributions from torhu).</p></li>
-<li><p>Don't send KEY_DOWN events for non-physical key events.</p></li>
+<li><p>Don’t send KEY_CHAR events for modifier and dead keys (with contributions from torhu).</p></li>
+<li><p>Don’t send KEY_DOWN events for non-physical key events.</p></li>
 <li><p>osx: Allow unicode entry (single keypresses only).</p></li>
 <li><p>x11: Set the keycode field in KEY_CHAR events to the code of the last key pressed, as stated in the documentation, even if the char is due to a compose sequence.</p></li>
 <li><p>x11: Get rid of historic behaviour where the unicode field is always zero when Alt is held down.</p></li>
@@ -699,7 +704,7 @@ A game programming library
 <li><p>Calculate Y position for al_set_mouse_xy correctly in OS X windowed mode (X-G).</p></li>
 <li><p>Use more appropriate CURSOR_LINK cursor on OS X (X-G).</p></li>
 <li><p>Assign different button IDs for separate touches on iPhone (Michał Cichoń).</p></li>
-<li><p>iphone: Remove fake mouse move events as they're unncessary and can cause problems with user input tracking.</p></li>
+<li><p>iphone: Remove fake mouse move events as they’re unncessary and can cause problems with user input tracking.</p></li>
 </ul>
 <p>Filesystem:</p>
 <ul>
@@ -712,7 +717,7 @@ A game programming library
 <li><p>Use string arguments to al_create_native_file_dialog() and al_get_native_file_dialog_path() instead of ALLEGRO_PATH.</p></li>
 <li><p>Enhance the Windows file selector (initial patch by Todd Cope):</p>
 <ul>
-<li><p>Use Windows' folder selector for ALLEGRO_FILECHOOSER_FOLDER.</p></li>
+<li><p>Use Windows’ folder selector for ALLEGRO_FILECHOOSER_FOLDER.</p></li>
 <li><p>Implement patterns.</p></li>
 <li><p>Display the title of the dialog that the user specified.</p></li>
 </ul></li>
@@ -743,10 +748,10 @@ A game programming library
 <p>The main developers this time were: Trent Gamblin, Matthew Leverton, Elias Pschernig, Peter Wang.</p>
 <p>Graphics:</p>
 <ul>
-<li><p>d3d: Don't generate intermediate resize events during modal resize loop.</p></li>
+<li><p>d3d: Don’t generate intermediate resize events during modal resize loop.</p></li>
 <li><p>Optimize D3D9 driver by caching blender state and scissor rectangle so redundant calls to D3D9 functions are avoided (Michał Cichoń).</p></li>
 <li><p>gl: Use glGenerateMipmapEXT to generate mipmaps when FBOs are used.</p></li>
-<li><p>x11: Don't restore display mode if another fullscreen display is active.</p></li>
+<li><p>x11: Don’t restore display mode if another fullscreen display is active.</p></li>
 </ul>
 <p>Input:</p>
 <ul>
@@ -804,7 +809,7 @@ A game programming library
 <p>System:</p>
 <ul>
 <li><p>Add al_is_system_installed and hide al_get_system_driver.</p></li>
-<li><p>Prevent 'DLL hijacking' security issue on Windows.</p></li>
+<li><p>Prevent ‘DLL hijacking’ security issue on Windows.</p></li>
 </ul>
 <p>Graphics:</p>
 <ul>
@@ -849,7 +854,7 @@ A game programming library
 <ul>
 <li><p>ex_ttf: Test the monochrome flag.</p></li>
 <li><p>Work around problems with MSVC and UTF-8 string literals. ex_utf8 is now not built under MSVC.</p></li>
-<li><p>Don't use WIN32 executable type on examples that require the console (David Capello).</p></li>
+<li><p>Don’t use WIN32 executable type on examples that require the console (David Capello).</p></li>
 </ul>
 <p>Other:</p>
 <ul>
@@ -859,14 +864,14 @@ A game programming library
 <p>The developers this time were: Trent Gamblin, Evert Glebbeek, Elias Pschernig, Paul Suntsov, Peter Wang.</p>
 <p>Graphics:</p>
 <ul>
-<li><p>Make al_resize_display keep the original resolution (or change back) if it can't set the users request, on Windows.</p></li>
+<li><p>Make al_resize_display keep the original resolution (or change back) if it can’t set the users request, on Windows.</p></li>
 <li><p>Do not emit ALLEGRO_DISPLAY_RESIZE events from the Windows and X11 display drivers when using al_resize_display.</p></li>
 <li><p>[X11] Make al_get_num_display_modes and al_get_display_mode work if the adapter is set to default. Right now there was no way to query the modes of the default monitor.</p></li>
-<li><p>[X11] Use _NET_WM_STATE_FULLSCREEN hint for &quot;true&quot; fullscreen displays. Enable mouse grabbing in fullscreen modes.</p></li>
+<li><p>[X11] Use _NET_WM_STATE_FULLSCREEN hint for “true” fullscreen displays. Enable mouse grabbing in fullscreen modes.</p></li>
 <li><p>Added ALLEGRO_EVENT_DISPLAY_ORIENTATION and implement it on iOS.</p></li>
 <li><p>Dennis Busch fixed a problem with displays not showing up on the primary display by default in some dual head setups, on Windows.</p></li>
 <li><p>Increase the precision of texture coordinate deltas in the software triangle renderer, from floats to doubles.</p></li>
-<li><p>Remove al_get_frontbuffer(). It wasn't implemented anywhere.</p></li>
+<li><p>Remove al_get_frontbuffer(). It wasn’t implemented anywhere.</p></li>
 <li><p>Implement min/mag filter and mipmap flags for Direct3D.</p></li>
 </ul>
 <p>Input:</p>
@@ -882,12 +887,12 @@ A game programming library
 <ul>
 <li><p>Make al_get_fs_entry_name and al_get_current_directory return strings instead of ALLEGRO_PATH.</p></li>
 <li><p>Make al_make_directory create parent directories as needed.</p></li>
-<li><p>Fix al_create_fs_entry to not trim the root path &quot;/&quot; down to the empty string with the stdio backend.</p></li>
+<li><p>Fix al_create_fs_entry to not trim the root path “/” down to the empty string with the stdio backend.</p></li>
 </ul>
 <p>Path routines:</p>
 <ul>
 <li><p>Remove al_make_path_absolute and replace it by al_rebase_path.</p></li>
-<li><p>Remove undocumented behavior of setting a default organization name of &quot;allegro&quot; for all apps.</p></li>
+<li><p>Remove undocumented behavior of setting a default organization name of “allegro” for all apps.</p></li>
 <li><p>Correctly return standard paths as directories on OS X.</p></li>
 </ul>
 <p>Threads:</p>
@@ -900,8 +905,8 @@ A game programming library
 </ul>
 <p>Other core:</p>
 <ul>
-<li><p>Move the Windows event loops back into the same thread as the D3D event loop. It's a requirement of D3D, else you can get crashes as I was when resetting the device (like tabbing away from a fullscreen app).</p></li>
-<li><p>Add some missing standard entries to the OS X menu bar (the &quot;hide&quot;, &quot;hide others&quot; and the window list, mainly).</p></li>
+<li><p>Move the Windows event loops back into the same thread as the D3D event loop. It’s a requirement of D3D, else you can get crashes as I was when resetting the device (like tabbing away from a fullscreen app).</p></li>
+<li><p>Add some missing standard entries to the OS X menu bar (the “hide”, “hide others” and the window list, mainly).</p></li>
 </ul>
 <p>Audio addon:</p>
 <ul>
@@ -926,7 +931,7 @@ A game programming library
 <p>Examples:</p>
 <ul>
 <li><p>Added example demonstrating the effect of premultiplied alpha.</p></li>
-<li><p>Make 'F' toggle fullscreen window in SPEED (in-game).</p></li>
+<li><p>Make ‘F’ toggle fullscreen window in SPEED (in-game).</p></li>
 <li><p>Minor improvements to the a5teroids demo.</p></li>
 </ul>
 <p>Documentation:</p>
@@ -963,7 +968,7 @@ A game programming library
 <li><p>Added al_add_new_bitmap_flag convenience function.</p></li>
 <li><p>Added three new bitmaps flags ALLEGRO_MAG_LINEAR, ALLEGRO_MIN_LINEAR, ALLEGRO_MIPMAP. Removed the config settings for linear/anisotropic min/mag filtering. DirectX side not yet updated.</p></li>
 <li><p>Register destructors for bitmaps, so they will be implicitly destroyed when Allegro is shut down. This was only true for some bitmaps previously.</p></li>
-<li><p>Don't allocate memory buffers for video bitmaps when using OpenGL.</p></li>
+<li><p>Don’t allocate memory buffers for video bitmaps when using OpenGL.</p></li>
 <li><p>Make al_get_opengl_extension_list() return NULL if called on a non-GL display.</p></li>
 <li><p>Fix al_create_display for OpenGL forward compatible contexts.</p></li>
 <li><p>Add al_set_current_opengl_context as an explicit way to set the OpenGL context.</p></li>
@@ -1032,7 +1037,7 @@ A game programming library
 <li><p>Rename al_get_native_dialog_event_source to al_get_native_text_log_event_source.</p></li>
 <li><p>Speed up text log appending by making the reader/writers asynchronous.</p></li>
 <li><p>Register destructors for file chooser and text log dialogs.</p></li>
-<li><p>Fix file chooser on Windows returning multiple selections with slashes appended to filenames. If an initial path was specified then the dialog wouldn't open at all; fixed.</p></li>
+<li><p>Fix file chooser on Windows returning multiple selections with slashes appended to filenames. If an initial path was specified then the dialog wouldn’t open at all; fixed.</p></li>
 <li><p>Let native dialog functions fail gracefully.</p></li>
 </ul>
 <p>Audio addons:</p>
@@ -1055,11 +1060,11 @@ A game programming library
 </ul>
 <p>Examples:</p>
 <ul>
-<li><p>Add ex_haiku, an example based on Mark Oates's Haiku game. Mark generously agreed to let us include it as an Allegro example.</p></li>
+<li><p>Add ex_haiku, an example based on Mark Oates’s Haiku game. Mark generously agreed to let us include it as an Allegro example.</p></li>
 <li><p>Added a new example ex_joystick_hotplugging.</p></li>
 <li><p>Added a new example ex_filter.</p></li>
 <li><p>Make ex_fs_window work on MSVC.</p></li>
-<li><p>Allow a5teroids to run without audio, or if audio data doesn't load.</p></li>
+<li><p>Allow a5teroids to run without audio, or if audio data doesn’t load.</p></li>
 </ul>
 <p>Build system:</p>
 <ul>
@@ -1078,19 +1083,19 @@ A game programming library
 <p>The main developers this time were: Trent Gamblin, Matthew Leverton, Elias Pschernig, Paul Suntsov, Peter Wang.</p>
 <p>Graphics:</p>
 <ul>
-<li><p>Fixed the mis-termed &quot;blend color&quot;. There is no more color state.</p>
+<li><p>Fixed the mis-termed “blend color”. There is no more color state.</p>
 <ul>
 <li><p>al_set*_blender functions lose the color parameter.</p></li>
-<li><p>Added 5 new bitmap drawing functions al_draw_tinted*_bitmap with a color parameter. The parameter is used just like the &quot;blend color&quot; before.</p></li>
-<li><p>All text drawing functions gain a color parameter and use it like they used the &quot;blend color&quot; before.</p></li>
-<li><p>Primitive drawing functions previously sometimes (and sometimes not) used the &quot;blend color&quot;. Not any longer.</p></li>
+<li><p>Added 5 new bitmap drawing functions al_draw_tinted*_bitmap with a color parameter. The parameter is used just like the “blend color” before.</p></li>
+<li><p>All text drawing functions gain a color parameter and use it like they used the “blend color” before.</p></li>
+<li><p>Primitive drawing functions previously sometimes (and sometimes not) used the “blend color”. Not any longer.</p></li>
 </ul></li>
 <li><p>Make the current blending mode thread-local state instead of per-display state.</p></li>
-<li><p>Add explicit display arguments to functions which require a display, but don't require the rendering context to be current.</p></li>
+<li><p>Add explicit display arguments to functions which require a display, but don’t require the rendering context to be current.</p></li>
 <li><p>Make al_set_target_bitmap change the current display as necessary. al_set_target_bitmap(NULL) releases the rendering context.</p></li>
 <li><p>Add al_set_target_backbuffer as a convenience.</p></li>
 <li><p>Remove al_set_current_display.</p></li>
-<li><p>Give each bitmap its own transformation, i.e. every bitmap has a transformation, which is in effect when that bitmap is the target.</p></li>
+<li><p>Give each bitmap its own transformation, i.e. every bitmap has a transformation, which is in effect when that bitmap is the target.</p></li>
 <li><p>Remove sub-bitmap clip-to-parent restriction on create. Add out-of-bounds blitting support to memory bitmaps.</p></li>
 <li><p>Merge sub-bitmap and parent bitmap clipping; clip source bitmap to (0,0)-(w,h); fix flipping to/from clipped bitmaps.</p></li>
 <li><p>Made mouse cursors independent of displays. You may create cursors without a display, and you may use a cursor with any display.</p></li>
@@ -1114,7 +1119,7 @@ A game programming library
 <li><p>Made the D3D driver of the primitives addon work with multiple displays. Also made it handle the display being destroyed properly.</p></li>
 <li><p>Simplified shader recreating on thread destruction when using the primitives addon with D3D.</p></li>
 <li><p>Avoid double free when shutting down the primitives addon multiple times.</p></li>
-<li><p>Older Intel cards don't implement DrawIndexedPrimitiveUP correctly. Altered the D3D code to work around that.</p></li>
+<li><p>Older Intel cards don’t implement DrawIndexedPrimitiveUP correctly. Altered the D3D code to work around that.</p></li>
 </ul>
 <p>Audio addon:</p>
 <ul>
@@ -1141,7 +1146,7 @@ A game programming library
 <p>Build system:</p>
 <ul>
 <li><p>Remove INSTALL_PREFIX. Windows users can now use CMAKE_INSTALL_PREFIX to set the install path.</p></li>
-<li><p>Allow the user to place dependencies in a subdirectory &quot;deps&quot;, which will be automatically searched.</p></li>
+<li><p>Allow the user to place dependencies in a subdirectory “deps”, which will be automatically searched.</p></li>
 </ul>
 <p>Examples:</p>
 <ul>
@@ -1156,13 +1161,13 @@ A game programming library
 <p>The developers this time were: Thomas Fjellstrom, Evert Glebbeek, Matthew Leverton, Milan Mimica, Paul Suntsov, Trent Gamblin, Elias Pschernig, Peter Wang. With significant contributions from Michał Cichoń.</p>
 <p>Core:</p>
 <ul>
-<li><p>Add al_malloc, al_free, et al. These are now used consistently throughout Allegro and its addons.</p></li>
+<li><p>Add al_malloc, al_free, et al. These are now used consistently throughout Allegro and its addons.</p></li>
 <li><p>Replace al_set_memory_management_functions by a simpler function, al_set_memory_interface.</p></li>
 <li><p>Renamed some D3D/Windows specific functions to follow the al_{verb}_{stuff} convention.</p></li>
 </ul>
 <p>Graphics:</p>
 <ul>
-<li><p>Move image I/O framework to core, i.e. al_load_bitmap, al_save_bitmap and bitmap file type registration. Image codecs remain in allegro_image.</p></li>
+<li><p>Move image I/O framework to core, i.e. al_load_bitmap, al_save_bitmap and bitmap file type registration. Image codecs remain in allegro_image.</p></li>
 <li><p>Added a simple display capabilities querying capability to al_get_display_option: ALLEGRO_MAX_BITMAP_SIZE, ALLEGRO_SUPPORT_NPOT_BITMAP, ALLEGRO_CAN_DRAW_INTO_BITMAP, ALLEGRO_SUPPORT_SEPARATE_ALPHA. (OpenGL only for now)</p></li>
 <li><p>Fix in OpenGL 3.0 context creation.</p></li>
 <li><p>Make the extensions mechanism compatible with OpenGL version &gt;= 3. Declared symbols needed by OpenGL 3.2 and 3.3 and brought OpenGL extensions up to date.</p></li>
@@ -1227,8 +1232,8 @@ A game programming library
 <p>Audio codecs:</p>
 <ul>
 <li><p>Add MOD/S3M/XM/IT file support, using the DUMB library.</p></li>
-<li><p>Revert to a monolithic allegro_acodec addon, i.e. remove separate allegro_flac, allegro_vorbis addons. WAV file support is in allegro_acodec.</p></li>
-<li><p>Implement DLL loading for FLAC/Vorbis/DUMB on Windows. allegro_acodec will load the DLL at runtime to enable support for that format. If your program does not require said format, you don't need to distribute the DLL.</p></li>
+<li><p>Revert to a monolithic allegro_acodec addon, i.e. remove separate allegro_flac, allegro_vorbis addons. WAV file support is in allegro_acodec.</p></li>
+<li><p>Implement DLL loading for FLAC/Vorbis/DUMB on Windows. allegro_acodec will load the DLL at runtime to enable support for that format. If your program does not require said format, you don’t need to distribute the DLL.</p></li>
 <li><p>Remove format-specific loader/saver audio codec functions.</p></li>
 <li><p>Make acodec loaders have consistent file closing behaviour.</p></li>
 <li><p>Optimised wave file loading.</p></li>
@@ -1256,7 +1261,7 @@ A game programming library
 <li><p>Make al_put_pixel clip even if the bitmap is locked, which was the reason why software primitives were not clipping.</p></li>
 <li><p>Added al_put_blended_pixel, the blended version of al_put_pixel.</p></li>
 <li><p>Sub bitmaps of sub bitmaps must be clipped to the first parent.</p></li>
-<li><p>Don't clear the transformation when setting the target bitmap in OpenGL.</p></li>
+<li><p>Don’t clear the transformation when setting the target bitmap in OpenGL.</p></li>
 <li><p>Implemented ALLEGRO_NOFRAME and ALLEGRO_FULLSCREEN_WINDOW in WGL.</p></li>
 <li><p>Set the ALLEGRO_DISPLAY-&gt;refresh_rate variable for fullscreen modes under D3D.</p></li>
 <li><p>Make d3d_clear return immediately if the display is in a lost state.</p></li>
@@ -1267,7 +1272,7 @@ A game programming library
 <p>Input:</p>
 <ul>
 <li><p>Removed al_set_mouse_range.</p></li>
-<li><p>Don't call al_get_mouse_state if the mouse driver isn't installed (Windows).</p></li>
+<li><p>Don’t call al_get_mouse_state if the mouse driver isn’t installed (Windows).</p></li>
 <li><p>Send events even when the mouse cursor leaves the window, while any buttons are held down (Windows and Mac OS X; X11 already did this).</p></li>
 <li><p>Allow mouse presses and accelerometer data simultaneously. (iPhone)</p></li>
 </ul>
@@ -1284,7 +1289,7 @@ A game programming library
 <ul>
 <li><p>Made the software driver for the primitives addon check for blending properly. Also, fixed two line shaders.</p></li>
 <li><p>Made the D3D driver thread-safe. The whole addon should be thread-safe now.</p></li>
-<li><p>The addon now officially supports 3D vertices, even though the software component can't draw them yet.</p></li>
+<li><p>The addon now officially supports 3D vertices, even though the software component can’t draw them yet.</p></li>
 <li><p>Changed the way the primitives addon handles the OpenGL state (fixes a few bugs and makes life easier for raw-OpenGL people)</p></li>
 </ul>
 <p>Image addon:</p>
@@ -1308,7 +1313,7 @@ A game programming library
 </ul>
 <p>Examples:</p>
 <ul>
-<li>Special contribution from Shawn &quot;the Progenitor&quot; Hargreaves.</li>
+<li>Special contribution from Shawn “the Progenitor” Hargreaves.</li>
 </ul>
 <h1 id="changes-from-4.9.17-to-4.9.18-march-2010">Changes from 4.9.17 to 4.9.18 (March 2010)</h1>
 <p>The main developers this time were: Trent Gamblin, Elias Pschernig, Evert Glebbeek, Peter Wang. Other contributions from: Milan Mimica, Paul Suntsov, Peter Hull.</p>
@@ -1329,14 +1334,14 @@ A game programming library
 </ul>
 <p>Input:</p>
 <ul>
-<li><p>Added &quot;pressure&quot; field to the mouse event struct and mouse state, which can be used with pressure sensitive pointing devices, i.e. tablets/stylus (currently OS X only).</p></li>
-<li><p>Report scroll ball &quot;w&quot; position in mouse event struct, on OS X.</p></li>
-<li><p>Removed OS X 10.1 specific code from mouse driver. We don't support OS X 10.1 any more.</p></li>
+<li><p>Added “pressure” field to the mouse event struct and mouse state, which can be used with pressure sensitive pointing devices, i.e. tablets/stylus (currently OS X only).</p></li>
+<li><p>Report scroll ball “w” position in mouse event struct, on OS X.</p></li>
+<li><p>Removed OS X 10.1 specific code from mouse driver. We don’t support OS X 10.1 any more.</p></li>
 <li><p>Fix building of Linux joystick driver on some systems.</p></li>
 </ul>
 <p>Threads:</p>
 <ul>
-<li><p>Fix a problem when al_join_thread() is called immediately after al_start_thread(). The thread could be joined before the user's thread function starts at all.</p></li>
+<li><p>Fix a problem when al_join_thread() is called immediately after al_start_thread(). The thread could be joined before the user’s thread function starts at all.</p></li>
 <li><p>Fix a possible deadlock with al_join_thread() on Windows (thanks to Michał Cichoń for the report).</p></li>
 <li><p>Fix some error messages running threading examples on OS X.</p></li>
 </ul>
@@ -1367,7 +1372,7 @@ A game programming library
 </ul>
 <p>Image addon:</p>
 <ul>
-<li><p>Added a &quot;native loader&quot; for MacOS X that uses the NSImage bitmap loading functions. In addition to .png and .jpg, this allows us to read a whole zoo of image formats (listed in allegro.log).</p></li>
+<li><p>Added a “native loader” for MacOS X that uses the NSImage bitmap loading functions. In addition to .png and .jpg, this allows us to read a whole zoo of image formats (listed in allegro.log).</p></li>
 <li><p>Add native support for tif, jpg, gif, png, BMPf, ico, cur, xbm formats to under IPhone.</p></li>
 <li><p>Fixed an over-zealous ASSERT() that disallowed passing NULL to al_register_bitmap_loader() despite this being an allowed value.</p></li>
 <li><p>Avoid using a field which is deprecated in libpng 1.4.</p></li>
@@ -1382,10 +1387,10 @@ A game programming library
 </ul>
 <p>Build system:</p>
 <ul>
-<li><p>Set VERSION and SOVERSION properties on targets to give Unix shared libraries proper sonames. e.g. liballegro[_addon].so.4.9, liballegro[_addon].4.9.dylib</p></li>
-<li><p>Static libraries are now named without version number suffixes to minimise the differences with the shared libraries, which no longer have the versions in their base names. e.g. liballegro[_addon]-static.a, allegro[_addon]-static.lib</p></li>
-<li><p>Windows import libraries are also named without version suffixes, e.g. liballegro[_addon].a, allegro[_addon].lib</p></li>
-<li><p>DLLs are named with a short version suffix, not the full version. e.g. allegro-4.9.dll instead of allegro-4.9.18.dll</p></li>
+<li><p>Set VERSION and SOVERSION properties on targets to give Unix shared libraries proper sonames. e.g. liballegro[_addon].so.4.9, liballegro[_addon].4.9.dylib</p></li>
+<li><p>Static libraries are now named without version number suffixes to minimise the differences with the shared libraries, which no longer have the versions in their base names. e.g. liballegro[_addon]-static.a, allegro[_addon]-static.lib</p></li>
+<li><p>Windows import libraries are also named without version suffixes, e.g. liballegro[_addon].a, allegro[_addon].lib</p></li>
+<li><p>DLLs are named with a short version suffix, not the full version. e.g. allegro-4.9.dll instead of allegro-4.9.18.dll</p></li>
 <li><p>Add support for Mac OS X frameworks (untested), which are enabled with WANT_FRAMEWORKS and WANT_EMBED. There is one framework per addon.</p></li>
 <li><p>Search for static OGG/Vorbis libraries built with MSVC named libogg_static.lib, etc.</p></li>
 <li><p>Updated iPhone XCode project.</p></li>
@@ -1397,10 +1402,10 @@ A game programming library
 <li><p>ex_ogre3d: New example demonstrating use of Ogre graphics rendering alongside Allegro (currently GLX only). Commented out in the build system for now.</p></li>
 <li><p>ex_fs_window: New example to test ALLEGRO_FULLSCREEN_WINDOW flag and al_toggle_display_flag.</p></li>
 <li><p>ex_blend2: Updated to test subtractive blending, including scaled/rotated blits and the primitives addon.</p></li>
-<li><p>ex_mouse_events: Show &quot;w&quot; field.</p></li>
+<li><p>ex_mouse_events: Show “w” field.</p></li>
 <li><p>ex_prim: Added possibility to click the mouse to advance screens (for iPhone).</p></li>
 <li><p>ex_vsync: Display config parameters and warning.</p></li>
-<li><p>ex_gldepth: Make the textures appear again though we're not sure why they disappeared.</p></li>
+<li><p>ex_gldepth: Make the textures appear again though we’re not sure why they disappeared.</p></li>
 </ul>
 <p>Documentation:</p>
 <ul>
@@ -1419,7 +1424,7 @@ A game programming library
 </ul>
 <p>Graphics:</p>
 <ul>
-<li><p>Fixed a bug in the OpenGL driver where al_draw_bitmap() wouldn't handle blitting from the back buffer.</p></li>
+<li><p>Fixed a bug in the OpenGL driver where al_draw_bitmap() wouldn’t handle blitting from the back buffer.</p></li>
 <li><p>Changing the blending color now works with deferred drawing (Todd Cope).</p></li>
 <li><p>Avoid some problems with window resizing in Windows/D3D.</p></li>
 <li><p>Added al_get_d3d_texture_position.</p></li>
@@ -1427,7 +1432,7 @@ A game programming library
 <li><p>Properly implemented osx_get_opengl_pixelformat_attributes().</p></li>
 <li><p>Fixed automatic detection of colour depth on OS X.</p></li>
 <li><p>Fixed al_get_num_display_modes() on Mac OS X 10.6.</p></li>
-<li><p>Removed al_get_num_display_formats, al_get_display_format_option, al_set_new_display_format functions as they can't be implemented on OSX/iPhone/GPX ports (and were awkward to use).</p></li>
+<li><p>Removed al_get_num_display_formats, al_get_display_format_option, al_set_new_display_format functions as they can’t be implemented on OSX/iPhone/GPX ports (and were awkward to use).</p></li>
 <li><p>Replaced al_toggle_window_frame function with a new function al_toggle_display_flags.</p></li>
 <li><p>al_load_bitmap() and al_convert_mask_to_alpha() no longer reset the current transformation.</p></li>
 <li><p>Add a minimize button to all non-resizable windows on Windows.</p></li>
@@ -1438,15 +1443,15 @@ A game programming library
 <li><p>Some keycodes were out of order in src/win/wkeyboard.c</p></li>
 <li><p>Fixed mouse range after resizing window on Windows.</p></li>
 <li><p>Fixed (or worked around) a joystick axis detection problem on Mac OS X.</p></li>
-<li><p>Change timer counts from 'long' to 'int64_t'.</p></li>
+<li><p>Change timer counts from ‘long’ to ‘int64_t’.</p></li>
 </ul>
 <p>File I/O:</p>
 <ul>
-<li>Remove `ret_success' arguments from al_fread32be/le.</li>
+<li>Remove `ret_success’ arguments from al_fread32be/le.</li>
 </ul>
 <p>allegro-main addon:</p>
 <ul>
-<li>Added an &quot;allegro-main&quot; addon to hold the main() function that is required on Mac OS X. This way the user can opt out of it.</li>
+<li>Added an “allegro-main” addon to hold the main() function that is required on Mac OS X. This way the user can opt out of it.</li>
 </ul>
 <p>Primitives addon:</p>
 <ul>
@@ -1460,10 +1465,10 @@ A game programming library
 <li><p>Rename audio I/O functions to al_load_{format}, al_save_{format}, al_load_{format}<em>f and al_save</em>{format}_f.</p></li>
 <li><p>Added al_load_sample_f, al_save_sample_f, al_load_audio_stream_f and the related functions.</p></li>
 <li><p>Fixed a bug where al_save_sample was improperly handling the extension.</p></li>
-<li><p>al_drain_audio_stream would hang on an audio stream in the 'playing' state (the default) which wasn't attached to anything.</p></li>
+<li><p>al_drain_audio_stream would hang on an audio stream in the ‘playing’ state (the default) which wasn’t attached to anything.</p></li>
 <li><p>Fixed a potential deadlock on destroying audio streams by shutting down the audio driver.</p></li>
 <li><p>Comment out PA_SINK_SUSPENDED check, which breaks the PulseAudio driver, at least on Ubuntu 9.10.</p></li>
-<li><p>Replace unnecessary uses of `long' in audio interfaces.</p></li>
+<li><p>Replace unnecessary uses of `long’ in audio interfaces.</p></li>
 </ul>
 <p>Image addons:</p>
 <ul>
@@ -1486,7 +1491,7 @@ A game programming library
 </ul>
 <p>Examples:</p>
 <ul>
-<li>ex_display_options: Added mouse support, query current display settings, display error if a mode can't be set.</li>
+<li>ex_display_options: Added mouse support, query current display settings, display error if a mode can’t be set.</li>
 </ul>
 <p>Bindings:</p>
 <ul>
@@ -1501,7 +1506,7 @@ A game programming library
 <li><p>Fixed clipping of the right/bottom edges for the software primitives.</p></li>
 <li><p>Enable sub-pixel accuracy for rotated blitting in software.</p></li>
 <li><p>Made the D3D output look closer to the OGL/Software output.</p></li>
-<li><p>OpenGL driver now respects the 'linear' texture filtering configuration option. Anisotropic is interpreted as linear at this time.</p></li>
+<li><p>OpenGL driver now respects the ‘linear’ texture filtering configuration option. Anisotropic is interpreted as linear at this time.</p></li>
 <li><p>Added deferred bitmap drawing (al_hold_bitmap_drawing).</p></li>
 <li><p>Made the font addons use deferred bitmap drawing instead of the primitives addon, removing the link between the two addons.</p></li>
 <li><p>Changed al_transform_vertex to al_transform_coordinates to make the function more versatile.</p></li>
@@ -1516,7 +1521,7 @@ A game programming library
 </ul>
 <p>Other core:</p>
 <ul>
-<li>Don't #define true/false/bool macros in C++.</li>
+<li>Don’t #define true/false/bool macros in C++.</li>
 </ul>
 <p>Audio addon:</p>
 <ul>
@@ -1532,7 +1537,7 @@ A game programming library
 <ul>
 <li><p>Set the initial title of new windows to the app name.</p></li>
 <li><p>Add al_set/get_event_source_data.</p></li>
-<li><p>Make locking work on bitmaps that didn't have an FBO prior to the call on iPhone.</p></li>
+<li><p>Make locking work on bitmaps that didn’t have an FBO prior to the call on iPhone.</p></li>
 <li><p>Make al_get_opengl_fbo work on iPhone.</p></li>
 <li><p>Made iPhone port properly choose a visual (so depth buffer creation works).</p></li>
 </ul>
@@ -1588,8 +1593,8 @@ A game programming library
 </ul>
 <p>Filesystem:</p>
 <ul>
-<li><p>Make the path returned by al_get_entry_name() owned by the filesystem entry so the user doesn't need to free it manually.</p></li>
-<li><p>Renamed the filesystem entry functions, mainly to include &quot;fs_entry&quot; in their names instead of just &quot;entry&quot;.</p></li>
+<li><p>Make the path returned by al_get_entry_name() owned by the filesystem entry so the user doesn’t need to free it manually.</p></li>
+<li><p>Renamed the filesystem entry functions, mainly to include “fs_entry” in their names instead of just “entry”.</p></li>
 <li><p>Reordered and renamed ALLEGRO_FS_INTERFACE members.</p></li>
 <li><p>Make al_read_directory() not return . and .. directory entries.</p></li>
 <li><p>Renamed al_create_path_for_dir to al_create_path_for_directory.</p></li>
@@ -1619,13 +1624,13 @@ A game programming library
 </ul>
 <p>Image addon:</p>
 <ul>
-<li><p>Renamed the IIO addon to &quot;allegro_image&quot;.</p></li>
+<li><p>Renamed the IIO addon to “allegro_image”.</p></li>
 <li><p>Renamed *_entry functions that take ALLEGRO_FILE * arguments to *_stream.</p></li>
 <li><p>Fixed off-by-one error in greyscale JPEG loader.</p></li>
 </ul>
 <p>Audio addons:</p>
 <ul>
-<li><p>Renamed the kcm_audio addon to &quot;allegro_audio&quot;.</p></li>
+<li><p>Renamed the kcm_audio addon to “allegro_audio”.</p></li>
 <li><p>Renamed ALLEGRO_STREAM and stream functions to ALLEGRO_AUDIO_STREAM and al_*audio_stream*.</p></li>
 <li><p>Renamed al_stream_from_file to al_load_audio_stream</p></li>
 <li><p>Added int16 mixing and configurable frequency and depth for default mixer/voice (see configuration file).</p></li>
@@ -1652,7 +1657,7 @@ A game programming library
 </ul>
 <p>PhysicsFS:</p>
 <ul>
-<li><p>PhysFS readdir didn't prepend the parent directory name to the returned entry's path.</p></li>
+<li><p>PhysFS readdir didn’t prepend the parent directory name to the returned entry’s path.</p></li>
 <li><p>Set execute bit on PhysFS directory entries.</p></li>
 </ul>
 <p>Examples:</p>
@@ -1724,7 +1729,7 @@ A game programming library
 <p>Documentation:</p>
 <ul>
 <li><p>Lots of documentation updates.</p></li>
-<li><p>Added a short &quot;Getting started guide&quot; to the reference manual.</p></li>
+<li><p>Added a short “Getting started guide” to the reference manual.</p></li>
 </ul>
 <p>Examples:</p>
 <ul>
@@ -1754,7 +1759,7 @@ A game programming library
 <ul>
 <li><p>Changed rotation direction in memory blitting routines to match D3D/OpenGL routines.</p></li>
 <li><p>Made al_set_target_bitmap not create an FBO if the bitmap is locked.</p></li>
-<li><p>Added explicit FBO handling functions al_get_opengl_fbo and al_remove_opengl_fbo in case we weren't quite clever enough above and the user has to intervene manually.</p></li>
+<li><p>Added explicit FBO handling functions al_get_opengl_fbo and al_remove_opengl_fbo in case we weren’t quite clever enough above and the user has to intervene manually.</p></li>
 <li><p>Added OpenGL 3.1 support and a bunch of new OpenGL extensions.</p></li>
 <li><p>Fixed al_inhibit_screensaver on Windows</p></li>
 <li><p>Fixed selection of X pixel formats with WGL if a new bitmap has alpha.</p></li>
@@ -1793,7 +1798,7 @@ A game programming library
 <p>Audio addon:</p>
 <ul>
 <li><p>Change from using generic get/set audio property functions to specific getter/setter functions.</p></li>
-<li><p>Change return types on many functions to return true on success instead of zero. (Watch out when porting your code, the C compiler won't help.)</p></li>
+<li><p>Change return types on many functions to return true on success instead of zero. (Watch out when porting your code, the C compiler won’t help.)</p></li>
 </ul>
 <p>Native dialogs:</p>
 <ul>
@@ -1875,18 +1880,20 @@ A game programming library
 <p>Other core:</p>
 <ul>
 <li><p>Renamed al_thread_should_stop to al_get_thread_should_stop.</p></li>
-<li><p>Added a new internal logging mechanism with configurable debug &quot;channels&quot;, verbosity levels and output formatting.</p></li>
+<li><p>Added a new internal logging mechanism with configurable debug “channels”, verbosity levels and output formatting.</p></li>
 <li><p>Cleaned up ASSERT namespace pollution.</p></li>
 </ul>
 <p>Font addons:</p>
 <ul>
 <li><p>Renamed font and TTF addon functions to conform to conventions.</p></li>
 <li><p>Added al_init_ttf_addon.</p></li>
-<li><p>Implemented slightly nicer text drawing API:</p></li>
-<li>functions are called &quot;draw_text&quot; instead of &quot;textout&quot;</li>
+<li><p>Implemented slightly nicer text drawing API:</p>
+<ul>
+<li>functions are called “draw_text” instead of “textout”</li>
 <li>centre/right alignment handled by a flag instead of functions</li>
 <li>functions accepting ALLEGRO_USTR arguments provided</li>
-<li><p>substring support is removed so 'count' arguments not needed in usual case, however ALLEGRO_USTR functions provide similar thing.</p></li>
+<li>substring support is removed so ‘count’ arguments not needed in usual case, however ALLEGRO_USTR functions provide similar thing.</li>
+</ul></li>
 <li><p>Removed al_font_is_compatible_font.</p></li>
 <li><p>Sped up al_grab_font_from_bitmap() by five times.</p></li>
 <li><p>ttf: Fixed a possible bug with kerning of unicode code points &gt; 127.</p></li>
@@ -2031,7 +2038,7 @@ A game programming library
 <p>Path functions:</p>
 <ul>
 <li><p>Added al_path_clone(), al_path_make_canonical(), al_path_make_absolute(), al_path_set_extension(), al_{get,set}_org_name, al_{get,set}_app_name} functions.</p></li>
-<li><p>Made al_path_get_extension() not include the leading &quot;.&quot; of the extension,</p></li>
+<li><p>Made al_path_get_extension() not include the leading “.” of the extension,</p></li>
 <li><p>Add AL_EXENAME_PATH, AL_USER_SETTINGS_PATH, AL_SYSTEM_SETTINGS_PATH enums for al_get_path().</p></li>
 </ul>
 <p>String routines:</p>
@@ -2087,7 +2094,7 @@ A game programming library
 </ul>
 <p>Build system:</p>
 <ul>
-<li>Use official CMAKE_BUILD_TYPE method of selecting which build configuration. This should work better for non-make builds, however, it's no longer possible to build multiple configurations with a single configuration step as we could previously.</li>
+<li>Use official CMAKE_BUILD_TYPE method of selecting which build configuration. This should work better for non-make builds, however, it’s no longer possible to build multiple configurations with a single configuration step as we could previously.</li>
 </ul>
 <p>Removals:</p>
 <ul>
@@ -2103,10 +2110,10 @@ A game programming library
 <p>The main developers this time were: Trent Gamblin, Evert Glebbeek, Peter Hull, Milan Mimica, Peter Wang.</p>
 <p>Graphics:</p>
 <ul>
-<li><p>Fixed a bug where the &quot;display&quot; field of a bitmap was not correctly reset when it was transfered to another display on OS X.</p></li>
+<li><p>Fixed a bug where the “display” field of a bitmap was not correctly reset when it was transfered to another display on OS X.</p></li>
 <li><p>Made al_create_display() respect al_set_new_window_position() on OS X.</p></li>
 <li><p>Fixed the bug that caused input focus to be lost in OS X when a window was resized.</p></li>
-<li><p>Made resizable Allegro windows respond properly to the green &quot;+&quot; button at the top of the screen on OS X.</p></li>
+<li><p>Made resizable Allegro windows respond properly to the green “+” button at the top of the screen on OS X.</p></li>
 <li><p>Properly implemented fullscreen resize in WGL.</p></li>
 <li><p>Made the memory blenders work the same as the hardware ones.</p></li>
 <li><p>Made al_get_pixel()/al_draw_pixel() handle sub bitmaps in case the bitmap was locked.</p></li>
@@ -2117,8 +2124,8 @@ A game programming library
 </ul>
 <p>Input:</p>
 <ul>
-<li><p>Made al_get_keyboard_state() return structures with the `display' field correctly set.</p></li>
-<li><p>Made keyboard event member 'unichar' uppercase when Shift/CapsLock is on, in Windows.</p></li>
+<li><p>Made al_get_keyboard_state() return structures with the `display’ field correctly set.</p></li>
+<li><p>Made keyboard event member ‘unichar’ uppercase when Shift/CapsLock is on, in Windows.</p></li>
 <li><p>Made mouse cursor show/hide work with Mac OS X full screen.</p></li>
 </ul>
 <p>Config routines:</p>
@@ -2134,14 +2141,14 @@ A game programming library
 </ul>
 <p>Examples:</p>
 <ul>
-<li><p>Add an example to test the ALLEGRO_KEYBOARD_STATE `display' field.</p></li>
+<li><p>Add an example to test the ALLEGRO_KEYBOARD_STATE `display’ field.</p></li>
 <li><p>Add an example for testing config routines.</p></li>
 <li><p>Add an example for checking software blending routines against hardware blending.</p></li>
 <li><p>Add an example for the simple interface for kcm_audio.</p></li>
 </ul>
 <h1 id="changes-from-4.9.5-to-4.9.6-november-2008">Changes from 4.9.5 to 4.9.6 (November 2008)</h1>
 <p>The core developers this time were: Thomas Fjellstrom, Trent Gamblin, Evert Glebbeek, Peter Hull, Milan Mimica, Jon Rafkind, Peter Wang.</p>
-<p>Allegro 4.9.6 and onwards are licensed under the zlib licence (see LICENSE.txt). This is a simple permissive free software licence, close in spirit to the 'giftware' licence, but is clearer and more well-known.</p>
+<p>Allegro 4.9.6 and onwards are licensed under the zlib licence (see LICENSE.txt). This is a simple permissive free software licence, close in spirit to the ‘giftware’ licence, but is clearer and more well-known.</p>
 <p>General:</p>
 <ul>
 <li><p>Added filesystem hook (fshook) and path API functions.</p></li>
@@ -2215,9 +2222,9 @@ A game programming library
 <li><p>Added a possiblity to drain a stream created by al_stream_from_file().</p></li>
 <li><p>Added a function to rewind a stream.</p></li>
 <li><p>Added gain support to ALLEGRO_STREAM and ALLEGRO_SAMPLE objects.</p></li>
-<li><p>Made it possible to attach a sample to a mixer that isn't already attached to something.</p></li>
+<li><p>Made it possible to attach a sample to a mixer that isn’t already attached to something.</p></li>
 <li><p>Fixed Ogg Vorbis loader on big-endian systems.</p></li>
-<li><p>Made the OpenAL driver the least preferred driver, as it doesn't play stereo samples properly.</p></li>
+<li><p>Made the OpenAL driver the least preferred driver, as it doesn’t play stereo samples properly.</p></li>
 </ul>
 <p>Image addons:</p>
 <ul>
@@ -2228,7 +2235,7 @@ A game programming library
 <p>Font addon:</p>
 <ul>
 <li><p>Fixed count-restricted text output functions calculations on non-ASCII strings.</p></li>
-<li><p>Made al_textout* functions always a 'count' parameter.</p></li>
+<li><p>Made al_textout* functions always a ‘count’ parameter.</p></li>
 <li><p>Renamed al_font_text_length* to al_font_text_width*.</p></li>
 <li><p>Harmonised the order of al_font_textout* and al_font_textprintf* arguments.</p></li>
 </ul>
@@ -2273,7 +2280,7 @@ A game programming library
 <li><p>Borderless windows, setting window positions and titles.</p></li>
 <li><p>Fullscreen support on OSX and Linux.</p></li>
 <li><p>Do not clear bitmaps when they are created.</p></li>
-<li><p>Improved compile times and DLL sizes by simplifying &quot;memblit&quot; functions.</p></li>
+<li><p>Improved compile times and DLL sizes by simplifying “memblit” functions.</p></li>
 <li><p>Added EXPOSE, SWITCH_IN and SWITCH_OUT display events.</p></li>
 </ul>
 <p>Build system:</p>
@@ -2295,14 +2302,14 @@ A game programming library
 <li><p>Supports BMP, PCX, TGA.</p></li>
 <li><p>Supports PNG support with libpng.</p></li>
 </ul></li>
-<li><p>Added new audio addon, kcm_audio. (The 'audio' addon was taken in a new direction between the 4.9.3 and 4.9.4 releases, but we decided against that, so actually it's actually a continuation of the old audio addon.)</p>
+<li><p>Added new audio addon, kcm_audio. (The ‘audio’ addon was taken in a new direction between the 4.9.3 and 4.9.4 releases, but we decided against that, so actually it’s actually a continuation of the old audio addon.)</p>
 <ul>
 <li><p>Added audio streaming functionality.</p></li>
 <li><p>Added OSS, ALSA, DirectSound drivers.</p></li>
 <li><p>A lot of reorganisation, internally and externally.</p></li>
 </ul></li>
 <li><p>Added TTF font addon, using FreeType.</p></li>
-<li><p>Made all addons use &quot;al_&quot; prefix.</p></li>
+<li><p>Made all addons use “al_” prefix.</p></li>
 </ul>
 <p>Examples:</p>
 <ul>
@@ -2316,14 +2323,14 @@ A game programming library
 <li><p>Milan Mimica did lots of work on the OpenGL drivers, such as adding an OpenGL driver for Windows and making the OpenGL code shared between platforms.</p></li>
 <li><p>Peter Hull added an OpenGL graphics driver for Mac OS X.</p></li>
 <li><p>Milan Mimica made the OpenGL driver share contexts between displays.</p></li>
-<li><p>Peter Wang and Milan Mimica made the OpenGL driver work with cards that don't support non-power-of-two (NPOT) textures.</p></li>
+<li><p>Peter Wang and Milan Mimica made the OpenGL driver work with cards that don’t support non-power-of-two (NPOT) textures.</p></li>
 <li><p>Trent Gamblin added support for NPOT textures in the Direct3D driver.</p></li>
 <li><p>Trent Gamblin fixed blending in memory drawing functions.</p></li>
 <li><p>Trent Gamblin added al_draw_pixel() which obeys blending.</p></li>
 <li><p>Trent Gamblin made al_clear() not affected by blending in D3D.</p></li>
 <li><p>Milan Mimica added the following functions to the public API: al_opengl_version(), al_is_opengl_extension_supported(), al_get_opengl_proc_address(), al_get_opengl_extension_list().</p></li>
 <li><p>Milan Mimica added sub-bitmaps support for memory bitmaps and in the OpenGL display driver.</p></li>
-<li><p>Milan Mimica made displays keep a list of bitmaps. When destroying a display its bitmaps will be managed properly, e.g. converted to memory bitmaps if necessary. All display bitmaps will be automatically destroyed on exit.</p></li>
+<li><p>Milan Mimica made displays keep a list of bitmaps. When destroying a display its bitmaps will be managed properly, e.g. converted to memory bitmaps if necessary. All display bitmaps will be automatically destroyed on exit.</p></li>
 <li><p>Peter Wang made X window resizing work without GLX 1.3.</p></li>
 <li><p>Trent Gamblin fixed a bug in the Direct3D driver when windows were minimized (thanks to David McCallum).</p></li>
 <li><p>Trent Gamblin fixed the coordinates of Direct3D primitives to match OpenGL style.</p></li>
@@ -2343,9 +2350,9 @@ A game programming library
 <p>Timers:</p>
 <ul>
 <li><p>Ryan Dickie changed the type of timestamps throughout the API from int expressed in milliseconds to double expressed in seconds and improved timer resolution on Windows.</p></li>
-<li><p>Ryan Dickie added an 'error' field to the timer event, and added error and overhead statistics to exnew_timer.</p></li>
+<li><p>Ryan Dickie added an ‘error’ field to the timer event, and added error and overhead statistics to exnew_timer.</p></li>
 <li><p>Trent Gamblin made the Windows timer use QueryPerformanceCounter.</p></li>
-<li><p>Peter Wang split al_wait_for_event() into two functions, a version that takes a timeout and a version that doesn't.</p></li>
+<li><p>Peter Wang split al_wait_for_event() into two functions, a version that takes a timeout and a version that doesn’t.</p></li>
 <li><p>Trent Gamblin merged the Windows and Unix timer source files.</p></li>
 </ul>
 <p>Input:</p>
@@ -2452,7 +2459,7 @@ A game programming library
 <li><p>Trent Gamblin fixed texture coordinates in the D3D driver.</p></li>
 <li><p>Trent Gamblin fixed formatting and an improper assertion.</p></li>
 <li><p>Trent Gamblin removed a redundant call to al_set_target_bitmap.</p></li>
-<li><p>Trent Gamblin fixed a bug in the DX joystick code that caused it to assert when it shouldn't.</p></li>
+<li><p>Trent Gamblin fixed a bug in the DX joystick code that caused it to assert when it shouldn’t.</p></li>
 <li><p>Trent Gamblin made al_create_display call al_flip_display so the window is cleared.</p></li>
 <li><p>Trent Gamblin made the D3D driver work where render-to-texture is not supported.</p></li>
 <li><p>Trent Gamblin removed masking support completely.</p></li>
@@ -2464,7 +2471,7 @@ A game programming library
 <li><p>Trent Gamblin changed color map and unmap functions to use the target bitmap.</p></li>
 <li><p>Trent Gamblin added the font example to the cmake build process.</p></li>
 <li><p>Elias Pschernig added the font example to the scons build process.</p></li>
-<li><p>Elias Pschernig removed special handling of &quot;src&quot; dir, and made various cosmetic changes.</p></li>
+<li><p>Elias Pschernig removed special handling of “src” dir, and made various cosmetic changes.</p></li>
 <li><p>Trent Gamblin made cmake install to MINGDIR.</p></li>
 <li><p>Trent Gamblin added a better font and example for the bitmap font addon.</p></li>
 <li><p>Trent Gamblin removed unix header from install on other platforms.</p></li>
@@ -2514,10 +2521,10 @@ A game programming library
 <li><p>Elias Pschernig fixed opengl setup being issued in wrong thread.</p></li>
 <li><p>Elias Pschernig moved src/misc/colconv.c from windows sources to general sources.</p></li>
 <li><p>Elias Pschernig uncommented accidentally commented out line.</p></li>
-<li><p>Elias Pschernig made scons read the list of source files from cmake/FileList.cmake, so there's only one place to add new files.</p></li>
+<li><p>Elias Pschernig made scons read the list of source files from cmake/FileList.cmake, so there’s only one place to add new files.</p></li>
 <li><p>Trent Gamblin made _al_get_pixel_value faster.</p></li>
 <li><p>Trent Gamblin made al_unmap_rgba_i use a table instead of relying on al_unmap_rgba_f.</p></li>
-<li><p>Peter Wang changed #includes to use file names from the root of the include hierarchy, i.e. #include &quot;allegro/internal/foo.h&quot; instead of #include &quot;internal/foo.h&quot; and likewise for allegro/platform/foo.h.</p></li>
+<li><p>Peter Wang changed #includes to use file names from the root of the include hierarchy, i.e. #include “allegro/internal/foo.h” instead of #include “internal/foo.h” and likewise for allegro/platform/foo.h.</p></li>
 <li><p>Peter Wang removed some stray CR characters.</p></li>
 <li><p>Trent Gamblin added al_get_bitmap_width, al_get_bitmap_height, al_get_bitmap_format, and al_get_bitmap_flags.</p></li>
 <li><p>Trent Gamblin made al_draw_rotated_(scaled_)bitmap only lock the region of the destination is needs to for memory bitmaps.</p></li>
@@ -2542,7 +2549,7 @@ A game programming library
 <li><p>Trent Gamblin improved D3D line drawing, added al_get_num_display_modes and al_get_display_mode, and cleaned up &amp; organized some code.</p></li>
 <li><p>Trent Gamblin removed _al_win_delete_from_vector.</p></li>
 <li><p>Trent Gamblin added draw_memory_bitmap_region vtable hook to AL_DISPLAY.</p></li>
-<li><p>Elias Pschernig implemented enough of the xdummy driver to run exnewap (doesn't display correctly yet though).</p></li>
+<li><p>Elias Pschernig implemented enough of the xdummy driver to run exnewap (doesn’t display correctly yet though).</p></li>
 <li><p>Elias Pschernig updated scons build files.</p></li>
 <li><p>Elias Pschernig Removed windows specific includes from exnewapi.c.</p></li>
 <li><p>Elias Pschernig added missing al_convert_mask_to_alpha prototype.</p></li>
@@ -2556,13 +2563,13 @@ A game programming library
 <li><p>Elias Pschernig fixed a bogus cast.</p></li>
 <li><p>Elias Pschernig fixed typo in al_get_new_diplay_format for non-mingw.</p></li>
 <li><p>Trent Gamblin made display and bitmap parameters local to the calling thread.</p></li>
-<li><p>Trent Gamblin added al_draw_rotated_bitmap and al_draw_rotated_scaled_bitmap for memory bitmaps using Allegro's software rotation code as a base.</p></li>
+<li><p>Trent Gamblin added al_draw_rotated_bitmap and al_draw_rotated_scaled_bitmap for memory bitmaps using Allegro’s software rotation code as a base.</p></li>
 <li><p>Trent Gamblin ported a stretch blit fix from 4.2, made al_init call allegro_init, made al_draw_bitmap(_region) much faster on memory bitmaps, and added al_draw_scaled_bitmap for memory bitmaps.</p></li>
 <li><p>Trent Gamblin renamed AL_LOCKED_RECTANGLE to AL_LOCKED_REGION, and started on memory bitmaps (al_draw_bitmap and al_draw_bitmap region work).</p></li>
 <li><p>Trent Gamblin made seperate functions for getting/setting display/bitmap parameters, made backbuffer-as-source bitmap work in D3D, and changed parameter ordering of some functions.</p></li>
-<li><p>Trent Gamblin added al_is_compatible_bitmap removed dependancy on Allegro's 3D math functions from the D3D driver.</p></li>
+<li><p>Trent Gamblin added al_is_compatible_bitmap removed dependancy on Allegro’s 3D math functions from the D3D driver.</p></li>
 <li><p>Trent Gamblin added al_convert_mask_to_alpha, made put/get_pixel faster if the bitmap is locked ahead of time, and brought back AL_MASK_SOURCE.</p></li>
-<li><p>Trent Gamblin committed various bugfixes, implemented the RGB mapping/unmapping functions from Bob's API.</p></li>
+<li><p>Trent Gamblin committed various bugfixes, implemented the RGB mapping/unmapping functions from Bob’s API.</p></li>
 <li><p>Trent Gamblin removed the D3DX library dependancy.</p></li>
 <li><p>Trent Gamblin committed various bugfixes and got all of the examples working with the D3D driver.</p></li>
 <li><p>Trent Gamblin fixed some of the compatibility conversions.</p></li>
@@ -2579,20 +2586,20 @@ A game programming library
 <li><p>Trent Gamblin fixed some problems with the cmake build on Windows.</p></li>
 <li><p>Peter Wang removed the second parameter in a call to _al_event_source_needs_to_generate_event() which was missed earlier.</p></li>
 <li><p>Peter Wang exposed some internal documentation on destructors, events and event sources to NaturalDocs.</p></li>
-<li><p>Peter Wang changed al_wait_for_event() so that a timeout value of &quot;0&quot; means to not wait at all. To wait an indefinite amount of time the caller should pass the AL_WAIT_FOREVER constant.</p></li>
+<li><p>Peter Wang changed al_wait_for_event() so that a timeout value of “0” means to not wait at all. To wait an indefinite amount of time the caller should pass the AL_WAIT_FOREVER constant.</p></li>
 <li><p>Peter Wang removed the declarations of al_event_source_set_mask and al_event_source_mask which were missed in the previous change.</p></li>
 <li><p>Peter Wang removed event masking abilities, that is, for the user to prevent an event source from generating particular event types. This was implemented using bitfields which limited the number of event types to 32. Although the limit could be raised event masking was probably not very useful anyway. In all, the functions removed are: al_event_source_mask, al_event_source_set_mask, al_wait_for_specific_event. The al_wait_for_specific_event() API also required event types to be bitfields.</p></li>
 <li><p>Peter Wang fixed some spelling mistakes in the examples.</p></li>
 <li><p>Peter Wang bumped the version to 4.9.2.</p></li>
 <li><p>Peter Wang moved allegro/branches/4.3 to allegro/branches/4.9.</p></li>
 <li><p>Ryan Patterson clarified the documentation of stop_sample().</p></li>
-<li><p>Peter Wang and Trent Gamblin fixed some issues with the CMake build. The allegro-config script was not generated properly and liballeg_unsharable wasn't being installed.</p></li>
+<li><p>Peter Wang and Trent Gamblin fixed some issues with the CMake build. The allegro-config script was not generated properly and liballeg_unsharable wasn’t being installed.</p></li>
 <li><p>Matthew Leverton changed an instance of long long to LONG_LONG and an LL suffix into a (LONG_LONG) cast, both for MSVC 6.</p></li>
-<li><p>Matthew Leverton submitted a fix for MSVC 6 regarding MSVC's lack of a __FUNCTION__ macro.</p></li>
+<li><p>Matthew Leverton submitted a fix for MSVC 6 regarding MSVC’s lack of a __FUNCTION__ macro.</p></li>
 <li><p>orz, Matthew Leverton, and Peter Wang made the ALLEGRO_USE_C=1 option to work under MinGW and MSVC.</p></li>
 <li><p>Anthony Cassidy fixed a typo.</p></li>
-<li><p>Peter Wang removed the 'msvc' target from the fix.sh help message as it should not be used by users any more. Added a comment that it is used by zipup.sh.</p></li>
-<li><p>Anthony 'Timorg' Cassidy made d_menu_proc fill up its assigned area with the gui_bg_color.</p></li>
+<li><p>Peter Wang removed the ‘msvc’ target from the fix.sh help message as it should not be used by users any more. Added a comment that it is used by zipup.sh.</p></li>
+<li><p>Anthony ‘Timorg’ Cassidy made d_menu_proc fill up its assigned area with the gui_bg_color.</p></li>
 </ul>
 <h1 id="changes-from-4.9.0-to-4.9.1-march-2007">Changes from 4.9.0 to 4.9.1 (March 2007)</h1>
 <p><em>Note that 4.9.1 was called 4.3.1 when it was originally released.</em></p>
@@ -2600,16 +2607,16 @@ A game programming library
 <li><p>Added a new mouse and cursor API. The new functions are:</p>
 <p>al_install_mouse, al_uninstall_mouse, al_get_mouse, al_get_mouse_num_buttons, al_get_mouse_num_axes, al_set_mouse_xy, al_set_mouse_z, al_set_mouse_w, al_set_mouse_axis, al_set_mouse_range, al_get_mouse_state, al_mouse_button_down, al_mouse_state_axis</p>
 <p>al_create_mouse_cursor, al_destroy_mouse_cursor, al_set_mouse_cursor, al_set_system_mouse_cursor, al_show_mouse_cursor, al_hide_mouse_cursor</p></li>
-<li><p>Added documentation for some parts of the 4.9 API using the NaturalDocs generation system. The documentation is nowhere near as good as a proper manual, but it's still better than nothing.</p></li>
+<li><p>Added documentation for some parts of the 4.9 API using the NaturalDocs generation system. The documentation is nowhere near as good as a proper manual, but it’s still better than nothing.</p></li>
 <li><p>Added a commented example demonstating the new API (exnew_events.c).</p></li>
 <li><p>Added CMake and SCons build systems. These are mainly for use by Allegro developers at present.</p></li>
 <li><p>Various bug fixes and minor changes.</p></li>
 </ul>
 <h1 id="changes-from-4.2-series-to-4.9.0-july-2006">Changes from 4.2 series to 4.9.0 (July 2006)</h1>
 <p><em>Note that 4.9.0 was called 4.3.0 when it was originally released.</em></p>
-<p>Basically we're just wrapping up what we have in version control up to now. See the commit logs if you want details.</p>
+<p>Basically we’re just wrapping up what we have in version control up to now. See the commit logs if you want details.</p>
 <p>This release introduces a few new subsystems. We have an event system, a new keyboard API, a new joystick API, a new timer API, and the start of a new graphics API. All of these are subject to change, as is usual for a WIP.</p>
-<p>We are maintaining a certain level of source compatibility with the 4.2 API. If it's easy to maintain compatibility then we do it, otherwise compatibility is dropped. Obscure features are more likely to be dropped.</p>
+<p>We are maintaining a certain level of source compatibility with the 4.2 API. If it’s easy to maintain compatibility then we do it, otherwise compatibility is dropped. Obscure features are more likely to be dropped.</p>
 <p>This release has had minimal testing on Linux/x86, Windows/x86 (MinGW) and Windows/x86 (MSVC). It seems to work on some Linux/x86-64 machines also. Other ports are broken or untested.</p>
 <p>The new functions are as follows (in no particular order). No real documentation exists at the moment but interesting header files are: altime.h, display.h, draw.h, events.h, joystick.h, keyboard.h, timer.h.</p>
 <ul>

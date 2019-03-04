@@ -1,12 +1,17 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
-  <title>Allegro - Misc - DIGMID – </title>
-  <style type="text/css">code{white-space: pre;}</style>
-  <link rel="stylesheet" href="web_style.css" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Allegro - Misc - DIGMID – digmid</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="web_style.css" />
   <link rel="alternate" type="application/atom+xml"
       href="feed_atom.xml" title="Allegro news"
   />
@@ -79,68 +84,68 @@ A game programming library
 <div id="content">
 <h1 id="midi-patch-sets">MIDI patch sets</h1>
 <p>The DIGMID wavetable music driver needs a set of instrument samples, which can either be in the GUS patch or SoundFont 2.0 formats. GUS patches can be read directly from disk or converted into a single patches.dat file with the pat2dat utility. SoundFont banks must be converted prior to use.</p>
-<p>A GUS patch set consists of around 180 .pat instrument files, plus a default.cfg index file listing which patch goes with each MIDI program number. To use these files directly, point the &quot;patches=&quot; line in your allegro.cfg at the default.cfg file. To convert them into the patches.dat format, run &quot;pat2dat -o patches.dat samplepath.cfg -8&quot;, and then copy the resulting patches.dat into either the same directory as your program, the location pointed to by the ALLEGRO environment variable, or the location specified by the &quot;patches=&quot; line in your allegro.cfg.</p>
-<p>A SoundFont bank consists of a single .sf2 (SoundFont 2.0) file. Allegro cannot read the older .sbk (version 1.x) format, but there is a utility to convert such files: see the links below. The SoundFont should contain a set of GM instruments on bank 0, presets 0-127, and a GM drumkit on bank 128, preset 0 (this will be true for anything described as GM or GS compatible). It is possible to convert non-GM files as well (pat2dat has an option to grab samples from any bank you specify), but obviously the results will only work with MIDI files that were specifically written for those instruments. Some SoundFont banks make use of the AWE32 ROM samples, which are not available to Allegro, so it is only possible to convert instruments that include all their sample data within the SoundFont. To convert a SoundFont into the patches.dat format, run &quot;pat2dat -o patches.dat filename.sf2 -8&quot;, and then copy the resulting patches.dat into either the same directory as your program, the location pointed to by the ALLEGRO environment variable, or the location specified by the &quot;patches=&quot; line in your allegro.cfg.</p>
+<p>A GUS patch set consists of around 180 .pat instrument files, plus a default.cfg index file listing which patch goes with each MIDI program number. To use these files directly, point the “patches=” line in your allegro.cfg at the default.cfg file. To convert them into the patches.dat format, run “pat2dat -o patches.dat samplepath.cfg -8”, and then copy the resulting patches.dat into either the same directory as your program, the location pointed to by the ALLEGRO environment variable, or the location specified by the “patches=” line in your allegro.cfg.</p>
+<p>A SoundFont bank consists of a single .sf2 (SoundFont 2.0) file. Allegro cannot read the older .sbk (version 1.x) format, but there is a utility to convert such files: see the links below. The SoundFont should contain a set of GM instruments on bank 0, presets 0-127, and a GM drumkit on bank 128, preset 0 (this will be true for anything described as GM or GS compatible). It is possible to convert non-GM files as well (pat2dat has an option to grab samples from any bank you specify), but obviously the results will only work with MIDI files that were specifically written for those instruments. Some SoundFont banks make use of the AWE32 ROM samples, which are not available to Allegro, so it is only possible to convert instruments that include all their sample data within the SoundFont. To convert a SoundFont into the patches.dat format, run “pat2dat -o patches.dat filename.sf2 -8”, and then copy the resulting patches.dat into either the same directory as your program, the location pointed to by the ALLEGRO environment variable, or the location specified by the “patches=” line in your allegro.cfg.</p>
 <p>It is very easy to customise a GUS format patch set. You can either just copy new instruments over the top of the existing .pat files, or edit the default.cfg index to use different patches. If you want to modify a SoundFont bank, you must first convert it into the patches.dat format, which can be edited using the grabber. Each instrument is stored as a seperate object, so you can export them to .pat files, import from other files, move them around, rename them, etc. The patches.dat also contains a default_cfg index object in the standard GUS format, so you can edit this to use different samples (in particular you can list a single instrument for multiple program numbers, so for example you could use a single brass sample for the trumpet/trombone/tuba/horn/etc, if you are trying to reduce the size of your sample set).</p>
-<p>I am no lawyer, and I didn't make any of the patch sets listed below, so I can't tell you what the copyright situation with these samples is. Apart from the Emu bank, I think you are probably quite safe to redistribute them with a freeware game, but I would be very careful about using them in commercial products. It may be possible, but check the details first. I can't give any guarantee about the legality of these files...</p>
+<p>I am no lawyer, and I didn’t make any of the patch sets listed below, so I can’t tell you what the copyright situation with these samples is. Apart from the Emu bank, I think you are probably quite safe to redistribute them with a freeware game, but I would be very careful about using them in commercial products. It may be possible, but check the details first. I can’t give any guarantee about the legality of these files…</p>
 <table>
 <colgroup>
-<col width="16%" />
-<col width="13%" />
-<col width="69%" />
+<col style="width: 16%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="left">Name</th>
-<th align="left">Format/Size</th>
-<th align="left">Comments</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Format/Size</th>
+<th style="text-align: left;">Comments</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Richard Sanders's GUS patches <br/><a href="http://xml.cie.unam.mx/pub/Linux/lmws/eawpats/eawpats12.tar.bz2">[1]</a> <a href="http://download.sourcemage.org/mirror/eawpats12.tar.bz2">[2]</a> <a href="http://www.eglebbk.dds.nl/program/download/digmid.dat">Allegro .dat</a></td>
-<td align="left">ca. 30 meg Gravis patch files</td>
-<td align="left">Eawpatches GUS patch set is the best GUS patch set for TiMidity++. Eawpatches is maintained (tweaked and tuned) by Eric A Welsh. The first two links are mirrors to the patch. The third link is provided by Evert Glebbeek and was created from the full EAWPATS set so it weighs about 25MB. The latter can be used directly with the digmid driver.</td>
+<td style="text-align: left;">Richard Sanders’s GUS patches <br/><a href="http://xml.cie.unam.mx/pub/Linux/lmws/eawpats/eawpats12.tar.bz2">[1]</a> <a href="http://download.sourcemage.org/mirror/eawpats12.tar.bz2">[2]</a> <a href="http://www.eglebbk.dds.nl/program/download/digmid.dat">Allegro .dat</a></td>
+<td style="text-align: left;">ca. 30 meg Gravis patch files</td>
+<td style="text-align: left;">Eawpatches GUS patch set is the best GUS patch set for TiMidity++. Eawpatches is maintained (tweaked and tuned) by Eric A Welsh. The first two links are mirrors to the patch. The third link is provided by Evert Glebbeek and was created from the full EAWPATS set so it weighs about 25MB. The latter can be used directly with the digmid driver.</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="ftp://ftp.gravis.com/Public/Sound/Patches/">Gravis Pro Patches FTP archive</a></td>
-<td align="left">Various patches</td>
-<td align="left">The install program doesn't work on my machine, and the distribution doesn't include a default.cfg file, so you will need <a href="https://download.tuxfamily.org/allegro/files/propat.zip">this one</a> that I made. A pretty good sample set, with some nice powerful sounds, but there are a few tuning problems (eg. the panflute), and most of the instruments have very long release phases, which makes some music sound too muddy. I'm not sure what the legal situation with these patches is, because many of the sounds are based on the original GUS set (copyrighted by Eye&amp;I).</td>
+<td style="text-align: left;"><a href="ftp://ftp.gravis.com/Public/Sound/Patches/">Gravis Pro Patches FTP archive</a></td>
+<td style="text-align: left;">Various patches</td>
+<td style="text-align: left;">The install program doesn’t work on my machine, and the distribution doesn’t include a default.cfg file, so you will need <a href="https://download.tuxfamily.org/allegro/files/propat.zip">this one</a> that I made. A pretty good sample set, with some nice powerful sounds, but there are a few tuning problems (eg. the panflute), and most of the instruments have very long release phases, which makes some music sound too muddy. I’m not sure what the legal situation with these patches is, because many of the sounds are based on the original GUS set (copyrighted by Eye&amp;I).</td>
 </tr>
 <tr class="odd">
-<td align="left"><a href="http://freepats.opensrc.org/">Freepats</a></td>
-<td align="left">Unknown size</td>
-<td align="left">Freepats is a project to create a free and open set of GUS compatible patches that can be used with softsynths such as Timidity and WildMidi.</td>
+<td style="text-align: left;"><a href="http://freepats.opensrc.org/">Freepats</a></td>
+<td style="text-align: left;">Unknown size</td>
+<td style="text-align: left;">Freepats is a project to create a free and open set of GUS compatible patches that can be used with softsynths such as Timidity and WildMidi.</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="ftp://ftp.funet.fi/pub/sci/audio/softsynths/midia/instruments.tar.gz">Midia bank</a></td>
-<td align="left">8 meg GUS patch set</td>
-<td align="left">This distribution doesn't include the default.cfg index file, so you will need [this one][media.zip] that I made. Basically good and rich sounding, although a few of the instruments (eg. the solo violin) are very quiet.</td>
+<td style="text-align: left;"><a href="ftp://ftp.funet.fi/pub/sci/audio/softsynths/midia/instruments.tar.gz">Midia bank</a></td>
+<td style="text-align: left;">8 meg GUS patch set</td>
+<td style="text-align: left;">This distribution doesn’t include the default.cfg index file, so you will need [this one][media.zip] that I made. Basically good and rich sounding, although a few of the instruments (eg. the solo violin) are very quiet.</td>
 </tr>
 <tr class="odd">
-<td align="left"><a href="ftp://ftp.lysator.liu.se/pub/awe32/soundfonts/">ftp.lysator.liu.se</a></td>
-<td align="left">Unknown size</td>
-<td align="left">A large collection of SoundFonts, both .sf2 and the older .sbk format. Many non-GM banks, plus copies of some of the files mentioned above.</td>
+<td style="text-align: left;"><a href="ftp://ftp.lysator.liu.se/pub/awe32/soundfonts/">ftp.lysator.liu.se</a></td>
+<td style="text-align: left;">Unknown size</td>
+<td style="text-align: left;">A large collection of SoundFonts, both .sf2 and the older .sbk format. Many non-GM banks, plus copies of some of the files mentioned above.</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="http://www.maz-sound.com/">MAZ Sound</a></td>
-<td align="left">Unknown size</td>
-<td align="left">Huge collection of instrument samples in various formats, and links to many related sites.</td>
+<td style="text-align: left;"><a href="http://www.maz-sound.com/">MAZ Sound</a></td>
+<td style="text-align: left;">Unknown size</td>
+<td style="text-align: left;">Huge collection of instrument samples in various formats, and links to many related sites.</td>
 </tr>
 <tr class="odd">
-<td align="left"><a href="http://home.hccnet.nl/m.versteegh/projects.html">Instred</a></td>
-<td align="left">Unknown size</td>
-<td align="left">Patch editor by Martijn Versteegh.</td>
+<td style="text-align: left;"><a href="http://home.hccnet.nl/m.versteegh/projects.html">Instred</a></td>
+<td style="text-align: left;">Unknown size</td>
+<td style="text-align: left;">Patch editor by Martijn Versteegh.</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="http://hammersound.net/cgi-bin/soundlink.pl">SoundFont library</a></td>
-<td align="left">Unknown size</td>
-<td align="left">The SoundFont Library is a database containing SoundFonts submitted by people from all over the world. The database lets users register their own (or somebody else's) SoundFonts. You can find more info about samples at the homepage of its creator Thomas Hammer (link at the bottom of the page).</td>
+<td style="text-align: left;"><a href="http://hammersound.net/cgi-bin/soundlink.pl">SoundFont library</a></td>
+<td style="text-align: left;">Unknown size</td>
+<td style="text-align: left;">The SoundFont Library is a database containing SoundFonts submitted by people from all over the world. The database lets users register their own (or somebody else’s) SoundFonts. You can find more info about samples at the homepage of its creator Thomas Hammer (link at the bottom of the page).</td>
 </tr>
 <tr class="odd">
-<td align="left"><a href="http://www.i.h.kyoto-u.ac.jp/~shom/timidity/shominst/shominst-0409.zip">shominst-0409.zip</a></td>
-<td align="left">ca. 10MB</td>
-<td align="left">The GNU/Linux <a href="http://www.gentoo.org/">Gentoo</a> distribution has a package timidity-shompatches, which gets its data from <a href="http://www.i.h.kyoto-u.ac.jp/~shom/timidity/shominst/shominst-0409.txt">shominst-0409.txt</a>.</td>
+<td style="text-align: left;"><a href="http://www.i.h.kyoto-u.ac.jp/~shom/timidity/shominst/shominst-0409.zip">shominst-0409.zip</a></td>
+<td style="text-align: left;">ca. 10MB</td>
+<td style="text-align: left;">The GNU/Linux <a href="http://www.gentoo.org/">Gentoo</a> distribution has a package timidity-shompatches, which gets its data from <a href="http://www.i.h.kyoto-u.ac.jp/~shom/timidity/shominst/shominst-0409.txt">shominst-0409.txt</a>.</td>
 </tr>
 </tbody>
 </table>

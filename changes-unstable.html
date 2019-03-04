@@ -1,12 +1,17 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>Allegro changelog for 5.1.x series</title>
-  <style type="text/css">code{white-space: pre;}</style>
-  <link rel="stylesheet" href="web_style.css" type="text/css" />
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="web_style.css" />
   <link rel="alternate" type="application/atom+xml"
       href="feed_atom.xml" title="Allegro news"
   />
@@ -77,9 +82,9 @@ A game programming library
 </div>
 <!-- left -->
 <div id="content">
-<div id="header">
+<header>
 <h1 class="title">Allegro changelog for 5.1.x series</h1>
-</div>
+</header>
 <p>See <code>changes-5.0.txt</code> for changes in Allegro 5.0.x. These lists serve as summaries; the full histories are in the git repository.</p>
 <h1 id="changes-from-5.1.13-to-5.1.13.1-february-2016">Changes from 5.1.13 to 5.1.13.1 (February 2016)</h1>
 <p>The main developers this time were: SiegeLord.</p>
@@ -95,7 +100,7 @@ A game programming library
 </ul>
 <p>Input:</p>
 <ul>
-<li>Fix spurious triggering of the mouse grab key when it wasn't otherwise set (SiegeLord).</li>
+<li>Fix spurious triggering of the mouse grab key when it wasn’t otherwise set (SiegeLord).</li>
 </ul>
 <p>Android port:</p>
 <ul>
@@ -130,9 +135,9 @@ A game programming library
 <ul>
 <li><p>Define CMAKE_FIND_ROOT_PATH for i686-w64-mingw32 cross compiler (Martijn van Iersel).</p></li>
 <li><p>Allow building with older CMakes again (SiegeLord).</p></li>
-<li><p>Do not catche compile tests' failure (Bruce Pascoe).</p></li>
+<li><p>Do not catche compile tests’ failure (Bruce Pascoe).</p></li>
 <li><p>Add a way to statically link the runtime with MinGW (SiegeLord).</p></li>
-<li><p>Don't link the MSVC C runtime at all when requesting a static runtime and building a static library (SiegeLord).</p></li>
+<li><p>Don’t link the MSVC C runtime at all when requesting a static runtime and building a static library (SiegeLord).</p></li>
 </ul>
 <p>Documentation:</p>
 <ul>
@@ -146,10 +151,10 @@ A game programming library
 </ul>
 <p>Other:</p>
 <ul>
-<li><p>Add a 'none' debug level to turn off logging entirely in debug builds (SiegeLord).</p></li>
+<li><p>Add a ‘none’ debug level to turn off logging entirely in debug builds (SiegeLord).</p></li>
 <li><p>Reconfigure logging after the configuration files are loaded (SiegeLord).</p></li>
 <li><p>Fix al_set_new_window_title() off-by-1 (Bruce Pascoe).</p></li>
-<li><p>Don't call al_get_time() before system is installed (SiegeLord).</p></li>
+<li><p>Don’t call al_get_time() before system is installed (SiegeLord).</p></li>
 </ul>
 <p>Audio addon:</p>
 <ul>
@@ -160,7 +165,7 @@ A game programming library
 </ul>
 <p>Acodec addon:</p>
 <ul>
-<li><p>Don't read past the audio chunk's end when streaming wav files (SiegeLord).</p></li>
+<li><p>Don’t read past the audio chunk’s end when streaming wav files (SiegeLord).</p></li>
 <li><p>Turn off allegro_acodec dynamic loading by default, fixing a common footgun (Bruce Pascoe).</p></li>
 </ul>
 <p>Image addon:</p>
@@ -203,7 +208,7 @@ A game programming library
 <p>Windows port:</p>
 <ul>
 <li>Fix a dangling pointer issue resulting in crashes when resizing on Windows
-<ol start="10" style="list-style-type: decimal">
+<ol start="10" type="1">
 <li></li>
 </ol></li>
 </ul>
@@ -283,7 +288,7 @@ A game programming library
 <p>Build system:</p>
 <ul>
 <li><p>Fix the conditional compilation of sal.h (Edgar Reynaldo).</p></li>
-<li><p>Don't look at WinSDK when we're not on MSVC, fixing MinGW builds when MSVC is installed as well.</p></li>
+<li><p>Don’t look at WinSDK when we’re not on MSVC, fixing MinGW builds when MSVC is installed as well.</p></li>
 <li><p>Fix the static FLAC compile tests on Android and Windows.</p></li>
 <li><p>Make the OSX frameworks install in the proper location again.</p></li>
 <li><p>Add <code>WANT_STATIC_RUNTIME</code> CMake build option (currently MSVC-only).</p></li>
@@ -388,7 +393,7 @@ A game programming library
 <li><p>Fix some style issues with the Windows file dialog.</p></li>
 <li><p>Fix a bug with multiple filenames with the Windows file dialog.</p></li>
 <li><p>Change the semantics of the patterns in <code>al_create_native_file_dialog</code> to support future expansion of the patterns to support both AND and OR style filtering.</p></li>
-<li><p>Make the GTK file selection dialog look like it's from 2004 (as opposed to mid-1990s).</p></li>
+<li><p>Make the GTK file selection dialog look like it’s from 2004 (as opposed to mid-1990s).</p></li>
 </ul>
 <p>TTF addon:</p>
 <ul>
@@ -405,7 +410,7 @@ A game programming library
 <ul>
 <li><p>Fix OSX backend on OSX 10.10 (lordnoriyuki).</p></li>
 <li><p>Simplify how sub-bitmaps interact with their parent bitmaps. You can now destroy a sub-bitmap at any time (not only before the parent is destroyed). Additionally, when the parent is converted using <code>al_convert_bitmap</code>, all the sub-bitmaps are also automatically converted.</p></li>
-<li><p>Switch to using unicode Win32 (e.g. this fixes using <code>al_set_window_title</code> with unicode strings).</p></li>
+<li><p>Switch to using unicode Win32 (e.g. this fixes using <code>al_set_window_title</code> with unicode strings).</p></li>
 <li><p>Add some Linux WM hints so make Allegro windows work more smoothly (especially with Unity).</p></li>
 </ul>
 <p>Filesystem:</p>
@@ -417,23 +422,23 @@ A game programming library
 <p>Input:</p>
 <ul>
 <li><p>Add X11 touch driver (Ryan Gumbs).</p></li>
-<li><p>Emulate mouse pressure for backends that don't support pressure.</p></li>
+<li><p>Emulate mouse pressure for backends that don’t support pressure.</p></li>
 <li><p>Added Windows haptics driver, XInput joystick driver (Beoran).</p></li>
 <li><p>Fix OSX joystick deinitialization.</p></li>
 </ul>
 <p>Graphics:</p>
 <ul>
-<li><p>Add block compression pixel formats (ALLEGRO_PIXEL_FORMAT_COMPRESSED_RGBA_DXT1/DXT3/DXT5) for compressed video bitmaps. This includes an API to fetch compressed block size (<code>al_get_pixel_block_width/height/size</code>) as well as API to load and unload compressed bitmap data without paying a runtime compression cost (<code>al_lock_bitmap_blocked</code>). Unfortunately, due to patent concerns this last feature is disabled for OpenGL (if you thinks those concerns don't apply to you, you can enable it by passing <code>-DWANT_OPENGL_S3TC_LOCKING=1</code> to cmake).</p></li>
+<li><p>Add block compression pixel formats (ALLEGRO_PIXEL_FORMAT_COMPRESSED_RGBA_DXT1/DXT3/DXT5) for compressed video bitmaps. This includes an API to fetch compressed block size (<code>al_get_pixel_block_width/height/size</code>) as well as API to load and unload compressed bitmap data without paying a runtime compression cost (<code>al_lock_bitmap_blocked</code>). Unfortunately, due to patent concerns this last feature is disabled for OpenGL (if you thinks those concerns don’t apply to you, you can enable it by passing <code>-DWANT_OPENGL_S3TC_LOCKING=1</code> to cmake).</p></li>
 <li><p>Make real fullscreen modes work on OS X again. May not be perfect still. (thanks to SDL).</p></li>
 </ul>
 <p>Shaders:</p>
 <ul>
-<li>Don't clobber the 0'th texture unit in OpenGL and Direct3D. This simplifies working with shaders.</li>
+<li>Don’t clobber the 0’th texture unit in OpenGL and Direct3D. This simplifies working with shaders.</li>
 </ul>
 <p>Android port:</p>
 <ul>
 <li><p>Bump minimum Android API level from 10 to 12 (aka version 3.1).</p></li>
-<li><p>Add controller support to the Android port. An accelerometer 'joystick' is still the first joystick. Supports two analog sticks and 10 buttons (A B X Y L1 R1 DPAD_L DPAD_R DPAD_U DPAD_D). Supports hotplugging and theoretically multiple joysticks (needs testing).</p></li>
+<li><p>Add controller support to the Android port. An accelerometer ‘joystick’ is still the first joystick. Supports two analog sticks and 10 buttons (A B X Y L1 R1 DPAD_L DPAD_R DPAD_U DPAD_D). Supports hotplugging and theoretically multiple joysticks (needs testing).</p></li>
 <li><p>Set correct orientation at startup on Android (thanks to Aikei_c).</p></li>
 </ul>
 <p>Build system:</p>
@@ -495,7 +500,7 @@ A game programming library
 </ul>
 <p>Graphics:</p>
 <ul>
-<li><p>Spell ALLEGRO_DST_COLOR, ALLEGRO_INVERSE_DST_COLOR with &quot;DEST&quot; (with compatibility defines).</p></li>
+<li><p>Spell ALLEGRO_DST_COLOR, ALLEGRO_INVERSE_DST_COLOR with “DEST” (with compatibility defines).</p></li>
 <li><p>Fix bug which meant ALLEGRO_INVERSE_SRC_COLOR and ALLEGRO_INVERSE_DEST_COLOR never actually worked on D3D.</p></li>
 <li><p>Fix horizontal and vertical shears which were not composing with translations correctly.</p></li>
 <li><p>Optimise al_restore_state if saved target display/bitmap are unchanged.</p></li>
@@ -517,8 +522,8 @@ A game programming library
 <li><p>Check al_fclose return value in saving routines.</p></li>
 <li><p>Make al_fopen_fd not leak a FILE handle in a failure path.</p></li>
 <li><p>Make al_make_temp_file allocate temporary buffer to match the template.</p></li>
-<li><p>android: Interpret the path to APK asset as AssetManager doesn't.</p></li>
-<li><p>android: Correctly return -1 for APK asset file size if it can't be determined. A side-effect is that FreeType (via the TTF addon) can now load TTFs stored compressed in APK assets.</p></li>
+<li><p>android: Interpret the path to APK asset as AssetManager doesn’t.</p></li>
+<li><p>android: Correctly return -1 for APK asset file size if it can’t be determined. A side-effect is that FreeType (via the TTF addon) can now load TTFs stored compressed in APK assets.</p></li>
 <li><p>android: Support ungetc on APK file streams.</p></li>
 <li><p>android: Fix EOF handling in AllegroInputStream.</p></li>
 </ul>
@@ -541,7 +546,7 @@ A game programming library
 <p>Audio addon:</p>
 <ul>
 <li><p>Remove generic audio event source and AudioQueue events.</p></li>
-<li><p>Don't queue silent fragments at start of new audio streams.</p></li>
+<li><p>Don’t queue silent fragments at start of new audio streams.</p></li>
 <li><p>Make stream_read return correct number of filled samples when no data is available (zero).</p></li>
 <li><p>A DirectSound voice could not be restarted once it has been stopped.</p></li>
 <li><p>Fix crash when attaching empty stream to dsound voice.</p></li>
@@ -660,7 +665,7 @@ A game programming library
 <ul>
 <li><p>Make al_seek_video return a result.</p></li>
 <li><p>Fix crash when unable to open a Ogg video.</p></li>
-<li><p>Don't scan to end of headers of unknown stream for Ogg video.</p></li>
+<li><p>Don’t scan to end of headers of unknown stream for Ogg video.</p></li>
 <li><p>Stop reading at end of Ogg video.</p></li>
 <li><p>Try to account for audio buffers in positioning of Ogg video.</p></li>
 <li><p>Implement seek to beginning of file (only) in Ogg backend.</p></li>
@@ -712,10 +717,10 @@ A game programming library
 <li><p>Made al_get_display_mode return the closest thing to a pixel format possible with the WGL driver (tobing).</p></li>
 <li><p>Move WGL context destruction out of the message pump thread and into the user/main thread.</p></li>
 <li><p>Allow command-tab to work in fullscreen window mode on OS X.</p></li>
-<li><p>Remove &quot;user_reload&quot; parameter from al_acknowledge_drawing_resume.</p></li>
-<li><p>Don't crash in al_create_display if there is no display driver.</p></li>
-<li><p>Don't crash at shutdown if there is no display driver (Windows).</p></li>
-<li><p>Don't fail init if both D3D, GL drivers unavailable (Windows).</p></li>
+<li><p>Remove “user_reload” parameter from al_acknowledge_drawing_resume.</p></li>
+<li><p>Don’t crash in al_create_display if there is no display driver.</p></li>
+<li><p>Don’t crash at shutdown if there is no display driver (Windows).</p></li>
+<li><p>Don’t fail init if both D3D, GL drivers unavailable (Windows).</p></li>
 <li><p>Sync bitmaps before resizing display to prevent changes being lost after the resize (D3D).</p></li>
 <li><p>Load the D3D9X module during display creation and unload it when the D3D system shuts down.</p></li>
 <li><p>Run fullscreen toggle on main thread (OS X).</p></li>
@@ -733,9 +738,9 @@ A game programming library
 </ul>
 <p>Input:</p>
 <ul>
-<li><p>Partially fix mouse buttons &quot;sticking&quot; on Mac, e.g. holding the mouse and toggling fullscreen window.</p></li>
+<li><p>Partially fix mouse buttons “sticking” on Mac, e.g. holding the mouse and toggling fullscreen window.</p></li>
 <li><p>al_set_mouse_xy on Windows resulted in the mouse getting set to the wrong position in windowed modes</p></li>
-<li><p>Scale the user supplied mouse cursor if it's too big (Windows).</p></li>
+<li><p>Scale the user supplied mouse cursor if it’s too big (Windows).</p></li>
 <li><p>Add key constants for some Android keys, those that are used in Xperia Play controls.</p></li>
 </ul>
 <p>Audio addons:</p>
@@ -746,7 +751,7 @@ A game programming library
 </ul>
 <p>Image addon:</p>
 <ul>
-<li>Use Allegro built-in loaders in preference to OS X loaders for BMP/TGA/PCX. The OS X TGA loader doesn't support alpha and this is also more consistent.</li>
+<li>Use Allegro built-in loaders in preference to OS X loaders for BMP/TGA/PCX. The OS X TGA loader doesn’t support alpha and this is also more consistent.</li>
 </ul>
 <p>Font addons:</p>
 <ul>
@@ -781,7 +786,7 @@ A game programming library
 <li><p>Support stencil buffer on iOS.</p></li>
 <li><p>Remove unnecessary autorelease pools. There was a crash when using Airplay that goes away without the pools.</p></li>
 <li><p>Make Airplay work the standard way most apps do unless the Allegro user explicitly creates a display on the second screen.</p></li>
-<li><p>Don't autorotate displays other than device.</p></li>
+<li><p>Don’t autorotate displays other than device.</p></li>
 <li><p>Fix some threading and memory issues.</p></li>
 </ul>
 <p>Raspberry Pi port:</p>
@@ -817,8 +822,8 @@ A game programming library
 <li><p>Fix bug where setting the mouse cursor had no effect when the mouse was captured (mouse button held down).</p></li>
 <li><p>Fix windows not having a minimise button when set to windowed state from fullscreen window state.</p></li>
 <li><p>Respect ALLEGRO_FRAMELESS flag properly when toggling from fullscreen window state to windowed state (Windows).</p></li>
-<li><p>Don't generate DISPLAY_LOST events when resizing a fullscreen display.</p></li>
-<li><p>Fix al_set/get_window position on Windows so getting/setting to the same position continuosly doesn't move the window. (Michael Swiger)</p></li>
+<li><p>Don’t generate DISPLAY_LOST events when resizing a fullscreen display.</p></li>
+<li><p>Fix al_set/get_window position on Windows so getting/setting to the same position continuosly doesn’t move the window. (Michael Swiger)</p></li>
 <li><p>Rename al_change_display_option to al_set_display_option.</p></li>
 <li><p>Add al_set_display_icons (plural), implemented for X11 and Windows.</p></li>
 <li><p>Add ALLEGRO_GTK_TOPLEVEL display flag for X11.</p></li>
@@ -860,12 +865,12 @@ A game programming library
 </ul>
 <p>TTF addon:</p>
 <ul>
-<li>Don't save the projection transform if no display is set.</li>
+<li>Don’t save the projection transform if no display is set.</li>
 </ul>
 <p>Image addon:</p>
 <ul>
 <li><p>Added a missing autorelease-pool to the OSX bitmap saving function (sleepywind).</p></li>
-<li><p>Fix OSX native image loader for loading not-premultiplied RGB data. Previously the data was &quot;de-multiplied&quot;, with possibly all information lost.</p></li>
+<li><p>Fix OSX native image loader for loading not-premultiplied RGB data. Previously the data was “de-multiplied”, with possibly all information lost.</p></li>
 <li><p>Fix OSX native image loader for loading bitmaps without an alpha channel. They appeared completely black previously.</p></li>
 <li><p>Fixed loading interlaced .png files with libpng.</p></li>
 </ul>
@@ -895,7 +900,7 @@ A game programming library
 <p>Android port:</p>
 <ul>
 <li><p>Fix setting the current display on Android.</p></li>
-<li><p>Don't set the backbuffer when setting up the OpenGL view.</p></li>
+<li><p>Don’t set the backbuffer when setting up the OpenGL view.</p></li>
 </ul>
 <p>Build system:</p>
 <ul>
@@ -923,7 +928,7 @@ A game programming library
 <li><p>Fixed al_convert_bitmap using the target instead of the source format when converting its data.</p></li>
 <li><p>Fix a crash in Direct3D in al_set_target_bitmap when switching from a memory target.</p></li>
 <li><p>Fix a potential crash when drawing the screen to a bitmap with D3D.</p></li>
-<li><p>WGL shouldn't need to preserve bitmaps.</p></li>
+<li><p>WGL shouldn’t need to preserve bitmaps.</p></li>
 <li><p>Update the projection transform when setting up the OpenGL context on X11 (SiegeLord).</p></li>
 <li><p>Lock bitmap to prevent slowness when creating a cursor from a non-memory bitmap on Windows.</p></li>
 <li><p>Conditionally lock bitmap when creating cursor on X11 (previously it did so even if already locked).</p></li>
@@ -1007,7 +1012,7 @@ A game programming library
 <li><p>Add al_perspective_transform and al_translate|scale|rotate_transform_3d.</p></li>
 <li><p>al_draw_pixel was crashing when drawn on sub-bitmaps on OpenGL.</p></li>
 <li><p>Make ogl_flush_vertex_cache disable GL_TEXTURE_2D state.</p></li>
-<li><p>Don't use NSOpenGLPFAAccelerated unnecessarily (OS X).</p></li>
+<li><p>Don’t use NSOpenGLPFAAccelerated unnecessarily (OS X).</p></li>
 </ul>
 <p>Input:</p>
 <ul>
@@ -1025,7 +1030,7 @@ A game programming library
 </ul>
 <p>Image addon:</p>
 <ul>
-<li>Don't include native image loader source files when the native image loaders are disabled.</li>
+<li>Don’t include native image loader source files when the native image loaders are disabled.</li>
 </ul>
 <p>Primitives addon:</p>
 <ul>
@@ -1102,7 +1107,7 @@ A game programming library
 <ul>
 <li><p>Fix null pointer dereference if backbuffer creation fails. Reported by Max Savenkov.</p></li>
 <li><p>Made the ALLEGRO_OPENGL_FORWARD_COMPATIBLE flag work with al_draw_bitmap.</p></li>
-<li><p>Texture should be 'complete' (min/mag and wrap set) before glTexImage2D.</p></li>
+<li><p>Texture should be ‘complete’ (min/mag and wrap set) before glTexImage2D.</p></li>
 <li><p>Restore matrix manipulation code for unlocking backbuffer in GL &lt;1.4 case.</p></li>
 <li><p>Fixed a bug in al_unlock_bitmap where the pixel alignment mistakenly was used as row length.</p></li>
 <li><p>Never set the projection when using programmable pipeline mode unless a program object is bound.</p></li>
@@ -1115,7 +1120,7 @@ A game programming library
 </ul>
 <p>Direct3D:</p>
 <ul>
-<li><p>Fixed a bug in the D3D driver where separate alpha blending was being tested for when it shouldn't have been (Max Savenkov).</p></li>
+<li><p>Fixed a bug in the D3D driver where separate alpha blending was being tested for when it shouldn’t have been (Max Savenkov).</p></li>
 <li><p>Do not manage depth stencil surface.</p></li>
 <li><p>Arrange code so that sleep and hibernate work using the release and restore callbacks.</p></li>
 <li><p>Fix device reset problem in D3D.</p></li>
@@ -1123,17 +1128,17 @@ A game programming library
 </ul>
 <p>Input:</p>
 <ul>
-<li><p>Increase max number of joystick &quot;sticks&quot;. Due to analogue buttons being mapped to axes, the number of sticks on a single device may be much higher than expected.</p></li>
+<li><p>Increase max number of joystick “sticks”. Due to analogue buttons being mapped to axes, the number of sticks on a single device may be much higher than expected.</p></li>
 <li><p>Monitor /dev/input instead of /dev on Linux for hotplugging joysticks (Jon Rafkind).</p></li>
 <li><p>Do not permanently change the locale for the X11 keyboard driver. Set LC_CTYPE only, not LC_ALL.</p></li>
-<li><p>Update ALLEGRO_MOUSE_STATE even if mouse emulation event source isn't attached to an event queue (Android and iOS).</p></li>
-<li><p>Don't report shakes at program start accidentally (iOS).</p></li>
+<li><p>Update ALLEGRO_MOUSE_STATE even if mouse emulation event source isn’t attached to an event queue (Android and iOS).</p></li>
+<li><p>Don’t report shakes at program start accidentally (iOS).</p></li>
 </ul>
 <p>Android port:</p>
 <ul>
 <li><p>Many graphics-related changes (too many to list).</p></li>
 <li><p>Make Android port always choose a double buffered graphics mode.</p></li>
-<li><p>Don't force 16-bit mode if no COLOR_SIZE specified.</p></li>
+<li><p>Don’t force 16-bit mode if no COLOR_SIZE specified.</p></li>
 <li><p>Go fullscreen (no title/status bar).</p></li>
 <li><p>Generate ALLEGRO_EVENT_DISPLAY_HALT_DRAWING, RESUME_DRAWING events instead of SWITCH_IN/OUT.</p></li>
 <li><p>Add an APK file driver for reading assets directly from Android app bundles.</p></li>
@@ -1196,8 +1201,8 @@ A game programming library
 <li><p>ex_polygon: Test al_draw_filled_polygon_with_holes.</p></li>
 <li><p>ex_get_path: Test al_set_exe_name.</p></li>
 <li><p>Made the skater demo run from within xcode.</p></li>
-<li><p>Add test_driver --no-display flag. (Tobias Hansen)</p></li>
-<li><p>Add test_driver --force-opengl-2.0 option.</p></li>
+<li><p>Add test_driver –no-display flag. (Tobias Hansen)</p></li>
+<li><p>Add test_driver –force-opengl-2.0 option.</p></li>
 <li><p>Make .png and .tga loading tests to not require a backbuffer with an alpha channel.</p></li>
 </ul>
 <p>Other:</p>
@@ -1225,7 +1230,7 @@ A game programming library
 <li><p>Fixed a problem with wrong window size when restoring a minimised window, in code that was added to support window constraints (jmasterx).</p></li>
 <li><p>Set ALLEGRO_MINIMIZED display flag on Windows (Zac Evans).</p></li>
 <li><p>Prevent a deadlock during display creation on X.</p></li>
-<li><p>Fallback to the 'old' visual selection method on X instead of crashing if the 'new' visual selection doesn't work.</p></li>
+<li><p>Fallback to the ‘old’ visual selection method on X instead of crashing if the ‘new’ visual selection doesn’t work.</p></li>
 <li><p>Implement XEmbed protocol.</p></li>
 <li><p>Add hot plug display support on iOS (Airplay and wired.)</p></li>
 </ul>
@@ -1245,7 +1250,7 @@ A game programming library
 </ul>
 <p>TTF addon:</p>
 <ul>
-<li>Clear locked region so pixel borders aren't random garbage that can be seen sometimes with linear filtering on.</li>
+<li>Clear locked region so pixel borders aren’t random garbage that can be seen sometimes with linear filtering on.</li>
 </ul>
 <p>Video addon:</p>
 <ul>
@@ -1298,7 +1303,7 @@ A game programming library
 <li><p>Added al_get_display_orientation.</p></li>
 <li><p>Added a new display option ALLEGRO_SUPPORTED_ORIENTATIONS to specify the supported orientations (default is just portrait as before).</p></li>
 <li><p>Added al_change_display_option function, initially only for ALLEGRO_SUPPORTED_ORIENTATIONS.</p></li>
-<li><p>Add two new display events (only implemented on iOS right now). ALLEGRO_EVENT_DISPLAY_HALT_DRAWING tells the app to stop all drawing and ALLEGRO_EVENT_DISPLAY_RESUME_DRAWING tells it it can start drawing again. SWITCH_OUT/IN on iOS were redefined from &quot;going into/out of background&quot; to &quot;going active/inactive&quot;.</p></li>
+<li><p>Add two new display events (only implemented on iOS right now). ALLEGRO_EVENT_DISPLAY_HALT_DRAWING tells the app to stop all drawing and ALLEGRO_EVENT_DISPLAY_RESUME_DRAWING tells it it can start drawing again. SWITCH_OUT/IN on iOS were redefined from “going into/out of background” to “going active/inactive”.</p></li>
 <li><p>Added the function al_acknowledge_drawing_halt.</p></li>
 <li><p>Added window size constraint functions (jmasterx).</p></li>
 </ul>
@@ -1313,12 +1318,12 @@ A game programming library
 <p>Filesystem:</p>
 <ul>
 <li><p>Added al_fopen_slice.</p></li>
-<li><p>Added al_set_exe_name which allows overriding Allegro's idea of the path to the current executable.</p></li>
+<li><p>Added al_set_exe_name which allows overriding Allegro’s idea of the path to the current executable.</p></li>
 </ul>
 <p>Audio addon:</p>
 <ul>
 <li><p>Add mixer gain property and functions.</p></li>
-<li><p>Add a 'global' audio event source, generating some audio events from the Audio Queues driver: AUDIO_ROUTE_CHANGE, AUDIO_INTERRUPTION, AUDIO_END_INTERRUPTION.</p></li>
+<li><p>Add a ‘global’ audio event source, generating some audio events from the Audio Queues driver: AUDIO_ROUTE_CHANGE, AUDIO_INTERRUPTION, AUDIO_END_INTERRUPTION.</p></li>
 </ul>
 <p>Native dialogs addon:</p>
 <ul>

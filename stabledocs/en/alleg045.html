@@ -464,7 +464,6 @@ and avoid missing any important bit of information.
 <a class="xref" href="alleg009.html#screen" title="Global pointer to the screen hardware video memory.">screen</a>,
 <a class="xref" href="alleg008.html#set_gfx_mode" title="Sets a graphic video mode.">set_gfx_mode</a>,
 <a class="xref" href="alleg011.html#set_palette" title="Sets the entire palette of 256 colors.">set_palette</a>,
-<a class="xref" href="alleg018.html#textout_ex" title="Writes a string on a bitmap.">textout_ex</a>,
 <a class="xref" href="alleg018.html#textprintf_centre_ex" title="Formatted centered output of a string.">textprintf_centre_ex</a>,
 <a class="xref" href="alleg018.html#textprintf_ex" title="Formatted output of a string.">textprintf_ex</a>,
 <a class="xref" href="alleg006.html#ureadkey" title="Returns the next unicode character from the keyboard buffer.">ureadkey</a>,
@@ -545,7 +544,6 @@ and avoid missing any important bit of information.
 <a class="xref" href="alleg006.html#poll_keyboard" title="Polls the keyboard.">poll_keyboard</a>,
 <a class="xref" href="alleg005.html#rest" title="Waits a specified number of milliseconds or yields CPU.">rest</a>,
 <a class="xref" href="alleg009.html#screen" title="Global pointer to the screen hardware video memory.">screen</a>,
-<a class="xref" href="alleg008.html#set_display_switch_mode" title="Tells Allegro how the program handles background switching.">set_display_switch_mode</a>,
 <a class="xref" href="alleg008.html#set_gfx_mode" title="Sets a graphic video mode.">set_gfx_mode</a>,
 <a class="xref" href="alleg011.html#set_palette" title="Sets the entire palette of 256 colors.">set_palette</a>,
 <a class="xref" href="alleg018.html#textprintf_centre_ex" title="Formatted centered output of a string.">textprintf_centre_ex</a>.</blockquote>
@@ -960,9 +958,9 @@ and avoid missing any important bit of information.
 <a class="xref" href="alleg000.html#END_OF_MAIN" title="Macro to put after your main() function.">END_OF_MAIN</a>,
 <a class="xref" href="alleg009.html#SCREEN_H" title="Global define to obtain the size of the screen.">SCREEN_H</a>,
 <a class="xref" href="alleg009.html#SCREEN_W" title="Global define to obtain the size of the screen.">SCREEN_W</a>,
+<a class="xref" href="alleg009.html#acquire_screen" title="Shortcut of acquire_bitmap(screen);">acquire_screen</a>,
 <a class="xref" href="alleg000.html#allegro_init" title="Macro to initialise the Allegro library.">allegro_init</a>,
 <a class="xref" href="alleg000.html#allegro_message" title="Used mainly to show error messages to users.">allegro_message</a>,
-<a class="xref" href="alleg014.html#blit" title="Copies a rectangular area from one bitmap to another.">blit</a>,
 <a class="xref" href="alleg013.html#clear_to_color" title="Clears the bitmap to the specified color.">clear_to_color</a>,
 <a class="xref" href="alleg009.html#create_bitmap" title="Creates a memory bitmap.">create_bitmap</a>,
 <a class="xref" href="alleg009.html#destroy_bitmap" title="Destroys any type of created bitmap.">destroy_bitmap</a>,
@@ -977,6 +975,7 @@ and avoid missing any important bit of information.
 <a class="xref" href="alleg012.html#makeacol" title="Converts RGBA colors into display dependent pixel formats.">makeacol</a>,
 <a class="xref" href="alleg012.html#makecol" title="Converts an RGB value into the current pixel format.">makecol</a>,
 <a class="xref" href="alleg006.html#readkey" title="Returns the next character from the keyboard buffer.">readkey</a>,
+<a class="xref" href="alleg009.html#release_screen" title="Shortcut of release_bitmap(screen);">release_screen</a>,
 <a class="xref" href="alleg005.html#rest" title="Waits a specified number of milliseconds or yields CPU.">rest</a>,
 <a class="xref" href="alleg014.html#rotate_scaled_sprite" title="Rotates and stretches a sprite.">rotate_scaled_sprite</a>,
 <a class="xref" href="alleg014.html#rotate_scaled_sprite_lit" title="Rotates and stretches a sprite.">rotate_scaled_sprite_lit</a>,
@@ -1126,7 +1125,7 @@ and avoid missing any important bit of information.
 <a class="xref" href="alleg008.html#set_gfx_mode" title="Sets a graphic video mode.">set_gfx_mode</a>,
 <a class="xref" href="alleg020.html#set_trans_blender" title="Enables a truecolor blender.">set_trans_blender</a>,
 <a class="xref" href="alleg014.html#stretch_blit" title="Scales a rectangular area from one bitmap to another.">stretch_blit</a>,
-<a class="xref" href="alleg018.html#textout_ex" title="Writes a string on a bitmap.">textout_ex</a>.</blockquote>
+<a class="xref" href="alleg018.html#textprintf_ex" title="Formatted output of a string.">textprintf_ex</a>.</blockquote>
 <div class="al-api"><b>Example <a name="extruec">extruec</a></b></div><br>
    This program shows how to specify colors in the various different
    truecolor pixel formats. The example shows the same screen (a few
@@ -1200,7 +1199,6 @@ and avoid missing any important bit of information.
 <a class="xref" href="alleg006.html#keypressed" title="Tells if there are keypresses waiting in the input buffer.">keypressed</a>,
 <a class="xref" href="alleg012.html#makecol" title="Converts an RGB value into the current pixel format.">makecol</a>,
 <a class="xref" href="alleg013.html#rectfill" title="Draws a solid filled rectangle.">rectfill</a>,
-<a class="xref" href="alleg005.html#rest" title="Waits a specified number of milliseconds or yields CPU.">rest</a>,
 <a class="xref" href="alleg021.html#rgb_map" title="Look up table to speed up reducing RGB values to palette colors.">rgb_map</a>,
 <a class="xref" href="alleg009.html#screen" title="Global pointer to the screen hardware video memory.">screen</a>,
 <a class="xref" href="alleg008.html#set_gfx_mode" title="Sets a graphic video mode.">set_gfx_mode</a>,
@@ -1388,7 +1386,6 @@ and avoid missing any important bit of information.
 <a class="xref" href="alleg013.html#line" title="Draws a line onto the bitmap.">line</a>,
 <a class="xref" href="alleg010.html#load_bitmap" title="Loads any supported bitmap from a file.">load_bitmap</a>,
 <a class="xref" href="alleg006.html#readkey" title="Returns the next character from the keyboard buffer.">readkey</a>,
-<a class="xref" href="alleg005.html#rest" title="Waits a specified number of milliseconds or yields CPU.">rest</a>,
 <a class="xref" href="alleg009.html#screen" title="Global pointer to the screen hardware video memory.">screen</a>,
 <a class="xref" href="alleg010.html#set_color_conversion" title="Tells Allegro how to convert images during loading time.">set_color_conversion</a>,
 <a class="xref" href="alleg008.html#set_color_depth" title="Sets the global pixel color depth.">set_color_depth</a>,
@@ -1922,7 +1919,6 @@ and avoid missing any important bit of information.
 <a class="xref" href="alleg006.html#keypressed" title="Tells if there are keypresses waiting in the input buffer.">keypressed</a>,
 <a class="xref" href="alleg013.html#rectfill" title="Draws a solid filled rectangle.">rectfill</a>,
 <a class="xref" href="alleg009.html#release_bitmap" title="Releases a previously locked bitmap.">release_bitmap</a>,
-<a class="xref" href="alleg005.html#rest" title="Waits a specified number of milliseconds or yields CPU.">rest</a>,
 <a class="xref" href="alleg009.html#screen" title="Global pointer to the screen hardware video memory.">screen</a>,
 <a class="xref" href="alleg008.html#scroll_screen" title="Requests a hardware scroll request.">scroll_screen</a>,
 <a class="xref" href="alleg011.html#set_color" title="Sets the specified palette entry to the specified RGB triplet.">set_color</a>,
@@ -2055,7 +2051,6 @@ and avoid missing any important bit of information.
 <a class="xref" href="alleg012.html#makecol" title="Converts an RGB value into the current pixel format.">makecol</a>,
 <a class="xref" href="alleg014.html#masked_blit" title="Copies a rectangle skipping pixels with the mask color.">masked_blit</a>,
 <a class="xref" href="alleg013.html#putpixel" title="Writes a pixel into a bitmap.">putpixel</a>,
-<a class="xref" href="alleg005.html#rest" title="Waits a specified number of milliseconds or yields CPU.">rest</a>,
 <a class="xref" href="alleg009.html#screen" title="Global pointer to the screen hardware video memory.">screen</a>,
 <a class="xref" href="alleg009.html#set_clip_rect" title="Sets the clipping rectangle of a bitmap.">set_clip_rect</a>,
 <a class="xref" href="alleg011.html#set_color" title="Sets the specified palette entry to the specified RGB triplet.">set_color</a>,
@@ -2377,7 +2372,6 @@ and avoid missing any important bit of information.
 <a class="xref" href="alleg028.html#play_audio_stream" title="Creates a new audio stream and starts playing it.">play_audio_stream</a>,
 <a class="xref" href="alleg006.html#readkey" title="Returns the next character from the keyboard buffer.">readkey</a>,
 <a class="xref" href="alleg009.html#screen" title="Global pointer to the screen hardware video memory.">screen</a>,
-<a class="xref" href="alleg008.html#set_display_switch_mode" title="Tells Allegro how the program handles background switching.">set_display_switch_mode</a>,
 <a class="xref" href="alleg008.html#set_gfx_mode" title="Sets a graphic video mode.">set_gfx_mode</a>,
 <a class="xref" href="alleg011.html#set_palette" title="Sets the entire palette of 256 colors.">set_palette</a>,
 <a class="xref" href="alleg028.html#stop_audio_stream" title="Destroys an audio stream when it is no longer required.">stop_audio_stream</a>,

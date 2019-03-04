@@ -1,12 +1,17 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
-  <title>Allegro - Older news – </title>
-  <style type="text/css">code{white-space: pre;}</style>
-  <link rel="stylesheet" href="web_style.css" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Allegro - Older news – a</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="web_style.css" />
   <link rel="alternate" type="application/atom+xml"
       href="feed_atom.xml" title="Allegro news"
   />
@@ -319,7 +324,7 @@ A game programming library
 <li>Integrated the following addons into the Allegro build system: AllegroGL, loadpng, JPGalleg, logg.</li>
 <li>Disabled support for asm mode on all platforms (previously the default for non-x86 architectures).</li>
 <li>Added a draw_sprite_ex() function.</li>
-<li>Added a new &quot;skater&quot; demo game.</li>
+<li>Added a new “skater” demo game.</li>
 <li>Added detection for SSE3, SSE4.1 and SSE4.2.</li>
 <li>Fixed a problem with filename encoding and the SYSTEM_NONE driver on Windows.</li>
 <li>Fixed a bug in arc() function.</li>
@@ -344,7 +349,7 @@ A game programming library
 <p>Here is a list of some principal changes since version 4.3.0:</p>
 <ul>
 <li>MacOSX port is broken.</li>
-<li>New mouse cursor API (doesn't work in Windows fullscreen modes).</li>
+<li>New mouse cursor API (doesn’t work in Windows fullscreen modes).</li>
 <li>Added some new API documentation with NaturalDocs.</li>
 <li>New exnew_events.c example demonstrating the new API.</li>
 <li>CMake and SCons build systems, mainly for Allegro developers.</li>
@@ -408,7 +413,7 @@ A game programming library
 </ul>
 <p>Get this new version from the Download section. Please test it and report problems and incompatibilities to the mailing list or the SourceForge tracker.</p>
 <h2 id="th-of-october-2005---omg-cup-contest">20th of October, 2005 - OMG Cup contest</h2>
-<p>The uDevGames guys have decided to start the &quot;OMG Cup&quot; contest. The contest will run up to the 28th of November of 2005. So if you decide to join in, you have as little as a month and a few days. Get going! You can also read the invitation we received from Carlos A. Camacho, stating that Allegro programmers would be welcome. Just find somebody to compile a MacOSX binary if you don't have a Mac.</p>
+<p>The uDevGames guys have decided to start the “OMG Cup” contest. The contest will run up to the 28th of November of 2005. So if you decide to join in, you have as little as a month and a few days. Get going! You can also read the invitation we received from Carlos A. Camacho, stating that Allegro programmers would be welcome. Just find somebody to compile a MacOSX binary if you don’t have a Mac.</p>
 <h2 id="th-of-august-2005---allegro-4.2.0-release-candidate-2-released">27th of August, 2005 - Allegro 4.2.0 release candidate 2 released!</h2>
 <p>This release is a Work-In-Progress that adds features and corrects problems with regard to the 4.0 codebase. It is API (source) compatible with 4.0.0 on every platform, except for a few minor changes (see docs/html/api.html). Here is a list of the principal changes since version 4.2.0 beta 4:</p>
 <ul>
@@ -434,10 +439,10 @@ A game programming library
 <li>Optimised fixmul() for different platforms.</li>
 <li>Fixed an arbitrary limit and memory leak in get_config_argv().</li>
 <li>Fixed a problem in allegro.m4 and automake 1.8+.</li>
-<li>Removed the `256 items' limit from the dat utility.</li>
+<li>Removed the `256 items’ limit from the dat utility.</li>
 <li>Fixed a crash in the GUI if a new dialog was opened while a menu was still open.</li>
 <li>Fixed crashes with the keyboard driver under Solaris.</li>
-<li>Fixed a bug where the hardware mouse wasn't displayed in Windows until the mouse was moved.</li>
+<li>Fixed a bug where the hardware mouse wasn’t displayed in Windows until the mouse was moved.</li>
 <li>Fixed rest_callback() under UNIX.</li>
 <li>Fixed get_executable_name() under Solaris and OpenBSD.</li>
 </ul>
@@ -449,7 +454,7 @@ A game programming library
 <li>Fixed a bug where the bottom and right line of pixels was not updated on show_video_bitmap().</li>
 <li>Fixed some unsafe assumptions on the size of integer datatypes.</li>
 <li>Restored Alt+key = ASCII code 0 behavior for the Windows keyboard driver.</li>
-<li>Fixed Allegro's internal multithreading in Windows, which fixes a deadlock on exit.</li>
+<li>Fixed Allegro’s internal multithreading in Windows, which fixes a deadlock on exit.</li>
 <li>Fixed a problem with hardware cursors not working properly in MacOS X.</li>
 <li>Fixed warnings and errors with gcc 4.0.0 on the Unix port.</li>
 <li>Fixed another X11 async reply.</li>
@@ -540,7 +545,7 @@ A game programming library
 <li>Fixed an endianess issue when loading/saving 24 bit images from datafiles.</li>
 <li>Fixed some problems with the ALSA driver.</li>
 <li>Fixed a bug in the handling of %n in the printf style text functions.</li>
-<li>Improvements to Allegro's sound mixer and pause key behaviour.</li>
+<li>Improvements to Allegro’s sound mixer and pause key behaviour.</li>
 <li>Added MSG_WANTMOUSE to the GUI.</li>
 <li>Implemented the digmid_set_pan function.</li>
 </ul>
@@ -556,7 +561,7 @@ A game programming library
 <li>Added a Jack sound driver to the Unix port.</li>
 <li>Added support for debugging with DMalloc under Unix.</li>
 <li>Fixed detection of the ALSA 1.0 MIDI driver.</li>
-<li>Fixed compilation with --enable-color8=no under Unix.</li>
+<li>Fixed compilation with –enable-color8=no under Unix.</li>
 <li>Now it is possible to link against the Allegro framework with the allegro-config script under MacOS X.</li>
 <li>Fixed a bug in fixbundle with 32bpp icons and alpha channel under MacOS X.</li>
 <li>Restored the compensation code for end-of-frame in the FLI player.</li>
