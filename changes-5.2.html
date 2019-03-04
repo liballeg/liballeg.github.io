@@ -81,6 +81,89 @@ A game programming library
 <h1 class="title">Allegro changelog for 5.2.x series</h1>
 </div>
 <p>These lists serve as summaries; the full histories are in the git repository.</p>
+<h1 id="changes-from-5.2.4-to-5.2.5-february-2019">Changes from 5.2.4 to 5.2.5 (February 2019)</h1>
+<p>The main developers this time were: Sebastian Krzyszkowiak, SiegeLord, Elias Pschernig, Bruce Pascoe, Aldrik Ramaekers, Firat Salgur.</p>
+<p>Core:</p>
+<ul>
+<li><p>Try to identify bitmap format for unknown extensions.</p></li>
+<li><p>Add some missing OpenGL 4.3 functions.</p></li>
+<li><p>Add <code>al_create_thread_with_stacksize</code> to create threads with a custom stack size. (Aldrik Ramaekers)</p></li>
+<li><p>Add <code>al_get_system_id</code> function, letting you disambiguate platforms at runtime.</p></li>
+</ul>
+<p>Graphics:</p>
+<ul>
+<li><p>Add <code>al_get_monitor_dpi</code> to query the DPI of a monitor.</p></li>
+<li><p>Add new API for making blender a bitmap-local state (like transformations), which can simplify some code. See <code>al_set_bitmap_blender</code> and the related APIs. Also see the <code>ex_blend_target</code> example.</p></li>
+<li><p>Added <code>al_transpose_transform</code>. This is useful for rotation transformations.</p></li>
+<li><p>Rework internal GLES support for better portability.</p></li>
+<li><p>Don't force POT bitmaps on GLES.</p></li>
+<li><p>Fix repeated bitmap locking on OpenGL.</p></li>
+</ul>
+<p>Android:</p>
+<ul>
+<li><p>Various documentation and other improvements (Christian Mauduit).</p></li>
+<li><p>Fix OpenGL version reporting after display creation.</p></li>
+</ul>
+<p>iOS:</p>
+<ul>
+<li>Fix OpenGL version reporting after display creation.</li>
+</ul>
+<p>Linux:</p>
+<ul>
+<li><p>Improve linux joystick detections.</p></li>
+<li><p>Fix a number of memory leaks/crashes in the audio addon when using pulseaudio/alsa. (Julian Smythe)</p></li>
+<li><p>Fix compilation with Mesa 18.2.5 and later.</p></li>
+<li><p>Fix OpenGL version reporting after display creation (Edgar Reynaldo).</p></li>
+<li><p>Fix requesting specific OpenGL versions via display options (Edgar Reynaldo).</p></li>
+</ul>
+<p>OSX:</p>
+<ul>
+<li><p>Make <code>al_get_monitor_info</code> return the correct values for Retina displays.</p></li>
+<li><p>Fix vsync on OSX 10.14+.</p></li>
+</ul>
+<p>RaspberryPi:</p>
+<ul>
+<li>Fix OpenGL version reporting after display creation.</li>
+</ul>
+<p>Windows:</p>
+<ul>
+<li><p>Fix toggling of menu checkboxes by id.</p></li>
+<li><p>Fix <code>al_draw_indexed_primitive</code> while using Direct3D.</p></li>
+<li><p>Fix crash when passing <code>NULL</code> display to <code>al_show_native_file_dialog</code> while using <code>ALLEGRO_FILECHOOSER_FOLDER</code>.</p></li>
+<li><p>Fix OpenGL version reporting after display creation (Edgar Reynaldo).</p></li>
+<li><p>Fix requesting specific OpenGL versions via display options (Edgar Reynaldo).</p></li>
+</ul>
+<p>SDL:</p>
+<ul>
+<li>Sebastian Krzyszkowiak has spent a lot of effort to making the SDL backend usable as a nearly fully featured Allegro backend. You can use it on platforms native Allegro implementations do not support (such as emscripten, etc.).</li>
+</ul>
+<p>Addons:</p>
+<ul>
+<li><p>Better logging when failing to load a resource.</p></li>
+<li><p>Fix a memory leak when destroying a mixer with attached streams.</p></li>
+<li><p>Fix a memory leak in the audio destroying a mixer with attached streams.</p></li>
+</ul>
+<p>Acodec addon:</p>
+<ul>
+<li>Allow modules to loop properly when the user hasn't specified loop points. (Todd Cope)</li>
+</ul>
+<p>Audio addon:</p>
+<ul>
+<li>Better support for big endian. (Douglas Mencken)</li>
+</ul>
+<p>TTF addon:</p>
+<ul>
+<li>Added support of HarfBuzz in FreeType (Arves100).</li>
+</ul>
+<p>Documentation:</p>
+<ul>
+<li><p>Source links now point to the correct commit on GitHub.</p></li>
+<li><p>General improvements and clarifications.</p></li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>Add <code>ex_blend_target</code>.</li>
+</ul>
 <h1 id="changes-from-5.2.3-to-5.2.4-february-2018">Changes from 5.2.3 to 5.2.4 (February 2018)</h1>
 <p>The main developers this time were: Sebastian Krzyszkowiak, Elias Pschernig, SiegeLord</p>
 <p>Core:</p>

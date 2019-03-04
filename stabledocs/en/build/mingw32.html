@@ -262,7 +262,10 @@ Notes on building the MinGW/Cygwin version of Allegro.
       to date: replace it with the package from the Allegro site.
 
 <p>
-   3. Use the cmake/Toolchain-mingw.cmake file.
+   3. Use the cmake/Toolchain-mingw.cmake file. Remember to set MINGDIR
+      if your MinGW binaries live alongside your native binaries, otherwise
+      the '<tt>make install</tt>' step may make a mess in your normal
+      directories.
 </blockquote>
 
 
