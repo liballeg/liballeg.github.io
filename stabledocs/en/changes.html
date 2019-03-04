@@ -2,9 +2,60 @@
 <html><head><title>
 Allegro Changes
 </title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" title="Default" type="text/css" href="allegro.css"></head><body bgcolor=white text=black link="#0000ee" alink="#ff0000" vlink="#551a8b">
+
+<p>
+<h1><a name="Changes from 4.4.3 to 4.4.3.1 (March 2019)">Changes from 4.4.3 to 4.4.3.1 (March 2019)</a></h1>
+<br><br><ul><li>
+   Fix a regression with the dat tool not working with plugins (SiegeLord).
+</ul>
+
+<p>
+<h1><a name="Changes from 4.4.2 to 4.4.3 (February 2019)">Changes from 4.4.2 to 4.4.3 (February 2019)</a></h1>
+<br><br><ul><li>
+   Allow building the dependencies as shared libraries. (Michał Cichoń,
+   Edgar Reynaldo)
+<br><br><li>
+   Fix typo preventing get_executable_name from using System V procfs
+   correctly. (Peter Wang)
+<br><br><li>
+   Relicense loadpng under ZLib license.
+<br><br><li>
+   Fix spelling of endianness in textconv (Andreas Rönnquist).
+<br><br><li>
+   Fix format string warnings (Andreas Rönnquist).
+<br><br><li>
+   Add Linux console tslib mouse "touch screen" driver. (Tobi Vollebregt)
+<br><br><li>
+   Don't define a duplicate DLLMain. (SiegeLord)
+<br><br><li>
+   Fix Allegro crashes/compilation under 64 bit Windows. (Sven Eden,
+   David Capello)
+<br><br><li>
+   Fix possible random crashes on Windows restoring DirectDraw surfaces.
+   (David Capello)
+<br><br><li>
+   Make internal function get_value in jpgalleg static. (Trent Gamblin)
+<br><br><li>
+   Implemented load_midi_pf, play_fli_pf, open_fli_pf. (Ivan Mogilko)
+<br><br><li>
+   Make use of <stdint.h> in MSVS 2010 and higher. (Ivan Mogilko)
+<br><br><li>
+   Fixes several issues related to fullscreen mode in Windows. (Etienne Vouga)
+<br><br><li>
+   Windows: fixed TAB key getting stuck in key buffer when held before ALT.
+   (Ivan Mogilko)
+<br><br><li>
+   Fix building with Mesa 18.2.5 and later. (Andreas Rönnquist)
+<br><br><li>
+   Remove f* variants of fixed math functions. (Andreas Rönnquist)
+<br><br><li>
+   Fix complilation of datedit. (rofl0r)
+<br><br><li>
+   Modernize and fix release zipup script. (rofl0r)
+</ul>
 
 <p>
 <h1><a name="Changes from 4.4.1.1 to 4.4.2 (May 2011)">Changes from 4.4.1.1 to 4.4.2 (May 2011)</a></h1>
@@ -51,7 +102,7 @@ Allegro Changes
    (Hardi Stengelin).
 <br><br><li>
    Fix various compilation and build problems (scottmc, Cristian Morales Vega,
-   Tony Ylisirni�, Edgar Reynaldo).
+   Tony Ylisirniö, Edgar Reynaldo).
 <br><br><li>
    Added WANT_OSS, WANT_ALSA, WANT_JACK, WANT_SGIAUDIO options
    (Samuli Suominen).
@@ -1985,7 +2036,7 @@ Allegro Changes
 <br><br><li>
    EvilTypeGuy cleaned up and fixed the RPM spec file for RedHat 9.
 <br><br><li>
-   Ville Skytt� fixed a problem with make install libdir= and modules on
+   Ville Skyttä fixed a problem with make install libdir= and modules on
    Unix systems.
 <br><br><li>
    Peter Wang added a hack to not unload the SVGAlib module if SVGAlib
