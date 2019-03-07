@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Allegro - Misc - DIGMID – digmid</title>
+  <title>Allegro - Misc - DIGMID</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -82,6 +82,9 @@ A game programming library
 </div>
 <!-- left -->
 <div id="content">
+<header>
+<h1 class="title">Allegro - Misc - DIGMID</h1>
+</header>
 <h1 id="midi-patch-sets">MIDI patch sets</h1>
 <p>The DIGMID wavetable music driver needs a set of instrument samples, which can either be in the GUS patch or SoundFont 2.0 formats. GUS patches can be read directly from disk or converted into a single patches.dat file with the pat2dat utility. SoundFont banks must be converted prior to use.</p>
 <p>A GUS patch set consists of around 180 .pat instrument files, plus a default.cfg index file listing which patch goes with each MIDI program number. To use these files directly, point the “patches=” line in your allegro.cfg at the default.cfg file. To convert them into the patches.dat format, run “pat2dat -o patches.dat samplepath.cfg -8”, and then copy the resulting patches.dat into either the same directory as your program, the location pointed to by the ALLEGRO environment variable, or the location specified by the “patches=” line in your allegro.cfg.</p>
