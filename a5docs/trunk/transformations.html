@@ -230,7 +230,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <a class="sourceLine" id="cb5-4" data-line-number="4">al_use_transform(&amp;T);</a></code></pre></div>
 <h1 id="allegro_transform">ALLEGRO_TRANSFORM</h1>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_TRANSFORM ALLEGRO_TRANSFORM;</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/include/allegro5/transformations.h#L12">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/include/allegro5/transformations.h#L12">Source Code</a></p>
 <p>Defines the generic transformation type, a 4x4 matrix. 2D transforms use only a small subsection of this matrix, namely the top left 2x2 matrix, and the right most 2x1 matrix, for a total of 6 values.</p>
 <p><em>Fields:</em></p>
 <ul>
@@ -238,7 +238,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <h1 id="al_copy_transform">al_copy_transform</h1>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="dt">void</span> al_copy_transform(ALLEGRO_TRANSFORM *dest, <span class="dt">const</span> ALLEGRO_TRANSFORM *src)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L30">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L30">Source Code</a></p>
 <p>Makes a copy of a transformation.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -247,7 +247,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <h1 id="al_use_transform">al_use_transform</h1>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="dt">void</span> al_use_transform(<span class="dt">const</span> ALLEGRO_TRANSFORM *trans)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L40">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L40">Source Code</a></p>
 <p>Sets the transformation to be used for the the drawing operations on the target bitmap (each bitmap maintains its own transformation). Every drawing operation after this call will be transformed using this transformation. Call this function with an identity transformation to return to the default behaviour.</p>
 <p>This function does nothing if there is no target bitmap.</p>
 <p>The parameter is passed by reference as an optimization to avoid the overhead of stack copying. The reference will not be stored in the Allegro library so it is safe to pass references to local variables.</p>
@@ -264,13 +264,13 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="transformations.html#al_get_current_transform">al_get_current_transform</a>, <a href="transformations.html#al_transform_coordinates">al_transform_coordinates</a></p>
 <h1 id="al_get_current_transform">al_get_current_transform</h1>
 <div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="dt">const</span> ALLEGRO_TRANSFORM *al_get_current_transform(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L104">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L104">Source Code</a></p>
 <p>Returns the transformation of the current target bitmap, as set by <a href="transformations.html#al_use_transform">al_use_transform</a>. If there is no target bitmap, this function returns NULL.</p>
 <p><em>Returns:</em> A pointer to the current transformation.</p>
 <p>See also: <a href="transformations.html#al_get_current_projection_transform">al_get_current_projection_transform</a></p>
 <h1 id="al_use_projection_transform">al_use_projection_transform</h1>
 <div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="dt">void</span> al_use_projection_transform(<span class="dt">const</span> ALLEGRO_TRANSFORM *trans)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L74">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L74">Source Code</a></p>
 <p>Sets the projection transformation to be used for the drawing operations on the target bitmap (each bitmap maintains its own projection transformation). Every drawing operation after this call will be transformed using this transformation. To return default behavior, call this function with an orthographic transform like so:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb12-1" data-line-number="1">ALLEGRO_TRANSFORM trans;</a>
 <a class="sourceLine" id="cb12-2" data-line-number="2">al_identity_transform(&amp;trans);</a>
@@ -286,14 +286,14 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="transformations.html#al_get_current_projection_transform">al_get_current_projection_transform</a>, <a href="transformations.html#al_perspective_transform">al_perspective_transform</a>, <a href="transformations.html#al_orthographic_transform">al_orthographic_transform</a></p>
 <h1 id="al_get_current_projection_transform">al_get_current_projection_transform</h1>
 <div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="dt">const</span> ALLEGRO_TRANSFORM *al_get_current_projection_transform(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L116">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L116">Source Code</a></p>
 <p>If there is no target bitmap, this function returns NULL.</p>
 <p><em>Returns:</em> A pointer to the current transformation.</p>
 <p>Since: 5.1.9</p>
 <p>See also: <a href="transformations.html#al_use_projection_transform">al_use_projection_transform</a></p>
 <h1 id="al_get_current_inverse_transform">al_get_current_inverse_transform</h1>
 <div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="dt">const</span> ALLEGRO_TRANSFORM *al_get_current_inverse_transform(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L128">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L128">Source Code</a></p>
 <p>Returns the inverse of the current transformation of the target bitmap. If there is no target bitmap, this function returns NULL.</p>
 <p>This is similar to calling <code>al_invert_transform(al_get_current_transform())</code> but the result of this function is cached.</p>
 <blockquote>
@@ -302,7 +302,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.0</p>
 <h1 id="al_invert_transform">al_invert_transform</h1>
 <div class="sourceCode" id="cb15"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="dt">void</span> al_invert_transform(ALLEGRO_TRANSFORM *trans)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L272">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L272">Source Code</a></p>
 <p>Inverts the passed transformation. If the transformation is nearly singular (close to not having an inverse) then the returned transformation may be invalid. Use <a href="transformations.html#al_check_inverse">al_check_inverse</a> to ascertain if the transformation has an inverse before inverting it if you are in doubt.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -314,7 +314,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="transformations.html#al_check_inverse">al_check_inverse</a></p>
 <h1 id="al_transpose_transform">al_transpose_transform</h1>
 <div class="sourceCode" id="cb16"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="dt">void</span> al_transpose_transform(ALLEGRO_TRANSFORM *trans)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L293">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L293">Source Code</a></p>
 <p>Transposes the matrix of the given transform. This can be used for inversing a rotation transform. For example:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb17-1" data-line-number="1">al_build_camera_transform(camera, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, x, y, z, xu, yu, zu)</a>
 <a class="sourceLine" id="cb17-2" data-line-number="2">al_copy_transform(inverse, camera)</a>
@@ -325,7 +325,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.2.5</p>
 <h1 id="al_check_inverse">al_check_inverse</h1>
 <div class="sourceCode" id="cb18"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="dt">int</span> al_check_inverse(<span class="dt">const</span> ALLEGRO_TRANSFORM *trans, <span class="dt">float</span> tol)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L308">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L308">Source Code</a></p>
 <p>Checks if the transformation has an inverse using the supplied tolerance. Tolerance should be a small value between 0 and 1, with 1e-7 being sufficient for most applications.</p>
 <p>In this function tolerance specifies how close the determinant can be to 0 (if the determinant is 0, the transformation has no inverse). Thus the smaller the tolerance you specify, the “worse” transformations will pass this test. Using a tolerance of 1e-7 will catch errors greater than 1/1000’s of a pixel, but let smaller errors pass. That means that if you transformed a point by a transformation and then transformed it again by the inverse transformation that passed this check, the resultant point should less than 1/1000’s of a pixel away from the original point.</p>
 <p>Note that this check is superfluous most of the time if you never touched the transformation matrix values yourself. The only thing that would cause the transformation to not have an inverse is if you applied a 0 (or very small) scale to the transformation or you have a really large translation. As long as the scale is comfortably above 0, the transformation will be invertible.</p>
@@ -341,7 +341,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="transformations.html#al_invert_transform">al_invert_transform</a></p>
 <h1 id="al_identity_transform">al_identity_transform</h1>
 <div class="sourceCode" id="cb19"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="dt">void</span> al_identity_transform(ALLEGRO_TRANSFORM *trans)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L145">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L145">Source Code</a></p>
 <p>Sets the transformation to be the identity transformation. This is the default transformation. Use <a href="transformations.html#al_use_transform">al_use_transform</a> on an identity transformation to return to the default.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb20-1" data-line-number="1">ALLEGRO_TRANSFORM t;</a>
 <a class="sourceLine" id="cb20-2" data-line-number="2">al_identity_transform(&amp;t);</a>
@@ -354,7 +354,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="al_build_transform">al_build_transform</h1>
 <div class="sourceCode" id="cb21"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="dt">void</span> al_build_transform(ALLEGRO_TRANSFORM *trans, <span class="dt">float</span> x, <span class="dt">float</span> y,</a>
 <a class="sourceLine" id="cb21-2" data-line-number="2">   <span class="dt">float</span> sx, <span class="dt">float</span> sy, <span class="dt">float</span> theta)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L172">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L172">Source Code</a></p>
 <p>Builds a transformation given some parameters. This call is equivalent to calling the transformations in this order: make identity, rotate, scale, translate. This method is faster, however, than actually calling those functions.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -372,7 +372,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <a class="sourceLine" id="cb22-2" data-line-number="2">   <span class="dt">float</span> position_x, <span class="dt">float</span> position_y, <span class="dt">float</span> position_z,</a>
 <a class="sourceLine" id="cb22-3" data-line-number="3">   <span class="dt">float</span> look_x, <span class="dt">float</span> look_y, <span class="dt">float</span> look_z,</a>
 <a class="sourceLine" id="cb22-4" data-line-number="4">   <span class="dt">float</span> up_x, <span class="dt">float</span> up_y, <span class="dt">float</span> up_z)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L204">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L204">Source Code</a></p>
 <p>Builds a transformation which can be used to transform 3D coordinates in world space to camera space. This involves translation and a rotation. The function expects three coordinate triplets: The camera’s position, the position the camera is looking at and an up vector. The up vector does not need to be of unit length and also does not need to be perpendicular to the view direction - it can usually just be the world up direction (most commonly 0/1/0).</p>
 <p>For example:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb23-1" data-line-number="1">al_build_camera_transform(&amp;t,</a>
@@ -397,7 +397,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="transformations.html#al_translate_transform_3d">al_translate_transform_3d</a>, <a href="transformations.html#al_rotate_transform_3d">al_rotate_transform_3d</a>, <a href="transformations.html#al_scale_transform_3d">al_scale_transform_3d</a>, <a href="transformations.html#al_compose_transform">al_compose_transform</a>, <a href="transformations.html#al_use_transform">al_use_transform</a></p>
 <h1 id="al_translate_transform">al_translate_transform</h1>
 <div class="sourceCode" id="cb26"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="dt">void</span> al_translate_transform(ALLEGRO_TRANSFORM *trans, <span class="dt">float</span> x, <span class="dt">float</span> y)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L327">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L327">Source Code</a></p>
 <p>Apply a translation to a transformation.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -407,7 +407,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="transformations.html#al_rotate_transform">al_rotate_transform</a>, <a href="transformations.html#al_scale_transform">al_scale_transform</a>, <a href="transformations.html#al_build_transform">al_build_transform</a></p>
 <h1 id="al_rotate_transform">al_rotate_transform</h1>
 <div class="sourceCode" id="cb27"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="dt">void</span> al_rotate_transform(ALLEGRO_TRANSFORM *trans, <span class="dt">float</span> theta)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L351">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L351">Source Code</a></p>
 <p>Apply a rotation to a transformation.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -417,7 +417,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="transformations.html#al_translate_transform">al_translate_transform</a>, <a href="transformations.html#al_scale_transform">al_scale_transform</a>, <a href="transformations.html#al_build_transform">al_build_transform</a></p>
 <h1 id="al_scale_transform">al_scale_transform</h1>
 <div class="sourceCode" id="cb28"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="dt">void</span> al_scale_transform(ALLEGRO_TRANSFORM *trans, <span class="dt">float</span> sx, <span class="dt">float</span> sy)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L375">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L375">Source Code</a></p>
 <p>Apply a scale to a transformation.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -427,7 +427,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="transformations.html#al_translate_transform">al_translate_transform</a>, <a href="transformations.html#al_rotate_transform">al_rotate_transform</a>, <a href="transformations.html#al_build_transform">al_build_transform</a></p>
 <h1 id="al_transform_coordinates">al_transform_coordinates</h1>
 <div class="sourceCode" id="cb29"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="dt">void</span> al_transform_coordinates(<span class="dt">const</span> ALLEGRO_TRANSFORM *trans, <span class="dt">float</span> *x, <span class="dt">float</span> *y)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L416">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L416">Source Code</a></p>
 <p>Transform a pair of coordinates.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -438,7 +438,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="al_transform_coordinates_3d">al_transform_coordinates_3d</h1>
 <div class="sourceCode" id="cb30"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="dt">void</span> al_transform_coordinates_3d(<span class="dt">const</span> ALLEGRO_TRANSFORM *trans,</a>
 <a class="sourceLine" id="cb30-2" data-line-number="2">   <span class="dt">float</span> *x, <span class="dt">float</span> *y, <span class="dt">float</span> *z)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L431">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L431">Source Code</a></p>
 <p>Transform x, y, z coordinates.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -451,7 +451,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="al_transform_coordinates_4d">al_transform_coordinates_4d</h1>
 <div class="sourceCode" id="cb31"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="dt">void</span> al_transform_coordinates_4d(<span class="dt">const</span> ALLEGRO_TRANSFORM *trans,</a>
 <a class="sourceLine" id="cb31-2" data-line-number="2">   <span class="dt">float</span> *x, <span class="dt">float</span> *y, <span class="dt">float</span> *z, <span class="dt">float</span> *w)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L455">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L455">Source Code</a></p>
 <p>Transform x, y, z, w coordinates.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -463,7 +463,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="al_transform_coordinates_3d_projective">al_transform_coordinates_3d_projective</h1>
 <div class="sourceCode" id="cb32"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="dt">void</span> al_transform_coordinates_3d_projective(<span class="dt">const</span> ALLEGRO_TRANSFORM *trans,</a>
 <a class="sourceLine" id="cb32-2" data-line-number="2">   <span class="dt">float</span> *x, <span class="dt">float</span> *y, <span class="dt">float</span> *z)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L482">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L482">Source Code</a></p>
 <p>Transform x, y, z as homogeneous coordinates. This is the same as using <a href="transformations.html#al_transform_coordinates_4d">al_transform_coordinates_4d</a> with the w coordinate set to 1, then dividing x, y, z by the resulting w. This will provide the same normalized coordinates Allegro will draw to when a projective transform is in effect as set with <a href="transformations.html#al_use_projection_transform">al_use_projection_transform</a>. To get the actual pixel coordinates from those translate and scale like so (w and h would be the pixel dimensions of the target bitmap):</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb33-1" data-line-number="1">x = w / <span class="dv">2</span> + x * w / <span class="dv">2</span></a>
 <a class="sourceLine" id="cb33-2" data-line-number="2">y = h / <span class="dv">2</span> - y * h / <span class="dv">2</span></a></code></pre></div>
@@ -492,7 +492,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="transformations.html#al_use_transform">al_use_transform</a>, <a href="transformations.html#al_transform_coordinates">al_transform_coordinates</a>, <a href="transformations.html#al_transform_coordinates_3d">al_transform_coordinates_3d</a>, <a href="transformations.html#al_use_projection_transform">al_use_projection_transform</a></p>
 <h1 id="al_compose_transform">al_compose_transform</h1>
 <div class="sourceCode" id="cb35"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="dt">void</span> al_compose_transform(ALLEGRO_TRANSFORM *trans, <span class="dt">const</span> ALLEGRO_TRANSFORM *other)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L494">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L494">Source Code</a></p>
 <p>Compose (combine) two transformations by a matrix multiplication.</p>
 <pre><code>trans := trans other</code></pre>
 <p>Note that the order of matrix multiplications is important. The effect of applying the combined transform will be as if first applying <code>trans</code> and then applying <code>other</code> and not the other way around.</p>
@@ -506,7 +506,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <div class="sourceCode" id="cb37"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="dt">void</span> al_orthographic_transform(ALLEGRO_TRANSFORM *trans,</a>
 <a class="sourceLine" id="cb37-2" data-line-number="2">   <span class="dt">float</span> left, <span class="dt">float</span> top, <span class="dt">float</span> n,</a>
 <a class="sourceLine" id="cb37-3" data-line-number="3">   <span class="dt">float</span> right, <span class="dt">float</span> bottom, <span class="dt">float</span> f)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L540">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L540">Source Code</a></p>
 <p>Combines the given transformation with an orthographic transformation which maps the screen rectangle to the given left/top and right/bottom coordinates.</p>
 <p>near/far is the z range, coordinates outside of that range will get clipped. Normally -1/1 is fine because all 2D graphics will have a z coordinate of 0. However if you for example do al_draw_rectangle(0, 0, 100, 100) and rotate around the x axis (“towards the screen”) make sure your z range allows values from -100 to 100 or the rotated rectangle will get clipped.</p>
 <p>Also, if you are using a depth buffer the z range decides the depth resolution. For example if you have a 16 bit depth buffer there are only 65536 discrete depth values. So if your near/far is set to -1000000/1000000 most of the z positions would not result in separate depth values which could lead to artifacts.</p>
@@ -517,7 +517,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <div class="sourceCode" id="cb38"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="dt">void</span> al_perspective_transform(ALLEGRO_TRANSFORM *trans,</a>
 <a class="sourceLine" id="cb38-2" data-line-number="2">   <span class="dt">float</span> left, <span class="dt">float</span> top, <span class="dt">float</span> n,</a>
 <a class="sourceLine" id="cb38-3" data-line-number="3">   <span class="dt">float</span> right, <span class="dt">float</span> bottom, <span class="dt">float</span> f)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L601">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L601">Source Code</a></p>
 <p>Like <a href="transformations.html#al_orthographic_transform">al_orthographic_transform</a> but honors perspective. If everything is at a z-position of -near it will look the same as with an orthographic transformation.</p>
 <p>To use a specific horizontal field of view you can use the relation:</p>
 <pre><code>tan(hfov / 2) = (right - left) / 2 / near</code></pre>
@@ -583,27 +583,27 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="al_translate_transform_3d">al_translate_transform_3d</h1>
 <div class="sourceCode" id="cb43"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="dt">void</span> al_translate_transform_3d(ALLEGRO_TRANSFORM *trans, <span class="dt">float</span> x, <span class="dt">float</span> y,</a>
 <a class="sourceLine" id="cb43-2" data-line-number="2">    <span class="dt">float</span> z)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L338">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L338">Source Code</a></p>
 <p>Combines the given transformation with a transformation which translates coordinates by the given vector.</p>
 <p>Since: 5.1.3</p>
 <p>See also: <a href="transformations.html#al_use_projection_transform">al_use_projection_transform</a></p>
 <h1 id="al_scale_transform_3d">al_scale_transform_3d</h1>
 <div class="sourceCode" id="cb44"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="dt">void</span> al_scale_transform_3d(ALLEGRO_TRANSFORM *trans, <span class="dt">float</span> sx, <span class="dt">float</span> sy,</a>
 <a class="sourceLine" id="cb44-2" data-line-number="2">    <span class="dt">float</span> sz)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L392">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L392">Source Code</a></p>
 <p>Combines the given transformation with a transformation which scales coordinates by the given vector.</p>
 <p>Since: 5.1.3</p>
 <p>See also: <a href="transformations.html#al_use_projection_transform">al_use_projection_transform</a></p>
 <h1 id="al_rotate_transform_3d">al_rotate_transform_3d</h1>
 <div class="sourceCode" id="cb45"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="dt">void</span> al_rotate_transform_3d(ALLEGRO_TRANSFORM *trans,</a>
 <a class="sourceLine" id="cb45-2" data-line-number="2">   <span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">float</span> z, <span class="dt">float</span> angle)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L565">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L565">Source Code</a></p>
 <p>Combines the given transformation with a transformation which rotates coordinates around the given vector by the given angle in radians.</p>
 <p>Note: The vector is assumed to be of unit length (otherwise it will also incur a scale).</p>
 <p>Since: 5.1.3</p>
 <h1 id="al_horizontal_shear_transform">al_horizontal_shear_transform</h1>
 <div class="sourceCode" id="cb46"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="dt">void</span> al_horizontal_shear_transform(ALLEGRO_TRANSFORM* trans, <span class="dt">float</span> theta)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L626">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L626">Source Code</a></p>
 <p>Apply a horizontal shear to the transform</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -614,7 +614,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="transformations.html#al_vertical_shear_transform">al_vertical_shear_transform</a></p>
 <h1 id="al_vertical_shear_transform">al_vertical_shear_transform</h1>
 <div class="sourceCode" id="cb47"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="dt">void</span> al_vertical_shear_transform(ALLEGRO_TRANSFORM* trans, <span class="dt">float</span> theta)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/78ba7cc80fc807ff6e5201a223adf423a6ab9e4e/src/transformations.c#L640">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/bd79095e33ca558b20470c96aa936af80ea05e80/src/transformations.c#L640">Source Code</a></p>
 <p>Apply a vertical shear to the transform</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -625,7 +625,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="transformations.html#al_horizontal_shear_transform">al_horizontal_shear_transform</a></p>
 <p class="timestamp">
 Allegro version 5.2.6 (GIT)
- - Last updated: 2019-04-30 04:30:40 UTC
+ - Last updated: 2019-05-01 04:30:32 UTC
 </p>
 </div>
 </body>
