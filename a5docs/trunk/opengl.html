@@ -216,7 +216,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>A pointer to the symbol if available or NULL otherwise.</p>
 <h1 id="al_get_opengl_texture">al_get_opengl_texture</h1>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb6-1" data-line-number="1">GLuint al_get_opengl_texture(ALLEGRO_BITMAP *bitmap)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/b2775688eea461d8417c769b1158d76c87e5f495/src/opengl/ogl_bitmap.c#L1137">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/b2775688eea461d8417c769b1158d76c87e5f495/src/opengl/ogl_bitmap.c#L1143">Source Code</a></p>
 <p>Returns the OpenGL texture id internally used by the given bitmap if it uses one, else 0.</p>
 <p>Example:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb7-1" data-line-number="1">bitmap = al_load_bitmap(<span class="st">&quot;my_texture.png&quot;</span>);</a>
@@ -225,13 +225,13 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <a class="sourceLine" id="cb7-4" data-line-number="4">    glBindTexture(GL_TEXTURE_2D, texture);</a></code></pre></div>
 <h1 id="al_get_opengl_texture_size">al_get_opengl_texture_size</h1>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="dt">bool</span> al_get_opengl_texture_size(ALLEGRO_BITMAP *bitmap, <span class="dt">int</span> *w, <span class="dt">int</span> *h)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/b2775688eea461d8417c769b1158d76c87e5f495/src/opengl/ogl_bitmap.c#L1203">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/b2775688eea461d8417c769b1158d76c87e5f495/src/opengl/ogl_bitmap.c#L1209">Source Code</a></p>
 <p>Retrieves the size of the texture used for the bitmap. This can be different from the bitmap size if OpenGL only supports power-of-two sizes or if it is a sub-bitmap.</p>
 <p>Returns true on success, false on failure. Zero width and height are returned if the bitmap is not an OpenGL bitmap.</p>
 <p>See also: <a href="opengl.html#al_get_opengl_texture_position">al_get_opengl_texture_position</a></p>
 <h1 id="al_get_opengl_texture_position">al_get_opengl_texture_position</h1>
 <div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="dt">void</span> al_get_opengl_texture_position(ALLEGRO_BITMAP *bitmap, <span class="dt">int</span> *u, <span class="dt">int</span> *v)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/b2775688eea461d8417c769b1158d76c87e5f495/src/opengl/ogl_bitmap.c#L1227">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/b2775688eea461d8417c769b1158d76c87e5f495/src/opengl/ogl_bitmap.c#L1233">Source Code</a></p>
 <p>Returns the u/v coordinates for the top/left corner of the bitmap within the used texture, in pixels.</p>
 <p>See also: <a href="opengl.html#al_get_opengl_texture_size">al_get_opengl_texture_size</a></p>
 <h1 id="al_get_opengl_program_object">al_get_opengl_program_object</h1>
@@ -240,7 +240,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Returns the OpenGL program object associated with this shader, if the platform is <code>ALLEGRO_SHADER_GLSL</code>. Otherwise, returns 0.</p>
 <h1 id="al_get_opengl_fbo">al_get_opengl_fbo</h1>
 <div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb11-1" data-line-number="1">GLuint al_get_opengl_fbo(ALLEGRO_BITMAP *bitmap)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/b2775688eea461d8417c769b1158d76c87e5f495/src/opengl/ogl_bitmap.c#L1177">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/b2775688eea461d8417c769b1158d76c87e5f495/src/opengl/ogl_bitmap.c#L1183">Source Code</a></p>
 <p>Returns the OpenGL FBO id internally used by the given bitmap if it uses one, otherwise returns zero. No attempt will be made to create an FBO if the bitmap is not owned by the current display.</p>
 <p>The FBO returned by this function will only be freed when the bitmap is destroyed, or if you call <a href="opengl.html#al_remove_opengl_fbo">al_remove_opengl_fbo</a> on the bitmap.</p>
 <blockquote>
@@ -249,7 +249,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="opengl.html#al_remove_opengl_fbo">al_remove_opengl_fbo</a>, <a href="graphics.html#al_set_target_bitmap">al_set_target_bitmap</a></p>
 <h1 id="al_remove_opengl_fbo">al_remove_opengl_fbo</h1>
 <div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="dt">void</span> al_remove_opengl_fbo(ALLEGRO_BITMAP *bitmap)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/b2775688eea461d8417c769b1158d76c87e5f495/src/opengl/ogl_bitmap.c#L1150">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/b2775688eea461d8417c769b1158d76c87e5f495/src/opengl/ogl_bitmap.c#L1156">Source Code</a></p>
 <p>Explicitly free an OpenGL FBO created for a bitmap, if it has one. Usually you do not need to worry about freeing FBOs, unless you use <a href="opengl.html#al_get_opengl_fbo">al_get_opengl_fbo</a>.</p>
 <p>See also: <a href="opengl.html#al_get_opengl_fbo">al_get_opengl_fbo</a>, <a href="graphics.html#al_set_target_bitmap">al_set_target_bitmap</a></p>
 <h1 id="al_have_opengl_extension">al_have_opengl_extension</h1>
@@ -292,7 +292,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Any extension which appears in the section is treated as not available (it does not matter if you set it to 0 or any other value).</p>
 <p class="timestamp">
 Allegro version 5.2.6 (GIT)
- - Last updated: 2019-05-29 04:30:35 UTC
+ - Last updated: 2019-06-11 04:30:49 UTC
 </p>
 </div>
 </body>
