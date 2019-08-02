@@ -29,7 +29,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -161,12 +161,12 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>The <code>main</code> addon has no public API, but contains functionality to enable programs using Allegro to build and run without platform-specific changes.</p>
 <p>On platforms that require this functionality (e.g. OSX) this addon contains a C <code>main</code> function that invokes <a href="misc.html#al_run_main">al_run_main</a> with the user’s own <code>main</code> function, where the user’s <code>main</code> function has had its name mangled to something else. The file that defines the user <code>main</code> function must include the header file <code>allegro5/allegro.h</code>; that header performs the name mangling using some macros.</p>
 <p>If the user <code>main</code> function is defined in C++, then it must have the following signature for this addon to work:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> **argv)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" title="1"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> **argv)</a></code></pre></div>
 <p>This addon does nothing on platforms that don’t require its functionality, but you should keep it in mind in case you need to port to platforms that do require it.</p>
 <p>Link with allegro_main.</p>
 <p class="timestamp">
 Allegro version 5.2.6 (GIT)
- - Last updated: 2019-06-30 04:30:55 UTC
+ - Last updated: 2019-08-02 19:08:21 UTC
 </p>
 </div>
 </body>
