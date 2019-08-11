@@ -184,7 +184,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" title="1"> <span class="pp">#include </span><span class="im">&lt;allegro5/allegro.h&gt;</span></a></code></pre></div>
 <h1 id="al_install_system">al_install_system</h1>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb2-1" title="1"><span class="dt">bool</span> al_install_system(<span class="dt">int</span> version, <span class="dt">int</span> (*atexit_ptr)(<span class="dt">void</span> (*)(<span class="dt">void</span>)))</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/4816ce7d2e7c3dd33d4d44b534c514d91aa5bcb9/src/system.c#L216">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/d4eb133149b0e24e0184d85c4cce5b170b078104/src/system.c#L216">Source Code</a></p>
 <p>Initialize the Allegro system. No other Allegro functions can be called before this (with one or two exceptions).</p>
 <p>The version field should always be set to ALLEGRO_VERSION_INT.</p>
 <p>If atexit_ptr is non-NULL, and if hasn’t been done already, <a href="system.html#al_uninstall_system">al_uninstall_system</a> will be registered as an atexit function.</p>
@@ -194,7 +194,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="system.html#al_init">al_init</a></p>
 <h1 id="al_init">al_init</h1>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb3-1" title="1"><span class="pp">#define al_init()    (al_install_system(ALLEGRO_VERSION_INT, atexit))</span></a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/4816ce7d2e7c3dd33d4d44b534c514d91aa5bcb9/include/allegro5/system.h#L30">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/d4eb133149b0e24e0184d85c4cce5b170b078104/include/allegro5/system.h#L30">Source Code</a></p>
 <p>Like <a href="system.html#al_install_system">al_install_system</a>, but automatically passes in the version and uses the atexit function visible in the current binary.</p>
 <blockquote>
 <p>Note: It is typically wrong to call al_init anywhere except the final game binary. In particular, do not call it inside a shared library unless you know what you’re doing. In those cases, it is better to call al_install_system either with a <code>NULL</code> atexit_ptr, or with a pointer to atexit provided by the user of this shared library.</p>
@@ -202,18 +202,18 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="system.html#al_install_system">al_install_system</a></p>
 <h1 id="al_uninstall_system">al_uninstall_system</h1>
 <div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb4-1" title="1"><span class="dt">void</span> al_uninstall_system(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/4816ce7d2e7c3dd33d4d44b534c514d91aa5bcb9/src/system.c#L313">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/d4eb133149b0e24e0184d85c4cce5b170b078104/src/system.c#L313">Source Code</a></p>
 <p>Closes down the Allegro system.</p>
 <blockquote>
 <p>Note: al_uninstall_system() can be called without a corresponding <a href="system.html#al_install_system">al_install_system</a> call, e.g. from atexit().</p>
 </blockquote>
 <h1 id="al_is_system_installed">al_is_system_installed</h1>
 <div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb5-1" title="1"><span class="dt">bool</span> al_is_system_installed(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/4816ce7d2e7c3dd33d4d44b534c514d91aa5bcb9/src/system.c#L343">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/d4eb133149b0e24e0184d85c4cce5b170b078104/src/system.c#L343">Source Code</a></p>
 <p>Returns true if Allegro is initialized, otherwise returns false.</p>
 <h1 id="al_get_allegro_version">al_get_allegro_version</h1>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb6-1" title="1"><span class="dt">uint32_t</span> al_get_allegro_version(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/4816ce7d2e7c3dd33d4d44b534c514d91aa5bcb9/src/allegro.c#L27">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/d4eb133149b0e24e0184d85c4cce5b170b078104/src/allegro.c#L27">Source Code</a></p>
 <p>Returns the (compiled) version of the Allegro library, packed into a single integer as groups of 8 bits in the form <code>(major &lt;&lt; 24) | (minor &lt;&lt; 16) | (revision &lt;&lt; 8) | release</code>.</p>
 <p>You can use code like this to extract them:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb7-1" title="1"><span class="dt">uint32_t</span> version = al_get_allegro_version();</a>
@@ -224,7 +224,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>The <code>release</code> number is 0 for an unofficial version and 1 or greater for an official release. For example “5.0.2[1]” would be the (first) official 5.0.2 release while “5.0.2[0]” would be a compile of a version from the “5.0.2” branch before the official release.</p>
 <h1 id="al_get_standard_path">al_get_standard_path</h1>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb8-1" title="1">ALLEGRO_PATH *al_get_standard_path(<span class="dt">int</span> id)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/4816ce7d2e7c3dd33d4d44b534c514d91aa5bcb9/src/system.c#L378">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/d4eb133149b0e24e0184d85c4cce5b170b078104/src/system.c#L378">Source Code</a></p>
 <p>Gets a system path, depending on the <code>id</code> parameter. Some of these paths may be affected by the organization and application name, so be sure to set those before calling this function.</p>
 <p>The paths are not guaranteed to be unique (e.g., SETTINGS and DATA may be the same on some platforms), so you should be sure your filenames are unique if you need to avoid naming collisions. Also, a returned path may not actually exist on the file system.</p>
 <dl>
@@ -258,38 +258,38 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="system.html#al_set_app_name">al_set_app_name</a>, <a href="system.html#al_set_org_name">al_set_org_name</a>, <a href="path.html#al_destroy_path">al_destroy_path</a>, <a href="system.html#al_set_exe_name">al_set_exe_name</a></p>
 <h1 id="al_set_exe_name">al_set_exe_name</h1>
 <div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb9-1" title="1"><span class="dt">void</span> al_set_exe_name(<span class="dt">char</span> <span class="dt">const</span> *path)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/4816ce7d2e7c3dd33d4d44b534c514d91aa5bcb9/src/system.c#L402">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/d4eb133149b0e24e0184d85c4cce5b170b078104/src/system.c#L402">Source Code</a></p>
 <p>This override the executable name used by <a href="system.html#al_get_standard_path">al_get_standard_path</a> for ALLEGRO_EXENAME_PATH and ALLEGRO_RESOURCES_PATH.</p>
 <p>One possibility where changing this can be useful is if you use the Python wrapper. Allegro would then by default think that the system’s Python executable is the current executable - but you can set it to the .py file being executed instead.</p>
 <p>Since: 5.0.6, 5.1.0</p>
 <p>See also: <a href="system.html#al_get_standard_path">al_get_standard_path</a></p>
 <h1 id="al_set_app_name">al_set_app_name</h1>
 <div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb10-1" title="1"><span class="dt">void</span> al_set_app_name(<span class="dt">const</span> <span class="dt">char</span> *app_name)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/4816ce7d2e7c3dd33d4d44b534c514d91aa5bcb9/src/system.c#L425">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/d4eb133149b0e24e0184d85c4cce5b170b078104/src/system.c#L425">Source Code</a></p>
 <p>Sets the global application name.</p>
 <p>The application name is used by <a href="system.html#al_get_standard_path">al_get_standard_path</a> to build the full path to an application’s files.</p>
 <p>This function may be called before <a href="system.html#al_init">al_init</a> or <a href="system.html#al_install_system">al_install_system</a>.</p>
 <p>See also: <a href="system.html#al_get_app_name">al_get_app_name</a>, <a href="system.html#al_set_org_name">al_set_org_name</a></p>
 <h1 id="al_set_org_name">al_set_org_name</h1>
 <div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb11-1" title="1"><span class="dt">void</span> al_set_org_name(<span class="dt">const</span> <span class="dt">char</span> *org_name)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/4816ce7d2e7c3dd33d4d44b534c514d91aa5bcb9/src/system.c#L414">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/d4eb133149b0e24e0184d85c4cce5b170b078104/src/system.c#L414">Source Code</a></p>
 <p>Sets the global organization name.</p>
 <p>The organization name is used by <a href="system.html#al_get_standard_path">al_get_standard_path</a> to build the full path to an application’s files.</p>
 <p>This function may be called before <a href="system.html#al_init">al_init</a> or <a href="system.html#al_install_system">al_install_system</a>.</p>
 <p>See also: <a href="system.html#al_get_org_name">al_get_org_name</a>, <a href="system.html#al_set_app_name">al_set_app_name</a></p>
 <h1 id="al_get_app_name">al_get_app_name</h1>
 <div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb12-1" title="1"><span class="dt">const</span> <span class="dt">char</span> *al_get_app_name(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/4816ce7d2e7c3dd33d4d44b534c514d91aa5bcb9/src/system.c#L449">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/d4eb133149b0e24e0184d85c4cce5b170b078104/src/system.c#L449">Source Code</a></p>
 <p>Returns the global application name string.</p>
 <p>See also: <a href="system.html#al_set_app_name">al_set_app_name</a></p>
 <h1 id="al_get_org_name">al_get_org_name</h1>
 <div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb13-1" title="1"><span class="dt">const</span> <span class="dt">char</span> *al_get_org_name(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/4816ce7d2e7c3dd33d4d44b534c514d91aa5bcb9/src/system.c#L441">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/d4eb133149b0e24e0184d85c4cce5b170b078104/src/system.c#L441">Source Code</a></p>
 <p>Returns the global organization name string.</p>
 <p>See also: <a href="system.html#al_set_org_name">al_set_org_name</a></p>
 <h1 id="al_get_system_config">al_get_system_config</h1>
 <div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb14-1" title="1">ALLEGRO_CONFIG *al_get_system_config(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/4816ce7d2e7c3dd33d4d44b534c514d91aa5bcb9/src/system.c#L368">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/d4eb133149b0e24e0184d85c4cce5b170b078104/src/system.c#L368">Source Code</a></p>
 <p>Returns the system configuration structure. The returned configuration should not be destroyed with <a href="config.html#al_destroy_config">al_destroy_config</a>. This is mainly used for configuring Allegro and its addons. You may populate this configuration before Allegro is installed to control things like the logging levels and other features.</p>
 <p>Allegro will try to populate this configuration by loading a configuration file from a few different locations, in this order:</p>
 <ul>
@@ -533,26 +533,26 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <a class="sourceLine" id="cb15-230" title="230"><span class="dt">automatic_menu_display_resize </span><span class="ot">=</span><span class="st"> </span><span class="kw">true</span></a></code></pre></div>
 <h1 id="al_get_system_id">al_get_system_id</h1>
 <div class="sourceCode" id="cb16"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb16-1" title="1">ALLEGRO_SYSTEM_ID al_get_system_id(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/4816ce7d2e7c3dd33d4d44b534c514d91aa5bcb9/src/system.c#L360">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/d4eb133149b0e24e0184d85c4cce5b170b078104/src/system.c#L360">Source Code</a></p>
 <p>Returns the platform that Allegro is running on.</p>
 <p>Since: 5.2.5</p>
 <p>See also: <a href="system.html#allegro_system_id">ALLEGRO_SYSTEM_ID</a></p>
 <h1 id="al_register_assert_handler">al_register_assert_handler</h1>
 <div class="sourceCode" id="cb17"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb17-1" title="1"><span class="dt">void</span> al_register_assert_handler(<span class="dt">void</span> (*handler)(<span class="dt">char</span> <span class="dt">const</span> *expr,</a>
 <a class="sourceLine" id="cb17-2" title="2">   <span class="dt">char</span> <span class="dt">const</span> *file, <span class="dt">int</span> line, <span class="dt">char</span> <span class="dt">const</span> *func))</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/4816ce7d2e7c3dd33d4d44b534c514d91aa5bcb9/src/debug.c#L358">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/d4eb133149b0e24e0184d85c4cce5b170b078104/src/debug.c#L358">Source Code</a></p>
 <p>Register a function to be called when an internal Allegro assertion fails. Pass NULL to reset to the default behaviour, which is to do whatever the standard <code>assert()</code> macro does.</p>
 <p>Since: 5.0.6, 5.1.0</p>
 <h1 id="al_register_trace_handler">al_register_trace_handler</h1>
 <div class="sourceCode" id="cb18"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb18-1" title="1"><span class="dt">void</span> al_register_trace_handler(<span class="dt">void</span> (*handler)(<span class="dt">char</span> <span class="dt">const</span> *))</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/4816ce7d2e7c3dd33d4d44b534c514d91aa5bcb9/src/debug.c#L367">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/d4eb133149b0e24e0184d85c4cce5b170b078104/src/debug.c#L367">Source Code</a></p>
 <p>Register a callback which is called whenever Allegro writes something to its log files. The default logging to allegro.log is disabled while this callback is active. Pass NULL to revert to the default logging.</p>
 <p>This function may be called prior to al_install_system.</p>
 <p>See the example allegro5.cfg for documentation on how to configure the used debug channels, logging levels and trace format.</p>
 <p>Since: 5.1.5</p>
 <h1 id="al_get_cpu_count">al_get_cpu_count</h1>
 <div class="sourceCode" id="cb19"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb19-1" title="1"><span class="dt">int</span> al_get_cpu_count(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/4816ce7d2e7c3dd33d4d44b534c514d91aa5bcb9/src/cpu.c#L50">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/d4eb133149b0e24e0184d85c4cce5b170b078104/src/cpu.c#L50">Source Code</a></p>
 <p>Returns the number of CPU cores that the system Allegro is running on has and which could be detected, or a negative number if detection failed. Even if a positive number is returned, it might be that it is not correct. For example, Allegro running on a virtual machine will return the amount of CPU’s of the VM, and not that of the underlying system.</p>
 <p>Furthermore even if the number is correct, this only gives you information about the total CPU cores of the system Allegro runs on. The amount of cores available to your program may be less due to circumstances such as programs that are currently running.</p>
 <p>Therefore, it’s best to use this for advisory purposes only. It is certainly a bad idea to make your program exclusive to systems for which this function returns a certain “desirable” number.</p>
@@ -560,7 +560,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.12</p>
 <h1 id="al_get_ram_size">al_get_ram_size</h1>
 <div class="sourceCode" id="cb20"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb20-1" title="1"><span class="dt">int</span> al_get_ram_size(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/4816ce7d2e7c3dd33d4d44b534c514d91aa5bcb9/src/cpu.c#L77">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/d4eb133149b0e24e0184d85c4cce5b170b078104/src/cpu.c#L77">Source Code</a></p>
 <p>Returns the size in MB of the random access memory that the system Allegro is running on has and which could be detected, or a negative number if detection failed. Even if a positive number is returned, it might be that it is not correct. For example, Allegro running on a virtual machine will return the amount of RAM of the VM, and not that of the underlying system.</p>
 <p>Furthermore even if the number is correct, this only gives you information about the total physical memory of the system Allegro runs on. The memory available to your program may be less or more than what this function returns due to circumstances such as virtual memory, and other programs that are currently running.</p>
 <p>Therefore, it’s best to use this for advisory purposes only. It is certainly a bad idea to make your program exclusive to systems for which this function returns a certain “desirable” number.</p>
@@ -568,7 +568,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>Since: 5.1.12</p>
 <h1 id="allegro_system_id">ALLEGRO_SYSTEM_ID</h1>
 <div class="sourceCode" id="cb21"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">enum</span> ALLEGRO_SYSTEM_ID {</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/4816ce7d2e7c3dd33d4d44b534c514d91aa5bcb9/include/allegro5/system.h#L15">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/d4eb133149b0e24e0184d85c4cce5b170b078104/include/allegro5/system.h#L15">Source Code</a></p>
 <p>The system Allegro is running on.</p>
 <ul>
 <li>ALLEGRO_SYSTEM_ID_UNKNOWN - Unknown system.</li>
@@ -585,7 +585,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="system.html#al_get_system_id">al_get_system_id</a></p>
 <p class="timestamp">
 Allegro version 5.2.6 (GIT)
- - Last updated: 2019-08-06 04:30:55 UTC
+ - Last updated: 2019-08-11 04:32:40 UTC
 </p>
 </div>
 </body>
