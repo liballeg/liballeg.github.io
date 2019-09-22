@@ -252,6 +252,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </dl>
 <p>With GLSL alpha testing is done in the shader and uses these additional uniforms:</p>
 <dl>
+<dt>al_alpha_test</dt>
+<dd>Whether to do any alpha testing. If false, the shader should render the pixel, otherwise it should interpret the values of <code>al_alpha_func</code> and <code>al_alpha_test_val</code>.
+</dd>
 <dt>al_alpha_func</dt>
 <dd>The alpha testing function used. One of the <a href="graphics.html#allegro_render_function">ALLEGRO_RENDER_FUNCTION</a> values. The default is ALLEGRO_RENDER_ALWAYS which means all pixels (even completely transparent ones) are rendered. The type is <code>int</code>. See <a href="graphics.html#allegro_render_state">ALLEGRO_RENDER_STATE</a>.
 </dd>
@@ -424,7 +427,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="shader.html#al_attach_shader_source">al_attach_shader_source</a></p>
 <p class="timestamp">
 Allegro version 5.2.6 (GIT)
- - Last updated: 2019-09-03 04:32:47 UTC
+ - Last updated: 2019-09-22 04:32:43 UTC
 </p>
 </div>
 </body>
