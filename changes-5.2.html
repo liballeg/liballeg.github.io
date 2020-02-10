@@ -83,6 +83,88 @@ A game programming library
 <!-- left -->
 <div id="content">
 <p>These lists serve as summaries; the full histories are in the git repository.</p>
+<h1 id="changes-from-5.2.5-to-5.2.6-february-2020">Changes from 5.2.5 to 5.2.6 (February 2020)</h1>
+<p>The main developers this time were: SiegeLord, Peter Hull, Karthik Kumar Viswanathan, Elias Pschernig, Sebastian Krzyszkowiak, Doug Thompson, PmProg, RmBeer.</p>
+<p>Core:</p>
+<ul>
+<li><p>Fix timestamps being clamped to ints on touch inputs with X11.</p></li>
+<li><p>Fix al_utf8_width argument type mismatch on platforms where <code>sizeof(int) != 4</code>.</p></li>
+<li><p>Fix building for GNU/Linux without GNU extensions enabled</p></li>
+<li><p>Some refactoring to simplify adding new drivers.</p></li>
+</ul>
+<p>Graphics:</p>
+<ul>
+<li><p>Fix for OpenGL version selection and reporting on Windows and X (Edgar Reynaldo).</p></li>
+<li><p>Report OpenGL version in display options on Android, iOS and Raspberry Pi.</p></li>
+<li><p>Fix creation of the bitmap depth buffer for non-square bitmaps (Kevin Wellwood).</p></li>
+<li><p>Fix <code>ALLEGRO_ALPHA_TEST_VALUE</code> not being interpreted correctly.</p></li>
+<li><p>Fix reported bitshifts for <code>ARGB_4444</code> and <code>RGBA_4444</code> pixel formats.</p></li>
+<li><p>Fix alpha test with the GLSL version.</p></li>
+</ul>
+<p>Android:</p>
+<ul>
+<li><p>Do not build Android examples outside of Android.</p></li>
+<li><p>Use the cmake toolchain provided by the Android NDK.</p></li>
+<li><p>Use FLAG_KEEP_SCREEN_ON instead of a wakelock for screensaver inhibition.</p></li>
+<li><p>Use DisplayListener to listen to orientation changes.</p></li>
+<li><p>Implement <code>ALLEGRO_FRAMELESS</code> on Android. This hides the navigation buttons and the bar on top.</p></li>
+</ul>
+<p>Linux:</p>
+<ul>
+<li>Fix <code>al_inhibit_screensaver</code> function.</li>
+</ul>
+<p>OSX:</p>
+<ul>
+<li><p>Ensure system calls happen on the main thread.</p></li>
+<li><p>Make things work on Catalina.</p></li>
+</ul>
+<p>Hurd:</p>
+<ul>
+<li>Fix pthreads (Andreas Rönnquist).</li>
+</ul>
+<p>Windows:</p>
+<ul>
+<li><p>Implement Windows version check using non-deprecated functions.</p></li>
+<li><p>Abstract UNICODE vs ANSI string handling, switch to using UNICODE by default.</p></li>
+<li><p>Enable debug window for <code>DEBUGMODE</code> on Windows.</p></li>
+</ul>
+<p>SDL:</p>
+<ul>
+<li><p>Fix requesting GLES profile on GL Allegro.</p></li>
+<li><p>Add audio recorder implementation.</p></li>
+<li><p>Don’t link with dl, it’s unnecessary.</p></li>
+</ul>
+<p>Addons:</p>
+<ul>
+<li>Add a whole bunch of <code>al_is_*_initialized</code> functions (Mark Oates).</li>
+</ul>
+<p>Acodec addon:</p>
+<ul>
+<li>Add MP3 support via the MiniMP3 library.</li>
+</ul>
+<p>Audio addon:</p>
+<ul>
+<li><p>Allow calling <code>al_destroy_audio_recorder</code> on NULL.</p></li>
+<li><p>Fix some stream garbage audio issues for high playback speeds.</p></li>
+</ul>
+<p>Image addon:</p>
+<ul>
+<li><p>Add support for FreeImage library.</p></li>
+<li><p>Always prefer non-system image loaders.</p></li>
+</ul>
+<p>Python wrapper:</p>
+<ul>
+<li>Fix a number of bugs (zachs18 and others).</li>
+</ul>
+<p>Misc:</p>
+<ul>
+<li><p>Add an <code>.editorconfig</code> file.</p></li>
+<li><p>Convert our internal Python scripts to Python 3.</p></li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li><code>ex_draw_bitmap</code> - Add more options.</li>
+</ul>
 <h1 id="changes-from-5.2.4-to-5.2.5-february-2019">Changes from 5.2.4 to 5.2.5 (February 2019)</h1>
 <p>The main developers this time were: Sebastian Krzyszkowiak, SiegeLord, Elias Pschernig, Bruce Pascoe, Aldrik Ramaekers, Firat Salgur.</p>
 <p>Core:</p>
