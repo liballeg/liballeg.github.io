@@ -886,7 +886,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>vertex_counts - Number of vertices for each polygon. The number of vertices in the filled polygon is given by vertex_counts[0] and must be at least three. Subsequent elements indicate the number of vertices in each hole. The array must be terminated with an element with value zero.</li>
 <li>color - Color of the filled polygon</li>
 </ul>
-<p>All hole vertices must use the opposite order (clockwise with y down) of the polygon vertices. All hole vertices must be inside the main polygon and no hole may overlap the main polygon.</p>
+<p>When the y-axis is facing downwards (the usual) the filled polygon coordinates must be ordered anti-clockwise. All hole vertices must use the opposite order (clockwise with y down). All hole vertices must be inside the main polygon and no hole may overlap the main polygon.</p>
 <p>For example:</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb53-1" title="1"><span class="dt">float</span> vertices[] = {</a>
 <a class="sourceLine" id="cb53-2" title="2">      <span class="dv">0</span>,   <span class="dv">0</span>, <span class="co">// filled polygon, upper left corner</span></a>
@@ -1100,7 +1100,7 @@ Since: 5.1.6</li>
 <p>See also: <a href="primitives.html#al_create_vertex_buffer">al_create_vertex_buffer</a>, <a href="primitives.html#al_create_index_buffer">al_create_index_buffer</a></p>
 <p class="timestamp">
 Allegro version 5.2.7 (GIT)
- - Last updated: 2020-04-27 04:30:53 UTC
+ - Last updated: 2020-05-13 04:30:09 UTC
 </p>
 </div>
 </body>
