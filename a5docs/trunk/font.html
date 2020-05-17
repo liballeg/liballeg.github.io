@@ -260,18 +260,18 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="image.html#al_init_image_addon">al_init_image_addon</a>, <a href="font.html#al_init_ttf_addon">al_init_ttf_addon</a>, <a href="font.html#al_shutdown_font_addon">al_shutdown_font_addon</a></p>
 <h2 id="al_is_font_addon_initialized">al_is_font_addon_initialized</h2>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb6-1" title="1"><span class="dt">bool</span> al_is_font_addon_initialized(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/addons/font/font.c#L393">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/addons/font/font.c#L391">Source Code</a></p>
 <p>Returns true if the font addon is initialized, otherwise returns false.</p>
 <p>Since: 5.2.6</p>
 <p>See also: <a href="font.html#al_init_font_addon">al_init_font_addon</a>, <a href="font.html#al_shutdown_font_addon">al_shutdown_font_addon</a></p>
 <h2 id="al_shutdown_font_addon">al_shutdown_font_addon</h2>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb7-1" title="1"><span class="dt">void</span> al_shutdown_font_addon(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/addons/font/font.c#L402">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/addons/font/font.c#L400">Source Code</a></p>
 <p>Shut down the font addon. This is done automatically at program exit, but can be called any time the user wishes as well.</p>
 <p>See also: <a href="font.html#al_init_font_addon">al_init_font_addon</a></p>
 <h2 id="al_load_font">al_load_font</h2>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb8-1" title="1">ALLEGRO_FONT *al_load_font(<span class="dt">char</span> <span class="dt">const</span> *filename, <span class="dt">int</span> size, <span class="dt">int</span> flags)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/addons/font/font.c#L450">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/addons/font/font.c#L448">Source Code</a></p>
 <p>Loads a font from disk. This will use <a href="font.html#al_load_bitmap_font_flags">al_load_bitmap_font_flags</a> if you pass the name of a known bitmap format, or else <a href="font.html#al_load_ttf_font">al_load_ttf_font</a>.</p>
 <p>The flags parameter is passed through to either of those functions. Bitmap and TTF fonts are also affected by the current <a href="graphics.html#al_set_new_bitmap_flags">bitmap flags</a> at the time the font is loaded.</p>
 <p>See also: <a href="font.html#al_destroy_font">al_destroy_font</a>, <a href="font.html#al_init_font_addon">al_init_font_addon</a>, <a href="font.html#al_register_font_loader">al_register_font_loader</a>, <a href="font.html#al_load_bitmap_font_flags">al_load_bitmap_font_flags</a>, <a href="font.html#al_load_ttf_font">al_load_ttf_font</a></p>
@@ -283,7 +283,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h2 id="al_register_font_loader">al_register_font_loader</h2>
 <div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb10-1" title="1"><span class="dt">bool</span> al_register_font_loader(<span class="dt">char</span> <span class="dt">const</span> *extension,</a>
 <a class="sourceLine" id="cb10-2" title="2">   ALLEGRO_FONT *(*load_font)(<span class="dt">char</span> <span class="dt">const</span> *filename, <span class="dt">int</span> size, <span class="dt">int</span> flags))</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/addons/font/font.c#L426">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/addons/font/font.c#L424">Source Code</a></p>
 <p>Informs Allegro of a new font file type, telling it how to load files of this format.</p>
 <p>The <code>extension</code> should include the leading dot (‘.’) character. It will be matched case-insensitively.</p>
 <p>The <code>load_font</code> argument may be NULL to unregister an entry.</p>
@@ -406,7 +406,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="font.html#al_get_text_dimensions">al_get_text_dimensions</a></p>
 <h2 id="al_get_allegro_font_version">al_get_allegro_font_version</h2>
 <div class="sourceCode" id="cb25"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb25-1" title="1"><span class="dt">uint32_t</span> al_get_allegro_font_version(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/addons/font/font.c#L497">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/addons/font/font.c#L495">Source Code</a></p>
 <p>Returns the (compiled) version of the addon, in the same format as <a href="system.html#al_get_allegro_version">al_get_allegro_version</a>.</p>
 <h2 id="al_get_font_ranges">al_get_font_ranges</h2>
 <div class="sourceCode" id="cb26"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb26-1" title="1"><span class="dt">int</span> al_get_font_ranges(ALLEGRO_FONT *f, <span class="dt">int</span> ranges_count, <span class="dt">int</span> *ranges)</a></code></pre></div>
@@ -721,7 +721,7 @@ al_get_glyph_advance(font, &#39;A&#39;, ALLEGRO_NO_KERNING)
 <p>See also: <a href="font.html#allegro_glyph">ALLEGRO_GLYPH</a></p>
 <p class="timestamp">
 Allegro version 5.2.7 (GIT)
- - Last updated: 2020-04-27 04:30:51 UTC
+ - Last updated: 2020-05-17 04:30:47 UTC
 </p>
 </div>
 </body>
