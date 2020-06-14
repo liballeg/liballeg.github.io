@@ -290,27 +290,27 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="utf-8-string-types">UTF-8 string types</h1>
 <h2 id="allegro_ustr">ALLEGRO_USTR</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">typedef</span> <span class="kw">struct</span> _al_tagbstring ALLEGRO_USTR;</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/include/allegro5/utf8.h#L12">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/include/allegro5/utf8.h#L12">Source Code</a></p>
 <p>An opaque type representing a string. ALLEGRO_USTRs normally contain UTF-8 encoded strings, but they may be used to hold any byte sequences, including NULs.</p>
 <h2 id="allegro_ustr_info">ALLEGRO_USTR_INFO</h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">typedef</span> <span class="kw">struct</span> _al_tagbstring ALLEGRO_USTR_INFO;</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/include/allegro5/utf8.h#L16">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/include/allegro5/utf8.h#L16">Source Code</a></p>
 <p>A type that holds additional information for an <a href="utf8.html#allegro_ustr">ALLEGRO_USTR</a> that references an external memory buffer.</p>
 <p>See also: <a href="utf8.html#al_ref_cstr">al_ref_cstr</a>, <a href="utf8.html#al_ref_buffer">al_ref_buffer</a> and <a href="utf8.html#al_ref_ustr">al_ref_ustr</a>.</p>
 <h1 id="creating-and-destroying-strings">Creating and destroying strings</h1>
 <h2 id="al_ustr_new">al_ustr_new</h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb5-1" title="1">ALLEGRO_USTR *al_ustr_new(<span class="dt">const</span> <span class="dt">char</span> *s)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L62">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L62">Source Code</a></p>
 <p>Create a new string containing a copy of the C-style string <code>s</code>. The string must eventually be freed with <a href="utf8.html#al_ustr_free">al_ustr_free</a>.</p>
 <p>See also: <a href="utf8.html#al_ustr_new_from_buffer">al_ustr_new_from_buffer</a>, <a href="utf8.html#al_ustr_newf">al_ustr_newf</a>, <a href="utf8.html#al_ustr_dup">al_ustr_dup</a>, <a href="utf8.html#al_ustr_new_from_utf16">al_ustr_new_from_utf16</a></p>
 <h2 id="al_ustr_new_from_buffer">al_ustr_new_from_buffer</h2>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb6-1" title="1">ALLEGRO_USTR *al_ustr_new_from_buffer(<span class="dt">const</span> <span class="dt">char</span> *s, <span class="dt">size_t</span> size)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L70">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L70">Source Code</a></p>
 <p>Create a new string containing a copy of the buffer pointed to by <code>s</code> of the given <code>size</code> in bytes. The string must eventually be freed with <a href="utf8.html#al_ustr_free">al_ustr_free</a>.</p>
 <p>See also: <a href="utf8.html#al_ustr_new">al_ustr_new</a></p>
 <h2 id="al_ustr_newf">al_ustr_newf</h2>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb7-1" title="1">ALLEGRO_USTR *al_ustr_newf(<span class="dt">const</span> <span class="dt">char</span> *fmt, ...)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L78">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L78">Source Code</a></p>
 <p>Create a new string using a printf-style format string.</p>
 <p><em>Notes:</em></p>
 <p>The “%s” specifier takes C string arguments, not ALLEGRO_USTRs. Therefore to pass an ALLEGRO_USTR as a parameter you must use <a href="utf8.html#al_cstr">al_cstr</a>, and it must be NUL terminated. If the string contains an embedded NUL byte everything from that byte onwards will be ignored.</p>
@@ -318,12 +318,12 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="utf8.html#al_ustr_new">al_ustr_new</a>, <a href="utf8.html#al_ustr_appendf">al_ustr_appendf</a></p>
 <h2 id="al_ustr_free">al_ustr_free</h2>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb8-1" title="1"><span class="dt">void</span> al_ustr_free(ALLEGRO_USTR *us)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L93">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L93">Source Code</a></p>
 <p>Free a previously allocated string. Does nothing if the argument is NULL.</p>
 <p>See also: <a href="utf8.html#al_ustr_new">al_ustr_new</a>, <a href="utf8.html#al_ustr_new_from_buffer">al_ustr_new_from_buffer</a>, <a href="utf8.html#al_ustr_newf">al_ustr_newf</a></p>
 <h2 id="al_cstr">al_cstr</h2>
 <div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb9-1" title="1"><span class="dt">const</span> <span class="dt">char</span> *al_cstr(<span class="dt">const</span> ALLEGRO_USTR *us)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L101">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L101">Source Code</a></p>
 <p>Get a <code>char *</code> pointer to the data in a string. This pointer will only be valid while the <a href="utf8.html#allegro_ustr">ALLEGRO_USTR</a> object is not modified and not destroyed. The pointer may be passed to functions expecting C-style strings, with the following caveats:</p>
 <ul>
 <li><p>ALLEGRO_USTRs are allowed to contain embedded NUL (<code>'\0'</code>) bytes. That means <code>al_ustr_size(u)</code> and <code>strlen(al_cstr(u))</code> may not agree.</p></li>
@@ -333,36 +333,36 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="utf8.html#al_ustr_to_buffer">al_ustr_to_buffer</a>, <a href="utf8.html#al_cstr_dup">al_cstr_dup</a></p>
 <h2 id="al_ustr_to_buffer">al_ustr_to_buffer</h2>
 <div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb10-1" title="1"><span class="dt">void</span> al_ustr_to_buffer(<span class="dt">const</span> ALLEGRO_USTR *us, <span class="dt">char</span> *buffer, <span class="dt">int</span> size)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L110">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L110">Source Code</a></p>
 <p>Write the contents of the string into a pre-allocated buffer of the given size in bytes. The result will always be NUL terminated, so a maximum of <code>size - 1</code> bytes will be copied.</p>
 <p>See also: <a href="utf8.html#al_cstr">al_cstr</a>, <a href="utf8.html#al_cstr_dup">al_cstr_dup</a></p>
 <h2 id="al_cstr_dup">al_cstr_dup</h2>
 <div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb11-1" title="1"><span class="dt">char</span> *al_cstr_dup(<span class="dt">const</span> ALLEGRO_USTR *us)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L126">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L126">Source Code</a></p>
 <p>Create a NUL (<code>'\0'</code>) terminated copy of the string. Any embedded NUL bytes will still be presented in the returned string. The new string must eventually be freed with <a href="memory.html#al_free">al_free</a>.</p>
 <p>If an error occurs NULL is returned.</p>
 <p>See also: <a href="utf8.html#al_cstr">al_cstr</a>, <a href="utf8.html#al_ustr_to_buffer">al_ustr_to_buffer</a>, <a href="memory.html#al_free">al_free</a></p>
 <h2 id="al_ustr_dup">al_ustr_dup</h2>
 <div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb12-1" title="1">ALLEGRO_USTR *al_ustr_dup(<span class="dt">const</span> ALLEGRO_USTR *us)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L134">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L134">Source Code</a></p>
 <p>Return a duplicate copy of a string. The new string will need to be freed with <a href="utf8.html#al_ustr_free">al_ustr_free</a>.</p>
 <p>See also: <a href="utf8.html#al_ustr_dup_substr">al_ustr_dup_substr</a>, <a href="utf8.html#al_ustr_free">al_ustr_free</a></p>
 <h2 id="al_ustr_dup_substr">al_ustr_dup_substr</h2>
 <div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb13-1" title="1">ALLEGRO_USTR *al_ustr_dup_substr(<span class="dt">const</span> ALLEGRO_USTR *us, <span class="dt">int</span> start_pos,</a>
 <a class="sourceLine" id="cb13-2" title="2">   <span class="dt">int</span> end_pos)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L142">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L142">Source Code</a></p>
 <p>Return a new copy of a string, containing its contents in the byte interval [<code>start_pos</code>, <code>end_pos</code>). The new string will be NUL terminated and will need to be freed with <a href="utf8.html#al_ustr_free">al_ustr_free</a>.</p>
 <p>If necessary, use <a href="utf8.html#al_ustr_offset">al_ustr_offset</a> to find the byte offsets for a given code point that you are interested in.</p>
 <p>See also: <a href="utf8.html#al_ustr_dup">al_ustr_dup</a>, <a href="utf8.html#al_ustr_free">al_ustr_free</a></p>
 <h1 id="predefined-strings">Predefined strings</h1>
 <h2 id="al_ustr_empty_string">al_ustr_empty_string</h2>
 <div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb14-1" title="1"><span class="dt">const</span> ALLEGRO_USTR *al_ustr_empty_string(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L151">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L151">Source Code</a></p>
 <p>Return a pointer to a static empty string. The string is read only and must not be freed.</p>
 <h1 id="creating-strings-by-referencing-other-data">Creating strings by referencing other data</h1>
 <h2 id="al_ref_cstr">al_ref_cstr</h2>
 <div class="sourceCode" id="cb15"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb15-1" title="1"><span class="dt">const</span> ALLEGRO_USTR *al_ref_cstr(ALLEGRO_USTR_INFO *info, <span class="dt">const</span> <span class="dt">char</span> *s)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L160">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L160">Source Code</a></p>
 <p>Create a string that references the storage of a C-style string. The information about the string (e.g. its size) is stored in the structure pointed to by the <code>info</code> parameter. The string will not have any other storage allocated of its own, so if you allocate the <code>info</code> structure on the stack then no explicit “free” operation is required.</p>
 <p>The string is valid until the underlying C string disappears.</p>
 <p>Example:</p>
@@ -371,14 +371,14 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="utf8.html#al_ref_buffer">al_ref_buffer</a>, <a href="utf8.html#al_ref_ustr">al_ref_ustr</a></p>
 <h2 id="al_ref_buffer">al_ref_buffer</h2>
 <div class="sourceCode" id="cb17"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb17-1" title="1"><span class="dt">const</span> ALLEGRO_USTR *al_ref_buffer(ALLEGRO_USTR_INFO *info, <span class="dt">const</span> <span class="dt">char</span> *s, <span class="dt">size_t</span> size)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L173">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L173">Source Code</a></p>
 <p>Create a string that references the storage of an underlying buffer. The size of the buffer is given in bytes. You can use it to reference only part of a string or an arbitrary region of memory.</p>
 <p>The string is valid while the underlying memory buffer is valid.</p>
 <p>See also: <a href="utf8.html#al_ref_cstr">al_ref_cstr</a>, <a href="utf8.html#al_ref_ustr">al_ref_ustr</a></p>
 <h2 id="al_ref_ustr">al_ref_ustr</h2>
 <div class="sourceCode" id="cb18"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb18-1" title="1"><span class="dt">const</span> ALLEGRO_USTR *al_ref_ustr(ALLEGRO_USTR_INFO *info, <span class="dt">const</span> ALLEGRO_USTR *us,</a>
 <a class="sourceLine" id="cb18-2" title="2">   <span class="dt">int</span> start_pos, <span class="dt">int</span> end_pos)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L185">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L185">Source Code</a></p>
 <p>Create a read-only string that references the storage of another <a href="utf8.html#allegro_ustr">ALLEGRO_USTR</a> string. The information about the string (e.g. its size) is stored in the structure pointed to by the <code>info</code> parameter. The new string will not have any other storage allocated of its own, so if you allocate the <code>info</code> structure on the stack then no explicit “free” operation is required.</p>
 <p>The referenced interval is [<code>start_pos</code>, <code>end_pos</code>). Both are byte offsets.</p>
 <p>The string is valid until the underlying string is modified or destroyed.</p>
@@ -387,75 +387,75 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="sizes-and-offsets">Sizes and offsets</h1>
 <h2 id="al_ustr_size">al_ustr_size</h2>
 <div class="sourceCode" id="cb19"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb19-1" title="1"><span class="dt">size_t</span> al_ustr_size(<span class="dt">const</span> ALLEGRO_USTR *us)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L197">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L197">Source Code</a></p>
 <p>Return the size of the string in bytes. This is equal to the number of code points in the string if the string is empty or contains only 7-bit ASCII characters.</p>
 <p>See also: <a href="utf8.html#al_ustr_length">al_ustr_length</a></p>
 <h2 id="al_ustr_length">al_ustr_length</h2>
 <div class="sourceCode" id="cb20"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb20-1" title="1"><span class="dt">size_t</span> al_ustr_length(<span class="dt">const</span> ALLEGRO_USTR *us)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L205">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L205">Source Code</a></p>
 <p>Return the number of code points in the string.</p>
 <p>See also: <a href="utf8.html#al_ustr_size">al_ustr_size</a>, <a href="utf8.html#al_ustr_offset">al_ustr_offset</a></p>
 <h2 id="al_ustr_offset">al_ustr_offset</h2>
 <div class="sourceCode" id="cb21"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb21-1" title="1"><span class="dt">int</span> al_ustr_offset(<span class="dt">const</span> ALLEGRO_USTR *us, <span class="dt">int</span> index)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L219">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L219">Source Code</a></p>
 <p>Return the byte offset (from the start of the string) of the code point at the specified index in the string. A zero index parameter will return the first character of the string. If index is negative, it counts backward from the end of the string, so an index of -1 will return an offset to the last code point.</p>
 <p>If the index is past the end of the string, returns the offset of the end of the string.</p>
 <p>See also: <a href="utf8.html#al_ustr_length">al_ustr_length</a></p>
 <h2 id="al_ustr_next">al_ustr_next</h2>
 <div class="sourceCode" id="cb22"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb22-1" title="1"><span class="dt">bool</span> al_ustr_next(<span class="dt">const</span> ALLEGRO_USTR *us, <span class="dt">int</span> *pos)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L237">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L237">Source Code</a></p>
 <p>Find the byte offset of the next code point in string, beginning at <code>*pos</code>. <code>*pos</code> does not have to be at the beginning of a code point.</p>
 <p>Returns true on success, and the value pointed to by <code>pos</code> will be updated to the found offset. Otherwise returns false if <code>*pos</code> was already at the end of the string, and <code>*pos</code> is unmodified.</p>
 <p>This function just looks for an appropriate byte; it doesn’t check if found offset is the beginning of a valid code point. If you are working with possibly invalid UTF-8 strings then it could skip over some invalid bytes.</p>
 <p>See also: <a href="utf8.html#al_ustr_prev">al_ustr_prev</a></p>
 <h2 id="al_ustr_prev">al_ustr_prev</h2>
 <div class="sourceCode" id="cb23"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb23-1" title="1"><span class="dt">bool</span> al_ustr_prev(<span class="dt">const</span> ALLEGRO_USTR *us, <span class="dt">int</span> *pos)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L259">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L259">Source Code</a></p>
 <p>Find the byte offset of the previous code point in string, before <code>*pos</code>. <code>*pos</code> does not have to be at the beginning of a code point. Returns true on success, and the value pointed to by <code>pos</code> will be updated to the found offset. Otherwise returns false if <code>*pos</code> was already at the end of the string, and <code>*pos</code> is unmodified.</p>
 <p>This function just looks for an appropriate byte; it doesn’t check if found offset is the beginning of a valid code point. If you are working with possibly invalid UTF-8 strings then it could skip over some invalid bytes.</p>
 <p>See also: <a href="utf8.html#al_ustr_next">al_ustr_next</a></p>
 <h1 id="getting-code-points">Getting code points</h1>
 <h2 id="al_ustr_get">al_ustr_get</h2>
 <div class="sourceCode" id="cb24"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb24-1" title="1"><span class="dt">int32_t</span> al_ustr_get(<span class="dt">const</span> ALLEGRO_USTR *ub, <span class="dt">int</span> pos)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L283">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L283">Source Code</a></p>
 <p>Return the code point in <code>ub</code> beginning at byte offset <code>pos</code>.</p>
 <p>On success returns the code point value. If <code>pos</code> was out of bounds (e.g. past the end of the string), return -1. On an error, such as an invalid byte sequence, return -2.</p>
 <p>See also: <a href="utf8.html#al_ustr_get_next">al_ustr_get_next</a>, <a href="utf8.html#al_ustr_prev_get">al_ustr_prev_get</a></p>
 <h2 id="al_ustr_get_next">al_ustr_get_next</h2>
 <div class="sourceCode" id="cb25"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb25-1" title="1"><span class="dt">int32_t</span> al_ustr_get_next(<span class="dt">const</span> ALLEGRO_USTR *us, <span class="dt">int</span> *pos)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L368">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L368">Source Code</a></p>
 <p>Find the code point in <code>us</code> beginning at byte offset <code>*pos</code>, then advance to the next code point.</p>
 <p>On success return the code point value. If <code>pos</code> was out of bounds (e.g. past the end of the string), return -1. On an error, such as an invalid byte sequence, return -2. As with <a href="utf8.html#al_ustr_next">al_ustr_next</a>, invalid byte sequences may be skipped while advancing.</p>
 <p>See also: <a href="utf8.html#al_ustr_get">al_ustr_get</a>, <a href="utf8.html#al_ustr_prev_get">al_ustr_prev_get</a></p>
 <h2 id="al_ustr_prev_get">al_ustr_prev_get</h2>
 <div class="sourceCode" id="cb26"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb26-1" title="1"><span class="dt">int32_t</span> al_ustr_prev_get(<span class="dt">const</span> ALLEGRO_USTR *us, <span class="dt">int</span> *pos)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L390">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L390">Source Code</a></p>
 <p>Find the beginning of a code point before byte offset <code>*pos</code>, then return it. Note this performs a <em>pre-increment</em>.</p>
 <p>On success returns the code point value. If <code>pos</code> was out of bounds (e.g. past the end of the string), return -1. On an error, such as an invalid byte sequence, return -2. As with <a href="utf8.html#al_ustr_prev">al_ustr_prev</a>, invalid byte sequences may be skipped while advancing.</p>
 <p>See also: <a href="utf8.html#al_ustr_get_next">al_ustr_get_next</a></p>
 <h1 id="inserting-into-strings">Inserting into strings</h1>
 <h2 id="al_ustr_insert">al_ustr_insert</h2>
 <div class="sourceCode" id="cb27"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb27-1" title="1"><span class="dt">bool</span> al_ustr_insert(ALLEGRO_USTR *us1, <span class="dt">int</span> pos, <span class="dt">const</span> ALLEGRO_USTR *us2)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L403">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L403">Source Code</a></p>
 <p>Insert <code>us2</code> into <code>us1</code> beginning at byte offset <code>pos</code>. <code>pos</code> cannot be less than 0. If <code>pos</code> is past the end of <code>us1</code> then the space between the end of the string and <code>pos</code> will be padded with NUL (<code>'\0'</code>) bytes.</p>
 <p>If required, use <a href="utf8.html#al_ustr_offset">al_ustr_offset</a> to find the byte offset for a given code point index.</p>
 <p>Returns true on success, false on error.</p>
 <p>See also: <a href="utf8.html#al_ustr_insert_cstr">al_ustr_insert_cstr</a>, <a href="utf8.html#al_ustr_insert_chr">al_ustr_insert_chr</a>, <a href="utf8.html#al_ustr_append">al_ustr_append</a>, <a href="utf8.html#al_ustr_offset">al_ustr_offset</a></p>
 <h2 id="al_ustr_insert_cstr">al_ustr_insert_cstr</h2>
 <div class="sourceCode" id="cb28"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb28-1" title="1"><span class="dt">bool</span> al_ustr_insert_cstr(ALLEGRO_USTR *us, <span class="dt">int</span> pos, <span class="dt">const</span> <span class="dt">char</span> *s)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L411">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L411">Source Code</a></p>
 <p>Like <a href="utf8.html#al_ustr_insert">al_ustr_insert</a> but inserts a C-style string at byte offset <code>pos</code>.</p>
 <p>See also: <a href="utf8.html#al_ustr_insert">al_ustr_insert</a>, <a href="utf8.html#al_ustr_insert_chr">al_ustr_insert_chr</a></p>
 <h2 id="al_ustr_insert_chr">al_ustr_insert_chr</h2>
 <div class="sourceCode" id="cb29"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb29-1" title="1"><span class="dt">size_t</span> al_ustr_insert_chr(ALLEGRO_USTR *us, <span class="dt">int</span> pos, <span class="dt">int32_t</span> c)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L421">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L421">Source Code</a></p>
 <p>Insert a code point into <code>us</code> beginning at byte offset <code>pos</code>. <code>pos</code> cannot be less than 0. If <code>pos</code> is past the end of <code>us</code> then the space between the end of the string and <code>pos</code> will be padded with NUL (<code>'\0'</code>) bytes.</p>
 <p>Returns the number of bytes inserted, or 0 on error.</p>
 <p>See also: <a href="utf8.html#al_ustr_insert">al_ustr_insert</a>, <a href="utf8.html#al_ustr_insert_cstr">al_ustr_insert_cstr</a></p>
 <h1 id="appending-to-strings">Appending to strings</h1>
 <h2 id="al_ustr_append">al_ustr_append</h2>
 <div class="sourceCode" id="cb30"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb30-1" title="1"><span class="dt">bool</span> al_ustr_append(ALLEGRO_USTR *us1, <span class="dt">const</span> ALLEGRO_USTR *us2)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L445">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L445">Source Code</a></p>
 <p>Append <code>us2</code> to the end of <code>us1</code>.</p>
 <p>Returns true on success, false on error.</p>
 <p>This function can be used to append an arbitrary buffer:</p>
@@ -464,95 +464,95 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="utf8.html#al_ustr_append_cstr">al_ustr_append_cstr</a>, <a href="utf8.html#al_ustr_append_chr">al_ustr_append_chr</a>, <a href="utf8.html#al_ustr_appendf">al_ustr_appendf</a>, <a href="utf8.html#al_ustr_vappendf">al_ustr_vappendf</a></p>
 <h2 id="al_ustr_append_cstr">al_ustr_append_cstr</h2>
 <div class="sourceCode" id="cb32"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb32-1" title="1"><span class="dt">bool</span> al_ustr_append_cstr(ALLEGRO_USTR *us, <span class="dt">const</span> <span class="dt">char</span> *s)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L453">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L453">Source Code</a></p>
 <p>Append C-style string <code>s</code> to the end of <code>us</code>.</p>
 <p>Returns true on success, false on error.</p>
 <p>See also: <a href="utf8.html#al_ustr_append">al_ustr_append</a></p>
 <h2 id="al_ustr_append_chr">al_ustr_append_chr</h2>
 <div class="sourceCode" id="cb33"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb33-1" title="1"><span class="dt">size_t</span> al_ustr_append_chr(ALLEGRO_USTR *us, <span class="dt">int32_t</span> c)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L461">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L461">Source Code</a></p>
 <p>Append a code point to the end of <code>us</code>.</p>
 <p>Returns the number of bytes added, or 0 on error.</p>
 <p>See also: <a href="utf8.html#al_ustr_append">al_ustr_append</a></p>
 <h2 id="al_ustr_appendf">al_ustr_appendf</h2>
 <div class="sourceCode" id="cb34"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb34-1" title="1"><span class="dt">bool</span> al_ustr_appendf(ALLEGRO_USTR *us, <span class="dt">const</span> <span class="dt">char</span> *fmt, ...)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L475">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L475">Source Code</a></p>
 <p>This function appends formatted output to the string <code>us</code>. <code>fmt</code> is a printf-style format string. See <a href="utf8.html#al_ustr_newf">al_ustr_newf</a> about the “%s” and “%c” specifiers.</p>
 <p>Returns true on success, false on error.</p>
 <p>See also: <a href="utf8.html#al_ustr_vappendf">al_ustr_vappendf</a>, <a href="utf8.html#al_ustr_append">al_ustr_append</a></p>
 <h2 id="al_ustr_vappendf">al_ustr_vappendf</h2>
 <div class="sourceCode" id="cb35"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb35-1" title="1"><span class="dt">bool</span> al_ustr_vappendf(ALLEGRO_USTR *us, <span class="dt">const</span> <span class="dt">char</span> *fmt, <span class="dt">va_list</span> ap)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L489">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L489">Source Code</a></p>
 <p>Like <a href="utf8.html#al_ustr_appendf">al_ustr_appendf</a> but you pass the variable argument list directly, instead of the arguments themselves. See <a href="utf8.html#al_ustr_newf">al_ustr_newf</a> about the “%s” and “%c” specifiers.</p>
 <p>Returns true on success, false on error.</p>
 <p>See also: <a href="utf8.html#al_ustr_appendf">al_ustr_appendf</a>, <a href="utf8.html#al_ustr_append">al_ustr_append</a></p>
 <h1 id="removing-parts-of-strings">Removing parts of strings</h1>
 <h2 id="al_ustr_remove_chr">al_ustr_remove_chr</h2>
 <div class="sourceCode" id="cb36"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb36-1" title="1"><span class="dt">bool</span> al_ustr_remove_chr(ALLEGRO_USTR *us, <span class="dt">int</span> pos)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L525">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L525">Source Code</a></p>
 <p>Remove the code point beginning at byte offset <code>pos</code>. Returns true on success. If <code>pos</code> is out of range or <code>pos</code> is not the beginning of a valid code point, returns false leaving the string unmodified.</p>
 <p>Use <a href="utf8.html#al_ustr_offset">al_ustr_offset</a> to find the byte offset for a code-points offset.</p>
 <p>See also: <a href="utf8.html#al_ustr_remove_range">al_ustr_remove_range</a></p>
 <h2 id="al_ustr_remove_range">al_ustr_remove_range</h2>
 <div class="sourceCode" id="cb37"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb37-1" title="1"><span class="dt">bool</span> al_ustr_remove_range(ALLEGRO_USTR *us, <span class="dt">int</span> start_pos, <span class="dt">int</span> end_pos)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L541">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L541">Source Code</a></p>
 <p>Remove the interval [<code>start_pos</code>, <code>end_pos</code>) from a string. <code>start_pos</code> and <code>end_pos</code> are byte offsets. Both may be past the end of the string but cannot be less than 0 (the start of the string).</p>
 <p>Returns true on success, false on error.</p>
 <p>See also: <a href="utf8.html#al_ustr_remove_chr">al_ustr_remove_chr</a>, <a href="utf8.html#al_ustr_truncate">al_ustr_truncate</a></p>
 <h2 id="al_ustr_truncate">al_ustr_truncate</h2>
 <div class="sourceCode" id="cb38"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb38-1" title="1"><span class="dt">bool</span> al_ustr_truncate(ALLEGRO_USTR *us, <span class="dt">int</span> start_pos)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L549">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L549">Source Code</a></p>
 <p>Truncate a portion of a string from byte offset <code>start_pos</code> onwards. <code>start_pos</code> can be past the end of the string (has no effect) but cannot be less than 0.</p>
 <p>Returns true on success, false on error.</p>
 <p>See also: <a href="utf8.html#al_ustr_remove_range">al_ustr_remove_range</a>, <a href="utf8.html#al_ustr_ltrim_ws">al_ustr_ltrim_ws</a>, <a href="utf8.html#al_ustr_rtrim_ws">al_ustr_rtrim_ws</a>, <a href="utf8.html#al_ustr_trim_ws">al_ustr_trim_ws</a></p>
 <h2 id="al_ustr_ltrim_ws">al_ustr_ltrim_ws</h2>
 <div class="sourceCode" id="cb39"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb39-1" title="1"><span class="dt">bool</span> al_ustr_ltrim_ws(ALLEGRO_USTR *us)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L557">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L557">Source Code</a></p>
 <p>Remove leading whitespace characters from a string, as defined by the C function <code>isspace()</code>.</p>
 <p>Returns true on success, or false on error.</p>
 <p>See also: <a href="utf8.html#al_ustr_rtrim_ws">al_ustr_rtrim_ws</a>, <a href="utf8.html#al_ustr_trim_ws">al_ustr_trim_ws</a></p>
 <h2 id="al_ustr_rtrim_ws">al_ustr_rtrim_ws</h2>
 <div class="sourceCode" id="cb40"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb40-1" title="1"><span class="dt">bool</span> al_ustr_rtrim_ws(ALLEGRO_USTR *us)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L565">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L565">Source Code</a></p>
 <p>Remove trailing (“right”) whitespace characters from a string, as defined by the C function <code>isspace()</code>.</p>
 <p>Returns true on success, or false on error.</p>
 <p>See also: <a href="utf8.html#al_ustr_ltrim_ws">al_ustr_ltrim_ws</a>, <a href="utf8.html#al_ustr_trim_ws">al_ustr_trim_ws</a></p>
 <h2 id="al_ustr_trim_ws">al_ustr_trim_ws</h2>
 <div class="sourceCode" id="cb41"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb41-1" title="1"><span class="dt">bool</span> al_ustr_trim_ws(ALLEGRO_USTR *us)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L573">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L573">Source Code</a></p>
 <p>Remove both leading and trailing whitespace characters from a string.</p>
 <p>Returns true on success, or false on error.</p>
 <p>See also: <a href="utf8.html#al_ustr_ltrim_ws">al_ustr_ltrim_ws</a>, <a href="utf8.html#al_ustr_rtrim_ws">al_ustr_rtrim_ws</a></p>
 <h1 id="assigning-one-string-to-another">Assigning one string to another</h1>
 <h2 id="al_ustr_assign">al_ustr_assign</h2>
 <div class="sourceCode" id="cb42"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb42-1" title="1"><span class="dt">bool</span> al_ustr_assign(ALLEGRO_USTR *us1, <span class="dt">const</span> ALLEGRO_USTR *us2)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L581">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L581">Source Code</a></p>
 <p>Overwrite the string <code>us1</code> with another string <code>us2</code>. Returns true on success, false on error.</p>
 <p>See also: <a href="utf8.html#al_ustr_assign_substr">al_ustr_assign_substr</a>, <a href="utf8.html#al_ustr_assign_cstr">al_ustr_assign_cstr</a></p>
 <h2 id="al_ustr_assign_substr">al_ustr_assign_substr</h2>
 <div class="sourceCode" id="cb43"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb43-1" title="1"><span class="dt">bool</span> al_ustr_assign_substr(ALLEGRO_USTR *us1, <span class="dt">const</span> ALLEGRO_USTR *us2,</a>
 <a class="sourceLine" id="cb43-2" title="2">   <span class="dt">int</span> start_pos, <span class="dt">int</span> end_pos)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L589">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L589">Source Code</a></p>
 <p>Overwrite the string <code>us1</code> with the contents of <code>us2</code> in the byte interval [<code>start_pos</code>, <code>end_pos</code>). The end points will be clamped to the bounds of <code>us2</code>.</p>
 <p>Usually you will first have to use <a href="utf8.html#al_ustr_offset">al_ustr_offset</a> to find the byte offsets.</p>
 <p>Returns true on success, false on error.</p>
 <p>See also: <a href="utf8.html#al_ustr_assign">al_ustr_assign</a>, <a href="utf8.html#al_ustr_assign_cstr">al_ustr_assign_cstr</a></p>
 <h2 id="al_ustr_assign_cstr">al_ustr_assign_cstr</h2>
 <div class="sourceCode" id="cb44"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb44-1" title="1"><span class="dt">bool</span> al_ustr_assign_cstr(ALLEGRO_USTR *us1, <span class="dt">const</span> <span class="dt">char</span> *s)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L599">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L599">Source Code</a></p>
 <p>Overwrite the string <code>us1</code> with the contents of the C-style string <code>s</code>. Returns true on success, false on error.</p>
 <p>See also: <a href="utf8.html#al_ustr_assign_substr">al_ustr_assign_substr</a>, <a href="utf8.html#al_ustr_assign_cstr">al_ustr_assign_cstr</a></p>
 <h1 id="replacing-parts-of-string">Replacing parts of string</h1>
 <h2 id="al_ustr_set_chr">al_ustr_set_chr</h2>
 <div class="sourceCode" id="cb45"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb45-1" title="1"><span class="dt">size_t</span> al_ustr_set_chr(ALLEGRO_USTR *us, <span class="dt">int</span> start_pos, <span class="dt">int32_t</span> c)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L607">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L607">Source Code</a></p>
 <p>Replace the code point beginning at byte offset <code>start_pos</code> with <code>c</code>. <code>start_pos</code> cannot be less than 0. If <code>start_pos</code> is past the end of <code>us</code> then the space between the end of the string and <code>start_pos</code> will be padded with NUL (<code>'\0'</code>) bytes. If <code>start_pos</code> is not the start of a valid code point, that is an error and the string will be unmodified.</p>
 <p>On success, returns the number of bytes written, i.e. the offset to the following code point. On error, returns 0.</p>
 <p>See also: <a href="utf8.html#al_ustr_replace_range">al_ustr_replace_range</a></p>
 <h2 id="al_ustr_replace_range">al_ustr_replace_range</h2>
 <div class="sourceCode" id="cb46"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb46-1" title="1"><span class="dt">bool</span> al_ustr_replace_range(ALLEGRO_USTR *us1, <span class="dt">int</span> start_pos1, <span class="dt">int</span> end_pos1,</a>
 <a class="sourceLine" id="cb46-2" title="2">   <span class="dt">const</span> ALLEGRO_USTR *us2)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L647">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L647">Source Code</a></p>
 <p>Replace the part of <code>us1</code> in the byte interval [<code>start_pos1</code>, <code>end_pos1</code>) with the contents of <code>us2</code>. <code>start_pos1</code> cannot be less than 0. If <code>start_pos1</code> is past the end of <code>us1</code> then the space between the end of the string and <code>start_pos1</code> will be padded with NUL (<code>'\0'</code>) bytes.</p>
 <p>Use <a href="utf8.html#al_ustr_offset">al_ustr_offset</a> to find the byte offsets.</p>
 <p>Returns true on success, false on error.</p>
@@ -560,156 +560,156 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="searching">Searching</h1>
 <h2 id="al_ustr_find_chr">al_ustr_find_chr</h2>
 <div class="sourceCode" id="cb47"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb47-1" title="1"><span class="dt">int</span> al_ustr_find_chr(<span class="dt">const</span> ALLEGRO_USTR *us, <span class="dt">int</span> start_pos, <span class="dt">int32_t</span> c)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L657">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L657">Source Code</a></p>
 <p>Search for the encoding of code point <code>c</code> in <code>us</code> from byte offset <code>start_pos</code> (inclusive).</p>
 <p>Returns the position where it is found or -1 if it is not found.</p>
 <p>See also: <a href="utf8.html#al_ustr_rfind_chr">al_ustr_rfind_chr</a></p>
 <h2 id="al_ustr_rfind_chr">al_ustr_rfind_chr</h2>
 <div class="sourceCode" id="cb48"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb48-1" title="1"><span class="dt">int</span> al_ustr_rfind_chr(<span class="dt">const</span> ALLEGRO_USTR *us, <span class="dt">int</span> end_pos, <span class="dt">int32_t</span> c)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L688">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L688">Source Code</a></p>
 <p>Search for the encoding of code point <code>c</code> in <code>us</code> backwards from byte offset <code>end_pos</code> (exclusive). Returns the position where it is found or -1 if it is not found.</p>
 <p>See also: <a href="utf8.html#al_ustr_find_chr">al_ustr_find_chr</a></p>
 <h2 id="al_ustr_find_set">al_ustr_find_set</h2>
 <div class="sourceCode" id="cb49"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb49-1" title="1"><span class="dt">int</span> al_ustr_find_set(<span class="dt">const</span> ALLEGRO_USTR *us, <span class="dt">int</span> start_pos,</a>
 <a class="sourceLine" id="cb49-2" title="2">   <span class="dt">const</span> ALLEGRO_USTR *accept)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L719">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L719">Source Code</a></p>
 <p>This function finds the first code point in <code>us</code>, beginning from byte offset <code>start_pos</code>, that matches any code point in <code>accept</code>. Returns the position if a code point was found. Otherwise returns -1.</p>
 <p>See also: <a href="utf8.html#al_ustr_find_set_cstr">al_ustr_find_set_cstr</a>, <a href="utf8.html#al_ustr_find_cset">al_ustr_find_cset</a></p>
 <h2 id="al_ustr_find_set_cstr">al_ustr_find_set_cstr</h2>
 <div class="sourceCode" id="cb50"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb50-1" title="1"><span class="dt">int</span> al_ustr_find_set_cstr(<span class="dt">const</span> ALLEGRO_USTR *us, <span class="dt">int</span> start_pos,</a>
 <a class="sourceLine" id="cb50-2" title="2">   <span class="dt">const</span> <span class="dt">char</span> *accept)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L757">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L757">Source Code</a></p>
 <p>Like <a href="utf8.html#al_ustr_find_set">al_ustr_find_set</a> but takes a C-style string for <code>accept</code>.</p>
 <p>See also: <a href="utf8.html#al_ustr_find_set">al_ustr_find_set</a>, <a href="utf8.html#al_ustr_find_cset_cstr">al_ustr_find_cset_cstr</a></p>
 <h2 id="al_ustr_find_cset">al_ustr_find_cset</h2>
 <div class="sourceCode" id="cb51"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb51-1" title="1"><span class="dt">int</span> al_ustr_find_cset(<span class="dt">const</span> ALLEGRO_USTR *us, <span class="dt">int</span> start_pos,</a>
 <a class="sourceLine" id="cb51-2" title="2">   <span class="dt">const</span> ALLEGRO_USTR *reject)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L769">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L769">Source Code</a></p>
 <p>This function finds the first code point in <code>us</code>, beginning from byte offset <code>start_pos</code>, that does <em>not</em> match any code point in <code>reject</code>. In other words it finds a code point in the complementary set of <code>reject</code>. Returns the byte position of that code point, if any. Otherwise returns -1.</p>
 <p>See also: <a href="utf8.html#al_ustr_find_cset_cstr">al_ustr_find_cset_cstr</a>, <a href="utf8.html#al_ustr_find_set">al_ustr_find_set</a></p>
 <h2 id="al_ustr_find_cset_cstr">al_ustr_find_cset_cstr</h2>
 <div class="sourceCode" id="cb52"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb52-1" title="1"><span class="dt">int</span> al_ustr_find_cset_cstr(<span class="dt">const</span> ALLEGRO_USTR *us, <span class="dt">int</span> start_pos,</a>
 <a class="sourceLine" id="cb52-2" title="2">   <span class="dt">const</span> <span class="dt">char</span> *reject)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L811">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L811">Source Code</a></p>
 <p>Like <a href="utf8.html#al_ustr_find_cset">al_ustr_find_cset</a> but takes a C-style string for <code>reject</code>.</p>
 <p>See also: <a href="utf8.html#al_ustr_find_cset">al_ustr_find_cset</a>, <a href="utf8.html#al_ustr_find_set_cstr">al_ustr_find_set_cstr</a></p>
 <h2 id="al_ustr_find_str">al_ustr_find_str</h2>
 <div class="sourceCode" id="cb53"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb53-1" title="1"><span class="dt">int</span> al_ustr_find_str(<span class="dt">const</span> ALLEGRO_USTR *haystack, <span class="dt">int</span> start_pos,</a>
 <a class="sourceLine" id="cb53-2" title="2">   <span class="dt">const</span> ALLEGRO_USTR *needle)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L823">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L823">Source Code</a></p>
 <p>Find the first occurrence of string <code>needle</code> in <code>haystack</code>, beginning from byte offset <code>start_pos</code> (inclusive). Return the byte offset of the occurrence if it is found, otherwise return -1.</p>
 <p>See also: <a href="utf8.html#al_ustr_find_cstr">al_ustr_find_cstr</a>, <a href="utf8.html#al_ustr_rfind_str">al_ustr_rfind_str</a>, <a href="utf8.html#al_ustr_find_replace">al_ustr_find_replace</a></p>
 <h2 id="al_ustr_find_cstr">al_ustr_find_cstr</h2>
 <div class="sourceCode" id="cb54"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb54-1" title="1"><span class="dt">int</span> al_ustr_find_cstr(<span class="dt">const</span> ALLEGRO_USTR *haystack, <span class="dt">int</span> start_pos,</a>
 <a class="sourceLine" id="cb54-2" title="2">   <span class="dt">const</span> <span class="dt">char</span> *needle)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L833">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L833">Source Code</a></p>
 <p>Like <a href="utf8.html#al_ustr_find_str">al_ustr_find_str</a> but takes a C-style string for <code>needle</code>.</p>
 <p>See also: <a href="utf8.html#al_ustr_find_str">al_ustr_find_str</a>, <a href="utf8.html#al_ustr_rfind_cstr">al_ustr_rfind_cstr</a></p>
 <h2 id="al_ustr_rfind_str">al_ustr_rfind_str</h2>
 <div class="sourceCode" id="cb55"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb55-1" title="1"><span class="dt">int</span> al_ustr_rfind_str(<span class="dt">const</span> ALLEGRO_USTR *haystack, <span class="dt">int</span> end_pos,</a>
 <a class="sourceLine" id="cb55-2" title="2">   <span class="dt">const</span> ALLEGRO_USTR *needle)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L845">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L845">Source Code</a></p>
 <p>Find the last occurrence of string <code>needle</code> in <code>haystack</code> before byte offset <code>end_pos</code> (exclusive). Return the byte offset of the occurrence if it is found, otherwise return -1.</p>
 <p>See also: <a href="utf8.html#al_ustr_rfind_cstr">al_ustr_rfind_cstr</a>, <a href="utf8.html#al_ustr_find_str">al_ustr_find_str</a></p>
 <h2 id="al_ustr_rfind_cstr">al_ustr_rfind_cstr</h2>
 <div class="sourceCode" id="cb56"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb56-1" title="1"><span class="dt">int</span> al_ustr_rfind_cstr(<span class="dt">const</span> ALLEGRO_USTR *haystack, <span class="dt">int</span> end_pos,</a>
 <a class="sourceLine" id="cb56-2" title="2">   <span class="dt">const</span> <span class="dt">char</span> *needle)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L855">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L855">Source Code</a></p>
 <p>Like <a href="utf8.html#al_ustr_rfind_str">al_ustr_rfind_str</a> but takes a C-style string for <code>needle</code>.</p>
 <p>See also: <a href="utf8.html#al_ustr_rfind_str">al_ustr_rfind_str</a>, <a href="utf8.html#al_ustr_find_cstr">al_ustr_find_cstr</a></p>
 <h2 id="al_ustr_find_replace">al_ustr_find_replace</h2>
 <div class="sourceCode" id="cb57"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb57-1" title="1"><span class="dt">bool</span> al_ustr_find_replace(ALLEGRO_USTR *us, <span class="dt">int</span> start_pos,</a>
 <a class="sourceLine" id="cb57-2" title="2">   <span class="dt">const</span> ALLEGRO_USTR *find, <span class="dt">const</span> ALLEGRO_USTR *replace)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L867">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L867">Source Code</a></p>
 <p>Replace all occurrences of <code>find</code> in <code>us</code> with <code>replace</code>, beginning at byte offset <code>start_pos</code>. The <code>find</code> string must be non-empty. Returns true on success, false on error.</p>
 <p>See also: <a href="utf8.html#al_ustr_find_replace_cstr">al_ustr_find_replace_cstr</a></p>
 <h2 id="al_ustr_find_replace_cstr">al_ustr_find_replace_cstr</h2>
 <div class="sourceCode" id="cb58"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb58-1" title="1"><span class="dt">bool</span> al_ustr_find_replace_cstr(ALLEGRO_USTR *us, <span class="dt">int</span> start_pos,</a>
 <a class="sourceLine" id="cb58-2" title="2">   <span class="dt">const</span> <span class="dt">char</span> *find, <span class="dt">const</span> <span class="dt">char</span> *replace)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L876">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L876">Source Code</a></p>
 <p>Like <a href="utf8.html#al_ustr_find_replace">al_ustr_find_replace</a> but takes C-style strings for <code>find</code> and <code>replace</code>.</p>
 <h1 id="comparing">Comparing</h1>
 <h2 id="al_ustr_equal">al_ustr_equal</h2>
 <div class="sourceCode" id="cb59"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb59-1" title="1"><span class="dt">bool</span> al_ustr_equal(<span class="dt">const</span> ALLEGRO_USTR *us1, <span class="dt">const</span> ALLEGRO_USTR *us2)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L890">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L890">Source Code</a></p>
 <p>Return true iff the two strings are equal. This function is more efficient than <a href="utf8.html#al_ustr_compare">al_ustr_compare</a> so is preferable if ordering is not important.</p>
 <p>See also: <a href="utf8.html#al_ustr_compare">al_ustr_compare</a></p>
 <h2 id="al_ustr_compare">al_ustr_compare</h2>
 <div class="sourceCode" id="cb60"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb60-1" title="1"><span class="dt">int</span> al_ustr_compare(<span class="dt">const</span> ALLEGRO_USTR *us1, <span class="dt">const</span> ALLEGRO_USTR *us2)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L898">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L898">Source Code</a></p>
 <p>This function compares <code>us1</code> and <code>us2</code> by code point values. Returns zero if the strings are equal, a positive number if <code>us1</code> comes after <code>us2</code>, else a negative number.</p>
 <p>This does <em>not</em> take into account locale-specific sorting rules. For that you will need to use another library.</p>
 <p>See also: <a href="utf8.html#al_ustr_ncompare">al_ustr_ncompare</a>, <a href="utf8.html#al_ustr_equal">al_ustr_equal</a></p>
 <h2 id="al_ustr_ncompare">al_ustr_ncompare</h2>
 <div class="sourceCode" id="cb61"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb61-1" title="1"><span class="dt">int</span> al_ustr_ncompare(<span class="dt">const</span> ALLEGRO_USTR *us1, <span class="dt">const</span> ALLEGRO_USTR *us2, <span class="dt">int</span> n)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L920">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L920">Source Code</a></p>
 <p>Like <a href="utf8.html#al_ustr_compare">al_ustr_compare</a> but only compares up to the first <code>n</code> code points of both strings.</p>
 <p>Returns zero if the strings are equal, a positive number if <code>us1</code> comes after <code>us2</code>, else a negative number.</p>
 <p>See also: <a href="utf8.html#al_ustr_compare">al_ustr_compare</a>, <a href="utf8.html#al_ustr_equal">al_ustr_equal</a></p>
 <h2 id="al_ustr_has_prefix">al_ustr_has_prefix</h2>
 <div class="sourceCode" id="cb62"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb62-1" title="1"><span class="dt">bool</span> al_ustr_has_prefix(<span class="dt">const</span> ALLEGRO_USTR *us1, <span class="dt">const</span> ALLEGRO_USTR *us2)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L945">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L945">Source Code</a></p>
 <p>Returns true iff <code>us1</code> begins with <code>us2</code>.</p>
 <p>See also: <a href="utf8.html#al_ustr_has_prefix_cstr">al_ustr_has_prefix_cstr</a>, <a href="utf8.html#al_ustr_has_suffix">al_ustr_has_suffix</a></p>
 <h2 id="al_ustr_has_prefix_cstr">al_ustr_has_prefix_cstr</h2>
 <div class="sourceCode" id="cb63"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb63-1" title="1"><span class="dt">bool</span> al_ustr_has_prefix_cstr(<span class="dt">const</span> ALLEGRO_USTR *us1, <span class="dt">const</span> <span class="dt">char</span> *s2)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L953">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L953">Source Code</a></p>
 <p>Returns true iff <code>us1</code> begins with <code>s2</code>.</p>
 <p>See also: <a href="utf8.html#al_ustr_has_prefix">al_ustr_has_prefix</a>, <a href="utf8.html#al_ustr_has_suffix_cstr">al_ustr_has_suffix_cstr</a></p>
 <h2 id="al_ustr_has_suffix">al_ustr_has_suffix</h2>
 <div class="sourceCode" id="cb64"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb64-1" title="1"><span class="dt">bool</span> al_ustr_has_suffix(<span class="dt">const</span> ALLEGRO_USTR *us1, <span class="dt">const</span> ALLEGRO_USTR *us2)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L964">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L964">Source Code</a></p>
 <p>Returns true iff <code>us1</code> ends with <code>us2</code>.</p>
 <p>See also: <a href="utf8.html#al_ustr_has_suffix_cstr">al_ustr_has_suffix_cstr</a>, <a href="utf8.html#al_ustr_has_prefix">al_ustr_has_prefix</a></p>
 <h2 id="al_ustr_has_suffix_cstr">al_ustr_has_suffix_cstr</h2>
 <div class="sourceCode" id="cb65"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb65-1" title="1"><span class="dt">bool</span> al_ustr_has_suffix_cstr(<span class="dt">const</span> ALLEGRO_USTR *us1, <span class="dt">const</span> <span class="dt">char</span> *s2)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L977">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L977">Source Code</a></p>
 <p>Returns true iff <code>us1</code> ends with <code>s2</code>.</p>
 <p>See also: <a href="utf8.html#al_ustr_has_suffix">al_ustr_has_suffix</a>, <a href="utf8.html#al_ustr_has_prefix_cstr">al_ustr_has_prefix_cstr</a></p>
 <h1 id="utf-16-conversion">UTF-16 conversion</h1>
 <h2 id="al_ustr_new_from_utf16">al_ustr_new_from_utf16</h2>
 <div class="sourceCode" id="cb66"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb66-1" title="1">ALLEGRO_USTR *al_ustr_new_from_utf16(<span class="dt">uint16_t</span> <span class="dt">const</span> *s)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L1105">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L1105">Source Code</a></p>
 <p>Create a new string containing a copy of the 0-terminated string <code>s</code> which must be encoded as UTF-16. The string must eventually be freed with <a href="utf8.html#al_ustr_free">al_ustr_free</a>.</p>
 <p>See also: <a href="utf8.html#al_ustr_new">al_ustr_new</a></p>
 <h2 id="al_ustr_size_utf16">al_ustr_size_utf16</h2>
 <div class="sourceCode" id="cb67"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb67-1" title="1"><span class="dt">size_t</span> al_ustr_size_utf16(<span class="dt">const</span> ALLEGRO_USTR *us)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L1127">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L1127">Source Code</a></p>
 <p>Returns the number of bytes required to encode the string in UTF-16 (including the terminating 0). Usually called before <a href="utf8.html#al_ustr_encode_utf16">al_ustr_encode_utf16</a> to determine the size of the buffer to allocate.</p>
 <p>See also: <a href="utf8.html#al_ustr_size">al_ustr_size</a></p>
 <h2 id="al_ustr_encode_utf16">al_ustr_encode_utf16</h2>
 <div class="sourceCode" id="cb68"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb68-1" title="1"><span class="dt">size_t</span> al_ustr_encode_utf16(<span class="dt">const</span> ALLEGRO_USTR *us, <span class="dt">uint16_t</span> *s,</a>
 <a class="sourceLine" id="cb68-2" title="2">   <span class="dt">size_t</span> n)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L1147">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L1147">Source Code</a></p>
 <p>Encode the string into the given buffer, in UTF-16. Returns the number of bytes written. There are never more than <code>n</code> bytes written. The minimum size to encode the complete string can be queried with <a href="utf8.html#al_ustr_size_utf16">al_ustr_size_utf16</a>. If the <code>n</code> parameter is smaller than that, the string will be truncated but still always 0 terminated.</p>
 <p>See also: <a href="utf8.html#al_ustr_size_utf16">al_ustr_size_utf16</a>, <a href="utf8.html#al_utf16_encode">al_utf16_encode</a></p>
 <h1 id="low-level-utf-8-routines">Low-level UTF-8 routines</h1>
 <h2 id="al_utf8_width">al_utf8_width</h2>
 <div class="sourceCode" id="cb69"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb69-1" title="1"><span class="dt">size_t</span> al_utf8_width(<span class="dt">int32_t</span> c)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L988">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L988">Source Code</a></p>
 <p>Returns the number of bytes that would be occupied by the specified code point when encoded in UTF-8. This is between 1 and 4 bytes for legal code point values. Otherwise returns 0.</p>
 <p>See also: <a href="utf8.html#al_utf8_encode">al_utf8_encode</a>, <a href="utf8.html#al_utf16_width">al_utf16_width</a></p>
 <h2 id="al_utf8_encode">al_utf8_encode</h2>
 <div class="sourceCode" id="cb70"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb70-1" title="1"><span class="dt">size_t</span> al_utf8_encode(<span class="dt">char</span> s[], <span class="dt">int32_t</span> c)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L1010">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L1010">Source Code</a></p>
 <p>Encode the specified code point to UTF-8 into the buffer <code>s</code>. The buffer must have enough space to hold the encoding, which takes between 1 and 4 bytes. This routine will refuse to encode code points above 0x10FFFF.</p>
 <p>Returns the number of bytes written, which is the same as that returned by <a href="utf8.html#al_utf8_width">al_utf8_width</a>.</p>
 <p>See also: <a href="utf8.html#al_utf16_encode">al_utf16_encode</a></p>
 <h1 id="low-level-utf-16-routines">Low-level UTF-16 routines</h1>
 <h2 id="al_utf16_width">al_utf16_width</h2>
 <div class="sourceCode" id="cb71"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb71-1" title="1"><span class="dt">size_t</span> al_utf16_width(<span class="dt">int</span> c)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L1047">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L1047">Source Code</a></p>
 <p>Returns the number of bytes that would be occupied by the specified code point when encoded in UTF-16. This is either 2 or 4 bytes for legal code point values. Otherwise returns 0.</p>
 <p>See also: <a href="utf8.html#al_utf16_encode">al_utf16_encode</a>, <a href="utf8.html#al_utf8_width">al_utf8_width</a></p>
 <h2 id="al_utf16_encode">al_utf16_encode</h2>
 <div class="sourceCode" id="cb72"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb72-1" title="1"><span class="dt">size_t</span> al_utf16_encode(<span class="dt">uint16_t</span> s[], <span class="dt">int32_t</span> c)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/utf8.c#L1067">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/utf8.c#L1067">Source Code</a></p>
 <p>Encode the specified code point to UTF-16 into the buffer <code>s</code>. The buffer must have enough space to hold the encoding, which takes either 2 or 4 bytes. This routine will refuse to encode code points above 0x10FFFF.</p>
 <p>Returns the number of bytes written, which is the same as that returned by <a href="utf8.html#al_utf16_width">al_utf16_width</a>.</p>
 <p>See also: <a href="utf8.html#al_utf8_encode">al_utf8_encode</a>, <a href="utf8.html#al_ustr_encode_utf16">al_ustr_encode_utf16</a></p>
 <p class="timestamp">
 Allegro version 5.2.7 (GIT)
- - Last updated: 2020-05-17 04:30:42 UTC
+ - Last updated: 2020-06-14 04:30:35 UTC
 </p>
 </div>
 </body>

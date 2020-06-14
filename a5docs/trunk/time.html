@@ -170,28 +170,28 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" title="1"> <span class="pp">#include </span><span class="im">&lt;allegro5/allegro.h&gt;</span></a></code></pre></div>
 <h1 id="allegro_timeout">ALLEGRO_TIMEOUT</h1>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_TIMEOUT ALLEGRO_TIMEOUT;</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/include/allegro5/altime.h#L12">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/include/allegro5/altime.h#L12">Source Code</a></p>
 <p>Represent a timeout value. The size of the structure is known so it can be statically allocated. The contents are private.</p>
 <p>See also: <a href="time.html#al_init_timeout">al_init_timeout</a></p>
 <h1 id="al_get_time">al_get_time</h1>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb3-1" title="1"><span class="dt">double</span> al_get_time(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/system.c#L501">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/system.c#L501">Source Code</a></p>
 <p>Return the number of seconds since the Allegro library was initialised. The return value is undefined if Allegro is uninitialised. The resolution depends on the used driver, but typically can be in the order of microseconds.</p>
 <h1 id="al_init_timeout">al_init_timeout</h1>
 <div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb4-1" title="1"><span class="dt">void</span> al_init_timeout(ALLEGRO_TIMEOUT *timeout, <span class="dt">double</span> seconds)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/system.c#L524">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/system.c#L524">Source Code</a></p>
 <p>Set timeout value of some number of seconds after the function call.</p>
 <p>For compatibility with all platforms, <code>seconds</code> must be 2,147,483.647 seconds or less.</p>
 <p>See also: <a href="time.html#allegro_timeout">ALLEGRO_TIMEOUT</a>, <a href="events.html#al_wait_for_event_until">al_wait_for_event_until</a></p>
 <h1 id="al_rest">al_rest</h1>
 <div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb5-1" title="1"><span class="dt">void</span> al_rest(<span class="dt">double</span> seconds)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/system.c#L513">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/system.c#L513">Source Code</a></p>
 <p>Waits for the specified number of seconds. This tells the system to pause the current thread for the given amount of time. With some operating systems, the accuracy can be in the order of 10ms. That is, even</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb6-1" title="1">al_rest(<span class="fl">0.000001</span>)</a></code></pre></div>
 <p>might pause for something like 10ms. Also see the section on Timer routines for easier ways to time your program without using up all CPU.</p>
 <p class="timestamp">
 Allegro version 5.2.7 (GIT)
- - Last updated: 2020-05-17 04:30:40 UTC
+ - Last updated: 2020-06-14 04:30:32 UTC
 </p>
 </div>
 </body>

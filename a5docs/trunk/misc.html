@@ -168,16 +168,16 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" title="1"> <span class="pp">#include </span><span class="im">&lt;allegro5/allegro.h&gt;</span></a></code></pre></div>
 <h1 id="allegro_pi">ALLEGRO_PI</h1>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb2-1" title="1"><span class="pp">#define ALLEGRO_PI        3.14159265358979323846</span></a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/include/allegro5/base.h#L93">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/include/allegro5/base.h#L93">Source Code</a></p>
 <p>C99 compilers have no predefined value like M_PI for the constant π, but you can use this one instead.</p>
 <h1 id="al_run_main">al_run_main</h1>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb3-1" title="1"><span class="dt">int</span> al_run_main(<span class="dt">int</span> argc, <span class="dt">char</span> **argv, <span class="dt">int</span> (*user_main)(<span class="dt">int</span>, <span class="dt">char</span> **))</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/ef664413144c332a7f6be8ee0e4e9cd095af6fbb/src/allegro.c#L36">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/allegro.c#L36">Source Code</a></p>
 <p>This function is useful in cases where you don’t have a main() function but want to run Allegro (mostly useful in a wrapper library). Under Windows and Linux this is no problem because you simply can call <a href="system.html#al_install_system">al_install_system</a>. But some other system (like OSX) don’t allow calling <a href="system.html#al_install_system">al_install_system</a> in the main thread. al_run_main will know what to do in that case.</p>
 <p>The passed argc and argv will simply be passed on to user_main and the return value of user_main will be returned.</p>
 <p class="timestamp">
 Allegro version 5.2.7 (GIT)
- - Last updated: 2020-05-17 04:30:37 UTC
+ - Last updated: 2020-06-14 04:30:29 UTC
 </p>
 </div>
 </body>
