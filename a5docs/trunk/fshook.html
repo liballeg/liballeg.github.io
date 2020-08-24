@@ -199,11 +199,11 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>These functions allow access to the filesystem. This can either be the real filesystem like your harddrive, or a virtual filesystem like a .zip archive (or whatever else you or an addon makes it do).</p>
 <h1 id="allegro_fs_entry">ALLEGRO_FS_ENTRY</h1>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_FS_ENTRY ALLEGRO_FS_ENTRY;</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/include/allegro5/fshook.h#L37">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/include/allegro5/fshook.h#L37">Source Code</a></p>
 <p>Opaque filesystem entry object. Represents a file or a directory (check with <a href="fshook.html#al_get_fs_entry_mode">al_get_fs_entry_mode</a>). There are no user accessible member variables.</p>
 <h1 id="allegro_file_mode">ALLEGRO_FILE_MODE</h1>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">typedef</span> <span class="kw">enum</span> ALLEGRO_FILE_MODE</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/include/allegro5/fshook.h#L46">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/include/allegro5/fshook.h#L46">Source Code</a></p>
 <p>Filesystem modes/types</p>
 <ul>
 <li>ALLEGRO_FILEMODE_READ - Readable</li>
@@ -215,16 +215,16 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <h1 id="al_create_fs_entry">al_create_fs_entry</h1>
 <div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb4-1" title="1">ALLEGRO_FS_ENTRY *al_create_fs_entry(<span class="dt">const</span> <span class="dt">char</span> *path)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L28">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L28">Source Code</a></p>
 <p>Creates an <a href="fshook.html#allegro_fs_entry">ALLEGRO_FS_ENTRY</a> object pointing to path on the filesystem. ‘path’ can be a file or a directory and must not be NULL.</p>
 <h1 id="al_destroy_fs_entry">al_destroy_fs_entry</h1>
 <div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb5-1" title="1"><span class="dt">void</span> al_destroy_fs_entry(ALLEGRO_FS_ENTRY *fh)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L38">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L38">Source Code</a></p>
 <p>Destroys a fs entry handle. The file or directory represented by it is not destroyed. If the entry was opened, it is closed before being destroyed.</p>
 <p>Does nothing if passed NULL.</p>
 <h1 id="al_get_fs_entry_name">al_get_fs_entry_name</h1>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb6-1" title="1"><span class="dt">const</span> <span class="dt">char</span> *al_get_fs_entry_name(ALLEGRO_FS_ENTRY *e)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L48">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L48">Source Code</a></p>
 <p>Returns the entry’s filename path. Note that the filesystem encoding may not be known and the conversion to UTF-8 could in very rare cases cause this to return an invalid path. Therefore it’s always safest to access the file over its <a href="fshook.html#allegro_fs_entry">ALLEGRO_FS_ENTRY</a> and not the path.</p>
 <p>On success returns a read only string which you must not modify or destroy. Returns NULL on failure.</p>
 <blockquote>
@@ -232,104 +232,104 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </blockquote>
 <h1 id="al_update_fs_entry">al_update_fs_entry</h1>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb7-1" title="1"><span class="dt">bool</span> al_update_fs_entry(ALLEGRO_FS_ENTRY *e)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L58">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L58">Source Code</a></p>
 <p>Updates file status information for a filesystem entry. File status information is automatically updated when the entry is created, however you may update it again with this function, e.g. in case it changed.</p>
 <p>Returns true on success, false on failure. Fills in errno to indicate the error.</p>
 <p>See also: <a href="state.html#al_get_errno">al_get_errno</a>, <a href="fshook.html#al_get_fs_entry_atime">al_get_fs_entry_atime</a>, <a href="fshook.html#al_get_fs_entry_ctime">al_get_fs_entry_ctime</a>, <a href="fshook.html#al_get_fs_entry_mode">al_get_fs_entry_mode</a></p>
 <h1 id="al_get_fs_entry_mode">al_get_fs_entry_mode</h1>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb8-1" title="1"><span class="dt">uint32_t</span> al_get_fs_entry_mode(ALLEGRO_FS_ENTRY *e)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L68">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L68">Source Code</a></p>
 <p>Returns the entry’s mode flags, i.e. permissions and whether the entry refers to a file or directory.</p>
 <p>See also: <a href="state.html#al_get_errno">al_get_errno</a>, <a href="fshook.html#allegro_file_mode">ALLEGRO_FILE_MODE</a></p>
 <h1 id="al_get_fs_entry_atime">al_get_fs_entry_atime</h1>
 <div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb9-1" title="1"><span class="dt">time_t</span> al_get_fs_entry_atime(ALLEGRO_FS_ENTRY *e)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L78">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L78">Source Code</a></p>
 <p>Returns the time in seconds since the epoch since the entry was last accessed.</p>
 <p>Warning: some filesystems either don’t support this flag, or people turn it off to increase performance. It may not be valid in all circumstances.</p>
 <p>See also: <a href="fshook.html#al_get_fs_entry_ctime">al_get_fs_entry_ctime</a>, <a href="fshook.html#al_get_fs_entry_mtime">al_get_fs_entry_mtime</a>, <a href="fshook.html#al_update_fs_entry">al_update_fs_entry</a></p>
 <h1 id="al_get_fs_entry_ctime">al_get_fs_entry_ctime</h1>
 <div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb10-1" title="1"><span class="dt">time_t</span> al_get_fs_entry_ctime(ALLEGRO_FS_ENTRY *e)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L98">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L98">Source Code</a></p>
 <p>Returns the time in seconds since the epoch this entry was created on the filesystem.</p>
 <p>See also: <a href="fshook.html#al_get_fs_entry_atime">al_get_fs_entry_atime</a>, <a href="fshook.html#al_get_fs_entry_mtime">al_get_fs_entry_mtime</a>, <a href="fshook.html#al_update_fs_entry">al_update_fs_entry</a></p>
 <h1 id="al_get_fs_entry_mtime">al_get_fs_entry_mtime</h1>
 <div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb11-1" title="1"><span class="dt">time_t</span> al_get_fs_entry_mtime(ALLEGRO_FS_ENTRY *e)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L88">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L88">Source Code</a></p>
 <p>Returns the time in seconds since the epoch since the entry was last modified.</p>
 <p>See also: <a href="fshook.html#al_get_fs_entry_atime">al_get_fs_entry_atime</a>, <a href="fshook.html#al_get_fs_entry_ctime">al_get_fs_entry_ctime</a>, <a href="fshook.html#al_update_fs_entry">al_update_fs_entry</a></p>
 <h1 id="al_get_fs_entry_size">al_get_fs_entry_size</h1>
 <div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb12-1" title="1">off_t al_get_fs_entry_size(ALLEGRO_FS_ENTRY *e)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L108">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L108">Source Code</a></p>
 <p>Returns the size, in bytes, of the given entry. May not return anything sensible for a directory entry.</p>
 <p>See also: <a href="fshook.html#al_update_fs_entry">al_update_fs_entry</a></p>
 <h1 id="al_fs_entry_exists">al_fs_entry_exists</h1>
 <div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb13-1" title="1"><span class="dt">bool</span> al_fs_entry_exists(ALLEGRO_FS_ENTRY *e)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L128">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L128">Source Code</a></p>
 <p>Check if the given entry exists on in the filesystem. Returns true if it does exist or false if it doesn’t exist, or an error occurred. Error is indicated in Allegro’s errno.</p>
 <p>See also: <a href="fshook.html#al_filename_exists">al_filename_exists</a></p>
 <h1 id="al_remove_fs_entry">al_remove_fs_entry</h1>
 <div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb14-1" title="1"><span class="dt">bool</span> al_remove_fs_entry(ALLEGRO_FS_ENTRY *e)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L118">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L118">Source Code</a></p>
 <p>Delete this filesystem entry from the filesystem. Only files and empty directories may be deleted.</p>
 <p>Returns true on success, and false on failure, error is indicated in Allegro’s errno.</p>
 <p>See also: <a href="fshook.html#al_filename_exists">al_filename_exists</a></p>
 <h1 id="al_filename_exists">al_filename_exists</h1>
 <div class="sourceCode" id="cb15"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb15-1" title="1"><span class="dt">bool</span> al_filename_exists(<span class="dt">const</span> <span class="dt">char</span> *path)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L202">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L202">Source Code</a></p>
 <p>Check if the path exists on the filesystem, without creating an <a href="fshook.html#allegro_fs_entry">ALLEGRO_FS_ENTRY</a> object explicitly.</p>
 <p>See also: <a href="fshook.html#al_fs_entry_exists">al_fs_entry_exists</a></p>
 <h1 id="al_remove_filename">al_remove_filename</h1>
 <div class="sourceCode" id="cb16"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb16-1" title="1"><span class="dt">bool</span> al_remove_filename(<span class="dt">const</span> <span class="dt">char</span> *path)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L214">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L214">Source Code</a></p>
 <p>Delete the given path from the filesystem, which may be a file or an empty directory. This is the same as <a href="fshook.html#al_remove_fs_entry">al_remove_fs_entry</a>, except it expects the path as a string.</p>
 <p>Returns true on success, and false on failure. Allegro’s errno is filled in to indicate the error.</p>
 <p>See also: <a href="fshook.html#al_remove_fs_entry">al_remove_fs_entry</a></p>
 <h1 id="directory-functions">Directory functions</h1>
 <h2 id="al_open_directory">al_open_directory</h2>
 <div class="sourceCode" id="cb17"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb17-1" title="1"><span class="dt">bool</span> al_open_directory(ALLEGRO_FS_ENTRY *e)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L138">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L138">Source Code</a></p>
 <p>Opens a directory entry object. You must call this before using <a href="fshook.html#al_read_directory">al_read_directory</a> on an entry and you must call <a href="fshook.html#al_close_directory">al_close_directory</a> when you no longer need it.</p>
 <p>Returns true on success.</p>
 <p>See also: <a href="fshook.html#al_read_directory">al_read_directory</a>, <a href="fshook.html#al_close_directory">al_close_directory</a></p>
 <h2 id="al_read_directory">al_read_directory</h2>
 <div class="sourceCode" id="cb18"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb18-1" title="1">ALLEGRO_FS_ENTRY *al_read_directory(ALLEGRO_FS_ENTRY *e)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L158">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L158">Source Code</a></p>
 <p>Reads the next directory item and returns a filesystem entry for it.</p>
 <p>Returns NULL if there are no more entries or if an error occurs. Call <a href="fshook.html#al_destroy_fs_entry">al_destroy_fs_entry</a> on the returned entry when you are done with it.</p>
 <p>This function will ignore any files or directories named <code>.</code> or <code>..</code> which may exist on certain platforms and may signify the current and the parent directory.</p>
 <p>See also: <a href="fshook.html#al_open_directory">al_open_directory</a>, <a href="fshook.html#al_close_directory">al_close_directory</a></p>
 <h2 id="al_close_directory">al_close_directory</h2>
 <div class="sourceCode" id="cb19"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb19-1" title="1"><span class="dt">bool</span> al_close_directory(ALLEGRO_FS_ENTRY *e)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L148">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L148">Source Code</a></p>
 <p>Closes a previously opened directory entry object.</p>
 <p>Returns true on success, false on failure and fills in Allegro’s errno to indicate the error.</p>
 <p>See also: <a href="fshook.html#al_open_directory">al_open_directory</a>, <a href="fshook.html#al_read_directory">al_read_directory</a></p>
 <h2 id="al_get_current_directory">al_get_current_directory</h2>
 <div class="sourceCode" id="cb20"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb20-1" title="1"><span class="dt">char</span> *al_get_current_directory(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L168">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L168">Source Code</a></p>
 <p>Returns the path to the current working directory, or NULL on failure. The returned path is dynamically allocated and must be destroyed with <a href="memory.html#al_free">al_free</a>.</p>
 <p>Allegro’s errno is filled in to indicate the error if there is a failure. This function may not be implemented on some (virtual) filesystems.</p>
 <p>See also: <a href="state.html#al_get_errno">al_get_errno</a>, <a href="memory.html#al_free">al_free</a></p>
 <h2 id="al_change_directory">al_change_directory</h2>
 <div class="sourceCode" id="cb21"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb21-1" title="1"><span class="dt">bool</span> al_change_directory(<span class="dt">const</span> <span class="dt">char</span> *path)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L178">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L178">Source Code</a></p>
 <p>Changes the current working directory to ‘path’.</p>
 <p>Returns true on success, false on error.</p>
 <h2 id="al_make_directory">al_make_directory</h2>
 <div class="sourceCode" id="cb22"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb22-1" title="1"><span class="dt">bool</span> al_make_directory(<span class="dt">const</span> <span class="dt">char</span> *path)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L190">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L190">Source Code</a></p>
 <p>Creates a new directory on the filesystem. This function also creates any parent directories as needed.</p>
 <p>Returns true on success (including if the directory already exists), otherwise returns false on error. Fills in Allegro’s errno to indicate the error.</p>
 <p>See also: <a href="state.html#al_get_errno">al_get_errno</a></p>
 <h2 id="al_open_fs_entry">al_open_fs_entry</h2>
 <div class="sourceCode" id="cb23"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb23-1" title="1">ALLEGRO_FILE *al_open_fs_entry(ALLEGRO_FS_ENTRY *e, <span class="dt">const</span> <span class="dt">char</span> *mode)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L226">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L226">Source Code</a></p>
 <p>Open an <a href="file.html#allegro_file">ALLEGRO_FILE</a> handle to a filesystem entry, for the given access mode. This is like calling <a href="file.html#al_fopen">al_fopen</a> with the name of the filesystem entry, but uses the appropriate file interface, not whatever was set with the latest call to <a href="file.html#al_set_new_file_interface">al_set_new_file_interface</a>.</p>
 <p>Returns the handle on success, NULL on error.</p>
 <p>See also: <a href="file.html#al_fopen">al_fopen</a></p>
 <h2 id="allegro_for_each_fs_entry_result">ALLEGRO_FOR_EACH_FS_ENTRY_RESULT</h2>
 <div class="sourceCode" id="cb24"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">typedef</span> <span class="kw">enum</span> ALLEGRO_FOR_EACH_FS_ENTRY_RESULT {</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/include/allegro5/fshook.h#L124">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/include/allegro5/fshook.h#L124">Source Code</a></p>
 <p>Return values for the callbacks of <a href="fshook.html#al_for_each_fs_entry">al_for_each_fs_entry</a> and for that function itself.</p>
 <ul>
 <li>ALLEGRO_FOR_EACH_FS_ENTRY_ERROR - An error ocurred.</li>
@@ -343,7 +343,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <div class="sourceCode" id="cb25"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb25-1" title="1"><span class="dt">int</span> al_for_each_fs_entry(ALLEGRO_FS_ENTRY *dir,</a>
 <a class="sourceLine" id="cb25-2" title="2">                         <span class="dt">int</span> (*callback)(ALLEGRO_FS_ENTRY *dir, <span class="dt">void</span> *extra),</a>
 <a class="sourceLine" id="cb25-3" title="3">                         <span class="dt">void</span> *extra)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/fshook.c#L242">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/fshook.c#L242">Source Code</a></p>
 <p>This function takes the <a href="fshook.html#allegro_fs_entry">ALLEGRO_FS_ENTRY</a> <code>dir</code>, which should represent a directory, and looks for any other file system entries that are in it. This function will then call the callback function <code>callback</code> once for every filesystem entry in the directory <code>dir</code>.</p>
 <p>The callback <code>callback</code> must be of type <code>int callback(ALLEGRO_FS_ENTRY * entry, void * extra)</code>. The <code>callback</code> will be called with a pointer to an <a href="fshook.html#allegro_fs_entry">ALLEGRO_FS_ENTRY</a> that matches one file or directory in <code>dir</code>, and the pointer passed in the <code>extra</code> parameter to <a href="fshook.html#al_for_each_fs_entry">al_for_each_fs_entry</a>.</p>
 <p>When <code>callback</code> returns <code>ALLEGRO_FOR_EACH_FS_ENTRY_STOP</code> or <code>ALLEGRO_FOR_EACH_FS_ENTRY_ERROR</code>, iteration will stop immediately and <a href="fshook.html#al_for_each_fs_entry">al_for_each_fs_entry</a> will return the value the <code>callback</code> returned.</p>
@@ -357,7 +357,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>By default, Allegro uses platform specific filesystem functions for things like directory access. However if for example the files of your game are not in the local filesystem but inside some file archive, you can provide your own set of functions (or use an addon which does this for you, for example our physfs addon allows access to the most common archive formats).</p>
 <h2 id="allegro_fs_interface">ALLEGRO_FS_INTERFACE</h2>
 <div class="sourceCode" id="cb26"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb26-1" title="1"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_FS_INTERFACE ALLEGRO_FS_INTERFACE;</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/include/allegro5/fshook.h#L64">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/include/allegro5/fshook.h#L64">Source Code</a></p>
 <p>The available functions you can provide for a filesystem. They are:</p>
 <pre><code>   ALLEGRO_FS_ENTRY *  fs_create_entry   (const char *path);
    void                fs_destroy_entry  (ALLEGRO_FS_ENTRY *e);
@@ -384,22 +384,22 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
    ALLEGRO_FILE *      fs_open_file(ALLEGRO_FS_ENTRY *e);</code></pre>
 <h2 id="al_set_fs_interface">al_set_fs_interface</h2>
 <div class="sourceCode" id="cb28"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb28-1" title="1"><span class="dt">void</span> al_set_fs_interface(<span class="dt">const</span> ALLEGRO_FS_INTERFACE *fs_interface)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/tls.c#L891">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/tls.c#L891">Source Code</a></p>
 <p>Set the <a href="fshook.html#allegro_fs_interface">ALLEGRO_FS_INTERFACE</a> table for the calling thread.</p>
 <p>See also: <a href="fshook.html#al_set_standard_fs_interface">al_set_standard_fs_interface</a>, <a href="state.html#al_store_state">al_store_state</a>, <a href="state.html#al_restore_state">al_restore_state</a>.</p>
 <h2 id="al_set_standard_fs_interface">al_set_standard_fs_interface</h2>
 <div class="sourceCode" id="cb29"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb29-1" title="1"><span class="dt">void</span> al_set_standard_fs_interface(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/tls.c#L904">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/tls.c#L904">Source Code</a></p>
 <p>Return the <a href="fshook.html#allegro_fs_interface">ALLEGRO_FS_INTERFACE</a> table to the default, for the calling thread.</p>
 <p>See also: <a href="fshook.html#al_set_fs_interface">al_set_fs_interface</a>.</p>
 <h2 id="al_get_fs_interface">al_get_fs_interface</h2>
 <div class="sourceCode" id="cb30"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb30-1" title="1"><span class="dt">const</span> ALLEGRO_FS_INTERFACE *al_get_fs_interface(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/8705d652649388eb52e96e0454c0c1657cd8c733/src/tls.c#L874">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/84708725817790aab8e95367b27fc15457c46af4/src/tls.c#L874">Source Code</a></p>
 <p>Return a pointer to the <a href="fshook.html#allegro_fs_interface">ALLEGRO_FS_INTERFACE</a> table in effect for the calling thread.</p>
 <p>See also: <a href="state.html#al_store_state">al_store_state</a>, <a href="state.html#al_restore_state">al_restore_state</a>.</p>
 <p class="timestamp">
 Allegro version 5.2.7 (GIT)
- - Last updated: 2020-08-19 04:30:31 UTC
+ - Last updated: 2020-08-24 04:31:18 UTC
 </p>
 </div>
 </body>
