@@ -875,7 +875,7 @@ default voice &lt;-- default mixer &lt;---         .
 <h2 id="al_create_mixer">al_create_mixer</h2>
 <div class="sourceCode" id="cb79"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb79-1" title="1">ALLEGRO_MIXER *al_create_mixer(<span class="dt">unsigned</span> <span class="dt">int</span> freq,</a>
 <a class="sourceLine" id="cb79-2" title="2">   ALLEGRO_AUDIO_DEPTH depth, ALLEGRO_CHANNEL_CONF chan_conf)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L615">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L618">Source Code</a></p>
 <p>Creates a mixer to attach sample instances, audio streams, or other mixers to. It will mix into a buffer at the requested frequency (in Hz) and channel count.</p>
 <p>The only supported audio depths are ALLEGRO_AUDIO_DEPTH_FLOAT32 and ALLEGRO_AUDIO_DEPTH_INT16 (not yet complete).</p>
 <p>To actually produce any output, the mixer will have to be attached to a voice.</p>
@@ -883,7 +883,7 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_destroy_mixer">al_destroy_mixer</a>, <a href="audio.html#allegro_audio_depth">ALLEGRO_AUDIO_DEPTH</a>, <a href="audio.html#allegro_channel_conf">ALLEGRO_CHANNEL_CONF</a></p>
 <h2 id="al_destroy_mixer">al_destroy_mixer</h2>
 <div class="sourceCode" id="cb80"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb80-1" title="1"><span class="dt">void</span> al_destroy_mixer(ALLEGRO_MIXER *mixer)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L684">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L687">Source Code</a></p>
 <p>Destroys the mixer.</p>
 <p>See also: <a href="audio.html#al_create_mixer">al_create_mixer</a></p>
 <h2 id="al_get_default_mixer">al_get_default_mixer</h2>
@@ -917,7 +917,7 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_get_default_mixer">al_get_default_mixer</a></p>
 <h2 id="al_attach_mixer_to_mixer">al_attach_mixer_to_mixer</h2>
 <div class="sourceCode" id="cb86"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb86-1" title="1"><span class="dt">bool</span> al_attach_mixer_to_mixer(ALLEGRO_MIXER *stream, ALLEGRO_MIXER *mixer)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L806">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L809">Source Code</a></p>
 <p>Attaches the mixer passed as the first argument onto the mixer passed as the second argument. The first mixer (that is going to be attached) must not already be attached to anything. Both mixers must use the same frequency, audio depth and channel configuration.</p>
 <p>Returns true on success, false on error.</p>
 <p>It is invalid to attach a mixer to itself.</p>
@@ -925,87 +925,87 @@ default voice &lt;-- default mixer &lt;---         .
 <h2 id="al_attach_sample_instance_to_mixer">al_attach_sample_instance_to_mixer</h2>
 <div class="sourceCode" id="cb87"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb87-1" title="1"><span class="dt">bool</span> al_attach_sample_instance_to_mixer(ALLEGRO_SAMPLE_INSTANCE *spl,</a>
 <a class="sourceLine" id="cb87-2" title="2">   ALLEGRO_MIXER *mixer)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L696">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L699">Source Code</a></p>
 <p>Attach a sample instance to a mixer. The instance must not already be attached to anything.</p>
 <p>Returns true on success, false on failure.</p>
 <p>See also: <a href="audio.html#al_detach_sample_instance">al_detach_sample_instance</a>.</p>
 <h2 id="al_attach_audio_stream_to_mixer">al_attach_audio_stream_to_mixer</h2>
 <div class="sourceCode" id="cb88"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb88-1" title="1"><span class="dt">bool</span> al_attach_audio_stream_to_mixer(ALLEGRO_AUDIO_STREAM *stream, ALLEGRO_MIXER *mixer)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L795">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L798">Source Code</a></p>
 <p>Attach an audio stream to a mixer. The stream must not already be attached to anything.</p>
 <p>Returns true on success, false on failure.</p>
 <p>See also: <a href="audio.html#al_detach_audio_stream">al_detach_audio_stream</a>.</p>
 <h2 id="al_get_mixer_frequency">al_get_mixer_frequency</h2>
 <div class="sourceCode" id="cb89"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb89-1" title="1"><span class="dt">unsigned</span> <span class="dt">int</span> al_get_mixer_frequency(<span class="dt">const</span> ALLEGRO_MIXER *mixer)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L855">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L858">Source Code</a></p>
 <p>Return the mixer frequency (in Hz).</p>
 <p>See also: <a href="audio.html#al_set_mixer_frequency">al_set_mixer_frequency</a></p>
 <h2 id="al_set_mixer_frequency">al_set_mixer_frequency</h2>
 <div class="sourceCode" id="cb90"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb90-1" title="1"><span class="dt">bool</span> al_set_mixer_frequency(ALLEGRO_MIXER *mixer, <span class="dt">unsigned</span> <span class="dt">int</span> val)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L925">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L928">Source Code</a></p>
 <p>Set the mixer frequency (in Hz). This will only work if the mixer is not attached to anything.</p>
 <p>Returns true on success, false on failure.</p>
 <p>See also: <a href="audio.html#al_get_mixer_frequency">al_get_mixer_frequency</a></p>
 <h2 id="al_get_mixer_channels">al_get_mixer_channels</h2>
 <div class="sourceCode" id="cb91"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb91-1" title="1">ALLEGRO_CHANNEL_CONF al_get_mixer_channels(<span class="dt">const</span> ALLEGRO_MIXER *mixer)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L865">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L868">Source Code</a></p>
 <p>Return the mixer channel configuration.</p>
 <p>See also: <a href="audio.html#allegro_channel_conf">ALLEGRO_CHANNEL_CONF</a>.</p>
 <h2 id="al_get_mixer_depth">al_get_mixer_depth</h2>
 <div class="sourceCode" id="cb92"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb92-1" title="1">ALLEGRO_AUDIO_DEPTH al_get_mixer_depth(<span class="dt">const</span> ALLEGRO_MIXER *mixer)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L875">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L878">Source Code</a></p>
 <p>Return the mixer audio depth.</p>
 <p>See also: <a href="audio.html#allegro_audio_depth">ALLEGRO_AUDIO_DEPTH</a>.</p>
 <h2 id="al_get_mixer_gain">al_get_mixer_gain</h2>
 <div class="sourceCode" id="cb93"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb93-1" title="1"><span class="dt">float</span> al_get_mixer_gain(<span class="dt">const</span> ALLEGRO_MIXER *mixer)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L895">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L898">Source Code</a></p>
 <p>Return the mixer gain (amplification factor). The default is 1.0.</p>
 <p>Since: 5.0.6, 5.1.0</p>
 <p>See also: <a href="audio.html#al_set_mixer_gain">al_set_mixer_gain</a>.</p>
 <h2 id="al_set_mixer_gain">al_set_mixer_gain</h2>
 <div class="sourceCode" id="cb94"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb94-1" title="1"><span class="dt">bool</span> al_set_mixer_gain(ALLEGRO_MIXER *mixer, <span class="dt">float</span> new_gain)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L973">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L976">Source Code</a></p>
 <p>Set the mixer gain (amplification factor).</p>
 <p>Returns true on success, false on failure.</p>
 <p>Since: 5.0.6, 5.1.0</p>
 <p>See also: <a href="audio.html#al_get_mixer_gain">al_get_mixer_gain</a></p>
 <h2 id="al_get_mixer_quality">al_get_mixer_quality</h2>
 <div class="sourceCode" id="cb95"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb95-1" title="1">ALLEGRO_MIXER_QUALITY al_get_mixer_quality(<span class="dt">const</span> ALLEGRO_MIXER *mixer)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L885">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L888">Source Code</a></p>
 <p>Return the mixer quality.</p>
 <p>See also: <a href="audio.html#allegro_mixer_quality">ALLEGRO_MIXER_QUALITY</a>, <a href="audio.html#al_set_mixer_quality">al_set_mixer_quality</a></p>
 <h2 id="al_set_mixer_quality">al_set_mixer_quality</h2>
 <div class="sourceCode" id="cb96"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb96-1" title="1"><span class="dt">bool</span> al_set_mixer_quality(ALLEGRO_MIXER *mixer, ALLEGRO_MIXER_QUALITY new_quality)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L945">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L948">Source Code</a></p>
 <p>Set the mixer quality. This can only succeed if the mixer does not have anything attached to it.</p>
 <p>Returns true on success, false on failure.</p>
 <p>See also: <a href="audio.html#allegro_mixer_quality">ALLEGRO_MIXER_QUALITY</a>, <a href="audio.html#al_get_mixer_quality">al_get_mixer_quality</a></p>
 <h2 id="al_get_mixer_playing">al_get_mixer_playing</h2>
 <div class="sourceCode" id="cb97"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb97-1" title="1"><span class="dt">bool</span> al_get_mixer_playing(<span class="dt">const</span> ALLEGRO_MIXER *mixer)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L905">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L908">Source Code</a></p>
 <p>Return true if the mixer is playing.</p>
 <p>See also: <a href="audio.html#al_set_mixer_playing">al_set_mixer_playing</a>.</p>
 <h2 id="al_set_mixer_playing">al_set_mixer_playing</h2>
 <div class="sourceCode" id="cb98"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb98-1" title="1"><span class="dt">bool</span> al_set_mixer_playing(ALLEGRO_MIXER *mixer, <span class="dt">bool</span> val)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L997">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L1000">Source Code</a></p>
 <p>Change whether the mixer is playing.</p>
 <p>Returns true on success, false on failure.</p>
 <p>See also: <a href="audio.html#al_get_mixer_playing">al_get_mixer_playing</a>.</p>
 <h2 id="al_get_mixer_attached">al_get_mixer_attached</h2>
 <div class="sourceCode" id="cb99"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb99-1" title="1"><span class="dt">bool</span> al_get_mixer_attached(<span class="dt">const</span> ALLEGRO_MIXER *mixer)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L915">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L918">Source Code</a></p>
 <p>Return true if the mixer is attached to something.</p>
 <p>See also: <a href="audio.html#al_attach_sample_instance_to_mixer">al_attach_sample_instance_to_mixer</a>, <a href="audio.html#al_attach_audio_stream_to_mixer">al_attach_audio_stream_to_mixer</a>, <a href="audio.html#al_attach_mixer_to_mixer">al_attach_mixer_to_mixer</a>, <a href="audio.html#al_detach_mixer">al_detach_mixer</a></p>
 <h2 id="al_detach_mixer">al_detach_mixer</h2>
 <div class="sourceCode" id="cb100"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb100-1" title="1"><span class="dt">bool</span> al_detach_mixer(ALLEGRO_MIXER *mixer)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L1008">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L1011">Source Code</a></p>
 <p>Detach the mixer from whatever it is attached to, if anything.</p>
 <p>See also: <a href="audio.html#al_attach_mixer_to_mixer">al_attach_mixer_to_mixer</a>.</p>
 <h2 id="al_set_mixer_postprocess_callback">al_set_mixer_postprocess_callback</h2>
 <div class="sourceCode" id="cb101"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb101-1" title="1"><span class="dt">bool</span> al_set_mixer_postprocess_callback(ALLEGRO_MIXER *mixer,</a>
 <a class="sourceLine" id="cb101-2" title="2">   <span class="dt">void</span> (*pp_callback)(<span class="dt">void</span> *buf, <span class="dt">unsigned</span> <span class="dt">int</span> samples, <span class="dt">void</span> *data),</a>
 <a class="sourceLine" id="cb101-3" title="3">   <span class="dt">void</span> *pp_callback_userdata)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L836">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/audio/kcm_mixer.c#L839">Source Code</a></p>
 <p>Sets a post-processing filter function that’s called after the attached streams have been mixed. The buffer’s format will be whatever the mixer was created with. The sample count and user-data pointer is also passed.</p>
 <blockquote>
 <p><em>Note:</em> The callback is called from a dedicated audio thread.</p>
@@ -1434,7 +1434,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 </blockquote>
 <p class="timestamp">
 Allegro version 5.2.7 (GIT)
- - Last updated: 2020-09-27 20:07:26 UTC
+ - Last updated: 2020-09-27 22:07:29 UTC
 </p>
 </div>
 </body>
