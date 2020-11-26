@@ -244,23 +244,29 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="general">General</h1>
 <h2 id="al_get_allegro_primitives_version">al_get_allegro_primitives_version</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb2-1" title="1"><span class="dt">uint32_t</span> al_get_allegro_primitives_version(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L158">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L158">Source Code</a></p>
 <p>Returns the (compiled) version of the addon, in the same format as <a href="system.html#al_get_allegro_version">al_get_allegro_version</a>.</p>
 <h2 id="al_init_primitives_addon">al_init_primitives_addon</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb3-1" title="1"><span class="dt">bool</span> al_init_primitives_addon(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L46">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L46">Source Code</a></p>
 <p>Initializes the primitives addon.</p>
 <p><em>Returns:</em> True on success, false on failure.</p>
 <p>See also: <a href="primitives.html#al_shutdown_primitives_addon">al_shutdown_primitives_addon</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_touch_input.c#L55">ex_touch_input.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_blend_bench.c#L154">ex_blend_bench.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_enet_client.c#L157">ex_enet_client.c</a></li>
+</ul>
 <h2 id="al_is_primitives_addon_initialized">al_is_primitives_addon_initialized</h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb4-1" title="1"><span class="dt">bool</span> al_is_primitives_addon_initialized(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L60">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L60">Source Code</a></p>
 <p>Returns true if the primitives addon is initialized, otherwise returns false.</p>
 <p>Since: 5.2.6</p>
 <p>See also: <a href="primitives.html#al_init_primitives_addon">al_init_primitives_addon</a>, <a href="primitives.html#al_shutdown_primitives_addon">al_shutdown_primitives_addon</a></p>
 <h2 id="al_shutdown_primitives_addon">al_shutdown_primitives_addon</h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb5-1" title="1"><span class="dt">void</span> al_shutdown_primitives_addon(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L67">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L67">Source Code</a></p>
 <p>Shut down the primitives addon. This is done automatically at program exit, but can be called any time the user wishes as well.</p>
 <p>See also: <a href="primitives.html#al_init_primitives_addon">al_init_primitives_addon</a></p>
 <h1 id="high-level-drawing-routines">High level drawing routines</h1>
@@ -291,7 +297,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h2 id="al_draw_line">al_draw_line</h2>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb7-1" title="1"><span class="dt">void</span> al_draw_line(<span class="dt">float</span> x1, <span class="dt">float</span> y1, <span class="dt">float</span> x2, <span class="dt">float</span> y2,</a>
 <a class="sourceLine" id="cb7-2" title="2">   ALLEGRO_COLOR color, <span class="dt">float</span> thickness)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L80">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L80">Source Code</a></p>
 <p>Draws a line segment between two points.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -300,10 +306,16 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>thickness - Thickness of the line, pass <code>&lt;= 0</code> to draw hairline lines</li>
 </ul>
 <p>See also: <a href="primitives.html#al_draw_soft_line">al_draw_soft_line</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_font_justify.cpp#L85">ex_font_justify.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_resize.c#L17">ex_resize.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_mouse_warp.c#L59">ex_mouse_warp.c</a></li>
+</ul>
 <h2 id="al_draw_triangle">al_draw_triangle</h2>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb8-1" title="1"><span class="dt">void</span> al_draw_triangle(<span class="dt">float</span> x1, <span class="dt">float</span> y1, <span class="dt">float</span> x2, <span class="dt">float</span> y2,</a>
 <a class="sourceLine" id="cb8-2" title="2">   <span class="dt">float</span> x3, <span class="dt">float</span> y3, ALLEGRO_COLOR color, <span class="dt">float</span> thickness)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L125">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L125">Source Code</a></p>
 <p>Draws an outlined triangle.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -312,10 +324,14 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>thickness - Thickness of the lines, pass <code>&lt;= 0</code> to draw hairline lines</li>
 </ul>
 <p>See also: <a href="primitives.html#al_draw_filled_triangle">al_draw_filled_triangle</a>, <a href="primitives.html#al_draw_soft_triangle">al_draw_soft_triangle</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L319">ex_prim.c</a></li>
+</ul>
 <h2 id="al_draw_filled_triangle">al_draw_filled_triangle</h2>
 <div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb9-1" title="1"><span class="dt">void</span> al_draw_filled_triangle(<span class="dt">float</span> x1, <span class="dt">float</span> y1, <span class="dt">float</span> x2, <span class="dt">float</span> y2,</a>
 <a class="sourceLine" id="cb9-2" title="2">   <span class="dt">float</span> x3, <span class="dt">float</span> y3, ALLEGRO_COLOR color)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L338">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L338">Source Code</a></p>
 <p>Draws a filled triangle.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -323,10 +339,14 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>color - Color of the triangle</li>
 </ul>
 <p>See also: <a href="primitives.html#al_draw_triangle">al_draw_triangle</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L348">ex_prim.c</a></li>
+</ul>
 <h2 id="al_draw_rectangle">al_draw_rectangle</h2>
 <div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb10-1" title="1"><span class="dt">void</span> al_draw_rectangle(<span class="dt">float</span> x1, <span class="dt">float</span> y1, <span class="dt">float</span> x2, <span class="dt">float</span> y2,</a>
 <a class="sourceLine" id="cb10-2" title="2">   ALLEGRO_COLOR color, <span class="dt">float</span> thickness)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L360">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L360">Source Code</a></p>
 <p>Draws an outlined rectangle.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -335,10 +355,16 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>thickness - Thickness of the lines, pass <code>&lt;= 0</code> to draw hairline lines</li>
 </ul>
 <p>See also: <a href="primitives.html#al_draw_filled_rectangle">al_draw_filled_rectangle</a>, <a href="primitives.html#al_draw_rounded_rectangle">al_draw_rounded_rectangle</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_mouse.c#L24">ex_mouse.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_font_justify.cpp#L83">ex_font_justify.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_subbitmap.c#L206">ex_subbitmap.c</a></li>
+</ul>
 <h2 id="al_draw_filled_rectangle">al_draw_filled_rectangle</h2>
 <div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb11-1" title="1"><span class="dt">void</span> al_draw_filled_rectangle(<span class="dt">float</span> x1, <span class="dt">float</span> y1, <span class="dt">float</span> x2, <span class="dt">float</span> y2,</a>
 <a class="sourceLine" id="cb11-2" title="2">   ALLEGRO_COLOR color)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L405">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L405">Source Code</a></p>
 <p>Draws a filled rectangle.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -346,10 +372,16 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>color - Color of the rectangle</li>
 </ul>
 <p>See also: <a href="primitives.html#al_draw_rectangle">al_draw_rectangle</a>, <a href="primitives.html#al_draw_filled_rounded_rectangle">al_draw_filled_rounded_rectangle</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_mouse.c#L23">ex_mouse.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_timer.c#L91">ex_timer.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_window_maximized.c#L103">ex_window_maximized.c</a></li>
+</ul>
 <h2 id="al_draw_rounded_rectangle">al_draw_rounded_rectangle</h2>
 <div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb12-1" title="1"><span class="dt">void</span> al_draw_rounded_rectangle(<span class="dt">float</span> x1, <span class="dt">float</span> y1, <span class="dt">float</span> x2, <span class="dt">float</span> y2,</a>
 <a class="sourceLine" id="cb12-2" title="2">   <span class="dt">float</span> rx, <span class="dt">float</span> ry, ALLEGRO_COLOR color, <span class="dt">float</span> thickness)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L854">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L854">Source Code</a></p>
 <p>Draws an outlined rounded rectangle.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -359,10 +391,16 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>thickness - Thickness of the lines, pass <code>&lt;= 0</code> to draw hairline lines</li>
 </ul>
 <p>See also: <a href="primitives.html#al_draw_filled_rounded_rectangle">al_draw_filled_rounded_rectangle</a>, <a href="primitives.html#al_draw_rectangle">al_draw_rectangle</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_threads.c#L93">ex_threads.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L321">ex_prim.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_audio_chain.cpp#L305">ex_audio_chain.cpp</a></li>
+</ul>
 <h2 id="al_draw_filled_rounded_rectangle">al_draw_filled_rounded_rectangle</h2>
 <div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb13-1" title="1"><span class="dt">void</span> al_draw_filled_rounded_rectangle(<span class="dt">float</span> x1, <span class="dt">float</span> y1, <span class="dt">float</span> x2, <span class="dt">float</span> y2,</a>
 <a class="sourceLine" id="cb13-2" title="2">   <span class="dt">float</span> rx, <span class="dt">float</span> ry, ALLEGRO_COLOR color)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L952">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L952">Source Code</a></p>
 <p>Draws an filled rounded rectangle.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -371,11 +409,17 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>rx, ry - The radii of the round</li>
 </ul>
 <p>See also: <a href="primitives.html#al_draw_rounded_rectangle">al_draw_rounded_rectangle</a>, <a href="primitives.html#al_draw_filled_rectangle">al_draw_filled_rectangle</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_threads.c#L90">ex_threads.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_video.c#L57">ex_video.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L351">ex_prim.c</a></li>
+</ul>
 <h2 id="al_calculate_arc">al_calculate_arc</h2>
 <div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb14-1" title="1"><span class="dt">void</span> al_calculate_arc(<span class="dt">float</span>* dest, <span class="dt">int</span> stride, <span class="dt">float</span> cx, <span class="dt">float</span> cy,</a>
 <a class="sourceLine" id="cb14-2" title="2">   <span class="dt">float</span> rx, <span class="dt">float</span> ry, <span class="dt">float</span> start_theta, <span class="dt">float</span> delta_theta, <span class="dt">float</span> thickness,</a>
 <a class="sourceLine" id="cb14-3" title="3">   <span class="dt">int</span> num_points)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L426">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L426">Source Code</a></p>
 <p>When <code>thickness &lt;= 0</code> this function computes positions of <code>num_points</code> regularly spaced points on an elliptical arc. When <code>thickness &gt; 0</code> this function computes two sets of points, obtained as follows: the first set is obtained by taking the points computed in the <code>thickness &lt;= 0</code> case and shifting them by <code>thickness / 2</code> outward, in a direction perpendicular to the arc curve. The second set is the same, but shifted <code>thickness / 2</code> inward relative to the arc. The two sets of points are interleaved in the destination buffer (i.e. the first pair of points will be collinear with the arc center, the first point of the pair will be farther from the center than the second point; the next pair will also be collinear, but at a different angle and so on).</p>
 <p>The destination buffer <code>dest</code> is interpreted as a set of regularly spaced pairs of floats, each pair holding the coordinates of the corresponding point on the arc. The two floats in the pair are adjacent, and the distance (in bytes) between the addresses of the first float in two successive pairs is <code>stride</code>. For example, if you have a tightly packed array of floats with no spaces between pairs, then <code>stride</code> will be exactly <code>2 * sizeof(float)</code>.</p>
 <p>Example with <code>thickness &lt;= 0</code>:</p>
@@ -414,10 +458,14 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>num_points - The number of points to calculate</li>
 </ul>
 <p>See also: <a href="primitives.html#al_draw_arc">al_draw_arc</a>, <a href="primitives.html#al_calculate_spline">al_calculate_spline</a>, <a href="primitives.html#al_calculate_ribbon">al_calculate_ribbon</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_vertex_buffer.c#L135">ex_vertex_buffer.c</a></li>
+</ul>
 <h2 id="al_draw_pieslice">al_draw_pieslice</h2>
 <div class="sourceCode" id="cb17"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb17-1" title="1"><span class="dt">void</span> al_draw_pieslice(<span class="dt">float</span> cx, <span class="dt">float</span> cy, <span class="dt">float</span> r, <span class="dt">float</span> start_theta,</a>
 <a class="sourceLine" id="cb17-2" title="2">   <span class="dt">float</span> delta_theta, ALLEGRO_COLOR color, <span class="dt">float</span> thickness)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L507">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L507">Source Code</a></p>
 <p>Draws a pieslice (outlined circular sector).</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -430,10 +478,14 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <p>Since: 5.0.6, 5.1.0</p>
 <p>See also: <a href="primitives.html#al_draw_filled_pieslice">al_draw_filled_pieslice</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L327">ex_prim.c</a></li>
+</ul>
 <h2 id="al_draw_filled_pieslice">al_draw_filled_pieslice</h2>
 <div class="sourceCode" id="cb18"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb18-1" title="1"><span class="dt">void</span> al_draw_filled_pieslice(<span class="dt">float</span> cx, <span class="dt">float</span> cy, <span class="dt">float</span> r, <span class="dt">float</span> start_theta,</a>
 <a class="sourceLine" id="cb18-2" title="2">   <span class="dt">float</span> delta_theta, ALLEGRO_COLOR color)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L663">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L663">Source Code</a></p>
 <p>Draws a filled pieslice (filled circular sector).</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -445,10 +497,14 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <p>Since: 5.0.6, 5.1.0</p>
 <p>See also: <a href="primitives.html#al_draw_pieslice">al_draw_pieslice</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L352">ex_prim.c</a></li>
+</ul>
 <h2 id="al_draw_ellipse">al_draw_ellipse</h2>
 <div class="sourceCode" id="cb19"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb19-1" title="1"><span class="dt">void</span> al_draw_ellipse(<span class="dt">float</span> cx, <span class="dt">float</span> cy, <span class="dt">float</span> rx, <span class="dt">float</span> ry,</a>
 <a class="sourceLine" id="cb19-2" title="2">   ALLEGRO_COLOR color, <span class="dt">float</span> thickness)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L694">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L694">Source Code</a></p>
 <p>Draws an outlined ellipse.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -458,10 +514,15 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>thickness - Thickness of the ellipse, pass <code>&lt;= 0</code> to draw a hairline ellipse</li>
 </ul>
 <p>See also: <a href="primitives.html#al_draw_filled_ellipse">al_draw_filled_ellipse</a>, <a href="primitives.html#al_draw_circle">al_draw_circle</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_draw.c#L106">ex_draw.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L323">ex_prim.c</a></li>
+</ul>
 <h2 id="al_draw_filled_ellipse">al_draw_filled_ellipse</h2>
 <div class="sourceCode" id="cb20"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb20-1" title="1"><span class="dt">void</span> al_draw_filled_ellipse(<span class="dt">float</span> cx, <span class="dt">float</span> cy, <span class="dt">float</span> rx, <span class="dt">float</span> ry,</a>
 <a class="sourceLine" id="cb20-2" title="2">   ALLEGRO_COLOR color)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L746">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L746">Source Code</a></p>
 <p>Draws a filled ellipse.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -470,10 +531,15 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>color - Color of the ellipse</li>
 </ul>
 <p>See also: <a href="primitives.html#al_draw_ellipse">al_draw_ellipse</a>, <a href="primitives.html#al_draw_filled_circle">al_draw_filled_circle</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_draw.c#L105">ex_draw.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L350">ex_prim.c</a></li>
+</ul>
 <h2 id="al_draw_circle">al_draw_circle</h2>
 <div class="sourceCode" id="cb21"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb21-1" title="1"><span class="dt">void</span> al_draw_circle(<span class="dt">float</span> cx, <span class="dt">float</span> cy, <span class="dt">float</span> r, ALLEGRO_COLOR color,</a>
 <a class="sourceLine" id="cb21-2" title="2">   <span class="dt">float</span> thickness)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L781">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L781">Source Code</a></p>
 <p>Draws an outlined circle.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -483,9 +549,14 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>thickness - Thickness of the circle, pass <code>&lt;= 0</code> to draw a hairline circle</li>
 </ul>
 <p>See also: <a href="primitives.html#al_draw_filled_circle">al_draw_filled_circle</a>, <a href="primitives.html#al_draw_ellipse">al_draw_ellipse</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_touch_input.c#L22">ex_touch_input.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_transform.c#L159">ex_transform.c</a></li>
+</ul>
 <h2 id="al_draw_filled_circle">al_draw_filled_circle</h2>
 <div class="sourceCode" id="cb22"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb22-1" title="1"><span class="dt">void</span> al_draw_filled_circle(<span class="dt">float</span> cx, <span class="dt">float</span> cy, <span class="dt">float</span> r, ALLEGRO_COLOR color)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L789">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L789">Source Code</a></p>
 <p>Draws a filled circle.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -494,10 +565,16 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>color - Color of the circle</li>
 </ul>
 <p>See also: <a href="primitives.html#al_draw_circle">al_draw_circle</a>, <a href="primitives.html#al_draw_filled_ellipse">al_draw_filled_ellipse</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_enet_client.c#L247">ex_enet_client.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_joystick_hotplugging.c#L46">ex_joystick_hotplugging.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_blend2.cpp#L255">ex_blend2.cpp</a></li>
+</ul>
 <h2 id="al_draw_arc">al_draw_arc</h2>
 <div class="sourceCode" id="cb23"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb23-1" title="1"><span class="dt">void</span> al_draw_arc(<span class="dt">float</span> cx, <span class="dt">float</span> cy, <span class="dt">float</span> r, <span class="dt">float</span> start_theta,</a>
 <a class="sourceLine" id="cb23-2" title="2">   <span class="dt">float</span> delta_theta, ALLEGRO_COLOR color, <span class="dt">float</span> thickness)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L846">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L846">Source Code</a></p>
 <p>Draws an arc.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -509,10 +586,14 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>thickness - Thickness of the arc, pass <code>&lt;= 0</code> to draw hairline arc</li>
 </ul>
 <p>See also: <a href="primitives.html#al_calculate_arc">al_calculate_arc</a>, <a href="primitives.html#al_draw_elliptical_arc">al_draw_elliptical_arc</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L325">ex_prim.c</a></li>
+</ul>
 <h2 id="al_draw_elliptical_arc">al_draw_elliptical_arc</h2>
 <div class="sourceCode" id="cb24"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb24-1" title="1"><span class="dt">void</span> al_draw_elliptical_arc(<span class="dt">float</span> cx, <span class="dt">float</span> cy, <span class="dt">float</span> rx, <span class="dt">float</span> ry, <span class="dt">float</span> start_theta,</a>
 <a class="sourceLine" id="cb24-2" title="2">   <span class="dt">float</span> delta_theta, ALLEGRO_COLOR color, <span class="dt">float</span> thickness)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L796">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L796">Source Code</a></p>
 <p>Draws an elliptical arc.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -525,10 +606,14 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <p>Since: 5.0.6, 5.1.0</p>
 <p>See also: <a href="primitives.html#al_calculate_arc">al_calculate_arc</a>, <a href="primitives.html#al_draw_arc">al_draw_arc</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L324">ex_prim.c</a></li>
+</ul>
 <h2 id="al_calculate_spline">al_calculate_spline</h2>
 <div class="sourceCode" id="cb25"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb25-1" title="1"><span class="dt">void</span> al_calculate_spline(<span class="dt">float</span>* dest, <span class="dt">int</span> stride, <span class="dt">float</span> points[<span class="dv">8</span>],</a>
 <a class="sourceLine" id="cb25-2" title="2">   <span class="dt">float</span> thickness, <span class="dt">int</span> num_segments)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L1003">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L1003">Source Code</a></p>
 <p>Calculates a Bézier spline given 4 control points. If <code>thickness &lt;= 0</code>, then <code>num_segments</code> of points are required in the destination, otherwise twice as many are needed. The destination buffer should consist of regularly spaced (by distance of stride bytes) doublets of floats, corresponding to x and y coordinates of the vertices.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -541,7 +626,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="primitives.html#al_draw_spline">al_draw_spline</a>, <a href="primitives.html#al_calculate_arc">al_calculate_arc</a>, <a href="primitives.html#al_calculate_ribbon">al_calculate_ribbon</a></p>
 <h2 id="al_draw_spline">al_draw_spline</h2>
 <div class="sourceCode" id="cb26"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb26-1" title="1"><span class="dt">void</span> al_draw_spline(<span class="dt">float</span> points[<span class="dv">8</span>], ALLEGRO_COLOR color, <span class="dt">float</span> thickness)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L1082">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L1082">Source Code</a></p>
 <p>Draws a Bézier spline given 4 control points.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -550,10 +635,14 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>thickness - Thickness of the spline, pass <code>&lt;= 0</code> to draw a hairline spline</li>
 </ul>
 <p>See also: <a href="primitives.html#al_calculate_spline">al_calculate_spline</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L326">ex_prim.c</a></li>
+</ul>
 <h2 id="al_calculate_ribbon">al_calculate_ribbon</h2>
 <div class="sourceCode" id="cb27"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb27-1" title="1"><span class="dt">void</span> al_calculate_ribbon(<span class="dt">float</span>* dest, <span class="dt">int</span> dest_stride, <span class="dt">const</span> <span class="dt">float</span> *points,</a>
 <a class="sourceLine" id="cb27-2" title="2">   <span class="dt">int</span> points_stride, <span class="dt">float</span> thickness, <span class="dt">int</span> num_segments)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L1126">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L1126">Source Code</a></p>
 <p>Calculates a ribbon given an array of points. The ribbon will go through all of the passed points. If <code>thickness &lt;= 0</code>, then <code>num_segments</code> of points are required in the destination buffer, otherwise twice as many are needed. The destination and the points buffer should consist of regularly spaced doublets of floats, corresponding to x and y coordinates of the vertices.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -568,7 +657,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h2 id="al_draw_ribbon">al_draw_ribbon</h2>
 <div class="sourceCode" id="cb28"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb28-1" title="1"><span class="dt">void</span> al_draw_ribbon(<span class="dt">const</span> <span class="dt">float</span> *points, <span class="dt">int</span> points_stride, ALLEGRO_COLOR color,</a>
 <a class="sourceLine" id="cb28-2" title="2">   <span class="dt">float</span> thickness, <span class="dt">int</span> num_segments)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/high_primitives.c#L1248">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/high_primitives.c#L1248">Source Code</a></p>
 <p>Draws a ribbon given an array of points. The ribbon will go through all of the passed points. The points buffer should consist of regularly spaced doublets of floats, corresponding to x and y coordinates of the vertices.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -588,7 +677,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h2 id="al_draw_prim">al_draw_prim</h2>
 <div class="sourceCode" id="cb29"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb29-1" title="1"><span class="dt">int</span> al_draw_prim(<span class="dt">const</span> <span class="dt">void</span>* vtxs, <span class="dt">const</span> ALLEGRO_VERTEX_DECL* decl,</a>
 <a class="sourceLine" id="cb29-2" title="2">   ALLEGRO_BITMAP* texture, <span class="dt">int</span> start, <span class="dt">int</span> end, <span class="dt">int</span> type)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L75">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L75">Source Code</a></p>
 <p>Draws a subset of the passed vertex array.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -608,10 +697,16 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <a class="sourceLine" id="cb30-5" title="5">   {.x = <span class="dv">256</span>, .y = <span class="dv">256</span>, .z = <span class="dv">0</span>, .color = white, .u = <span class="dv">256</span>, .v = <span class="dv">256</span>}};</a>
 <a class="sourceLine" id="cb30-6" title="6">al_draw_prim(v, NULL, texture, <span class="dv">0</span>, <span class="dv">3</span>, ALLEGRO_PRIM_TRIANGLE_LIST);</a></code></pre></div>
 <p>See also: <a href="primitives.html#allegro_vertex">ALLEGRO_VERTEX</a>, <a href="primitives.html#allegro_prim_type">ALLEGRO_PRIM_TYPE</a>, <a href="primitives.html#allegro_vertex_decl">ALLEGRO_VERTEX_DECL</a>, <a href="primitives.html#al_draw_indexed_prim">al_draw_indexed_prim</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim_shader.c#L187">ex_prim_shader.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_vertex_buffer.c#L61">ex_vertex_buffer.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_camera.c#L357">ex_camera.c</a></li>
+</ul>
 <h2 id="al_draw_indexed_prim">al_draw_indexed_prim</h2>
 <div class="sourceCode" id="cb31"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb31-1" title="1"><span class="dt">int</span> al_draw_indexed_prim(<span class="dt">const</span> <span class="dt">void</span>* vtxs, <span class="dt">const</span> ALLEGRO_VERTEX_DECL* decl,</a>
 <a class="sourceLine" id="cb31-2" title="2">   ALLEGRO_BITMAP* texture, <span class="dt">const</span> <span class="dt">int</span>* indices, <span class="dt">int</span> num_vtx, <span class="dt">int</span> type)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L111">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L111">Source Code</a></p>
 <p>Draws a subset of the passed vertex array. This function uses an index array to specify which vertices to use.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -624,10 +719,15 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <p><em>Returns:</em> Number of primitives drawn</p>
 <p>See also: <a href="primitives.html#allegro_vertex">ALLEGRO_VERTEX</a>, <a href="primitives.html#allegro_prim_type">ALLEGRO_PRIM_TYPE</a>, <a href="primitives.html#allegro_vertex_decl">ALLEGRO_VERTEX_DECL</a>, <a href="primitives.html#al_draw_prim">al_draw_prim</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_projection2.c#L33">ex_projection2.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L288">ex_prim.c</a></li>
+</ul>
 <h2 id="al_draw_vertex_buffer">al_draw_vertex_buffer</h2>
 <div class="sourceCode" id="cb32"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb32-1" title="1"><span class="dt">int</span> al_draw_vertex_buffer(ALLEGRO_VERTEX_BUFFER* vertex_buffer,</a>
 <a class="sourceLine" id="cb32-2" title="2">   ALLEGRO_BITMAP* texture, <span class="dt">int</span> start, <span class="dt">int</span> end, <span class="dt">int</span> type)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L510">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L510">Source Code</a></p>
 <p>Draws a subset of the passed vertex buffer. The vertex buffer must not be locked. Additionally, to draw onto memory bitmaps or with memory bitmap textures the vertex buffer must support reading (i.e. it must be created with the <code>ALLEGRO_PRIM_BUFFER_READWRITE</code>).</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -640,11 +740,16 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p><em>Returns:</em> Number of primitives drawn</p>
 <p>Since: 5.1.3</p>
 <p>See also: <a href="primitives.html#allegro_vertex_buffer">ALLEGRO_VERTEX_BUFFER</a>, <a href="primitives.html#allegro_prim_type">ALLEGRO_PRIM_TYPE</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_vertex_buffer.c#L58">ex_vertex_buffer.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L536">ex_prim.c</a></li>
+</ul>
 <h2 id="al_draw_indexed_buffer">al_draw_indexed_buffer</h2>
 <div class="sourceCode" id="cb33"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb33-1" title="1"><span class="dt">int</span> al_draw_indexed_buffer(ALLEGRO_VERTEX_BUFFER* vertex_buffer,</a>
 <a class="sourceLine" id="cb33-2" title="2">   ALLEGRO_BITMAP* texture, ALLEGRO_INDEX_BUFFER* index_buffer,</a>
 <a class="sourceLine" id="cb33-3" title="3">   <span class="dt">int</span> start, <span class="dt">int</span> end, <span class="dt">int</span> type)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L545">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L545">Source Code</a></p>
 <p>Draws a subset of the passed vertex buffer. This function uses an index buffer to specify which vertices to use. Both buffers must not be locked. Additionally, to draw onto memory bitmaps or with memory bitmap textures both buffers must support reading (i.e. they must be created with the <code>ALLEGRO_PRIM_BUFFER_READWRITE</code>).</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -658,6 +763,10 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p><em>Returns:</em> Number of primitives drawn</p>
 <p>Since: 5.1.8</p>
 <p>See also: <a href="primitives.html#allegro_vertex_buffer">ALLEGRO_VERTEX_BUFFER</a>, <a href="primitives.html#allegro_index_buffer">ALLEGRO_INDEX_BUFFER</a>, <a href="primitives.html#allegro_prim_type">ALLEGRO_PRIM_TYPE</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L619">ex_prim.c</a></li>
+</ul>
 <h2 id="al_draw_soft_triangle">al_draw_soft_triangle</h2>
 <div class="sourceCode" id="cb34"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb34-1" title="1"><span class="dt">void</span> al_draw_soft_triangle(</a>
 <a class="sourceLine" id="cb34-2" title="2">   ALLEGRO_VERTEX* v1, ALLEGRO_VERTEX* v2, ALLEGRO_VERTEX* v3, <span class="dt">uintptr_t</span> state,</a>
@@ -665,7 +774,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <a class="sourceLine" id="cb34-4" title="4">   <span class="dt">void</span> (*first)(<span class="dt">uintptr_t</span>, <span class="dt">int</span>, <span class="dt">int</span>, <span class="dt">int</span>, <span class="dt">int</span>),</a>
 <a class="sourceLine" id="cb34-5" title="5">   <span class="dt">void</span> (*step)(<span class="dt">uintptr_t</span>, <span class="dt">int</span>),</a>
 <a class="sourceLine" id="cb34-6" title="6">   <span class="dt">void</span> (*draw)(<span class="dt">uintptr_t</span>, <span class="dt">int</span>, <span class="dt">int</span>, <span class="dt">int</span>))</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/prim_soft.c#L522">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/prim_soft.c#L522">Source Code</a></p>
 <p>Draws a triangle using the software rasterizer and user supplied pixel functions. For help in understanding what these functions do, see the implementation of the various shading routines in addons/primitives/tri_soft.c. The triangle is drawn in two segments, from top to bottom. The segments are deliniated by the vertically middle vertex of the triangle. One of the two segments may be absent if two vertices are horizontally collinear.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -682,7 +791,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <a class="sourceLine" id="cb35-2" title="2">   <span class="dt">void</span> (*first)(<span class="dt">uintptr_t</span>, <span class="dt">int</span>, <span class="dt">int</span>, ALLEGRO_VERTEX*, ALLEGRO_VERTEX*),</a>
 <a class="sourceLine" id="cb35-3" title="3">   <span class="dt">void</span> (*step)(<span class="dt">uintptr_t</span>, <span class="dt">int</span>),</a>
 <a class="sourceLine" id="cb35-4" title="4">   <span class="dt">void</span> (*draw)(<span class="dt">uintptr_t</span>, <span class="dt">int</span>, <span class="dt">int</span>))</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/line_soft.c#L572">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/line_soft.c#L572">Source Code</a></p>
 <p>Draws a line using the software rasterizer and user supplied pixel functions. For help in understanding what these functions do, see the implementation of the various shading routines in addons/primitives/line_soft.c. The line is drawn top to bottom.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -696,7 +805,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="custom-vertex-declaration-routines">Custom vertex declaration routines</h1>
 <h2 id="al_create_vertex_decl">al_create_vertex_decl</h2>
 <div class="sourceCode" id="cb36"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb36-1" title="1">ALLEGRO_VERTEX_DECL* al_create_vertex_decl(<span class="dt">const</span> ALLEGRO_VERTEX_ELEMENT* elements, <span class="dt">int</span> stride)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L165">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L165">Source Code</a></p>
 <p>Creates a vertex declaration, which describes a custom vertex format.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -705,20 +814,29 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <p><em>Returns:</em> Newly created vertex declaration.</p>
 <p>See also: <a href="primitives.html#allegro_vertex_element">ALLEGRO_VERTEX_ELEMENT</a>, <a href="primitives.html#allegro_vertex_decl">ALLEGRO_VERTEX_DECL</a>, <a href="primitives.html#al_destroy_vertex_decl">al_destroy_vertex_decl</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim_shader.c#L96">ex_prim_shader.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L76">ex_prim.c</a></li>
+</ul>
 <h2 id="al_destroy_vertex_decl">al_destroy_vertex_decl</h2>
 <div class="sourceCode" id="cb37"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb37-1" title="1"><span class="dt">void</span> al_destroy_vertex_decl(ALLEGRO_VERTEX_DECL* decl)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L225">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L225">Source Code</a></p>
 <p>Destroys a vertex declaration.</p>
 <p><em>Parameters:</em></p>
 <ul>
 <li>decl - Vertex declaration to destroy</li>
 </ul>
 <p>See also: <a href="primitives.html#allegro_vertex_element">ALLEGRO_VERTEX_ELEMENT</a>, <a href="primitives.html#allegro_vertex_decl">ALLEGRO_VERTEX_DECL</a>, <a href="primitives.html#al_create_vertex_decl">al_create_vertex_decl</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim_shader.c#L196">ex_prim_shader.c</a></li>
+</ul>
 <h1 id="vertex-buffer-routines">Vertex buffer routines</h1>
 <h2 id="al_create_vertex_buffer">al_create_vertex_buffer</h2>
 <div class="sourceCode" id="cb38"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb38-1" title="1">ALLEGRO_VERTEX_BUFFER* al_create_vertex_buffer(ALLEGRO_VERTEX_DECL* decl,</a>
 <a class="sourceLine" id="cb38-2" title="2">   <span class="dt">const</span> <span class="dt">void</span>* initial_data, <span class="dt">int</span> num_vertices, <span class="dt">int</span> flags)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L238">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L238">Source Code</a></p>
 <p>Creates a vertex buffer. Can return NULL if the buffer could not be created (e.g. the system only supports write-only buffers).</p>
 <blockquote>
 <p><em>Note:</em></p>
@@ -733,16 +851,26 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <p>Since: 5.1.3</p>
 <p>See also: <a href="primitives.html#allegro_vertex_buffer">ALLEGRO_VERTEX_BUFFER</a>, <a href="primitives.html#al_destroy_vertex_buffer">al_destroy_vertex_buffer</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_vertex_buffer.c#L162">ex_vertex_buffer.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L507">ex_prim.c</a></li>
+</ul>
 <h2 id="al_destroy_vertex_buffer">al_destroy_vertex_buffer</h2>
 <div class="sourceCode" id="cb39"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb39-1" title="1"><span class="dt">void</span> al_destroy_vertex_buffer(ALLEGRO_VERTEX_BUFFER* buffer)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L312">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L312">Source Code</a></p>
 <p>Destroys a vertex buffer. Does nothing if passed NULL.</p>
 <p>Since: 5.1.3</p>
 <p>See also: <a href="primitives.html#allegro_vertex_buffer">ALLEGRO_VERTEX_BUFFER</a>, <a href="primitives.html#al_create_vertex_buffer">al_create_vertex_buffer</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_vertex_buffer.c#L211">ex_vertex_buffer.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L553">ex_prim.c</a></li>
+</ul>
 <h2 id="al_lock_vertex_buffer">al_lock_vertex_buffer</h2>
 <div class="sourceCode" id="cb40"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb40-1" title="1"><span class="dt">void</span>* al_lock_vertex_buffer(ALLEGRO_VERTEX_BUFFER* buffer, <span class="dt">int</span> offset,</a>
 <a class="sourceLine" id="cb40-2" title="2">   <span class="dt">int</span> length, <span class="dt">int</span> flags)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L369">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L369">Source Code</a></p>
 <p>Locks a vertex buffer so you can access its data. Will return NULL if the parameters are invalid, if reading is requested from a write only buffer, or if the buffer is already locked.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -753,15 +881,25 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <p>Since: 5.1.3</p>
 <p>See also: <a href="primitives.html#allegro_vertex_buffer">ALLEGRO_VERTEX_BUFFER</a>, <a href="primitives.html#al_unlock_vertex_buffer">al_unlock_vertex_buffer</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_vertex_buffer.c#L54">ex_vertex_buffer.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L579">ex_prim.c</a></li>
+</ul>
 <h2 id="al_unlock_vertex_buffer">al_unlock_vertex_buffer</h2>
 <div class="sourceCode" id="cb41"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb41-1" title="1"><span class="dt">void</span> al_unlock_vertex_buffer(ALLEGRO_VERTEX_BUFFER* buffer)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L424">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L424">Source Code</a></p>
 <p>Unlocks a previously locked vertex buffer.</p>
 <p>Since: 5.1.3</p>
 <p>See also: <a href="primitives.html#allegro_vertex_buffer">ALLEGRO_VERTEX_BUFFER</a>, <a href="primitives.html#al_lock_vertex_buffer">al_lock_vertex_buffer</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_vertex_buffer.c#L56">ex_vertex_buffer.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L594">ex_prim.c</a></li>
+</ul>
 <h2 id="al_get_vertex_buffer_size">al_get_vertex_buffer_size</h2>
 <div class="sourceCode" id="cb42"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb42-1" title="1"><span class="dt">int</span> al_get_vertex_buffer_size(ALLEGRO_VERTEX_BUFFER* buffer)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L583">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L583">Source Code</a></p>
 <p>Returns the size of the vertex buffer</p>
 <p>Since: 5.1.8</p>
 <p>See also: <a href="primitives.html#allegro_vertex_buffer">ALLEGRO_VERTEX_BUFFER</a></p>
@@ -769,7 +907,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h2 id="al_create_index_buffer">al_create_index_buffer</h2>
 <div class="sourceCode" id="cb43"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb43-1" title="1">ALLEGRO_INDEX_BUFFER* al_create_index_buffer(<span class="dt">int</span> index_size,</a>
 <a class="sourceLine" id="cb43-2" title="2">    <span class="dt">const</span> <span class="dt">void</span>* initial_data, <span class="dt">int</span> num_indices, <span class="dt">int</span> flags)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L272">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L272">Source Code</a></p>
 <p>Creates a index buffer. Can return NULL if the buffer could not be created (e.g. the system only supports write-only buffers).</p>
 <blockquote>
 <p><em>Note:</em></p>
@@ -784,16 +922,24 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <p>Since: 5.1.8</p>
 <p>See also: <a href="primitives.html#allegro_index_buffer">ALLEGRO_INDEX_BUFFER</a>, <a href="primitives.html#al_destroy_index_buffer">al_destroy_index_buffer</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L576">ex_prim.c</a></li>
+</ul>
 <h2 id="al_destroy_index_buffer">al_destroy_index_buffer</h2>
 <div class="sourceCode" id="cb44"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb44-1" title="1"><span class="dt">void</span> al_destroy_index_buffer(ALLEGRO_INDEX_BUFFER* buffer)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L334">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L334">Source Code</a></p>
 <p>Destroys a index buffer. Does nothing if passed NULL.</p>
 <p>Since: 5.1.8</p>
 <p>See also: <a href="primitives.html#allegro_index_buffer">ALLEGRO_INDEX_BUFFER</a>, <a href="primitives.html#al_create_index_buffer">al_create_index_buffer</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L629">ex_prim.c</a></li>
+</ul>
 <h2 id="al_lock_index_buffer">al_lock_index_buffer</h2>
 <div class="sourceCode" id="cb45"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb45-1" title="1"><span class="dt">void</span>* al_lock_index_buffer(ALLEGRO_INDEX_BUFFER* buffer, <span class="dt">int</span> offset,</a>
 <a class="sourceLine" id="cb45-2" title="2">    <span class="dt">int</span> length, <span class="dt">int</span> flags)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L398">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L398">Source Code</a></p>
 <p>Locks a index buffer so you can access its data. Will return NULL if the parameters are invalid, if reading is requested from a write only buffer and if the buffer is already locked.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -804,15 +950,23 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <p>Since: 5.1.8</p>
 <p>See also: <a href="primitives.html#allegro_index_buffer">ALLEGRO_INDEX_BUFFER</a>, <a href="primitives.html#al_unlock_index_buffer">al_unlock_index_buffer</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L600">ex_prim.c</a></li>
+</ul>
 <h2 id="al_unlock_index_buffer">al_unlock_index_buffer</h2>
 <div class="sourceCode" id="cb46"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb46-1" title="1"><span class="dt">void</span> al_unlock_index_buffer(ALLEGRO_INDEX_BUFFER* buffer)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L445">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L445">Source Code</a></p>
 <p>Unlocks a previously locked index buffer.</p>
 <p>Since: 5.1.8</p>
 <p>See also: <a href="primitives.html#allegro_index_buffer">ALLEGRO_INDEX_BUFFER</a>, <a href="primitives.html#al_lock_index_buffer">al_lock_index_buffer</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L605">ex_prim.c</a></li>
+</ul>
 <h2 id="al_get_index_buffer_size">al_get_index_buffer_size</h2>
 <div class="sourceCode" id="cb47"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb47-1" title="1"><span class="dt">int</span> al_get_index_buffer_size(ALLEGRO_INDEX_BUFFER* buffer)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/primitives.c#L591">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/primitives.c#L591">Source Code</a></p>
 <p>Returns the size of the index buffer</p>
 <p>Since: 5.1.8</p>
 <p>See also: <a href="primitives.html#allegro_index_buffer">ALLEGRO_INDEX_BUFFER</a></p>
@@ -821,7 +975,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <div class="sourceCode" id="cb48"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb48-1" title="1"><span class="dt">void</span> al_draw_polyline(<span class="dt">const</span> <span class="dt">float</span>* vertices, <span class="dt">int</span> vertex_stride,</a>
 <a class="sourceLine" id="cb48-2" title="2">   <span class="dt">int</span> vertex_count, <span class="dt">int</span> join_style, <span class="dt">int</span> cap_style,</a>
 <a class="sourceLine" id="cb48-3" title="3">   ALLEGRO_COLOR color, <span class="dt">float</span> thickness, <span class="dt">float</span> miter_limit)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/polyline.c#L534">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/polyline.c#L534">Source Code</a></p>
 <p>Draw a series of line segments.</p>
 <ul>
 <li>vertices - Interleaved array of (x, y) vertex coordinates</li>
@@ -848,10 +1002,14 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>The stride may also be negative if the vertices are stored in reverse order.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="primitives.html#al_draw_polygon">al_draw_polygon</a>, <a href="primitives.html#allegro_line_join">ALLEGRO_LINE_JOIN</a>, <a href="primitives.html#allegro_line_cap">ALLEGRO_LINE_CAP</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_polygon.c#L238">ex_polygon.c</a></li>
+</ul>
 <h2 id="al_draw_polygon">al_draw_polygon</h2>
 <div class="sourceCode" id="cb50"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb50-1" title="1"><span class="dt">void</span> al_draw_polygon(<span class="dt">const</span> <span class="dt">float</span> *vertices, <span class="dt">int</span> vertex_count,</a>
 <a class="sourceLine" id="cb50-2" title="2">   <span class="dt">int</span> join_style, ALLEGRO_COLOR color, <span class="dt">float</span> thickness, <span class="dt">float</span> miter_limit)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/polygon.c#L44">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/polygon.c#L44">Source Code</a></p>
 <p>Draw an unfilled polygon. This is the same as passing <code>ALLEGRO_LINE_CAP_CLOSED</code> to <a href="primitives.html#al_draw_polyline">al_draw_polyline</a>.</p>
 <ul>
 <li>vertex - Interleaved array of (x, y) vertex coordinates</li>
@@ -863,10 +1021,14 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="primitives.html#al_draw_filled_polygon">al_draw_filled_polygon</a>, <a href="primitives.html#al_draw_polyline">al_draw_polyline</a>, <a href="primitives.html#allegro_line_join">ALLEGRO_LINE_JOIN</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_polygon.c#L251">ex_polygon.c</a></li>
+</ul>
 <h2 id="al_draw_filled_polygon">al_draw_filled_polygon</h2>
 <div class="sourceCode" id="cb51"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb51-1" title="1"><span class="dt">void</span> al_draw_filled_polygon(<span class="dt">const</span> <span class="dt">float</span> *vertices, <span class="dt">int</span> vertex_count,</a>
 <a class="sourceLine" id="cb51-2" title="2">   ALLEGRO_COLOR color)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/polygon.c#L53">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/polygon.c#L53">Source Code</a></p>
 <p>Draw a filled, simple polygon. Simple means it does not have to be convex but must not be self-overlapping.</p>
 <ul>
 <li>vertices - Interleaved array of (x, y) vertex coordinates</li>
@@ -876,10 +1038,14 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>When the y-axis is facing downwards (the usual), the coordinates must be ordered anti-clockwise.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="primitives.html#al_draw_polygon">al_draw_polygon</a>, <a href="primitives.html#al_draw_filled_polygon_with_holes">al_draw_filled_polygon_with_holes</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_polygon.c#L245">ex_polygon.c</a></li>
+</ul>
 <h2 id="al_draw_filled_polygon_with_holes">al_draw_filled_polygon_with_holes</h2>
 <div class="sourceCode" id="cb52"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb52-1" title="1"><span class="dt">void</span> al_draw_filled_polygon_with_holes(<span class="dt">const</span> <span class="dt">float</span> *vertices,</a>
 <a class="sourceLine" id="cb52-2" title="2">   <span class="dt">const</span> <span class="dt">int</span> *vertex_counts, ALLEGRO_COLOR color)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/polygon.c#L71">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/polygon.c#L71">Source Code</a></p>
 <p>Draws a filled simple polygon with zero or more other simple polygons subtracted from it - the holes. The holes cannot touch or intersect with the outline of the filled polygon.</p>
 <ul>
 <li>vertices - Interleaved array of (x, y) vertex coordinates for each of the polygons, including holes.</li>
@@ -905,11 +1071,15 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>There are 7 vertices: four for an outer square from (0, 0) to (100, 100) in anti-clockwise order, and three more for an inner triangle in clockwise order. The outer main polygon uses vertices 0 to 3 (inclusive) and the hole uses vertices 4 to 6 (inclusive).</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="primitives.html#al_draw_filled_polygon">al_draw_filled_polygon</a>, <a href="primitives.html#al_draw_filled_polygon_with_holes">al_draw_filled_polygon_with_holes</a>, <a href="primitives.html#al_triangulate_polygon">al_triangulate_polygon</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_polygon.c#L260">ex_polygon.c</a></li>
+</ul>
 <h2 id="al_triangulate_polygon">al_triangulate_polygon</h2>
 <div class="sourceCode" id="cb54"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb54-1" title="1"><span class="dt">bool</span> al_triangulate_polygon(</a>
 <a class="sourceLine" id="cb54-2" title="2">   <span class="dt">const</span> <span class="dt">float</span>* vertices, <span class="dt">size_t</span> vertex_stride, <span class="dt">const</span> <span class="dt">int</span>* vertex_counts,</a>
 <a class="sourceLine" id="cb54-3" title="3">   <span class="dt">void</span> (*emit_triangle)(<span class="dt">int</span>, <span class="dt">int</span>, <span class="dt">int</span>, <span class="dt">void</span>*), <span class="dt">void</span>* userdata)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/triangulator.c#L814">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/triangulator.c#L814">Source Code</a></p>
 <p>Divides a simple polygon into triangles, with zero or more other simple polygons subtracted from it - the holes. The holes cannot touch or intersect with the outline of the main polygon. Simple means the polygon does not have to be convex but must not be self-overlapping.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -924,7 +1094,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h1 id="structures-and-types">Structures and types</h1>
 <h2 id="allegro_vertex">ALLEGRO_VERTEX</h2>
 <div class="sourceCode" id="cb55"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb55-1" title="1"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_VERTEX ALLEGRO_VERTEX;</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/allegro5/allegro_primitives.h#L145">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/allegro5/allegro_primitives.h#L145">Source Code</a></p>
 <p>Defines the generic vertex type, with a 3D position, color and texture coordinates for a single texture. Note that at this time, the software driver for this addon cannot render 3D primitives. If you want a 2D only primitive, set z to 0. Note that you must initialize all members of this struct when you’re using it. One exception to this rule are the u and v variables which can be left uninitialized when you are not using textures.</p>
 <p><em>Fields:</em></p>
 <ul>
@@ -933,14 +1103,25 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>color - <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a> structure, storing the color of the vertex</li>
 </ul>
 <p>See also: <a href="primitives.html#allegro_prim_attr">ALLEGRO_PRIM_ATTR</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_shader.cpp#L97">ex_shader.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_shader_target.c#L94">ex_shader_target.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim_shader.c#L61">ex_prim_shader.c</a></li>
+</ul>
 <h2 id="allegro_vertex_decl">ALLEGRO_VERTEX_DECL</h2>
 <div class="sourceCode" id="cb56"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb56-1" title="1"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_VERTEX_DECL ALLEGRO_VERTEX_DECL;</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/allegro5/allegro_primitives.h#L137">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/allegro5/allegro_primitives.h#L137">Source Code</a></p>
 <p>A vertex declaration. This opaque structure is responsible for describing the format and layout of a user defined custom vertex. It is created and destroyed by specialized functions.</p>
 <p>See also: <a href="primitives.html#al_create_vertex_decl">al_create_vertex_decl</a>, <a href="primitives.html#al_destroy_vertex_decl">al_destroy_vertex_decl</a>, <a href="primitives.html#allegro_vertex_element">ALLEGRO_VERTEX_ELEMENT</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim_shader.c#L61">ex_prim_shader.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L67">ex_prim.c</a></li>
+</ul>
 <h2 id="allegro_vertex_element">ALLEGRO_VERTEX_ELEMENT</h2>
 <div class="sourceCode" id="cb57"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb57-1" title="1"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_VERTEX_ELEMENT ALLEGRO_VERTEX_ELEMENT;</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/allegro5/allegro_primitives.h#L127">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/allegro5/allegro_primitives.h#L127">Source Code</a></p>
 <p>A small structure describing a certain element of a vertex. E.g. the position of the vertex, or its color. These structures are used by the <a href="primitives.html#al_create_vertex_decl">al_create_vertex_decl</a> function to create the vertex declaration. For that they generally occur in an array. The last element of such an array should have the attribute field equal to 0, to signify that it is the end of the array. Here is an example code that would create a declaration describing the <a href="primitives.html#allegro_vertex">ALLEGRO_VERTEX</a> structure (passing this as vertex declaration to al_draw_prim would be identical to passing NULL):</p>
 <div class="sourceCode" id="cb58"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb58-1" title="1"><span class="co">/* On compilers without the offsetof keyword you need to obtain the</span></a>
 <a class="sourceLine" id="cb58-2" title="2"><span class="co"> * offset with sizeof and make sure to account for packing.</span></a>
@@ -959,9 +1140,14 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li>offset - Offset in bytes from the beginning of the custom vertex structure. The C function offsetof is very useful here.</li>
 </ul>
 <p>See also: <a href="primitives.html#al_create_vertex_decl">al_create_vertex_decl</a>, <a href="primitives.html#allegro_vertex_decl">ALLEGRO_VERTEX_DECL</a>, <a href="primitives.html#allegro_prim_attr">ALLEGRO_PRIM_ATTR</a>, <a href="primitives.html#allegro_prim_storage">ALLEGRO_PRIM_STORAGE</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim_shader.c#L62">ex_prim_shader.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L70">ex_prim.c</a></li>
+</ul>
 <h2 id="allegro_prim_type">ALLEGRO_PRIM_TYPE</h2>
 <div class="sourceCode" id="cb59"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb59-1" title="1"><span class="kw">typedef</span> <span class="kw">enum</span> ALLEGRO_PRIM_TYPE</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/allegro5/allegro_primitives.h#L36">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/allegro5/allegro_primitives.h#L36">Source Code</a></p>
 <p>Enumerates the types of primitives this addon can draw.</p>
 <ul>
 <li><p>ALLEGRO_PRIM_POINT_LIST - A list of points, each vertex defines a point</p></li>
@@ -974,7 +1160,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <h2 id="allegro_prim_attr">ALLEGRO_PRIM_ATTR</h2>
 <div class="sourceCode" id="cb60"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb60-1" title="1"><span class="kw">typedef</span> <span class="kw">enum</span> ALLEGRO_PRIM_ATTR</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/allegro5/allegro_primitives.h#L55">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/allegro5/allegro_primitives.h#L55">Source Code</a></p>
 <p>Enumerates the types of vertex attributes that a custom vertex may have.</p>
 <ul>
 <li><p>ALLEGRO_PRIM_POSITION - Position information, can be stored only in ALLEGRO_PRIM_SHORT_2, ALLEGRO_PRIM_FLOAT_2 and ALLEGRO_PRIM_FLOAT_3.</p></li>
@@ -1003,7 +1189,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>See also: <a href="primitives.html#allegro_vertex_decl">ALLEGRO_VERTEX_DECL</a>, <a href="primitives.html#allegro_prim_storage">ALLEGRO_PRIM_STORAGE</a>, <a href="shader.html#al_attach_shader_source">al_attach_shader_source</a></p>
 <h2 id="allegro_prim_storage">ALLEGRO_PRIM_STORAGE</h2>
 <div class="sourceCode" id="cb63"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb63-1" title="1"><span class="kw">typedef</span> <span class="kw">enum</span> ALLEGRO_PRIM_STORAGE</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/allegro5/allegro_primitives.h#L67">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/allegro5/allegro_primitives.h#L67">Source Code</a></p>
 <p>Enumerates the types of storage an attribute of a custom vertex may be stored in. Many of these can only be used for ALLEGRO_PRIM_USER_ATTR attributes and can only be accessed via shaders. Usually no matter what the storage is specified the attribute gets converted to single precision floating point when the shader is run. Despite that, it may be advantageous to use more dense storage formats (e.g. ALLEGRO_PRIM_NORMALIZED_UBYTE_4 instead of ALLEGRO_PRIM_FLOAT_4) when bandwidth (amount of memory sent to the GPU) is an issue but precision is not.</p>
 <ul>
 <li><p>ALLEGRO_PRIM_FLOAT_1 - A single float</p>
@@ -1035,15 +1221,15 @@ Since: 5.1.6</li>
 <p>See also: <a href="primitives.html#allegro_prim_attr">ALLEGRO_PRIM_ATTR</a></p>
 <h2 id="allegro_vertex_cache_size">ALLEGRO_VERTEX_CACHE_SIZE</h2>
 <div class="sourceCode" id="cb64"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb64-1" title="1"><span class="pp">#define ALLEGRO_VERTEX_CACHE_SIZE 256</span></a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/allegro5/allegro_primitives.h#L119">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/allegro5/allegro_primitives.h#L119">Source Code</a></p>
 <p>Defines the size of the transformation vertex cache for the software renderer. If you pass less than this many vertices to the primitive rendering functions you will get a speed boost. This also defines the size of the cache vertex buffer, used for the high-level primitives. This corresponds to the maximum number of line segments that will be used to form them.</p>
 <h2 id="allegro_prim_quality">ALLEGRO_PRIM_QUALITY</h2>
 <div class="sourceCode" id="cb65"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb65-1" title="1"><span class="pp">#define ALLEGRO_PRIM_QUALITY 10</span></a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/allegro5/allegro_primitives.h#L123">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/allegro5/allegro_primitives.h#L123">Source Code</a></p>
 <p>Controls the quality of the approximation of curved primitives (e.g. circles). Curved primitives are drawn by approximating them with a sequence of line segments. By default, this roughly corresponds to error of less than half of a pixel.</p>
 <h2 id="allegro_line_join">ALLEGRO_LINE_JOIN</h2>
 <div class="sourceCode" id="cb66"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb66-1" title="1"><span class="kw">typedef</span> <span class="kw">enum</span> ALLEGRO_LINE_JOIN</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/allegro5/allegro_primitives.h#L87">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/allegro5/allegro_primitives.h#L87">Source Code</a></p>
 <ul>
 <li>ALLEGRO_LINE_JOIN_NONE</li>
 <li>ALLEGRO_LINE_JOIN_BEVEL</li>
@@ -1057,9 +1243,13 @@ Since: 5.1.6</li>
 <p>The maximum miter length (relative to the line width) can be specified as parameter to the polygon functions.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="primitives.html#al_draw_polygon">al_draw_polygon</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_polygon.c#L55">ex_polygon.c</a></li>
+</ul>
 <h2 id="allegro_line_cap">ALLEGRO_LINE_CAP</h2>
 <div class="sourceCode" id="cb67"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb67-1" title="1"><span class="kw">typedef</span> <span class="kw">enum</span> ALLEGRO_LINE_CAP</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/allegro5/allegro_primitives.h#L98">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/allegro5/allegro_primitives.h#L98">Source Code</a></p>
 <ul>
 <li>ALLEGRO_LINE_CAP_NONE</li>
 <li>ALLEGRO_LINE_CAP_SQUARE</li>
@@ -1074,21 +1264,34 @@ Since: 5.1.6</li>
 <p>ALLEGRO_LINE_CAP_CLOSED is different from the others - it causes the polygon to have no caps. (And the <a href="primitives.html#allegro_line_join">ALLEGRO_LINE_JOIN</a> style will determine how the vertex looks.)</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="primitives.html#al_draw_polygon">al_draw_polygon</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_polygon.c#L54">ex_polygon.c</a></li>
+</ul>
 <h2 id="allegro_vertex_buffer">ALLEGRO_VERTEX_BUFFER</h2>
 <div class="sourceCode" id="cb68"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb68-1" title="1"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_VERTEX_BUFFER ALLEGRO_VERTEX_BUFFER;</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/allegro5/allegro_primitives.h#L156">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/allegro5/allegro_primitives.h#L156">Source Code</a></p>
 <p>A GPU vertex buffer that you can use to store vertices on the GPU instead of uploading them afresh during every drawing operation.</p>
 <p>Since: 5.1.3</p>
 <p>See also: <a href="primitives.html#al_create_vertex_buffer">al_create_vertex_buffer</a>, <a href="primitives.html#al_destroy_vertex_buffer">al_destroy_vertex_buffer</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_vertex_buffer.c#L22">ex_vertex_buffer.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L488">ex_prim.c</a></li>
+</ul>
 <h2 id="allegro_index_buffer">ALLEGRO_INDEX_BUFFER</h2>
 <div class="sourceCode" id="cb69"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_INDEX_BUFFER ALLEGRO_INDEX_BUFFER;</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/allegro5/allegro_primitives.h#L160">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/allegro5/allegro_primitives.h#L160">Source Code</a></p>
 <p>A GPU index buffer that you can use to store indices of vertices in a vertex buffer on the GPU instead of uploading them afresh during every drawing operation.</p>
 <p>Since: 5.1.8</p>
 <p>See also: <a href="primitives.html#al_create_index_buffer">al_create_index_buffer</a>, <a href="primitives.html#al_destroy_index_buffer">al_destroy_index_buffer</a></p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_prim.c#L561">ex_prim.c</a></li>
+</ul>
 <h2 id="allegro_prim_buffer_flags">ALLEGRO_PRIM_BUFFER_FLAGS</h2>
 <div class="sourceCode" id="cb70"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb70-1" title="1"><span class="kw">typedef</span> <span class="kw">enum</span> ALLEGRO_PRIM_BUFFER_FLAGS</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e189e21dd9bfac69d2d56912dd4d7814e8d74660/addons/primitives/allegro5/allegro_primitives.h#L109">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/addons/primitives/allegro5/allegro_primitives.h#L109">Source Code</a></p>
 <p>Flags to specify how to create a vertex or an index buffer.</p>
 <ul>
 <li><p>ALLEGRO_PRIM_BUFFER_STREAM - Hints to the driver that the buffer is written to often, but used only a few times per frame</p></li>
@@ -1100,7 +1303,7 @@ Since: 5.1.6</li>
 <p>See also: <a href="primitives.html#al_create_vertex_buffer">al_create_vertex_buffer</a>, <a href="primitives.html#al_create_index_buffer">al_create_index_buffer</a></p>
 <p class="timestamp">
 Allegro version 5.2.7 (GIT)
- - Last updated: 2020-10-13 10:07:31 UTC
+ - Last updated: 2020-11-26 23:07:39 UTC
 </p>
 </div>
 </body>
