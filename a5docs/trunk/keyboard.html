@@ -178,7 +178,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" title="1"> <span class="pp">#include </span><span class="im">&lt;allegro5/allegro.h&gt;</span></a></code></pre></div>
 <h1 id="allegro_keyboard_state">ALLEGRO_KEYBOARD_STATE</h1>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_KEYBOARD_STATE ALLEGRO_KEYBOARD_STATE;</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/include/allegro5/keyboard.h#L33">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/include/allegro5/keyboard.h#L33">Source Code</a></p>
 <p>This is a structure that is used to hold a “snapshot” of a keyboard’s state at a particular instant. It contains the following publically readable fields:</p>
 <ul>
 <li>display - points to the display that had keyboard focus at the time the state was saved. If no display was focused, this points to NULL.</li>
@@ -186,9 +186,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p>You cannot read the state of keys directly. Use the function <a href="keyboard.html#al_key_down">al_key_down</a>.</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_keyboard_focus.c#L4">ex_keyboard_focus.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_d3d.cpp#L42">ex_d3d.cpp</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_mouse_focus.c#L33">ex_mouse_focus.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_keyboard_focus.c#L4">ex_keyboard_focus.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_d3d.cpp#L42">ex_d3d.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_mouse_focus.c#L33">ex_mouse_focus.c</a></li>
 </ul>
 <h1 id="key-codes">Key codes</h1>
 <p>The constant ALLEGRO_KEY_MAX is always one higher than the highest key code. So if you want to use the key code as array index you can do something like this:</p>
@@ -304,39 +304,39 @@ ALLEGRO_KEYMOD_ACCENT4</code></pre>
 <p>The event field ‘keyboard.modifiers’ is a bitfield composed of these constants. These indicate the modifier keys which were pressed at the time a character was typed.</p>
 <h1 id="al_install_keyboard">al_install_keyboard</h1>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb6-1" title="1"><span class="dt">bool</span> al_install_keyboard(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/src/keybdnu.c#L121">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/keybdnu.c#L121">Source Code</a></p>
 <p>Install a keyboard driver. Returns true if successful. If a driver was already installed, nothing happens and true is returned.</p>
 <p>See also: <a href="keyboard.html#al_uninstall_keyboard">al_uninstall_keyboard</a>, <a href="keyboard.html#al_is_keyboard_installed">al_is_keyboard_installed</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_keyboard_focus.c#L39">ex_keyboard_focus.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_d3d.cpp#L34">ex_d3d.cpp</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_mouse_focus.c#L44">ex_mouse_focus.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_keyboard_focus.c#L39">ex_keyboard_focus.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_d3d.cpp#L34">ex_d3d.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_mouse_focus.c#L44">ex_mouse_focus.c</a></li>
 </ul>
 <h1 id="al_is_keyboard_installed">al_is_keyboard_installed</h1>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb7-1" title="1"><span class="dt">bool</span> al_is_keyboard_installed(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/src/keybdnu.c#L112">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/keybdnu.c#L112">Source Code</a></p>
 <p>Returns true if <a href="keyboard.html#al_install_keyboard">al_install_keyboard</a> was called successfully.</p>
 <h1 id="al_uninstall_keyboard">al_uninstall_keyboard</h1>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb8-1" title="1"><span class="dt">void</span> al_uninstall_keyboard(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/src/keybdnu.c#L172">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/keybdnu.c#L172">Source Code</a></p>
 <p>Uninstalls the active keyboard driver, if any. This will automatically unregister the keyboard event source with any event queues.</p>
 <p>This function is automatically called when Allegro is shut down.</p>
 <p>See also: <a href="keyboard.html#al_install_keyboard">al_install_keyboard</a></p>
 <h1 id="al_get_keyboard_state">al_get_keyboard_state</h1>
 <div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb9-1" title="1"><span class="dt">void</span> al_get_keyboard_state(ALLEGRO_KEYBOARD_STATE *ret_state)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/src/keybdnu.c#L239">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/keybdnu.c#L239">Source Code</a></p>
 <p>Save the state of the keyboard specified at the time the function is called into the structure pointed to by <em>ret_state</em>.</p>
 <p>See also: <a href="keyboard.html#al_key_down">al_key_down</a>, <a href="keyboard.html#al_clear_keyboard_state">al_clear_keyboard_state</a>, <a href="keyboard.html#allegro_keyboard_state">ALLEGRO_KEYBOARD_STATE</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_keyboard_focus.c#L53">ex_keyboard_focus.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_d3d.cpp#L107">ex_d3d.cpp</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_mouse_focus.c#L94">ex_mouse_focus.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_keyboard_focus.c#L53">ex_keyboard_focus.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_d3d.cpp#L107">ex_d3d.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_mouse_focus.c#L94">ex_mouse_focus.c</a></li>
 </ul>
 <h1 id="al_clear_keyboard_state">al_clear_keyboard_state</h1>
 <div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb10-1" title="1"><span class="dt">void</span> al_clear_keyboard_state(ALLEGRO_DISPLAY *display)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/src/keybdnu.c#L251">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/keybdnu.c#L251">Source Code</a></p>
 <p>Clear the state of the keyboard, emitting <a href="events.html#allegro_event_key_up">ALLEGRO_EVENT_KEY_UP</a> for each currently pressed key. The given display is regarded as the one which had the keyboard focus when the event occurred. In case display is NULL no event is emitted. For most keyboard drivers Allegro maintains its own state of the keyboard, which might get out of sync with the real one. This function is intended to remedy such situation by resetting Allegro’s keyboard state to a known default (no key pressed). This is particularly useful in response to <a href="events.html#allegro_event_display_switch_out">ALLEGRO_EVENT_DISPLAY_SWITCH_OUT</a> events.</p>
 <p>See also: <a href="keyboard.html#al_get_keyboard_state">al_get_keyboard_state</a>, <a href="keyboard.html#allegro_keyboard_state">ALLEGRO_KEYBOARD_STATE</a></p>
 <p>Since: 5.2.3</p>
@@ -345,45 +345,45 @@ ALLEGRO_KEYMOD_ACCENT4</code></pre>
 </blockquote>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_keyboard_events.c#L98">ex_keyboard_events.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_keyboard_events.c#L98">ex_keyboard_events.c</a></li>
 </ul>
 <h1 id="al_key_down">al_key_down</h1>
 <div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb11-1" title="1"><span class="dt">bool</span> al_key_down(<span class="dt">const</span> ALLEGRO_KEYBOARD_STATE *state, <span class="dt">int</span> keycode)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/src/keybdnu.c#L284">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/keybdnu.c#L284">Source Code</a></p>
 <p>Return true if the key specified was held down in the state specified.</p>
 <p>See also: <a href="keyboard.html#allegro_keyboard_state">ALLEGRO_KEYBOARD_STATE</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_keyboard_focus.c#L54">ex_keyboard_focus.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_d3d.cpp#L111">ex_d3d.cpp</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_mouse_focus.c#L95">ex_mouse_focus.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_keyboard_focus.c#L54">ex_keyboard_focus.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_d3d.cpp#L111">ex_d3d.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_mouse_focus.c#L95">ex_mouse_focus.c</a></li>
 </ul>
 <h1 id="al_keycode_to_name">al_keycode_to_name</h1>
 <div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb12-1" title="1"><span class="dt">const</span> <span class="dt">char</span> *al_keycode_to_name(<span class="dt">int</span> keycode)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/src/keybdnu.c#L217">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/keybdnu.c#L217">Source Code</a></p>
 <p>Converts the given keycode to a description of the key.</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_keyboard_events.c#L31">ex_keyboard_events.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_keyboard_events.c#L31">ex_keyboard_events.c</a></li>
 </ul>
 <h1 id="al_set_keyboard_leds">al_set_keyboard_leds</h1>
 <div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb13-1" title="1"><span class="dt">bool</span> al_set_keyboard_leds(<span class="dt">int</span> leds)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/src/keybdnu.c#L203">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/keybdnu.c#L203">Source Code</a></p>
 <p>Overrides the state of the keyboard LED indicators. Set <code>leds</code> to a combination of the keyboard modifier flags to enable the corresponding LED indicators (<code>ALLEGRO_KEYMOD_NUMLOCK</code>, <code>ALLEGRO_KEYMOD_CAPSLOCK</code> and <code>ALLEGRO_KEYMOD_SCROLLLOCK</code> are supported) or to -1 to return to default behavior. False is returned if the current keyboard driver cannot set LED indicators.</p>
 <h1 id="al_get_keyboard_event_source">al_get_keyboard_event_source</h1>
 <div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb14-1" title="1">ALLEGRO_EVENT_SOURCE *al_get_keyboard_event_source(<span class="dt">void</span>)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/src/keybdnu.c#L293">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/keybdnu.c#L293">Source Code</a></p>
 <p>Retrieve the keyboard event source. All <a href="events.html#allegro_event_key_down">keyboard events</a> are generated by this event source.</p>
 <p>Returns NULL if the keyboard subsystem was not installed.</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_keyboard_events.c#L140">ex_keyboard_events.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_opengl.c#L145">ex_opengl.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/1ae91bb949950b0dce5634b42075c81f82bae400/examples/ex_timedwait.c#L37">ex_timedwait.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_keyboard_events.c#L140">ex_keyboard_events.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_opengl.c#L145">ex_opengl.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_timedwait.c#L37">ex_timedwait.c</a></li>
 </ul>
 <p class="timestamp">
 Allegro version 5.2.7 (GIT)
- - Last updated: 2020-11-26 23:07:25 UTC
+ - Last updated: 2020-12-12 10:07:26 UTC
 </p>
 </div>
 </body>
