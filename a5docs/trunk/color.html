@@ -187,7 +187,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <li><a href="#al_color_rgb_to_lch">al_color_rgb_to_lch</a></li>
 <li><a href="#al_color_lch">al_color_lch</a></li>
 <li><a href="#al_color_lch_to_rgb">al_color_lch_to_rgb</a></li>
-<li><a href="#al_color_distance_ciede2000_lab">al_color_distance_ciede2000_lab</a></li>
+<li><a href="#al_color_distance_ciede2000">al_color_distance_ciede2000</a></li>
 <li><a href="#al_color_rgb_to_yuv">al_color_rgb_to_yuv</a></li>
 <li><a href="#al_color_yuv">al_color_yuv</a></li>
 <li><a href="#al_color_yuv_to_rgb">al_color_yuv_to_rgb</a></li>
@@ -519,8 +519,10 @@ K = 0</code></pre>
 <ul>
 <li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_color.cpp#L134">ex_color.cpp</a></li>
 </ul>
-<h1 id="al_color_distance_ciede2000_lab">al_color_distance_ciede2000_lab</h1>
-<p><a href="">Source Code</a></p>
+<h1 id="al_color_distance_ciede2000">al_color_distance_ciede2000</h1>
+<div class="sourceCode" id="cb33"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb33-1" title="1"><span class="dt">double</span> al_color_distance_ciede2000(ALLEGRO_COLOR color1,</a>
+<a class="sourceLine" id="cb33-2" title="2">      ALLEGRO_COLOR color2) {</a></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/addons/color/color.c#L761">Source Code</a></p>
 <p>This function computes the CIEDE2000 color difference between two RGB colors. This is a visually uniform color difference, unlike for example the RGB distance.</p>
 <p>When using the RGB distance (Euklidean distance between two RGB triplets) there can be color pairs with the same distance, where the colors of one pair appear to be almost the same color, while the colors of the other pair look quite different. This is improved by using the L*a*b* color space which was designed with perceptual uniformity in mind. However it still is not completely uniform. The CIEDE2000 formula contains some additional transformations to fix that.</p>
 <p>The returned color distance is roughly in the range 0 (identical color) to 1 (completely different color) - but values greater than one are possible.</p>
@@ -528,9 +530,13 @@ K = 0</code></pre>
 <p>Note: This function uses <a href="color.html#al_color_lab">al_color_lab</a> internally which defines the L component to be in the range 0..1 (and not 0..100 as is sometimes seen).</p>
 </blockquote>
 <p>Since: 5.2.3</p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_color2.c#L121">ex_color2.c</a></li>
+</ul>
 <h1 id="al_color_rgb_to_yuv">al_color_rgb_to_yuv</h1>
-<div class="sourceCode" id="cb33"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb33-1" title="1"><span class="dt">void</span> al_color_rgb_to_yuv(<span class="dt">float</span> red, <span class="dt">float</span> green, <span class="dt">float</span> blue,</a>
-<a class="sourceLine" id="cb33-2" title="2">   <span class="dt">float</span> *y, <span class="dt">float</span> *u, <span class="dt">float</span> *v)</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb34-1" title="1"><span class="dt">void</span> al_color_rgb_to_yuv(<span class="dt">float</span> red, <span class="dt">float</span> green, <span class="dt">float</span> blue,</a>
+<a class="sourceLine" id="cb34-2" title="2">   <span class="dt">float</span> *y, <span class="dt">float</span> *u, <span class="dt">float</span> *v)</a></code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/addons/color/color.c#L504">Source Code</a></p>
 <p>Convert RGB values to YUV color space.</p>
 <p>See also: <a href="color.html#al_color_yuv">al_color_yuv</a>, <a href="color.html#al_color_yuv_to_rgb">al_color_yuv_to_rgb</a></p>
@@ -539,7 +545,7 @@ K = 0</code></pre>
 <li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_color.cpp#L85">ex_color.cpp</a></li>
 </ul>
 <h1 id="al_color_yuv">al_color_yuv</h1>
-<div class="sourceCode" id="cb34"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb34-1" title="1">ALLEGRO_COLOR al_color_yuv(<span class="dt">float</span> y, <span class="dt">float</span> u, <span class="dt">float</span> v)</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb35-1" title="1">ALLEGRO_COLOR al_color_yuv(<span class="dt">float</span> y, <span class="dt">float</span> u, <span class="dt">float</span> v)</a></code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/addons/color/color.c#L518">Source Code</a></p>
 <p>Return an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a> structure from YUV values.</p>
 <p>See also: <a href="color.html#al_color_yuv_to_rgb">al_color_yuv_to_rgb</a>, <a href="color.html#al_color_rgb_to_yuv">al_color_rgb_to_yuv</a></p>
@@ -548,8 +554,8 @@ K = 0</code></pre>
 <li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_color.cpp#L110">ex_color.cpp</a></li>
 </ul>
 <h1 id="al_color_yuv_to_rgb">al_color_yuv_to_rgb</h1>
-<div class="sourceCode" id="cb35"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb35-1" title="1"><span class="dt">void</span> al_color_yuv_to_rgb(<span class="dt">float</span> y, <span class="dt">float</span> u, <span class="dt">float</span> v,</a>
-<a class="sourceLine" id="cb35-2" title="2">    <span class="dt">float</span> *red, <span class="dt">float</span> *green, <span class="dt">float</span> *blue)</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb36-1" title="1"><span class="dt">void</span> al_color_yuv_to_rgb(<span class="dt">float</span> y, <span class="dt">float</span> u, <span class="dt">float</span> v,</a>
+<a class="sourceLine" id="cb36-2" title="2">    <span class="dt">float</span> *red, <span class="dt">float</span> *green, <span class="dt">float</span> *blue)</a></code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/addons/color/color.c#L490">Source Code</a></p>
 <p>Convert YUV color values to RGB color space.</p>
 <p>See also: <a href="color.html#al_color_yuv">al_color_yuv</a>, <a href="color.html#al_color_rgb_to_yuv">al_color_rgb_to_yuv</a></p>
@@ -558,7 +564,7 @@ K = 0</code></pre>
 <li><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/examples/ex_color.cpp#L110">ex_color.cpp</a></li>
 </ul>
 <h1 id="al_get_allegro_color_version">al_get_allegro_color_version</h1>
-<div class="sourceCode" id="cb36"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb36-1" title="1"><span class="dt">uint32_t</span> al_get_allegro_color_version(<span class="dt">void</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb37-1" title="1"><span class="dt">uint32_t</span> al_get_allegro_color_version(<span class="dt">void</span>)</a></code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/addons/color/color.c#L581">Source Code</a></p>
 <p>Returns the (compiled) version of the addon, in the same format as <a href="system.html#al_get_allegro_version">al_get_allegro_version</a>.</p>
 <h1 id="al_is_color_valid">al_is_color_valid</h1>
@@ -567,7 +573,7 @@ K = 0</code></pre>
 <p>Since: 5.2.3</p>
 <p class="timestamp">
 Allegro version 5.2.7 (GIT)
- - Last updated: 2021-01-03 07:07:55 UTC
+ - Last updated: 2021-01-03 23:07:27 UTC
 </p>
 </div>
 </body>
