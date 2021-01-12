@@ -313,8 +313,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h2 id="al_map_rgb">al_map_rgb</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb3-1" title="1">ALLEGRO_COLOR al_map_rgb(</a>
 <a class="sourceLine" id="cb3-2" title="2">   <span class="dt">unsigned</span> <span class="dt">char</span> r, <span class="dt">unsigned</span> <span class="dt">char</span> g, <span class="dt">unsigned</span> <span class="dt">char</span> b)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L599">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L575">Source Code</a></p>
 <p>Convert r, g, b (ranging from 0-255) into an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a>, using 255 for alpha.</p>
+<p>This function can be called before Allegro is initialized.</p>
 <p>See also: <a href="graphics.html#al_map_rgba">al_map_rgba</a>, <a href="graphics.html#al_map_rgba_f">al_map_rgba_f</a>, <a href="graphics.html#al_map_rgb_f">al_map_rgb_f</a></p>
 <p>Examples:</p>
 <ul>
@@ -324,8 +325,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <h2 id="al_map_rgb_f">al_map_rgb_f</h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb4-1" title="1">ALLEGRO_COLOR al_map_rgb_f(<span class="dt">float</span> r, <span class="dt">float</span> g, <span class="dt">float</span> b)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L634">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L610">Source Code</a></p>
 <p>Convert r, g, b, (ranging from 0.0f-1.0f) into an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a>, using 1.0f for alpha.</p>
+<p>This function can be called before Allegro is initialized.</p>
 <p>See also: <a href="graphics.html#al_map_rgba">al_map_rgba</a>, <a href="graphics.html#al_map_rgb">al_map_rgb</a>, <a href="graphics.html#al_map_rgba_f">al_map_rgba_f</a></p>
 <p>Examples:</p>
 <ul>
@@ -336,8 +338,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h2 id="al_map_rgba">al_map_rgba</h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb5-1" title="1">ALLEGRO_COLOR al_map_rgba(</a>
 <a class="sourceLine" id="cb5-2" title="2">   <span class="dt">unsigned</span> <span class="dt">char</span> r, <span class="dt">unsigned</span> <span class="dt">char</span> g, <span class="dt">unsigned</span> <span class="dt">char</span> b, <span class="dt">unsigned</span> <span class="dt">char</span> a)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L577">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L553">Source Code</a></p>
 <p>Convert r, g, b, a (ranging from 0-255) into an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a>.</p>
+<p>This function can be called before Allegro is initialized.</p>
 <p>See also: <a href="graphics.html#al_map_rgb">al_map_rgb</a>, <a href="graphics.html#al_premul_rgba">al_premul_rgba</a>, <a href="graphics.html#al_map_rgb_f">al_map_rgb_f</a></p>
 <p>Examples:</p>
 <ul>
@@ -348,7 +351,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h2 id="al_premul_rgba">al_premul_rgba</h2>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb6-1" title="1">ALLEGRO_COLOR al_premul_rgba(</a>
 <a class="sourceLine" id="cb6-2" title="2">   <span class="dt">unsigned</span> <span class="dt">char</span> r, <span class="dt">unsigned</span> <span class="dt">char</span> g, <span class="dt">unsigned</span> <span class="dt">char</span> b, <span class="dt">unsigned</span> <span class="dt">char</span> a)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L588">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L564">Source Code</a></p>
 <p>This is a shortcut for <a href="graphics.html#al_map_rgba">al_map_rgba</a>(r * a / 255, g * a / 255, b * a / 255, a).</p>
 <p>By default Allegro uses pre-multiplied alpha for transparent blending of bitmaps and primitives (see <a href="graphics.html#al_load_bitmap_flags">al_load_bitmap_flags</a> for a discussion of that feature). This means that if you want to tint a bitmap or primitive to be transparent you need to multiply the color components by the alpha components when you pass them to this function. For example:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb7-1" title="1"><span class="dt">int</span> r = <span class="dv">255</span>;</a>
@@ -358,12 +361,14 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <a class="sourceLine" id="cb7-5" title="5">ALLEGRO_COLOR c = al_premul_rgba(r, g, b, a);</a>
 <a class="sourceLine" id="cb7-6" title="6"><span class="co">/* Draw the bitmap tinted red and half-transparent. */</span></a>
 <a class="sourceLine" id="cb7-7" title="7">al_draw_tinted_bitmap(bmp, c, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>);</a></code></pre></div>
+<p>This function can be called before Allegro is initialized.</p>
 <p>Since: 5.1.12</p>
 <p>See also: <a href="graphics.html#al_map_rgba">al_map_rgba</a>, <a href="graphics.html#al_premul_rgba_f">al_premul_rgba_f</a></p>
 <h2 id="al_map_rgba_f">al_map_rgba_f</h2>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb8-1" title="1">ALLEGRO_COLOR al_map_rgba_f(<span class="dt">float</span> r, <span class="dt">float</span> g, <span class="dt">float</span> b, <span class="dt">float</span> a)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L608">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L584">Source Code</a></p>
 <p>Convert r, g, b, a (ranging from 0.0f-1.0f) into an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a>.</p>
+<p>This function can be called before Allegro is initialized.</p>
 <p>See also: <a href="graphics.html#al_map_rgba">al_map_rgba</a>, <a href="graphics.html#al_premul_rgba_f">al_premul_rgba_f</a>, <a href="graphics.html#al_map_rgb_f">al_map_rgb_f</a></p>
 <p>Examples:</p>
 <ul>
@@ -373,7 +378,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <h2 id="al_premul_rgba_f">al_premul_rgba_f</h2>
 <div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb9-1" title="1">ALLEGRO_COLOR al_premul_rgba_f(<span class="dt">float</span> r, <span class="dt">float</span> g, <span class="dt">float</span> b, <span class="dt">float</span> a)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L621">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L597">Source Code</a></p>
 <p>This is a shortcut for <a href="graphics.html#al_map_rgba_f">al_map_rgba_f</a>(r * a, g * a, b * a, a).</p>
 <p>By default Allegro uses pre-multiplied alpha for transparent blending of bitmaps and primitives (see <a href="graphics.html#al_load_bitmap_flags">al_load_bitmap_flags</a> for a discussion of that feature). This means that if you want to tint a bitmap or primitive to be transparent you need to multiply the color components by the alpha components when you pass them to this function. For example:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb10-1" title="1"><span class="dt">float</span> r = <span class="dv">1</span>;</a>
@@ -383,13 +388,15 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <a class="sourceLine" id="cb10-5" title="5">ALLEGRO_COLOR c = al_premul_rgba_f(r, g, b, a);</a>
 <a class="sourceLine" id="cb10-6" title="6"><span class="co">/* Draw the bitmap tinted red and half-transparent. */</span></a>
 <a class="sourceLine" id="cb10-7" title="7">al_draw_tinted_bitmap(bmp, c, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>);</a></code></pre></div>
+<p>This function can be called before Allegro is initialized.</p>
 <p>Since: 5.1.12</p>
 <p>See also: <a href="graphics.html#al_map_rgba_f">al_map_rgba_f</a>, <a href="graphics.html#al_premul_rgba">al_premul_rgba</a></p>
 <h2 id="al_unmap_rgb">al_unmap_rgb</h2>
 <div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb11-1" title="1"><span class="dt">void</span> al_unmap_rgb(ALLEGRO_COLOR color,</a>
 <a class="sourceLine" id="cb11-2" title="2">   <span class="dt">unsigned</span> <span class="dt">char</span> *r, <span class="dt">unsigned</span> <span class="dt">char</span> *g, <span class="dt">unsigned</span> <span class="dt">char</span> *b)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L657">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L633">Source Code</a></p>
 <p>Retrieves components of an ALLEGRO_COLOR, ignoring alpha. Components will range from 0-255.</p>
+<p>This function can be called before Allegro is initialized.</p>
 <p>See also: <a href="graphics.html#al_unmap_rgba">al_unmap_rgba</a>, <a href="graphics.html#al_unmap_rgba_f">al_unmap_rgba_f</a>, <a href="graphics.html#al_unmap_rgb_f">al_unmap_rgb_f</a></p>
 <p>Examples:</p>
 <ul>
@@ -399,8 +406,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <h2 id="al_unmap_rgb_f">al_unmap_rgb_f</h2>
 <div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb12-1" title="1"><span class="dt">void</span> al_unmap_rgb_f(ALLEGRO_COLOR color, <span class="dt">float</span> *r, <span class="dt">float</span> *g, <span class="dt">float</span> *b)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L680">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L656">Source Code</a></p>
 <p>Retrieves components of an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a>, ignoring alpha. Components will range from 0.0f-1.0f.</p>
+<p>This function can be called before Allegro is initialized.</p>
 <p>See also: <a href="graphics.html#al_unmap_rgba">al_unmap_rgba</a>, <a href="graphics.html#al_unmap_rgb">al_unmap_rgb</a>, <a href="graphics.html#al_unmap_rgba_f">al_unmap_rgba_f</a></p>
 <p>Examples:</p>
 <ul>
@@ -409,8 +417,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h2 id="al_unmap_rgba">al_unmap_rgba</h2>
 <div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb13-1" title="1"><span class="dt">void</span> al_unmap_rgba(ALLEGRO_COLOR color,</a>
 <a class="sourceLine" id="cb13-2" title="2">   <span class="dt">unsigned</span> <span class="dt">char</span> *r, <span class="dt">unsigned</span> <span class="dt">char</span> *g, <span class="dt">unsigned</span> <span class="dt">char</span> *b, <span class="dt">unsigned</span> <span class="dt">char</span> *a)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L645">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L621">Source Code</a></p>
 <p>Retrieves components of an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a>. Components will range from 0-255.</p>
+<p>This function can be called before Allegro is initialized.</p>
 <p>See also: <a href="graphics.html#al_unmap_rgb">al_unmap_rgb</a>, <a href="graphics.html#al_unmap_rgba_f">al_unmap_rgba_f</a>, <a href="graphics.html#al_unmap_rgb_f">al_unmap_rgb_f</a></p>
 <p>Examples:</p>
 <ul>
@@ -420,8 +429,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <h2 id="al_unmap_rgba_f">al_unmap_rgba_f</h2>
 <div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb14-1" title="1"><span class="dt">void</span> al_unmap_rgba_f(ALLEGRO_COLOR color,</a>
 <a class="sourceLine" id="cb14-2" title="2">   <span class="dt">float</span> *r, <span class="dt">float</span> *g, <span class="dt">float</span> *b, <span class="dt">float</span> *a)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L668">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L644">Source Code</a></p>
 <p>Retrieves components of an <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a>. Components will range from 0.0f-1.0f.</p>
+<p>This function can be called before Allegro is initialized.</p>
 <p>See also: <a href="graphics.html#al_unmap_rgba">al_unmap_rgba</a>, <a href="graphics.html#al_unmap_rgb">al_unmap_rgb</a>, <a href="graphics.html#al_unmap_rgb_f">al_unmap_rgb_f</a></p>
 <p>Examples:</p>
 <ul>
@@ -511,23 +521,23 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <h2 id="al_get_pixel_size">al_get_pixel_size</h2>
 <div class="sourceCode" id="cb20"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb20-1" title="1"><span class="dt">int</span> al_get_pixel_size(<span class="dt">int</span> format)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L422">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L398">Source Code</a></p>
 <p>Return the number of bytes that a pixel of the given format occupies. For blocked pixel formats (e.g. compressed formats), this returns 0.</p>
 <p>See also: <a href="graphics.html#allegro_pixel_format">ALLEGRO_PIXEL_FORMAT</a>, <a href="graphics.html#al_get_pixel_format_bits">al_get_pixel_format_bits</a></p>
 <h2 id="al_get_pixel_format_bits">al_get_pixel_format_bits</h2>
 <div class="sourceCode" id="cb21"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb21-1" title="1"><span class="dt">int</span> al_get_pixel_format_bits(<span class="dt">int</span> format)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L430">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L406">Source Code</a></p>
 <p>Return the number of bits that a pixel of the given format occupies. For blocked pixel formats (e.g. compressed formats), this returns 0.</p>
 <p>See also: <a href="graphics.html#allegro_pixel_format">ALLEGRO_PIXEL_FORMAT</a>, <a href="graphics.html#al_get_pixel_size">al_get_pixel_size</a></p>
 <h2 id="al_get_pixel_block_size">al_get_pixel_block_size</h2>
 <div class="sourceCode" id="cb22"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb22-1" title="1"><span class="dt">int</span> al_get_pixel_block_size(<span class="dt">int</span> format)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L398">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L374">Source Code</a></p>
 <p>Return the number of bytes that a block of pixels with this format occupies.</p>
 <p>Since: 5.1.9.</p>
 <p>See also: <a href="graphics.html#allegro_pixel_format">ALLEGRO_PIXEL_FORMAT</a>, <a href="graphics.html#al_get_pixel_block_width">al_get_pixel_block_width</a>, <a href="graphics.html#al_get_pixel_block_height">al_get_pixel_block_height</a></p>
 <h2 id="al_get_pixel_block_width">al_get_pixel_block_width</h2>
 <div class="sourceCode" id="cb23"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb23-1" title="1"><span class="dt">int</span> al_get_pixel_block_width(<span class="dt">int</span> format)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L406">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L382">Source Code</a></p>
 <p>Return the width of the the pixel block for this format.</p>
 <p>Since: 5.1.9.</p>
 <p>See also: <a href="graphics.html#allegro_pixel_format">ALLEGRO_PIXEL_FORMAT</a>, <a href="graphics.html#al_get_pixel_block_size">al_get_pixel_block_size</a>, <a href="graphics.html#al_get_pixel_block_height">al_get_pixel_block_height</a></p>
@@ -537,7 +547,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <h2 id="al_get_pixel_block_height">al_get_pixel_block_height</h2>
 <div class="sourceCode" id="cb24"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb24-1" title="1"><span class="dt">int</span> al_get_pixel_block_height(<span class="dt">int</span> format)</a></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L414">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/pixels.c#L390">Source Code</a></p>
 <p>Return the height of the the pixel block for this format.</p>
 <p>Since: 5.1.9.</p>
 <p>See also: <a href="graphics.html#allegro_pixel_format">ALLEGRO_PIXEL_FORMAT</a>, <a href="graphics.html#al_get_pixel_block_size">al_get_pixel_block_size</a>, <a href="graphics.html#al_get_pixel_block_width">al_get_pixel_block_width</a></p>
@@ -631,7 +641,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 <p><a href="https://github.com/liballeg/allegro5/blob/7667212643c7af03ff7dafb86958e98c9d824396/src/bitmap.c#L187">Source Code</a></p>
 <p>Creates a new bitmap using the bitmap format and flags for the current thread. Blitting between bitmaps of differing formats, or blitting between memory bitmaps and display bitmaps may be slow.</p>
 <p>Unless you set the ALLEGRO_MEMORY_BITMAP flag, the bitmap is created for the current display. Blitting to another display may be slow.</p>
-<p>If a display bitmap is created, there may be limitations on the allowed dimensions. For example a DirectX or OpenGL backend usually has a maximum allowed texture size - so if bitmap creation fails for very large dimensions, you may want to re-try with a smaller bitmap. Some platforms also dictate a minimum texture size, which is relevant if you plan to use this bitmap with the primitives addon. If you try to create a bitmap smaller than this, this call will not fail but the returned bitmap will be a section of a larger bitmap with the minimum size. The minimum size that will work on all platforms is 32 by 32.</p>
+<p>If a display bitmap is created, there may be limitations on the allowed dimensions. For example a DirectX or OpenGL backend usually has a maximum allowed texture size - so if bitmap creation fails for very large dimensions, you may want to re-try with a smaller bitmap. Some platforms also dictate a minimum texture size, which is relevant if you plan to use this bitmap with the primitives addon. If you try to create a bitmap smaller than this, this call will not fail but the returned bitmap will be a section of a larger bitmap with the minimum size. The minimum size that will work on all platforms is 32 by 32. There is an experimental switch to turns this padding off by editing the system configuration (see <code>min_bitmap_size</code> key in <a href="system.html#al_get_system_config">al_get_system_config</a>).</p>
 <p>Some platforms do not directly support display bitmaps whose dimensions are not powers of two. Allegro handles this by creating a larger bitmap that has dimensions that are powers of two and then returning a section of that bitmap with the dimensions you requested. This can be relevant if you plan to use this bitmap with the primitives addon but shouldn’t be an issue otherwise.</p>
 <p>If you create a bitmap without ALLEGRO_MEMORY_BITMAP set but there is no current display, a temporary memory bitmap will be created instead. You can later convert all such bitmap to video bitmap and assign to a display by calling <a href="graphics.html#al_convert_memory_bitmaps">al_convert_memory_bitmaps</a>.</p>
 <p>On some platforms the contents of video bitmaps may be lost when your application loses focus. Allegro has an internal mechanism to restore the contents of these video bitmaps, but it is not foolproof (sometimes bitmap contents can get lost permanently) and has performance implications. If you are using a bitmap as an intermediate buffer this mechanism may be wasteful. In this case, if you do not want Allegro to manage the bitmap contents for you, you can disable this mechanism by creating the bitmap with the ALLEGRO_NO_PRESERVE_TEXTURE flag. The bitmap contents are lost when you get the ALLEGRO_EVENT_DISPLAY_LOST and ALLEGRO_EVENT_DISPLAY_HALT_DRAWING and a should be restored when you get the ALLEGRO_EVENT_DISPLAY_FOUND and when you call <a href="display.html#al_acknowledge_drawing_resume">al_acknowledge_drawing_resume</a> (after ALLEGRO_EVENT_DISPLAY_RESUME_DRAWING event). You can use those events to implement your own bitmap content restoration mechanism if Allegro’s does not work well enough for you (for example, you can reload them all from disk).</p>
@@ -1858,7 +1868,7 @@ a = d.a * 0 + s.a * d.a</code></pre>
 <p>See also: <a href="graphics.html#al_backup_dirty_bitmap">al_backup_dirty_bitmap</a></p>
 <p class="timestamp">
 Allegro version 5.2.7 (GIT)
- - Last updated: 2021-01-09 07:09:28 UTC
+ - Last updated: 2021-01-12 05:08:18 UTC
 </p>
 </div>
 </body>
