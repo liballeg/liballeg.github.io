@@ -5,11 +5,13 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>Allegro - Older news</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
   <link rel="stylesheet" href="web_style.css" />
   <link rel="alternate" type="application/atom+xml"
@@ -82,7 +84,7 @@ A game programming library
 </div>
 <!-- left -->
 <div id="content">
-<header>
+<header id="title-block-header">
 <h1 class="title">Allegro - Older news</h1>
 </header>
 <h1 id="older-news">Older news</h1>
@@ -184,7 +186,7 @@ A game programming library
 <li>Trent Gamblin made a small change to the Windows mouse driver to add support for touchscreens (at least 1 of them).</li>
 <li>Peter De Wachter made the ALSA driver work for hardware which does not support unsigned samples.</li>
 <li>Matthew Leverton fixed a problem with filename encoding and the SYSTEM_NONE driver. Added set_filename_encoding(), get_filename_encoding().</li>
-<li>Milan Mimica made the MinGW and MSVC makefiles add the suffix &quot;_c&quot; onto non-asm builds, and clarified that user programs linking against the non-asm libraries must also defined ALLEGRO_USE_C. Mixing calling conventions causes segfaults when functions are inlined.</li>
+<li>Milan Mimica made the MinGW and MSVC makefiles add the suffix "_c" onto non-asm builds, and clarified that user programs linking against the non-asm libraries must also defined ALLEGRO_USE_C. Mixing calling conventions causes segfaults when functions are inlined.</li>
 <li>AJ added detection for SSSE3, SSE4.1 and SSE4.2</li>
 <li>David A. Capello made key_shifts work properly on Windows for Control, Alt, and Shift.</li>
 <li>Clarified that set_config_file() does not search for the given config file in other locations, as Allegro does with allegro.cfg at initialization.</li>

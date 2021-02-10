@@ -5,11 +5,13 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>Allegro 5 reference manual</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
   <link rel="stylesheet" href="pandoc.css" />
   <script type="text/javascript" src="autosuggest.js"></script>
@@ -87,15 +89,17 @@ function on_search(index, control) {
     location.href = search_urls[i];
 }
 </script>
-Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br/>
+Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" placeholder="Press ‘S’ to search" /><br/>
 <script type="text/javascript"> new autosuggest("q", search_index, null, on_search); </script>
 </div>
 </div>
 <div class="content">
-<header>
+
+
+<header id="title-block-header">
 <h1 class="title">Allegro 5 reference manual</h1>
 </header>
-<nav id="TOC">
+<nav id="TOC" role="doc-toc">
 <ul>
 <li><a href="#core-api">Core API</a></li>
 <li><a href="#addons">Addons</a></li>
@@ -154,7 +158,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br
 </ul>
 <p class="timestamp">
 Allegro version 5.2.7 (GIT)
- - Last updated: 2021-01-12 05:08:39 UTC
+ - Last updated: 2021-02-01 05:31:23 UTC
 </p>
 </div>
 </body>

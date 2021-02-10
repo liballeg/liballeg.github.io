@@ -5,11 +5,13 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>Getting started guide</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
   <link rel="stylesheet" href="pandoc.css" />
   <script type="text/javascript" src="autosuggest.js"></script>
@@ -87,15 +89,17 @@ function on_search(index, control) {
     location.href = search_urls[i];
 }
 </script>
-Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off"/><br/>
+Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" placeholder="Press ‘S’ to search" /><br/>
 <script type="text/javascript"> new autosuggest("q", search_index, null, on_search); </script>
 </div>
 </div>
 <div class="content">
-<header>
+
+
+<header id="title-block-header">
 <h1 class="title">Getting started guide</h1>
 </header>
-<nav id="TOC">
+<nav id="TOC" role="doc-toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#structure-of-the-library-and-its-addons">Structure of the library and its addons</a></li>
@@ -141,7 +145,7 @@ allegro_native_dialog -&gt; allegro</code></pre>
 <h1 id="the-main-function">The main function</h1>
 <p>For the purposes of cross-platform compatibility Allegro puts some requirements on your main function. First, you must include the core header (<code>allegro5/allegro.h</code>) in the same file as your main function. Second, if your main function is inside a C++ file, then it must have this signature: <code>int main(int argc, char **argv)</code>. Third, if you’re using C/C++ then you need to link with the allegro_main addon when building your program.</p>
 <h1 id="initialisation">Initialisation</h1>
-<p>Before using Allegro you must call <a href="system.html#al_init">al_init</a>. Some addons have their own initialisation, e.g. <a href="image.html#al_init_image_addon">al_init_image_addon</a>, <a href="font.html#al_init_font_addon">al_init_font_addon</a>, <a href="font.html#al_init_ttf_addon">al_init_ttf_addon</a>.</p>
+<p>Before using Allegro you must call <a href="system.html#al_init">al_init</a>. Some addons have their own initialisation, e.g. <a href="image.html#al_init_image_addon">al_init_image_addon</a>, <a href="font.html#al_init_font_addon">al_init_font_addon</a>, <a href="font.html#al_init_ttf_addon">al_init_ttf_addon</a>.</p>
 <p>To receive input, you need to initialise some subsystems like <a href="keyboard.html#al_install_keyboard">al_install_keyboard</a>, <a href="mouse.html#al_install_mouse">al_install_mouse</a>, <a href="joystick.html#al_install_joystick">al_install_joystick</a>.</p>
 <h1 id="opening-a-window">Opening a window</h1>
 <p><a href="display.html#al_create_display">al_create_display</a> will open a window and return an <a href="display.html#allegro_display">ALLEGRO_DISPLAY</a>.</p>
@@ -183,7 +187,7 @@ allegro_native_dialog -&gt; allegro</code></pre>
 <p>Enjoy!</p>
 <p class="timestamp">
 Allegro version 5.2.7 (GIT)
- - Last updated: 2021-01-12 05:08:13 UTC
+ - Last updated: 2021-02-01 05:30:54 UTC
 </p>
 </div>
 </body>

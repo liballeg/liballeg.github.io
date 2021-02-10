@@ -5,11 +5,13 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>Allegro - Recent changes</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
   </style>
   <link rel="stylesheet" href="web_style.css" />
   <link rel="alternate" type="application/atom+xml"
@@ -82,7 +84,7 @@ A game programming library
 </div>
 <!-- left -->
 <div id="content">
-<header>
+<header id="title-block-header">
 <h1 class="title">Allegro - Recent changes</h1>
 </header>
 <p>See <code>changes._tx</code> for changes in earlier versions of Allegro. These lists serve as summaries; the full histories are in the git repository.</p>
@@ -1389,7 +1391,7 @@ A game programming library
 <ul>
 <li><p>Set VERSION and SOVERSION properties on targets to give Unix shared libraries proper sonames. e.g. liballegro[_addon].so.4.9, liballegro[_addon].4.9.dylib</p></li>
 <li><p>Static libraries are now named without version number suffixes to minimise the differences with the shared libraries, which no longer have the versions in their base names. e.g. liballegro[_addon]-static.a, allegro[_addon]-static.lib</p></li>
-<li><p>Windows import libraries are also named without version suffixes, e.g. liballegro[_addon].a, allegro[_addon].lib</p></li>
+<li><p>Windows import libraries are also named without version suffixes, e.g. liballegro[_addon].a, allegro[_addon].lib</p></li>
 <li><p>DLLs are named with a short version suffix, not the full version. e.g. allegro-4.9.dll instead of allegro-4.9.18.dll</p></li>
 <li><p>Add support for Mac OS X frameworks (untested), which are enabled with WANT_FRAMEWORKS and WANT_EMBED. There is one framework per addon.</p></li>
 <li><p>Search for static OGG/Vorbis libraries built with MSVC named libogg_static.lib, etc.</p></li>
@@ -1419,7 +1421,7 @@ A game programming library
 <ul>
 <li><p>Removed END_OF_MAIN() everywhere.</p>
 <p>For MSVC, we pass a linker option through a #pragma.</p>
-<p>On Mac OS X, we rename main() and call it from a real main() function in the allegro-main addon. The prototype for main() for C++ applications should be &quot;int main(int, char **)&quot;, or the code will not compile on OS X. For C, either of the normal ANSI forms is fine.</p>
+<p>On Mac OS X, we rename main() and call it from a real main() function in the allegro-main addon. The prototype for main() for C++ applications should be "int main(int, char **)", or the code will not compile on OS X. For C, either of the normal ANSI forms is fine.</p>
 <p>#define ALLEGRO_NO_MAGIC_MAIN disables the #pragma or name mangling, so you can write a WinMain() or use al_run_main() yourself.</p></li>
 </ul>
 <p>Graphics:</p>
@@ -2408,7 +2410,7 @@ A game programming library
 <li><p>Elias Pschernig added a script to automatically upload the naturaldocs generated documentation to the website.</p></li>
 <li><p>Peter Wang fixed missed renamings from AL_ to ALLEGRO_ in the Linux and X code.</p></li>
 <li><p>Elias Pschernig merged 4.9-newgfx back to 4.9.</p></li>
-<li><p>Peter Wang fixed a &quot;ALLEGRO__JOYSTICK&quot; typo.</p></li>
+<li><p>Peter Wang fixed a "ALLEGRO__JOYSTICK" typo.</p></li>
 <li><p>Trent Gamblin renamed AL_ to ALLEGRO_ in input, events, and timer code.</p></li>
 <li><p>Elias Pschernig implemented outline flag and blending for draw_rectangle in the GLX driver.</p></li>
 <li><p>Elias Pschernig added another mysha.pcx for the font example.</p></li>
@@ -2524,7 +2526,7 @@ A game programming library
 <li><p>Elias Pschernig made scons read the list of source files from cmake/FileList.cmake, so there’s only one place to add new files.</p></li>
 <li><p>Trent Gamblin made _al_get_pixel_value faster.</p></li>
 <li><p>Trent Gamblin made al_unmap_rgba_i use a table instead of relying on al_unmap_rgba_f.</p></li>
-<li><p>Peter Wang changed #includes to use file names from the root of the include hierarchy, i.e. #include “allegro/internal/foo.h” instead of #include “internal/foo.h” and likewise for allegro/platform/foo.h.</p></li>
+<li><p>Peter Wang changed #includes to use file names from the root of the include hierarchy, i.e. #include “allegro/internal/foo.h” instead of #include “internal/foo.h” and likewise for allegro/platform/foo.h.</p></li>
 <li><p>Peter Wang removed some stray CR characters.</p></li>
 <li><p>Trent Gamblin added al_get_bitmap_width, al_get_bitmap_height, al_get_bitmap_format, and al_get_bitmap_flags.</p></li>
 <li><p>Trent Gamblin made al_draw_rotated_(scaled_)bitmap only lock the region of the destination is needs to for memory bitmaps.</p></li>
