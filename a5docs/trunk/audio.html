@@ -426,8 +426,8 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>Examples:</p>
 <ul>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_saw.c#L100">ex_saw.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L54">ex_stream_file.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L51">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L57">ex_stream_file.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L56">ex_acodec_multi.c</a></li>
 </ul>
 <h2 id="allegro_audio_pan_none">ALLEGRO_AUDIO_PAN_NONE</h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="pp">#define ALLEGRO_AUDIO_PAN_NONE      (-1000.0f)</span></span></code></pre></div>
@@ -455,8 +455,8 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>Examples:</p>
 <ul>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_saw.c#L100">ex_saw.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L55">ex_stream_file.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L52">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L58">ex_stream_file.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L57">ex_acodec_multi.c</a></li>
 </ul>
 <h2 id="allegro_mixer">ALLEGRO_MIXER</h2>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_MIXER ALLEGRO_MIXER;</span></code></pre></div>
@@ -465,9 +465,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>When going from mono to stereo (and above), the mixer reduces the volume of both channels by <code>sqrt(2)</code>. When going from stereo (and above) to mono, the mixer reduces the volume of the left and right channels by <code>sqrt(2)</code> before adding them to the center channel (if present).</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L27">ex_stream_file.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L19">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L17">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L29">ex_stream_file.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L23">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L20">ex_mixer_chain.c</a></li>
 </ul>
 <h2 id="allegro_mixer_quality">ALLEGRO_MIXER_QUALITY</h2>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="kw">enum</span> ALLEGRO_MIXER_QUALITY</span></code></pre></div>
@@ -488,9 +488,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 </ul>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L90">ex_stream_file.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L76">ex_kcm_direct.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L85">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L99">ex_stream_file.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L79">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L89">ex_mixer_chain.c</a></li>
 </ul>
 <h2 id="allegro_sample_id">ALLEGRO_SAMPLE_ID</h2>
 <div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_SAMPLE_ID ALLEGRO_SAMPLE_ID;</span></code></pre></div>
@@ -498,7 +498,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>An ALLEGRO_SAMPLE_ID represents a sample being played via <a href="audio.html#al_play_sample">al_play_sample</a>. It can be used to later stop the sample with <a href="audio.html#al_stop_sample">al_stop_sample</a>. The underlying ALLEGRO_SAMPLE_INSTANCE can be extracted using <a href="audio.html#al_lock_sample_id">al_lock_sample_id</a>.</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_simple.c#L26">ex_audio_simple.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_simple.c#L33">ex_audio_simple.c</a></li>
 </ul>
 <h2 id="allegro_sample">ALLEGRO_SAMPLE</h2>
 <div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_SAMPLE ALLEGRO_SAMPLE;</span></code></pre></div>
@@ -508,8 +508,8 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>Examples:</p>
 <ul>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_glext.c#L216">ex_glext.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L17">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L13">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L21">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L15">ex_kcm_direct.c</a></li>
 </ul>
 <h2 id="allegro_sample_instance">ALLEGRO_SAMPLE_INSTANCE</h2>
 <div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_SAMPLE_INSTANCE ALLEGRO_SAMPLE_INSTANCE;</span></code></pre></div>
@@ -520,9 +520,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>See also: <a href="audio.html#allegro_sample">ALLEGRO_SAMPLE</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L18">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L13">ex_kcm_direct.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L19">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L22">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L15">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L22">ex_mixer_chain.c</a></li>
 </ul>
 <h2 id="allegro_audio_stream">ALLEGRO_AUDIO_STREAM</h2>
 <div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_AUDIO_STREAM ALLEGRO_AUDIO_STREAM;</span></code></pre></div>
@@ -536,7 +536,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>Examples:</p>
 <ul>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_saw.c#L14">ex_saw.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L76">ex_stream_file.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L79">ex_stream_file.c</a></li>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_resample_test.c#L17">ex_resample_test.c</a></li>
 </ul>
 <h2 id="allegro_voice">ALLEGRO_VOICE</h2>
@@ -546,9 +546,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>See also: <a href="audio.html#allegro_mixer">ALLEGRO_MIXER</a>, <a href="audio.html#allegro_sample">ALLEGRO_SAMPLE</a>, <a href="audio.html#allegro_audio_stream">ALLEGRO_AUDIO_STREAM</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L26">ex_stream_file.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L20">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L12">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L28">ex_stream_file.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L24">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L14">ex_kcm_direct.c</a></li>
 </ul>
 <h1 id="setting-up-audio">Setting up audio</h1>
 <h2 id="al_install_audio">al_install_audio</h2>
@@ -563,8 +563,8 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>Examples:</p>
 <ul>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_saw.c#L94">ex_saw.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L50">ex_stream_file.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L36">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L53">ex_stream_file.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L41">ex_acodec_multi.c</a></li>
 </ul>
 <h2 id="al_uninstall_audio">al_uninstall_audio</h2>
 <div class="sourceCode" id="cb16"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="dt">void</span> al_uninstall_audio(<span class="dt">void</span>)</span></code></pre></div>
@@ -574,8 +574,8 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>Examples:</p>
 <ul>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_saw.c#L116">ex_saw.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L124">ex_stream_file.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L129">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L133">ex_stream_file.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L134">ex_acodec_multi.c</a></li>
 </ul>
 <h2 id="al_is_audio_installed">al_is_audio_installed</h2>
 <div class="sourceCode" id="cb17"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="dt">bool</span> al_is_audio_installed(<span class="dt">void</span>)</span></code></pre></div>
@@ -637,9 +637,9 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_destroy_voice">al_destroy_voice</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L54">ex_stream_file.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L51">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L65">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L57">ex_stream_file.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L56">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L68">ex_kcm_direct.c</a></li>
 </ul>
 <h2 id="al_destroy_voice">al_destroy_voice</h2>
 <div class="sourceCode" id="cb25"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a><span class="dt">void</span> al_destroy_voice(ALLEGRO_VOICE *voice)</span></code></pre></div>
@@ -648,9 +648,9 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_create_voice">al_create_voice</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L122">ex_stream_file.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L124">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L92">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L131">ex_stream_file.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L129">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L95">ex_kcm_direct.c</a></li>
 </ul>
 <h2 id="al_detach_voice">al_detach_voice</h2>
 <div class="sourceCode" id="cb26"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a><span class="dt">void</span> al_detach_voice(ALLEGRO_VOICE *voice)</span></code></pre></div>
@@ -667,7 +667,7 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_detach_voice">al_detach_voice</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L101">ex_stream_file.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L110">ex_stream_file.c</a></li>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_chain.cpp#L394">ex_audio_chain.cpp</a></li>
 </ul>
 <h2 id="al_attach_mixer_to_voice">al_attach_mixer_to_voice</h2>
@@ -678,9 +678,9 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_detach_voice">al_detach_voice</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L69">ex_stream_file.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L63">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L58">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L72">ex_stream_file.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L68">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L62">ex_mixer_chain.c</a></li>
 </ul>
 <h2 id="al_attach_sample_instance_to_voice">al_attach_sample_instance_to_voice</h2>
 <div class="sourceCode" id="cb29"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true"></a><span class="dt">bool</span> al_attach_sample_instance_to_voice(ALLEGRO_SAMPLE_INSTANCE *spl,</span>
@@ -692,7 +692,7 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_detach_voice">al_detach_voice</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L71">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L74">ex_kcm_direct.c</a></li>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_chain.cpp#L389">ex_audio_chain.cpp</a></li>
 </ul>
 <h2 id="al_get_voice_frequency">al_get_voice_frequency</h2>
@@ -757,9 +757,9 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_destroy_sample">al_destroy_sample</a>, <a href="audio.html#allegro_audio_depth">ALLEGRO_AUDIO_DEPTH</a>, <a href="audio.html#allegro_channel_conf">ALLEGRO_CHANNEL_CONF</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L78">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L49">ex_kcm_direct.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L68">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L83">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L52">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L72">ex_mixer_chain.c</a></li>
 </ul>
 <h2 id="al_destroy_sample">al_destroy_sample</h2>
 <div class="sourceCode" id="cb40"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true"></a><span class="dt">void</span> al_destroy_sample(ALLEGRO_SAMPLE *spl)</span></code></pre></div>
@@ -769,9 +769,9 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_destroy_sample_instance">al_destroy_sample_instance</a>, <a href="audio.html#al_stop_sample">al_stop_sample</a>, <a href="audio.html#al_stop_samples">al_stop_samples</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L81">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L90">ex_kcm_direct.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L111">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L86">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L93">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L115">ex_mixer_chain.c</a></li>
 </ul>
 <h2 id="al_play_sample">al_play_sample</h2>
 <div class="sourceCode" id="cb41"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true"></a><span class="dt">bool</span> al_play_sample(ALLEGRO_SAMPLE *spl, <span class="dt">float</span> gain, <span class="dt">float</span> pan, <span class="dt">float</span> speed,</span>
@@ -789,9 +789,9 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#allegro_playmode">ALLEGRO_PLAYMODE</a>, <a href="audio.html#allegro_audio_pan_none">ALLEGRO_AUDIO_PAN_NONE</a>, <a href="audio.html#allegro_sample_id">ALLEGRO_SAMPLE_ID</a>, <a href="audio.html#al_stop_sample">al_stop_sample</a>, <a href="audio.html#al_stop_samples">al_stop_samples</a>, <a href="audio.html#al_lock_sample_id">al_lock_sample_id</a>.</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L102">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L77">ex_kcm_direct.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L86">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L107">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L80">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L90">ex_mixer_chain.c</a></li>
 </ul>
 <h2 id="al_stop_sample">al_stop_sample</h2>
 <div class="sourceCode" id="cb42"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true"></a><span class="dt">void</span> al_stop_sample(ALLEGRO_SAMPLE_ID *spl_id)</span></code></pre></div>
@@ -800,9 +800,9 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_stop_samples">al_stop_samples</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L118">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L85">ex_kcm_direct.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L104">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L123">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L88">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L108">ex_mixer_chain.c</a></li>
 </ul>
 <h2 id="al_lock_sample_id">al_lock_sample_id</h2>
 <div class="sourceCode" id="cb43"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true"></a>ALLEGRO_SAMPLE_INSTANCE* al_lock_sample_id(ALLEGRO_SAMPLE_ID *spl_id)</span></code></pre></div>
@@ -817,7 +817,7 @@ default voice &lt;-- default mixer &lt;---         .
 </blockquote>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_simple.c#L130">ex_audio_simple.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_simple.c#L138">ex_audio_simple.c</a></li>
 </ul>
 <h2 id="al_unlock_sample_id">al_unlock_sample_id</h2>
 <div class="sourceCode" id="cb44"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true"></a><span class="dt">void</span> al_unlock_sample_id(ALLEGRO_SAMPLE_ID *spl_id)</span></code></pre></div>
@@ -830,7 +830,7 @@ default voice &lt;-- default mixer &lt;---         .
 </blockquote>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_simple.c#L133">ex_audio_simple.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_simple.c#L141">ex_audio_simple.c</a></li>
 </ul>
 <h2 id="al_stop_samples">al_stop_samples</h2>
 <div class="sourceCode" id="cb45"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true"></a><span class="dt">void</span> al_stop_samples(<span class="dt">void</span>)</span></code></pre></div>
@@ -839,7 +839,7 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_stop_sample">al_stop_sample</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_simple.c#L103">ex_audio_simple.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_simple.c#L111">ex_audio_simple.c</a></li>
 </ul>
 <h2 id="al_get_sample_channels">al_get_sample_channels</h2>
 <div class="sourceCode" id="cb46"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true"></a>ALLEGRO_CHANNEL_CONF al_get_sample_channels(<span class="dt">const</span> ALLEGRO_SAMPLE *spl)</span></code></pre></div>
@@ -879,9 +879,9 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_destroy_sample_instance">al_destroy_sample_instance</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L78">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L49">ex_kcm_direct.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L68">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L83">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L52">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L72">ex_mixer_chain.c</a></li>
 </ul>
 <h2 id="al_destroy_sample_instance">al_destroy_sample_instance</h2>
 <div class="sourceCode" id="cb52"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true"></a><span class="dt">void</span> al_destroy_sample_instance(ALLEGRO_SAMPLE_INSTANCE *spl)</span></code></pre></div>
@@ -890,9 +890,9 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_create_sample_instance">al_create_sample_instance</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L119">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L91">ex_kcm_direct.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L112">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L124">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L94">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L116">ex_mixer_chain.c</a></li>
 </ul>
 <h2 id="al_play_sample_instance">al_play_sample_instance</h2>
 <div class="sourceCode" id="cb53"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true"></a><span class="dt">bool</span> al_play_sample_instance(ALLEGRO_SAMPLE_INSTANCE *spl)</span></code></pre></div>
@@ -901,9 +901,9 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_stop_sample_instance">al_stop_sample_instance</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L102">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L77">ex_kcm_direct.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L86">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L107">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L80">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L90">ex_mixer_chain.c</a></li>
 </ul>
 <h2 id="al_stop_sample_instance">al_stop_sample_instance</h2>
 <div class="sourceCode" id="cb54"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true"></a><span class="dt">bool</span> al_stop_sample_instance(ALLEGRO_SAMPLE_INSTANCE *spl)</span></code></pre></div>
@@ -912,9 +912,9 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_play_sample_instance">al_play_sample_instance</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L118">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L85">ex_kcm_direct.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L104">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L123">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L88">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L108">ex_mixer_chain.c</a></li>
 </ul>
 <h2 id="al_get_sample_instance_channels">al_get_sample_instance_channels</h2>
 <div class="sourceCode" id="cb55"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true"></a>ALLEGRO_CHANNEL_CONF al_get_sample_instance_channels(</span>
@@ -924,7 +924,7 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#allegro_channel_conf">ALLEGRO_CHANNEL_CONF</a>.</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L60">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L63">ex_kcm_direct.c</a></li>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec.c#L106">ex_acodec.c</a></li>
 </ul>
 <h2 id="al_get_sample_instance_depth">al_get_sample_instance_depth</h2>
@@ -934,7 +934,7 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#allegro_audio_depth">ALLEGRO_AUDIO_DEPTH</a>.</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L59">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L62">ex_kcm_direct.c</a></li>
 </ul>
 <h2 id="al_get_sample_instance_frequency">al_get_sample_instance_frequency</h2>
 <div class="sourceCode" id="cb57"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true"></a><span class="dt">unsigned</span> <span class="dt">int</span> al_get_sample_instance_frequency(<span class="dt">const</span> ALLEGRO_SAMPLE_INSTANCE *spl)</span></code></pre></div>
@@ -942,7 +942,7 @@ default voice &lt;-- default mixer &lt;---         .
 <p>Return the frequency (in Hz) of the sample instance’s sample data.</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L61">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L64">ex_kcm_direct.c</a></li>
 </ul>
 <h2 id="al_get_sample_instance_length">al_get_sample_instance_length</h2>
 <div class="sourceCode" id="cb58"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true"></a><span class="dt">unsigned</span> <span class="dt">int</span> al_get_sample_instance_length(<span class="dt">const</span> ALLEGRO_SAMPLE_INSTANCE *spl)</span></code></pre></div>
@@ -952,7 +952,7 @@ default voice &lt;-- default mixer &lt;---         .
 <p>Examples:</p>
 <ul>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_props.cpp#L196">ex_audio_props.cpp</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_simple.c#L131">ex_audio_simple.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_simple.c#L139">ex_audio_simple.c</a></li>
 </ul>
 <h2 id="al_set_sample_instance_length">al_set_sample_instance_length</h2>
 <div class="sourceCode" id="cb59"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true"></a><span class="dt">bool</span> al_set_sample_instance_length(ALLEGRO_SAMPLE_INSTANCE *spl,</span>
@@ -983,7 +983,7 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_get_sample_instance_position">al_get_sample_instance_position</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_simple.c#L131">ex_audio_simple.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_simple.c#L139">ex_audio_simple.c</a></li>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_chain.cpp#L521">ex_audio_chain.cpp</a></li>
 </ul>
 <h2 id="al_get_sample_instance_speed">al_get_sample_instance_speed</h2>
@@ -1000,7 +1000,7 @@ default voice &lt;-- default mixer &lt;---         .
 <p>Examples:</p>
 <ul>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_props.cpp#L121">ex_audio_props.cpp</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_simple.c#L132">ex_audio_simple.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_simple.c#L140">ex_audio_simple.c</a></li>
 </ul>
 <h2 id="al_get_sample_instance_gain">al_get_sample_instance_gain</h2>
 <div class="sourceCode" id="cb64"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true"></a><span class="dt">float</span> al_get_sample_instance_gain(<span class="dt">const</span> ALLEGRO_SAMPLE_INSTANCE *spl)</span></code></pre></div>
@@ -1019,7 +1019,7 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_get_sample_instance_gain">al_get_sample_instance_gain</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L98">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L102">ex_mixer_chain.c</a></li>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec.c#L114">ex_acodec.c</a></li>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_props.cpp#L134">ex_audio_props.cpp</a></li>
 </ul>
@@ -1040,7 +1040,7 @@ default voice &lt;-- default mixer &lt;---         .
 <p>Examples:</p>
 <ul>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_props.cpp#L118">ex_audio_props.cpp</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_simple.c#L184">ex_audio_simple.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_simple.c#L192">ex_audio_simple.c</a></li>
 </ul>
 <h2 id="al_get_sample_instance_time">al_get_sample_instance_time</h2>
 <div class="sourceCode" id="cb68"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true"></a><span class="dt">float</span> al_get_sample_instance_time(<span class="dt">const</span> ALLEGRO_SAMPLE_INSTANCE *spl)</span></code></pre></div>
@@ -1049,9 +1049,9 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_get_sample_instance_length">al_get_sample_instance_length</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L104">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L79">ex_kcm_direct.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L89">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L109">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L82">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L93">ex_mixer_chain.c</a></li>
 </ul>
 <h2 id="al_get_sample_instance_playmode">al_get_sample_instance_playmode</h2>
 <div class="sourceCode" id="cb69"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true"></a>ALLEGRO_PLAYMODE al_get_sample_instance_playmode(<span class="dt">const</span> ALLEGRO_SAMPLE_INSTANCE *spl)</span></code></pre></div>
@@ -1067,8 +1067,8 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#allegro_playmode">ALLEGRO_PLAYMODE</a>, <a href="audio.html#al_get_sample_instance_playmode">al_get_sample_instance_playmode</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L76">ex_kcm_direct.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L85">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L79">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L89">ex_mixer_chain.c</a></li>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec.c#L97">ex_acodec.c</a></li>
 </ul>
 <h2 id="al_get_sample_instance_playing">al_get_sample_instance_playing</h2>
@@ -1115,9 +1115,9 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_set_sample">al_set_sample</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L104">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L59">ex_kcm_direct.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L89">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L109">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L62">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L93">ex_mixer_chain.c</a></li>
 </ul>
 <h2 id="al_set_sample">al_set_sample</h2>
 <div class="sourceCode" id="cb76"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true"></a><span class="dt">bool</span> al_set_sample(ALLEGRO_SAMPLE_INSTANCE *spl, ALLEGRO_SAMPLE *data)</span></code></pre></div>
@@ -1131,8 +1131,8 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_get_sample">al_get_sample</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L54">ex_kcm_direct.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L72">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L57">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L76">ex_mixer_chain.c</a></li>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec.c#L86">ex_acodec.c</a></li>
 </ul>
 <h2 id="al_set_sample_instance_channel_matrix">al_set_sample_instance_channel_matrix</h2>
@@ -1171,9 +1171,9 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_destroy_mixer">al_destroy_mixer</a>, <a href="audio.html#allegro_audio_depth">ALLEGRO_AUDIO_DEPTH</a>, <a href="audio.html#allegro_channel_conf">ALLEGRO_CHANNEL_CONF</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L62">ex_stream_file.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L57">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L48">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L65">ex_stream_file.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L62">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L52">ex_mixer_chain.c</a></li>
 </ul>
 <h2 id="al_destroy_mixer">al_destroy_mixer</h2>
 <div class="sourceCode" id="cb80"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true"></a><span class="dt">void</span> al_destroy_mixer(ALLEGRO_MIXER *mixer)</span></code></pre></div>
@@ -1182,9 +1182,9 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_create_mixer">al_create_mixer</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L120">ex_stream_file.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L123">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L113">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L129">ex_stream_file.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L128">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L117">ex_mixer_chain.c</a></li>
 </ul>
 <h2 id="al_get_default_mixer">al_get_default_mixer</h2>
 <div class="sourceCode" id="cb81"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true"></a>ALLEGRO_MIXER *al_get_default_mixer(<span class="dt">void</span>)</span></code></pre></div>
@@ -1230,7 +1230,7 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_detach_mixer">al_detach_mixer</a>.</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L78">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L82">ex_mixer_chain.c</a></li>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_audio_chain.cpp#L445">ex_audio_chain.cpp</a></li>
 </ul>
 <h2 id="al_attach_sample_instance_to_mixer">al_attach_sample_instance_to_mixer</h2>
@@ -1242,8 +1242,8 @@ default voice &lt;-- default mixer &lt;---         .
 <p>See also: <a href="audio.html#al_detach_sample_instance">al_detach_sample_instance</a>.</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L86">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L75">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L91">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L79">ex_mixer_chain.c</a></li>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec.c#L91">ex_acodec.c</a></li>
 </ul>
 <h2 id="al_attach_audio_stream_to_mixer">al_attach_audio_stream_to_mixer</h2>
@@ -1255,7 +1255,7 @@ default voice &lt;-- default mixer &lt;---         .
 <p>Examples:</p>
 <ul>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_saw.c#L105">ex_saw.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L96">ex_stream_file.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L105">ex_stream_file.c</a></li>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_resample_test.c#L40">ex_resample_test.c</a></li>
 </ul>
 <h2 id="al_get_mixer_frequency">al_get_mixer_frequency</h2>
@@ -1416,7 +1416,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p>Examples:</p>
 <ul>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_saw.c#L115">ex_saw.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L115">ex_stream_file.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L124">ex_stream_file.c</a></li>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_resample_test.c#L191">ex_resample_test.c</a></li>
 </ul>
 <h2 id="al_get_audio_stream_event_source">al_get_audio_stream_event_source</h2>
@@ -1428,7 +1428,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p>Examples:</p>
 <ul>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_saw.c#L24">ex_saw.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L93">ex_stream_file.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L102">ex_stream_file.c</a></li>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_resample_test.c#L49">ex_resample_test.c</a></li>
 </ul>
 <h2 id="al_drain_audio_stream">al_drain_audio_stream</h2>
@@ -1554,7 +1554,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p>See also: <a href="audio.html#allegro_playmode">ALLEGRO_PLAYMODE</a>, <a href="audio.html#al_get_audio_stream_playmode">al_get_audio_stream_playmode</a>.</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L90">ex_stream_file.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L99">ex_stream_file.c</a></li>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_pp.c#L191">ex_mixer_pp.c</a></li>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_seek.c#L281">ex_stream_seek.c</a></li>
 </ul>
@@ -1728,9 +1728,9 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p>See also: <a href="audio.html#al_register_sample_loader">al_register_sample_loader</a>, <a href="acodec.html#al_init_acodec_addon">al_init_acodec_addon</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L73">ex_acodec_multi.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L42">ex_kcm_direct.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L64">ex_mixer_chain.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_acodec_multi.c#L78">ex_acodec_multi.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_kcm_direct.c#L45">ex_kcm_direct.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_chain.c#L68">ex_mixer_chain.c</a></li>
 </ul>
 <h2 id="al_load_sample_f">al_load_sample_f</h2>
 <div class="sourceCode" id="cb143"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true"></a>ALLEGRO_SAMPLE *al_load_sample_f(ALLEGRO_FILE* fp, <span class="dt">const</span> <span class="dt">char</span> *ident)</span></code></pre></div>
@@ -1756,7 +1756,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p>See also: <a href="audio.html#al_load_audio_stream_f">al_load_audio_stream_f</a>, <a href="audio.html#al_register_audio_stream_loader">al_register_audio_stream_loader</a>, <a href="acodec.html#al_init_acodec_addon">al_init_acodec_addon</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L82">ex_stream_file.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_file.c#L85">ex_stream_file.c</a></li>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_mixer_pp.c#L182">ex_mixer_pp.c</a></li>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_stream_seek.c#L271">ex_stream_seek.c</a></li>
 </ul>
@@ -1930,7 +1930,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 </ul>
 <p class="timestamp">
 Allegro version 5.2.7 (GIT)
- - Last updated: 2021-02-01 05:31:16 UTC
+ - Last updated: 2021-02-23 06:07:37 UTC
 </p>
 </div>
 </body>
