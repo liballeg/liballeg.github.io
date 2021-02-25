@@ -169,6 +169,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <li><a href="#al_get_monitor_info">al_get_monitor_info</a></li>
 <li><a href="#al_get_monitor_dpi">al_get_monitor_dpi</a></li>
 <li><a href="#al_get_num_video_adapters">al_get_num_video_adapters</a></li>
+<li><a href="#al_get_monitor_refresh_rate">al_get_monitor_refresh_rate</a></li>
 </ul>
 </nav>
 <p>These functions are declared in the main Allegro header file:</p>
@@ -243,9 +244,18 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_winfull.c#L20">ex_winfull.c</a></li>
 <li><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/examples/ex_dualies.c#L79">ex_dualies.c</a></li>
 </ul>
+<h1 id="al_get_monitor_refresh_rate">al_get_monitor_refresh_rate</h1>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="dt">int</span> al_get_monitor_refresh_rate(<span class="dt">int</span> adapter)</span></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/8f4596176e51291b5115a01a374c3ddda7c87034/src/monitor.c#L36">Source Code</a></p>
+<p>Returns the current refresh rate of a monitor attached to the display adapter.</p>
+<p>Since: 5.2.6</p>
+<blockquote>
+<p><em><a href="getting_started.html#unstable-api">Unstable API</a>:</em> This is an experimental feature and currently only works on Windows.</p>
+</blockquote>
+<p>See also: <a href="monitor.html#al_get_monitor_info">al_get_monitor_info</a></p>
 <p class="timestamp">
 Allegro version 5.2.7 (GIT)
- - Last updated: 2021-02-23 06:07:28 UTC
+ - Last updated: 2021-02-25 07:09:29 UTC
 </p>
 </div>
 </body>
