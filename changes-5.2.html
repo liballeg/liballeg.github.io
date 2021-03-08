@@ -86,6 +86,97 @@ A game programming library
 <!-- left -->
 <div id="content">
 <p>These lists serve as summaries; the full histories are in the git repository.</p>
+<h1 id="changes-from-5.2.6-to-5.2.7-march-2021">Changes from 5.2.6 to 5.2.7 (March 2021)</h1>
+<p>The main developers this time were: SiegeLord, Peter Hull, Elias Pschernig, Aldrik Ramaekers, Andreas Rönnquist.</p>
+<p>Build system:</p>
+<ul>
+<li><p>Allow generating projects with a suffix (lorry-lee).</p></li>
+<li><p>Fix build under Clang-CL in Visual Studio.</p></li>
+</ul>
+<p>Core:</p>
+<ul>
+<li><p>Avoid some undefined behavior errors.</p></li>
+<li><p>Return key modifiers in <code>ALLEGRO_EVENT_KEY_UP</code> and <code>ALLEGRO_EVENT_KEY_DOWN</code>.</p></li>
+<li><p>Allow calling <code>al_map_*</code> color functions before Allegro is initialized.</p></li>
+<li><p>Allow minimum bitmap size to be something other than 16 on non-Android platforms (controlled via <code>allegro5.cfg</code>).</p></li>
+<li><p>Add <code>al_get_monitor_refresh_rate</code> (only implemented on Windows for now).</p></li>
+</ul>
+<p>Graphics:</p>
+<ul>
+<li><p>Fix <code>ALLEGRO_KEEP_INDEX</code> flag for bitmaps.</p></li>
+<li><p>Add <code>ALLEGRO_OPENGL_CORE_PROFILE</code> display flag.</p></li>
+</ul>
+<p>Emscripten:</p>
+<ul>
+<li>The experimental Emscripten support (via the SDL backend) is now documented in <code>README_sdl.txt</code>.</li>
+</ul>
+<p>OSX:</p>
+<ul>
+<li><p>Move more Cocoa operations to the main thread.</p></li>
+<li><p>Explicitly link CoreVideo to fix the static build.</p></li>
+</ul>
+<p>Windows:</p>
+<ul>
+<li><p>Issue #1125: Speed up OpenGL extension detection (Tobias Scheuer).</p></li>
+<li><p>Use Unicode APIs when enumerating joysticks.</p></li>
+<li><p>Use <code>WM_DEVICECHANGE</code> rather than polling to detect joystick hotlugging, reducing input drops and lags (Todd Cope).</p></li>
+<li><p>Fix joystick polling period.</p></li>
+<li><p>Restore WinXP compatibility by using slightly older API when loading shared libraries (Julian Smythe).</p></li>
+<li><p>Fix build with HLSL disabled (Julian Smythe).</p></li>
+<li><p>Raise DirectInput <code>MAX_JOYSTICKS</code> to 32 and <code>DEVICE_BUFFER_SIZE</code> to 128.</p></li>
+</ul>
+<p>SDL:</p>
+<ul>
+<li>Issue #1224: Fix bug in SDL voice driver.</li>
+</ul>
+<p>Audio addon:</p>
+<ul>
+<li>Allows playing sounds in reverse by specifying a negative speed.</li>
+</ul>
+<p>Acodec addon:</p>
+<ul>
+<li>Fix edge-case looping in Ogg Vorbis stream (Cody Licorish)</li>
+</ul>
+<p>Audio addon:</p>
+<ul>
+<li>Use more sensible values for PulseAudio’s playback buffer, potentially resolving some crashes and high CPU usage.</li>
+</ul>
+<p>Native Dialog Addon:</p>
+<ul>
+<li>Migrate from GTK2 to GTK3. Sadly, we lose menu icons as GTK3 dropped support for them.</li>
+</ul>
+<p>TTF addon:</p>
+<ul>
+<li><p>Allow initializing TTF addon before the Font addon.</p></li>
+<li><p>Shut-down the TTF addon automatically in <code>al_uninstall_system</code>.</p></li>
+</ul>
+<p>PhysFS addon:</p>
+<ul>
+<li><p>Fix handling of native path separators.</p></li>
+<li><p>Stop using deprecated PhysFS API.</p></li>
+</ul>
+<p>Primitives addon:</p>
+<ul>
+<li><p>Fix segfault in <code>al_draw_ribbon</code> when <code>num_segments &gt; 128</code> (Rodolfo Borges).</p></li>
+<li><p>Issue 1215: Correctly handle small scales when determining subdivision level for high level primitives (Robin Heydon).</p></li>
+</ul>
+<p>Documentation:</p>
+<ul>
+<li><p>Fix LaTeX errors in the generation of the reference manual PDF.</p></li>
+<li><p>Add links to examples into the reference manual.</p></li>
+<li><p>Allow pressing ‘S’ to focus the search bar in the docs.</p></li>
+<li><p>Assorted documentation improvements.</p></li>
+</ul>
+<p>Misc:</p>
+<ul>
+<li><p>Add a security policy and an associated private security mailing list - allegro-security@lists.liballeg.org.</p></li>
+<li><p>Add Emscripten-powered examples to https://liballeg.org/examples_demos.html.</p></li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li><p><code>ex_audio_simple</code> now displays instructions and supports bidirectional looping.</p></li>
+<li><p>Add default files to some audio examples.</p></li>
+</ul>
 <h1 id="changes-from-5.2.5-to-5.2.6-february-2020">Changes from 5.2.5 to 5.2.6 (February 2020)</h1>
 <p>The main developers this time were: SiegeLord, Peter Hull, Karthik Kumar Viswanathan, Elias Pschernig, Sebastian Krzyszkowiak, Doug Thompson, PmProg, RmBeer.</p>
 <p>Core:</p>
