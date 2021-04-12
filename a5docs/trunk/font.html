@@ -232,17 +232,17 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <h1 id="general-font-routines">General font routines</h1>
 <h2 id="allegro_font">ALLEGRO_FONT</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_FONT ALLEGRO_FONT;</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/allegro5/allegro_font.h#L48">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/allegro5/allegro_font.h#L48">Source Code</a></p>
 <p>A handle identifying any kind of font. Usually you will create it with <a href="font.html#al_load_font">al_load_font</a> which supports loading all kinds of TrueType fonts supported by the FreeType library. If you instead pass the filename of a bitmap file, it will be loaded with <a href="graphics.html#al_load_bitmap">al_load_bitmap</a> and a font in Allegro’s bitmap font format will be created from it with <a href="font.html#al_grab_font_from_bitmap">al_grab_font_from_bitmap</a>.</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_disable_screensaver.c#L10">ex_disable_screensaver.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_font_justify.cpp#L17">ex_font_justify.cpp</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_display_events.c#L26">ex_display_events.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_disable_screensaver.c#L10">ex_disable_screensaver.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_font_justify.cpp#L17">ex_font_justify.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_display_events.c#L26">ex_display_events.c</a></li>
 </ul>
 <h2 id="allegro_glyph">ALLEGRO_GLYPH</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_GLYPH ALLEGRO_GLYPH;</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/allegro5/allegro_font.h#L53">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/allegro5/allegro_font.h#L53">Source Code</a></p>
 <p>A structure containing the properties of a character in a font.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_GLYPH {</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>   ALLEGRO_BITMAP *bitmap;   <span class="co">// the bitmap the character is on</span></span>
@@ -266,11 +266,11 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>See also: <a href="font.html#al_get_glyph">al_get_glyph</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_ttf.c#L91">ex_ttf.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_ttf.c#L91">ex_ttf.c</a></li>
 </ul>
 <h2 id="al_init_font_addon">al_init_font_addon</h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="dt">bool</span> al_init_font_addon(<span class="dt">void</span>)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/font.c#L365">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/font.c#L365">Source Code</a></p>
 <p>Initialise the font addon.</p>
 <p>Note that if you intend to load bitmap fonts, you will need to initialise allegro_image separately (unless you are using another library to load images).</p>
 <p>Similarly, if you wish to load truetype-fonts, do not forget to also call <a href="font.html#al_init_ttf_addon">al_init_ttf_addon</a>.</p>
@@ -278,48 +278,48 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>See also: <a href="image.html#al_init_image_addon">al_init_image_addon</a>, <a href="font.html#al_init_ttf_addon">al_init_ttf_addon</a>, <a href="font.html#al_shutdown_font_addon">al_shutdown_font_addon</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_disable_screensaver.c#L28">ex_disable_screensaver.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_font_justify.cpp#L104">ex_font_justify.cpp</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_display_events.c#L40">ex_display_events.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_disable_screensaver.c#L28">ex_disable_screensaver.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_font_justify.cpp#L104">ex_font_justify.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_display_events.c#L40">ex_display_events.c</a></li>
 </ul>
 <h2 id="al_is_font_addon_initialized">al_is_font_addon_initialized</h2>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="dt">bool</span> al_is_font_addon_initialized(<span class="dt">void</span>)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/font.c#L391">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/font.c#L391">Source Code</a></p>
 <p>Returns true if the font addon is initialized, otherwise returns false.</p>
 <p>Since: 5.2.6</p>
 <p>See also: <a href="font.html#al_init_font_addon">al_init_font_addon</a>, <a href="font.html#al_shutdown_font_addon">al_shutdown_font_addon</a></p>
 <h2 id="al_shutdown_font_addon">al_shutdown_font_addon</h2>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="dt">void</span> al_shutdown_font_addon(<span class="dt">void</span>)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/font.c#L400">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/font.c#L400">Source Code</a></p>
 <p>Shut down the font addon. This is done automatically at program exit, but can be called any time the user wishes as well.</p>
 <p>See also: <a href="font.html#al_init_font_addon">al_init_font_addon</a></p>
 <h2 id="al_load_font">al_load_font</h2>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>ALLEGRO_FONT *al_load_font(<span class="dt">char</span> <span class="dt">const</span> *filename, <span class="dt">int</span> size, <span class="dt">int</span> flags)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/font.c#L448">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/font.c#L448">Source Code</a></p>
 <p>Loads a font from disk. This will use <a href="font.html#al_load_bitmap_font_flags">al_load_bitmap_font_flags</a> if you pass the name of a known bitmap format, or else <a href="font.html#al_load_ttf_font">al_load_ttf_font</a>.</p>
 <p>The flags parameter is passed through to either of those functions. Bitmap and TTF fonts are also affected by the current <a href="graphics.html#al_set_new_bitmap_flags">bitmap flags</a> at the time the font is loaded.</p>
 <p>See also: <a href="font.html#al_destroy_font">al_destroy_font</a>, <a href="font.html#al_init_font_addon">al_init_font_addon</a>, <a href="font.html#al_register_font_loader">al_register_font_loader</a>, <a href="font.html#al_load_bitmap_font_flags">al_load_bitmap_font_flags</a>, <a href="font.html#al_load_ttf_font">al_load_ttf_font</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_font_justify.cpp#L116">ex_font_justify.cpp</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_membmp.c#L104">ex_membmp.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_window_title.c#L60">ex_window_title.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_font_justify.cpp#L116">ex_font_justify.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_membmp.c#L104">ex_membmp.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_window_title.c#L60">ex_window_title.c</a></li>
 </ul>
 <h2 id="al_destroy_font">al_destroy_font</h2>
 <div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="dt">void</span> al_destroy_font(ALLEGRO_FONT *f)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L358">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L358">Source Code</a></p>
 <p>Frees the memory being used by a font structure. Does nothing if passed NULL.</p>
 <p>See also: <a href="font.html#al_load_font">al_load_font</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_disable_screensaver.c#L67">ex_disable_screensaver.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_font_justify.cpp#L139">ex_font_justify.cpp</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_cpu.c#L86">ex_cpu.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_disable_screensaver.c#L67">ex_disable_screensaver.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_font_justify.cpp#L139">ex_font_justify.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_cpu.c#L86">ex_cpu.c</a></li>
 </ul>
 <h2 id="al_register_font_loader">al_register_font_loader</h2>
 <div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="dt">bool</span> al_register_font_loader(<span class="dt">char</span> <span class="dt">const</span> *extension,</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>   ALLEGRO_FONT *(*load_font)(<span class="dt">char</span> <span class="dt">const</span> *filename, <span class="dt">int</span> size, <span class="dt">int</span> flags))</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/font.c#L424">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/font.c#L424">Source Code</a></p>
 <p>Informs Allegro of a new font file type, telling it how to load files of this format.</p>
 <p>The <code>extension</code> should include the leading dot (‘.’) character. It will be matched case-insensitively.</p>
 <p>The <code>load_font</code> argument may be NULL to unregister an entry.</p>
@@ -327,7 +327,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>See also: <a href="font.html#al_init_font_addon">al_init_font_addon</a></p>
 <h2 id="al_get_font_line_height">al_get_font_line_height</h2>
 <div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="dt">int</span> al_get_font_line_height(<span class="dt">const</span> ALLEGRO_FONT *f)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L298">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L298">Source Code</a></p>
 <p>Returns the usual height of a line of text in the specified font. For bitmap fonts this is simply the height of all glyph bitmaps. For truetype fonts it is whatever the font file specifies. In particular, some special glyphs may be higher than the height returned here.</p>
 <p>If the X is the position you specify to draw text, the meaning of ascent and descent and the line height is like in the figure below.</p>
 <pre><code>X------------------------
@@ -344,53 +344,53 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>See also: <a href="font.html#al_get_text_width">al_get_text_width</a>, <a href="font.html#al_get_text_dimensions">al_get_text_dimensions</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_font_justify.cpp#L78">ex_font_justify.cpp</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_membmp.c#L66">ex_membmp.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_mouse_warp.c#L54">ex_mouse_warp.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_font_justify.cpp#L78">ex_font_justify.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_membmp.c#L66">ex_membmp.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_mouse_warp.c#L54">ex_mouse_warp.c</a></li>
 </ul>
 <h2 id="al_get_font_ascent">al_get_font_ascent</h2>
 <div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="dt">int</span> al_get_font_ascent(<span class="dt">const</span> ALLEGRO_FONT *f)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L308">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L308">Source Code</a></p>
 <p>Returns the ascent of the specified font.</p>
 <p>See also: <a href="font.html#al_get_font_descent">al_get_font_descent</a>, <a href="font.html#al_get_font_line_height">al_get_font_line_height</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_ttf.c#L201">ex_ttf.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_ttf.c#L201">ex_ttf.c</a></li>
 </ul>
 <h2 id="al_get_font_descent">al_get_font_descent</h2>
 <div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="dt">int</span> al_get_font_descent(<span class="dt">const</span> ALLEGRO_FONT *f)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L318">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L318">Source Code</a></p>
 <p>Returns the descent of the specified font.</p>
 <p>See also: <a href="font.html#al_get_font_ascent">al_get_font_ascent</a>, <a href="font.html#al_get_font_line_height">al_get_font_line_height</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_ttf.c#L202">ex_ttf.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_ttf.c#L202">ex_ttf.c</a></li>
 </ul>
 <h2 id="al_get_text_width">al_get_text_width</h2>
 <div class="sourceCode" id="cb15"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="dt">int</span> al_get_text_width(<span class="dt">const</span> ALLEGRO_FONT *f, <span class="dt">const</span> <span class="dt">char</span> *str)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L282">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L282">Source Code</a></p>
 <p>Calculates the length of a string in a particular font, in pixels.</p>
 <p>See also: <a href="font.html#al_get_ustr_width">al_get_ustr_width</a>, <a href="font.html#al_get_font_line_height">al_get_font_line_height</a>, <a href="font.html#al_get_text_dimensions">al_get_text_dimensions</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_display_options.c#L182">ex_display_options.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_record_name.c#L224">ex_record_name.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_logo.c#L228">ex_logo.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_display_options.c#L182">ex_display_options.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_record_name.c#L224">ex_record_name.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_logo.c#L228">ex_logo.c</a></li>
 </ul>
 <h2 id="al_get_ustr_width">al_get_ustr_width</h2>
 <div class="sourceCode" id="cb16"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="dt">int</span> al_get_ustr_width(<span class="dt">const</span> ALLEGRO_FONT *f, ALLEGRO_USTR <span class="dt">const</span> *ustr)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L270">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L270">Source Code</a></p>
 <p>Like <a href="font.html#al_get_text_width">al_get_text_width</a> but expects an ALLEGRO_USTR.</p>
 <p>See also: <a href="font.html#al_get_text_width">al_get_text_width</a>, <a href="font.html#al_get_ustr_dimensions">al_get_ustr_dimensions</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/nihgui.cpp#L836">nihgui.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/nihgui.cpp#L836">nihgui.cpp</a></li>
 </ul>
 <h2 id="al_draw_text">al_draw_text</h2>
 <div class="sourceCode" id="cb17"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="dt">void</span> al_draw_text(<span class="dt">const</span> ALLEGRO_FONT *font,</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a>   ALLEGRO_COLOR color, <span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">int</span> flags,</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a>   <span class="dt">char</span> <span class="dt">const</span> *text) </span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L102">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L102">Source Code</a></p>
 <p>Writes the NUL-terminated string <code>text</code> onto the target bitmap at position <code>x</code>, <code>y</code>, using the specified <code>font</code>.</p>
 <p>The <code>flags</code> parameter can be 0 or one of the following flags:</p>
 <ul>
@@ -406,28 +406,28 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>See also: <a href="font.html#al_draw_ustr">al_draw_ustr</a>, <a href="font.html#al_draw_textf">al_draw_textf</a>, <a href="font.html#al_draw_justified_text">al_draw_justified_text</a>, <a href="font.html#al_draw_multiline_text">al_draw_multiline_text</a>.</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_disable_screensaver.c#L50">ex_disable_screensaver.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_display_events.c#L67">ex_display_events.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_membmp.c#L11">ex_membmp.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_disable_screensaver.c#L50">ex_disable_screensaver.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_display_events.c#L67">ex_display_events.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_membmp.c#L11">ex_membmp.c</a></li>
 </ul>
 <h2 id="al_draw_ustr">al_draw_ustr</h2>
 <div class="sourceCode" id="cb18"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="dt">void</span> al_draw_ustr(<span class="dt">const</span> ALLEGRO_FONT *font,</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a>   ALLEGRO_COLOR color, <span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">int</span> flags,</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a>   <span class="dt">const</span> ALLEGRO_USTR *ustr) </span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L75">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L75">Source Code</a></p>
 <p>Like <a href="font.html#al_draw_text">al_draw_text</a>, except the text is passed as an ALLEGRO_USTR instead of a NUL-terminated char array.</p>
 <p>See also: <a href="font.html#al_draw_text">al_draw_text</a>, <a href="font.html#al_draw_justified_ustr">al_draw_justified_ustr</a>, <a href="font.html#al_draw_multiline_ustr">al_draw_multiline_ustr</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_font_multiline.cpp#L254">ex_font_multiline.cpp</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/nihgui.cpp#L861">nihgui.cpp</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_blend.c#L61">ex_blend.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_font_multiline.cpp#L254">ex_font_multiline.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/nihgui.cpp#L861">nihgui.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_blend.c#L61">ex_blend.c</a></li>
 </ul>
 <h2 id="al_draw_justified_text">al_draw_justified_text</h2>
 <div class="sourceCode" id="cb19"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a><span class="dt">void</span> al_draw_justified_text(<span class="dt">const</span> ALLEGRO_FONT *font,</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a>   ALLEGRO_COLOR color, <span class="dt">float</span> x1, <span class="dt">float</span> x2,</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a>   <span class="dt">float</span> y, <span class="dt">float</span> diff, <span class="dt">int</span> flags, <span class="dt">const</span> <span class="dt">char</span> *text)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L200">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L200">Source Code</a></p>
 <p>Like <a href="font.html#al_draw_text">al_draw_text</a>, but justifies the string to the region x1-x2.</p>
 <p>The <code>diff</code> parameter is the maximum amount of horizontal space to allow between words. If justisfying the text would exceed <code>diff</code> pixels, or the string contains less than two words, then the string will be drawn left aligned.</p>
 <p>The <code>flags</code> parameter can be 0 or one of the following flags:</p>
@@ -437,40 +437,40 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>See also: <a href="font.html#al_draw_justified_textf">al_draw_justified_textf</a>, <a href="font.html#al_draw_justified_ustr">al_draw_justified_ustr</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_font_justify.cpp#L80">ex_font_justify.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_font_justify.cpp#L80">ex_font_justify.cpp</a></li>
 </ul>
 <h2 id="al_draw_justified_ustr">al_draw_justified_ustr</h2>
 <div class="sourceCode" id="cb20"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a><span class="dt">void</span> al_draw_justified_ustr(<span class="dt">const</span> ALLEGRO_FONT *font,</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a>   ALLEGRO_COLOR color, <span class="dt">float</span> x1, <span class="dt">float</span> x2,</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true"></a>   <span class="dt">float</span> y, <span class="dt">float</span> diff, <span class="dt">int</span> flags, <span class="dt">const</span> ALLEGRO_USTR *ustr)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L115">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L115">Source Code</a></p>
 <p>Like <a href="font.html#al_draw_justified_text">al_draw_justified_text</a>, except the text is passed as an ALLEGRO_USTR instead of a NUL-terminated char array.</p>
 <p>See also: <a href="font.html#al_draw_justified_text">al_draw_justified_text</a>, <a href="font.html#al_draw_justified_textf">al_draw_justified_textf</a>.</p>
 <h2 id="al_draw_textf">al_draw_textf</h2>
 <div class="sourceCode" id="cb21"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="dt">void</span> al_draw_textf(<span class="dt">const</span> ALLEGRO_FONT *font, ALLEGRO_COLOR color,</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a>   <span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">int</span> flags,</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true"></a>   <span class="dt">const</span> <span class="dt">char</span> *format, ...)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L213">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L213">Source Code</a></p>
 <p>Formatted text output, using a printf() style format string. All parameters have the same meaning as with <a href="font.html#al_draw_text">al_draw_text</a> otherwise.</p>
 <p>See also: <a href="font.html#al_draw_text">al_draw_text</a>, <a href="font.html#al_draw_ustr">al_draw_ustr</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_disable_screensaver.c#L50">ex_disable_screensaver.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_display_events.c#L67">ex_display_events.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_cpu.c#L60">ex_cpu.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_disable_screensaver.c#L50">ex_disable_screensaver.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_display_events.c#L67">ex_display_events.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_cpu.c#L60">ex_cpu.c</a></li>
 </ul>
 <h2 id="al_draw_justified_textf">al_draw_justified_textf</h2>
 <div class="sourceCode" id="cb22"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a><span class="dt">void</span> al_draw_justified_textf(<span class="dt">const</span> ALLEGRO_FONT *f,</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true"></a>   ALLEGRO_COLOR color, <span class="dt">float</span> x1, <span class="dt">float</span> x2, <span class="dt">float</span> y,</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true"></a>   <span class="dt">float</span> diff, <span class="dt">int</span> flags, <span class="dt">const</span> <span class="dt">char</span> *format, ...)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L246">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L246">Source Code</a></p>
 <p>Formatted text output, using a printf() style format string. All parameters have the same meaning as with <a href="font.html#al_draw_justified_text">al_draw_justified_text</a> otherwise.</p>
 <p>See also: <a href="font.html#al_draw_justified_text">al_draw_justified_text</a>, <a href="font.html#al_draw_justified_ustr">al_draw_justified_ustr</a>.</p>
 <h2 id="al_get_text_dimensions">al_get_text_dimensions</h2>
 <div class="sourceCode" id="cb23"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a><span class="dt">void</span> al_get_text_dimensions(<span class="dt">const</span> ALLEGRO_FONT *f,</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a>   <span class="dt">char</span> <span class="dt">const</span> *text,</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true"></a>   <span class="dt">int</span> *bbx, <span class="dt">int</span> *bby, <span class="dt">int</span> *bbw, <span class="dt">int</span> *bbh)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L342">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L342">Source Code</a></p>
 <p>Sometimes, the <a href="font.html#al_get_text_width">al_get_text_width</a> and <a href="font.html#al_get_font_line_height">al_get_font_line_height</a> functions are not enough for exact text placement, so this function returns some additional information.</p>
 <p>Returned variables (all in pixels):</p>
 <ul>
@@ -481,23 +481,23 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>See also: <a href="font.html#al_get_text_width">al_get_text_width</a>, <a href="font.html#al_get_font_line_height">al_get_font_line_height</a>, <a href="font.html#al_get_ustr_dimensions">al_get_ustr_dimensions</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_ttf.c#L200">ex_ttf.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_logo.c#L86">ex_logo.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_ttf.c#L200">ex_ttf.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_logo.c#L86">ex_logo.c</a></li>
 </ul>
 <h2 id="al_get_ustr_dimensions">al_get_ustr_dimensions</h2>
 <div class="sourceCode" id="cb24"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a><span class="dt">void</span> al_get_ustr_dimensions(<span class="dt">const</span> ALLEGRO_FONT *f,</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true"></a>   ALLEGRO_USTR <span class="dt">const</span> *ustr,</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true"></a>   <span class="dt">int</span> *bbx, <span class="dt">int</span> *bby, <span class="dt">int</span> *bbw, <span class="dt">int</span> *bbh)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L328">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L328">Source Code</a></p>
 <p>Like <a href="font.html#al_get_text_dimensions">al_get_text_dimensions</a>, except the text is passed as an ALLEGRO_USTR instead of a NUL-terminated char array.</p>
 <p>See also: <a href="font.html#al_get_text_dimensions">al_get_text_dimensions</a></p>
 <h2 id="al_get_allegro_font_version">al_get_allegro_font_version</h2>
 <div class="sourceCode" id="cb25"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a><span class="dt">uint32_t</span> al_get_allegro_font_version(<span class="dt">void</span>)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/font.c#L495">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/font.c#L495">Source Code</a></p>
 <p>Returns the (compiled) version of the addon, in the same format as <a href="system.html#al_get_allegro_version">al_get_allegro_version</a>.</p>
 <h2 id="al_get_font_ranges">al_get_font_ranges</h2>
 <div class="sourceCode" id="cb26"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a><span class="dt">int</span> al_get_font_ranges(ALLEGRO_FONT *f, <span class="dt">int</span> ranges_count, <span class="dt">int</span> *ranges)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L371">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L371">Source Code</a></p>
 <p>Gets information about all glyphs contained in a font, as a list of ranges. Ranges have the same format as with <a href="font.html#al_grab_font_from_bitmap">al_grab_font_from_bitmap</a>.</p>
 <p><code>ranges_count</code> is the maximum number of ranges that will be returned.</p>
 <p><code>ranges</code> should be an array with room for <code>ranges_count</code> * 2 elements. The even integers are the first unicode point in a range, the odd integers the last unicode point in a range.</p>
@@ -506,21 +506,21 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>See also: <a href="font.html#al_grab_font_from_bitmap">al_grab_font_from_bitmap</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_ttf.c#L30">ex_ttf.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_ttf.c#L30">ex_ttf.c</a></li>
 </ul>
 <h2 id="al_set_fallback_font">al_set_fallback_font</h2>
 <div class="sourceCode" id="cb27"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a><span class="dt">void</span> al_set_fallback_font(ALLEGRO_FONT *font, ALLEGRO_FONT *fallback)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L696">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L696">Source Code</a></p>
 <p>Sets a font which is used instead if a character is not present. Can be chained, but make sure there is no loop as that would crash the application! Pass NULL to remove a fallback font again.</p>
 <p>Since: 5.1.12</p>
 <p>See also: <a href="font.html#al_get_fallback_font">al_get_fallback_font</a>, <a href="font.html#al_draw_glyph">al_draw_glyph</a>, <a href="font.html#al_draw_text">al_draw_text</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_ttf.c#L290">ex_ttf.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_ttf.c#L290">ex_ttf.c</a></li>
 </ul>
 <h2 id="al_get_fallback_font">al_get_fallback_font</h2>
 <div class="sourceCode" id="cb28"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a>ALLEGRO_FONT *al_get_fallback_font(ALLEGRO_FONT *font)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L703">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L703">Source Code</a></p>
 <p>Retrieves the fallback font for this font or NULL.</p>
 <p>Since: 5.1.12</p>
 <p>See also: <a href="font.html#al_set_fallback_font">al_set_fallback_font</a></p>
@@ -531,7 +531,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <h2 id="al_draw_glyph">al_draw_glyph</h2>
 <div class="sourceCode" id="cb29"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true"></a><span class="dt">void</span> al_draw_glyph(<span class="dt">const</span> ALLEGRO_FONT *f, ALLEGRO_COLOR color, <span class="dt">float</span> x, <span class="dt">float</span> y,</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true"></a>   <span class="dt">int</span> codepoint)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L378">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L378">Source Code</a></p>
 <p>Draws the glyph that corresponds with <code>codepoint</code> in the given <code>color</code> using the given <code>font</code>. If <code>font</code> does not have such a glyph, nothing will be drawn.</p>
 <p>To draw a string as left to right horizontal text you will need to use <a href="font.html#al_get_glyph_advance">al_get_glyph_advance</a> to determine the position of each glyph. For drawing strings in other directions, such as top to down, use <a href="font.html#al_get_glyph_dimensions">al_get_glyph_dimensions</a> to determine the size and position of each glyph.</p>
 <p>If you have to draw many glyphs at the same time, use <a href="graphics.html#al_hold_bitmap_drawing">al_hold_bitmap_drawing</a> with true as the parameter, before drawing the glyphs, and then call <a href="graphics.html#al_hold_bitmap_drawing">al_hold_bitmap_drawing</a> again with false as a parameter when done drawing the glyphs to further enhance performance.</p>
@@ -539,19 +539,19 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>See also: <a href="font.html#al_get_glyph_width">al_get_glyph_width</a>, <a href="font.html#al_get_glyph_dimensions">al_get_glyph_dimensions</a>, <a href="font.html#al_get_glyph_advance">al_get_glyph_advance</a>.</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_font.c#L127">ex_font.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_ttf.c#L84">ex_ttf.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_font.c#L127">ex_font.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_ttf.c#L84">ex_ttf.c</a></li>
 </ul>
 <h2 id="al_get_glyph_width">al_get_glyph_width</h2>
 <div class="sourceCode" id="cb30"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true"></a><span class="dt">int</span> al_get_glyph_width(<span class="dt">const</span> ALLEGRO_FONT *f, <span class="dt">int</span> codepoint)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L386">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L386">Source Code</a></p>
 <p>This function returns the width in pixels of the glyph that corresponds with <code>codepoint</code> in the font <code>font</code>. Returns zero if the font does not have such a glyph.</p>
 <p>Since: 5.1.12</p>
 <p>See also: <a href="font.html#al_draw_glyph">al_draw_glyph</a>, <a href="font.html#al_get_glyph_dimensions">al_get_glyph_dimensions</a>, <a href="font.html#al_get_glyph_advance">al_get_glyph_advance</a>.</p>
 <h2 id="al_get_glyph_dimensions">al_get_glyph_dimensions</h2>
 <div class="sourceCode" id="cb31"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true"></a><span class="dt">bool</span> al_get_glyph_dimensions(<span class="dt">const</span> ALLEGRO_FONT *f,</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true"></a>   <span class="dt">int</span> codepoint, <span class="dt">int</span> *bbx, <span class="dt">int</span> *bby, <span class="dt">int</span> *bbw, <span class="dt">int</span> *bbh)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L393">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L393">Source Code</a></p>
 <p>Sometimes, the <a href="font.html#al_get_glyph_width">al_get_glyph_width</a> or <a href="font.html#al_get_glyph_advance">al_get_glyph_advance</a> functions are not enough for exact glyph placement, so this function returns some additional information, particularly if you want to draw the font vertically.</p>
 <p>The function itself returns true if the character was present in <code>font</code> and false if the character was not present in <code>font</code>.</p>
 <p>Returned variables (all in pixel):</p>
@@ -587,11 +587,11 @@ bbh |   |    **  |       bbh +---+-------+
 <p>See also: <a href="font.html#al_draw_glyph">al_draw_glyph</a>, <a href="font.html#al_get_glyph_width">al_get_glyph_width</a>, <a href="font.html#al_get_glyph_advance">al_get_glyph_advance</a>.</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_ttf.c#L81">ex_ttf.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_ttf.c#L81">ex_ttf.c</a></li>
 </ul>
 <h2 id="al_get_glyph_advance">al_get_glyph_advance</h2>
 <div class="sourceCode" id="cb33"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true"></a><span class="dt">int</span> al_get_glyph_advance(<span class="dt">const</span> ALLEGRO_FONT *f, <span class="dt">int</span> codepoint1, <span class="dt">int</span> codepoint2)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L401">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L401">Source Code</a></p>
 <p>This function returns by how much the x position should be advanced for left to right text drawing when the glyph that corresponds to codepoint1 has been drawn, and the glyph that corresponds to codepoint2 will be the next to be drawn. This takes into consideration the horizontal advance width of the glyph that corresponds with codepoint1 as well as the kerning between the glyphs of codepoint1 and codepoint2.</p>
 <p>Kerning is the process of adjusting the spacing between glyphs in a font, to obtain a more visually pleasing result. Kerning adjusts the space between two individual glyphs with an offset determined by the author of the font.</p>
 <p>If you pass ALLEGRO_NO_KERNING as codepoint1 then al_get_glyph_advance will return 0. this can be useful when drawing the first character of a string in a loop.</p>
@@ -626,15 +626,15 @@ al_get_glyph_advance(font, &#39;A&#39;, ALLEGRO_NO_KERNING)
 <p>See also: <a href="font.html#al_draw_glyph">al_draw_glyph</a>, <a href="font.html#al_get_glyph_width">al_get_glyph_width</a>, <a href="font.html#al_get_glyph_dimensions">al_get_glyph_dimensions</a>.</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_font.c#L122">ex_font.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_ttf.c#L85">ex_ttf.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_font.c#L122">ex_font.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_ttf.c#L85">ex_ttf.c</a></li>
 </ul>
 <h1 id="multiline-text-drawing">Multiline text drawing</h1>
 <h2 id="al_draw_multiline_text">al_draw_multiline_text</h2>
 <div class="sourceCode" id="cb35"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true"></a><span class="dt">void</span> al_draw_multiline_text(<span class="dt">const</span> ALLEGRO_FONT *font,</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true"></a>     ALLEGRO_COLOR color, <span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">float</span> max_width, <span class="dt">float</span> line_height,</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true"></a>     <span class="dt">int</span> flags, <span class="dt">const</span> <span class="dt">char</span> *text)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L657">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L657">Source Code</a></p>
 <p>Like <a href="font.html#al_draw_text">al_draw_text</a>, but this function supports drawing multiple lines of text. It will break <code>text</code> in lines based on its contents and the <code>max_width</code> parameter. The lines are then layed out vertically depending on the <code>line_height</code> parameter and drawn each as if <a href="font.html#al_draw_text">al_draw_text</a> was called on them.</p>
 <p>A newline <code>\n</code> in the <code>text</code> will cause a “hard” line break after its occurrence in the string. The text after a hard break is placed on a new line. Carriage return <code>\r</code> is not supported, will not cause a line break, and will likely be drawn as a square or a space depending on the font.</p>
 <p>The <code>max_width</code> parameter controls the maximum desired width of the lines. This function will try to introduce a “soft” line break after the longest possible series of words that will fit in <code>max_length</code> when drawn with the given <code>font</code>. A “soft” line break can occur either on a space or tab (<code>\t</code>) character.</p>
@@ -646,14 +646,14 @@ al_get_glyph_advance(font, &#39;A&#39;, ALLEGRO_NO_KERNING)
 <p>See also: <a href="font.html#al_do_multiline_text">al_do_multiline_text</a>, <a href="font.html#al_draw_multiline_ustr">al_draw_multiline_ustr</a>, <a href="font.html#al_draw_multiline_textf">al_draw_multiline_textf</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_resize2.c#L61">ex_resize2.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_font_multiline.cpp#L158">ex_font_multiline.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_resize2.c#L61">ex_resize2.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_font_multiline.cpp#L158">ex_font_multiline.cpp</a></li>
 </ul>
 <h2 id="al_draw_multiline_ustr">al_draw_multiline_ustr</h2>
 <div class="sourceCode" id="cb36"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true"></a><span class="dt">void</span> al_draw_multiline_ustr(<span class="dt">const</span> ALLEGRO_FONT *font,</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true"></a>     ALLEGRO_COLOR color, <span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">float</span> max_width, <span class="dt">float</span> line_height,</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true"></a>     <span class="dt">int</span> flags, <span class="dt">const</span> ALLEGRO_USTR *ustr)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L630">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L630">Source Code</a></p>
 <p>Like <a href="font.html#al_draw_multiline_text">al_draw_multiline_text</a>, except the text is passed as an ALLEGRO_USTR instead of a NUL-terminated char array.</p>
 <p>Since: 5.1.9</p>
 <p>See also: <a href="font.html#al_draw_multiline_text">al_draw_multiline_text</a>, <a href="font.html#al_draw_multiline_textf">al_draw_multiline_textf</a>, <a href="font.html#al_do_multiline_text">al_do_multiline_text</a></p>
@@ -661,20 +661,20 @@ al_get_glyph_advance(font, &#39;A&#39;, ALLEGRO_NO_KERNING)
 <div class="sourceCode" id="cb37"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true"></a><span class="dt">void</span> al_draw_multiline_textf(<span class="dt">const</span> ALLEGRO_FONT *font,</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true"></a>     ALLEGRO_COLOR color, <span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">float</span> max_width, <span class="dt">float</span> line_height,</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true"></a>     <span class="dt">int</span> flags, <span class="dt">const</span> <span class="dt">char</span> *format, ...)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L673">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L673">Source Code</a></p>
 <p>Formatted text output, using a printf() style format string. All parameters have the same meaning as with <a href="font.html#al_draw_multiline_text">al_draw_multiline_text</a> otherwise.</p>
 <p>Since: 5.1.9</p>
 <p>See also: <a href="font.html#al_draw_multiline_text">al_draw_multiline_text</a>, <a href="font.html#al_draw_multiline_ustr">al_draw_multiline_ustr</a>, <a href="font.html#al_do_multiline_text">al_do_multiline_text</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_resize2.c#L61">ex_resize2.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_resize2.c#L61">ex_resize2.c</a></li>
 </ul>
 <h2 id="al_do_multiline_text">al_do_multiline_text</h2>
 <div class="sourceCode" id="cb38"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true"></a><span class="dt">void</span> al_do_multiline_text(<span class="dt">const</span> ALLEGRO_FONT *font,</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true"></a>   <span class="dt">float</span> max_width, <span class="dt">const</span> <span class="dt">char</span> *text,</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true"></a>   <span class="dt">bool</span> (*cb)(<span class="dt">int</span> line_num, <span class="dt">const</span> <span class="dt">char</span> *line, <span class="dt">int</span> size, <span class="dt">void</span> *extra),</span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true"></a>   <span class="dt">void</span> *extra)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L583">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L583">Source Code</a></p>
 <p>This function processes the <code>text</code> and splits it into lines as <a href="font.html#al_draw_multiline_text">al_draw_multiline_text</a> would, and then calls the callback <code>cb</code> once for every line. This is useful for custom drawing of multiline text, or for calculating the size of multiline text ahead of time. See the documentation on <a href="font.html#al_draw_multiline_text">al_draw_multiline_text</a> for an explanation of the splitting algorithm.</p>
 <p>For every line that this function splits <code>text</code> into the callback <code>cb</code> will be called once with the following parameters:</p>
 <ul>
@@ -689,14 +689,14 @@ al_get_glyph_advance(font, &#39;A&#39;, ALLEGRO_NO_KERNING)
 <p>See also: <a href="font.html#al_draw_multiline_text">al_draw_multiline_text</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_font_multiline.cpp#L22">ex_font_multiline.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_font_multiline.cpp#L22">ex_font_multiline.cpp</a></li>
 </ul>
 <h2 id="al_do_multiline_ustr">al_do_multiline_ustr</h2>
 <div class="sourceCode" id="cb39"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true"></a><span class="dt">void</span> al_do_multiline_ustr(<span class="dt">const</span> ALLEGRO_FONT *font, <span class="dt">float</span> max_width,</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true"></a>   <span class="dt">const</span> ALLEGRO_USTR *ustr,</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true"></a>   <span class="dt">bool</span> (*cb)(<span class="dt">int</span> line_num, <span class="dt">const</span> ALLEGRO_USTR * line, <span class="dt">void</span> *extra),</span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true"></a>   <span class="dt">void</span> *extra)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L517">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L517">Source Code</a></p>
 <p>Like <a href="font.html#al_do_multiline_text">al_do_multiline_text</a>, but using ALLEGRO_USTR instead of a NUL-terminated char array for text.</p>
 <p>Since: 5.1.9</p>
 <p>See also: <a href="font.html#al_draw_multiline_ustr">al_draw_multiline_ustr</a></p>
@@ -704,7 +704,7 @@ al_get_glyph_advance(font, &#39;A&#39;, ALLEGRO_NO_KERNING)
 <h2 id="al_grab_font_from_bitmap">al_grab_font_from_bitmap</h2>
 <div class="sourceCode" id="cb40"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true"></a>ALLEGRO_FONT *al_grab_font_from_bitmap(ALLEGRO_BITMAP *bmp,</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true"></a>   <span class="dt">int</span> ranges_n, <span class="dt">const</span> <span class="dt">int</span> ranges[])</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/fontbmp.c#L206">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/fontbmp.c#L206">Source Code</a></p>
 <p>Creates a new font from an Allegro bitmap. You can delete the bitmap after the function returns as the font will contain a copy for itself.</p>
 <p>Parameters:</p>
 <ul>
@@ -738,24 +738,24 @@ al_get_glyph_advance(font, &#39;A&#39;, ALLEGRO_NO_KERNING)
 <p>See also: <a href="graphics.html#al_load_bitmap">al_load_bitmap</a>, <a href="font.html#al_grab_font_from_bitmap">al_grab_font_from_bitmap</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_font.c#L90">ex_font.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_ttf.c#L283">ex_ttf.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_font.c#L90">ex_font.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_ttf.c#L283">ex_ttf.c</a></li>
 </ul>
 <h2 id="al_load_bitmap_font">al_load_bitmap_font</h2>
 <div class="sourceCode" id="cb43"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true"></a>ALLEGRO_FONT *al_load_bitmap_font(<span class="dt">const</span> <span class="dt">char</span> *fname)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/fontbmp.c#L181">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/fontbmp.c#L181">Source Code</a></p>
 <p>Load a bitmap font from a file. This is done by first calling <a href="graphics.html#al_load_bitmap_flags">al_load_bitmap_flags</a> and then <a href="font.html#al_grab_font_from_bitmap">al_grab_font_from_bitmap</a>.</p>
 <p>If you wanted to load an old A4 font, for example, it would be better to load the bitmap yourself in order to call <a href="graphics.html#al_convert_mask_to_alpha">al_convert_mask_to_alpha</a> on it before passing it to <a href="font.html#al_grab_font_from_bitmap">al_grab_font_from_bitmap</a>.</p>
 <p>See also: <a href="font.html#al_load_bitmap_font_flags">al_load_bitmap_font_flags</a>, <a href="font.html#al_load_font">al_load_font</a>, <a href="graphics.html#al_load_bitmap_flags">al_load_bitmap_flags</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_bitmap_flip.c#L105">ex_bitmap_flip.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_mouse_cursor.c#L133">ex_mouse_cursor.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_record_name.c#L88">ex_record_name.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_bitmap_flip.c#L105">ex_bitmap_flip.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_mouse_cursor.c#L133">ex_mouse_cursor.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_record_name.c#L88">ex_record_name.c</a></li>
 </ul>
 <h2 id="al_load_bitmap_font_flags">al_load_bitmap_font_flags</h2>
 <div class="sourceCode" id="cb44"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true"></a>ALLEGRO_FONT *al_load_bitmap_font_flags(<span class="dt">const</span> <span class="dt">char</span> *fname, <span class="dt">int</span> flags)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/fontbmp.c#L197">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/fontbmp.c#L197">Source Code</a></p>
 <p>Like <a href="font.html#al_load_bitmap_font">al_load_bitmap_font</a> but additionally takes a flags parameter which is a bitfield containing a combination of the following:</p>
 <dl>
 <dt>ALLEGRO_NO_PREMULTIPLIED_ALPHA</dt>
@@ -765,7 +765,7 @@ al_get_glyph_advance(font, &#39;A&#39;, ALLEGRO_NO_KERNING)
 <p>See also: <a href="font.html#al_load_bitmap_font">al_load_bitmap_font</a>, <a href="graphics.html#al_load_bitmap_flags">al_load_bitmap_flags</a></p>
 <h2 id="al_create_builtin_font">al_create_builtin_font</h2>
 <div class="sourceCode" id="cb45"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true"></a>ALLEGRO_FONT *al_create_builtin_font(<span class="dt">void</span>)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/stdfont.c#L447">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/stdfont.c#L447">Source Code</a></p>
 <p>Creates a monochrome bitmap font (8x8 pixels per character).</p>
 <p>This font is primarily intended to be used for displaying information in environments or during early runtime states where no external font data is available or loaded (e.g. for debugging).</p>
 <p>The builtin font contains the following unicode character ranges:</p>
@@ -779,37 +779,37 @@ al_get_glyph_advance(font, &#39;A&#39;, ALLEGRO_NO_KERNING)
 <p>See also: <a href="font.html#al_load_bitmap_font">al_load_bitmap_font</a>, <a href="font.html#al_destroy_font">al_destroy_font</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_disable_screensaver.c#L38">ex_disable_screensaver.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_display_events.c#L48">ex_display_events.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_cpu.c#L42">ex_cpu.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_disable_screensaver.c#L38">ex_disable_screensaver.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_display_events.c#L48">ex_display_events.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_cpu.c#L42">ex_cpu.c</a></li>
 </ul>
 <h1 id="ttf-fonts">TTF fonts</h1>
 <p>These functions are declared in the following header file. Link with allegro_ttf.</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true"></a> <span class="pp">#include </span><span class="im">&lt;allegro5/allegro_ttf.h&gt;</span></span></code></pre></div>
 <h2 id="al_init_ttf_addon">al_init_ttf_addon</h2>
 <div class="sourceCode" id="cb48"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true"></a><span class="dt">bool</span> al_init_ttf_addon(<span class="dt">void</span>)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/ttf/ttf.c#L1105">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/ttf/ttf.c#L1105">Source Code</a></p>
 <p>Call this after <a href="font.html#al_init_font_addon">al_init_font_addon</a> to make <a href="font.html#al_load_font">al_load_font</a> recognize “.ttf” and other formats supported by <a href="font.html#al_load_ttf_font">al_load_ttf_font</a>.</p>
 <p>Returns true on success, false on failure.</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_font_justify.cpp#L105">ex_font_justify.cpp</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_font_multiline.cpp#L181">ex_font_multiline.cpp</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_color.cpp#L198">ex_color.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_font_justify.cpp#L105">ex_font_justify.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_font_multiline.cpp#L181">ex_font_multiline.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_color.cpp#L198">ex_color.cpp</a></li>
 </ul>
 <h2 id="al_is_ttf_addon_initialized">al_is_ttf_addon_initialized</h2>
 <div class="sourceCode" id="cb49"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true"></a><span class="dt">bool</span> al_is_ttf_addon_initialized(<span class="dt">void</span>)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/ttf/ttf.c#L1142">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/ttf/ttf.c#L1142">Source Code</a></p>
 <p>Returns true if the TTF addon is initialized, otherwise returns false.</p>
 <p>Since: 5.2.6</p>
 <p>See also: <a href="font.html#al_init_ttf_addon">al_init_ttf_addon</a>, <a href="font.html#al_shutdown_ttf_addon">al_shutdown_ttf_addon</a></p>
 <h2 id="al_shutdown_ttf_addon">al_shutdown_ttf_addon</h2>
 <div class="sourceCode" id="cb50"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true"></a><span class="dt">void</span> al_shutdown_ttf_addon(<span class="dt">void</span>)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/ttf/ttf.c#L1150">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/ttf/ttf.c#L1150">Source Code</a></p>
 <p>Unloads the ttf addon again. You normally don’t need to call this.</p>
 <h2 id="al_load_ttf_font">al_load_ttf_font</h2>
 <div class="sourceCode" id="cb51"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true"></a>ALLEGRO_FONT *al_load_ttf_font(<span class="dt">char</span> <span class="dt">const</span> *filename, <span class="dt">int</span> size, <span class="dt">int</span> flags)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/ttf/ttf.c#L978">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/ttf/ttf.c#L978">Source Code</a></p>
 <p>Loads a TrueType font from a file using the FreeType library. Quoting from the FreeType FAQ this means support for many different font formats:</p>
 <p><em>TrueType, OpenType, Type1, CID, CFF, Windows FON/FNT, X11 PCF, and others</em></p>
 <p>The <code>size</code> parameter determines the size the font will be rendered at, specified in pixels. The standard font size is measured in <em>units per EM</em>, if you instead want to specify the size as the total height of glyphs in pixels, pass it as a negative value.</p>
@@ -825,14 +825,14 @@ al_get_glyph_advance(font, &#39;A&#39;, ALLEGRO_NO_KERNING)
 <p>See also: <a href="font.html#al_init_ttf_addon">al_init_ttf_addon</a>, <a href="font.html#al_load_ttf_font_f">al_load_ttf_font_f</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_bitmap_flip.c#L106">ex_bitmap_flip.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_synth.cpp#L461">ex_synth.cpp</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_audio_chain.cpp#L707">ex_audio_chain.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_bitmap_flip.c#L106">ex_bitmap_flip.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_synth.cpp#L461">ex_synth.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_audio_chain.cpp#L707">ex_audio_chain.cpp</a></li>
 </ul>
 <h2 id="al_load_ttf_font_f">al_load_ttf_font_f</h2>
 <div class="sourceCode" id="cb52"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true"></a>ALLEGRO_FONT *al_load_ttf_font_f(ALLEGRO_FILE *file,</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true"></a>    <span class="dt">char</span> <span class="dt">const</span> *filename, <span class="dt">int</span> size, <span class="dt">int</span> flags)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/ttf/ttf.c#L829">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/ttf/ttf.c#L829">Source Code</a></p>
 <p>Like <a href="font.html#al_load_ttf_font">al_load_ttf_font</a>, but the font is read from the file handle. The filename is only used to find possible additional files next to a font file.</p>
 <blockquote>
 <p><em>Note:</em> The file handle is owned by the returned ALLEGRO_FONT object and must not be freed by the caller, as FreeType expects to be able to read from it at a later time.</p>
@@ -840,7 +840,7 @@ al_get_glyph_advance(font, &#39;A&#39;, ALLEGRO_NO_KERNING)
 <h2 id="al_load_ttf_font_stretch">al_load_ttf_font_stretch</h2>
 <div class="sourceCode" id="cb53"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true"></a>ALLEGRO_FONT *al_load_ttf_font_stretch(<span class="dt">char</span> <span class="dt">const</span> *filename, <span class="dt">int</span> w, <span class="dt">int</span> h,</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true"></a>   <span class="dt">int</span> flags)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/ttf/ttf.c#L986">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/ttf/ttf.c#L986">Source Code</a></p>
 <p>Like <a href="font.html#al_load_ttf_font">al_load_ttf_font</a>, except it takes separate width and height parameters instead of a single size parameter.</p>
 <p>If the height is a positive value, and the width zero or positive, then font will be stretched according to those parameters. The width must not be negative if the height is positive.</p>
 <p>As with <a href="font.html#al_load_ttf_font">al_load_ttf_font</a>, the height may be a negative value to specify the total height in pixels. Then the width must also be a negative value, or zero.</p>
@@ -850,7 +850,7 @@ al_get_glyph_advance(font, &#39;A&#39;, ALLEGRO_NO_KERNING)
 <h2 id="al_load_ttf_font_stretch_f">al_load_ttf_font_stretch_f</h2>
 <div class="sourceCode" id="cb54"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true"></a>ALLEGRO_FONT *al_load_ttf_font_stretch_f(ALLEGRO_FILE *file,</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true"></a>    <span class="dt">char</span> <span class="dt">const</span> *filename, <span class="dt">int</span> w, <span class="dt">int</span> h, <span class="dt">int</span> flags)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/ttf/ttf.c#L838">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/ttf/ttf.c#L838">Source Code</a></p>
 <p>Like <a href="font.html#al_load_ttf_font_stretch">al_load_ttf_font_stretch</a>, but the font is read from the file handle. The filename is only used to find possible additional files next to a font file.</p>
 <blockquote>
 <p><em>Note:</em> The file handle is owned by the returned ALLEGRO_FONT object and must not be freed by the caller, as FreeType expects to be able to read from it at a later time.</p>
@@ -859,11 +859,11 @@ al_get_glyph_advance(font, &#39;A&#39;, ALLEGRO_NO_KERNING)
 <p>See also: <a href="font.html#al_load_ttf_font_stretch">al_load_ttf_font_stretch</a></p>
 <h2 id="al_get_allegro_ttf_version">al_get_allegro_ttf_version</h2>
 <div class="sourceCode" id="cb55"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true"></a><span class="dt">uint32_t</span> al_get_allegro_ttf_version(<span class="dt">void</span>)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/ttf/ttf.c#L1167">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/ttf/ttf.c#L1167">Source Code</a></p>
 <p>Returns the (compiled) version of the addon, in the same format as <a href="system.html#al_get_allegro_version">al_get_allegro_version</a>.</p>
 <h2 id="al_get_glyph">al_get_glyph</h2>
 <div class="sourceCode" id="cb56"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true"></a><span class="dt">bool</span> al_get_glyph(<span class="dt">const</span> ALLEGRO_FONT *f, <span class="dt">int</span> prev_codepoint, <span class="dt">int</span> codepoint, ALLEGRO_GLYPH *glyph)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/addons/font/text.c#L408">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/addons/font/text.c#L408">Source Code</a></p>
 <p>Gets all the information about a glyph, including the bitmap, needed to draw it yourself. prev_codepoint is the codepoint in the string before the one you want to draw and is used for kerning. codepoint is the character you want to get info about. You should clear the ‘glyph’ structure to 0 with memset before passing it to this function for future compatibility.</p>
 <p>Since: 5.2.1</p>
 <blockquote>
@@ -872,12 +872,12 @@ al_get_glyph_advance(font, &#39;A&#39;, ALLEGRO_NO_KERNING)
 <p>See also: <a href="font.html#allegro_glyph">ALLEGRO_GLYPH</a></p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_font.c#L122">ex_font.c</a></li>
-<li><a href="https://github.com/liballeg/allegro5/blob/e061e95afc406094e84234758a6a082fea13f322/examples/ex_ttf.c#L81">ex_ttf.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_font.c#L122">ex_font.c</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/examples/ex_ttf.c#L81">ex_ttf.c</a></li>
 </ul>
 <p class="timestamp">
 Allegro version 5.2.8 (GIT)
- - Last updated: 2021-03-20 21:07:34 UTC
+ - Last updated: 2021-04-12 08:07:41 UTC
 </p>
 </div>
 </body>
