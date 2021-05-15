@@ -584,12 +584,12 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <h1 id="al_register_assert_handler">al_register_assert_handler</h1>
 <div class="sourceCode" id="cb17"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="dt">void</span> al_register_assert_handler(<span class="dt">void</span> (*handler)(<span class="dt">char</span> <span class="dt">const</span> *expr,</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a>   <span class="dt">char</span> <span class="dt">const</span> *file, <span class="dt">int</span> line, <span class="dt">char</span> <span class="dt">const</span> *func))</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/src/debug.c#L358">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/src/debug.c#L356">Source Code</a></p>
 <p>Register a function to be called when an internal Allegro assertion fails. Pass NULL to reset to the default behaviour, which is to do whatever the standard <code>assert()</code> macro does.</p>
 <p>Since: 5.0.6, 5.1.0</p>
 <h1 id="al_register_trace_handler">al_register_trace_handler</h1>
 <div class="sourceCode" id="cb18"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="dt">void</span> al_register_trace_handler(<span class="dt">void</span> (*handler)(<span class="dt">char</span> <span class="dt">const</span> *))</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/src/debug.c#L367">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/05248497a19e6217746f5579645e57bfd7ee383e/src/debug.c#L365">Source Code</a></p>
 <p>Register a callback which is called whenever Allegro writes something to its log files. The default logging to allegro.log is disabled while this callback is active. Pass NULL to revert to the default logging.</p>
 <p>This function may be called prior to al_install_system.</p>
 <p>See the example allegro5.cfg for documentation on how to configure the used debug channels, logging levels and trace format.</p>
@@ -637,7 +637,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>See also: <a href="system.html#al_get_system_id">al_get_system_id</a></p>
 <p class="timestamp">
 Allegro version 5.2.8 (GIT)
- - Last updated: 2021-05-15 07:07:28 UTC
+ - Last updated: 2021-05-15 08:07:43 UTC
 </p>
 </div>
 </body>
