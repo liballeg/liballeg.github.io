@@ -653,7 +653,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 </ul>
 <h2 id="al_create_bitmap">al_create_bitmap</h2>
 <div class="sourceCode" id="cb31"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true"></a>ALLEGRO_BITMAP *al_create_bitmap(<span class="dt">int</span> w, <span class="dt">int</span> h)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L187">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L186">Source Code</a></p>
 <p>Creates a new bitmap using the bitmap format and flags for the current thread. Blitting between bitmaps of differing formats, or blitting between memory bitmaps and display bitmaps may be slow.</p>
 <p>Unless you set the ALLEGRO_MEMORY_BITMAP flag, the bitmap is created for the current display. Blitting to another display may be slow.</p>
 <p>If a display bitmap is created, there may be limitations on the allowed dimensions. For example a DirectX or OpenGL backend usually has a maximum allowed texture size - so if bitmap creation fails for very large dimensions, you may want to re-try with a smaller bitmap. Some platforms also dictate a minimum texture size, which is relevant if you plan to use this bitmap with the primitives addon. If you try to create a bitmap smaller than this, this call will not fail but the returned bitmap will be a section of a larger bitmap with the minimum size. The minimum size that will work on all platforms is 32 by 32. There is an experimental switch to turns this padding off by editing the system configuration (see <code>min_bitmap_size</code> key in <a href="system.html#al_get_system_config">al_get_system_config</a>).</p>
@@ -672,7 +672,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <h2 id="al_create_sub_bitmap">al_create_sub_bitmap</h2>
 <div class="sourceCode" id="cb32"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true"></a>ALLEGRO_BITMAP *al_create_sub_bitmap(ALLEGRO_BITMAP *parent,</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true"></a>   <span class="dt">int</span> x, <span class="dt">int</span> y, <span class="dt">int</span> w, <span class="dt">int</span> h)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L558">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L557">Source Code</a></p>
 <p>Creates a sub-bitmap of the parent, at the specified coordinates and of the specified size. A sub-bitmap is a bitmap that shares drawing memory with a pre-existing (parent) bitmap, but possibly with a different size and clipping settings.</p>
 <p>The sub-bitmap may originate off or extend past the parent bitmap.</p>
 <p>See the discussion in <a href="display.html#al_get_backbuffer">al_get_backbuffer</a> about using sub-bitmaps of the backbuffer.</p>
@@ -689,7 +689,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 </ul>
 <h2 id="al_clone_bitmap">al_clone_bitmap</h2>
 <div class="sourceCode" id="cb33"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true"></a>ALLEGRO_BITMAP *al_clone_bitmap(ALLEGRO_BITMAP *bitmap)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L790">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L789">Source Code</a></p>
 <p>Create a new bitmap with <a href="graphics.html#al_create_bitmap">al_create_bitmap</a>, and copy the pixel data from the old bitmap across. The newly created bitmap will be created with the current new bitmap flags, and not the ones that were used to create the original bitmap. If the new bitmap is a memory bitmap, its projection bitmap is reset to be orthographic.</p>
 <p>See also: <a href="graphics.html#al_create_bitmap">al_create_bitmap</a>, <a href="graphics.html#al_set_new_bitmap_format">al_set_new_bitmap_format</a>, <a href="graphics.html#al_set_new_bitmap_flags">al_set_new_bitmap_flags</a>, <a href="graphics.html#al_convert_bitmap">al_convert_bitmap</a></p>
 <p>Examples:</p>
@@ -719,7 +719,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>See also: <a href="graphics.html#al_convert_bitmap">al_convert_bitmap</a>, <a href="graphics.html#al_create_bitmap">al_create_bitmap</a></p>
 <h2 id="al_destroy_bitmap">al_destroy_bitmap</h2>
 <div class="sourceCode" id="cb36"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true"></a><span class="dt">void</span> al_destroy_bitmap(ALLEGRO_BITMAP *bitmap)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L205">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L204">Source Code</a></p>
 <p>Destroys the given bitmap, freeing all resources used by it. This function does nothing if the bitmap argument is NULL.</p>
 <p>As a convenience, if the calling thread is currently targeting the bitmap then the bitmap will be untargeted first. The new target bitmap is unspecified. (since: 5.0.10, 5.1.6)</p>
 <p>Otherwise, it is an error to destroy a bitmap while it (or a sub-bitmap) is the target bitmap of any thread.</p>
@@ -873,7 +873,7 @@ al_lock_bitmap(multisample, ...)
 <h1 id="bitmap-properties">Bitmap properties</h1>
 <h2 id="al_get_bitmap_flags">al_get_bitmap_flags</h2>
 <div class="sourceCode" id="cb48"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true"></a><span class="dt">int</span> al_get_bitmap_flags(ALLEGRO_BITMAP *bitmap)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L329">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L328">Source Code</a></p>
 <p>Return the flags used to create the bitmap.</p>
 <p>See also: <a href="graphics.html#al_set_new_bitmap_flags">al_set_new_bitmap_flags</a></p>
 <p>Examples:</p>
@@ -882,7 +882,7 @@ al_lock_bitmap(multisample, ...)
 </ul>
 <h2 id="al_get_bitmap_format">al_get_bitmap_format</h2>
 <div class="sourceCode" id="cb49"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true"></a><span class="dt">int</span> al_get_bitmap_format(ALLEGRO_BITMAP *bitmap)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L308">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L307">Source Code</a></p>
 <p>Returns the pixel format of a bitmap.</p>
 <p>See also: <a href="graphics.html#allegro_pixel_format">ALLEGRO_PIXEL_FORMAT</a>, <a href="graphics.html#al_set_new_bitmap_flags">al_set_new_bitmap_flags</a></p>
 <p>Examples:</p>
@@ -893,7 +893,7 @@ al_lock_bitmap(multisample, ...)
 </ul>
 <h2 id="al_get_bitmap_height">al_get_bitmap_height</h2>
 <div class="sourceCode" id="cb50"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true"></a><span class="dt">int</span> al_get_bitmap_height(ALLEGRO_BITMAP *bitmap)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L299">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L298">Source Code</a></p>
 <p>Returns the height of a bitmap in pixels.</p>
 <p>Examples:</p>
 <ul>
@@ -903,7 +903,7 @@ al_lock_bitmap(multisample, ...)
 </ul>
 <h2 id="al_get_bitmap_width">al_get_bitmap_width</h2>
 <div class="sourceCode" id="cb51"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true"></a><span class="dt">int</span> al_get_bitmap_width(ALLEGRO_BITMAP *bitmap)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L290">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L289">Source Code</a></p>
 <p>Returns the width of a bitmap in pixels.</p>
 <p>Examples:</p>
 <ul>
@@ -913,7 +913,7 @@ al_lock_bitmap(multisample, ...)
 </ul>
 <h2 id="al_get_bitmap_depth">al_get_bitmap_depth</h2>
 <div class="sourceCode" id="cb52"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true"></a><span class="dt">int</span> al_get_bitmap_depth(ALLEGRO_BITMAP *bitmap)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L349">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L348">Source Code</a></p>
 <p>Return the depthbuffer depth used by this bitmap if it is used with <a href="graphics.html#al_set_target_bitmap">al_set_target_bitmap</a>.</p>
 <p>Since: 5.2.1</p>
 <blockquote>
@@ -921,7 +921,7 @@ al_lock_bitmap(multisample, ...)
 </blockquote>
 <h2 id="al_get_bitmap_samples">al_get_bitmap_samples</h2>
 <div class="sourceCode" id="cb53"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true"></a><span class="dt">int</span> al_get_bitmap_samples(ALLEGRO_BITMAP *bitmap)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L360">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L359">Source Code</a></p>
 <p>Return the multi-sampling samples used by this bitmap if it is used with <a href="graphics.html#al_set_target_bitmap">al_set_target_bitmap</a>.</p>
 <p>Since: 5.2.1</p>
 <blockquote>
@@ -951,12 +951,12 @@ al_lock_bitmap(multisample, ...)
 <p>Returns true if the bitmap is compatible with the current display, false otherwise. If there is no current display, false is returned.</p>
 <h2 id="al_is_sub_bitmap">al_is_sub_bitmap</h2>
 <div class="sourceCode" id="cb57"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true"></a><span class="dt">bool</span> al_is_sub_bitmap(ALLEGRO_BITMAP *bitmap)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L630">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L629">Source Code</a></p>
 <p>Returns true if the specified bitmap is a sub-bitmap, false otherwise.</p>
 <p>See also: <a href="graphics.html#al_create_sub_bitmap">al_create_sub_bitmap</a>, <a href="graphics.html#al_get_parent_bitmap">al_get_parent_bitmap</a></p>
 <h2 id="al_get_parent_bitmap">al_get_parent_bitmap</h2>
 <div class="sourceCode" id="cb58"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true"></a>ALLEGRO_BITMAP *al_get_parent_bitmap(ALLEGRO_BITMAP *bitmap)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L638">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L637">Source Code</a></p>
 <p>Returns the bitmap this bitmap is a sub-bitmap of. Returns NULL if this bitmap is not a sub-bitmap. This function always returns the real bitmap, and never a sub-bitmap. This might NOT match what was passed to <a href="graphics.html#al_create_sub_bitmap">al_create_sub_bitmap</a>. Consider this code, for instance:</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true"></a>ALLEGRO_BITMAP* a = al_create_bitmap(<span class="dv">512</span>, <span class="dv">512</span>);</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true"></a>ALLEGRO_BITMAP* b = al_create_sub_bitmap(a, <span class="dv">128</span>, <span class="dv">128</span>, <span class="dv">256</span>, <span class="dv">256</span>);</span>
@@ -967,7 +967,7 @@ al_lock_bitmap(multisample, ...)
 <p>See also: <a href="graphics.html#al_create_sub_bitmap">al_create_sub_bitmap</a>, <a href="graphics.html#al_is_sub_bitmap">al_is_sub_bitmap</a></p>
 <h2 id="al_get_bitmap_x">al_get_bitmap_x</h2>
 <div class="sourceCode" id="cb60"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true"></a><span class="dt">int</span> al_get_bitmap_x(ALLEGRO_BITMAP *bitmap)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L647">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L646">Source Code</a></p>
 <p>For a sub-bitmap, return it’s x position within the parent.</p>
 <p>See also: <a href="graphics.html#al_create_sub_bitmap">al_create_sub_bitmap</a>, <a href="graphics.html#al_get_parent_bitmap">al_get_parent_bitmap</a>, <a href="graphics.html#al_get_bitmap_y">al_get_bitmap_y</a></p>
 <p>Since: 5.1.12</p>
@@ -977,7 +977,7 @@ al_lock_bitmap(multisample, ...)
 </ul>
 <h2 id="al_get_bitmap_y">al_get_bitmap_y</h2>
 <div class="sourceCode" id="cb61"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true"></a><span class="dt">int</span> al_get_bitmap_y(ALLEGRO_BITMAP *bitmap)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L656">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L655">Source Code</a></p>
 <p>For a sub-bitmap, return it’s y position within the parent.</p>
 <p>See also: <a href="graphics.html#al_create_sub_bitmap">al_create_sub_bitmap</a>, <a href="graphics.html#al_get_parent_bitmap">al_get_parent_bitmap</a>, <a href="graphics.html#al_get_bitmap_x">al_get_bitmap_x</a></p>
 <p>Since: 5.1.12</p>
@@ -988,7 +988,7 @@ al_lock_bitmap(multisample, ...)
 <h2 id="al_reparent_bitmap">al_reparent_bitmap</h2>
 <div class="sourceCode" id="cb62"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true"></a><span class="dt">void</span> al_reparent_bitmap(ALLEGRO_BITMAP *bitmap, ALLEGRO_BITMAP *parent,</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true"></a>   <span class="dt">int</span> x, <span class="dt">int</span> y, <span class="dt">int</span> w, <span class="dt">int</span> h)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L605">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L604">Source Code</a></p>
 <p>For a sub-bitmap, changes the parent, position and size. This is the same as destroying the bitmap and re-creating it with <a href="graphics.html#al_create_sub_bitmap">al_create_sub_bitmap</a> - except the bitmap pointer stays the same. This has many uses, for example an animation player could return a single bitmap which can just be re-parented to different animation frames without having to re-draw the contents. Or a sprite atlas could re-arrange its sprites without having to invalidate all existing bitmaps.</p>
 <p>See also: <a href="graphics.html#al_create_sub_bitmap">al_create_sub_bitmap</a>, <a href="graphics.html#al_get_parent_bitmap">al_get_parent_bitmap</a></p>
 <p>Since: 5.1.12</p>
@@ -999,7 +999,7 @@ al_lock_bitmap(multisample, ...)
 </ul>
 <h2 id="al_get_bitmap_blender">al_get_bitmap_blender</h2>
 <div class="sourceCode" id="cb63"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true"></a><span class="dt">void</span> al_get_bitmap_blender(<span class="dt">int</span> *op, <span class="dt">int</span> *src, <span class="dt">int</span> *dst)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L388">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L387">Source Code</a></p>
 <p>Returns the current blender being used by the target bitmap. You can pass NULL for values you are not interested in.</p>
 <p>Since: 5.2.5</p>
 <blockquote>
@@ -1008,7 +1008,7 @@ al_lock_bitmap(multisample, ...)
 <p>See also: <a href="graphics.html#al_set_bitmap_blender">al_set_bitmap_blender</a>, <a href="graphics.html#al_get_separate_bitmap_blender">al_get_separate_bitmap_blender</a></p>
 <h2 id="al_get_separate_bitmap_blender">al_get_separate_bitmap_blender</h2>
 <div class="sourceCode" id="cb64"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true"></a><span class="dt">void</span> al_get_separate_bitmap_blender(<span class="dt">int</span> *op, <span class="dt">int</span> *src, <span class="dt">int</span> *dst, <span class="dt">int</span> *alpha_op, <span class="dt">int</span> *alpha_src, <span class="dt">int</span> *alpha_dst)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L395">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L394">Source Code</a></p>
 <p>Returns the current blender being used by the target bitmap. You can pass NULL for values you are not interested in.</p>
 <p>Since: 5.2.5</p>
 <blockquote>
@@ -1017,7 +1017,7 @@ al_lock_bitmap(multisample, ...)
 <p>See also: <a href="graphics.html#al_set_separate_bitmap_blender">al_set_separate_bitmap_blender</a>, <a href="graphics.html#al_get_bitmap_blender">al_get_bitmap_blender</a></p>
 <h2 id="al_get_bitmap_blend_color">al_get_bitmap_blend_color</h2>
 <div class="sourceCode" id="cb65"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true"></a>ALLEGRO_COLOR al_get_bitmap_blend_color(<span class="dt">void</span>)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L370">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L369">Source Code</a></p>
 <p>Returns the color currently used for constant color blending on the target bitmap.</p>
 <p>Since: 5.2.5</p>
 <blockquote>
@@ -1026,7 +1026,7 @@ al_lock_bitmap(multisample, ...)
 <p>See also: <a href="graphics.html#al_set_bitmap_blend_color">al_set_bitmap_blend_color</a></p>
 <h2 id="al_set_bitmap_blender">al_set_bitmap_blender</h2>
 <div class="sourceCode" id="cb66"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true"></a><span class="dt">void</span> al_set_bitmap_blender(<span class="dt">int</span> op, <span class="dt">int</span> src, <span class="dt">int</span> dest)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L444">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L443">Source Code</a></p>
 <p>Sets the function to use for blending when rendering to the target bitmap. If no blender is set for a given bitmap at draw time, the values set for <a href="graphics.html#al_set_blender">al_set_blender</a>/<a href="graphics.html#al_set_separate_blender">al_set_separate_blender</a> are used instead.</p>
 <p>To use separate functions for chroma (RGB) and alpha channels, use <a href="graphics.html#al_set_separate_bitmap_blender">al_set_separate_bitmap_blender</a>.</p>
 <p>See <a href="graphics.html#al_set_blender">al_set_blender</a> for more information about how blending works.</p>
@@ -1041,7 +1041,7 @@ al_lock_bitmap(multisample, ...)
 </ul>
 <h2 id="al_set_separate_bitmap_blender">al_set_separate_bitmap_blender</h2>
 <div class="sourceCode" id="cb67"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true"></a><span class="dt">void</span> al_set_separate_bitmap_blender(<span class="dt">int</span> op, <span class="dt">int</span> src, <span class="dt">int</span> dst, <span class="dt">int</span> alpha_op, <span class="dt">int</span> alpha_src, <span class="dt">int</span> alpha_dst)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L455">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L454">Source Code</a></p>
 <p>Like <a href="graphics.html#al_set_bitmap_blender">al_set_bitmap_blender</a>, but allows specifying a separate blending operation for the alpha channel. This is useful if your target bitmap also has an alpha channel and the two alpha channels need to be combined in a different way than the color components.</p>
 <p>Since: 5.2.5</p>
 <blockquote>
@@ -1050,7 +1050,7 @@ al_lock_bitmap(multisample, ...)
 <p>See also: <a href="graphics.html#al_set_bitmap_blender">al_set_bitmap_blender</a>, <a href="graphics.html#al_reset_bitmap_blender">al_reset_bitmap_blender</a></p>
 <h2 id="al_set_bitmap_blend_color">al_set_bitmap_blend_color</h2>
 <div class="sourceCode" id="cb68"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true"></a><span class="dt">void</span> al_set_bitmap_blend_color(ALLEGRO_COLOR col)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L431">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L430">Source Code</a></p>
 <p>Sets the color to use for <code>ALLEGRO_CONST_COLOR</code> or <code>ALLEGRO_INVERSE_CONST_COLOR</code> blend operations.</p>
 <p>Since: 5.2.5</p>
 <blockquote>
@@ -1063,7 +1063,7 @@ al_lock_bitmap(multisample, ...)
 </ul>
 <h2 id="al_reset_bitmap_blender">al_reset_bitmap_blender</h2>
 <div class="sourceCode" id="cb69"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true"></a><span class="dt">void</span> al_reset_bitmap_blender(<span class="dt">void</span>)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L474">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L473">Source Code</a></p>
 <p>Resets the blender for this bitmap to the default. After resetting the bitmap blender, the values set for <a href="graphics.html#al_set_bitmap_blender">al_set_bitmap_blender</a>/<a href="graphics.html#al_set_separate_bitmap_blender">al_set_separate_bitmap_blender</a> will be used instead.</p>
 <p>Since: 5.2.5</p>
 <blockquote>
@@ -1536,7 +1536,7 @@ a = d.a * 0 + s.a * d.a</code></pre>
 <h1 id="clipping">Clipping</h1>
 <h2 id="al_get_clipping_rectangle">al_get_clipping_rectangle</h2>
 <div class="sourceCode" id="cb124"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true"></a><span class="dt">void</span> al_get_clipping_rectangle(<span class="dt">int</span> *x, <span class="dt">int</span> *y, <span class="dt">int</span> *w, <span class="dt">int</span> *h)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L542">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L541">Source Code</a></p>
 <p>Gets the clipping rectangle of the target bitmap.</p>
 <p>See also: <a href="graphics.html#al_set_clipping_rectangle">al_set_clipping_rectangle</a></p>
 <p>Examples:</p>
@@ -1547,7 +1547,7 @@ a = d.a * 0 + s.a * d.a</code></pre>
 </ul>
 <h2 id="al_set_clipping_rectangle">al_set_clipping_rectangle</h2>
 <div class="sourceCode" id="cb125"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true"></a><span class="dt">void</span> al_set_clipping_rectangle(<span class="dt">int</span> x, <span class="dt">int</span> y, <span class="dt">int</span> width, <span class="dt">int</span> height)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L486">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L485">Source Code</a></p>
 <p>Set the region of the target bitmap or display that pixels get clipped to. The default is to clip pixels to the entire bitmap.</p>
 <p>See also: <a href="graphics.html#al_get_clipping_rectangle">al_get_clipping_rectangle</a>, <a href="graphics.html#al_reset_clipping_rectangle">al_reset_clipping_rectangle</a></p>
 <p>Examples:</p>
@@ -1558,7 +1558,7 @@ a = d.a * 0 + s.a * d.a</code></pre>
 </ul>
 <h2 id="al_reset_clipping_rectangle">al_reset_clipping_rectangle</h2>
 <div class="sourceCode" id="cb126"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true"></a><span class="dt">void</span> al_reset_clipping_rectangle(<span class="dt">void</span>)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L527">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L526">Source Code</a></p>
 <p>Equivalent to calling `al_set_clipping_rectangle(0, 0, w, h)’ where <em>w</em> and <em>h</em> are the width and height of the target bitmap respectively.</p>
 <p>Does nothing if there is no target bitmap.</p>
 <p>See also: <a href="graphics.html#al_set_clipping_rectangle">al_set_clipping_rectangle</a></p>
@@ -1566,7 +1566,7 @@ a = d.a * 0 + s.a * d.a</code></pre>
 <h1 id="graphics-utility-functions">Graphics utility functions</h1>
 <h2 id="al_convert_mask_to_alpha">al_convert_mask_to_alpha</h2>
 <div class="sourceCode" id="cb127"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true"></a><span class="dt">void</span> al_convert_mask_to_alpha(ALLEGRO_BITMAP *bitmap, ALLEGRO_COLOR mask_color)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L254">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L253">Source Code</a></p>
 <p>Convert the given mask color to an alpha channel in the bitmap. Can be used to convert older 4.2-style bitmaps with magic pink to alpha-ready bitmaps.</p>
 <p>See also: <a href="graphics.html#allegro_color">ALLEGRO_COLOR</a></p>
 <p>Examples:</p>
@@ -1864,7 +1864,7 @@ a = d.a * 0 + s.a * d.a</code></pre>
 </ul>
 <h2 id="al_backup_dirty_bitmap">al_backup_dirty_bitmap</h2>
 <div class="sourceCode" id="cb152"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true"></a><span class="dt">void</span> al_backup_dirty_bitmap(ALLEGRO_BITMAP *bitmap)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L807">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/2f39d7ff457c66818ebcfb5e49be33146c93aa68/src/bitmap.c#L806">Source Code</a></p>
 <p>On some platforms, notably Windows Direct3D and Android, textures may be lost at any time for events such as display resize or switching out of the app. On those platforms, bitmaps created without the ALLEGRO_NO_PRESERVE_TEXTURE flag automatically get backed up to system memory every time al_flip_display is called.</p>
 <p>This function gives you more control over when your bitmaps get backed up. By calling this function after modifying a bitmap, you can make sure the bitmap is backed up right away instead of during the next flip.</p>
 <p>Since: 5.2.1</p>
@@ -1883,7 +1883,7 @@ a = d.a * 0 + s.a * d.a</code></pre>
 <p>See also: <a href="graphics.html#al_backup_dirty_bitmap">al_backup_dirty_bitmap</a></p>
 <p class="timestamp">
 Allegro version 5.2.8 (GIT)
- - Last updated: 2021-05-28 21:07:40 UTC
+ - Last updated: 2021-06-28 00:07:39 UTC
 </p>
 </div>
 </body>
