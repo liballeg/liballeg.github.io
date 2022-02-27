@@ -299,10 +299,12 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <li>r: read access</li>
 <li>w: write access</li>
 <li>e: expandable</li>
+<li>s: seek to the end of the slice upon [al_close] (this is the default behavior)</li>
+<li>n: disable the seeking behavior of “s”.</li>
 </ul>
 <p>For example, a mode of “rw” indicates the file can be read and written. (Note that this is slightly different from the stdio modes.) Keep in mind that the parent file must support random access and be open in normal write mode (not append) for the slice to work in a well defined way.</p>
 <p>If the slice is marked as expandable, then reads and writes can happen after the initial end point, and the slice will grow accordingly. Otherwise, all activity is restricted to the initial size of the slice.</p>
-<p>A slice must be closed with <a href="file.html#al_fclose">al_fclose</a>. The parent file will then be positioned immediately after the end of the slice.</p>
+<p>A slice must be closed with <a href="file.html#al_fclose">al_fclose</a>. The parent file will then be positioned immediately after the end of the slice. This behavior can be disabled by setting the “n” mode.</p>
 <p>Since: 5.0.6, 5.1.0</p>
 <p>See also: <a href="file.html#al_fopen">al_fopen</a></p>
 <p>Examples:</p>
@@ -635,7 +637,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 </ul>
 <p class="timestamp">
 Allegro version 5.2.8 (GIT)
- - Last updated: 2022-02-26 23:07:36 UTC
+ - Last updated: 2022-02-27 00:07:07 UTC
 </p>
 </div>
 </body>
