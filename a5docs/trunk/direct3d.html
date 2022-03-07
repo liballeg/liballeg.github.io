@@ -179,43 +179,43 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a> <span class="pp">#include </span><span class="im">&lt;allegro5/allegro_direct3d.h&gt;</span></span></code></pre></div>
 <h1 id="al_get_d3d_device">al_get_d3d_device</h1>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>LPDIRECT3DDEVICE9 al_get_d3d_device(ALLEGRO_DISPLAY *display)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/0e94a88b990ad4d013e0a7186f751635b6b159b4/src/win/d3d_disp.cpp#L2577">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/c9bc8d5dd787395f25c2de1a84cd986dbcd453e3/src/win/d3d_disp.cpp#L2572">Source Code</a></p>
 <p>Returns the Direct3D device of the display. The return value is undefined if the display was not created with the Direct3D flag.</p>
 <p><em>Returns:</em> A pointer to the Direct3D device.</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/liballeg/allegro5/blob/0e94a88b990ad4d013e0a7186f751635b6b159b4/examples/ex_d3d.cpp#L44">ex_d3d.cpp</a></li>
+<li><a href="https://github.com/liballeg/allegro5/blob/c9bc8d5dd787395f25c2de1a84cd986dbcd453e3/examples/ex_d3d.cpp#L44">ex_d3d.cpp</a></li>
 </ul>
 <h1 id="al_get_d3d_system_texture">al_get_d3d_system_texture</h1>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>LPDIRECT3DTEXTURE9 al_get_d3d_system_texture(ALLEGRO_BITMAP *bitmap)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/0e94a88b990ad4d013e0a7186f751635b6b159b4/src/win/d3d_disp.cpp#L2585">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/c9bc8d5dd787395f25c2de1a84cd986dbcd453e3/src/win/d3d_disp.cpp#L2580">Source Code</a></p>
 <p>Returns the system texture (stored with the D3DPOOL_SYSTEMMEM flags). This texture is used for the render-to-texture feature set.</p>
 <p><em>Returns:</em> A pointer to the Direct3D system texture.</p>
 <h1 id="al_get_d3d_video_texture">al_get_d3d_video_texture</h1>
 <div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>LPDIRECT3DTEXTURE9 al_get_d3d_video_texture(ALLEGRO_BITMAP *bitmap)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/0e94a88b990ad4d013e0a7186f751635b6b159b4/src/win/d3d_disp.cpp#L2593">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/c9bc8d5dd787395f25c2de1a84cd986dbcd453e3/src/win/d3d_disp.cpp#L2588">Source Code</a></p>
 <p>Returns the video texture (stored with the D3DPOOL_DEFAULT or D3DPOOL_MANAGED flags depending on whether render-to-texture is enabled or disabled respectively).</p>
 <p><em>Returns:</em> A pointer to the Direct3D video texture.</p>
 <h1 id="al_have_d3d_non_pow2_texture_support">al_have_d3d_non_pow2_texture_support</h1>
 <div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="dt">bool</span> al_have_d3d_non_pow2_texture_support(<span class="dt">void</span>)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/0e94a88b990ad4d013e0a7186f751635b6b159b4/src/win/d3d_disp.cpp#L241">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/c9bc8d5dd787395f25c2de1a84cd986dbcd453e3/src/win/d3d_disp.cpp#L241">Source Code</a></p>
 <p>Returns whether the Direct3D device supports textures whose dimensions are not powers of two.</p>
 <p><em>Returns:</em> True if device supports NPOT textures, false otherwise.</p>
 <h1 id="al_have_d3d_non_square_texture_support">al_have_d3d_non_square_texture_support</h1>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="dt">bool</span> al_have_d3d_non_square_texture_support(<span class="dt">void</span>)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/0e94a88b990ad4d013e0a7186f751635b6b159b4/src/win/d3d_disp.cpp#L283">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/c9bc8d5dd787395f25c2de1a84cd986dbcd453e3/src/win/d3d_disp.cpp#L283">Source Code</a></p>
 <p>Returns whether the Direct3D device supports textures that are not square.</p>
 <p><em>Returns:</em> True if the Direct3D device supports non-square textures, false otherwise.</p>
 <h1 id="al_get_d3d_texture_size">al_get_d3d_texture_size</h1>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="dt">bool</span> al_get_d3d_texture_size(ALLEGRO_BITMAP *bitmap, <span class="dt">int</span> *width, <span class="dt">int</span> *height)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/0e94a88b990ad4d013e0a7186f751635b6b159b4/src/win/d3d_bmp.cpp#L105">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/c9bc8d5dd787395f25c2de1a84cd986dbcd453e3/src/win/d3d_bmp.cpp#L105">Source Code</a></p>
 <p>Retrieves the size of the Direct3D texture used for the bitmap.</p>
 <p>Returns true on success, false on failure. Zero width and height are returned if the bitmap is not a Direct3D bitmap.</p>
 <p>Since: 5.1.0</p>
 <p>See also: <a href="direct3d.html#al_get_d3d_texture_position">al_get_d3d_texture_position</a></p>
 <h1 id="al_get_d3d_texture_position">al_get_d3d_texture_position</h1>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="dt">void</span> al_get_d3d_texture_position(ALLEGRO_BITMAP *bitmap, <span class="dt">int</span> *u, <span class="dt">int</span> *v)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/0e94a88b990ad4d013e0a7186f751635b6b159b4/src/win/d3d_disp.cpp#L2601">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/c9bc8d5dd787395f25c2de1a84cd986dbcd453e3/src/win/d3d_disp.cpp#L2596">Source Code</a></p>
 <p>Returns the u/v coordinates for the top/left corner of the bitmap within the used texture, in pixels.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -226,7 +226,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>See also: <a href="direct3d.html#al_get_d3d_texture_size">al_get_d3d_texture_size</a></p>
 <h1 id="al_is_d3d_device_lost">al_is_d3d_device_lost</h1>
 <div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="dt">bool</span> al_is_d3d_device_lost(ALLEGRO_DISPLAY *display)</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/0e94a88b990ad4d013e0a7186f751635b6b159b4/src/win/d3d_disp.cpp#L2613">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/c9bc8d5dd787395f25c2de1a84cd986dbcd453e3/src/win/d3d_disp.cpp#L2608">Source Code</a></p>
 <p>Returns a boolean indicating whether or not the Direct3D device belonging to the given display is in a lost state.</p>
 <p><em>Parameters:</em></p>
 <ul>
@@ -235,20 +235,20 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <h1 id="al_set_d3d_device_release_callback">al_set_d3d_device_release_callback</h1>
 <div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="dt">void</span> al_set_d3d_device_release_callback(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>   <span class="dt">void</span> (*callback)(ALLEGRO_DISPLAY *display))</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/0e94a88b990ad4d013e0a7186f751635b6b159b4/src/win/d3d_disp.cpp#L219">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/c9bc8d5dd787395f25c2de1a84cd986dbcd453e3/src/win/d3d_disp.cpp#L219">Source Code</a></p>
 <p>The callback will be called whenever a D3D device is reset (minimize, toggle fullscreen window, etc). In the callback you should release any d3d resources you have created yourself. The callback receives the affected display as a parameter.</p>
 <p>Pass NULL to disable the callback.</p>
 <p>Since: 5.1.0</p>
 <h1 id="al_set_d3d_device_restore_callback">al_set_d3d_device_restore_callback</h1>
 <div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="dt">void</span> al_set_d3d_device_restore_callback(</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>   <span class="dt">void</span> (*callback)(ALLEGRO_DISPLAY *display))</span></code></pre></div>
-<p><a href="https://github.com/liballeg/allegro5/blob/0e94a88b990ad4d013e0a7186f751635b6b159b4/src/win/d3d_disp.cpp#L227">Source Code</a></p>
+<p><a href="https://github.com/liballeg/allegro5/blob/c9bc8d5dd787395f25c2de1a84cd986dbcd453e3/src/win/d3d_disp.cpp#L227">Source Code</a></p>
 <p>The callback will be called whenever a D3D device that has been reset is restored. In the callback you should restore any d3d resources you have created yourself. The callback receives the affected display as a parameter.</p>
 <p>Pass NULL to disable the callback.</p>
 <p>Since: 5.1.0</p>
 <p class="timestamp">
 Allegro version 5.2.8 (GIT)
- - Last updated: 2022-02-26 23:07:51 UTC
+ - Last updated: 2022-03-07 00:09:36 UTC
 </p>
 </div>
 </body>
