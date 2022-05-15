@@ -235,6 +235,8 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <li><a href="audio.html#allegro_voice">ALLEGRO_VOICE</a> <!-- --></li>
 <li><a href="graphics.html#allegro_write_mask_flags">ALLEGRO_WRITE_MASK_FLAGS</a> <!-- --></li>
 <li><a href="utf8.html#about-utf-8-string-routines">About UTF-8 string routines</a> <!-- --></li>
+<li><a href="audio.html#advanced-audio">Advanced Audio</a> <!-- --></li>
+<li><a href="audio.html#advanced-audio-file-i/o">Advanced audio file I/O</a> <!-- --></li>
 <li><a href="file.html#alternative-file-streams">Alternative file streams</a> <!-- --></li>
 <li><a href="fshook.html#alternative-filesystem-functions">Alternative filesystem functions</a> <!-- --></li>
 <li><a href="platform.html#android">Android</a> <!-- --></li>
@@ -242,10 +244,10 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <li><a href="utf8.html#assigning-one-string-to-another">Assigning one string to another</a> <!-- --></li>
 <li><a href="audio.html#audio-addon">Audio addon</a> <!-- --></li>
 <li><a href="acodec.html#audio-codecs-addon">Audio codecs addon</a> <!-- --></li>
-<li><a href="audio.html#audio-device-functions">Audio device functions</a> <!-- --></li>
-<li><a href="audio.html#audio-file-i/o">Audio file I/O</a> <!-- --></li>
+<li><a href="audio.html#audio-devices">Audio devices</a> <!-- --></li>
 <li><a href="audio.html#audio-recording">Audio recording</a> <!-- --></li>
-<li><a href="audio.html#audio-types">Audio types</a> <!-- --></li>
+<li><a href="audio.html#audio-streams">Audio streams</a> <!-- --></li>
+<li><a href="audio.html#basic-audio">Basic Audio</a> <!-- --></li>
 <li><a href="graphics.html#bitmap-creation">Bitmap creation</a> <!-- --></li>
 <li><a href="font.html#bitmap-fonts">Bitmap fonts</a> <!-- --></li>
 <li><a href="graphics.html#bitmap-properties">Bitmap properties</a> <!-- --></li>
@@ -309,9 +311,9 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <li><a href="memfile.html#memfile-interface">Memfile interface</a> <!-- --></li>
 <li><a href="memory.html#memory-management-routines">Memory management routines</a> <!-- --></li>
 <li><a href="native_dialog.html#menus">Menus</a> <!-- --></li>
-<li><a href="audio.html#misc-audio-functions">Misc audio functions</a> <!-- --></li>
+<li><a href="audio.html#miscelaneous">Miscelaneous</a> <!-- --></li>
 <li><a href="misc.html#miscellaneous-routines">Miscellaneous routines</a> <!-- --></li>
-<li><a href="audio.html#mixer-functions">Mixer functions</a> <!-- --></li>
+<li><a href="audio.html#mixers">Mixers</a> <!-- --></li>
 <li><a href="monitor.html#monitors">Monitors</a> <!-- --></li>
 <li><a href="config.html#monster-description">Monster description</a> <!-- --></li>
 <li><a href="mouse.html#mouse-cursors">Mouse cursors</a> <!-- --></li>
@@ -333,17 +335,15 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <li><a href="utf8.html#removing-parts-of-strings">Removing parts of strings</a> <!-- --></li>
 <li><a href="graphics.html#render-state">Render State</a> <!-- --></li>
 <li><a href="utf8.html#replacing-parts-of-string">Replacing parts of string</a> <!-- --></li>
-<li><a href="audio.html#sample-functions">Sample functions</a> <!-- --></li>
-<li><a href="audio.html#sample-instance-functions">Sample instance functions</a> <!-- --></li>
+<li><a href="audio.html#sample-instances">Sample instances</a> <!-- --></li>
+<li><a href="audio.html#samples">Samples</a> <!-- --></li>
 <li><a href="display.html#screensaver">Screensaver</a> <!-- --></li>
 <li><a href="utf8.html#searching">Searching</a> <!-- --></li>
-<li><a href="audio.html#setting-up-audio">Setting up audio</a> <!-- --></li>
 <li><a href="shader.html#shader-routines">Shader routines</a> <!-- --></li>
 <li><a href="utf8.html#sizes-and-offsets">Sizes and offsets</a> <!-- --></li>
 <li><a href="getting_started.html#sound">Sound</a> <!-- --></li>
 <li><a href="file.html#standard-i/o-specific-routines">Standard I/O specific routines</a> <!-- --></li>
 <li><a href="state.html#state">State</a> <!-- --></li>
-<li><a href="audio.html#stream-functions">Stream functions</a> <!-- --></li>
 <li><a href="getting_started.html#structure-of-the-library-and-its-addons">Structure of the library and its addons</a> <!-- --></li>
 <li><a href="primitives.html#structures-and-types">Structures and types</a> <!-- --></li>
 <li><a href="system.html#system-routines">System routines</a> <!-- --></li>
@@ -361,7 +361,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <li><a href="getting_started.html#unstable-api">Unstable API</a> <!-- --></li>
 <li><a href="primitives.html#vertex-buffer-routines">Vertex buffer routines</a> <!-- --></li>
 <li><a href="video.html#video-streaming-addon">Video streaming addon</a> <!-- --></li>
-<li><a href="audio.html#voice-functions">Voice functions</a> <!-- --></li>
+<li><a href="audio.html#voices">Voices</a> <!-- --></li>
 <li><a href="platform.html#windows">Windows</a> <!-- --></li>
 <li><a href="platform.html#x11">X11</a> <!-- --></li>
 <li><a href="display.html#al_acknowledge_drawing_halt">al_acknowledge_drawing_halt</a> <!-- --></li>
@@ -1007,6 +1007,8 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <li><a href="events.html#al_pause_event_queue">al_pause_event_queue</a> <!-- --></li>
 <li><a href="events.html#al_peek_next_event">al_peek_next_event</a> <!-- --></li>
 <li><a href="transformations.html#al_perspective_transform">al_perspective_transform</a> <!-- --></li>
+<li><a href="audio.html#al_play_audio_stream">al_play_audio_stream</a> <!-- --></li>
+<li><a href="audio.html#al_play_audio_stream_f">al_play_audio_stream_f</a> <!-- --></li>
 <li><a href="haptic.html#al_play_haptic_effect">al_play_haptic_effect</a> <!-- --></li>
 <li><a href="audio.html#al_play_sample">al_play_sample</a> <!-- --></li>
 <li><a href="audio.html#al_play_sample_instance">al_play_sample_instance</a> <!-- --></li>
@@ -1311,7 +1313,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 </ul>
 <p class="timestamp">
 Allegro version 5.2.8 (GIT)
- - Last updated: 2022-05-15 21:08:25 UTC
+ - Last updated: 2022-05-15 22:08:08 UTC
 </p>
 </div>
 </body>
