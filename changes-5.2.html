@@ -86,6 +86,125 @@ A game programming library
 <!-- left -->
 <div id="content">
 <p>These lists serve as summaries; the full histories are in the git repository.</p>
+<h1 id="changes-from-5.2.7-to-5.2.8-june-2022">Changes from 5.2.7 to 5.2.8 (June 2022)</h1>
+<p>The main developers this time were: SiegeLord, Elias Pschernig, Sebastian Krzyszkowiak, Julian Smythe.</p>
+<p>Build system:</p>
+<ul>
+<li><p>Add a configuration summary. Currently this mostly reports the addon features.</p></li>
+<li><p>Fix build failure with sanitizers enabled.</p></li>
+<li><p>Remove <code>-Wdeclaration-after-statement</code>, MSVC had support for this for a while now.</p></li>
+<li><p>Bump minimum CMake version to 3.0.</p></li>
+</ul>
+<p>Core:</p>
+<ul>
+<li><p>Add <code>al_fopen_slice</code> mode to prevent seek on close (Karl Robillard).</p></li>
+<li><p>Allow configuring bitmap wrapping via <code>al_set_new_bitmap_wrap</code>.</p></li>
+</ul>
+<p>Graphics:</p>
+<ul>
+<li><p>Reject creating bitmaps with negative width or height (Peter Hull).</p></li>
+<li><p>Add a minimal shader implementation for GLSL. Minimal shader supports fewer features, but is faster (Issue #1120). Select it via the <code>_MINIMAL</code> suffix to the shader platforms.</p></li>
+</ul>
+<p>Emscripten:</p>
+<ul>
+<li><p>Improve emscripten instructions for building demos (Connor Clark).</p></li>
+<li><p>Fix usage of SDL_Init for emscripten (Issue #1322) (Connor Clark).</p></li>
+</ul>
+<p>OSX:</p>
+<ul>
+<li><p>Fix a few thread-related crashes.</p></li>
+<li><p>Don’t use <code>-flat_namespace</code> in <code>LINK_FLAGS</code> (danielnachun).</p></li>
+<li><p>Make <code>al_get/set_window_position</code> work on Retina displays</p></li>
+</ul>
+<p>Windows:</p>
+<ul>
+<li><p>Fix flickering when creating multisampling displays under DirectX.</p></li>
+<li><p>Fix multisampling selection on Windows with OpenGL.</p></li>
+<li><p>Fixed a bug which freezes and crashes the window in Windows OpenGL (HerrNamenlos123).</p></li>
+<li><p>Allow specifying shader model 3_0 for HLSL shaders (Issue #1154).</p></li>
+</ul>
+<p>SDL:</p>
+<ul>
+<li><p>Ignore touch events from indirect touch devices.</p></li>
+<li><p>Use <code>SDL_PeepEvents</code> for event handling, to improve performance.</p></li>
+<li><p>Improve joysticks support (Issue #1326) (Connor Clark).</p></li>
+<li><p>Fix mouse axis setter (Connor Clark).</p></li>
+</ul>
+<p>Linux:</p>
+<ul>
+<li>Use <code>clock_gettime</code> with <code>CLOCK_MONOTONIC</code> instead of <code>gettimeofday</code> (check-switch-26).</li>
+</ul>
+<p>Android:</p>
+<ul>
+<li>Update Gradle to 5.0.</li>
+</ul>
+<p>Audio addon:</p>
+<ul>
+<li><p>Add <code>ALLEGRO_PLAYMODE_LOOP_ONCE</code> (Issue #1309).</p></li>
+<li><p>Add <code>al_play_audio_stream</code>, a ‘simple’ API endpoint for audio stream playback.</p></li>
+</ul>
+<p>Acodec addon:</p>
+<ul>
+<li><p>Fix Vorbis/Opus support under MSVC + Clang.</p></li>
+<li><p>Add audio identification / <code>al_identify_sample</code>.</p></li>
+<li><p>Use regular seeking for Ogg streams. The old one did cross-fades, causing unexpected behavior in certain cases (Issue #1310).</p></li>
+<li><p>Enable looping for modules.</p></li>
+</ul>
+<p>Audio addon:</p>
+<ul>
+<li>Allow identifying and listing audio devices via new API: <code>al_get_num_audio_output_devices</code>, <code>al_get_audio_output_device</code>, <code>al_get_audio_device_name</code> (Aldrik Ramaekers).</li>
+</ul>
+<p>Color addon:</p>
+<ul>
+<li>Add linear and oklab color spaces to the color addon.</li>
+</ul>
+<p>Font addon:</p>
+<ul>
+<li>Fix declaration of al_draw_multiline_textf() as a PRINTFUNC (check-switch-26).</li>
+</ul>
+<p>Image addon:</p>
+<ul>
+<li><p>Prevent RLE data in corrupt <code>.tga</code> from overflowing the buffer (Peter Hull).</p></li>
+<li><p>PCX loader validation (Peter Hull).</p></li>
+<li><p>Windows BMP - Make more robust to crashing (Peter Hull).</p></li>
+<li><p>Fix DDS compressed image loading when image dimensions are not multiple of block size (check-switch-26).</p></li>
+</ul>
+<p>Native Dialog addon:</p>
+<ul>
+<li>Fix native dialogs addon compatibility with older GTK+ versions (Andrew Kravchuk).</li>
+</ul>
+<p>TTF addon:</p>
+<ul>
+<li>Fixed TTF rendering when using transforms (check-switch-26).</li>
+</ul>
+<p>PhysFS addon:</p>
+<ul>
+<li>Fix incorrect error handling in <code>PHYSFS_close</code> (j-w-c-b).</li>
+</ul>
+<p>Video addon:</p>
+<ul>
+<li><p>Allow identifying video files via a magic number, exposed via <code>al_identify_video</code> (Issue #1262).</p></li>
+<li><p>Fix <code>al_is_video_addon_initalized</code> (Jayson).</p></li>
+</ul>
+<p>Documentation:</p>
+<ul>
+<li><p>Document some reasonable defaults for <code>al_create_mixer</code>/<code>al_create_voice</code>.</p></li>
+<li><p>Refactor the audio docs to highlight the simple API better.</p></li>
+</ul>
+<p>Misc:</p>
+<ul>
+<li>Fix a few data race issues, in an effort to fix ex_threads crashes on Linux.</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li><p>Allow exiting from <code>ex_audio_timer</code> (BillKek)</p></li>
+<li><p>Add the Allegro 4 “shooter” demo.</p></li>
+<li><p>Fix <code>ex_threads</code> crash under D3D.</p></li>
+<li><p>Add <code>ex_audio_devices</code>.</p></li>
+<li><p>Update <code>ex_palette</code> to build with Emscripten (Issue #1318).</p></li>
+<li><p>Improve <code>ex_stream_seek</code>.</p></li>
+<li><p>Improve <code>ex_windows</code>.</p></li>
+</ul>
 <h1 id="changes-from-5.2.6-to-5.2.7-march-2021">Changes from 5.2.6 to 5.2.7 (March 2021)</h1>
 <p>The main developers this time were: SiegeLord, Peter Hull, Elias Pschernig, Aldrik Ramaekers, Andreas Rönnquist.</p>
 <p>Build system:</p>
