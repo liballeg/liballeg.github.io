@@ -217,7 +217,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <h1 id="al_create_timer">al_create_timer</h1>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>ALLEGRO_TIMER *al_create_timer(<span class="dt">double</span> speed_secs)</span></code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/d25c4cff7621db614e5236a1646f5d76309ca73f/src/timernu.c#L229">Source Code</a></p>
-<p>Allocates and initializes a timer. If successful, a pointer to a new timer object is returned, otherwise NULL is returned. <em>speed_secs</em> is in seconds per “tick”, and must be positive. The new timer is initially stopped.</p>
+<p>Allocates and initializes a timer. If successful, a pointer to a new timer object is returned, otherwise NULL is returned. <em>speed_secs</em> is in seconds per “tick”, and must be positive. The new timer is initially stopped and needs to be started with <a href="timer.html#al_start_timer">al_start_timer</a> before <a href="events.html#allegro_event_timer">ALLEGRO_EVENT_TIMER</a> events are sent.</p>
 <p>Usage note: typical granularity is on the order of microseconds, but with some drivers might only be milliseconds.</p>
 <p>See also: <a href="timer.html#al_start_timer">al_start_timer</a>, <a href="timer.html#al_destroy_timer">al_destroy_timer</a></p>
 <p>Examples:</p>
@@ -240,7 +240,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <h1 id="al_resume_timer">al_resume_timer</h1>
 <div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="dt">void</span> al_resume_timer(ALLEGRO_TIMER *timer)</span></code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/d25c4cff7621db614e5236a1646f5d76309ca73f/src/timernu.c#L281">Source Code</a></p>
-<p>Resume the timer specified. From then, the timer’s counter will increment at a constant rate, and it will begin generating events. Resuming a timer that is already started does nothing. Resuming a stopped timer will not reset the timer’s counter (unlike al_start_timer).</p>
+<p>Resume the timer specified. From then, the timer’s counter will increment at a constant rate, and it will begin generating events. Resuming a timer that is already started does nothing. Resuming a stopped timer will not reset the timer’s counter (unlike <a href="timer.html#al_start_timer">al_start_timer</a>).</p>
 <p>See also: <a href="timer.html#al_start_timer">al_start_timer</a>, <a href="timer.html#al_stop_timer">al_stop_timer</a>, <a href="timer.html#al_get_timer_started">al_get_timer_started</a></p>
 <p>Examples:</p>
 <ul>
@@ -325,7 +325,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 </ul>
 <p class="timestamp">
 Allegro version 5.2.9 (GIT)
- - Last updated: 2022-06-17 06:07:33 UTC
+ - Last updated: 2022-07-21 07:07:07 UTC
 </p>
 </div>
 </body>
