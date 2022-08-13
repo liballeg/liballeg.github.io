@@ -367,7 +367,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <h2 id="allegro_sample_id">ALLEGRO_SAMPLE_ID</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_SAMPLE_ID ALLEGRO_SAMPLE_ID;</span></code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/d25c4cff7621db614e5236a1646f5d76309ca73f/addons/audio/allegro5/allegro_audio.h#L151">Source Code</a></p>
-<p>An ALLEGRO_SAMPLE_ID represents a sample being played via <a href="audio.html#al_play_sample">al_play_sample</a>. It can be used to later sALLEGRO_BITMAP_WRAPtop the sample with <a href="audio.html#al_stop_sample">al_stop_sample</a>. The underlying ALLEGRO_SAMPLE_INSTANCE can be extracted using <a href="audio.html#al_lock_sample_id">al_lock_sample_id</a>.</p>
+<p>An ALLEGRO_SAMPLE_ID represents a sample being played via <a href="audio.html#al_play_sample">al_play_sample</a>. It can be used to later stop the sample with <a href="audio.html#al_stop_sample">al_stop_sample</a>. The underlying ALLEGRO_SAMPLE_INSTANCE can be extracted using <a href="audio.html#al_lock_sample_id">al_lock_sample_id</a>.</p>
 <p>Examples:</p>
 <ul>
 <li><a href="https://github.com/liballeg/allegro5/blob/d25c4cff7621db614e5236a1646f5d76309ca73f/examples/ex_audio_simple.c#L33">ex_audio_simple.c</a></li>
@@ -2053,7 +2053,7 @@ samples = bytes_per_fragment / sample_size;</code></pre>
 <p>Since: 5.1.8</p>
 <p class="timestamp">
 Allegro version 5.2.9 (GIT)
- - Last updated: 2022-08-13 07:08:14 UTC
+ - Last updated: 2022-08-13 20:07:26 UTC
 </p>
 </div>
 </body>
