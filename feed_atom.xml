@@ -3,8 +3,15 @@
 <title>Allegro news</title>
 <link href="http://liballeg.org/"/>
 <link rel="self" href="http://liballeg.org/feed_atom.xml"/>
-<updated>2022-06-06T01:07:02-04:00</updated>
+<updated>2022-08-14T20:07:02-04:00</updated>
 <id>urn:uuid:661257c2-82a0-4510-b2be-0f6b010807b9</id>
+<entry>
+<title>Allegro has a discord server!</title>
+<author><name>Allegro developers</name></author>
+<link href="http://liballeg.org/"/>
+<id>urn:uuid:bf9ce210-7b05-40d9-b935-a7eb19dc7c6e</id>
+<updated>2022-08-14T16:30:13-07:00</updated>
+</entry>
 <entry>
 <title>Allegro 5.2.8 released!</title>
 <author><name>Allegro developers</name></author>
