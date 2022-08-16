@@ -185,6 +185,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <li><a href="#al_destroy_mouse_cursor">al_destroy_mouse_cursor</a></li>
 <li><a href="#al_set_mouse_cursor">al_set_mouse_cursor</a></li>
 <li><a href="#al_set_system_mouse_cursor">al_set_system_mouse_cursor</a></li>
+<li><a href="#al_can_get_mouse_cursor_position">al_can_get_mouse_cursor_position</a></li>
 <li><a href="#al_get_mouse_cursor_position">al_get_mouse_cursor_position</a></li>
 <li><a href="#al_hide_mouse_cursor">al_hide_mouse_cursor</a></li>
 <li><a href="#al_show_mouse_cursor">al_show_mouse_cursor</a></li>
@@ -424,17 +425,23 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <ul>
 <li><a href="https://github.com/liballeg/allegro5/blob/d25c4cff7621db614e5236a1646f5d76309ca73f/examples/ex_mouse_cursor.c#L206">ex_mouse_cursor.c</a></li>
 </ul>
+<h2 id="al_can_get_mouse_cursor_position">al_can_get_mouse_cursor_position</h2>
+<div class="sourceCode" id="cb24"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a><span class="dt">bool</span> al_can_get_mouse_cursor_position(<span class="dt">void</span>)</span></code></pre></div>
+<p><a href="https://github.com/liballeg/allegro5/blob/d25c4cff7621db614e5236a1646f5d76309ca73f/src/mousenu.c#L256">Source Code</a></p>
+<p>Returns true if getting the global mouse cursor position is available.</p>
+<p>See also: <a href="mouse.html#al_get_mouse_cursor_position">al_get_mouse_cursor_position</a></p>
 <h2 id="al_get_mouse_cursor_position">al_get_mouse_cursor_position</h2>
-<div class="sourceCode" id="cb24"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a><span class="dt">bool</span> al_get_mouse_cursor_position(<span class="dt">int</span> *ret_x, <span class="dt">int</span> *ret_y)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a><span class="dt">bool</span> al_get_mouse_cursor_position(<span class="dt">int</span> *ret_x, <span class="dt">int</span> *ret_y)</span></code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/d25c4cff7621db614e5236a1646f5d76309ca73f/src/mousenu.c#L266">Source Code</a></p>
 <p>On platforms where this information is available, this function returns the global location of the mouse cursor, relative to the desktop. You should not normally use this function, as the information is not useful except for special scenarios as moving a window.</p>
 <p>Returns true on success, false on failure.</p>
+<p>See also: <a href="mouse.html#al_can_get_mouse_cursor_position">al_can_get_mouse_cursor_position</a></p>
 <p>Examples:</p>
 <ul>
 <li><a href="https://github.com/liballeg/allegro5/blob/d25c4cff7621db614e5236a1646f5d76309ca73f/examples/ex_noframe.c#L75">ex_noframe.c</a></li>
 </ul>
 <h2 id="al_hide_mouse_cursor">al_hide_mouse_cursor</h2>
-<div class="sourceCode" id="cb25"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a><span class="dt">bool</span> al_hide_mouse_cursor(ALLEGRO_DISPLAY *display)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a><span class="dt">bool</span> al_hide_mouse_cursor(ALLEGRO_DISPLAY *display)</span></code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/d25c4cff7621db614e5236a1646f5d76309ca73f/src/mouse_cursor.c#L109">Source Code</a></p>
 <p>Hide the mouse cursor in the given display. This has no effect on what the current mouse cursor looks like; it just makes it disappear.</p>
 <p>Returns true on success (or if the cursor already was hidden), false otherwise.</p>
@@ -446,7 +453,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <li><a href="https://github.com/liballeg/allegro5/blob/d25c4cff7621db614e5236a1646f5d76309ca73f/examples/ex_mouse_events.c#L78">ex_mouse_events.c</a></li>
 </ul>
 <h2 id="al_show_mouse_cursor">al_show_mouse_cursor</h2>
-<div class="sourceCode" id="cb26"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a><span class="dt">bool</span> al_show_mouse_cursor(ALLEGRO_DISPLAY *display)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a><span class="dt">bool</span> al_show_mouse_cursor(ALLEGRO_DISPLAY *display)</span></code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/d25c4cff7621db614e5236a1646f5d76309ca73f/src/mouse_cursor.c#L96">Source Code</a></p>
 <p>Make a mouse cursor visible in the given display.</p>
 <p>Returns true if a mouse cursor is shown as a result of the call (or one already was visible), false otherwise.</p>
@@ -457,7 +464,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <li><a href="https://github.com/liballeg/allegro5/blob/d25c4cff7621db614e5236a1646f5d76309ca73f/examples/ex_mouse_cursor.c#L194">ex_mouse_cursor.c</a></li>
 </ul>
 <h2 id="al_grab_mouse">al_grab_mouse</h2>
-<div class="sourceCode" id="cb27"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a><span class="dt">bool</span> al_grab_mouse(ALLEGRO_DISPLAY *display)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a><span class="dt">bool</span> al_grab_mouse(ALLEGRO_DISPLAY *display)</span></code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/d25c4cff7621db614e5236a1646f5d76309ca73f/src/mousenu.c#L286">Source Code</a></p>
 <p>Confine the mouse cursor to the given display. The mouse cursor can only be confined to one display at a time.</p>
 <p>Returns true if successful, otherwise returns false. Do not assume that the cursor will remain confined until you call <a href="mouse.html#al_ungrab_mouse">al_ungrab_mouse</a>. It may lose the confined status at any time for other reasons.</p>
@@ -466,7 +473,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 </blockquote>
 <p>See also: <a href="mouse.html#al_ungrab_mouse">al_ungrab_mouse</a></p>
 <h2 id="al_ungrab_mouse">al_ungrab_mouse</h2>
-<div class="sourceCode" id="cb28"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a><span class="dt">bool</span> al_ungrab_mouse(<span class="dt">void</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true"></a><span class="dt">bool</span> al_ungrab_mouse(<span class="dt">void</span>)</span></code></pre></div>
 <p><a href="https://github.com/liballeg/allegro5/blob/d25c4cff7621db614e5236a1646f5d76309ca73f/src/mousenu.c#L300">Source Code</a></p>
 <p>Stop confining the mouse cursor to any display belonging to the program.</p>
 <blockquote>
@@ -475,7 +482,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 <p>See also: <a href="mouse.html#al_grab_mouse">al_grab_mouse</a></p>
 <p class="timestamp">
 Allegro version 5.2.9 (GIT)
- - Last updated: 2022-08-15 00:09:32 UTC
+ - Last updated: 2022-08-16 01:07:22 UTC
 </p>
 </div>
 </body>
