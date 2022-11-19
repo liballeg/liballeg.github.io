@@ -8,15 +8,24 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="web_style.css" />
   <link rel="alternate" type="application/atom+xml"
       href="feed_atom.xml" title="Allegro news"
   />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 <div id="main_header">
@@ -36,7 +45,8 @@ A game programming library
 <li><a href="git.html">Git repository</a></li>
 <li><a href="license.html">License</a></li>
 <li><a href="examples_demos.html">Examples</a></li>
-<li><a href="https://github.com/liballeg/allegro5/issues">Bug tracker</a></li>
+<li><a href="https://github.com/liballeg/allegro5/issues">Bug
+tracker</a></li>
 <li><a href="bindings.html">Language bindings</a></li>
 </ul></li>
 <li><strong>Downloads</strong>
@@ -47,11 +57,13 @@ A game programming library
 </ul></li>
 <li><strong>Documentation</strong>
 <ul>
-<li><strong><a href="http://liballeg.org/a5docs/trunk/">Latest version</a></strong></li>
+<li><strong><a href="http://liballeg.org/a5docs/trunk/">Latest
+version</a></strong></li>
 <li><a href="api.html">All versions</a></li>
 <li><a href="docs.html">Tutorials</a></li>
 <li><a href="books.html">Books</a></li>
-<li><a href="https://github.com/liballeg/allegro_wiki/wiki">Wiki</a></li>
+<li><a
+href="https://github.com/liballeg/allegro_wiki/wiki">Wiki</a></li>
 </ul></li>
 <li><strong>Community</strong>
 <ul>
@@ -77,7 +89,10 @@ A game programming library
 </div>
 <!-- sidebar -->
 <div id="hosting">
-<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/> <a href="https://projects.tuxfamily.org/?do=group;name=allegro">TuxFamily project</a></p>
+<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/>
+<a
+href="https://projects.tuxfamily.org/?do=group;name=allegro">TuxFamily
+project</a></p>
 </div>
 <!-- hosting -->
 </div>
@@ -87,71 +102,142 @@ A game programming library
 <h1 class="title">Allegro - Examples - Bitmap</h1>
 </header>
 <div class="tabbar">
-<p><a href="examples_demos.html">Demos</a> - <a href="examples_graphics.html">Graphics</a> - <strong>Bitmap</strong> - <a href="examples_audio.html">Audio</a> - <a href="examples_display.html">Display</a> - <a href="examples_input.html">Input</a> - <a href="examples_misc.html">Misc</a></p>
+<p><a href="examples_demos.html">Demos</a> - <a
+href="examples_graphics.html">Graphics</a> - <strong>Bitmap</strong> -
+<a href="examples_audio.html">Audio</a> - <a
+href="examples_display.html">Display</a> - <a
+href="examples_input.html">Input</a> - <a
+href="examples_misc.html">Misc</a></p>
 </div>
 <div class="examples">
 <div class="example">
-<p>ex_bitmap<a href="https://allegro5.org/examples/examples/ex_bitmap.html" class="try" title="Try">try</a><a href="https://github.com/liballeg/allegro5/tree/master/examples/ex_bitmap.c" class="try" title="Source">source</a><br />
+<p>ex_bitmap<a
+href="https://allegro5.org/examples/examples/ex_bitmap.html" class="try"
+title="Try">try</a><a
+href="https://github.com/liballeg/allegro5/tree/master/examples/ex_bitmap.c"
+class="try" title="Source">source</a><br />
 <img src="screenshots/ex_bitmap.png" alt="ex_bitmap screenshot" /></p>
 </div>
 <div class="example">
-<p>ex_bitmap_file<a href="https://allegro5.org/examples/examples/ex_bitmap_file.html" class="try" title="Try">try</a><a href="https://github.com/liballeg/allegro5/tree/master/examples/ex_bitmap_file.c" class="try" title="Source">source</a><br />
-<img src="screenshots/ex_bitmap_file.png" alt="ex_bitmap_file screenshot" /></p>
+<p>ex_bitmap_file<a
+href="https://allegro5.org/examples/examples/ex_bitmap_file.html"
+class="try" title="Try">try</a><a
+href="https://github.com/liballeg/allegro5/tree/master/examples/ex_bitmap_file.c"
+class="try" title="Source">source</a><br />
+<img src="screenshots/ex_bitmap_file.png"
+alt="ex_bitmap_file screenshot" /></p>
 </div>
 <div class="example">
-<p>ex_bitmap_flip<a href="https://allegro5.org/examples/examples/ex_bitmap_flip.html" class="try" title="Try">try</a><a href="https://github.com/liballeg/allegro5/tree/master/examples/ex_bitmap_flip.c" class="try" title="Source">source</a><br />
-<img src="screenshots/ex_bitmap_flip.png" alt="ex_bitmap_flip screenshot" /></p>
+<p>ex_bitmap_flip<a
+href="https://allegro5.org/examples/examples/ex_bitmap_flip.html"
+class="try" title="Try">try</a><a
+href="https://github.com/liballeg/allegro5/tree/master/examples/ex_bitmap_flip.c"
+class="try" title="Source">source</a><br />
+<img src="screenshots/ex_bitmap_flip.png"
+alt="ex_bitmap_flip screenshot" /></p>
 </div>
 <div class="example">
-<p>ex_blit<a href="https://allegro5.org/examples/examples/ex_blit.html" class="try" title="Try">try</a><a href="https://github.com/liballeg/allegro5/tree/master/examples/ex_blit.c" class="try" title="Source">source</a><br />
+<p>ex_blit<a href="https://allegro5.org/examples/examples/ex_blit.html"
+class="try" title="Try">try</a><a
+href="https://github.com/liballeg/allegro5/tree/master/examples/ex_blit.c"
+class="try" title="Source">source</a><br />
 <img src="screenshots/ex_blit.png" alt="ex_blit screenshot" /></p>
 </div>
 <div class="example">
-<p>ex_clip<a href="https://allegro5.org/examples/examples/ex_clip.html" class="try" title="Try">try</a><a href="https://github.com/liballeg/allegro5/tree/master/examples/ex_clip.c" class="try" title="Source">source</a><br />
+<p>ex_clip<a href="https://allegro5.org/examples/examples/ex_clip.html"
+class="try" title="Try">try</a><a
+href="https://github.com/liballeg/allegro5/tree/master/examples/ex_clip.c"
+class="try" title="Source">source</a><br />
 <img src="screenshots/ex_clip.png" alt="ex_clip screenshot" /></p>
 </div>
 <div class="example">
-<p>ex_compressed<a href="https://github.com/liballeg/allegro5/tree/master/examples/ex_compressed.c" class="try" title="Source">source</a><br />
-<img src="screenshots/ex_compressed.png" alt="ex_compressed screenshot" /></p>
+<p>ex_compressed<a
+href="https://github.com/liballeg/allegro5/tree/master/examples/ex_compressed.c"
+class="try" title="Source">source</a><br />
+<img src="screenshots/ex_compressed.png"
+alt="ex_compressed screenshot" /></p>
 </div>
 <div class="example">
-<p>ex_draw_bitmap<a href="https://allegro5.org/examples/examples/ex_draw_bitmap.html" class="try" title="Try">try</a><a href="https://github.com/liballeg/allegro5/tree/master/examples/ex_draw_bitmap.c" class="try" title="Source">source</a><br />
-<img src="screenshots/ex_draw_bitmap.png" alt="ex_draw_bitmap screenshot" /></p>
+<p>ex_draw_bitmap<a
+href="https://allegro5.org/examples/examples/ex_draw_bitmap.html"
+class="try" title="Try">try</a><a
+href="https://github.com/liballeg/allegro5/tree/master/examples/ex_draw_bitmap.c"
+class="try" title="Source">source</a><br />
+<img src="screenshots/ex_draw_bitmap.png"
+alt="ex_draw_bitmap screenshot" /></p>
 </div>
 <div class="example">
-<p>ex_lockbitmap<a href="https://allegro5.org/examples/examples/ex_lockbitmap.html" class="try" title="Try">try</a><a href="https://github.com/liballeg/allegro5/tree/master/examples/ex_lockbitmap.c" class="try" title="Source">source</a><br />
-<img src="screenshots/ex_lockbitmap.png" alt="ex_lockbitmap screenshot" /></p>
+<p>ex_lockbitmap<a
+href="https://allegro5.org/examples/examples/ex_lockbitmap.html"
+class="try" title="Try">try</a><a
+href="https://github.com/liballeg/allegro5/tree/master/examples/ex_lockbitmap.c"
+class="try" title="Source">source</a><br />
+<img src="screenshots/ex_lockbitmap.png"
+alt="ex_lockbitmap screenshot" /></p>
 </div>
 <div class="example">
-<p>ex_membmp<a href="https://allegro5.org/examples/examples/ex_membmp.html" class="try" title="Try">try</a><a href="https://github.com/liballeg/allegro5/tree/master/examples/ex_membmp.c" class="try" title="Source">source</a><br />
+<p>ex_membmp<a
+href="https://allegro5.org/examples/examples/ex_membmp.html" class="try"
+title="Try">try</a><a
+href="https://github.com/liballeg/allegro5/tree/master/examples/ex_membmp.c"
+class="try" title="Source">source</a><br />
 <img src="screenshots/ex_membmp.png" alt="ex_membmp screenshot" /></p>
 </div>
 <div class="example">
-<p>ex_filter<a href="https://allegro5.org/examples/examples/ex_filter.html" class="try" title="Try">try</a><a href="https://github.com/liballeg/allegro5/tree/master/examples/ex_filter.c" class="try" title="Source">source</a><br />
+<p>ex_filter<a
+href="https://allegro5.org/examples/examples/ex_filter.html" class="try"
+title="Try">try</a><a
+href="https://github.com/liballeg/allegro5/tree/master/examples/ex_filter.c"
+class="try" title="Source">source</a><br />
 <img src="screenshots/ex_filter.png" alt="ex_filter screenshot" /></p>
 </div>
 <div class="example">
-<p>ex_premulalpha<a href="https://allegro5.org/examples/examples/ex_premulalpha.html" class="try" title="Try">try</a><a href="https://github.com/liballeg/allegro5/tree/master/examples/ex_premulalpha.c" class="try" title="Source">source</a><br />
-<img src="screenshots/ex_premulalpha.png" alt="ex_premulalpha screenshot" /></p>
+<p>ex_premulalpha<a
+href="https://allegro5.org/examples/examples/ex_premulalpha.html"
+class="try" title="Try">try</a><a
+href="https://github.com/liballeg/allegro5/tree/master/examples/ex_premulalpha.c"
+class="try" title="Source">source</a><br />
+<img src="screenshots/ex_premulalpha.png"
+alt="ex_premulalpha screenshot" /></p>
 </div>
 <div class="example">
-<p>ex_reparent<a href="https://allegro5.org/examples/examples/ex_reparent.html" class="try" title="Try">try</a><a href="https://github.com/liballeg/allegro5/tree/master/examples/ex_reparent.c" class="try" title="Source">source</a><br />
-<img src="screenshots/ex_reparent.png" alt="ex_reparent screenshot" /></p>
+<p>ex_reparent<a
+href="https://allegro5.org/examples/examples/ex_reparent.html"
+class="try" title="Try">try</a><a
+href="https://github.com/liballeg/allegro5/tree/master/examples/ex_reparent.c"
+class="try" title="Source">source</a><br />
+<img src="screenshots/ex_reparent.png"
+alt="ex_reparent screenshot" /></p>
 </div>
 <div class="example">
-<p>ex_rotate<a href="https://allegro5.org/examples/examples/ex_rotate.html" class="try" title="Try">try</a><a href="https://github.com/liballeg/allegro5/tree/master/examples/ex_rotate.c" class="try" title="Source">source</a><br />
+<p>ex_rotate<a
+href="https://allegro5.org/examples/examples/ex_rotate.html" class="try"
+title="Try">try</a><a
+href="https://github.com/liballeg/allegro5/tree/master/examples/ex_rotate.c"
+class="try" title="Source">source</a><br />
 <img src="screenshots/ex_rotate.png" alt="ex_rotate screenshot" /></p>
 </div>
 <div class="example">
-<p>ex_scale<a href="https://allegro5.org/examples/examples/ex_scale.html" class="try" title="Try">try</a><a href="https://github.com/liballeg/allegro5/tree/master/examples/ex_scale.c" class="try" title="Source">source</a><br />
+<p>ex_scale<a
+href="https://allegro5.org/examples/examples/ex_scale.html" class="try"
+title="Try">try</a><a
+href="https://github.com/liballeg/allegro5/tree/master/examples/ex_scale.c"
+class="try" title="Source">source</a><br />
 <img src="screenshots/ex_scale.png" alt="ex_scale screenshot" /></p>
 </div>
 <div class="example">
-<p>ex_subbitmap<a href="https://allegro5.org/examples/examples/ex_subbitmap.html" class="try" title="Try">try</a><a href="https://github.com/liballeg/allegro5/tree/master/examples/ex_subbitmap.c" class="try" title="Source">source</a><br />
-<img src="screenshots/ex_subbitmap.png" alt="ex_subbitmap screenshot" /></p>
+<p>ex_subbitmap<a
+href="https://allegro5.org/examples/examples/ex_subbitmap.html"
+class="try" title="Try">try</a><a
+href="https://github.com/liballeg/allegro5/tree/master/examples/ex_subbitmap.c"
+class="try" title="Source">source</a><br />
+<img src="screenshots/ex_subbitmap.png"
+alt="ex_subbitmap screenshot" /></p>
 </div>
 <div class="example">
-<p>ex_convert<a href="https://github.com/liballeg/allegro5/tree/master/examples/ex_convert.c" class="try" title="Source">source</a><br />
+<p>ex_convert<a
+href="https://github.com/liballeg/allegro5/tree/master/examples/ex_convert.c"
+class="try" title="Source">source</a><br />
 <img src="screenshots/ex_convert.png" alt="ex_convert screenshot" /></p>
 </div>
 </div>
@@ -162,8 +248,11 @@ A game programming library
 <p><a href="webmasters.html">Contact the webmasters</a></p>
 </div>
 <!-- contact -->
-<p><a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
-    height="33" width="88" vspace="1" hspace="1" /> </a> <a href="http://www.anybrowser.org/campaign/"> <img src="images/anyb.png" border="0" alt="Viewable with any browser"
+<p><a href="http://petition.eurolinux.org/index_html?LANG=en">
+<img src="images/nopatents.png" border="0" alt="No ePatents"
+    height="33" width="88" vspace="1" hspace="1" /> </a>
+<a href="http://www.anybrowser.org/campaign/">
+<img src="images/anyb.png" border="0" alt="Viewable with any browser"
     height="31" width="88" vspace="1" hspace="1" /> </a></p>
 </div>
 <!-- footer -->

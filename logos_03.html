@@ -8,15 +8,24 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="web_style.css" />
   <link rel="alternate" type="application/atom+xml"
       href="feed_atom.xml" title="Allegro news"
   />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 <div id="main_header">
@@ -36,7 +45,8 @@ A game programming library
 <li><a href="git.html">Git repository</a></li>
 <li><a href="license.html">License</a></li>
 <li><a href="examples_demos.html">Examples</a></li>
-<li><a href="https://github.com/liballeg/allegro5/issues">Bug tracker</a></li>
+<li><a href="https://github.com/liballeg/allegro5/issues">Bug
+tracker</a></li>
 <li><a href="bindings.html">Language bindings</a></li>
 </ul></li>
 <li><strong>Downloads</strong>
@@ -47,11 +57,13 @@ A game programming library
 </ul></li>
 <li><strong>Documentation</strong>
 <ul>
-<li><strong><a href="http://liballeg.org/a5docs/trunk/">Latest version</a></strong></li>
+<li><strong><a href="http://liballeg.org/a5docs/trunk/">Latest
+version</a></strong></li>
 <li><a href="api.html">All versions</a></li>
 <li><a href="docs.html">Tutorials</a></li>
 <li><a href="books.html">Books</a></li>
-<li><a href="https://github.com/liballeg/allegro_wiki/wiki">Wiki</a></li>
+<li><a
+href="https://github.com/liballeg/allegro_wiki/wiki">Wiki</a></li>
 </ul></li>
 <li><strong>Community</strong>
 <ul>
@@ -77,7 +89,10 @@ A game programming library
 </div>
 <!-- sidebar -->
 <div id="hosting">
-<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/> <a href="https://projects.tuxfamily.org/?do=group;name=allegro">TuxFamily project</a></p>
+<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/>
+<a
+href="https://projects.tuxfamily.org/?do=group;name=allegro">TuxFamily
+project</a></p>
 </div>
 <!-- hosting -->
 </div>
@@ -90,48 +105,98 @@ A game programming library
 <table align="center" cellspacing="0" cellpadding="0">
 <tr>
 <td>
-<font size="-1"> Page <a href="logos.html">1</a> - <a href="logos_02.html">2</a> - <strong>3</strong> </font>
+<font size="-1"> Page <a href="logos.html">1</a> - <a
+href="logos_02.html">2</a> - <strong>3</strong> </font>
 </td>
 </tr>
 </table>
-<p>The following four logos were created and donated by <a href="mailto:mihai.dragan@caatoosee.ro">Mihai Dragan</a>, a <a href="http://www.caatoosee.ro/">software developer</a> who joined the Allegro community not very long ago, and wanted to give back something in exchange for the excellent library. The logos were made with <a href="http://www.gimp.org/">Gimp</a> and you are free to use and distribute them. In fact, if you want them with other dimensions, colors or texts, just email him personally, since he has the sources and can redraw them according to your suggestions. Each logo is sized 500x256 and weighs around 60KB. Click on the thumbnails to view the full version.</p>
+<p>The following four logos were created and donated by <a
+href="mailto:mihai.dragan@caatoosee.ro">Mihai Dragan</a>, a <a
+href="http://www.caatoosee.ro/">software developer</a> who joined the
+Allegro community not very long ago, and wanted to give back something
+in exchange for the excellent library. The logos were made with <a
+href="http://www.gimp.org/">Gimp</a> and you are free to use and
+distribute them. In fact, if you want them with other dimensions, colors
+or texts, just email him personally, since he has the sources and can
+redraw them according to your suggestions. Each logo is sized 500x256
+and weighs around 60KB. Click on the thumbnails to view the full
+version.</p>
 <center>
-<p><a href="images/logos/mihai_dragan/logo1.jpg"> <img src="images/logos/mihai_dragan/logo1-tn.jpg" hspace="2" vspace="2"
+<p><a href="images/logos/mihai_dragan/logo1.jpg">
+<img src="images/logos/mihai_dragan/logo1-tn.jpg" hspace="2" vspace="2"
     width="125" height="64" align="middle" alt="[Logo]"/> </a></p>
-<p><a href="images/logos/mihai_dragan/logo2.jpg"> <img src="images/logos/mihai_dragan/logo2-tn.jpg" hspace="2" vspace="2"
+<p><a href="images/logos/mihai_dragan/logo2.jpg">
+<img src="images/logos/mihai_dragan/logo2-tn.jpg" hspace="2" vspace="2"
     width="125" height="64" align="middle" alt="[Logo]"/> </a></p>
-<p><a href="images/logos/mihai_dragan/logo3.jpg"> <img src="images/logos/mihai_dragan/logo3-tn.jpg" hspace="2" vspace="2"
+<p><a href="images/logos/mihai_dragan/logo3.jpg">
+<img src="images/logos/mihai_dragan/logo3-tn.jpg" hspace="2" vspace="2"
     width="125" height="64" align="middle" alt="[Logo]"/> </a></p>
-<a href="images/logos/mihai_dragan/logo4.jpg"> <img src="images/logos/mihai_dragan/logo4-tn.jpg" hspace="2" vspace="2"
+<a href="images/logos/mihai_dragan/logo4.jpg">
+<img src="images/logos/mihai_dragan/logo4-tn.jpg" hspace="2" vspace="2"
     width="125" height="64" align="middle" alt="[Logo]"/> </a>
 </center>
 <p><img src="images/al_couch.png" hspace="3" vspace="5"
     width="161" height="142" align="right"
     alt="[Al, the couch potato]"/></p>
-<p><a href="docs/grozilla.en.html">A long time ago, in a mailing list far, far away… Peter Wang said</a>: ‘<em>Given that we use “AL” so much, why have we not adopted a fat, drunk <a href="http://www.bundyology.com/bal.html">couch potato</a> for a mascot?</em>’. Later, Grzegorz Godlewski, being unable to forget this sentence, asked Karol Krenski, who makes GPL pictures for different open source projects, to draw the very same picture you can see to the right of this text. Impressed? Hold your breath, because you can go to <a href="http://www.inf.sgsp.edu.pl/pub/MALUNKI/ROZNE/">Karol’s web page</a> to see this logo and many more, like the ones he drew for SDL or Postfix. He also has the sources, so you could rescale this image or ask him to do any modifications you may want. <br clear="right"/></p>
+<p><a href="docs/grozilla.en.html">A long time ago, in a mailing list
+far, far away… Peter Wang said</a>: ‘<em>Given that we use “AL” so much,
+why have we not adopted a fat, drunk <a
+href="http://www.bundyology.com/bal.html">couch potato</a> for a
+mascot?</em>’. Later, Grzegorz Godlewski, being unable to forget this
+sentence, asked Karol Krenski, who makes GPL pictures for different open
+source projects, to draw the very same picture you can see to the right
+of this text. Impressed? Hold your breath, because you can go to <a
+href="http://www.inf.sgsp.edu.pl/pub/MALUNKI/ROZNE/">Karol’s web
+page</a> to see this logo and many more, like the ones he drew for SDL
+or Postfix. He also has the sources, so you could rescale this image or
+ask him to do any modifications you may want. <br clear="right"/></p>
 <p><img src="images/logos/small_logo_by_bruno_s_drago.png" hspace="5"
    vspace="5" width="150" height="150" align="left"
-   alt="[Small 150x150 logo]"/> <a href="images/logos/jeff_katz/logo1.png"> <img
+   alt="[Small 150x150 logo]"/>
+<a href="images/logos/jeff_katz/logo1.png"> <img
    src="images/logos/jeff_katz/logo1-tn.jpg" hspace="5"
    vspace="5" width="80" height="100" align="right"
-   alt="[Logo by Jeff Katz]"/> </a> Bruno S. Drago made the small logo to the left for one of his games and <a href="http://sourceforge.net/mailarchive/forum.php?thread_id=3234652&amp;forum_id=34599">contributed it to the Allegro community</a>. Bruno keeps working on his games, which you can find at: <a href="http://www.xuti.net/" class="uri">http://www.xuti.net/</a>.</p>
-<p><a href="mailto:jeff@katzonline.net">Jeff Katz</a> has also contributed the logo to the right. You can click on it to get a higher resolution version.</p>
+   alt="[Logo by Jeff Katz]"/> </a> Bruno S. Drago made the small logo
+to the left for one of his games and <a
+href="http://sourceforge.net/mailarchive/forum.php?thread_id=3234652&amp;forum_id=34599">contributed
+it to the Allegro community</a>. Bruno keeps working on his games, which
+you can find at: <a href="http://www.xuti.net/"
+class="uri">http://www.xuti.net/</a>.</p>
+<p><a href="mailto:jeff@katzonline.net">Jeff Katz</a> has also
+contributed the logo to the right. You can click on it to get a higher
+resolution version.</p>
 <p><br clear="left"/><br clear="right"/></p>
-<p><a href="images/logos/eric_pietrocupo/logo1.jpg"> <img src="images/logos/eric_pietrocupo/logo1-tn.jpg"
+<p><a href="images/logos/eric_pietrocupo/logo1.jpg">
+<img src="images/logos/eric_pietrocupo/logo1-tn.jpg"
     hspace="5" vspace="5" width="100" height="75" align="left"
-    alt="[Logo by Eric Pietrocupo]"/> </a> <a href="images/logos/andre_pereira/logo1.jpg"> <img src="images/logos/andre_pereira/logo1-tn.jpg" hspace="5"
+    alt="[Logo by Eric Pietrocupo]"/> </a>
+<a href="images/logos/andre_pereira/logo1.jpg">
+<img src="images/logos/andre_pereira/logo1-tn.jpg" hspace="5"
    vspace="5" width="100" height="91" align="right"
-   alt="[Logo by Andr&eacute; Luiz Pereira &Aacute;lvares]"/> </a> <a href="mailto:ericp@ariel.bdeb.qc.ca">Eric Pietrocupo</a> created the logo to the left with the Windows version of <a href="http://www.gimp.org/">Gimp</a>. Click on the image to get a bigger version.</p>
-<p><a href="mailto:andre2k2@gmail.com">André Luiz Pereira Álvares</a> created the logo to the right. Click on the image to get a bigger version.</p>
+   alt="[Logo by Andr&eacute; Luiz Pereira &Aacute;lvares]"/> </a> <a
+href="mailto:ericp@ariel.bdeb.qc.ca">Eric Pietrocupo</a> created the
+logo to the left with the Windows version of <a
+href="http://www.gimp.org/">Gimp</a>. Click on the image to get a bigger
+version.</p>
+<p><a href="mailto:andre2k2@gmail.com">André Luiz Pereira Álvares</a>
+created the logo to the right. Click on the image to get a bigger
+version.</p>
 <p><br clear="left"/></p>
 <p><img src="images/logos/phoenixj_allegro.jpg" hspace="5"
    vspace="5" width="295" height="105" border=1 align="left"
-   alt="[Logo by PhoenixJ]"/> PhoenixJ made the logo to the left in Macromedia Flash. Since the source is in vector format it can be scaled to any size (the background color and format can consequently be changed, too). You can visit <a href="http://www.tinsanity.net/">PhoenixJ’s web page</a>, where you can see more of his artwork and get his email if you want to request a modification of this logo.</p>
+   alt="[Logo by PhoenixJ]"/> PhoenixJ made the logo to the left in
+Macromedia Flash. Since the source is in vector format it can be scaled
+to any size (the background color and format can consequently be
+changed, too). You can visit <a
+href="http://www.tinsanity.net/">PhoenixJ’s web page</a>, where you can
+see more of his artwork and get his email if you want to request a
+modification of this logo.</p>
 <br/>
 <table align="center" cellspacing="0" cellpadding="0">
 <tr>
 <td>
-<font size="-1"> Page <a href="logos.html">1</a> - <a href="logos_02.html">2</a> - <strong>3</strong> </font>
+<font size="-1"> Page <a href="logos.html">1</a> - <a
+href="logos_02.html">2</a> - <strong>3</strong> </font>
 </td>
 </tr>
 </table>
@@ -142,8 +207,11 @@ A game programming library
 <p><a href="webmasters.html">Contact the webmasters</a></p>
 </div>
 <!-- contact -->
-<p><a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
-    height="33" width="88" vspace="1" hspace="1" /> </a> <a href="http://www.anybrowser.org/campaign/"> <img src="images/anyb.png" border="0" alt="Viewable with any browser"
+<p><a href="http://petition.eurolinux.org/index_html?LANG=en">
+<img src="images/nopatents.png" border="0" alt="No ePatents"
+    height="33" width="88" vspace="1" hspace="1" /> </a>
+<a href="http://www.anybrowser.org/campaign/">
+<img src="images/anyb.png" border="0" alt="Viewable with any browser"
     height="31" width="88" vspace="1" hspace="1" /> </a></p>
 </div>
 <!-- footer -->

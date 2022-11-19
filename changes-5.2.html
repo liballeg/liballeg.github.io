@@ -8,15 +8,24 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="web_style.css" />
   <link rel="alternate" type="application/atom+xml"
       href="feed_atom.xml" title="Allegro news"
   />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 <div id="main_header">
@@ -36,7 +45,8 @@ A game programming library
 <li><a href="git.html">Git repository</a></li>
 <li><a href="license.html">License</a></li>
 <li><a href="examples_demos.html">Examples</a></li>
-<li><a href="https://github.com/liballeg/allegro5/issues">Bug tracker</a></li>
+<li><a href="https://github.com/liballeg/allegro5/issues">Bug
+tracker</a></li>
 <li><a href="bindings.html">Language bindings</a></li>
 </ul></li>
 <li><strong>Downloads</strong>
@@ -47,11 +57,13 @@ A game programming library
 </ul></li>
 <li><strong>Documentation</strong>
 <ul>
-<li><strong><a href="http://liballeg.org/a5docs/trunk/">Latest version</a></strong></li>
+<li><strong><a href="http://liballeg.org/a5docs/trunk/">Latest
+version</a></strong></li>
 <li><a href="api.html">All versions</a></li>
 <li><a href="docs.html">Tutorials</a></li>
 <li><a href="books.html">Books</a></li>
-<li><a href="https://github.com/liballeg/allegro_wiki/wiki">Wiki</a></li>
+<li><a
+href="https://github.com/liballeg/allegro_wiki/wiki">Wiki</a></li>
 </ul></li>
 <li><strong>Community</strong>
 <ul>
@@ -77,60 +89,82 @@ A game programming library
 </div>
 <!-- sidebar -->
 <div id="hosting">
-<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/> <a href="https://projects.tuxfamily.org/?do=group;name=allegro">TuxFamily project</a></p>
+<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/>
+<a
+href="https://projects.tuxfamily.org/?do=group;name=allegro">TuxFamily
+project</a></p>
 </div>
 <!-- hosting -->
 </div>
 <!-- left -->
 <div id="content">
-<p>These lists serve as summaries; the full histories are in the git repository.</p>
-<h1 id="changes-from-5.2.7-to-5.2.8-june-2022">Changes from 5.2.7 to 5.2.8 (June 2022)</h1>
-<p>The main developers this time were: SiegeLord, Elias Pschernig, Sebastian Krzyszkowiak, Julian Smythe.</p>
+<p>These lists serve as summaries; the full histories are in the git
+repository.</p>
+<h1 id="changes-from-5.2.7-to-5.2.8-june-2022">Changes from 5.2.7 to
+5.2.8 (June 2022)</h1>
+<p>The main developers this time were: SiegeLord, Elias Pschernig,
+Sebastian Krzyszkowiak, Julian Smythe.</p>
 <p>Build system:</p>
 <ul>
-<li><p>Add a configuration summary. Currently this mostly reports the addon features.</p></li>
+<li><p>Add a configuration summary. Currently this mostly reports the
+addon features.</p></li>
 <li><p>Fix build failure with sanitizers enabled.</p></li>
-<li><p>Remove <code>-Wdeclaration-after-statement</code>, MSVC had support for this for a while now.</p></li>
+<li><p>Remove <code>-Wdeclaration-after-statement</code>, MSVC had
+support for this for a while now.</p></li>
 <li><p>Bump minimum CMake version to 3.0.</p></li>
 </ul>
 <p>Core:</p>
 <ul>
-<li><p>Add <code>al_fopen_slice</code> mode to prevent seek on close (Karl Robillard).</p></li>
-<li><p>Allow configuring bitmap wrapping via <code>al_set_new_bitmap_wrap</code>.</p></li>
+<li><p>Add <code>al_fopen_slice</code> mode to prevent seek on close
+(Karl Robillard).</p></li>
+<li><p>Allow configuring bitmap wrapping via
+<code>al_set_new_bitmap_wrap</code>.</p></li>
 </ul>
 <p>Graphics:</p>
 <ul>
-<li><p>Reject creating bitmaps with negative width or height (Peter Hull).</p></li>
-<li><p>Add a minimal shader implementation for GLSL. Minimal shader supports fewer features, but is faster (Issue #1120). Select it via the <code>_MINIMAL</code> suffix to the shader platforms.</p></li>
+<li><p>Reject creating bitmaps with negative width or height (Peter
+Hull).</p></li>
+<li><p>Add a minimal shader implementation for GLSL. Minimal shader
+supports fewer features, but is faster (Issue #1120). Select it via the
+<code>_MINIMAL</code> suffix to the shader platforms.</p></li>
 </ul>
 <p>Emscripten:</p>
 <ul>
-<li><p>Improve emscripten instructions for building demos (Connor Clark).</p></li>
-<li><p>Fix usage of SDL_Init for emscripten (Issue #1322) (Connor Clark).</p></li>
+<li><p>Improve emscripten instructions for building demos (Connor
+Clark).</p></li>
+<li><p>Fix usage of SDL_Init for emscripten (Issue #1322) (Connor
+Clark).</p></li>
 </ul>
 <p>OSX:</p>
 <ul>
 <li><p>Fix a few thread-related crashes.</p></li>
-<li><p>Don’t use <code>-flat_namespace</code> in <code>LINK_FLAGS</code> (danielnachun).</p></li>
-<li><p>Make <code>al_get/set_window_position</code> work on Retina displays</p></li>
+<li><p>Don’t use <code>-flat_namespace</code> in <code>LINK_FLAGS</code>
+(danielnachun).</p></li>
+<li><p>Make <code>al_get/set_window_position</code> work on Retina
+displays</p></li>
 </ul>
 <p>Windows:</p>
 <ul>
-<li><p>Fix flickering when creating multisampling displays under DirectX.</p></li>
+<li><p>Fix flickering when creating multisampling displays under
+DirectX.</p></li>
 <li><p>Fix multisampling selection on Windows with OpenGL.</p></li>
-<li><p>Fixed a bug which freezes and crashes the window in Windows OpenGL (HerrNamenlos123).</p></li>
-<li><p>Allow specifying shader model 3_0 for HLSL shaders (Issue #1154).</p></li>
+<li><p>Fixed a bug which freezes and crashes the window in Windows
+OpenGL (HerrNamenlos123).</p></li>
+<li><p>Allow specifying shader model 3_0 for HLSL shaders (Issue
+#1154).</p></li>
 </ul>
 <p>SDL:</p>
 <ul>
 <li><p>Ignore touch events from indirect touch devices.</p></li>
-<li><p>Use <code>SDL_PeepEvents</code> for event handling, to improve performance.</p></li>
+<li><p>Use <code>SDL_PeepEvents</code> for event handling, to improve
+performance.</p></li>
 <li><p>Improve joysticks support (Issue #1326) (Connor Clark).</p></li>
 <li><p>Fix mouse axis setter (Connor Clark).</p></li>
 </ul>
 <p>Linux:</p>
 <ul>
-<li>Use <code>clock_gettime</code> with <code>CLOCK_MONOTONIC</code> instead of <code>gettimeofday</code> (check-switch-26).</li>
+<li>Use <code>clock_gettime</code> with <code>CLOCK_MONOTONIC</code>
+instead of <code>gettimeofday</code> (check-switch-26).</li>
 </ul>
 <p>Android:</p>
 <ul>
@@ -138,19 +172,26 @@ A game programming library
 </ul>
 <p>Audio addon:</p>
 <ul>
-<li><p>Add <code>ALLEGRO_PLAYMODE_LOOP_ONCE</code> (Issue #1309).</p></li>
-<li><p>Add <code>al_play_audio_stream</code>, a ‘simple’ API endpoint for audio stream playback.</p></li>
+<li><p>Add <code>ALLEGRO_PLAYMODE_LOOP_ONCE</code> (Issue
+#1309).</p></li>
+<li><p>Add <code>al_play_audio_stream</code>, a ‘simple’ API endpoint
+for audio stream playback.</p></li>
 </ul>
 <p>Acodec addon:</p>
 <ul>
 <li><p>Fix Vorbis/Opus support under MSVC + Clang.</p></li>
-<li><p>Add audio identification / <code>al_identify_sample</code>.</p></li>
-<li><p>Use regular seeking for Ogg streams. The old one did cross-fades, causing unexpected behavior in certain cases (Issue #1310).</p></li>
+<li><p>Add audio identification /
+<code>al_identify_sample</code>.</p></li>
+<li><p>Use regular seeking for Ogg streams. The old one did cross-fades,
+causing unexpected behavior in certain cases (Issue #1310).</p></li>
 <li><p>Enable looping for modules.</p></li>
 </ul>
 <p>Audio addon:</p>
 <ul>
-<li>Allow identifying and listing audio devices via new API: <code>al_get_num_audio_output_devices</code>, <code>al_get_audio_output_device</code>, <code>al_get_audio_device_name</code> (Aldrik Ramaekers).</li>
+<li>Allow identifying and listing audio devices via new API:
+<code>al_get_num_audio_output_devices</code>,
+<code>al_get_audio_output_device</code>,
+<code>al_get_audio_device_name</code> (Aldrik Ramaekers).</li>
 </ul>
 <p>Color addon:</p>
 <ul>
@@ -158,18 +199,22 @@ A game programming library
 </ul>
 <p>Font addon:</p>
 <ul>
-<li>Fix declaration of al_draw_multiline_textf() as a PRINTFUNC (check-switch-26).</li>
+<li>Fix declaration of al_draw_multiline_textf() as a PRINTFUNC
+(check-switch-26).</li>
 </ul>
 <p>Image addon:</p>
 <ul>
-<li><p>Prevent RLE data in corrupt <code>.tga</code> from overflowing the buffer (Peter Hull).</p></li>
+<li><p>Prevent RLE data in corrupt <code>.tga</code> from overflowing
+the buffer (Peter Hull).</p></li>
 <li><p>PCX loader validation (Peter Hull).</p></li>
 <li><p>Windows BMP - Make more robust to crashing (Peter Hull).</p></li>
-<li><p>Fix DDS compressed image loading when image dimensions are not multiple of block size (check-switch-26).</p></li>
+<li><p>Fix DDS compressed image loading when image dimensions are not
+multiple of block size (check-switch-26).</p></li>
 </ul>
 <p>Native Dialog addon:</p>
 <ul>
-<li>Fix native dialogs addon compatibility with older GTK+ versions (Andrew Kravchuk).</li>
+<li>Fix native dialogs addon compatibility with older GTK+ versions
+(Andrew Kravchuk).</li>
 </ul>
 <p>TTF addon:</p>
 <ul>
@@ -177,21 +222,26 @@ A game programming library
 </ul>
 <p>PhysFS addon:</p>
 <ul>
-<li>Fix incorrect error handling in <code>PHYSFS_close</code> (j-w-c-b).</li>
+<li>Fix incorrect error handling in <code>PHYSFS_close</code>
+(j-w-c-b).</li>
 </ul>
 <p>Video addon:</p>
 <ul>
-<li><p>Allow identifying video files via a magic number, exposed via <code>al_identify_video</code> (Issue #1262).</p></li>
+<li><p>Allow identifying video files via a magic number, exposed via
+<code>al_identify_video</code> (Issue #1262).</p></li>
 <li><p>Fix <code>al_is_video_addon_initalized</code> (Jayson).</p></li>
 </ul>
 <p>Documentation:</p>
 <ul>
-<li><p>Document some reasonable defaults for <code>al_create_mixer</code>/<code>al_create_voice</code>.</p></li>
-<li><p>Refactor the audio docs to highlight the simple API better.</p></li>
+<li><p>Document some reasonable defaults for
+<code>al_create_mixer</code>/<code>al_create_voice</code>.</p></li>
+<li><p>Refactor the audio docs to highlight the simple API
+better.</p></li>
 </ul>
 <p>Misc:</p>
 <ul>
-<li>Fix a few data race issues, in an effort to fix ex_threads crashes on Linux.</li>
+<li>Fix a few data race issues, in an effort to fix ex_threads crashes
+on Linux.</li>
 </ul>
 <p>Examples:</p>
 <ul>
@@ -199,12 +249,15 @@ A game programming library
 <li><p>Add the Allegro 4 “shooter” demo.</p></li>
 <li><p>Fix <code>ex_threads</code> crash under D3D.</p></li>
 <li><p>Add <code>ex_audio_devices</code>.</p></li>
-<li><p>Update <code>ex_palette</code> to build with Emscripten (Issue #1318).</p></li>
+<li><p>Update <code>ex_palette</code> to build with Emscripten (Issue
+#1318).</p></li>
 <li><p>Improve <code>ex_stream_seek</code>.</p></li>
 <li><p>Improve <code>ex_windows</code>.</p></li>
 </ul>
-<h1 id="changes-from-5.2.6-to-5.2.7-march-2021">Changes from 5.2.6 to 5.2.7 (March 2021)</h1>
-<p>The main developers this time were: SiegeLord, Peter Hull, Elias Pschernig, Aldrik Ramaekers, Andreas Rönnquist.</p>
+<h1 id="changes-from-5.2.6-to-5.2.7-march-2021">Changes from 5.2.6 to
+5.2.7 (March 2021)</h1>
+<p>The main developers this time were: SiegeLord, Peter Hull, Elias
+Pschernig, Aldrik Ramaekers, Andreas Rönnquist.</p>
 <p>Build system:</p>
 <ul>
 <li><p>Allow generating projects with a suffix (lorry-lee).</p></li>
@@ -213,19 +266,26 @@ A game programming library
 <p>Core:</p>
 <ul>
 <li><p>Avoid some undefined behavior errors.</p></li>
-<li><p>Return key modifiers in <code>ALLEGRO_EVENT_KEY_UP</code> and <code>ALLEGRO_EVENT_KEY_DOWN</code>.</p></li>
-<li><p>Allow calling <code>al_map_*</code> color functions before Allegro is initialized.</p></li>
-<li><p>Allow minimum bitmap size to be something other than 16 on non-Android platforms (controlled via <code>allegro5.cfg</code>).</p></li>
-<li><p>Add <code>al_get_monitor_refresh_rate</code> (only implemented on Windows for now).</p></li>
+<li><p>Return key modifiers in <code>ALLEGRO_EVENT_KEY_UP</code> and
+<code>ALLEGRO_EVENT_KEY_DOWN</code>.</p></li>
+<li><p>Allow calling <code>al_map_*</code> color functions before
+Allegro is initialized.</p></li>
+<li><p>Allow minimum bitmap size to be something other than 16 on
+non-Android platforms (controlled via
+<code>allegro5.cfg</code>).</p></li>
+<li><p>Add <code>al_get_monitor_refresh_rate</code> (only implemented on
+Windows for now).</p></li>
 </ul>
 <p>Graphics:</p>
 <ul>
 <li><p>Fix <code>ALLEGRO_KEEP_INDEX</code> flag for bitmaps.</p></li>
-<li><p>Add <code>ALLEGRO_OPENGL_CORE_PROFILE</code> display flag.</p></li>
+<li><p>Add <code>ALLEGRO_OPENGL_CORE_PROFILE</code> display
+flag.</p></li>
 </ul>
 <p>Emscripten:</p>
 <ul>
-<li>The experimental Emscripten support (via the SDL backend) is now documented in <code>README_sdl.txt</code>.</li>
+<li>The experimental Emscripten support (via the SDL backend) is now
+documented in <code>README_sdl.txt</code>.</li>
 </ul>
 <p>OSX:</p>
 <ul>
@@ -234,13 +294,17 @@ A game programming library
 </ul>
 <p>Windows:</p>
 <ul>
-<li><p>Issue #1125: Speed up OpenGL extension detection (Tobias Scheuer).</p></li>
+<li><p>Issue #1125: Speed up OpenGL extension detection (Tobias
+Scheuer).</p></li>
 <li><p>Use Unicode APIs when enumerating joysticks.</p></li>
-<li><p>Use <code>WM_DEVICECHANGE</code> rather than polling to detect joystick hotlugging, reducing input drops and lags (Todd Cope).</p></li>
+<li><p>Use <code>WM_DEVICECHANGE</code> rather than polling to detect
+joystick hotlugging, reducing input drops and lags (Todd Cope).</p></li>
 <li><p>Fix joystick polling period.</p></li>
-<li><p>Restore WinXP compatibility by using slightly older API when loading shared libraries (Julian Smythe).</p></li>
+<li><p>Restore WinXP compatibility by using slightly older API when
+loading shared libraries (Julian Smythe).</p></li>
 <li><p>Fix build with HLSL disabled (Julian Smythe).</p></li>
-<li><p>Raise DirectInput <code>MAX_JOYSTICKS</code> to 32 and <code>DEVICE_BUFFER_SIZE</code> to 128.</p></li>
+<li><p>Raise DirectInput <code>MAX_JOYSTICKS</code> to 32 and
+<code>DEVICE_BUFFER_SIZE</code> to 128.</p></li>
 </ul>
 <p>SDL:</p>
 <ul>
@@ -248,7 +312,8 @@ A game programming library
 </ul>
 <p>Audio addon:</p>
 <ul>
-<li>Allows playing sounds in reverse by specifying a negative speed.</li>
+<li>Allows playing sounds in reverse by specifying a negative
+speed.</li>
 </ul>
 <p>Acodec addon:</p>
 <ul>
@@ -256,16 +321,19 @@ A game programming library
 </ul>
 <p>Audio addon:</p>
 <ul>
-<li>Use more sensible values for PulseAudio’s playback buffer, potentially resolving some crashes and high CPU usage.</li>
+<li>Use more sensible values for PulseAudio’s playback buffer,
+potentially resolving some crashes and high CPU usage.</li>
 </ul>
 <p>Native Dialog Addon:</p>
 <ul>
-<li>Migrate from GTK2 to GTK3. Sadly, we lose menu icons as GTK3 dropped support for them.</li>
+<li>Migrate from GTK2 to GTK3. Sadly, we lose menu icons as GTK3 dropped
+support for them.</li>
 </ul>
 <p>TTF addon:</p>
 <ul>
 <li><p>Allow initializing TTF addon before the Font addon.</p></li>
-<li><p>Shut-down the TTF addon automatically in <code>al_uninstall_system</code>.</p></li>
+<li><p>Shut-down the TTF addon automatically in
+<code>al_uninstall_system</code>.</p></li>
 </ul>
 <p>PhysFS addon:</p>
 <ul>
@@ -274,51 +342,70 @@ A game programming library
 </ul>
 <p>Primitives addon:</p>
 <ul>
-<li><p>Fix segfault in <code>al_draw_ribbon</code> when <code>num_segments &gt; 128</code> (Rodolfo Borges).</p></li>
-<li><p>Issue 1215: Correctly handle small scales when determining subdivision level for high level primitives (Robin Heydon).</p></li>
+<li><p>Fix segfault in <code>al_draw_ribbon</code> when
+<code>num_segments &gt; 128</code> (Rodolfo Borges).</p></li>
+<li><p>Issue 1215: Correctly handle small scales when determining
+subdivision level for high level primitives (Robin Heydon).</p></li>
 </ul>
 <p>Documentation:</p>
 <ul>
-<li><p>Fix LaTeX errors in the generation of the reference manual PDF.</p></li>
+<li><p>Fix LaTeX errors in the generation of the reference manual
+PDF.</p></li>
 <li><p>Add links to examples into the reference manual.</p></li>
 <li><p>Allow pressing ‘S’ to focus the search bar in the docs.</p></li>
 <li><p>Assorted documentation improvements.</p></li>
 </ul>
 <p>Misc:</p>
 <ul>
-<li><p>Add a security policy and an associated private security mailing list - allegro-security@lists.liballeg.org.</p></li>
-<li><p>Add Emscripten-powered examples to https://liballeg.org/examples_demos.html.</p></li>
+<li><p>Add a security policy and an associated private security mailing
+list - allegro-security@lists.liballeg.org.</p></li>
+<li><p>Add Emscripten-powered examples to
+https://liballeg.org/examples_demos.html.</p></li>
 </ul>
 <p>Examples:</p>
 <ul>
-<li><p><code>ex_audio_simple</code> now displays instructions and supports bidirectional looping.</p></li>
+<li><p><code>ex_audio_simple</code> now displays instructions and
+supports bidirectional looping.</p></li>
 <li><p>Add default files to some audio examples.</p></li>
 </ul>
-<h1 id="changes-from-5.2.5-to-5.2.6-february-2020">Changes from 5.2.5 to 5.2.6 (February 2020)</h1>
-<p>The main developers this time were: SiegeLord, Peter Hull, Karthik Kumar Viswanathan, Elias Pschernig, Sebastian Krzyszkowiak, Doug Thompson, PmProg, RmBeer.</p>
+<h1 id="changes-from-5.2.5-to-5.2.6-february-2020">Changes from 5.2.5 to
+5.2.6 (February 2020)</h1>
+<p>The main developers this time were: SiegeLord, Peter Hull, Karthik
+Kumar Viswanathan, Elias Pschernig, Sebastian Krzyszkowiak, Doug
+Thompson, PmProg, RmBeer.</p>
 <p>Core:</p>
 <ul>
-<li><p>Fix timestamps being clamped to ints on touch inputs with X11.</p></li>
-<li><p>Fix al_utf8_width argument type mismatch on platforms where <code>sizeof(int) != 4</code>.</p></li>
-<li><p>Fix building for GNU/Linux without GNU extensions enabled</p></li>
+<li><p>Fix timestamps being clamped to ints on touch inputs with
+X11.</p></li>
+<li><p>Fix al_utf8_width argument type mismatch on platforms where
+<code>sizeof(int) != 4</code>.</p></li>
+<li><p>Fix building for GNU/Linux without GNU extensions
+enabled</p></li>
 <li><p>Some refactoring to simplify adding new drivers.</p></li>
 </ul>
 <p>Graphics:</p>
 <ul>
-<li><p>Fix for OpenGL version selection and reporting on Windows and X (Edgar Reynaldo).</p></li>
-<li><p>Report OpenGL version in display options on Android, iOS and Raspberry Pi.</p></li>
-<li><p>Fix creation of the bitmap depth buffer for non-square bitmaps (Kevin Wellwood).</p></li>
-<li><p>Fix <code>ALLEGRO_ALPHA_TEST_VALUE</code> not being interpreted correctly.</p></li>
-<li><p>Fix reported bitshifts for <code>ARGB_4444</code> and <code>RGBA_4444</code> pixel formats.</p></li>
+<li><p>Fix for OpenGL version selection and reporting on Windows and X
+(Edgar Reynaldo).</p></li>
+<li><p>Report OpenGL version in display options on Android, iOS and
+Raspberry Pi.</p></li>
+<li><p>Fix creation of the bitmap depth buffer for non-square bitmaps
+(Kevin Wellwood).</p></li>
+<li><p>Fix <code>ALLEGRO_ALPHA_TEST_VALUE</code> not being interpreted
+correctly.</p></li>
+<li><p>Fix reported bitshifts for <code>ARGB_4444</code> and
+<code>RGBA_4444</code> pixel formats.</p></li>
 <li><p>Fix alpha test with the GLSL version.</p></li>
 </ul>
 <p>Android:</p>
 <ul>
 <li><p>Do not build Android examples outside of Android.</p></li>
 <li><p>Use the cmake toolchain provided by the Android NDK.</p></li>
-<li><p>Use FLAG_KEEP_SCREEN_ON instead of a wakelock for screensaver inhibition.</p></li>
+<li><p>Use FLAG_KEEP_SCREEN_ON instead of a wakelock for screensaver
+inhibition.</p></li>
 <li><p>Use DisplayListener to listen to orientation changes.</p></li>
-<li><p>Implement <code>ALLEGRO_FRAMELESS</code> on Android. This hides the navigation buttons and the bar on top.</p></li>
+<li><p>Implement <code>ALLEGRO_FRAMELESS</code> on Android. This hides
+the navigation buttons and the bar on top.</p></li>
 </ul>
 <p>Linux:</p>
 <ul>
@@ -335,9 +422,12 @@ A game programming library
 </ul>
 <p>Windows:</p>
 <ul>
-<li><p>Implement Windows version check using non-deprecated functions.</p></li>
-<li><p>Abstract UNICODE vs ANSI string handling, switch to using UNICODE by default.</p></li>
-<li><p>Enable debug window for <code>DEBUGMODE</code> on Windows.</p></li>
+<li><p>Implement Windows version check using non-deprecated
+functions.</p></li>
+<li><p>Abstract UNICODE vs ANSI string handling, switch to using UNICODE
+by default.</p></li>
+<li><p>Enable debug window for <code>DEBUGMODE</code> on
+Windows.</p></li>
 </ul>
 <p>SDL:</p>
 <ul>
@@ -347,7 +437,8 @@ A game programming library
 </ul>
 <p>Addons:</p>
 <ul>
-<li>Add a whole bunch of <code>al_is_*_initialized</code> functions (Mark Oates).</li>
+<li>Add a whole bunch of <code>al_is_*_initialized</code> functions
+(Mark Oates).</li>
 </ul>
 <p>Acodec addon:</p>
 <ul>
@@ -355,8 +446,10 @@ A game programming library
 </ul>
 <p>Audio addon:</p>
 <ul>
-<li><p>Allow calling <code>al_destroy_audio_recorder</code> on NULL.</p></li>
-<li><p>Fix some stream garbage audio issues for high playback speeds.</p></li>
+<li><p>Allow calling <code>al_destroy_audio_recorder</code> on
+NULL.</p></li>
+<li><p>Fix some stream garbage audio issues for high playback
+speeds.</p></li>
 </ul>
 <p>Image addon:</p>
 <ul>
@@ -376,27 +469,38 @@ A game programming library
 <ul>
 <li><code>ex_draw_bitmap</code> - Add more options.</li>
 </ul>
-<h1 id="changes-from-5.2.4-to-5.2.5-february-2019">Changes from 5.2.4 to 5.2.5 (February 2019)</h1>
-<p>The main developers this time were: Sebastian Krzyszkowiak, SiegeLord, Elias Pschernig, Bruce Pascoe, Aldrik Ramaekers, Firat Salgur.</p>
+<h1 id="changes-from-5.2.4-to-5.2.5-february-2019">Changes from 5.2.4 to
+5.2.5 (February 2019)</h1>
+<p>The main developers this time were: Sebastian Krzyszkowiak,
+SiegeLord, Elias Pschernig, Bruce Pascoe, Aldrik Ramaekers, Firat
+Salgur.</p>
 <p>Core:</p>
 <ul>
 <li><p>Try to identify bitmap format for unknown extensions.</p></li>
 <li><p>Add some missing OpenGL 4.3 functions.</p></li>
-<li><p>Add <code>al_create_thread_with_stacksize</code> to create threads with a custom stack size. (Aldrik Ramaekers)</p></li>
-<li><p>Add <code>al_get_system_id</code> function, letting you disambiguate platforms at runtime.</p></li>
+<li><p>Add <code>al_create_thread_with_stacksize</code> to create
+threads with a custom stack size. (Aldrik Ramaekers)</p></li>
+<li><p>Add <code>al_get_system_id</code> function, letting you
+disambiguate platforms at runtime.</p></li>
 </ul>
 <p>Graphics:</p>
 <ul>
-<li><p>Add <code>al_get_monitor_dpi</code> to query the DPI of a monitor.</p></li>
-<li><p>Add new API for making blender a bitmap-local state (like transformations), which can simplify some code. See <code>al_set_bitmap_blender</code> and the related APIs. Also see the <code>ex_blend_target</code> example.</p></li>
-<li><p>Added <code>al_transpose_transform</code>. This is useful for rotation transformations.</p></li>
+<li><p>Add <code>al_get_monitor_dpi</code> to query the DPI of a
+monitor.</p></li>
+<li><p>Add new API for making blender a bitmap-local state (like
+transformations), which can simplify some code. See
+<code>al_set_bitmap_blender</code> and the related APIs. Also see the
+<code>ex_blend_target</code> example.</p></li>
+<li><p>Added <code>al_transpose_transform</code>. This is useful for
+rotation transformations.</p></li>
 <li><p>Rework internal GLES support for better portability.</p></li>
 <li><p>Don’t force POT bitmaps on GLES.</p></li>
 <li><p>Fix repeated bitmap locking on OpenGL.</p></li>
 </ul>
 <p>Android:</p>
 <ul>
-<li><p>Various documentation and other improvements (Christian Mauduit).</p></li>
+<li><p>Various documentation and other improvements (Christian
+Mauduit).</p></li>
 <li><p>Fix OpenGL version reporting after display creation.</p></li>
 </ul>
 <p>iOS:</p>
@@ -406,14 +510,18 @@ A game programming library
 <p>Linux:</p>
 <ul>
 <li><p>Improve linux joystick detections.</p></li>
-<li><p>Fix a number of memory leaks/crashes in the audio addon when using pulseaudio/alsa. (Julian Smythe)</p></li>
+<li><p>Fix a number of memory leaks/crashes in the audio addon when
+using pulseaudio/alsa. (Julian Smythe)</p></li>
 <li><p>Fix compilation with Mesa 18.2.5 and later.</p></li>
-<li><p>Fix OpenGL version reporting after display creation (Edgar Reynaldo).</p></li>
-<li><p>Fix requesting specific OpenGL versions via display options (Edgar Reynaldo).</p></li>
+<li><p>Fix OpenGL version reporting after display creation (Edgar
+Reynaldo).</p></li>
+<li><p>Fix requesting specific OpenGL versions via display options
+(Edgar Reynaldo).</p></li>
 </ul>
 <p>OSX:</p>
 <ul>
-<li><p>Make <code>al_get_monitor_info</code> return the correct values for Retina displays.</p></li>
+<li><p>Make <code>al_get_monitor_info</code> return the correct values
+for Retina displays.</p></li>
 <li><p>Fix vsync on OSX 10.14+.</p></li>
 </ul>
 <p>RaspberryPi:</p>
@@ -423,24 +531,35 @@ A game programming library
 <p>Windows:</p>
 <ul>
 <li><p>Fix toggling of menu checkboxes by id.</p></li>
-<li><p>Fix <code>al_draw_indexed_primitive</code> while using Direct3D.</p></li>
-<li><p>Fix crash when passing <code>NULL</code> display to <code>al_show_native_file_dialog</code> while using <code>ALLEGRO_FILECHOOSER_FOLDER</code>.</p></li>
-<li><p>Fix OpenGL version reporting after display creation (Edgar Reynaldo).</p></li>
-<li><p>Fix requesting specific OpenGL versions via display options (Edgar Reynaldo).</p></li>
+<li><p>Fix <code>al_draw_indexed_primitive</code> while using
+Direct3D.</p></li>
+<li><p>Fix crash when passing <code>NULL</code> display to
+<code>al_show_native_file_dialog</code> while using
+<code>ALLEGRO_FILECHOOSER_FOLDER</code>.</p></li>
+<li><p>Fix OpenGL version reporting after display creation (Edgar
+Reynaldo).</p></li>
+<li><p>Fix requesting specific OpenGL versions via display options
+(Edgar Reynaldo).</p></li>
 </ul>
 <p>SDL:</p>
 <ul>
-<li>Sebastian Krzyszkowiak has spent a lot of effort to making the SDL backend usable as a nearly fully featured Allegro backend. You can use it on platforms native Allegro implementations do not support (such as emscripten, etc.).</li>
+<li>Sebastian Krzyszkowiak has spent a lot of effort to making the SDL
+backend usable as a nearly fully featured Allegro backend. You can use
+it on platforms native Allegro implementations do not support (such as
+emscripten, etc.).</li>
 </ul>
 <p>Addons:</p>
 <ul>
 <li><p>Better logging when failing to load a resource.</p></li>
-<li><p>Fix a memory leak when destroying a mixer with attached streams.</p></li>
-<li><p>Fix a memory leak in the audio destroying a mixer with attached streams.</p></li>
+<li><p>Fix a memory leak when destroying a mixer with attached
+streams.</p></li>
+<li><p>Fix a memory leak in the audio destroying a mixer with attached
+streams.</p></li>
 </ul>
 <p>Acodec addon:</p>
 <ul>
-<li>Allow modules to loop properly when the user hasn’t specified loop points. (Todd Cope)</li>
+<li>Allow modules to loop properly when the user hasn’t specified loop
+points. (Todd Cope)</li>
 </ul>
 <p>Audio addon:</p>
 <ul>
@@ -459,15 +578,21 @@ A game programming library
 <ul>
 <li>Add <code>ex_blend_target</code>.</li>
 </ul>
-<h1 id="changes-from-5.2.3-to-5.2.4-february-2018">Changes from 5.2.3 to 5.2.4 (February 2018)</h1>
-<p>The main developers this time were: Sebastian Krzyszkowiak, Elias Pschernig, SiegeLord</p>
+<h1 id="changes-from-5.2.3-to-5.2.4-february-2018">Changes from 5.2.3 to
+5.2.4 (February 2018)</h1>
+<p>The main developers this time were: Sebastian Krzyszkowiak, Elias
+Pschernig, SiegeLord</p>
 <p>Core:</p>
 <ul>
-<li><p>Fix errors when reading/writing 0 byte buffers (Bruce Pascoe).</p></li>
-<li><p>Re-initialize TLS when Allegro is installed (Issue #865).</p></li>
+<li><p>Fix errors when reading/writing 0 byte buffers (Bruce
+Pascoe).</p></li>
+<li><p>Re-initialize TLS when Allegro is installed (Issue
+#865).</p></li>
 <li><p>Add <code>al_transform_coordinates_4d</code>.</p></li>
-<li><p>Don’t initialize the trace mutex multiple times (Issue #874).</p></li>
-<li><p>Fix 3D (non-projection) transforms with <code>al_hold_bitmap_drawing</code>.</p></li>
+<li><p>Don’t initialize the trace mutex multiple times (Issue
+#874).</p></li>
+<li><p>Fix 3D (non-projection) transforms with
+<code>al_hold_bitmap_drawing</code>.</p></li>
 </ul>
 <p>Raspberry Pi port:</p>
 <ul>
@@ -482,7 +607,8 @@ A game programming library
 </ul>
 <p>Linux port:</p>
 <ul>
-<li>Make compositor bypass configurable in X11, and bypass only when fullscreen by default.</li>
+<li>Make compositor bypass configurable in X11, and bypass only when
+fullscreen by default.</li>
 </ul>
 <p>OSX port:</p>
 <ul>
@@ -491,7 +617,8 @@ A game programming library
 <p>Audio addon:</p>
 <ul>
 <li><p>Fix ALSA lag.</p></li>
-<li><p>Add an option to use the desktop window when initializing DirectSound (Issue #877).</p></li>
+<li><p>Add an option to use the desktop window when initializing
+DirectSound (Issue #877).</p></li>
 </ul>
 <p>Font addon:</p>
 <ul>
@@ -499,16 +626,20 @@ A game programming library
 </ul>
 <p>Native dialog addon:</p>
 <ul>
-<li><p>Resize the display on Windows when hiding/showing the menu (Issue #860).</p></li>
-<li><p>Detect when <code>al_popup_menu</code> fails to actually work under GTK (Issue #808).</p></li>
-<li><p>Don’t clear the top-level menu when destroying the popup menu.</p></li>
+<li><p>Resize the display on Windows when hiding/showing the menu (Issue
+#860).</p></li>
+<li><p>Detect when <code>al_popup_menu</code> fails to actually work
+under GTK (Issue #808).</p></li>
+<li><p>Don’t clear the top-level menu when destroying the popup
+menu.</p></li>
 </ul>
 <p>Build system:</p>
 <ul>
 <li><p>Don’t link in libm on MSVC for DUMB (Issue #847).</p></li>
 <li><p>Don’t use the LOCATION property (Issue #847).</p></li>
 <li><p>Don’t use SYSTEM for DirectX includes.</p></li>
-<li><p>Add hints for mingw-w64 path locations for DirectX includes/libs.</p></li>
+<li><p>Add hints for mingw-w64 path locations for DirectX
+includes/libs.</p></li>
 </ul>
 <p>Python binding:</p>
 <ul>
@@ -526,36 +657,50 @@ A game programming library
 <ul>
 <li>Add a texture to the skybox in <code>ex_camera</code>.</li>
 </ul>
-<h1 id="changes-from-5.2.2-to-5.2.3-october-2017">Changes from 5.2.2 to 5.2.3 (October 2017)</h1>
-<p>The main developers this time were: Elias Pschernig, SiegeLord, Sebastian Krzyszkowiak, Vitaliy V. Tokarev, Simon Naarmann, Bruno Félix Rezende Ribeiro, Trent Gamblin).</p>
+<h1 id="changes-from-5.2.2-to-5.2.3-october-2017">Changes from 5.2.2 to
+5.2.3 (October 2017)</h1>
+<p>The main developers this time were: Elias Pschernig, SiegeLord,
+Sebastian Krzyszkowiak, Vitaliy V. Tokarev, Simon Naarmann, Bruno Félix
+Rezende Ribeiro, Trent Gamblin).</p>
 <p>Core:</p>
 <ul>
 <li><p>Add <code>al_path_ustr</code> (Bruce Pascoe).</p></li>
-<li><p>Handle NULL sections more gracefully with the config API.</p></li>
-<li><p>Add missing <code>glStencilMaskSeparate prototype</code> (Aaron Bolyard).</p></li>
+<li><p>Handle NULL sections more gracefully with the config
+API.</p></li>
+<li><p>Add missing <code>glStencilMaskSeparate prototype</code> (Aaron
+Bolyard).</p></li>
 <li><p>Add <code>al_clear_keyboard_state</code>.</p></li>
-<li><p>Don’t add blank lines before config sections when writing them out.</p></li>
-<li><p>Fix <code>fs_stdio_read_directory</code> appending an extra slash.</p></li>
-<li><p>Fix <code>al_set_window_constraints</code> when the flag ALLEGRO_MAXIMIZED is set.</p></li>
-<li><p>Fix <code>al_set_clipping_rectangle</code> when out-of-bounds (Bruce Pascoe).</p></li>
+<li><p>Don’t add blank lines before config sections when writing them
+out.</p></li>
+<li><p>Fix <code>fs_stdio_read_directory</code> appending an extra
+slash.</p></li>
+<li><p>Fix <code>al_set_window_constraints</code> when the flag
+ALLEGRO_MAXIMIZED is set.</p></li>
+<li><p>Fix <code>al_set_clipping_rectangle</code> when out-of-bounds
+(Bruce Pascoe).</p></li>
 <li><p>Enable blocked locking of S3TC formats unconditionally.</p></li>
 </ul>
 <p>Raspberry Pi port:</p>
 <ul>
-<li>Set default file interface when attempting to read /boot/config.txt.</li>
+<li>Set default file interface when attempting to read
+/boot/config.txt.</li>
 </ul>
 <p>Android port:</p>
 <ul>
-<li><p>Replace the old build system that used deprecated tools with a new Gradle-based system.</p></li>
-<li><p>Work around crashes on some Androids when an FBO is bound during <code>egl_SwapBuffers</code>.</p></li>
-<li><p>Fix LocalRef leak when opening files using APK interface.</p></li>
+<li><p>Replace the old build system that used deprecated tools with a
+new Gradle-based system.</p></li>
+<li><p>Work around crashes on some Androids when an FBO is bound during
+<code>egl_SwapBuffers</code>.</p></li>
+<li><p>Fix LocalRef leak when opening files using APK
+interface.</p></li>
 <li><p>Remove -Wno-psabi switches from Toolchain-android.cmake.</p></li>
 </ul>
 <p>Linux port:</p>
 <ul>
 <li><p>Make three finger salute and LED toggle configurable.</p></li>
 <li><p>Fix KEY_CHAR events under X11 with compose key enabled.</p></li>
-<li><p>Fix clearing the <code>ALLEGRO_MAXIMIZED</code> flag under X11.</p></li>
+<li><p>Fix clearing the <code>ALLEGRO_MAXIMIZED</code> flag under
+X11.</p></li>
 <li><p>Add <code>al_x_set_initial_icon</code>.</p></li>
 <li><p>Free wm_hints in <code>set_initial_icon</code>.</p></li>
 <li><p>Read Allegro system config from ~/.allegro5rc on Unix.</p></li>
@@ -564,25 +709,33 @@ A game programming library
 <ul>
 <li><p>Make bitmap contents persist again after device loss.</p></li>
 <li><p>Add large file support for MSVC.</p></li>
-<li><p>Only test cooperative lavel if device is known to be lost.</p></li>
-<li><p>Don’t leak the <code>D3DEffect</code> when attaching multiple sources.</p></li>
+<li><p>Only test cooperative lavel if device is known to be
+lost.</p></li>
+<li><p>Don’t leak the <code>D3DEffect</code> when attaching multiple
+sources.</p></li>
 <li><p>Fix <code>al_get_monitor_info</code> (Tobias Scheuer).</p></li>
 </ul>
 <p>OSX port:</p>
 <ul>
 <li><p>Various fixes for OSX 10.6.</p></li>
 <li><p>Fix some Bluetooth mice on OS X (Tom Bass).</p></li>
-<li><p>Fixed deprecation warning when starting OSX console app (Tom Bass).</p></li>
+<li><p>Fixed deprecation warning when starting OSX console app (Tom
+Bass).</p></li>
 <li><p>Fix OSX magic main with the LTO switch (Evert Glebbeek).</p></li>
 </ul>
 <p>Audio addon:</p>
 <ul>
 <li><p>Allow setting the buffer size for ALSA.</p></li>
-<li><p>Don’t apply gain twice for sample instances and streams when pan is not <code>ALLEGRO_PAN_NONE</code>.</p></li>
-<li><p>Disallow attaching mixers with different channel configurations.</p></li>
-<li><p>Add <code>al_set_sample_instance_channel_matrix</code> and <code>al_set_audio_stream_channel_matrix</code>.</p></li>
-<li><p>Don’t free the extra pointer in DirectSound if voice fails to play for some reason.</p></li>
-<li><p>Add <code>al_lock_sample_id</code> and <code>al_unlock_sample_id</code>.</p></li>
+<li><p>Don’t apply gain twice for sample instances and streams when pan
+is not <code>ALLEGRO_PAN_NONE</code>.</p></li>
+<li><p>Disallow attaching mixers with different channel
+configurations.</p></li>
+<li><p>Add <code>al_set_sample_instance_channel_matrix</code> and
+<code>al_set_audio_stream_channel_matrix</code>.</p></li>
+<li><p>Don’t free the extra pointer in DirectSound if voice fails to
+play for some reason.</p></li>
+<li><p>Add <code>al_lock_sample_id</code> and
+<code>al_unlock_sample_id</code>.</p></li>
 <li><p>For OpenAL, detach from buffers before deleting.</p></li>
 <li><p>Return true when seeking mod audio streams.</p></li>
 </ul>
@@ -599,21 +752,27 @@ A game programming library
 <p>Native dialog addon:</p>
 <ul>
 <li><p>Improve save dialogs under GTK driver.</p></li>
-<li><p>Improved path behavior in GTK native file dialog ([bk]door.maus).</p></li>
-<li><p>Enable <code>ALLEGRO_FILECHOOSER_FOLDER</code> On Linux (Todd Cope).</p></li>
-<li><p>Use unique ids to identify menu items internally, fixing their event sources.</p></li>
-<li><p>Make the native message box return 2 on Windows when cancel is pressed.</p></li>
+<li><p>Improved path behavior in GTK native file dialog
+([bk]door.maus).</p></li>
+<li><p>Enable <code>ALLEGRO_FILECHOOSER_FOLDER</code> On Linux (Todd
+Cope).</p></li>
+<li><p>Use unique ids to identify menu items internally, fixing their
+event sources.</p></li>
+<li><p>Make the native message box return 2 on Windows when cancel is
+pressed.</p></li>
 </ul>
 <p>Image addon:</p>
 <ul>
-<li><p>Set compression level to <code>Z_DEFAULT_COMPRESSION</code> in png saver by default.</p></li>
+<li><p>Set compression level to <code>Z_DEFAULT_COMPRESSION</code> in
+png saver by default.</p></li>
 <li><p>Make PNG, JPEG compression level configurable.</p></li>
 <li><p>Make PNG gamma value configurable.</p></li>
 <li><p>Add WebP support with libwebp.</p></li>
 </ul>
 <p>Video addon:</p>
 <ul>
-<li>Allow calling <code>al_init_video_addon</code> after <code>al_shutdown_video_addon</code> was called.</li>
+<li>Allow calling <code>al_init_video_addon</code> after
+<code>al_shutdown_video_addon</code> was called.</li>
 </ul>
 <p>Build system:</p>
 <ul>
@@ -623,24 +782,31 @@ A game programming library
 </ul>
 <p>Python binding:</p>
 <ul>
-<li>Fix some corrupted regexps in the generation script (verderten).</li>
+<li>Fix some corrupted regexps in the generation script
+(verderten).</li>
 </ul>
 <p>Documentation:</p>
 <ul>
-<li>Lots of improvements as usual (Edgar Reynaldo, Mark Oates, twobit).</li>
+<li>Lots of improvements as usual (Edgar Reynaldo, Mark Oates,
+twobit).</li>
 </ul>
 <p>Examples:</p>
 <ul>
 <li><p>Fix various issues with <code>ex_curl</code>.</p></li>
-<li><p>Fix memory leak in <code>ex_audio_simple</code> (Rm Beer).</p></li>
+<li><p>Fix memory leak in <code>ex_audio_simple</code> (Rm
+Beer).</p></li>
 </ul>
-<h1 id="changes-from-5.2.1.1-to-5.2.2-december-2016">Changes from 5.2.1.1 to 5.2.2 (December 2016)</h1>
-<p>The main developers this time were: Trent Gamblin, SiegeLord, Elias Pschernig.</p>
+<h1 id="changes-from-5.2.1.1-to-5.2.2-december-2016">Changes from
+5.2.1.1 to 5.2.2 (December 2016)</h1>
+<p>The main developers this time were: Trent Gamblin, SiegeLord, Elias
+Pschernig.</p>
 <p>Core:</p>
 <ul>
 <li><p>Don’t accumulate time in the timer while it is stopped.</p></li>
-<li><p>Use dynamic OpenGL ES checks, so binaries produced on newer platforms don’t crash on older ones.</p></li>
-<li><p>Destabilize the OpenGL extensions API (BREAKING CHANGE!).</p></li>
+<li><p>Use dynamic OpenGL ES checks, so binaries produced on newer
+platforms don’t crash on older ones.</p></li>
+<li><p>Destabilize the OpenGL extensions API (BREAKING
+CHANGE!).</p></li>
 </ul>
 <p>Raspberry Pi port:</p>
 <ul>
@@ -649,17 +815,21 @@ A game programming library
 </ul>
 <p>Android port:</p>
 <ul>
-<li><p>Fix buffer overrun and memory leak in the clipboard support.</p></li>
-<li><p>Add WANT_GLES3 to disable some of the newer features on platforms where they aren’t supported.</p></li>
+<li><p>Fix buffer overrun and memory leak in the clipboard
+support.</p></li>
+<li><p>Add WANT_GLES3 to disable some of the newer features on platforms
+where they aren’t supported.</p></li>
 <li><p>Fix build in Android versions below 3.1.</p></li>
 <li><p>Fix a crash when activity is destroyed/paused.</p></li>
 <li><p>Allow building for android mips, arm64 and mips64.</p></li>
-<li><p>Add <code>al_android_get_jni_env</code> and <code>al_android_get_activity</code> utility functions.</p></li>
+<li><p>Add <code>al_android_get_jni_env</code> and
+<code>al_android_get_activity</code> utility functions.</p></li>
 <li><p>Update manifest files for newer Android versions.</p></li>
 </ul>
 <p>Windows port:</p>
 <ul>
-<li>Handle keyboard input properly when Ctrl is pressed (Tobias Scheuer).</li>
+<li>Handle keyboard input properly when Ctrl is pressed (Tobias
+Scheuer).</li>
 </ul>
 <p>Hurd port:</p>
 <ul>
@@ -668,14 +838,16 @@ A game programming library
 <p>OSX port:</p>
 <ul>
 <li><p>Clear window to black when going in/out of fullscreen.</p></li>
-<li><p>Fix window centering when going out of FULLSCREEN_WINDOW mode.</p></li>
+<li><p>Fix window centering when going out of FULLSCREEN_WINDOW
+mode.</p></li>
 <li><p>Fix OSX 10.12 build.</p></li>
 <li><p>Allow 32 bit builds on OSX (MarcusCalhoun-Lopez).</p></li>
 </ul>
 <p>Build system:</p>
 <ul>
 <li><p>Fix issues with building on GCC6 on Windows.</p></li>
-<li><p>Fix source directory littering while configuring the Android build.</p></li>
+<li><p>Fix source directory littering while configuring the Android
+build.</p></li>
 </ul>
 <p>Python binding:</p>
 <ul>
@@ -683,65 +855,89 @@ A game programming library
 </ul>
 <p>Documentation:</p>
 <ul>
-<li><p>Document the behavior of <code>al_set_target_bitmap</code> with respect to transformations (Edgar Reynaldo).</p></li>
-<li><p>Fix typo in <code>al_use_transform</code> docs (Ryan Roden-Corrent).</p></li>
+<li><p>Document the behavior of <code>al_set_target_bitmap</code> with
+respect to transformations (Edgar Reynaldo).</p></li>
+<li><p>Fix typo in <code>al_use_transform</code> docs (Ryan
+Roden-Corrent).</p></li>
 </ul>
 <p>Examples:</p>
 <ul>
-<li><p>Add kerning to the <code>al_get_glyph</code> example in ex_ttf.</p></li>
+<li><p>Add kerning to the <code>al_get_glyph</code> example in
+ex_ttf.</p></li>
 <li><p>Various fixes in ex_camera (Erich Erstu).</p></li>
 </ul>
-<h1 id="changes-from-5.2.1-to-5.2.1.1-august-2016">Changes from 5.2.1 to 5.2.1.1 (August 2016)</h1>
+<h1 id="changes-from-5.2.1-to-5.2.1.1-august-2016">Changes from 5.2.1 to
+5.2.1.1 (August 2016)</h1>
 <p>The main developers this time were: Trent Gamblin, SiegeLord.</p>
 <p>Core:</p>
 <ul>
-<li><p>Enforce backwards compatibility in the version check, rather than erroneously allowing forwards compatiblity.</p></li>
-<li><p>Temporarily remove new extensions in ALLEGRO_OGL_EXT_LIST as that broke ABI compatibility.</p></li>
+<li><p>Enforce backwards compatibility in the version check, rather than
+erroneously allowing forwards compatiblity.</p></li>
+<li><p>Temporarily remove new extensions in ALLEGRO_OGL_EXT_LIST as that
+broke ABI compatibility.</p></li>
 </ul>
 <p>OSX port:</p>
 <ul>
-<li>Temporarily revert changes in joystick detection, as it did not interact well with some joysticks.</li>
+<li>Temporarily revert changes in joystick detection, as it did not
+interact well with some joysticks.</li>
 </ul>
 <p>Windows port:</p>
 <ul>
-<li>Fix the clear display to black right away to avoid an ugly white flash change.</li>
+<li>Fix the clear display to black right away to avoid an ugly white
+flash change.</li>
 </ul>
-<h1 id="changes-from-5.2.0-to-5.2.1-july-2016">Changes from 5.2.0 to 5.2.1 (July 2016)</h1>
-<p>The main developers this time were: Elias Pschernig, Trent Gamblin, SiegeLord, Ryan Roden-Corrent, Boris Carvajal and Peter Hull.</p>
+<h1 id="changes-from-5.2.0-to-5.2.1-july-2016">Changes from 5.2.0 to
+5.2.1 (July 2016)</h1>
+<p>The main developers this time were: Elias Pschernig, Trent Gamblin,
+SiegeLord, Ryan Roden-Corrent, Boris Carvajal and Peter Hull.</p>
 <p>Core:</p>
 <ul>
 <li><p>Optimize bitmap holding a bit (Bruce Pascoe).</p></li>
-<li><p>Add <code>al_get/set_depth/samples</code> (OpenGL only for now).</p></li>
-<li><p>Optimize destruction performance when you have thousands of objects (e.g. sub-bitmaps).</p></li>
-<li><p>Use low floating point precision for the OpenGL fragment shaders, which helps performance a lot on mobile platforms.</p></li>
-<li><p>Don’t stop and join the timer thread when stopping the last timer (prevents unnecessary delay in this situation on some platforms).</p></li>
-<li><p>Add <code>al_backup_dirty_bitmap</code> and <code>al_backup_dirty_bitmaps</code> to more finely control when bitmap context backup is performed.</p></li>
+<li><p>Add <code>al_get/set_depth/samples</code> (OpenGL only for
+now).</p></li>
+<li><p>Optimize destruction performance when you have thousands of
+objects (e.g. sub-bitmaps).</p></li>
+<li><p>Use low floating point precision for the OpenGL fragment shaders,
+which helps performance a lot on mobile platforms.</p></li>
+<li><p>Don’t stop and join the timer thread when stopping the last timer
+(prevents unnecessary delay in this situation on some
+platforms).</p></li>
+<li><p>Add <code>al_backup_dirty_bitmap</code> and
+<code>al_backup_dirty_bitmaps</code> to more finely control when bitmap
+context backup is performed.</p></li>
 </ul>
 <p>Android port:</p>
 <ul>
 <li><p>Fix Android app issues when woken up during sleep.</p></li>
-<li><p>Specify the Android toolchain file on the command line now. ANDROID_NDK_TOOLCHAIN_ROOT now has to be specified in an environment variable.</p></li>
+<li><p>Specify the Android toolchain file on the command line now.
+ANDROID_NDK_TOOLCHAIN_ROOT now has to be specified in an environment
+variable.</p></li>
 </ul>
 <p>OSX port:</p>
 <ul>
 <li><p>Improve joystick enumeration (Todd Cope).</p></li>
-<li><p>Make <code>al_set_new_window_title</code> work correctly.</p></li>
+<li><p>Make <code>al_set_new_window_title</code> work
+correctly.</p></li>
 <li><p>Don’t send duplicate mouse move events.</p></li>
 <li><p>Fix mouse warping behavior.</p></li>
-<li><p>Exit fullscreen mode if ALLEGRO_FULLSCREEN_WINDOW is set when destroying a display (otherwise if you destroy and recreate display without terminating the program, a white window kicks around).</p></li>
+<li><p>Exit fullscreen mode if ALLEGRO_FULLSCREEN_WINDOW is set when
+destroying a display (otherwise if you destroy and recreate display
+without terminating the program, a white window kicks around).</p></li>
 </ul>
 <p>iOS port:</p>
 <ul>
 <li><p>Make it compile again.</p></li>
 <li><p>Don’t backup textures as it is unnecessary.</p></li>
 <li><p>Update minimum iOS to version to 6.1.</p></li>
-<li><p>Disable the native png loader in favor of libpng, as it is broken on Apple’s end.</p></li>
+<li><p>Disable the native png loader in favor of libpng, as it is broken
+on Apple’s end.</p></li>
 <li><p>Create library when creating the archive.</p></li>
 </ul>
 <p>Windows port:</p>
 <ul>
 <li><p>Fix the D3D target bitmap bug.</p></li>
-<li><p>Clear display to black right away to avoid an ugly white flash.</p></li>
+<li><p>Clear display to black right away to avoid an ugly white
+flash.</p></li>
 </ul>
 <p>Raspberry Pi port:</p>
 <ul>
@@ -753,10 +949,13 @@ A game programming library
 </ul>
 <p>Build system:</p>
 <ul>
-<li><p>Use PROJECT_SOURCE_DIR and PROJECT_BINARY_DIR instead of CMAKE_SOURCE_DIR and CMAKE_BINARY_DIR. This lets you use Allegro as a sub-project in your CMake project.</p></li>
+<li><p>Use PROJECT_SOURCE_DIR and PROJECT_BINARY_DIR instead of
+CMAKE_SOURCE_DIR and CMAKE_BINARY_DIR. This lets you use Allegro as a
+sub-project in your CMake project.</p></li>
 <li><p>Fix GDIPlus finding in cmake-gui (Bruce Pascoe).</p></li>
 <li><p>Add .gitignore and ignore build/ dir (Mark Oates).</p></li>
-<li><p>Fix building examples with non-Allegro dependencies with the monolith build.</p></li>
+<li><p>Fix building examples with non-Allegro dependencies with the
+monolith build.</p></li>
 </ul>
 <p>Documentation:</p>
 <ul>
@@ -764,18 +963,23 @@ A game programming library
 </ul>
 <p>Other:</p>
 <ul>
-<li><p>Add more <code>#include</code> statements in Allegro headers, so it’s easier to use them in isolation (Jordan Woehr).</p></li>
+<li><p>Add more <code>#include</code> statements in Allegro headers, so
+it’s easier to use them in isolation (Jordan Woehr).</p></li>
 <li><p>Allow marking tests as being hardware only.</p></li>
-<li><p>Prefix some private Allegro macros and types to not pollute the namespace.</p></li>
-<li><p>Make set_shader_uniform api const-correct (Bruce Pascoe).</p></li>
+<li><p>Prefix some private Allegro macros and types to not pollute the
+namespace.</p></li>
+<li><p>Make set_shader_uniform api const-correct (Bruce
+Pascoe).</p></li>
 </ul>
 <p>Audio addon:</p>
 <ul>
-<li>Adjust loop end position when calling <code>al_set_sample_instance_length</code>.</li>
+<li>Adjust loop end position when calling
+<code>al_set_sample_instance_length</code>.</li>
 </ul>
 <p>Acodec addon:</p>
 <ul>
-<li><p>Allow file-backed audio streams to be restarted after they finish.</p></li>
+<li><p>Allow file-backed audio streams to be restarted after they
+finish.</p></li>
 <li><p>Add Opus codec support.</p></li>
 </ul>
 <p>Image addon:</p>
@@ -785,22 +989,29 @@ A game programming library
 <p>Native dialog addon:</p>
 <p>Font addon:</p>
 <ul>
-<li><p>Make <code>al_get_text_dimensions</code> and <code>al_get_glyph_dimensions</code> return exact bounding boxes (koro).</p></li>
-<li><p>Add <code>ALLEGRO_GLYPH</code> structure and <code>al_get_glyph</code>, allowing for some additional optimization when drawing fonts.</p></li>
+<li><p>Make <code>al_get_text_dimensions</code> and
+<code>al_get_glyph_dimensions</code> return exact bounding boxes
+(koro).</p></li>
+<li><p>Add <code>ALLEGRO_GLYPH</code> structure and
+<code>al_get_glyph</code>, allowing for some additional optimization
+when drawing fonts.</p></li>
 </ul>
 <p>Examples:</p>
 <ul>
 <li><p>Add more controls to <code>ex_audio_props</code>.</p></li>
 <li><p>Add an example of using Enet with Allegro.</p></li>
 </ul>
-<h1 id="changes-from-5.1.13.1-to-5.2.0-april-2016">Changes from 5.1.13.1 to 5.2.0 (April 2016)</h1>
-<p>The main developers this time were: SiegeLord, Polybios, Mark Oates, Elias Pschernig and Jonathan Seeley.</p>
+<h1 id="changes-from-5.1.13.1-to-5.2.0-april-2016">Changes from 5.1.13.1
+to 5.2.0 (April 2016)</h1>
+<p>The main developers this time were: SiegeLord, Polybios, Mark Oates,
+Elias Pschernig and Jonathan Seeley.</p>
 <p>Core:</p>
 <ul>
 <li><p>Add <code>al_is_event_source_registered</code> (koro).</p></li>
 <li><p>Make destructors log messages more meaningful.</p></li>
 <li><p>Mouse emulation API for touch devices is now unstable.</p></li>
-<li><p>Rename <code>al_convert_bitmaps</code> to <code>al_convert_memory_bitmaps</code>.</p></li>
+<li><p>Rename <code>al_convert_bitmaps</code> to
+<code>al_convert_memory_bitmaps</code>.</p></li>
 </ul>
 <p>Input:</p>
 <ul>
@@ -808,24 +1019,30 @@ A game programming library
 </ul>
 <p>Android port:</p>
 <ul>
-<li>Fixed bogus display destruction on Android which previously caused zombie states.</li>
+<li>Fixed bogus display destruction on Android which previously caused
+zombie states.</li>
 </ul>
 <p>OSX port:</p>
 <ul>
 <li><p>Fix OSX mouse state position scaling.</p></li>
 <li><p>Fix other various scaling issues.</p></li>
 <li><p>Make toggling ALLEGRO_FRAMELESS work.</p></li>
-<li><p>Fix an issue where fullscreen windows would occasionally leave empty space for the titlebar.</p></li>
+<li><p>Fix an issue where fullscreen windows would occasionally leave
+empty space for the titlebar.</p></li>
 <li><p>Fix incorrect debug assert in the audio addon.</p></li>
 </ul>
 <p>Windows port:</p>
 <ul>
-<li><p>Make Allegro apps DPI-aware by default, which means that they won’t be scaled by the OS.</p></li>
-<li><p>Fix compilation for the CPU detection code on some compilers.</p></li>
+<li><p>Make Allegro apps DPI-aware by default, which means that they
+won’t be scaled by the OS.</p></li>
+<li><p>Fix compilation for the CPU detection code on some
+compilers.</p></li>
 <li><p>Don’t sync the D3D bitmap when locking with WRITE_ONLY.</p></li>
 <li><p>Remove dsound.dll runtime loading.</p></li>
-<li><p>Don’t link xinput and d3dx9 libraries (they are still required at runtime though if you’re using the relevant features).</p></li>
-<li><p>Fix a bug where al_wait_for_event_timed can block despite 0 timeout (Aldo Nunez).</p></li>
+<li><p>Don’t link xinput and d3dx9 libraries (they are still required at
+runtime though if you’re using the relevant features).</p></li>
+<li><p>Fix a bug where al_wait_for_event_timed can block despite 0
+timeout (Aldo Nunez).</p></li>
 </ul>
 <p>Build system:</p>
 <ul>
@@ -833,13 +1050,17 @@ A game programming library
 </ul>
 <p>Documentation:</p>
 <ul>
-<li><p>Fix source links for API entries with multi-line prototypes.</p></li>
+<li><p>Fix source links for API entries with multi-line
+prototypes.</p></li>
 <li><p>Make the readme look prettier on GitHub.</p></li>
-<li><p>Tons of assorted documentation improvements, especially for the audio addon.</p></li>
+<li><p>Tons of assorted documentation improvements, especially for the
+audio addon.</p></li>
 </ul>
 <p>Other:</p>
 <ul>
-<li>Add a stability system where some unstable APIs need to be opted into by defining <code>ALLEGRO_UNSTABLE</code> before including Allegro headers.</li>
+<li>Add a stability system where some unstable APIs need to be opted
+into by defining <code>ALLEGRO_UNSTABLE</code> before including Allegro
+headers.</li>
 </ul>
 <p>Audio addon:</p>
 <ul>
@@ -852,17 +1073,21 @@ A game programming library
 </ul>
 <p>TTF addon:</p>
 <ul>
-<li>Add an option to pre-cache the glyphs, useful for platforms where the current algorithm is buggy (typically some Android devices).</li>
+<li>Add an option to pre-cache the glyphs, useful for platforms where
+the current algorithm is buggy (typically some Android devices).</li>
 </ul>
 <p>Video addon:</p>
 <ul>
-<li>Temporarily remove FFmpeg backend, as it was too buggy, didn’t build and was too hard to fix.</li>
+<li>Temporarily remove FFmpeg backend, as it was too buggy, didn’t build
+and was too hard to fix.</li>
 </ul>
 <p>Examples:</p>
 <ul>
 <li><p>Make <code>ex_vsync</code> less likely cause a seizure.</p></li>
-<li><p>Make <code>ex_draw_bitmap</code> and <code>ex_touch_input</code> switch in/out on Android.</p></li>
-<li><p>Add documentation to <code>ex_bitmap</code> (Daniel Johnson).</p></li>
+<li><p>Make <code>ex_draw_bitmap</code> and <code>ex_touch_input</code>
+switch in/out on Android.</p></li>
+<li><p>Add documentation to <code>ex_bitmap</code> (Daniel
+Johnson).</p></li>
 <li><p>Improve <code>ex_logo</code> text entry experience.</p></li>
 </ul>
 <!-- vi: set sts=3 sw=3 et: -->
@@ -873,8 +1098,11 @@ A game programming library
 <p><a href="webmasters.html">Contact the webmasters</a></p>
 </div>
 <!-- contact -->
-<p><a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
-    height="33" width="88" vspace="1" hspace="1" /> </a> <a href="http://www.anybrowser.org/campaign/"> <img src="images/anyb.png" border="0" alt="Viewable with any browser"
+<p><a href="http://petition.eurolinux.org/index_html?LANG=en">
+<img src="images/nopatents.png" border="0" alt="No ePatents"
+    height="33" width="88" vspace="1" hspace="1" /> </a>
+<a href="http://www.anybrowser.org/campaign/">
+<img src="images/anyb.png" border="0" alt="Viewable with any browser"
     height="31" width="88" vspace="1" hspace="1" /> </a></p>
 </div>
 <!-- footer -->

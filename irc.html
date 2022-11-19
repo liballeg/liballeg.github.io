@@ -8,15 +8,24 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="web_style.css" />
   <link rel="alternate" type="application/atom+xml"
       href="feed_atom.xml" title="Allegro news"
   />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 <div id="main_header">
@@ -36,7 +45,8 @@ A game programming library
 <li><a href="git.html">Git repository</a></li>
 <li><a href="license.html">License</a></li>
 <li><a href="examples_demos.html">Examples</a></li>
-<li><a href="https://github.com/liballeg/allegro5/issues">Bug tracker</a></li>
+<li><a href="https://github.com/liballeg/allegro5/issues">Bug
+tracker</a></li>
 <li><a href="bindings.html">Language bindings</a></li>
 </ul></li>
 <li><strong>Downloads</strong>
@@ -47,11 +57,13 @@ A game programming library
 </ul></li>
 <li><strong>Documentation</strong>
 <ul>
-<li><strong><a href="http://liballeg.org/a5docs/trunk/">Latest version</a></strong></li>
+<li><strong><a href="http://liballeg.org/a5docs/trunk/">Latest
+version</a></strong></li>
 <li><a href="api.html">All versions</a></li>
 <li><a href="docs.html">Tutorials</a></li>
 <li><a href="books.html">Books</a></li>
-<li><a href="https://github.com/liballeg/allegro_wiki/wiki">Wiki</a></li>
+<li><a
+href="https://github.com/liballeg/allegro_wiki/wiki">Wiki</a></li>
 </ul></li>
 <li><strong>Community</strong>
 <ul>
@@ -77,7 +89,10 @@ A game programming library
 </div>
 <!-- sidebar -->
 <div id="hosting">
-<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/> <a href="https://projects.tuxfamily.org/?do=group;name=allegro">TuxFamily project</a></p>
+<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/>
+<a
+href="https://projects.tuxfamily.org/?do=group;name=allegro">TuxFamily
+project</a></p>
 </div>
 <!-- hosting -->
 </div>
@@ -87,10 +102,28 @@ A game programming library
 <h1 class="title">Allegro - Community - IRC</h1>
 </header>
 <h1 id="allegro-on-irc">Allegro on IRC</h1>
-<p>If you want to get help quickly, or simply discuss programming with Allegro with other people, join us in the <strong>#allegro</strong> channel on the Libera IRC network <a href="https://libera.chat/" class="uri">https://libera.chat/</a>. You will find many of the allegro.cc regulars and some of the developers there. Discussion will be related to Allegro as often as it will be not.</p>
+<p>If you want to get help quickly, or simply discuss programming with
+Allegro with other people, join us in the <strong>#allegro</strong>
+channel on the Libera IRC network <a href="https://libera.chat/"
+class="uri">https://libera.chat/</a>. You will find many of the
+allegro.cc regulars and some of the developers there. Discussion will be
+related to Allegro as often as it will be not.</p>
 <h2 id="notes-about-using-irc">Notes about using IRC</h2>
-<p>If you don’t know how to enter the channel, you can obtain a list of servers from <a href="https://libera.chat/" class="uri">https://libera.chat/</a>. If you are new to IRC, it is also a good idea to read <a href="https://libera.chat/guidelines" class="uri">https://libera.chat/guidelines</a> so you can learn quickly what are the things you shouldn’t do on the channel to avoid upsetting people. If you have problems using the Allegro library, there is a lot of documentation you should check before coming here. You can for example check the <strong>Documentation</strong> section of this web page, where you have the FAQ, help guidelines and Allegro’s documentation online.</p>
-<p>The language used in the IRC channel is <strong>English</strong>. You can eventually ask there in another language, but most of the people there understand only English, so this would limit the richness of your conversation ;).</p>
+<p>If you don’t know how to enter the channel, you can obtain a list of
+servers from <a href="https://libera.chat/"
+class="uri">https://libera.chat/</a>. If you are new to IRC, it is also
+a good idea to read <a href="https://libera.chat/guidelines"
+class="uri">https://libera.chat/guidelines</a> so you can learn quickly
+what are the things you shouldn’t do on the channel to avoid upsetting
+people. If you have problems using the Allegro library, there is a lot
+of documentation you should check before coming here. You can for
+example check the <strong>Documentation</strong> section of this web
+page, where you have the FAQ, help guidelines and Allegro’s
+documentation online.</p>
+<p>The language used in the IRC channel is <strong>English</strong>. You
+can eventually ask there in another language, but most of the people
+there understand only English, so this would limit the richness of your
+conversation ;).</p>
 </div>
 <!-- content -->
 <div id="footer">
@@ -98,8 +131,11 @@ A game programming library
 <p><a href="webmasters.html">Contact the webmasters</a></p>
 </div>
 <!-- contact -->
-<p><a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
-    height="33" width="88" vspace="1" hspace="1" /> </a> <a href="http://www.anybrowser.org/campaign/"> <img src="images/anyb.png" border="0" alt="Viewable with any browser"
+<p><a href="http://petition.eurolinux.org/index_html?LANG=en">
+<img src="images/nopatents.png" border="0" alt="No ePatents"
+    height="33" width="88" vspace="1" hspace="1" /> </a>
+<a href="http://www.anybrowser.org/campaign/">
+<img src="images/anyb.png" border="0" alt="Viewable with any browser"
     height="31" width="88" vspace="1" hspace="1" /> </a></p>
 </div>
 <!-- footer -->

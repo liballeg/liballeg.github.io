@@ -8,15 +8,24 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="web_style.css" />
   <link rel="alternate" type="application/atom+xml"
       href="feed_atom.xml" title="Allegro news"
   />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 <div id="main_header">
@@ -36,7 +45,8 @@ A game programming library
 <li><a href="git.html">Git repository</a></li>
 <li><a href="license.html">License</a></li>
 <li><a href="examples_demos.html">Examples</a></li>
-<li><a href="https://github.com/liballeg/allegro5/issues">Bug tracker</a></li>
+<li><a href="https://github.com/liballeg/allegro5/issues">Bug
+tracker</a></li>
 <li><a href="bindings.html">Language bindings</a></li>
 </ul></li>
 <li><strong>Downloads</strong>
@@ -47,11 +57,13 @@ A game programming library
 </ul></li>
 <li><strong>Documentation</strong>
 <ul>
-<li><strong><a href="http://liballeg.org/a5docs/trunk/">Latest version</a></strong></li>
+<li><strong><a href="http://liballeg.org/a5docs/trunk/">Latest
+version</a></strong></li>
 <li><a href="api.html">All versions</a></li>
 <li><a href="docs.html">Tutorials</a></li>
 <li><a href="books.html">Books</a></li>
-<li><a href="https://github.com/liballeg/allegro_wiki/wiki">Wiki</a></li>
+<li><a
+href="https://github.com/liballeg/allegro_wiki/wiki">Wiki</a></li>
 </ul></li>
 <li><strong>Community</strong>
 <ul>
@@ -77,7 +89,10 @@ A game programming library
 </div>
 <!-- sidebar -->
 <div id="hosting">
-<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/> <a href="https://projects.tuxfamily.org/?do=group;name=allegro">TuxFamily project</a></p>
+<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/>
+<a
+href="https://projects.tuxfamily.org/?do=group;name=allegro">TuxFamily
+project</a></p>
 </div>
 <!-- hosting -->
 </div>
@@ -99,19 +114,32 @@ A game programming library
 </colgroup>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><a href="#source"><strong>Source</strong></a></td>
-<td style="text-align: center;"><a href="#windows"><strong>Windows</strong></a></td>
-<td style="text-align: center;"><a href="#osx"><strong>MacOS X</strong></a></td>
-<td style="text-align: center;"><a href="#linux"><strong>Linux</strong></a></td>
-<td style="text-align: center;"><a href="#iphone"><strong>iPhone</strong></a></td>
-<td style="text-align: center;"><a href="#misc"><strong>Miscellaneous files</strong></a></td>
+<td style="text-align: center;"><a
+href="#source"><strong>Source</strong></a></td>
+<td style="text-align: center;"><a
+href="#windows"><strong>Windows</strong></a></td>
+<td style="text-align: center;"><a href="#osx"><strong>MacOS
+X</strong></a></td>
+<td style="text-align: center;"><a
+href="#linux"><strong>Linux</strong></a></td>
+<td style="text-align: center;"><a
+href="#iphone"><strong>iPhone</strong></a></td>
+<td style="text-align: center;"><a href="#misc"><strong>Miscellaneous
+files</strong></a></td>
 </tr>
 </tbody>
 </table>
-<p>Instructions on how to build Allegro for each of the supported platforms are included in the source packages, either in the README files, or in the <code>docs/build</code> subdirectory.</p>
-<p>Additional installation instructions can be found on the <a href="https://github.com/liballeg/allegro_wiki/wiki/Quickstart">wiki</a>.</p>
+<p>Instructions on how to build Allegro for each of the supported
+platforms are included in the source packages, either in the README
+files, or in the <code>docs/build</code> subdirectory.</p>
+<p>Additional installation instructions can be found on the <a
+href="https://github.com/liballeg/allegro_wiki/wiki/Quickstart">wiki</a>.</p>
 <h2 id="source">Allegro 5.2 source releases</h2>
-<p>Allegro 5.2 supports <strong>Unix</strong> (Linux, FreeBSD, etc.), <strong>Windows</strong>, <strong>macOS</strong>, <strong>Android</strong> and <strong>iPhone</strong>. Allegro 5.2 is source compatible but not binary compatible with Allegro 5.0. You can read the <a href="changes.html">full change log</a>.</p>
+<p>Allegro 5.2 supports <strong>Unix</strong> (Linux, FreeBSD, etc.),
+<strong>Windows</strong>, <strong>macOS</strong>,
+<strong>Android</strong> and <strong>iPhone</strong>. Allegro 5.2 is
+source compatible but not binary compatible with Allegro 5.0. You can
+read the <a href="changes.html">full change log</a>.</p>
 <table>
 <colgroup>
 <col style="width: 26%" />
@@ -127,29 +155,40 @@ A game programming library
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://github.com/liballeg/allegro5/releases/download/5.2.8.0/allegro-5.2.8.0.zip">allegro-5.2.8.0.zip</a></td>
+<td style="text-align: left;"><a
+href="https://github.com/liballeg/allegro5/releases/download/5.2.8.0/allegro-5.2.8.0.zip">allegro-5.2.8.0.zip</a></td>
 <td style="text-align: left;">10.4M</td>
-<td style="text-align: left;">Source code for all platforms in Windows friendly format.</td>
+<td style="text-align: left;">Source code for all platforms in Windows
+friendly format.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="https://github.com/liballeg/allegro5/releases/download/5.2.8.0/allegro-5.2.8.0.tar.gz">allegro-5.2.8.0.tar.gz</a></td>
+<td style="text-align: left;"><a
+href="https://github.com/liballeg/allegro5/releases/download/5.2.8.0/allegro-5.2.8.0.tar.gz">allegro-5.2.8.0.tar.gz</a></td>
 <td style="text-align: left;">9.4M</td>
-<td style="text-align: left;">Source code for all platforms in Unix friendly format.</td>
+<td style="text-align: left;">Source code for all platforms in Unix
+friendly format.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://github.com/liballeg/allegro5/releases/download/5.2.8.0/allegro-5.2.8.0.7z">allegro-5.2.8.0.7z</a></td>
+<td style="text-align: left;"><a
+href="https://github.com/liballeg/allegro5/releases/download/5.2.8.0/allegro-5.2.8.0.7z">allegro-5.2.8.0.7z</a></td>
 <td style="text-align: left;">8.1M</td>
-<td style="text-align: left;">Source code for all platforms in Windows friendly format.</td>
+<td style="text-align: left;">Source code for all platforms in Windows
+friendly format.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="https://github.com/liballeg/allegro5/releases">Browse all files</a></td>
+<td style="text-align: left;"><a
+href="https://github.com/liballeg/allegro5/releases">Browse all
+files</a></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
 <h2 id="windows">Windows Binaries</h2>
-<p>There are several official and unofficial ways to obtain Windows binaries of Allegro releases. See the <a href="https://github.com/liballeg/allegro_wiki/wiki/Quickstart">wiki tutorial</a> for installation instructions.</p>
+<p>There are several official and unofficial ways to obtain Windows
+binaries of Allegro releases. See the <a
+href="https://github.com/liballeg/allegro_wiki/wiki/Quickstart">wiki
+tutorial</a> for installation instructions.</p>
 <table>
 <colgroup>
 <col style="width: 26%" />
@@ -163,33 +202,60 @@ A game programming library
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://www.nuget.org/packages/Allegro/">Nuget</a></td>
-<td style="text-align: left;">The <code>Allegro</code> package on Nuget contains the official binaries in a format that is easy to use from MSVC.</td>
+<td style="text-align: left;"><a
+href="https://www.nuget.org/packages/Allegro/">Nuget</a></td>
+<td style="text-align: left;">The <code>Allegro</code> package on Nuget
+contains the official binaries in a format that is easy to use from
+MSVC.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="https://github.com/liballeg/allegro5/releases">Allegro 5.2 binary packages</a></td>
-<td style="text-align: left;">Allegro releases on GitHub also come with several binary distributions of Allegro for Windows.</td>
+<td style="text-align: left;"><a
+href="https://github.com/liballeg/allegro5/releases">Allegro 5.2 binary
+packages</a></td>
+<td style="text-align: left;">Allegro releases on GitHub also come with
+several binary distributions of Allegro for Windows.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://github.com/liballeg/allegro_winpkg/releases">Allegro 5 dependencies</a></td>
-<td style="text-align: left;">The <code>allegro_winpkg</code> GitHub project has releases that come with the pre-compiled Allegro dependencies for Windows.</td>
+<td style="text-align: left;"><a
+href="https://github.com/liballeg/allegro_winpkg/releases">Allegro 5
+dependencies</a></td>
+<td style="text-align: left;">The <code>allegro_winpkg</code> GitHub
+project has releases that come with the pre-compiled Allegro
+dependencies for Windows.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="http://www.allegro.cc/files/">www.allegro.cc/files</a></td>
-<td style="text-align: left;">Matthew Leverton hosts Windows binary packages for many different compilers. The 5.0 binaries are produced by a different process from the standard build system. <strong>Unofficial.</strong></td>
+<td style="text-align: left;"><a
+href="http://www.allegro.cc/files/">www.allegro.cc/files</a></td>
+<td style="text-align: left;">Matthew Leverton hosts Windows binary
+packages for many different compilers. The 5.0 binaries are produced by
+a different process from the standard build system.
+<strong>Unofficial.</strong></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><a href="http://devpaks.org/">devpaks.org</a></td>
-<td style="text-align: left;">Michal Molhanec mantains a Devpak repository, where you can get a package of the precompiled library for MinGW and Dev-C++. <strong>Unofficial.</strong></td>
+<td style="text-align: left;"><a
+href="http://devpaks.org/">devpaks.org</a></td>
+<td style="text-align: left;">Michal Molhanec mantains a Devpak
+repository, where you can get a package of the precompiled library for
+MinGW and Dev-C++. <strong>Unofficial.</strong></td>
 </tr>
 </tbody>
 </table>
 <h2 id="osx">MacOS X binaries</h2>
-<p>Allegro 5 can be found in the <code>allegro</code> package on <a href="http://brew.sh/">homebrew</a>. See the <a href="https://github.com/liballeg/allegro_wiki/wiki/Quickstart">wiki tutorial</a> for more details.</p>
+<p>Allegro 5 can be found in the <code>allegro</code> package on <a
+href="http://brew.sh/">homebrew</a>. See the <a
+href="https://github.com/liballeg/allegro_wiki/wiki/Quickstart">wiki
+tutorial</a> for more details.</p>
 <h2 id="linux">Ubuntu PPA</h2>
-<p>For Linux distributions based on Ubuntu (and Ubuntu itself), you can download binary packages for Allegro 5 by adding the a <a href="https://launchpad.net/~allegro/+archive/ubuntu/5.2">PPA</a> to your software sources, and then installing the relevant packages. See the <a href="https://github.com/liballeg/allegro_wiki/wiki/Quickstart">wiki tutorial</a> for more details.</p>
+<p>For Linux distributions based on Ubuntu (and Ubuntu itself), you can
+download binary packages for Allegro 5 by adding the a <a
+href="https://launchpad.net/~allegro/+archive/ubuntu/5.2">PPA</a> to
+your software sources, and then installing the relevant packages. See
+the <a
+href="https://github.com/liballeg/allegro_wiki/wiki/Quickstart">wiki
+tutorial</a> for more details.</p>
 <h2 id="iphone">IPhone binaries</h2>
-<p>Currently you need to compile Allegro from source for iPhone. These binaries allow you to avoid having to do that for the dependencies.</p>
+<p>Currently you need to compile Allegro from source for iPhone. These
+binaries allow you to avoid having to do that for the dependencies.</p>
 <table>
 <colgroup>
 <col style="width: 27%" />
@@ -205,19 +271,28 @@ A game programming library
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://download.tuxfamily.org/allegro/files/freetype-iphone-2.3.12-bin.zip">freetype-iphone-2.3.12-bin.zip</a></td>
+<td style="text-align: left;"><a
+href="https://download.tuxfamily.org/allegro/files/freetype-iphone-2.3.12-bin.zip">freetype-iphone-2.3.12-bin.zip</a></td>
 <td style="text-align: left;">1.3M</td>
-<td style="text-align: left;">Freetype libraries and headers compiled for IPhone. Drop these into the deps folder and CMake should pick them up.</td>
+<td style="text-align: left;">Freetype libraries and headers compiled
+for IPhone. Drop these into the deps folder and CMake should pick them
+up.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="https://download.tuxfamily.org/allegro/files/physfs-1.0.2-iphone.zip">physfs-1.0.2-iphone.zip</a></td>
+<td style="text-align: left;"><a
+href="https://download.tuxfamily.org/allegro/files/physfs-1.0.2-iphone.zip">physfs-1.0.2-iphone.zip</a></td>
 <td style="text-align: left;">165K</td>
-<td style="text-align: left;">PhysFS libraries and headers compiled for IPhone. Drop these into the deps folder and CMake should pick them up.</td>
+<td style="text-align: left;">PhysFS libraries and headers compiled for
+IPhone. Drop these into the deps folder and CMake should pick them
+up.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://download.tuxfamily.org/allegro/files/vorbis-iphone.zip">vorbis-iphone.zip</a></td>
+<td style="text-align: left;"><a
+href="https://download.tuxfamily.org/allegro/files/vorbis-iphone.zip">vorbis-iphone.zip</a></td>
 <td style="text-align: left;">280K</td>
-<td style="text-align: left;">Ogg Vorbis libraries and headers compiled for IPhone. Drop these into the deps folder and CMake should pick them up.</td>
+<td style="text-align: left;">Ogg Vorbis libraries and headers compiled
+for IPhone. Drop these into the deps folder and CMake should pick them
+up.</td>
 </tr>
 </tbody>
 </table>
@@ -237,9 +312,12 @@ A game programming library
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://download.tuxfamily.org/allegro/files/sal.h">sal.h</a></td>
+<td style="text-align: left;"><a
+href="https://download.tuxfamily.org/allegro/files/sal.h">sal.h</a></td>
 <td style="text-align: left;">8k</td>
-<td style="text-align: left;">This header is necessary if you want to use the official DirectX SDK with MinGW. Place it somewhere Allegro build system can find it (e.g. MinGW’s include directory.</td>
+<td style="text-align: left;">This header is necessary if you want to
+use the official DirectX SDK with MinGW. Place it somewhere Allegro
+build system can find it (e.g. MinGW’s include directory.</td>
 </tr>
 </tbody>
 </table>
@@ -250,8 +328,11 @@ A game programming library
 <p><a href="webmasters.html">Contact the webmasters</a></p>
 </div>
 <!-- contact -->
-<p><a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
-    height="33" width="88" vspace="1" hspace="1" /> </a> <a href="http://www.anybrowser.org/campaign/"> <img src="images/anyb.png" border="0" alt="Viewable with any browser"
+<p><a href="http://petition.eurolinux.org/index_html?LANG=en">
+<img src="images/nopatents.png" border="0" alt="No ePatents"
+    height="33" width="88" vspace="1" hspace="1" /> </a>
+<a href="http://www.anybrowser.org/campaign/">
+<img src="images/anyb.png" border="0" alt="Viewable with any browser"
     height="31" width="88" vspace="1" hspace="1" /> </a></p>
 </div>
 <!-- footer -->

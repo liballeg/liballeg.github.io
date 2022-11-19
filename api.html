@@ -8,15 +8,24 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="web_style.css" />
   <link rel="alternate" type="application/atom+xml"
       href="feed_atom.xml" title="Allegro news"
   />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 <div id="main_header">
@@ -36,7 +45,8 @@ A game programming library
 <li><a href="git.html">Git repository</a></li>
 <li><a href="license.html">License</a></li>
 <li><a href="examples_demos.html">Examples</a></li>
-<li><a href="https://github.com/liballeg/allegro5/issues">Bug tracker</a></li>
+<li><a href="https://github.com/liballeg/allegro5/issues">Bug
+tracker</a></li>
 <li><a href="bindings.html">Language bindings</a></li>
 </ul></li>
 <li><strong>Downloads</strong>
@@ -47,11 +57,13 @@ A game programming library
 </ul></li>
 <li><strong>Documentation</strong>
 <ul>
-<li><strong><a href="http://liballeg.org/a5docs/trunk/">Latest version</a></strong></li>
+<li><strong><a href="http://liballeg.org/a5docs/trunk/">Latest
+version</a></strong></li>
 <li><a href="api.html">All versions</a></li>
 <li><a href="docs.html">Tutorials</a></li>
 <li><a href="books.html">Books</a></li>
-<li><a href="https://github.com/liballeg/allegro_wiki/wiki">Wiki</a></li>
+<li><a
+href="https://github.com/liballeg/allegro_wiki/wiki">Wiki</a></li>
 </ul></li>
 <li><strong>Community</strong>
 <ul>
@@ -77,7 +89,10 @@ A game programming library
 </div>
 <!-- sidebar -->
 <div id="hosting">
-<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/> <a href="https://projects.tuxfamily.org/?do=group;name=allegro">TuxFamily project</a></p>
+<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/>
+<a
+href="https://projects.tuxfamily.org/?do=group;name=allegro">TuxFamily
+project</a></p>
 </div>
 <!-- hosting -->
 </div>
@@ -87,7 +102,9 @@ A game programming library
 <h1 class="title">Allegro - Documentation - API</h1>
 </header>
 <h1 id="documentation">Documentation</h1>
-<p>The Allegro documentation comes in the source package. Here, we host some popular versions of the generated documentation, and provide an online browseable version, too.</p>
+<p>The Allegro documentation comes in the source package. Here, we host
+some popular versions of the generated documentation, and provide an
+online browseable version, too.</p>
 <table style="width:100%;">
 <colgroup>
 <col style="width: 23%" />
@@ -106,13 +123,17 @@ A game programming library
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Online HTML</td>
-<td style="text-align: left;"><a href="http://liballeg.org/a5docs/5.2.8/"><strong>5.2.8</strong></a></td>
-<td style="text-align: left;"><a href="http://liballeg.org/a5docs/trunk/index.html">5.2.x (GIT)</a></td>
-<td style="text-align: left;"><a href="http://liballeg.org/stabledocs/en/index.html">4.4.0</a></td>
+<td style="text-align: left;"><a
+href="http://liballeg.org/a5docs/5.2.8/"><strong>5.2.8</strong></a></td>
+<td style="text-align: left;"><a
+href="http://liballeg.org/a5docs/trunk/index.html">5.2.x (GIT)</a></td>
+<td style="text-align: left;"><a
+href="http://liballeg.org/stabledocs/en/index.html">4.4.0</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><a href="http://liballeg.org/a5docs/">older versions</a></td>
+<td style="text-align: left;"><a
+href="http://liballeg.org/a5docs/">older versions</a></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
@@ -120,24 +141,38 @@ A game programming library
 <td style="text-align: left;">Compiled HTML format (CHM)</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><a href="https://download.tuxfamily.org/allegro/allegro-manual/4.2.2/allegro-manual-4.2.2.en.chm">4.2.2</a> (913 KiB)</td>
+<td style="text-align: left;"><a
+href="https://download.tuxfamily.org/allegro/allegro-manual/4.2.2/allegro-manual-4.2.2.en.chm">4.2.2</a>
+(913 KiB)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">PDF format</td>
-<td style="text-align: left;"><a href="http://liballeg.org/a5docs/5.2.8/refman.pdf">5.2.8</a> (1.1 MiB)</td>
+<td style="text-align: left;"><a
+href="http://liballeg.org/a5docs/5.2.8/refman.pdf">5.2.8</a> (1.1
+MiB)</td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><a href="https://download.tuxfamily.org/allegro/allegro-manual/4.2.1/allegro-manual-4.2.1.en.pdf">4.2.1</a> (2769 KiB)</td>
+<td style="text-align: left;"><a
+href="https://download.tuxfamily.org/allegro/allegro-manual/4.2.1/allegro-manual-4.2.1.en.pdf">4.2.1</a>
+(2769 KiB)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">PostScript gzipped format</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><a href="https://download.tuxfamily.org/allegro/allegro-manual/4.2.1/allegro-manual-4.2.1.en.ps.gz">4.2.1</a> (536 KiB)</td>
+<td style="text-align: left;"><a
+href="https://download.tuxfamily.org/allegro/allegro-manual/4.2.1/allegro-manual-4.2.1.en.ps.gz">4.2.1</a>
+(536 KiB)</td>
 </tr>
 </tbody>
 </table>
-<p><a href="http://www.allegro.cc/manual/">Allegro.cc’s manuals</a> - <br/> Matthew Leverton hosts the Allegro manuals, with a different style and integration with the Allegro.cc forums.</p>
-<p>Apart from Allegro’s manual, there is also a <a href="docs.html">tutorial</a> section with links to contributed documentation. And there are also <a href="books.html">written paper books</a> which teach Allegro. As of now, these mainly discuss Allegro 4.</p>
+<p><a href="http://www.allegro.cc/manual/">Allegro.cc’s manuals</a> -
+<br/> Matthew Leverton hosts the Allegro manuals, with a different style
+and integration with the Allegro.cc forums.</p>
+<p>Apart from Allegro’s manual, there is also a <a
+href="docs.html">tutorial</a> section with links to contributed
+documentation. And there are also <a href="books.html">written paper
+books</a> which teach Allegro. As of now, these mainly discuss Allegro
+4.</p>
 </div>
 <!-- content -->
 <div id="footer">
@@ -145,8 +180,11 @@ A game programming library
 <p><a href="webmasters.html">Contact the webmasters</a></p>
 </div>
 <!-- contact -->
-<p><a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
-    height="33" width="88" vspace="1" hspace="1" /> </a> <a href="http://www.anybrowser.org/campaign/"> <img src="images/anyb.png" border="0" alt="Viewable with any browser"
+<p><a href="http://petition.eurolinux.org/index_html?LANG=en">
+<img src="images/nopatents.png" border="0" alt="No ePatents"
+    height="33" width="88" vspace="1" hspace="1" /> </a>
+<a href="http://www.anybrowser.org/campaign/">
+<img src="images/anyb.png" border="0" alt="Viewable with any browser"
     height="31" width="88" vspace="1" hspace="1" /> </a></p>
 </div>
 <!-- footer -->

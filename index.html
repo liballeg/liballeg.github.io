@@ -8,15 +8,24 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="web_style.css" />
   <link rel="alternate" type="application/atom+xml"
       href="feed_atom.xml" title="Allegro news"
   />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 <div id="main_header">
@@ -36,7 +45,8 @@ A game programming library
 <li><a href="git.html">Git repository</a></li>
 <li><a href="license.html">License</a></li>
 <li><a href="examples_demos.html">Examples</a></li>
-<li><a href="https://github.com/liballeg/allegro5/issues">Bug tracker</a></li>
+<li><a href="https://github.com/liballeg/allegro5/issues">Bug
+tracker</a></li>
 <li><a href="bindings.html">Language bindings</a></li>
 </ul></li>
 <li><strong>Downloads</strong>
@@ -47,11 +57,13 @@ A game programming library
 </ul></li>
 <li><strong>Documentation</strong>
 <ul>
-<li><strong><a href="http://liballeg.org/a5docs/trunk/">Latest version</a></strong></li>
+<li><strong><a href="http://liballeg.org/a5docs/trunk/">Latest
+version</a></strong></li>
 <li><a href="api.html">All versions</a></li>
 <li><a href="docs.html">Tutorials</a></li>
 <li><a href="books.html">Books</a></li>
-<li><a href="https://github.com/liballeg/allegro_wiki/wiki">Wiki</a></li>
+<li><a
+href="https://github.com/liballeg/allegro_wiki/wiki">Wiki</a></li>
 </ul></li>
 <li><strong>Community</strong>
 <ul>
@@ -77,7 +89,10 @@ A game programming library
 </div>
 <!-- sidebar -->
 <div id="hosting">
-<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/> <a href="https://projects.tuxfamily.org/?do=group;name=allegro">TuxFamily project</a></p>
+<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/>
+<a
+href="https://projects.tuxfamily.org/?do=group;name=allegro">TuxFamily
+project</a></p>
 </div>
 <!-- hosting -->
 </div>
@@ -87,180 +102,516 @@ A game programming library
 <h1 class="title">Allegro - A game programming library</h1>
 </header>
 <h1 id="welcome-to-allegro">Welcome to Allegro!</h1>
-<p>Allegro is a cross-platform library mainly aimed at video game and multimedia programming. It handles common, low-level tasks such as creating windows, accepting user input, loading data, drawing images, playing sounds, etc. and generally abstracting away the underlying platform. However, Allegro is <em>not</em> a game engine: you are free to design and structure your program as you like.</p>
+<p>Allegro is a cross-platform library mainly aimed at video game and
+multimedia programming. It handles common, low-level tasks such as
+creating windows, accepting user input, loading data, drawing images,
+playing sounds, etc. and generally abstracting away the underlying
+platform. However, Allegro is <em>not</em> a game engine: you are free
+to design and structure your program as you like.</p>
 <p>Allegro 5 has the following additional features:</p>
 <ul>
 <li>Supported on Windows, Linux, Mac OSX, iPhone and Android</li>
-<li>User-friendly, intuitive C API usable from C++ and many other languages</li>
-<li>Hardware accelerated bitmap and graphical primitive drawing support (via OpenGL or Direct3D)</li>
+<li>User-friendly, intuitive C API usable from C++ and many other
+languages</li>
+<li>Hardware accelerated bitmap and graphical primitive drawing support
+(via OpenGL or Direct3D)</li>
 <li>Audio recording support</li>
 <li>Font loading and drawing</li>
 <li>Video playback</li>
 <li>Abstractions over shaders and low-level polygon drawing</li>
-<li>And <a href="http://liballeg.org/a5docs/trunk/getting_started.html">more</a>!</li>
+<li>And <a
+href="http://liballeg.org/a5docs/trunk/getting_started.html">more</a>!</li>
 </ul>
 <!-- we must use raw HTML to avoid pandoc creating a div -->
 <h1 id="news">News</h1>
-<h2 id="allegro-has-a-discord-server">2022-08-14 - Allegro has a discord server!</h2>
-<p>Some members of the community set up a discord server as a more modern alternative to the IRC <a href="irc.html">#allegro</a> channel and <a href="https://www.allegro.cc/">allegro.cc</a> forums. Rest assured, the IRC channel isn’t going away, but it is nice to have options for those not wanting to deal with IRC limitations. Join it <a href="https://discord.gg/f3Cd4TZzpp">here</a>!</p>
-<h2 id="allegro-5.2.8-released">2022-06-05 - Allegro 5.2.8 released!</h2>
-<p>This is a stable release of Allegro. This release includes many important bug fixes and exciting new features. Also, for the release we added an <a href="examples_demos.html">examples section</a> to the website, which contains runnable (via Emscripten) Allegro examples.</p>
-<p>You can <a href="https://github.com/liballeg/allegro5/releases/5.2.8.0/">download</a> it from GitHub. Additional packages for other platforms are available on the <a href="download.html">downloads</a> page.</p>
-<p>The reference manual is available <a href="a5docs/5.2.8/index.html">online</a>, as is the list of <a href="changes-5.2.html">changes</a>.</p>
-<p>We would like to thank everyone who has contributed to Allegro during all these years, not only the developers, but the users who have tested pre-releases, reported bugs and submitted patches.</p>
-<h2 id="allegro-5.2.7-released">2021-03-07 - Allegro 5.2.7 released!</h2>
-<p>This is a stable release of Allegro. This release includes many important bug fixes and exciting new features. Also, for the release we added an <a href="examples_demos.html">examples section</a> to the website, which contains runnable (via Emscripten) Allegro examples.</p>
-<p>You can <a href="https://github.com/liballeg/allegro5/releases/5.2.7.0/">download</a> it from GitHub. Additional packages for other platforms are available on the <a href="download.html">downloads</a> page.</p>
-<p>The reference manual is available <a href="a5docs/5.2.7/index.html">online</a>, as is the list of <a href="changes-5.2.html">changes</a>.</p>
-<p>We would like to thank everyone who has contributed to Allegro during all these years, not only the developers, but the users who have tested pre-releases, reported bugs and submitted patches.</p>
-<h2 id="allegro-5.2.6-released">2020-02-09 - Allegro 5.2.6 released!</h2>
-<p>This is a stable release of Allegro. This release includes many important bug fixes and exciting new features.</p>
-<p>You can <a href="https://github.com/liballeg/allegro5/releases/5.2.6.0/">download</a> it from GitHub. Additional packages for other platforms are available on the <a href="download.html">downloads</a> page.</p>
-<p>The reference manual is available <a href="a5docs/5.2.6/index.html">online</a>, as is the list of <a href="changes-5.2.html">changes</a>.</p>
-<p>We would like to thank everyone who has contributed to Allegro during all these years, not only the developers, but the users who have tested pre-releases, reported bugs and submitted patches.</p>
-<h2 id="allegro-4.4.3.1-released">2019-03-03 - Allegro 4.4.3.1 released!</h2>
-<p>This is a bugfix release of the legacy version Allegro. This release fixes a small regression in the 4.4.3 release.</p>
-<p>You can <a href="https://github.com/liballeg/allegro5/releases/4.4.3.1/">download</a> it from GitHub.</p>
-<p>The reference manual is available <a href="stabledocs/en/index.html">online</a>, as is the list of <a href="stabledocs/en/changes.html">changes</a>.</p>
-<p>We would like to thank everyone who has contributed to keeping Allegro 4.x functioning during all these years. It might not be the newest and shiniest version 5, but it still holds a special place in our hearts.</p>
-<h2 id="allegro-5.2.5-released">2019-02-25 - Allegro 5.2.5 released!</h2>
-<p>This is a stable release of Allegro. This release includes many important bug fixes and exciting new (unstable) features.</p>
-<p>You can <a href="https://github.com/liballeg/allegro5/releases/5.2.5.0/">download</a> it from GitHub. Additional packages for other platforms are available on the <a href="download.html">downloads</a> page.</p>
-<p>The reference manual is available <a href="a5docs/5.2.5/index.html">online</a>, as is the list of <a href="changes-5.2.html">changes</a>.</p>
-<p>We would like to thank everyone who has contributed to Allegro during all these years, not only the developers, but the users who have tested pre-releases, reported bugs and submitted patches.</p>
-<h2 id="allegro-4.4.3-released">2019-02-03 - Allegro 4.4.3 released!</h2>
-<p>This is a bugfix release of the legacy version Allegro. This release includes a number of bug fixes to make it work better with modern systems.</p>
-<p>You can <a href="https://github.com/liballeg/allegro5/releases/4.4.3/">download</a> it from GitHub.</p>
-<p>The reference manual is available <a href="stabledocs/en/index.html">online</a>, as is the list of <a href="stabledocs/en/changes.html">changes</a>.</p>
-<p>We would like to thank everyone who has contributed to keeping Allegro 4.x functioning during all these years. It might not be the newest and shiniest version 5, but it still holds a special place in our hearts.</p>
-<h2 id="allegro-5.2.4-released">2018-02-25 - Allegro 5.2.4 released!</h2>
-<p>This is a stable release of Allegro. This release includes many important bug fixes and exciting new (unstable) features.</p>
-<p>You can <a href="https://github.com/liballeg/allegro5/releases/5.2.4.0/">download</a> it from GitHub. Additional packages for other platforms are available on the <a href="download.html">downloads</a> page.</p>
-<p>The reference manual is available <a href="a5docs/5.2.4/index.html">online</a>, as is the list of <a href="changes-5.2.html">changes</a>.</p>
-<p>We would like to thank everyone who has contributed to Allegro during all these years, not only the developers, but the users who have tested pre-releases, reported bugs and submitted patches.</p>
-<h2 id="allegro-5.2.3-released">2017-10-10 - Allegro 5.2.3 released!</h2>
-<p>This is a stable release of Allegro. This release includes many important bug fixes and exciting new (unstable) features.</p>
-<p>You can <a href="https://github.com/liballeg/allegro5/releases/5.2.3.0/">download</a> it from GitHub. Additional packages for other platforms are available on the <a href="download.html">downloads</a> page.</p>
-<p>The reference manual is available <a href="a5docs/5.2.3/index.html">online</a>, as is the list of <a href="changes-5.2.html">changes</a>.</p>
-<p>We would like to thank everyone who has contributed to Allegro during all these years, not only the developers, but the users who have tested pre-releases, reported bugs and submitted patches.</p>
+<h2 id="allegro-has-a-discord-server">2022-08-14 - Allegro has a discord
+server!</h2>
+<p>Some members of the community set up a discord server as a more
+modern alternative to the IRC <a href="irc.html">#allegro</a> channel
+and <a href="https://www.allegro.cc/">allegro.cc</a> forums. Rest
+assured, the IRC channel isn’t going away, but it is nice to have
+options for those not wanting to deal with IRC limitations. Join it <a
+href="https://discord.gg/f3Cd4TZzpp">here</a>!</p>
+<h2 id="allegro-5.2.8-released">2022-06-05 - Allegro 5.2.8
+released!</h2>
+<p>This is a stable release of Allegro. This release includes many
+important bug fixes and exciting new features. Also, for the release we
+added an <a href="examples_demos.html">examples section</a> to the
+website, which contains runnable (via Emscripten) Allegro examples.</p>
+<p>You can <a
+href="https://github.com/liballeg/allegro5/releases/5.2.8.0/">download</a>
+it from GitHub. Additional packages for other platforms are available on
+the <a href="download.html">downloads</a> page.</p>
+<p>The reference manual is available <a
+href="a5docs/5.2.8/index.html">online</a>, as is the list of <a
+href="changes-5.2.html">changes</a>.</p>
+<p>We would like to thank everyone who has contributed to Allegro during
+all these years, not only the developers, but the users who have tested
+pre-releases, reported bugs and submitted patches.</p>
+<h2 id="allegro-5.2.7-released">2021-03-07 - Allegro 5.2.7
+released!</h2>
+<p>This is a stable release of Allegro. This release includes many
+important bug fixes and exciting new features. Also, for the release we
+added an <a href="examples_demos.html">examples section</a> to the
+website, which contains runnable (via Emscripten) Allegro examples.</p>
+<p>You can <a
+href="https://github.com/liballeg/allegro5/releases/5.2.7.0/">download</a>
+it from GitHub. Additional packages for other platforms are available on
+the <a href="download.html">downloads</a> page.</p>
+<p>The reference manual is available <a
+href="a5docs/5.2.7/index.html">online</a>, as is the list of <a
+href="changes-5.2.html">changes</a>.</p>
+<p>We would like to thank everyone who has contributed to Allegro during
+all these years, not only the developers, but the users who have tested
+pre-releases, reported bugs and submitted patches.</p>
+<h2 id="allegro-5.2.6-released">2020-02-09 - Allegro 5.2.6
+released!</h2>
+<p>This is a stable release of Allegro. This release includes many
+important bug fixes and exciting new features.</p>
+<p>You can <a
+href="https://github.com/liballeg/allegro5/releases/5.2.6.0/">download</a>
+it from GitHub. Additional packages for other platforms are available on
+the <a href="download.html">downloads</a> page.</p>
+<p>The reference manual is available <a
+href="a5docs/5.2.6/index.html">online</a>, as is the list of <a
+href="changes-5.2.html">changes</a>.</p>
+<p>We would like to thank everyone who has contributed to Allegro during
+all these years, not only the developers, but the users who have tested
+pre-releases, reported bugs and submitted patches.</p>
+<h2 id="allegro-4.4.3.1-released">2019-03-03 - Allegro 4.4.3.1
+released!</h2>
+<p>This is a bugfix release of the legacy version Allegro. This release
+fixes a small regression in the 4.4.3 release.</p>
+<p>You can <a
+href="https://github.com/liballeg/allegro5/releases/4.4.3.1/">download</a>
+it from GitHub.</p>
+<p>The reference manual is available <a
+href="stabledocs/en/index.html">online</a>, as is the list of <a
+href="stabledocs/en/changes.html">changes</a>.</p>
+<p>We would like to thank everyone who has contributed to keeping
+Allegro 4.x functioning during all these years. It might not be the
+newest and shiniest version 5, but it still holds a special place in our
+hearts.</p>
+<h2 id="allegro-5.2.5-released">2019-02-25 - Allegro 5.2.5
+released!</h2>
+<p>This is a stable release of Allegro. This release includes many
+important bug fixes and exciting new (unstable) features.</p>
+<p>You can <a
+href="https://github.com/liballeg/allegro5/releases/5.2.5.0/">download</a>
+it from GitHub. Additional packages for other platforms are available on
+the <a href="download.html">downloads</a> page.</p>
+<p>The reference manual is available <a
+href="a5docs/5.2.5/index.html">online</a>, as is the list of <a
+href="changes-5.2.html">changes</a>.</p>
+<p>We would like to thank everyone who has contributed to Allegro during
+all these years, not only the developers, but the users who have tested
+pre-releases, reported bugs and submitted patches.</p>
+<h2 id="allegro-4.4.3-released">2019-02-03 - Allegro 4.4.3
+released!</h2>
+<p>This is a bugfix release of the legacy version Allegro. This release
+includes a number of bug fixes to make it work better with modern
+systems.</p>
+<p>You can <a
+href="https://github.com/liballeg/allegro5/releases/4.4.3/">download</a>
+it from GitHub.</p>
+<p>The reference manual is available <a
+href="stabledocs/en/index.html">online</a>, as is the list of <a
+href="stabledocs/en/changes.html">changes</a>.</p>
+<p>We would like to thank everyone who has contributed to keeping
+Allegro 4.x functioning during all these years. It might not be the
+newest and shiniest version 5, but it still holds a special place in our
+hearts.</p>
+<h2 id="allegro-5.2.4-released">2018-02-25 - Allegro 5.2.4
+released!</h2>
+<p>This is a stable release of Allegro. This release includes many
+important bug fixes and exciting new (unstable) features.</p>
+<p>You can <a
+href="https://github.com/liballeg/allegro5/releases/5.2.4.0/">download</a>
+it from GitHub. Additional packages for other platforms are available on
+the <a href="download.html">downloads</a> page.</p>
+<p>The reference manual is available <a
+href="a5docs/5.2.4/index.html">online</a>, as is the list of <a
+href="changes-5.2.html">changes</a>.</p>
+<p>We would like to thank everyone who has contributed to Allegro during
+all these years, not only the developers, but the users who have tested
+pre-releases, reported bugs and submitted patches.</p>
+<h2 id="allegro-5.2.3-released">2017-10-10 - Allegro 5.2.3
+released!</h2>
+<p>This is a stable release of Allegro. This release includes many
+important bug fixes and exciting new (unstable) features.</p>
+<p>You can <a
+href="https://github.com/liballeg/allegro5/releases/5.2.3.0/">download</a>
+it from GitHub. Additional packages for other platforms are available on
+the <a href="download.html">downloads</a> page.</p>
+<p>The reference manual is available <a
+href="a5docs/5.2.3/index.html">online</a>, as is the list of <a
+href="changes-5.2.html">changes</a>.</p>
+<p>We would like to thank everyone who has contributed to Allegro during
+all these years, not only the developers, but the users who have tested
+pre-releases, reported bugs and submitted patches.</p>
 <h2 id="allegro-on-tuxfamily">2017-05-04 - Allegro on TuxFamily!</h2>
-<p>The Allegro project’s developer <a href="maillist.html">mailing list</a> and some <a href="download.html">downloads</a> are now hosted on <a href="https://tuxfamily.org">TuxFamily</a>. A big thank you to them.</p>
-<p>The rest (namely, the release archives and binaries) have been moved to GitHub.</p>
-<h2 id="allegro-5.2.2-released">2016-12-12 - Allegro 5.2.2 released!</h2>
-<p>This is a stable release of Allegro. This release includes many important bug fixes and exciting new (unstable) features.</p>
-<p>You can <a href="https://github.com/liballeg/allegro5/releases/5.2.2.0/">download</a> it from GitHub. Additional packages for other platforms are available on the <a href="download.html">downloads</a> page.</p>
-<p>The reference manual is available <a href="a5docs/5.2.2/index.html">online</a>, as is the list of <a href="changes-5.2.html">changes</a>.</p>
-<p>We would like to thank everyone who has contributed to Allegro during all these years, not only the developers, but the users who have tested pre-releases, reported bugs and submitted patches.</p>
-<h2 id="allegro-5.2.1.1-released">2016-08-13 - Allegro 5.2.1.1 released!</h2>
-<p>This is a patch release of for Allegro 5.2.1. This release fixes a few API regressions found in 5.2.1 release.</p>
-<p>You can <a href="https://github.com/liballeg/allegro5/releases/5.2.1.1/">download</a> it from GitHub. Additional packages for other platforms are available on the <a href="download.html">downloads</a> page.</p>
-<p>The reference manual is available <a href="a5docs/5.2.1.1/index.html">online</a>, as is the list of <a href="changes-5.2.html">changes</a>.</p>
-<p>We would like to thank everyone who has contributed to Allegro during all these years, not only the developers, but the users who have tested pre-releases, reported bugs and submitted patches.</p>
-<h2 id="allegro-5.2.1-released">2016-07-31 - Allegro 5.2.1 released!</h2>
-<p>This is a stable release of Allegro. This release includes many important bug fixes and exciting new (unstable) features.</p>
-<p>You can <a href="https://github.com/liballeg/allegro5/releases/5.2.1.0/">download</a> it from GitHub. Additional packages for other platforms are available on the <a href="download.html">downloads</a> page.</p>
-<p>The reference manual is available <a href="a5docs/5.2.1/index.html">online</a>, as is the list of <a href="changes-5.2.html">changes</a>.</p>
-<p>We would like to thank everyone who has contributed to Allegro during all these years, not only the developers, but the users who have tested pre-releases, reported bugs and submitted patches.</p>
-<h2 id="allegro-5.2.0-released">2016-04-01 - Allegro 5.2.0 released!</h2>
-<p>After many years of development in the unstable branch, the next stable version of Allegro is ready for release! This version brings most of the features from the unstable branch, but now with a guarantee of backwards source and ABI compatibility. Allegro 5.2 is source but <em>not</em> binary compatible with 5.0.</p>
-<p>Allegro 5.2 is developed a little differently than 5.0 and 5.1 were. This version combines both unstable and stable APIs in one branch. The unstable branch is no more! Unstable APIs may be changed between versions, or even removed entirely. Because of this, to use them you must opt into this instability by defining <code>ALLEGRO_UNSTABLE</code> definition before including Allegro’s headers.</p>
-<p>Combining the two branches will result in more rapid bug fixes and faster addition of new features.</p>
-<p>You can <a href="https://github.com/liballeg/allegro5/releases/5.2.0.0">download</a> it from GitHub. Additional packages for other platforms are available on the <a href="download.html">downloads</a> page.</p>
-<p>The reference manual is available <a href="a5docs/5.2.0/index.html">online</a>, as is the list of <a href="changes-5.2.html">changes</a>.</p>
-<p>We would like to thank everyone who has contributed to Allegro during all these years, not only the developers, but the users who have tested pre-releases, reported bugs and submitted patches.</p>
-<h2 id="allegro-now-developed-on-the-master-branch.">2016-03-27 - Allegro now developed on the master branch.</h2>
-<p>Allegro’s development has moved from ‘5.1’ branch to the ‘master’ branch. Update your clones and scripts which pull the development version accordingly!</p>
-<h2 id="allegro-5.1.13.1-wip-released">2016-02-28 - Allegro 5.1.13.1 (WIP) released!</h2>
-<p>This is a bug fix release for 5.1.13 which fixes a regression that only appears when Allegro is compiled with MSVC compiler. If you are using a different compiler then there is no need to upgrade.</p>
-<p>You can <a href="https://github.com/liballeg/allegro5/releases/5.1.13.1">download</a> it from GitHub. Additional packages for other platforms are available on the <a href="download.html">downloads</a> page.</p>
-<p>The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes-unstable.html">changes</a>.</p>
-<h2 id="allegro-5.1.13-wip-released">2016-01-24 - Allegro 5.1.13 (WIP) released!</h2>
-<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1 branch. The 5.1 branch is source compatible, but not binary compatible, with the stable 5.0 branch. It contains provisional new features which are <em>subject to change at any time</em>.</p>
-<p>You can <a href="https://github.com/liballeg/allegro5/releases/5.1.13.0">download</a> it from GitHub. Additional packages for other platforms are available on the <a href="download.html">downloads</a> page.</p>
-<p>The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes-unstable.html">changes</a>.</p>
+<p>The Allegro project’s developer <a href="maillist.html">mailing
+list</a> and some <a href="download.html">downloads</a> are now hosted
+on <a href="https://tuxfamily.org">TuxFamily</a>. A big thank you to
+them.</p>
+<p>The rest (namely, the release archives and binaries) have been moved
+to GitHub.</p>
+<h2 id="allegro-5.2.2-released">2016-12-12 - Allegro 5.2.2
+released!</h2>
+<p>This is a stable release of Allegro. This release includes many
+important bug fixes and exciting new (unstable) features.</p>
+<p>You can <a
+href="https://github.com/liballeg/allegro5/releases/5.2.2.0/">download</a>
+it from GitHub. Additional packages for other platforms are available on
+the <a href="download.html">downloads</a> page.</p>
+<p>The reference manual is available <a
+href="a5docs/5.2.2/index.html">online</a>, as is the list of <a
+href="changes-5.2.html">changes</a>.</p>
+<p>We would like to thank everyone who has contributed to Allegro during
+all these years, not only the developers, but the users who have tested
+pre-releases, reported bugs and submitted patches.</p>
+<h2 id="allegro-5.2.1.1-released">2016-08-13 - Allegro 5.2.1.1
+released!</h2>
+<p>This is a patch release of for Allegro 5.2.1. This release fixes a
+few API regressions found in 5.2.1 release.</p>
+<p>You can <a
+href="https://github.com/liballeg/allegro5/releases/5.2.1.1/">download</a>
+it from GitHub. Additional packages for other platforms are available on
+the <a href="download.html">downloads</a> page.</p>
+<p>The reference manual is available <a
+href="a5docs/5.2.1.1/index.html">online</a>, as is the list of <a
+href="changes-5.2.html">changes</a>.</p>
+<p>We would like to thank everyone who has contributed to Allegro during
+all these years, not only the developers, but the users who have tested
+pre-releases, reported bugs and submitted patches.</p>
+<h2 id="allegro-5.2.1-released">2016-07-31 - Allegro 5.2.1
+released!</h2>
+<p>This is a stable release of Allegro. This release includes many
+important bug fixes and exciting new (unstable) features.</p>
+<p>You can <a
+href="https://github.com/liballeg/allegro5/releases/5.2.1.0/">download</a>
+it from GitHub. Additional packages for other platforms are available on
+the <a href="download.html">downloads</a> page.</p>
+<p>The reference manual is available <a
+href="a5docs/5.2.1/index.html">online</a>, as is the list of <a
+href="changes-5.2.html">changes</a>.</p>
+<p>We would like to thank everyone who has contributed to Allegro during
+all these years, not only the developers, but the users who have tested
+pre-releases, reported bugs and submitted patches.</p>
+<h2 id="allegro-5.2.0-released">2016-04-01 - Allegro 5.2.0
+released!</h2>
+<p>After many years of development in the unstable branch, the next
+stable version of Allegro is ready for release! This version brings most
+of the features from the unstable branch, but now with a guarantee of
+backwards source and ABI compatibility. Allegro 5.2 is source but
+<em>not</em> binary compatible with 5.0.</p>
+<p>Allegro 5.2 is developed a little differently than 5.0 and 5.1 were.
+This version combines both unstable and stable APIs in one branch. The
+unstable branch is no more! Unstable APIs may be changed between
+versions, or even removed entirely. Because of this, to use them you
+must opt into this instability by defining <code>ALLEGRO_UNSTABLE</code>
+definition before including Allegro’s headers.</p>
+<p>Combining the two branches will result in more rapid bug fixes and
+faster addition of new features.</p>
+<p>You can <a
+href="https://github.com/liballeg/allegro5/releases/5.2.0.0">download</a>
+it from GitHub. Additional packages for other platforms are available on
+the <a href="download.html">downloads</a> page.</p>
+<p>The reference manual is available <a
+href="a5docs/5.2.0/index.html">online</a>, as is the list of <a
+href="changes-5.2.html">changes</a>.</p>
+<p>We would like to thank everyone who has contributed to Allegro during
+all these years, not only the developers, but the users who have tested
+pre-releases, reported bugs and submitted patches.</p>
+<h2 id="allegro-now-developed-on-the-master-branch.">2016-03-27 -
+Allegro now developed on the master branch.</h2>
+<p>Allegro’s development has moved from ‘5.1’ branch to the ‘master’
+branch. Update your clones and scripts which pull the development
+version accordingly!</p>
+<h2 id="allegro-5.1.13.1-wip-released">2016-02-28 - Allegro 5.1.13.1
+(WIP) released!</h2>
+<p>This is a bug fix release for 5.1.13 which fixes a regression that
+only appears when Allegro is compiled with MSVC compiler. If you are
+using a different compiler then there is no need to upgrade.</p>
+<p>You can <a
+href="https://github.com/liballeg/allegro5/releases/5.1.13.1">download</a>
+it from GitHub. Additional packages for other platforms are available on
+the <a href="download.html">downloads</a> page.</p>
+<p>The reference manual is available <a
+href="a5docs/refman/index.html">online</a>, as is the list of <a
+href="changes-unstable.html">changes</a>.</p>
+<h2 id="allegro-5.1.13-wip-released">2016-01-24 - Allegro 5.1.13 (WIP)
+released!</h2>
+<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1
+branch. The 5.1 branch is source compatible, but not binary compatible,
+with the stable 5.0 branch. It contains provisional new features which
+are <em>subject to change at any time</em>.</p>
+<p>You can <a
+href="https://github.com/liballeg/allegro5/releases/5.1.13.0">download</a>
+it from GitHub. Additional packages for other platforms are available on
+the <a href="download.html">downloads</a> page.</p>
+<p>The reference manual is available <a
+href="a5docs/refman/index.html">online</a>, as is the list of <a
+href="changes-unstable.html">changes</a>.</p>
 <h2 id="allegro-on-nuget">2015-12-23 - Allegro on NuGet!</h2>
-<p>Allegro is now packaged by <a href="https://www.nuget.org/packages/Allegro/">NuGet</a>!</p>
-<p>Currently only MSVC 2015 is supported, but stay tuned as we figure out what set of platforms and build types to support.</p>
-<p>Follow the tutorial <a href="https://github.com/liballeg/allegro_wiki/wiki/Allegro-in-Visual-Studio#using-nuget-within-visual-studio">here</a> to test it out.</p>
-<h2 id="allegro-5.1.12-wip-released">2015-09-29 - Allegro 5.1.12 (WIP) released!</h2>
-<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1 branch. The 5.1 branch is source compatible, but not binary compatible, with the stable 5.0 branch. It contains provisional new features which are <em>subject to change at any time</em>.</p>
-<p>You can <a href="https://github.com/liballeg/allegro5/releases/5.1.12.0">download</a> it from GitHub. Additional packages for other platforms are available on the <a href="download.html">downloads</a> page.</p>
-<p>The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes-unstable.html">changes</a>.</p>
-<p>We encourage users to test 5.1 releases and report bugs, but remember that they do not provide the stability of 5.0 releases.</p>
+<p>Allegro is now packaged by <a
+href="https://www.nuget.org/packages/Allegro/">NuGet</a>!</p>
+<p>Currently only MSVC 2015 is supported, but stay tuned as we figure
+out what set of platforms and build types to support.</p>
+<p>Follow the tutorial <a
+href="https://github.com/liballeg/allegro_wiki/wiki/Allegro-in-Visual-Studio#using-nuget-within-visual-studio">here</a>
+to test it out.</p>
+<h2 id="allegro-5.1.12-wip-released">2015-09-29 - Allegro 5.1.12 (WIP)
+released!</h2>
+<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1
+branch. The 5.1 branch is source compatible, but not binary compatible,
+with the stable 5.0 branch. It contains provisional new features which
+are <em>subject to change at any time</em>.</p>
+<p>You can <a
+href="https://github.com/liballeg/allegro5/releases/5.1.12.0">download</a>
+it from GitHub. Additional packages for other platforms are available on
+the <a href="download.html">downloads</a> page.</p>
+<p>The reference manual is available <a
+href="a5docs/refman/index.html">online</a>, as is the list of <a
+href="changes-unstable.html">changes</a>.</p>
+<p>We encourage users to test 5.1 releases and report bugs, but remember
+that they do not provide the stability of 5.0 releases.</p>
 <h2 id="allegro-on-gna">2015-08-15 - Allegro on Gna!</h2>
-<p>The Allegro project’s <a href="download.html">downloads</a> and developer <a href="maillist.html">mailing list</a> are now hosted on <a href="http://gna.org">Gna!</a>. A big thank you to them.</p>
-<h2 id="allegros-git-repository-is-now-hosted-at-github.">2015-07-31 - Allegro’s GIT repository is now hosted at GitHub.</h2>
+<p>The Allegro project’s <a href="download.html">downloads</a> and
+developer <a href="maillist.html">mailing list</a> are now hosted on <a
+href="http://gna.org">Gna!</a>. A big thank you to them.</p>
+<h2 id="allegros-git-repository-is-now-hosted-at-github.">2015-07-31 -
+Allegro’s GIT repository is now hosted at GitHub.</h2>
 <p>We have moved our official GIT repository over to GitHub.</p>
-<p>Check it out at <a href="https://github.com/liballeg/allegro5" class="uri">https://github.com/liballeg/allegro5</a>. See the <a href="git.html">GIT</a> page for more details.</p>
+<p>Check it out at <a href="https://github.com/liballeg/allegro5"
+class="uri">https://github.com/liballeg/allegro5</a>. See the <a
+href="git.html">GIT</a> page for more details.</p>
 <p>Pull requests welcome!</p>
-<h2 id="allegro-5.1.11-wip-released">2015-06-21 - Allegro 5.1.11 (WIP) released!</h2>
-<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1 branch. The 5.1 branch is source compatible, but not binary compatible, with the stable 5.0 branch. It contains provisional new features which are <em>subject to change at any time</em>.</p>
-<p>You can <a href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.11/">download</a> it from SourceForge. Additional packages for other platforms are available on the <a href="download.html">downloads</a> page.</p>
-<p>The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes-unstable.html">changes</a>.</p>
-<p>We encourage users to test 5.1 releases and report bugs, but remember that they do not provide the stability of 5.0 releases.</p>
-<h2 id="allegro-5.1.10-wip-released">2015-05-05 - Allegro 5.1.10 (WIP) released!</h2>
-<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1 branch. The 5.1 branch is source compatible, but not binary compatible, with the stable 5.0 branch. It contains provisional new features which are <em>subject to change at any time</em>.</p>
-<p>You can <a href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.10/">download</a> it from SourceForge. This is a first release in a long time to provide Windows binaries. Additional packages for other platforms will also be available in the coming days. See the <a href="download.html">Download</a> page for details.</p>
-<p>The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes-unstable.html">changes</a>.</p>
-<p>We encourage users to test 5.1 releases and report bugs, but remember that they do not provide the stability of 5.0 releases.</p>
-<h2 id="ubuntu-ppas-now-available.">2015-04-12 - Ubuntu PPAs now available.</h2>
-<p>For convenience to our Ubuntu users (and those using distributions based on Ubuntu) we now maintain two <a href="https://launchpad.net/ubuntu/+ppas">PPAs</a>. You can use these to install binary and development packages of Allegro 5 stable and unstable releases. Check out the bottom of the <a href="download.html">downloads</a> section for the links.</p>
-<h2 id="a-new-book-about-allegro-has-been-published">2015-04-07 - A new book about Allegro has been published!</h2>
-<p>A book introducing game programming using Allegro 5 has recently been written by Frédéric Drouillon, titled <em>Allegro 5 - Programmation de jeux en C ou C++</em>. This book is available in French, and will surely be a great read for the French-speaking Allegro 5 users. For others, the code samples available for download on the publisher’s website should be of interest as well. Check out the <a href="books.html">books section</a> for more information.</p>
-<h2 id="allegro-5.0.11-released">2015-01-11 - Allegro 5.0.11 released!</h2>
-<p>This is a maintenance release for the stable 5.0 branch, with bug fixes and a few new features. You can <a href="http://sourceforge.net/projects/alleg/files/allegro/5.0.11/">download</a> it from SourceForge. The reference manual is available <a href="a5docs/5.0.11/index.html">online</a>, as is the list of <a href="changes.html">changes</a>.</p>
-<h2 id="allegro-5.1.9-wip-released">2015-01-03 - Allegro 5.1.9 (WIP) released!</h2>
-<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1 branch. The 5.1 branch is source compatible, but not binary compatible, with the stable 5.0 branch. It contains provisional new features which are <em>subject to change at any time</em>.</p>
-<p>You can <a href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.9/">download</a> it from SourceForge. The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes-unstable.html">changes</a>.</p>
-<p>We encourage users to test 5.1 releases and report bugs, but remember that they do not provide the stability of 5.0 releases.</p>
-<h2 id="go-bindings-to-allegro-created">2014-05-31 - Go bindings to Allegro created!</h2>
-<p>Damien Radtke has created <a href="http://golang.org/">Go</a> programming language bindings to Allegro 5.0.10.</p>
-<p>Check them out at <a href="https://github.com/dradtke/go-allegro">GitHub</a>.</p>
-<h2 id="allegro-5.1.8-wip-released">2014-01-12 - Allegro 5.1.8 (WIP) released!</h2>
-<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1 branch. The 5.1 branch is source compatible, but not binary compatible, with the stable 5.0 branch. It contains provisional new features which are <em>subject to change at any time</em>.</p>
-<p>You can <a href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.8/">download</a> it from SourceForge. The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes-unstable.html">changes</a>.</p>
-<p>We encourage users to test 5.1 releases and report bugs, but remember that they do not provide the stability of 5.0 releases.</p>
-<h2 id="allegro-5.0.10-released">2013-06-16 - Allegro 5.0.10 released!</h2>
-<p>This is a maintenance release for the stable 5.0 branch, with bug fixes and a few new features. You can <a href="http://sourceforge.net/projects/alleg/files/allegro/5.0.10/">download</a> it from SourceForge. The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes.html">changes</a>.</p>
-<h2 id="allegro-5.1.7-wip-released">2013-05-12 - Allegro 5.1.7 (WIP) released!</h2>
-<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1 branch. The 5.1 branch is source compatible, but not binary compatible, with the stable 5.0 branch. It contains provisional new features which are <em>subject to change at any time</em>.</p>
-<p>You can <a href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.7/">download</a> it from SourceForge. The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes-unstable.html">changes</a>.</p>
-<p>We encourage users to test 5.1 releases and report bugs, but remember that they do not provide the stability of 5.0 releases.</p>
-<h2 id="allegro-5.1.6-wip-released">2013-03-24 - Allegro 5.1.6 (WIP) released!</h2>
-<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1 branch. The 5.1 branch is source compatible, but not binary compatible, with the stable 5.0 branch. It contains provisional new features which are <em>subject to change at any time</em>.</p>
-<p>You can <a href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.6/">download</a> it from SourceForge. The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes-unstable.html">changes</a>.</p>
-<p>We encourage users to test 5.1 releases and report bugs, but remember that they do not provide the stability of 5.0 releases.</p>
-<h2 id="allegro-5.0.9-released">2013-02-17 - Allegro 5.0.9 released!</h2>
-<p>This is a maintenance release for the stable 5.0 branch, with bug fixes and a few new features. You can <a href="http://sourceforge.net/projects/alleg/files/allegro/5.0.9/">download</a> it from SourceForge. The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes.html">changes</a>.</p>
-<h2 id="allegro-5.1.5-wip-released">2013-01-13 - Allegro 5.1.5 (WIP) released!</h2>
-<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1 branch. The 5.1 branch is source compatible, but not binary compatible, with the stable 5.0 branch. It contains provisional new features which are <em>subject to change at any time</em>.</p>
-<p>You can <a href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.5/">download</a> it from SourceForge. The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes-unstable.html">changes</a>.</p>
-<p>We encourage users to test 5.1 releases and report bugs, but remember that they do not provide the stability of 5.0 releases.</p>
-<h2 id="allegro-5.0.8-released">2012-11-18 - Allegro 5.0.8 released!</h2>
-<p>This is a maintenance release for the stable 5.0 branch, with bug fixes and a few new features. You can <a href="http://sourceforge.net/projects/alleg/files/allegro/5.0.8/">download</a> it from SourceForge. The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes.html">changes</a>.</p>
-<h2 id="allegro-5.1.4-wip-released">2012-10-14 - Allegro 5.1.4 (WIP) released!</h2>
-<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1 branch. The 5.1 branch is source compatible, but not binary compatible, with the stable 5.0 branch. It contains provisional new features which are <em>subject to change at any time</em>.</p>
-<p>You can <a href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.4/">download</a> it from SourceForge. The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes-unstable.html">changes</a>.</p>
-<p>We encourage users to test 5.1 releases and report bugs, but remember that they do not provide the stability of 5.0 releases.</p>
-<h2 id="allegro-5.1.3-wip-released">2012-08-12 - Allegro 5.1.3 (WIP) released!</h2>
-<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1 branch. The 5.1 branch is source compatible, but not binary compatible, with the stable 5.0 branch. It contains provisional new features which are <em>subject to change at any time</em>.</p>
-<p>You can <a href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.3/">download</a> it from SourceForge. The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes-unstable.html">changes</a>.</p>
-<p>We encourage users to test 5.1 releases and report bugs, but remember that they do not provide the stability of 5.0 releases.</p>
+<h2 id="allegro-5.1.11-wip-released">2015-06-21 - Allegro 5.1.11 (WIP)
+released!</h2>
+<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1
+branch. The 5.1 branch is source compatible, but not binary compatible,
+with the stable 5.0 branch. It contains provisional new features which
+are <em>subject to change at any time</em>.</p>
+<p>You can <a
+href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.11/">download</a>
+it from SourceForge. Additional packages for other platforms are
+available on the <a href="download.html">downloads</a> page.</p>
+<p>The reference manual is available <a
+href="a5docs/refman/index.html">online</a>, as is the list of <a
+href="changes-unstable.html">changes</a>.</p>
+<p>We encourage users to test 5.1 releases and report bugs, but remember
+that they do not provide the stability of 5.0 releases.</p>
+<h2 id="allegro-5.1.10-wip-released">2015-05-05 - Allegro 5.1.10 (WIP)
+released!</h2>
+<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1
+branch. The 5.1 branch is source compatible, but not binary compatible,
+with the stable 5.0 branch. It contains provisional new features which
+are <em>subject to change at any time</em>.</p>
+<p>You can <a
+href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.10/">download</a>
+it from SourceForge. This is a first release in a long time to provide
+Windows binaries. Additional packages for other platforms will also be
+available in the coming days. See the <a
+href="download.html">Download</a> page for details.</p>
+<p>The reference manual is available <a
+href="a5docs/refman/index.html">online</a>, as is the list of <a
+href="changes-unstable.html">changes</a>.</p>
+<p>We encourage users to test 5.1 releases and report bugs, but remember
+that they do not provide the stability of 5.0 releases.</p>
+<h2 id="ubuntu-ppas-now-available.">2015-04-12 - Ubuntu PPAs now
+available.</h2>
+<p>For convenience to our Ubuntu users (and those using distributions
+based on Ubuntu) we now maintain two <a
+href="https://launchpad.net/ubuntu/+ppas">PPAs</a>. You can use these to
+install binary and development packages of Allegro 5 stable and unstable
+releases. Check out the bottom of the <a
+href="download.html">downloads</a> section for the links.</p>
+<h2 id="a-new-book-about-allegro-has-been-published">2015-04-07 - A new
+book about Allegro has been published!</h2>
+<p>A book introducing game programming using Allegro 5 has recently been
+written by Frédéric Drouillon, titled <em>Allegro 5 - Programmation de
+jeux en C ou C++</em>. This book is available in French, and will surely
+be a great read for the French-speaking Allegro 5 users. For others, the
+code samples available for download on the publisher’s website should be
+of interest as well. Check out the <a href="books.html">books
+section</a> for more information.</p>
+<h2 id="allegro-5.0.11-released">2015-01-11 - Allegro 5.0.11
+released!</h2>
+<p>This is a maintenance release for the stable 5.0 branch, with bug
+fixes and a few new features. You can <a
+href="http://sourceforge.net/projects/alleg/files/allegro/5.0.11/">download</a>
+it from SourceForge. The reference manual is available <a
+href="a5docs/5.0.11/index.html">online</a>, as is the list of <a
+href="changes.html">changes</a>.</p>
+<h2 id="allegro-5.1.9-wip-released">2015-01-03 - Allegro 5.1.9 (WIP)
+released!</h2>
+<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1
+branch. The 5.1 branch is source compatible, but not binary compatible,
+with the stable 5.0 branch. It contains provisional new features which
+are <em>subject to change at any time</em>.</p>
+<p>You can <a
+href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.9/">download</a>
+it from SourceForge. The reference manual is available <a
+href="a5docs/refman/index.html">online</a>, as is the list of <a
+href="changes-unstable.html">changes</a>.</p>
+<p>We encourage users to test 5.1 releases and report bugs, but remember
+that they do not provide the stability of 5.0 releases.</p>
+<h2 id="go-bindings-to-allegro-created">2014-05-31 - Go bindings to
+Allegro created!</h2>
+<p>Damien Radtke has created <a href="http://golang.org/">Go</a>
+programming language bindings to Allegro 5.0.10.</p>
+<p>Check them out at <a
+href="https://github.com/dradtke/go-allegro">GitHub</a>.</p>
+<h2 id="allegro-5.1.8-wip-released">2014-01-12 - Allegro 5.1.8 (WIP)
+released!</h2>
+<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1
+branch. The 5.1 branch is source compatible, but not binary compatible,
+with the stable 5.0 branch. It contains provisional new features which
+are <em>subject to change at any time</em>.</p>
+<p>You can <a
+href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.8/">download</a>
+it from SourceForge. The reference manual is available <a
+href="a5docs/refman/index.html">online</a>, as is the list of <a
+href="changes-unstable.html">changes</a>.</p>
+<p>We encourage users to test 5.1 releases and report bugs, but remember
+that they do not provide the stability of 5.0 releases.</p>
+<h2 id="allegro-5.0.10-released">2013-06-16 - Allegro 5.0.10
+released!</h2>
+<p>This is a maintenance release for the stable 5.0 branch, with bug
+fixes and a few new features. You can <a
+href="http://sourceforge.net/projects/alleg/files/allegro/5.0.10/">download</a>
+it from SourceForge. The reference manual is available <a
+href="a5docs/refman/index.html">online</a>, as is the list of <a
+href="changes.html">changes</a>.</p>
+<h2 id="allegro-5.1.7-wip-released">2013-05-12 - Allegro 5.1.7 (WIP)
+released!</h2>
+<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1
+branch. The 5.1 branch is source compatible, but not binary compatible,
+with the stable 5.0 branch. It contains provisional new features which
+are <em>subject to change at any time</em>.</p>
+<p>You can <a
+href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.7/">download</a>
+it from SourceForge. The reference manual is available <a
+href="a5docs/refman/index.html">online</a>, as is the list of <a
+href="changes-unstable.html">changes</a>.</p>
+<p>We encourage users to test 5.1 releases and report bugs, but remember
+that they do not provide the stability of 5.0 releases.</p>
+<h2 id="allegro-5.1.6-wip-released">2013-03-24 - Allegro 5.1.6 (WIP)
+released!</h2>
+<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1
+branch. The 5.1 branch is source compatible, but not binary compatible,
+with the stable 5.0 branch. It contains provisional new features which
+are <em>subject to change at any time</em>.</p>
+<p>You can <a
+href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.6/">download</a>
+it from SourceForge. The reference manual is available <a
+href="a5docs/refman/index.html">online</a>, as is the list of <a
+href="changes-unstable.html">changes</a>.</p>
+<p>We encourage users to test 5.1 releases and report bugs, but remember
+that they do not provide the stability of 5.0 releases.</p>
+<h2 id="allegro-5.0.9-released">2013-02-17 - Allegro 5.0.9
+released!</h2>
+<p>This is a maintenance release for the stable 5.0 branch, with bug
+fixes and a few new features. You can <a
+href="http://sourceforge.net/projects/alleg/files/allegro/5.0.9/">download</a>
+it from SourceForge. The reference manual is available <a
+href="a5docs/refman/index.html">online</a>, as is the list of <a
+href="changes.html">changes</a>.</p>
+<h2 id="allegro-5.1.5-wip-released">2013-01-13 - Allegro 5.1.5 (WIP)
+released!</h2>
+<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1
+branch. The 5.1 branch is source compatible, but not binary compatible,
+with the stable 5.0 branch. It contains provisional new features which
+are <em>subject to change at any time</em>.</p>
+<p>You can <a
+href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.5/">download</a>
+it from SourceForge. The reference manual is available <a
+href="a5docs/refman/index.html">online</a>, as is the list of <a
+href="changes-unstable.html">changes</a>.</p>
+<p>We encourage users to test 5.1 releases and report bugs, but remember
+that they do not provide the stability of 5.0 releases.</p>
+<h2 id="allegro-5.0.8-released">2012-11-18 - Allegro 5.0.8
+released!</h2>
+<p>This is a maintenance release for the stable 5.0 branch, with bug
+fixes and a few new features. You can <a
+href="http://sourceforge.net/projects/alleg/files/allegro/5.0.8/">download</a>
+it from SourceForge. The reference manual is available <a
+href="a5docs/refman/index.html">online</a>, as is the list of <a
+href="changes.html">changes</a>.</p>
+<h2 id="allegro-5.1.4-wip-released">2012-10-14 - Allegro 5.1.4 (WIP)
+released!</h2>
+<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1
+branch. The 5.1 branch is source compatible, but not binary compatible,
+with the stable 5.0 branch. It contains provisional new features which
+are <em>subject to change at any time</em>.</p>
+<p>You can <a
+href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.4/">download</a>
+it from SourceForge. The reference manual is available <a
+href="a5docs/refman/index.html">online</a>, as is the list of <a
+href="changes-unstable.html">changes</a>.</p>
+<p>We encourage users to test 5.1 releases and report bugs, but remember
+that they do not provide the stability of 5.0 releases.</p>
+<h2 id="allegro-5.1.3-wip-released">2012-08-12 - Allegro 5.1.3 (WIP)
+released!</h2>
+<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1
+branch. The 5.1 branch is source compatible, but not binary compatible,
+with the stable 5.0 branch. It contains provisional new features which
+are <em>subject to change at any time</em>.</p>
+<p>You can <a
+href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.3/">download</a>
+it from SourceForge. The reference manual is available <a
+href="a5docs/refman/index.html">online</a>, as is the list of <a
+href="changes-unstable.html">changes</a>.</p>
+<p>We encourage users to test 5.1 releases and report bugs, but remember
+that they do not provide the stability of 5.0 releases.</p>
 <h2 id="switched-to-git">2012-07-04 - Switched to GIT!</h2>
-<p>As probably one of the last projects, we finally made the switch from SVN to <a href="git.html">GIT</a> for version control. Please see that page for details.</p>
-<h2 id="allegro-5.0.7-released">2012-06-24 - Allegro 5.0.7 released!</h2>
-<p>This is a bug fix release for the stable 5.0 branch. You can <a href="http://sourceforge.net/projects/alleg/files/allegro/5.0.7/">download</a> it from SourceForge. The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes.html">changes</a>.</p>
-<h2 id="allegro-5.1.2-wip-released">2012-05-27 - Allegro 5.1.2 (WIP) released!</h2>
-<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1 branch. The 5.1 branch is source compatible, but not binary compatible, with the stable 5.0 branch. It contains provisional new features which are <em>subject to change at any time</em>.</p>
-<p>You can <a href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.2/">download</a> it from SourceForge. The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes-unstable.html">changes</a>.</p>
-<p>We encourage users to test 5.1 releases and report bugs, but remember that they do not provide the stability of 5.0 releases.</p>
-<h2 id="allegro-5.0.6-released">2012-03-04 - Allegro 5.0.6 released!</h2>
-<p>This is a maintenance release for the stable 5.0 branch, with a number of new features and bug fixes. You can <a href="http://sourceforge.net/projects/alleg/files/allegro/5.0.6/">download</a> it from SourceForge. The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes.html">changes</a>.</p>
-<h2 id="allegro-5.1.1-wip-released">2012-02-12 - Allegro 5.1.1 (WIP) released!</h2>
-<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1 branch. The 5.1 branch is source compatible, but not binary compatible, with the stable 5.0 branch. It contains provisional new features which are <em>subject to change at any time</em>.</p>
-<p>You can <a href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.1/">download</a> it from SourceForge. The reference manual is available <a href="a5docs/refman/index.html">online</a>, as is the list of <a href="changes-unstable.html">changes</a>.</p>
-<p>We encourage users to test 5.1 releases and report bugs, but remember that they do not provide the stability of 5.0 releases.</p>
-<p><br/> Do you want to read older news? Then follow <a href="oldnews.html">this link</a>.</p>
+<p>As probably one of the last projects, we finally made the switch from
+SVN to <a href="git.html">GIT</a> for version control. Please see that
+page for details.</p>
+<h2 id="allegro-5.0.7-released">2012-06-24 - Allegro 5.0.7
+released!</h2>
+<p>This is a bug fix release for the stable 5.0 branch. You can <a
+href="http://sourceforge.net/projects/alleg/files/allegro/5.0.7/">download</a>
+it from SourceForge. The reference manual is available <a
+href="a5docs/refman/index.html">online</a>, as is the list of <a
+href="changes.html">changes</a>.</p>
+<h2 id="allegro-5.1.2-wip-released">2012-05-27 - Allegro 5.1.2 (WIP)
+released!</h2>
+<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1
+branch. The 5.1 branch is source compatible, but not binary compatible,
+with the stable 5.0 branch. It contains provisional new features which
+are <em>subject to change at any time</em>.</p>
+<p>You can <a
+href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.2/">download</a>
+it from SourceForge. The reference manual is available <a
+href="a5docs/refman/index.html">online</a>, as is the list of <a
+href="changes-unstable.html">changes</a>.</p>
+<p>We encourage users to test 5.1 releases and report bugs, but remember
+that they do not provide the stability of 5.0 releases.</p>
+<h2 id="allegro-5.0.6-released">2012-03-04 - Allegro 5.0.6
+released!</h2>
+<p>This is a maintenance release for the stable 5.0 branch, with a
+number of new features and bug fixes. You can <a
+href="http://sourceforge.net/projects/alleg/files/allegro/5.0.6/">download</a>
+it from SourceForge. The reference manual is available <a
+href="a5docs/refman/index.html">online</a>, as is the list of <a
+href="changes.html">changes</a>.</p>
+<h2 id="allegro-5.1.1-wip-released">2012-02-12 - Allegro 5.1.1 (WIP)
+released!</h2>
+<p>This is a Work-In-Progress (WIP) release of the <em>unstable</em> 5.1
+branch. The 5.1 branch is source compatible, but not binary compatible,
+with the stable 5.0 branch. It contains provisional new features which
+are <em>subject to change at any time</em>.</p>
+<p>You can <a
+href="http://sourceforge.net/projects/alleg/files/allegro-unstable/5.1.1/">download</a>
+it from SourceForge. The reference manual is available <a
+href="a5docs/refman/index.html">online</a>, as is the list of <a
+href="changes-unstable.html">changes</a>.</p>
+<p>We encourage users to test 5.1 releases and report bugs, but remember
+that they do not provide the stability of 5.0 releases.</p>
+<p><br/> Do you want to read older news? Then follow <a
+href="oldnews.html">this link</a>.</p>
 </div>
 <!-- content -->
 <div id="footer">
@@ -268,8 +619,11 @@ A game programming library
 <p><a href="webmasters.html">Contact the webmasters</a></p>
 </div>
 <!-- contact -->
-<p><a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
-    height="33" width="88" vspace="1" hspace="1" /> </a> <a href="http://www.anybrowser.org/campaign/"> <img src="images/anyb.png" border="0" alt="Viewable with any browser"
+<p><a href="http://petition.eurolinux.org/index_html?LANG=en">
+<img src="images/nopatents.png" border="0" alt="No ePatents"
+    height="33" width="88" vspace="1" hspace="1" /> </a>
+<a href="http://www.anybrowser.org/campaign/">
+<img src="images/anyb.png" border="0" alt="Viewable with any browser"
     height="31" width="88" vspace="1" hspace="1" /> </a></p>
 </div>
 <!-- footer -->

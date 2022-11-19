@@ -8,15 +8,24 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="web_style.css" />
   <link rel="alternate" type="application/atom+xml"
       href="feed_atom.xml" title="Allegro news"
   />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 <div id="main_header">
@@ -36,7 +45,8 @@ A game programming library
 <li><a href="git.html">Git repository</a></li>
 <li><a href="license.html">License</a></li>
 <li><a href="examples_demos.html">Examples</a></li>
-<li><a href="https://github.com/liballeg/allegro5/issues">Bug tracker</a></li>
+<li><a href="https://github.com/liballeg/allegro5/issues">Bug
+tracker</a></li>
 <li><a href="bindings.html">Language bindings</a></li>
 </ul></li>
 <li><strong>Downloads</strong>
@@ -47,11 +57,13 @@ A game programming library
 </ul></li>
 <li><strong>Documentation</strong>
 <ul>
-<li><strong><a href="http://liballeg.org/a5docs/trunk/">Latest version</a></strong></li>
+<li><strong><a href="http://liballeg.org/a5docs/trunk/">Latest
+version</a></strong></li>
 <li><a href="api.html">All versions</a></li>
 <li><a href="docs.html">Tutorials</a></li>
 <li><a href="books.html">Books</a></li>
-<li><a href="https://github.com/liballeg/allegro_wiki/wiki">Wiki</a></li>
+<li><a
+href="https://github.com/liballeg/allegro_wiki/wiki">Wiki</a></li>
 </ul></li>
 <li><strong>Community</strong>
 <ul>
@@ -77,7 +89,10 @@ A game programming library
 </div>
 <!-- sidebar -->
 <div id="hosting">
-<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/> <a href="https://projects.tuxfamily.org/?do=group;name=allegro">TuxFamily project</a></p>
+<p><a href="https://github.com/liballeg">GitHub project</a> <br/> <br/>
+<a
+href="https://projects.tuxfamily.org/?do=group;name=allegro">TuxFamily
+project</a></p>
 </div>
 <!-- hosting -->
 </div>
@@ -87,12 +102,18 @@ A game programming library
 <h1 class="title">Allegro - Downloads - GIT</h1>
 </header>
 <h1 id="git-access">GIT access</h1>
-<p>Allegro’s source code is maintained in a GIT repository. You can get clients for most platforms at <a href="http://git-scm.com" class="uri">http://git-scm.com</a>, and there is good documentation like the <a href="http://git-scm.com/docs">Reference Manual</a>.</p>
-<p>The source repository is hosted at GitHub: <a href="https://github.com/liballeg/allegro5" class="uri">https://github.com/liballeg/allegro5</a></p>
+<p>Allegro’s source code is maintained in a GIT repository. You can get
+clients for most platforms at <a href="http://git-scm.com"
+class="uri">http://git-scm.com</a>, and there is good documentation like
+the <a href="http://git-scm.com/docs">Reference Manual</a>.</p>
+<p>The source repository is hosted at GitHub: <a
+href="https://github.com/liballeg/allegro5"
+class="uri">https://github.com/liballeg/allegro5</a></p>
 <p>You can clone the repository from either of these two URLs:</p>
 <pre><code>https://github.com/liballeg/allegro5.git
 git@github.com:liballeg/allegro5.git</code></pre>
-<p>By default you will be on the master branch. You can change the branch from your working tree like this:</p>
+<p>By default you will be on the master branch. You can change the
+branch from your working tree like this:</p>
 <pre><code>git checkout 5.0
 git checkout 4.4
 git checkout master</code></pre>
@@ -103,19 +124,23 @@ git checkout master</code></pre>
 <p>Remember to tell git your name and email address:</p>
 <pre><code>git config --global user.name &quot;My Name&quot;
 git config --global user.email &quot;USERNAME@example.net&quot;</code></pre>
-<p>To make sure you’re in the right branch and have the latest changes:</p>
+<p>To make sure you’re in the right branch and have the latest
+changes:</p>
 <pre><code>cd allegro
 git checkout master
 git pull --rebase origin master</code></pre>
 <p>To locally commit your changes:</p>
 <pre><code>git add -p
 git commit -v</code></pre>
-<p>To share your local commit (send as attachments to the Allegro developers mailing list):</p>
+<p>To share your local commit (send as attachments to the Allegro
+developers mailing list):</p>
 <pre><code>git format-patch HEAD^</code></pre>
-<p>For committers, to push changes on the local master branch to the remote master branch:</p>
+<p>For committers, to push changes on the local master branch to the
+remote master branch:</p>
 <pre><code>git push origin master</code></pre>
 <h2 id="test-results">Test results</h2>
-<p>Daily test results can be seen here: <a href="http://allegro5.org" class="uri">http://allegro5.org</a></p>
+<p>Daily test results can be seen here: <a href="http://allegro5.org"
+class="uri">http://allegro5.org</a></p>
 </div>
 <!-- content -->
 <div id="footer">
@@ -123,8 +148,11 @@ git commit -v</code></pre>
 <p><a href="webmasters.html">Contact the webmasters</a></p>
 </div>
 <!-- contact -->
-<p><a href="http://petition.eurolinux.org/index_html?LANG=en"> <img src="images/nopatents.png" border="0" alt="No ePatents"
-    height="33" width="88" vspace="1" hspace="1" /> </a> <a href="http://www.anybrowser.org/campaign/"> <img src="images/anyb.png" border="0" alt="Viewable with any browser"
+<p><a href="http://petition.eurolinux.org/index_html?LANG=en">
+<img src="images/nopatents.png" border="0" alt="No ePatents"
+    height="33" width="88" vspace="1" hspace="1" /> </a>
+<a href="http://www.anybrowser.org/campaign/">
+<img src="images/anyb.png" border="0" alt="Viewable with any browser"
     height="31" width="88" vspace="1" hspace="1" /> </a></p>
 </div>
 <!-- footer -->
