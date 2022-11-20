@@ -8,14 +8,23 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="pandoc.css" />
   <script type="text/javascript" src="autosuggest.js"></script>
   <script type="text/javascript" src="search_index.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 <div class="sidebar">
@@ -89,20 +98,19 @@ function on_search(index, control) {
     location.href = search_urls[i];
 }
 </script>
-Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" placeholder="Press ‘S’ to search" /><br/>
+Search<br/>
+<input type="text" name="q" id="q" size="15" autocomplete="off" placeholder="Press ‘S’ to search" /><br/>
 <script type="text/javascript"> new autosuggest("q", search_index, null, on_search); </script>
 </div>
 </div>
 <div class="content">
-
-
 <header id="title-block-header">
 <h1 class="title">Allegro 5 reference manual</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#core-api">Core API</a></li>
-<li><a href="#addons">Addons</a></li>
+<li><a href="#core-api" id="toc-core-api">Core API</a></li>
+<li><a href="#addons" id="toc-addons">Addons</a></li>
 </ul>
 </nav>
 <!-- This file is only used for the HTML output. -->
@@ -158,7 +166,7 @@ Search<br/> <input type="text" name="q" id="q" size="15" autocomplete="off" plac
 </ul>
 <p class="timestamp">
 Allegro version 5.2.9 (GIT)
- - Last updated: 2022-11-05 19:07:47 UTC
+ - Last updated: 2022-11-20 22:00:19 UTC
 </p>
 </div>
 </body>
