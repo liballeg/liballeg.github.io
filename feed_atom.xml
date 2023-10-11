@@ -1,301 +1,301 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>Allegro news</title>
-<link href="http://liballeg.org/"/>
-<link rel="self" href="http://liballeg.org/feed_atom.xml"/>
-<updated>2023-01-09T08:51:11+00:00</updated>
+<link href="https://liballeg.github.io/"/>
+<link rel="self" href="https://liballeg.github.io/feed_atom.xml"/>
+<updated>2023-10-11T15:54:08+00:00</updated>
 <id>urn:uuid:661257c2-82a0-4510-b2be-0f6b010807b9</id>
 <entry>
 <title>Allegro has a discord server!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:bf9ce210-7b05-40d9-b935-a7eb19dc7c6e</id>
 <updated>2022-08-14T16:30:13-07:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.2.8 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:f0939121-efb1-4c67-a886-541cfefae8ed</id>
 <updated>2022-06-05T21:37:59-07:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.2.7 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:4dbfb2d8-3868-4d69-a94f-c9dcfe7a86f1</id>
 <updated>2021-03-07T19:46:45-08:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.2.6 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:2ab6819a-4800-41bd-94d4-f0b5785b43a4</id>
 <updated>2020-02-09T18:25:49-08:00</updated>
 </entry>
 <entry>
 <title>Allegro 4.4.3.1 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:612d5990-a8a6-4aa4-acb3-12c2973ce6ff</id>
 <updated>2019-03-03T17:41:40-08:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.2.5 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:6b555556-cd37-4339-89c1-d46226712fcf</id>
 <updated>2019-02-25T20:10:10-08:00</updated>
 </entry>
 <entry>
 <title>Allegro 4.4.3 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:59836b36-1e79-4557-b4d3-283d51ecd52d</id>
 <updated>2019-02-03T14:23:08-08:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.2.4 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:9077029c-50da-4bde-872e-5b537e9bafdf</id>
 <updated>2018-02-25T15:43:31-08:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.2.3 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:100ed704-3e88-419e-806d-42a1a838ceb6</id>
 <updated>2017-10-10T20:29:14-07:00</updated>
 </entry>
 <entry>
 <title>Allegro on TuxFamily!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:919c4bbf-1477-4367-ae83-33deef2a4c7c</id>
 <updated>2017-05-04T21:17:36-07:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.2.2 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:4e64d5e1-78ed-40e8-8efe-14d8c4cddb10</id>
 <updated>2016-12-12T21:25:10-08:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.2.1.1 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:545bea88-ad01-4c07-af0a-ed1f9e8d124f</id>
 <updated>2016-08-13T20:32:39-07:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.2.1 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:5dbad54e-1277-44b6-8c82-d8b058702d49</id>
 <updated>2016-07-31T21:33:11-07:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.2.0 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:34cc9670-909f-4f01-8253-02e8e91cccb1</id>
 <updated>2016-04-01T00:13:07-07:00</updated>
 </entry>
 <entry>
 <title>Allegro now developed on the master branch.</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:2056f404-b411-4b17-a674-6b5e84ab3629</id>
 <updated>2016-03-27T15:24:16-07:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.13.1 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:f3b6e79e-e6a3-47ff-b0b6-c86e1e027fa1</id>
 <updated>2016-02-28T12:54:07-08:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.13 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:98efc5be-4919-4e4c-a27e-1aae2dd12890</id>
 <updated>2016-01-24T18:55:23-08:00</updated>
 </entry>
 <entry>
 <title>Allegro on NuGet!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:828a39db-bb0c-400c-ab68-2461b0008769</id>
 <updated>2015-12-23T11:35:46-08:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.12 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:8bcda9dd-66bb-482c-b042-b40530f2e36b</id>
 <updated>2015-09-29T22:34:36-07:00</updated>
 </entry>
 <entry>
 <title>Allegro on Gna!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:f61a2465-7528-4fd6-8fce-909400e1e037</id>
 <updated>2015-08-15T11:54:16+10:00</updated>
 </entry>
 <entry>
 <title>Allegro's GIT repository is now hosted at GitHub.</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:3a1ad4ed-4a50-46c2-8800-9a05a7043fd8</id>
 <updated>2015-07-31T20:55:20-07:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.11 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:3d0ec9cc-fc39-4a15-96d1-9602a37175ef</id>
 <updated>2015-06-21T14:47:57-07:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.10 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:7ad536c6-4c1f-419d-8294-7d657eab2e0d</id>
 <updated>2015-05-05T23:04:17-07:00</updated>
 </entry>
 <entry>
 <title>Ubuntu PPAs now available.</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:3a912943-7a4e-4b6e-9f91-fc7daaef222c</id>
 <updated>2015-04-12T20:49:49-07:00</updated>
 </entry>
 <entry>
 <title>A new book about Allegro has been published!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:35d32c86-c1f0-4415-8c5d-2d4d928db1cb</id>
 <updated>2015-04-07T19:55:09-07:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.0.11 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:b9aa2584-5c6f-4ffc-bd82-f9d3a5e0df0b</id>
 <updated>2015-01-11T18:32:51-08:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.9 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:ce995be3-85ce-4262-abfd-349b038e124b</id>
 <updated>2015-01-03T18:42:59-08:00</updated>
 </entry>
 <entry>
 <title>Go bindings to Allegro created!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:48ea0ade-d141-46c8-adf3-3136aab3a3a5</id>
 <updated>2014-05-31T12:08:54-04:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.8 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:11f718d9-b8d4-4c5d-9df7-7c0a6be5a798</id>
 <updated>2014-01-12T14:49:29+11:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.0.10 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:f382dc6c-58a4-40ff-a3f7-3347ecd3dfe6</id>
 <updated>2013-06-16T13:31:51+10:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.7 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:1e9fa567-f729-4cf9-8a8a-3fcb289955c1</id>
 <updated>2013-05-12T11:55:19+10:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.6 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:7ba7305c-c48d-4a07-a692-d79d49ca4686</id>
 <updated>2013-03-24T16:15:15+11:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.0.9 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:fb7361ab-45d6-47aa-ab92-ff9f72035414</id>
 <updated>2013-02-17T11:04:30+11:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.5 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:bb0a914d-f6d1-4d6c-a662-c13d8c17d1a7</id>
 <updated>2013-01-13T14:10:29+11:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.0.8 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:ade917e3-3731-4b02-9a76-8067f7355a14</id>
 <updated>2012-11-18T17:25:45+11:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.4 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:83cc2f5b-c87f-4f9d-b8b9-25ee29ffce18</id>
 <updated>2012-10-14T14:14:53+11:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.3 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:dbbfb3d7-5f1b-41ff-82be-aefb39a1f6e4</id>
 <updated>2012-08-12T14:03:12+10:00</updated>
 </entry>
 <entry>
 <title>Switched to GIT!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:3a312a6f-211b-4fd0-9ccc-c9bde83b51f4</id>
 <updated>2012-07-04T13:22:12+02:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.0.7 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:d45fcb40-ee59-405e-be2a-7bce7e770707</id>
 <updated>2012-06-24T16:36:38+10:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.2 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:0e3a2368-736a-4ebc-89ff-acd2ca5b363b</id>
 <updated>2012-05-27T16:24:01+10:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.0.6 released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:979baf10-de9e-44b2-8530-f0de8e82a202</id>
 <updated>2012-03-04T12:24:37+11:00</updated>
 </entry>
 <entry>
 <title>Allegro 5.1.1 (WIP) released!</title>
 <author><name>Allegro developers</name></author>
-<link href="http://liballeg.org/"/>
+<link href="https://liballeg.github.io/"/>
 <id>urn:uuid:36ee5353-4d14-46e4-8f9e-f12e830e254d</id>
 <updated>2012-02-12T15:06:37+11:00</updated>
 </entry>
