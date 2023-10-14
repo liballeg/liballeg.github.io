@@ -233,7 +233,7 @@ end of the filename.</p>
 <h1 id="al_create_path">al_create_path</h1>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ALLEGRO_PATH <span class="op">*</span>al_create_path<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>str<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L156">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L156">Source
 Code</a></p>
 <p>Create a path structure from a string. The last component, if it is
 followed by a directory separator and is neither “.” nor “..”, is
@@ -246,16 +246,16 @@ href="path.html#al_create_path_for_directory">al_create_path_for_directory</a>,
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path.c#L18">ex_path.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path.c#L18">ex_path.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L35">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L35">ex_path_test.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_audio_chain.cpp#L187">ex_audio_chain.cpp</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_audio_chain.cpp#L187">ex_audio_chain.cpp</a></li>
 </ul>
 <h1 id="al_create_path_for_directory">al_create_path_for_directory</h1>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ALLEGRO_PATH <span class="op">*</span>al_create_path_for_directory<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>str<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L188">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L188">Source
 Code</a></p>
 <p>This is the same as <a
 href="path.html#al_create_path">al_create_path</a>, but interprets the
@@ -266,7 +266,7 @@ href="path.html#al_destroy_path">al_destroy_path</a></p>
 <h1 id="al_destroy_path">al_destroy_path</h1>
 <div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_destroy_path<span class="op">(</span>ALLEGRO_PATH <span class="op">*</span>path<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L429">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L429">Source
 Code</a></p>
 <p>Free a path structure. Does nothing if passed NULL.</p>
 <p>See also: <a href="path.html#al_create_path">al_create_path</a>, <a
@@ -274,30 +274,30 @@ href="path.html#al_create_path_for_directory">al_create_path_for_directory</a></
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_get_path.c#L14">ex_get_path.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_get_path.c#L14">ex_get_path.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path.c#L21">ex_path.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path.c#L21">ex_path.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L36">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L36">ex_path_test.c</a></li>
 </ul>
 <h1 id="al_clone_path">al_clone_path</h1>
 <div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ALLEGRO_PATH <span class="op">*</span>al_clone_path<span class="op">(</span><span class="dt">const</span> ALLEGRO_PATH <span class="op">*</span>path<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L203">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L203">Source
 Code</a></p>
 <p>Clones an ALLEGRO_PATH structure. Returns NULL on failure.</p>
 <p>See also: <a href="path.html#al_destroy_path">al_destroy_path</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path.c#L65">ex_path.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path.c#L65">ex_path.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L490">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L490">ex_path_test.c</a></li>
 </ul>
 <h1 id="al_join_paths">al_join_paths</h1>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> al_join_paths<span class="op">(</span>ALLEGRO_PATH <span class="op">*</span>path<span class="op">,</span> <span class="dt">const</span> ALLEGRO_PATH <span class="op">*</span>tail<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L347">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L347">Source
 Code</a></p>
 <p>Concatenate two path structures. The first path structure is
 modified. If ‘tail’ is an absolute path, this function does nothing.</p>
@@ -311,12 +311,12 @@ even if it is just the empty string.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L318">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L318">ex_path_test.c</a></li>
 </ul>
 <h1 id="al_rebase_path">al_rebase_path</h1>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> al_rebase_path<span class="op">(</span><span class="dt">const</span> ALLEGRO_PATH <span class="op">*</span>head<span class="op">,</span> ALLEGRO_PATH <span class="op">*</span>tail<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L374">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L374">Source
 Code</a></p>
 <p>Concatenate two path structures, modifying the second path structure.
 If <em>tail</em> is an absolute path, this function does nothing.
@@ -329,14 +329,14 @@ at the start of <em>tail</em>.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L376">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L376">ex_path_test.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_audio_chain.cpp#L188">ex_audio_chain.cpp</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_audio_chain.cpp#L188">ex_audio_chain.cpp</a></li>
 </ul>
 <h1 id="al_get_path_drive">al_get_path_drive</h1>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>al_get_path_drive<span class="op">(</span><span class="dt">const</span> ALLEGRO_PATH <span class="op">*</span>path<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L481">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L481">Source
 Code</a></p>
 <p>Return the drive letter on a path, or the empty string if there is
 none.</p>
@@ -346,14 +346,14 @@ UNC (Uniform Naming Convention) syntax.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path.c#L35">ex_path.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path.c#L35">ex_path.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L36">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L36">ex_path_test.c</a></li>
 </ul>
 <h1 id="al_get_path_num_components">al_get_path_num_components</h1>
 <div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> al_get_path_num_components<span class="op">(</span><span class="dt">const</span> ALLEGRO_PATH <span class="op">*</span>path<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L229">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L229">Source
 Code</a></p>
 <p>Return the number of directory components in a path.</p>
 <p>The directory components do not include the final part of a path (the
@@ -363,14 +363,14 @@ href="path.html#al_get_path_component">al_get_path_component</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path.c#L50">ex_path.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path.c#L50">ex_path.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L35">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L35">ex_path_test.c</a></li>
 </ul>
 <h1 id="al_get_path_component">al_get_path_component</h1>
 <div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>al_get_path_component<span class="op">(</span><span class="dt">const</span> ALLEGRO_PATH <span class="op">*</span>path<span class="op">,</span> <span class="dt">int</span> i<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L239">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L239">Source
 Code</a></p>
 <p>Return the i’th directory component of a path, counting from zero. If
 the index is negative then count from the right, i.e. -1 refers to the
@@ -382,28 +382,28 @@ href="path.html#al_get_path_num_components">al_get_path_num_components</a>,
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path.c#L53">ex_path.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path.c#L53">ex_path.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L35">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L35">ex_path_test.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_audio_chain.cpp#L176">ex_audio_chain.cpp</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_audio_chain.cpp#L176">ex_audio_chain.cpp</a></li>
 </ul>
 <h1 id="al_get_path_tail">al_get_path_tail</h1>
 <div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>al_get_path_tail<span class="op">(</span><span class="dt">const</span> ALLEGRO_PATH <span class="op">*</span>path<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L307">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L307">Source
 Code</a></p>
 <p>Returns the last directory component, or NULL if there are no
 directory components.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L251">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L251">ex_path_test.c</a></li>
 </ul>
 <h1 id="al_get_path_filename">al_get_path_filename</h1>
 <div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>al_get_path_filename<span class="op">(</span><span class="dt">const</span> ALLEGRO_PATH <span class="op">*</span>path<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L504">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L504">Source
 Code</a></p>
 <p>Return the filename part of the path, or the empty string if there is
 none.</p>
@@ -416,14 +416,14 @@ href="path.html#al_get_path_component">al_get_path_component</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path.c#L20">ex_path.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path.c#L20">ex_path.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L36">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L36">ex_path_test.c</a></li>
 </ul>
 <h1 id="al_get_path_basename">al_get_path_basename</h1>
 <div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>al_get_path_basename<span class="op">(</span><span class="dt">const</span> ALLEGRO_PATH <span class="op">*</span>path<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L549">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L549">Source
 Code</a></p>
 <p>Return the basename, i.e. filename with the extension removed. If the
 filename doesn’t have an extension, the whole filename is the basename.
@@ -436,12 +436,12 @@ href="path.html#al_get_path_extension">al_get_path_extension</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L466">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L466">ex_path_test.c</a></li>
 </ul>
 <h1 id="al_get_path_extension">al_get_path_extension</h1>
 <div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>al_get_path_extension<span class="op">(</span><span class="dt">const</span> ALLEGRO_PATH <span class="op">*</span>path<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L514">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L514">Source
 Code</a></p>
 <p>Return a pointer to the start of the extension of the filename,
 i.e. everything from the final dot (‘.’) character onwards. If no dot
@@ -454,14 +454,14 @@ href="path.html#al_get_path_basename">al_get_path_basename</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L434">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L434">ex_path_test.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_physfs.c#L88">ex_physfs.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_physfs.c#L88">ex_physfs.c</a></li>
 </ul>
 <h1 id="al_set_path_drive">al_set_path_drive</h1>
 <div class="sourceCode" id="cb15"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_set_path_drive<span class="op">(</span>ALLEGRO_PATH <span class="op">*</span>path<span class="op">,</span> <span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>drive<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L468">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L468">Source
 Code</a></p>
 <p>Set the drive string on a path. The drive may be NULL, which is
 equivalent to setting the drive string to the empty string.</p>
@@ -470,12 +470,12 @@ href="path.html#al_get_path_drive">al_get_path_drive</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L277">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L277">ex_path_test.c</a></li>
 </ul>
 <h1 id="al_append_path_component">al_append_path_component</h1>
 <div class="sourceCode" id="cb16"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_append_path_component<span class="op">(</span>ALLEGRO_PATH <span class="op">*</span>path<span class="op">,</span> <span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>s<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L330">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L330">Source
 Code</a></p>
 <p>Append a directory component.</p>
 <p>See also: <a
@@ -483,12 +483,12 @@ href="path.html#al_insert_path_component">al_insert_path_component</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L155">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L155">ex_path_test.c</a></li>
 </ul>
 <h1 id="al_insert_path_component">al_insert_path_component</h1>
 <div class="sourceCode" id="cb17"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_insert_path_component<span class="op">(</span>ALLEGRO_PATH <span class="op">*</span>path<span class="op">,</span> <span class="dt">int</span> i<span class="op">,</span> <span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>s<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L289">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L289">Source
 Code</a></p>
 <p>Insert a directory component at index i. If the index is negative
 then count from the right, i.e. -1 refers to the last path
@@ -504,12 +504,12 @@ href="path.html#al_remove_path_component">al_remove_path_component</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L232">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L232">ex_path_test.c</a></li>
 </ul>
 <h1 id="al_replace_path_component">al_replace_path_component</h1>
 <div class="sourceCode" id="cb18"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_replace_path_component<span class="op">(</span>ALLEGRO_PATH <span class="op">*</span>path<span class="op">,</span> <span class="dt">int</span> i<span class="op">,</span> <span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>s<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L255">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L255">Source
 Code</a></p>
 <p>Replace the i’th directory component by another string. If the index
 is negative then count from the right, i.e. -1 refers to the last path
@@ -521,12 +521,12 @@ href="path.html#al_remove_path_component">al_remove_path_component</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L179">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L179">ex_path_test.c</a></li>
 </ul>
 <h1 id="al_remove_path_component">al_remove_path_component</h1>
 <div class="sourceCode" id="cb19"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_remove_path_component<span class="op">(</span>ALLEGRO_PATH <span class="op">*</span>path<span class="op">,</span> <span class="dt">int</span> i<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L272">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L272">Source
 Code</a></p>
 <p>Delete the i’th directory component. If the index is negative then
 count from the right, i.e. -1 refers to the last path component. It is
@@ -539,14 +539,14 @@ href="path.html#al_replace_path_component">al_replace_path_component</a>,
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L206">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L206">ex_path_test.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_audio_chain.cpp#L181">ex_audio_chain.cpp</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_audio_chain.cpp#L181">ex_audio_chain.cpp</a></li>
 </ul>
 <h1 id="al_drop_path_tail">al_drop_path_tail</h1>
 <div class="sourceCode" id="cb20"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_drop_path_tail<span class="op">(</span>ALLEGRO_PATH <span class="op">*</span>path<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L320">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L320">Source
 Code</a></p>
 <p>Remove the last directory component, if any.</p>
 <p>See also: <a
@@ -554,12 +554,12 @@ href="path.html#al_remove_path_component">al_remove_path_component</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L251">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L251">ex_path_test.c</a></li>
 </ul>
 <h1 id="al_set_path_filename">al_set_path_filename</h1>
 <div class="sourceCode" id="cb21"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_set_path_filename<span class="op">(</span>ALLEGRO_PATH <span class="op">*</span>path<span class="op">,</span> <span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>filename<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L491">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L491">Source
 Code</a></p>
 <p>Set the optional filename part of the path. The filename may be NULL,
 which is equivalent to setting the filename to the empty string.</p>
@@ -569,14 +569,14 @@ href="path.html#al_get_path_filename">al_get_path_filename</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L277">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L277">ex_path_test.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_android.c#L102">ex_android.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_android.c#L102">ex_android.c</a></li>
 </ul>
 <h1 id="al_set_path_extension">al_set_path_extension</h1>
 <div class="sourceCode" id="cb22"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> al_set_path_extension<span class="op">(</span>ALLEGRO_PATH <span class="op">*</span>path<span class="op">,</span> <span class="dt">char</span> <span class="dt">const</span> <span class="op">*</span>extension<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L529">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L529">Source
 Code</a></p>
 <p>Replaces the extension of the path with the given one, i.e. replaces
 everything from the final dot (‘.’) character onwards, including the
@@ -591,12 +591,12 @@ href="path.html#al_get_path_extension">al_get_path_extension</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L434">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L434">ex_path_test.c</a></li>
 </ul>
 <h1 id="al_path_cstr">al_path_cstr</h1>
 <div class="sourceCode" id="cb23"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>al_path_cstr<span class="op">(</span><span class="dt">const</span> ALLEGRO_PATH <span class="op">*</span>path<span class="op">,</span> <span class="dt">char</span> delim<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L413">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L413">Source
 Code</a></p>
 <p>Convert a path to its string representation, i.e. optional drive,
 followed by directory components separated by ‘delim’, followed by an
@@ -611,16 +611,16 @@ href="path.html#al_path_ustr">al_path_ustr</a>.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_get_path.c#L12">ex_get_path.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_get_path.c#L12">ex_get_path.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path.c#L47">ex_path.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path.c#L47">ex_path.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_file_slice.c#L82">ex_file_slice.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_file_slice.c#L82">ex_file_slice.c</a></li>
 </ul>
 <h1 id="al_path_ustr">al_path_ustr</h1>
 <div class="sourceCode" id="cb24"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> ALLEGRO_USTR <span class="op">*</span>al_path_ustr<span class="op">(</span><span class="dt">const</span> ALLEGRO_PATH <span class="op">*</span>path<span class="op">,</span> <span class="dt">char</span> delim<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L420">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L420">Source
 Code</a></p>
 <p>Convert a path to its string representation, i.e. optional drive,
 followed by directory components separated by ‘delim’, followed by an
@@ -636,7 +636,7 @@ href="path.html#al_path_cstr">al_path_cstr</a>.</p>
 <h1 id="al_make_path_canonical">al_make_path_canonical</h1>
 <div class="sourceCode" id="cb25"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> al_make_path_canonical<span class="op">(</span>ALLEGRO_PATH <span class="op">*</span>path<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/src/path.c#L566">Source
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/src/path.c#L566">Source
 Code</a></p>
 <p>Removes any leading ‘..’ directory components in absolute paths.
 Removes all ‘.’ directory components.</p>
@@ -647,13 +647,13 @@ removal of “..” components would give you.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path.c#L69">ex_path.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path.c#L69">ex_path.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/e3ad0474ee403e27e8a0d2d406a4af6cfcd70db1/examples/ex_path_test.c#L522">ex_path_test.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/e9ec1e73295f291143918049e0a0a91c42cc033f/examples/ex_path_test.c#L522">ex_path_test.c</a></li>
 </ul>
 <p class="timestamp">
 Allegro version 5.2.9 (GIT)
- - Last updated: 2023-10-08 02:22:30 UTC
+ - Last updated: 2023-10-14 18:48:31 UTC
 </p>
 </div>
 </body>
