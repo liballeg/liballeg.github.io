@@ -213,51 +213,51 @@ id="toc-al_get_timer_event_source">al_get_timer_event_source</a></li>
 <h1 id="allegro_timer">ALLEGRO_TIMER</h1>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_TIMER ALLEGRO_TIMER<span class="op">;</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/include/allegro5/timer.h#L46">Source
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/include/allegro5/timer.h#L46">Source
 Code</a></p>
 <p>This is an abstract data type representing a timer object.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_enet_server.c#L188">ex_enet_server.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_enet_server.c#L188">ex_enet_server.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_timer_pause.c#L22">ex_timer_pause.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_timer_pause.c#L22">ex_timer_pause.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_user_events.c#L46">ex_user_events.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_user_events.c#L46">ex_user_events.c</a></li>
 </ul>
 <h1 id="allegro_usecs_to_secs">ALLEGRO_USECS_TO_SECS</h1>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#define ALLEGRO_USECS_TO_SECS(x)      ((x) / 1000000.0)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/include/allegro5/timer.h#L29">Source
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/include/allegro5/timer.h#L29">Source
 Code</a></p>
 <p>Convert microseconds to seconds.</p>
 <h1 id="allegro_msecs_to_secs">ALLEGRO_MSECS_TO_SECS</h1>
 <div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#define ALLEGRO_MSECS_TO_SECS(x)      ((x) / 1000.0)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/include/allegro5/timer.h#L33">Source
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/include/allegro5/timer.h#L33">Source
 Code</a></p>
 <p>Convert milliseconds to seconds.</p>
 <h1 id="allegro_bps_to_secs">ALLEGRO_BPS_TO_SECS</h1>
 <div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#define ALLEGRO_BPS_TO_SECS(x)        (1.0 / (x))</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/include/allegro5/timer.h#L37">Source
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/include/allegro5/timer.h#L37">Source
 Code</a></p>
 <p>Convert beats per second to seconds.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_prim.c#L719">ex_prim.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_prim.c#L719">ex_prim.c</a></li>
 </ul>
 <h1 id="allegro_bpm_to_secs">ALLEGRO_BPM_TO_SECS</h1>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#define ALLEGRO_BPM_TO_SECS(x)        (60.0 / (x))</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/include/allegro5/timer.h#L41">Source
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/include/allegro5/timer.h#L41">Source
 Code</a></p>
 <p>Convert beats per minute to seconds.</p>
 <h1 id="al_create_timer">al_create_timer</h1>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ALLEGRO_TIMER <span class="op">*</span>al_create_timer<span class="op">(</span><span class="dt">double</span> speed_secs<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/src/timernu.c#L229">Source
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/src/timernu.c#L229">Source
 Code</a></p>
 <p>Allocates and initializes a timer. If successful, a pointer to a new
 timer object is returned, otherwise NULL is returned.
@@ -273,16 +273,16 @@ href="timer.html#al_destroy_timer">al_destroy_timer</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_enet_server.c#L212">ex_enet_server.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_enet_server.c#L212">ex_enet_server.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_timer_pause.c#L37">ex_timer_pause.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_timer_pause.c#L37">ex_timer_pause.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_user_events.c#L59">ex_user_events.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_user_events.c#L59">ex_user_events.c</a></li>
 </ul>
 <h1 id="al_start_timer">al_start_timer</h1>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_start_timer<span class="op">(</span>ALLEGRO_TIMER <span class="op">*</span>timer<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/src/timernu.c#L272">Source
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/src/timernu.c#L272">Source
 Code</a></p>
 <p>Start the timer specified. From then, the timer’s counter will
 increment at a constant rate, and it will begin generating events.
@@ -295,16 +295,16 @@ href="timer.html#al_resume_timer">al_resume_timer</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_enet_server.c#L216">ex_enet_server.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_enet_server.c#L216">ex_enet_server.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_timer_pause.c#L5">ex_timer_pause.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_timer_pause.c#L5">ex_timer_pause.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_user_events.c#L72">ex_user_events.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_user_events.c#L72">ex_user_events.c</a></li>
 </ul>
 <h1 id="al_resume_timer">al_resume_timer</h1>
 <div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_resume_timer<span class="op">(</span>ALLEGRO_TIMER <span class="op">*</span>timer<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/src/timernu.c#L281">Source
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/src/timernu.c#L281">Source
 Code</a></p>
 <p>Resume the timer specified. From then, the timer’s counter will
 increment at a constant rate, and it will begin generating events.
@@ -317,12 +317,12 @@ href="timer.html#al_get_timer_started">al_get_timer_started</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_timer_pause.c#L5">ex_timer_pause.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_timer_pause.c#L5">ex_timer_pause.c</a></li>
 </ul>
 <h1 id="al_stop_timer">al_stop_timer</h1>
 <div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_stop_timer<span class="op">(</span>ALLEGRO_TIMER <span class="op">*</span>timer<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/src/timernu.c#L290">Source
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/src/timernu.c#L290">Source
 Code</a></p>
 <p>Stop the timer specified. The timer’s counter will stop incrementing
 and it will stop generating events. Stopping a timer that is already
@@ -333,22 +333,22 @@ href="timer.html#al_resume_timer">al_resume_timer</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_timer_pause.c#L48">ex_timer_pause.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_timer_pause.c#L48">ex_timer_pause.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_android.c#L196">ex_android.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_android.c#L196">ex_android.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_projection2.c#L153">ex_projection2.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_projection2.c#L153">ex_projection2.c</a></li>
 </ul>
 <h1 id="al_get_timer_started">al_get_timer_started</h1>
 <div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> al_get_timer_started<span class="op">(</span><span class="dt">const</span> ALLEGRO_TIMER <span class="op">*</span>timer<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/src/timernu.c#L310">Source
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/src/timernu.c#L310">Source
 Code</a></p>
 <p>Return true if the timer specified is currently started.</p>
 <h1 id="al_destroy_timer">al_destroy_timer</h1>
 <div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_destroy_timer<span class="op">(</span>ALLEGRO_TIMER <span class="op">*</span>timer<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/src/timernu.c#L256">Source
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/src/timernu.c#L256">Source
 Code</a></p>
 <p>Uninstall the timer specified. If the timer is started, it will
 automatically be stopped before uninstallation. It will also
@@ -359,16 +359,16 @@ href="timer.html#al_create_timer">al_create_timer</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_timer_pause.c#L69">ex_timer_pause.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_timer_pause.c#L69">ex_timer_pause.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_user_events.c#L112">ex_user_events.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_user_events.c#L112">ex_user_events.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_noframe.c#L90">ex_noframe.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_noframe.c#L90">ex_noframe.c</a></li>
 </ul>
 <h1 id="al_get_timer_count">al_get_timer_count</h1>
 <div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int64_t</span> al_get_timer_count<span class="op">(</span><span class="dt">const</span> ALLEGRO_TIMER <span class="op">*</span>timer<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/src/timernu.c#L353">Source
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/src/timernu.c#L353">Source
 Code</a></p>
 <p>Return the timer’s counter value. The timer can be started or
 stopped.</p>
@@ -377,12 +377,12 @@ href="timer.html#al_set_timer_count">al_set_timer_count</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_menu.c#L151">ex_menu.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_menu.c#L151">ex_menu.c</a></li>
 </ul>
 <h1 id="al_set_timer_count">al_set_timer_count</h1>
 <div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_set_timer_count<span class="op">(</span>ALLEGRO_TIMER <span class="op">*</span>timer<span class="op">,</span> <span class="dt">int64_t</span> new_count<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/src/timernu.c#L364">Source
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/src/timernu.c#L364">Source
 Code</a></p>
 <p>Set the timer’s counter value. The timer can be started or stopped.
 The count value may be positive or negative, but will always be
@@ -393,12 +393,12 @@ href="timer.html#al_add_timer_count">al_add_timer_count</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_audio_timer.c#L115">ex_audio_timer.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_audio_timer.c#L115">ex_audio_timer.c</a></li>
 </ul>
 <h1 id="al_add_timer_count">al_add_timer_count</h1>
 <div class="sourceCode" id="cb15"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_add_timer_count<span class="op">(</span>ALLEGRO_TIMER <span class="op">*</span>timer<span class="op">,</span> <span class="dt">int64_t</span> diff<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/src/timernu.c#L379">Source
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/src/timernu.c#L379">Source
 Code</a></p>
 <p>Add <em>diff</em> to the timer’s counter value. This is similar to
 writing:</p>
@@ -410,7 +410,7 @@ href="timer.html#al_set_timer_count">al_set_timer_count</a></p>
 <h1 id="al_get_timer_speed">al_get_timer_speed</h1>
 <div class="sourceCode" id="cb17"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> al_get_timer_speed<span class="op">(</span><span class="dt">const</span> ALLEGRO_TIMER <span class="op">*</span>timer<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/src/timernu.c#L321">Source
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/src/timernu.c#L321">Source
 Code</a></p>
 <p>Return the timer’s speed, in seconds. (The same value passed to <a
 href="timer.html#al_create_timer">al_create_timer</a> or <a
@@ -420,7 +420,7 @@ href="timer.html#al_set_timer_speed">al_set_timer_speed</a></p>
 <h1 id="al_set_timer_speed">al_set_timer_speed</h1>
 <div class="sourceCode" id="cb18"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_set_timer_speed<span class="op">(</span>ALLEGRO_TIMER <span class="op">*</span>timer<span class="op">,</span> <span class="dt">double</span> new_speed_secs<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/src/timernu.c#L332">Source
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/src/timernu.c#L332">Source
 Code</a></p>
 <p>Set the timer’s speed, i.e. the rate at which its counter will be
 incremented when it is started. This can be done when the timer is
@@ -433,12 +433,12 @@ href="timer.html#al_get_timer_speed">al_get_timer_speed</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_audio_timer.c#L145">ex_audio_timer.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_audio_timer.c#L145">ex_audio_timer.c</a></li>
 </ul>
 <h1 id="al_get_timer_event_source">al_get_timer_event_source</h1>
 <div class="sourceCode" id="cb19"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ALLEGRO_EVENT_SOURCE <span class="op">*</span>al_get_timer_event_source<span class="op">(</span>ALLEGRO_TIMER <span class="op">*</span>timer<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/src/timernu.c#L421">Source
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/src/timernu.c#L421">Source
 Code</a></p>
 <p>Retrieve the associated event source. Timers will generate events of
 type <a
@@ -446,15 +446,15 @@ href="events.html#allegro_event_timer">ALLEGRO_EVENT_TIMER</a>.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_enet_server.c#L215">ex_enet_server.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_enet_server.c#L215">ex_enet_server.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_timer_pause.c#L39">ex_timer_pause.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_timer_pause.c#L39">ex_timer_pause.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/310332abbf9be69a0cf623d820602bcde1c99553/examples/ex_user_events.c#L70">ex_user_events.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/08080e96189de766f0476a2b941443fd4af5deed/examples/ex_user_events.c#L70">ex_user_events.c</a></li>
 </ul>
 <p class="timestamp">
 Allegro version 5.2.10 (20231119)
- - Last updated: 2023-11-20 08:37:41 UTC
+ - Last updated: 2023-11-21 09:20:00 UTC
 </p>
 </div>
 </body>
