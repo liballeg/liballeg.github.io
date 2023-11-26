@@ -100,6 +100,114 @@ project</a></p>
 <div id="content">
 <p>These lists serve as summaries; the full histories are in the git
 repository.</p>
+<h1 id="changes-from-5.2.8-to-5.2.9-november-2023">Changes from 5.2.8 to
+5.2.9 (November 2023)</h1>
+<p>Android:</p>
+<ul>
+<li><p>Fix back button/gesture (alemart)</p></li>
+<li><p>Implement <code>al_get_joystick_name</code> (alemart)</p></li>
+<li><p>Great many assorted fixes (alemart)</p></li>
+</ul>
+<p>Audio:</p>
+<ul>
+<li><p>Add <code>al_get_mixer_has_attached</code> and
+<code>al_get_voice_has_attached</code> (TRDario)</p></li>
+<li><p>Fix <code>al_set_audio_stream_playmode</code> return value and
+interaction with looping audio streams (Cody Licorish)</p></li>
+<li><p>Send PulseAudio silence if the attached mixer is stopped
+(SiegeLord)</p></li>
+</ul>
+<p>Acodec:</p>
+<ul>
+<li><p>voc memory leak fixes (TRDario)</p></li>
+<li><p>Fix internal looping for mod files (SiegeLord)</p></li>
+</ul>
+<p>Build system:</p>
+<ul>
+<li><p>Add a target for copying examples, letting you build the demo
+without the examples (SiegeLord).</p></li>
+<li><p>Improve CMake scripts (Gilad Reich)</p></li>
+<li><p>Support the newer WebP library which is split into two
+(SiegeLord).</p></li>
+</ul>
+<p>Core:</p>
+<ul>
+<li><p>Add <code>al_can_set_keyboard_leds</code> and
+<code>al_can_get_mouse_cursor_position</code> (TRDario)</p></li>
+<li><p>Allow outputting logs to STDOUT via ALLEGRO_TRACE environment
+variable (SiegeLord)</p></li>
+<li><p>Add <code>al_get_current_shader</code> (TRDario)</p></li>
+<li><p>Add <code>al_get_window_borders</code> for Windows and Linux
+(Elias Pschernig + SiegeLord)</p></li>
+</ul>
+<p>TTF:</p>
+<ul>
+<li>Fixes for <code>al_get_glyph_width</code>,
+<code>al_get_glyph_al_get_glyph</code> when interacting with
+zero-width/zero-height glyphs (Connor Clark)</li>
+</ul>
+<p>MacOS:</p>
+<ul>
+<li><p>Don’t close submenus on click (Todd Cope)</p></li>
+<li><p>Fix disabling menu items (Todd Cope)</p></li>
+<li><p>Add support for filtering by file extensions in the native file
+dialog (Todd Cope)</p></li>
+<li><p>Textlog improvements (Connor Clark)</p></li>
+<li><p>Fix improper display boundary for cursors (Connor Clark)</p></li>
+<li><p>Make <code>al_get_joystick_name</code> return the name of the
+joystick (Todd Cope)</p></li>
+<li><p>Fix off-by-one error for hat switches (Connor Clark)</p></li>
+<li><p>Add a workaround for live resizing not working. Enable it via
+<code>[osx]   allow_live_resize = false</code> in
+<code>allegro5.cfg</code> and then listen and respect
+<code>ALLEGRO_EVENT_DISPLAY_HALT/RESUME_DRAWING</code> events (#1350)
+(SiegeLord + Elias Pschernig)</p></li>
+</ul>
+<p>Linux:</p>
+<ul>
+<li><p>Fix fullscreen window creation (#1349) (SiegeLord)</p></li>
+<li><p>Fix some X11 + fullscreen window interaction (#1358)
+(SiegeLord)</p></li>
+<li><p>Allow setting higher quality icons (SiegeLord + Trent
+Gamblin)</p></li>
+<li><p>Improve <code>DISPLAY_SWITCH_IN/OUT</code> events (#1390, #1367)
+(SiegeLord)</p></li>
+<li><p>Work on improving Window positioning (Elias Pschernig)</p></li>
+<li><p>Fix creating an initially maximized window (SiegeLord)</p></li>
+<li><p>Enable toggling and setting maximized/frameless modes when menus
+are used (SiegeLord)</p></li>
+<li><p>Fix popup menu (#1280) (SiegeLord)</p></li>
+<li><p>Make AltGr (right Alt) toggle the
+<code>ALLEGRO_KEYMOD_ALTGR</code> modifier (SiegeLord)</p></li>
+</ul>
+<p>Windows:</p>
+<ul>
+<li><p>Fix drawable area mouse hiding state being out of sync (#1388)
+(SiegeLord)</p></li>
+<li><p>Fix some oddities with Shift + Alt on Windows (#1348)</p></li>
+<li><p>Work on improving Window positioning (SiegeLord)</p></li>
+<li><p>Make native file dialog respect the initial directory when
+<code>ALLEGRO_FILECHOOSER_FOLDER</code> is set (José Carlos HR)</p></li>
+<li><p>Fix the client area changing size on Windows when restoring a
+window (#1433) (SiegeLord)</p></li>
+<li><p>Fix crashes with menus and Windows (#1381) (SiegeLord)</p></li>
+<li><p>Fix keyboard modifier keys + char events (#1504, #1430)
+(SiegeLord)</p></li>
+</ul>
+<p>SDL:</p>
+<ul>
+<li><p>Fix touch ids (Sebastian Krzyszkowiak)</p></li>
+<li><p>Fix <code>al_get_mouse_state</code> crash (Elias
+Pschernig)</p></li>
+<li><p>Implement <code>al_create_mouse_cursor</code> (Connor
+Clark)</p></li>
+<li><p>Implement <code>al_get_monitor_dpi</code> (Elias
+Pschernig)</p></li>
+</ul>
+<p>Documentation:</p>
+<ul>
+<li>Assorted clarifications and improvements (various)</li>
+</ul>
 <h1 id="changes-from-5.2.7-to-5.2.8-june-2022">Changes from 5.2.7 to
 5.2.8 (June 2022)</h1>
 <p>The main developers this time were: SiegeLord, Elias Pschernig,
