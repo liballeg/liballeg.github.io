@@ -225,21 +225,21 @@ id="toc-al_x_set_initial_icon">al_x_set_initial_icon</a></li>
 <h2 id="al_get_win_window_handle">al_get_win_window_handle</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>HWND al_get_win_window_handle<span class="op">(</span>ALLEGRO_DISPLAY <span class="op">*</span>display<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/src/win/wwindow.c#L1460">Source
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/src/win/wwindow.c#L1460">Source
 Code</a></p>
 <p>Returns the handle to the window that the passed display is
 using.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/examples/ex_ogre3d.cpp#L115">ex_ogre3d.cpp</a></li>
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/examples/ex_ogre3d.cpp#L115">ex_ogre3d.cpp</a></li>
 </ul>
 <h2 id="al_win_add_window_callback">al_win_add_window_callback</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> al_win_add_window_callback<span class="op">(</span>ALLEGRO_DISPLAY <span class="op">*</span>display<span class="op">,</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>   <span class="dt">bool</span> <span class="op">(*</span>callback<span class="op">)(</span>ALLEGRO_DISPLAY <span class="op">*</span>display<span class="op">,</span> UINT message<span class="op">,</span> WPARAM wparam<span class="op">,</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>   LPARAM lparam<span class="op">,</span> LRESULT <span class="op">*</span>result<span class="op">,</span> <span class="dt">void</span> <span class="op">*</span>userdata<span class="op">),</span> <span class="dt">void</span> <span class="op">*</span>userdata<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/src/win/wwindow.c#L1502">Source
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/src/win/wwindow.c#L1502">Source
 Code</a></p>
 <p>The specified callback function will intercept the window’s message
 before Allegro processes it. If the callback function consumes the
@@ -259,7 +259,7 @@ id="al_win_remove_window_callback">al_win_remove_window_callback</h2>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>   <span class="dt">bool</span> <span class="op">(*</span>callback<span class="op">)(</span>ALLEGRO_DISPLAY <span class="op">*</span>display<span class="op">,</span> UINT message<span class="op">,</span> WPARAM wparam<span class="op">,</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>   LPARAM lparam<span class="op">,</span> LRESULT <span class="op">*</span>result<span class="op">,</span> <span class="dt">void</span> <span class="op">*</span>userdata<span class="op">),</span> <span class="dt">void</span> <span class="op">*</span>userdata<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/src/win/wwindow.c#L1531">Source
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/src/win/wwindow.c#L1531">Source
 Code</a></p>
 <p>Removes the callback that was previously registered with <a
 href="platform.html#al_win_add_window_callback">al_win_add_window_callback</a>.
@@ -273,7 +273,7 @@ during the registration of the callback.</p>
 <h2 id="al_osx_get_window">al_osx_get_window</h2>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>NSWindow<span class="op">*</span> al_osx_get_window<span class="op">(</span>ALLEGRO_DISPLAY <span class="op">*</span>display<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/src/macosx/osxgl.m#L2636">Source
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/src/macosx/osxgl.m#L2636">Source
 Code</a></p>
 <p>Retrieves the NSWindow handle associated with the Allegro
 display.</p>
@@ -285,7 +285,7 @@ display.</p>
 id="al_iphone_set_statusbar_orientation">al_iphone_set_statusbar_orientation</h2>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_iphone_set_statusbar_orientation<span class="op">(</span><span class="dt">int</span> o<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/src/iphone/allegroAppDelegate.m#L216">Source
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/src/iphone/allegroAppDelegate.m#L216">Source
 Code</a></p>
 <p>Sets the orientation of the status bar, which can be one of the
 following:</p>
@@ -299,7 +299,7 @@ following:</p>
 <h2 id="al_iphone_get_view">al_iphone_get_view</h2>
 <div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>UIView <span class="op">*</span>al_iphone_get_view<span class="op">(</span>ALLEGRO_DISPLAY <span class="op">*</span>display<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/src/iphone/allegroAppDelegate.m#L158">Source
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/src/iphone/allegroAppDelegate.m#L158">Source
 Code</a></p>
 <p>Retrieves the UIView* (EAGLView*) associated with the Allegro
 display.</p>
@@ -307,7 +307,7 @@ display.</p>
 <h2 id="al_iphone_get_window">al_iphone_get_window</h2>
 <div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>UIWindow <span class="op">*</span>al_iphone_get_window<span class="op">(</span>ALLEGRO_DISPLAY <span class="op">*</span>display<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/src/iphone/allegroAppDelegate.m#L144">Source
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/src/iphone/allegroAppDelegate.m#L144">Source
 Code</a></p>
 <p>Retrieves the UIWindow* associated with the Allegro display.</p>
 <p>Since: 5.1.0</p>
@@ -318,7 +318,7 @@ Code</a></p>
 id="al_android_set_apk_file_interface">al_android_set_apk_file_interface</h2>
 <div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_android_set_apk_file_interface<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/src/android/android_apk_file.c#L306">Source
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/src/android/android_apk_file.c#L306">Source
 Code</a></p>
 <p>This function will set up a custom <a
 href="file.html#allegro_file_interface">ALLEGRO_FILE_INTERFACE</a> that
@@ -332,17 +332,17 @@ function is read only.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/examples/common.c#L19">common.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/examples/common.c#L19">common.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/examples/ex_android.c#L5">ex_android.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/examples/ex_android.c#L5">ex_android.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/examples/ex_native_filechooser.c#L222">ex_native_filechooser.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/examples/ex_native_filechooser.c#L222">ex_native_filechooser.c</a></li>
 </ul>
 <h2
 id="al_android_set_apk_fs_interface">al_android_set_apk_fs_interface</h2>
 <div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_android_set_apk_fs_interface<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/src/android/android_apk_fs.c#L302">Source
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/src/android/android_apk_fs.c#L302">Source
 Code</a></p>
 <p>This function will set up a custom <a
 href="fshook.html#allegro_fs_interface">ALLEGRO_FS_INTERFACE</a> which
@@ -358,12 +358,12 @@ information.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/examples/ex_dir.c#L103">ex_dir.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/examples/ex_dir.c#L103">ex_dir.c</a></li>
 </ul>
 <h2 id="al_android_get_os_version">al_android_get_os_version</h2>
 <div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>al_android_get_os_version<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/src/android/android_system.c#L608">Source
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/src/android/android_system.c#L608">Source
 Code</a></p>
 <p>Returns a pointer to a static buffer that contains the version string
 of the Android platform that the calling Allegro program is running
@@ -372,7 +372,7 @@ on.</p>
 <h2 id="al_android_get_jni_env">al_android_get_jni_env</h2>
 <div class="sourceCode" id="cb15"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>JNIEnv <span class="op">*</span>al_android_get_jni_env<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/src/android/android_system.c#L656">Source
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/src/android/android_system.c#L656">Source
 Code</a></p>
 <p>Returns the Android JNI environment used by Allegro to call into
 Java. As a convenience this function provides it to the user so there is
@@ -394,7 +394,7 @@ API</a>:</em> This API is new and subject to refinement.</p>
 <h2 id="al_android_get_activity">al_android_get_activity</h2>
 <div class="sourceCode" id="cb17"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>jobject al_android_get_activity<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/src/android/android_system.c#L663">Source
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/src/android/android_system.c#L663">Source
 Code</a></p>
 <p>Returns the Java Android activity used by Allegro. This is the same
 object created by Android from the class you specify in your manifest
@@ -407,7 +407,7 @@ API</a>:</em> This API is new and subject to refinement.</p>
 <h2 id="al_android_open_fd">al_android_open_fd</h2>
 <div class="sourceCode" id="cb18"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> al_android_open_fd<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>uri<span class="op">,</span> <span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>mode<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/src/android/android_system.c#L670">Source
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/src/android/android_system.c#L670">Source
 Code</a></p>
 <p>Opens a file descriptor to access data under a Universal Resource
 Identifier (URI). This function accepts content:// and file:// URI
@@ -456,14 +456,14 @@ API</a>:</em> This API is new and subject to refinement.</p>
 <h2 id="al_get_x_window_id">al_get_x_window_id</h2>
 <div class="sourceCode" id="cb21"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>XID al_get_x_window_id<span class="op">(</span>ALLEGRO_DISPLAY <span class="op">*</span>display<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/src/x/xwindow.c#L396">Source
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/src/x/xwindow.c#L396">Source
 Code</a></p>
 <p>Retrieves the XID associated with the Allegro display.</p>
 <p>Since: 5.1.12</p>
 <h2 id="al_x_set_initial_icon">al_x_set_initial_icon</h2>
 <div class="sourceCode" id="cb22"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> al_x_set_initial_icon<span class="op">(</span>ALLEGRO_BITMAP <span class="op">*</span>bitmap<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/src/x/xsystem.c#L38">Source
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/src/x/xsystem.c#L38">Source
 Code</a></p>
 <p>On some window managers (notably Ubuntu’s Unity) al_set_display_icon
 doesn’t work and you need to use a .desktop file. But with this function
@@ -477,11 +477,11 @@ API</a>:</em> New API.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/fadf95d051ff847c2d4e7ed54f3171c32db36d31/examples/ex_icon2.c#L45">ex_icon2.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/36f9609244ad69dafda63b91a10003bbd3b00643/examples/ex_icon2.c#L45">ex_icon2.c</a></li>
 </ul>
 <p class="timestamp">
 Allegro version 5.2.10 (20231119)
- - Last updated: 2024-06-08 19:28:42 UTC
+ - Last updated: 2024-06-08 19:31:26 UTC
 </p>
 </div>
 </body>
