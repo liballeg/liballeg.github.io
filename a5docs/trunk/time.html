@@ -185,7 +185,7 @@ id="toc-al_init_timeout">al_init_timeout</a></li>
 <h1 id="allegro_timeout">ALLEGRO_TIMEOUT</h1>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_TIMEOUT ALLEGRO_TIMEOUT<span class="op">;</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/92a78be88190a71e90412c79867f59f4bd8a6b2b/include/allegro5/altime.h#L12">Source
+href="https://github.com/liballeg/allegro5/blob/a77519c81337a670871b2cf1be449dd3518e19db/include/allegro5/altime.h#L12">Source
 Code</a></p>
 <p>Represent a timeout value. The size of the structure is known so it
 can be statically allocated. The contents are private.</p>
@@ -193,12 +193,12 @@ can be statically allocated. The contents are private.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/92a78be88190a71e90412c79867f59f4bd8a6b2b/examples/ex_timedwait.c#L79">ex_timedwait.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/a77519c81337a670871b2cf1be449dd3518e19db/examples/ex_timedwait.c#L79">ex_timedwait.c</a></li>
 </ul>
 <h1 id="al_get_time">al_get_time</h1>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> al_get_time<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/92a78be88190a71e90412c79867f59f4bd8a6b2b/src/system.c#L503">Source
+href="https://github.com/liballeg/allegro5/blob/a77519c81337a670871b2cf1be449dd3518e19db/src/system.c#L503">Source
 Code</a></p>
 <p>Return the number of seconds since the Allegro library was
 initialised. The return value is undefined if Allegro is uninitialised.
@@ -207,16 +207,16 @@ order of microseconds.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/92a78be88190a71e90412c79867f59f4bd8a6b2b/examples/ex_convert.c#L40">ex_convert.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/a77519c81337a670871b2cf1be449dd3518e19db/examples/ex_convert.c#L40">ex_convert.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/92a78be88190a71e90412c79867f59f4bd8a6b2b/examples/ex_d3d.cpp#L81">ex_d3d.cpp</a></li>
+href="https://github.com/liballeg/allegro5/blob/a77519c81337a670871b2cf1be449dd3518e19db/examples/ex_d3d.cpp#L81">ex_d3d.cpp</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/92a78be88190a71e90412c79867f59f4bd8a6b2b/examples/ex_enet_server.c#L215">ex_enet_server.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/a77519c81337a670871b2cf1be449dd3518e19db/examples/ex_enet_server.c#L215">ex_enet_server.c</a></li>
 </ul>
 <h1 id="al_init_timeout">al_init_timeout</h1>
 <div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_init_timeout<span class="op">(</span>ALLEGRO_TIMEOUT <span class="op">*</span>timeout<span class="op">,</span> <span class="dt">double</span> seconds<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/92a78be88190a71e90412c79867f59f4bd8a6b2b/src/system.c#L526">Source
+href="https://github.com/liballeg/allegro5/blob/a77519c81337a670871b2cf1be449dd3518e19db/src/system.c#L526">Source
 Code</a></p>
 <p>Set timeout value of some number of seconds after the function
 call.</p>
@@ -227,12 +227,12 @@ href="events.html#al_wait_for_event_until">al_wait_for_event_until</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/92a78be88190a71e90412c79867f59f4bd8a6b2b/examples/ex_timedwait.c#L85">ex_timedwait.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/a77519c81337a670871b2cf1be449dd3518e19db/examples/ex_timedwait.c#L85">ex_timedwait.c</a></li>
 </ul>
 <h1 id="al_rest">al_rest</h1>
 <div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_rest<span class="op">(</span><span class="dt">double</span> seconds<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/92a78be88190a71e90412c79867f59f4bd8a6b2b/src/system.c#L515">Source
+href="https://github.com/liballeg/allegro5/blob/a77519c81337a670871b2cf1be449dd3518e19db/src/system.c#L515">Source
 Code</a></p>
 <p>Waits for the specified number of seconds. This tells the system to
 pause the current thread for the given amount of time. With some
@@ -245,15 +245,15 @@ CPU.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/92a78be88190a71e90412c79867f59f4bd8a6b2b/examples/ex_keyboard_focus.c#L68">ex_keyboard_focus.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/a77519c81337a670871b2cf1be449dd3518e19db/examples/ex_keyboard_focus.c#L68">ex_keyboard_focus.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/92a78be88190a71e90412c79867f59f4bd8a6b2b/examples/ex_timer_pause.c#L45">ex_timer_pause.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/a77519c81337a670871b2cf1be449dd3518e19db/examples/ex_timer_pause.c#L45">ex_timer_pause.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/92a78be88190a71e90412c79867f59f4bd8a6b2b/examples/ex_mouse_focus.c#L92">ex_mouse_focus.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/a77519c81337a670871b2cf1be449dd3518e19db/examples/ex_mouse_focus.c#L92">ex_mouse_focus.c</a></li>
 </ul>
 <p class="timestamp">
 Allegro version 5.2.10 (20231119)
- - Last updated: 2024-06-14 07:51:24 UTC
+ - Last updated: 2024-06-15 22:21:53 UTC
 </p>
 </div>
 </body>
