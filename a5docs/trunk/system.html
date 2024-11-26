@@ -214,7 +214,7 @@ id="toc-allegro_system_id">ALLEGRO_SYSTEM_ID</a></li>
 <h1 id="al_install_system">al_install_system</h1>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> al_install_system<span class="op">(</span><span class="dt">int</span> version<span class="op">,</span> <span class="dt">int</span> <span class="op">(*</span>atexit_ptr<span class="op">)(</span><span class="dt">void</span> <span class="op">(*)(</span><span class="dt">void</span><span class="op">)))</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/src/system.c#L217">Source
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/src/system.c#L217">Source
 Code</a></p>
 <p>Initialize the Allegro system. No other Allegro functions can be
 called before this (with one or two exceptions).</p>
@@ -237,7 +237,7 @@ xb.yb.zb. Otherwise, A is compatible with B only if xa.ya = xb.yb.</p>
 <h1 id="al_init">al_init</h1>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#define al_init()    (al_install_system(ALLEGRO_VERSION_INT, atexit))</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/include/allegro5/system.h#L30">Source
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/include/allegro5/system.h#L30">Source
 Code</a></p>
 <p>Like <a href="system.html#al_install_system">al_install_system</a>,
 but automatically passes in the version and uses the atexit function
@@ -254,16 +254,16 @@ href="system.html#al_install_system">al_install_system</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/examples/ex_audio_devices.c#L16">ex_audio_devices.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/examples/ex_audio_devices.c#L16">ex_audio_devices.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/examples/ex_get_path.c#L30">ex_get_path.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/examples/ex_get_path.c#L30">ex_get_path.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/examples/ex_monitorinfo.c#L15">ex_monitorinfo.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/examples/ex_monitorinfo.c#L15">ex_monitorinfo.c</a></li>
 </ul>
 <h1 id="al_uninstall_system">al_uninstall_system</h1>
 <div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_uninstall_system<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/src/system.c#L316">Source
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/src/system.c#L316">Source
 Code</a></p>
 <p>Closes down the Allegro system.</p>
 <blockquote>
@@ -274,27 +274,27 @@ e.g. from atexit().</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/examples/ex_opengl_pixel_shader.c#L128">ex_opengl_pixel_shader.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/examples/ex_opengl_pixel_shader.c#L128">ex_opengl_pixel_shader.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/examples/ex_icon2.c#L85">ex_icon2.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/examples/ex_icon2.c#L85">ex_icon2.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/examples/ex_icon.c#L74">ex_icon.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/examples/ex_icon.c#L74">ex_icon.c</a></li>
 </ul>
 <h1 id="al_is_system_installed">al_is_system_installed</h1>
 <div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> al_is_system_installed<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/src/system.c#L346">Source
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/src/system.c#L346">Source
 Code</a></p>
 <p>Returns true if Allegro is initialized, otherwise returns false.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/examples/common.c#L40">common.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/examples/common.c#L40">common.c</a></li>
 </ul>
 <h1 id="al_get_allegro_version">al_get_allegro_version</h1>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">uint32_t</span> al_get_allegro_version<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/src/allegro.c#L27">Source
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/src/allegro.c#L27">Source
 Code</a></p>
 <p>Returns the (compiled) version of the Allegro library, packed into a
 single integer as groups of 8 bits in the form
@@ -312,7 +312,7 @@ version from the “5.0.2” branch before the official release.</p>
 <h1 id="al_get_standard_path">al_get_standard_path</h1>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ALLEGRO_PATH <span class="op">*</span>al_get_standard_path<span class="op">(</span><span class="dt">int</span> id<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/src/system.c#L381">Source
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/src/system.c#L381">Source
 Code</a></p>
 <p>Gets a system path, depending on the <code>id</code> parameter. Some
 of these paths may be affected by the organization and application name,
@@ -387,16 +387,16 @@ href="system.html#al_set_exe_name">al_set_exe_name</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/examples/ex_get_path.c#L11">ex_get_path.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/examples/ex_get_path.c#L11">ex_get_path.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/examples/ex_physfs.c#L87">ex_physfs.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/examples/ex_physfs.c#L87">ex_physfs.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/examples/ex_android.c#L20">ex_android.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/examples/ex_android.c#L20">ex_android.c</a></li>
 </ul>
 <h1 id="al_set_exe_name">al_set_exe_name</h1>
 <div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_set_exe_name<span class="op">(</span><span class="dt">char</span> <span class="dt">const</span> <span class="op">*</span>path<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/src/system.c#L405">Source
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/src/system.c#L405">Source
 Code</a></p>
 <p>This override the executable name used by <a
 href="system.html#al_get_standard_path">al_get_standard_path</a> for
@@ -411,12 +411,12 @@ href="system.html#al_get_standard_path">al_get_standard_path</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/examples/ex_get_path.c#L41">ex_get_path.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/examples/ex_get_path.c#L41">ex_get_path.c</a></li>
 </ul>
 <h1 id="al_set_app_name">al_set_app_name</h1>
 <div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_set_app_name<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>app_name<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/src/system.c#L428">Source
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/src/system.c#L428">Source
 Code</a></p>
 <p>Sets the global application name.</p>
 <p>The application name is used by <a
@@ -430,12 +430,12 @@ href="system.html#al_install_system">al_install_system</a>.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/examples/ex_get_path.c#L28">ex_get_path.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/examples/ex_get_path.c#L28">ex_get_path.c</a></li>
 </ul>
 <h1 id="al_set_org_name">al_set_org_name</h1>
 <div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_set_org_name<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>org_name<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/src/system.c#L417">Source
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/src/system.c#L417">Source
 Code</a></p>
 <p>Sets the global organization name.</p>
 <p>The organization name is used by <a
@@ -449,12 +449,12 @@ href="system.html#al_install_system">al_install_system</a>.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/examples/ex_get_path.c#L25">ex_get_path.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/examples/ex_get_path.c#L25">ex_get_path.c</a></li>
 </ul>
 <h1 id="al_get_app_name">al_get_app_name</h1>
 <div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>al_get_app_name<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/src/system.c#L452">Source
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/src/system.c#L452">Source
 Code</a></p>
 <p>Returns the global application name string.</p>
 <p>See also: <a
@@ -462,7 +462,7 @@ href="system.html#al_set_app_name">al_set_app_name</a></p>
 <h1 id="al_get_org_name">al_get_org_name</h1>
 <div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>al_get_org_name<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/src/system.c#L444">Source
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/src/system.c#L444">Source
 Code</a></p>
 <p>Returns the global organization name string.</p>
 <p>See also: <a
@@ -470,7 +470,7 @@ href="system.html#al_set_org_name">al_set_org_name</a></p>
 <h1 id="al_get_system_config">al_get_system_config</h1>
 <div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ALLEGRO_CONFIG <span class="op">*</span>al_get_system_config<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/src/system.c#L371">Source
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/src/system.c#L371">Source
 Code</a></p>
 <p>Returns the system configuration structure. The returned
 configuration should not be destroyed with <a
@@ -753,18 +753,21 @@ class="sourceCode ini"><code class="sourceCode ini"><span id="cb15-1"><a href="#
 <span id="cb15-257"><a href="#cb15-257" aria-hidden="true" tabindex="-1"></a><span class="co"># To restore behavior of older code versions, specify this value to the</span></span>
 <span id="cb15-258"><a href="#cb15-258" aria-hidden="true" tabindex="-1"></a><span class="co"># Allegro version that had the desired old behavior.</span></span>
 <span id="cb15-259"><a href="#cb15-259" aria-hidden="true" tabindex="-1"></a><span class="co"># joystick_version = 5.2.9</span></span>
-<span id="cb15-260"><a href="#cb15-260" aria-hidden="true" tabindex="-1"></a><span class="co"># keyboard_version = 5.2.9</span></span></code></pre></div>
+<span id="cb15-260"><a href="#cb15-260" aria-hidden="true" tabindex="-1"></a><span class="co"># keyboard_version = 5.2.9</span></span>
+<span id="cb15-261"><a href="#cb15-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-262"><a href="#cb15-262" aria-hidden="true" tabindex="-1"></a><span class="co"># Prefer using DUMB rather than OpenMPT to decode module files.</span></span>
+<span id="cb15-263"><a href="#cb15-263" aria-hidden="true" tabindex="-1"></a><span class="dt">acodec_prefer_dumb </span><span class="ot">=</span><span class="st"> </span><span class="kw">false</span></span></code></pre></div>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/examples/ex_resize2.c#L35">ex_resize2.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/examples/ex_resize2.c#L35">ex_resize2.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/examples/ex_camera.c#L493">ex_camera.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/examples/ex_camera.c#L493">ex_camera.c</a></li>
 </ul>
 <h1 id="al_get_system_id">al_get_system_id</h1>
 <div class="sourceCode" id="cb16"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ALLEGRO_SYSTEM_ID al_get_system_id<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/src/system.c#L363">Source
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/src/system.c#L363">Source
 Code</a></p>
 <p>Returns the platform that Allegro is running on.</p>
 <p>Since: 5.2.5</p>
@@ -774,7 +777,7 @@ href="system.html#allegro_system_id">ALLEGRO_SYSTEM_ID</a></p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_register_assert_handler<span class="op">(</span><span class="dt">void</span> <span class="op">(*</span>handler<span class="op">)(</span><span class="dt">char</span> <span class="dt">const</span> <span class="op">*</span>expr<span class="op">,</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>   <span class="dt">char</span> <span class="dt">const</span> <span class="op">*</span>file<span class="op">,</span> <span class="dt">int</span> line<span class="op">,</span> <span class="dt">char</span> <span class="dt">const</span> <span class="op">*</span>func<span class="op">))</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/src/debug.c#L367">Source
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/src/debug.c#L367">Source
 Code</a></p>
 <p>Register a function to be called when an internal Allegro assertion
 fails. Pass NULL to reset to the default behaviour, which is to do
@@ -783,7 +786,7 @@ whatever the standard <code>assert()</code> macro does.</p>
 <h1 id="al_register_trace_handler">al_register_trace_handler</h1>
 <div class="sourceCode" id="cb18"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_register_trace_handler<span class="op">(</span><span class="dt">void</span> <span class="op">(*</span>handler<span class="op">)(</span><span class="dt">char</span> <span class="dt">const</span> <span class="op">*))</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/src/debug.c#L376">Source
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/src/debug.c#L376">Source
 Code</a></p>
 <p>Register a callback which is called whenever Allegro writes something
 to its log files. The default logging to allegro.log is disabled while
@@ -795,7 +798,7 @@ the used debug channels, logging levels and trace format.</p>
 <h1 id="al_get_cpu_count">al_get_cpu_count</h1>
 <div class="sourceCode" id="cb19"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> al_get_cpu_count<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/src/cpu.c#L50">Source
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/src/cpu.c#L50">Source
 Code</a></p>
 <p>Returns the number of CPU cores that the system Allegro is running on
 has and which could be detected, or a negative number if detection
@@ -817,12 +820,12 @@ href="system.html#al_init">al_init</a>.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/examples/ex_cpu.c#L1">ex_cpu.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/examples/ex_cpu.c#L1">ex_cpu.c</a></li>
 </ul>
 <h1 id="al_get_ram_size">al_get_ram_size</h1>
 <div class="sourceCode" id="cb20"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> al_get_ram_size<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/src/cpu.c#L77">Source
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/src/cpu.c#L77">Source
 Code</a></p>
 <p>Returns the size in MB of the random access memory that the system
 Allegro is running on has and which could be detected, or a negative
@@ -845,12 +848,12 @@ href="system.html#al_init">al_init</a>.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/examples/ex_cpu.c#L1">ex_cpu.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/examples/ex_cpu.c#L1">ex_cpu.c</a></li>
 </ul>
 <h1 id="allegro_system_id">ALLEGRO_SYSTEM_ID</h1>
 <div class="sourceCode" id="cb21"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">enum</span> ALLEGRO_SYSTEM_ID <span class="op">{</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/1c4cfe769e8a3354638c4c9faa8ac3ea6b712811/include/allegro5/system.h#L15">Source
+href="https://github.com/liballeg/allegro5/blob/f75335567cd53be5f9e53b2df3357fa5e2c0887a/include/allegro5/system.h#L15">Source
 Code</a></p>
 <p>The system Allegro is running on.</p>
 <ul>
@@ -869,7 +872,7 @@ Code</a></p>
 href="system.html#al_get_system_id">al_get_system_id</a></p>
 <p class="timestamp">
 Allegro version 5.2.10 (20231119)
- - Last updated: 2024-11-26 02:45:42 UTC
+ - Last updated: 2024-11-26 03:11:15 UTC
 </p>
 </div>
 </body>
