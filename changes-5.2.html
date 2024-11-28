@@ -100,6 +100,124 @@ project</a></p>
 <div id="content">
 <p>These lists serve as summaries; the full histories are in the git
 repository.</p>
+<h1 id="changes-from-5.2.9.1-to-5.2.10-november-2024">Changes from
+5.2.9.1 to 5.2.10 (November 2024)</h1>
+<p>Core</p>
+<ul>
+<li><p>Add a compatibility config option,
+<code>keyboard_version=xx.yy.zz</code> as well as the same but with
+<code>joystick_version</code> if it is necessary to restore the old
+behavior. This enables us to fix bugs with the input system, while
+providing a mechanism to restore old buggy behavior temporarily
+(SiegeLord)</p></li>
+<li><p>Assorted timer improvements (Connor Clark)</p></li>
+<li><p>Optimize inverse transformations. (SiegeLord)</p></li>
+<li><p>Fix the handling of the new window title in
+<code>ALLEGRO_STATE</code> (#1562) (Alexandre Martins)</p></li>
+<li><p>Add <code>ALLEGRO_TRACE_LEVEL</code> environment variable. This
+makes it easier to enable logging on release builds.
+(SiegeLord)</p></li>
+<li><p>Add <code>al_ref_info</code> to convert
+<code>ALLEGRO_USTR_INFO</code> to <code>ALLEGRO_USTR</code>
+(SiegeLord)</p></li>
+<li><p>Add <code>al_get_display_adapter</code> (#1578)
+(SiegeLord)</p></li>
+<li><p>Add <code>al_get_render_state</code> (Mark Oates)</p></li>
+</ul>
+<p>MacOS</p>
+<ul>
+<li><p>Don’t use usage numbers as joystick button ids on OSX. (#1527)
+(SiegeLord)</p></li>
+<li><p>Enable deadkey handling on MacOS (SiegeLord).</p></li>
+<li><p>Map numpad delete to <code>ALLEGRO_KEY_PAD_DELETE</code> and the
+weird ISO section key to <code>ALLEGRO_KEY_BACKSLASH2</code> (#1523)
+(SiegeLord)</p></li>
+</ul>
+<p>Windows</p>
+<ul>
+<li><p>Fix key events when using modifiers (#1430, #1504)
+(SiegeLord)</p></li>
+<li><p>Fix undesirable deadzone when using analog joysticks
+(geecab)</p></li>
+<li><p>Use the correct monitor when restoring fullscreen window when
+using OpenGL (SiegeLord)</p></li>
+<li><p>Fix <code>ALLEGRO_FULLSCREEN_WINDOW</code> not working in certain
+conditions (SiegeLord)</p></li>
+</ul>
+<p>Linux</p>
+<ul>
+<li><p>Fix joystick initialization when overriding IO (#1572) (Alexandre
+Martins)</p></li>
+<li><p>Make sure the bitmap for the initial icon is created as a memory
+bitmap (#1571) (SiegeLord)</p></li>
+</ul>
+<p>Android</p>
+<ul>
+<li><p>Add more joystick buttons (#1482) (Alexandre Martins)</p></li>
+<li><p>Fix corruption of bitmaps created with the
+<code>ALLEGRO_NO_PRESERVE_TEXTURE</code> flag when the application loses
+focus (#1492) (Alexandre Martins)</p></li>
+<li><p>Fix a concurrency issue related to
+<code>al_acknowledge_drawing_halt</code> (Alexandre Martins)</p></li>
+<li><p>Add <code>al_android_open_fd</code> (Alexandre Martins)</p></li>
+<li><p>Assorted improvements (Alexandre Martins)</p></li>
+</ul>
+<p>iPhone:</p>
+<ul>
+<li>Fix build (Todd Cope)</li>
+</ul>
+<p>Audio addon:</p>
+<ul>
+<li>Add MacOS support for listing output devices (Aldrik Ramaekers)</li>
+</ul>
+<p>Acodec addon:</p>
+<ul>
+<li><p>Prefill <code>ALLEGRO_AUDIO_STREAM</code>s with data
+(SiegeLord)</p></li>
+<li><p>Add OpenMPT support. This is meant to replace DUMB, as DUMB is
+not maintained. You can use the compatibility config option
+<code>acodec_prefer_dumb</code> to temporarily make DUMB the preferred
+handler for module files, if Allegro is built with both DUMB and
+OpenMPT. Some modules may sound different under OpenMPT.
+(SiegeLord)</p></li>
+</ul>
+<p>Native dialog addon:</p>
+<ul>
+<li><p>Add Android support (Alexandre Martins)</p></li>
+<li><p>Auto-scroll the native textlog on MacOS (SiegeLord)</p></li>
+<li><p>Fix monospace fonts on MacOS in the native textlog
+(SiegeLord)</p></li>
+<li><p>Improve the patterns arg in
+<code>al_create_native_file_dialog</code> (SiegeLord)</p>
+<ul>
+<li>Support for multiple pattern sets (Windows/Linux)</li>
+<li>Supports for custom pattern set descriptions (Windows/Linux)</li>
+<li>Support for MIME types on MacOS</li>
+<li>Remove the implicit catch-all pattern on Windows (the “All files
+<em>.</em>”), it was inconsistent with other platforms.</li>
+<li>Make MacOS do a better job at extracting the file extension</li>
+<li>Improve documentation overall</li>
+</ul></li>
+</ul>
+<p>Video addon:</p>
+<ul>
+<li><p>Make <code>al_is_video_playing</code> return false before
+<code>al_start_video</code> (SiegeLord)</p></li>
+<li><p>Make <code>ALLEGRO_VIDEO</code> work with the automatic
+destruction system (SiegeLord)</p></li>
+</ul>
+<p>Build system:</p>
+<ul>
+<li><p>Reproducible build support (Andreas Rönnquist)</p></li>
+<li><p>Fix multiarch install location (Andreas Rönnquist)</p></li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li><p>Remove VLAs to improve Visual Studio support (Jeff Linahan,
+SiegeLord)</p></li>
+<li><p>Fix opaque black background pixels in explosion sprites in the
+Shooter demo (tstoeter)</p></li>
+</ul>
 <h1 id="changes-from-5.2.9-to-5.2.9.1-january-2024">Changes from 5.2.9
 to 5.2.9.1 (January 2024)</h1>
 <p>Linux:</p>
