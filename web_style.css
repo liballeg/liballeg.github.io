@@ -295,3 +295,13 @@ div.example {
 div.example p {
     margin: 0px
 }
+
+a[href*="web.archive.org"]::after {
+    content: "webarchive";
+    color: #808080;
+    background-color: #e8e8e8;
+    border-radius: 1em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    margin-left: 0.5em;
+}
