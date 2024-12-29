@@ -189,7 +189,7 @@ id="toc-al_store_state">al_store_state</a></li>
 <h1 id="allegro_state">ALLEGRO_STATE</h1>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_STATE ALLEGRO_STATE<span class="op">;</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0e05a3baa20c51cb80221d428363a8159730d77e/include/allegro5/tls.h#L49">Source
+href="https://github.com/liballeg/allegro5/blob/5f648d15b1606a6fd5856dbf9a7f6796f53eebd5/include/allegro5/tls.h#L49">Source
 Code</a></p>
 <p>Opaque type which is passed to <a
 href="state.html#al_store_state">al_store_state</a>/<a
@@ -224,16 +224,16 @@ communication.)</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0e05a3baa20c51cb80221d428363a8159730d77e/examples/ex_blend_bench.c#L65">ex_blend_bench.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/5f648d15b1606a6fd5856dbf9a7f6796f53eebd5/examples/ex_blend_bench.c#L65">ex_blend_bench.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0e05a3baa20c51cb80221d428363a8159730d77e/examples/ex_blend2.cpp#L298">ex_blend2.cpp</a></li>
+href="https://github.com/liballeg/allegro5/blob/5f648d15b1606a6fd5856dbf9a7f6796f53eebd5/examples/ex_blend2.cpp#L298">ex_blend2.cpp</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0e05a3baa20c51cb80221d428363a8159730d77e/examples/nihgui.cpp#L24">nihgui.cpp</a></li>
+href="https://github.com/liballeg/allegro5/blob/5f648d15b1606a6fd5856dbf9a7f6796f53eebd5/examples/nihgui.cpp#L24">nihgui.cpp</a></li>
 </ul>
 <h1 id="allegro_state_flags">ALLEGRO_STATE_FLAGS</h1>
 <div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">enum</span> ALLEGRO_STATE_FLAGS</span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0e05a3baa20c51cb80221d428363a8159730d77e/include/allegro5/tls.h#L28">Source
+href="https://github.com/liballeg/allegro5/blob/5f648d15b1606a6fd5856dbf9a7f6796f53eebd5/include/allegro5/tls.h#L28">Source
 Code</a></p>
 <p>Flags which can be passed to <a
 href="state.html#al_store_state">al_store_state</a>/<a
@@ -243,7 +243,7 @@ for the list of flags.</p>
 <h1 id="al_restore_state">al_restore_state</h1>
 <div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_restore_state<span class="op">(</span>ALLEGRO_STATE <span class="dt">const</span> <span class="op">*</span>state<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0e05a3baa20c51cb80221d428363a8159730d77e/src/tls.c#L762">Source
+href="https://github.com/liballeg/allegro5/blob/5f648d15b1606a6fd5856dbf9a7f6796f53eebd5/src/tls.c#L762">Source
 Code</a></p>
 <p>Restores part of the state of the current thread from the given <a
 href="state.html#allegro_state">ALLEGRO_STATE</a> object.</p>
@@ -252,16 +252,16 @@ href="state.html#allegro_state_flags">ALLEGRO_STATE_FLAGS</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0e05a3baa20c51cb80221d428363a8159730d77e/examples/ex_blend_bench.c#L96">ex_blend_bench.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/5f648d15b1606a6fd5856dbf9a7f6796f53eebd5/examples/ex_blend_bench.c#L96">ex_blend_bench.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0e05a3baa20c51cb80221d428363a8159730d77e/examples/ex_blend2.cpp#L316">ex_blend2.cpp</a></li>
+href="https://github.com/liballeg/allegro5/blob/5f648d15b1606a6fd5856dbf9a7f6796f53eebd5/examples/ex_blend2.cpp#L316">ex_blend2.cpp</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0e05a3baa20c51cb80221d428363a8159730d77e/examples/nihgui.cpp#L33">nihgui.cpp</a></li>
+href="https://github.com/liballeg/allegro5/blob/5f648d15b1606a6fd5856dbf9a7f6796f53eebd5/examples/nihgui.cpp#L33">nihgui.cpp</a></li>
 </ul>
 <h1 id="al_store_state">al_store_state</h1>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_store_state<span class="op">(</span>ALLEGRO_STATE <span class="op">*</span>state<span class="op">,</span> <span class="dt">int</span> flags<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0e05a3baa20c51cb80221d428363a8159730d77e/src/tls.c#L692">Source
+href="https://github.com/liballeg/allegro5/blob/5f648d15b1606a6fd5856dbf9a7f6796f53eebd5/src/tls.c#L692">Source
 Code</a></p>
 <p>Stores part of the state of the current thread in the given <a
 href="state.html#allegro_state">ALLEGRO_STATE</a> object. The flags
@@ -287,17 +287,17 @@ and ALLEGRO_STATE_TARGET_BITMAP</li>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0e05a3baa20c51cb80221d428363a8159730d77e/examples/ex_blend_bench.c#L91">ex_blend_bench.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/5f648d15b1606a6fd5856dbf9a7f6796f53eebd5/examples/ex_blend_bench.c#L91">ex_blend_bench.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0e05a3baa20c51cb80221d428363a8159730d77e/examples/ex_blend2.cpp#L299">ex_blend2.cpp</a></li>
+href="https://github.com/liballeg/allegro5/blob/5f648d15b1606a6fd5856dbf9a7f6796f53eebd5/examples/ex_blend2.cpp#L299">ex_blend2.cpp</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0e05a3baa20c51cb80221d428363a8159730d77e/examples/nihgui.cpp#L29">nihgui.cpp</a></li>
+href="https://github.com/liballeg/allegro5/blob/5f648d15b1606a6fd5856dbf9a7f6796f53eebd5/examples/nihgui.cpp#L29">nihgui.cpp</a></li>
 </ul>
 <h1 id="al_get_errno">al_get_errno</h1>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> al_get_errno<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>GETTER<span class="op">(</span>allegro_errno<span class="op">,</span> <span class="dv">0</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0e05a3baa20c51cb80221d428363a8159730d77e/src/tls.c#L928">Source
+href="https://github.com/liballeg/allegro5/blob/5f648d15b1606a6fd5856dbf9a7f6796f53eebd5/src/tls.c#L928">Source
 Code</a></p>
 <p>Some Allegro functions will set an error number as well as returning
 an error code. Call this function to retrieve the last error number set
@@ -305,25 +305,25 @@ for the calling thread.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0e05a3baa20c51cb80221d428363a8159730d77e/examples/ex_utf8.c#L477">ex_utf8.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/5f648d15b1606a6fd5856dbf9a7f6796f53eebd5/examples/ex_utf8.c#L477">ex_utf8.c</a></li>
 </ul>
 <h1 id="al_set_errno">al_set_errno</h1>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_set_errno<span class="op">(</span><span class="dt">int</span> errnum<span class="op">)</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>SETTER<span class="op">(</span>allegro_errno<span class="op">,</span> errnum<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0e05a3baa20c51cb80221d428363a8159730d77e/src/tls.c#L933">Source
+href="https://github.com/liballeg/allegro5/blob/5f648d15b1606a6fd5856dbf9a7f6796f53eebd5/src/tls.c#L933">Source
 Code</a></p>
 <p>Set the error number for the calling thread.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0e05a3baa20c51cb80221d428363a8159730d77e/examples/ex_curl.c#L250">ex_curl.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/5f648d15b1606a6fd5856dbf9a7f6796f53eebd5/examples/ex_curl.c#L250">ex_curl.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0e05a3baa20c51cb80221d428363a8159730d77e/examples/ex_utf8.c#L475">ex_utf8.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/5f648d15b1606a6fd5856dbf9a7f6796f53eebd5/examples/ex_utf8.c#L475">ex_utf8.c</a></li>
 </ul>
 <p class="timestamp">
 Allegro version 5.2.11 (GIT)
- - Last updated: 2024-12-29 03:39:22 UTC
+ - Last updated: 2024-12-29 04:07:04 UTC
 </p>
 </div>
 </body>
