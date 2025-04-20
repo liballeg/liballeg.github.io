@@ -3,8 +3,15 @@
 <title>Allegro news</title>
 <link href="https://liballeg.org/"/>
 <link rel="self" href="https://liballeg.org/feed_atom.xml"/>
-<updated>2024-12-28T20:23:02-08:00</updated>
+<updated>2025-04-20T16:32:18-07:00</updated>
 <id>urn:uuid:661257c2-82a0-4510-b2be-0f6b010807b9</id>
+<entry>
+<title>Allegro 4 moved to its own repository.</title>
+<author><name>Allegro developers</name></author>
+<link href="https://liballeg.org/"/>
+<id>urn:uuid:1dc12402-9389-462d-8c40-c2d981c8c0b3</id>
+<updated>2025-04-20T16:32:18-07:00</updated>
+</entry>
 <entry>
 <title>Allegro 5.2.10.1 released!</title>
 <author><name>Allegro developers</name></author>
