@@ -207,7 +207,7 @@ id="toc-al_radtofix_r">al_radtofix_r</a></li>
 <h1 id="al_fixed">al_fixed</h1>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="dt">int32_t</span> al_fixed<span class="op">;</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/include/allegro5/fixed.h#L30">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/include/allegro5/fixed.h#L30">Source
 Code</a></p>
 <p>A fixed point number.</p>
 <p>Allegro provides some routines for working with fixed point numbers,
@@ -235,7 +235,7 @@ a specific machine class.</p>
 <h1 id="al_itofix">al_itofix</h1>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>al_fixed al_itofix<span class="op">(</span><span class="dt">int</span> x<span class="op">);</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L332">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L332">Source
 Code</a></p>
 <p>Converts an integer to fixed point. This is the same thing as
 x&lt;&lt;16. Remember that overflows (trying to convert an integer
@@ -261,7 +261,7 @@ href="fixed.html#al_fixtof">al_fixtof</a>.</p>
 <h1 id="al_fixtoi">al_fixtoi</h1>
 <div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> al_fixtoi<span class="op">(</span>al_fixed x<span class="op">);</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L336">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L336">Source
 Code</a></p>
 <p>Converts fixed point to integer, rounding as required to the nearest
 integer.</p>
@@ -281,7 +281,7 @@ href="fixed.html#al_fixceil">al_fixceil</a>.</p>
 <h1 id="al_fixfloor">al_fixfloor</h1>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> al_fixfloor<span class="op">(</span>al_fixed x<span class="op">);</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L340">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L340">Source
 Code</a></p>
 <p>Returns the greatest integer not greater than x. That is, it rounds
 towards negative infinity.</p>
@@ -298,7 +298,7 @@ href="fixed.html#al_fixceil">al_fixceil</a>.</p>
 <h1 id="al_fixceil">al_fixceil</h1>
 <div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> al_fixceil<span class="op">(</span>al_fixed x<span class="op">);</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L344">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L344">Source
 Code</a></p>
 <p>Returns the smallest integer not less than x. That is, it rounds
 towards positive infinity.</p>
@@ -315,7 +315,7 @@ href="fixed.html#al_fixfloor">al_fixfloor</a>.</p>
 <h1 id="al_ftofix">al_ftofix</h1>
 <div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>al_fixed al_ftofix<span class="op">(</span><span class="dt">double</span> x<span class="op">);</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L348">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L348">Source
 Code</a></p>
 <p>Converts a floating point value to fixed point. Unlike <a
 href="fixed.html#al_itofix">al_itofix</a>, this function clamps values
@@ -339,7 +339,7 @@ href="state.html#al_get_errno">al_get_errno</a></p>
 <h1 id="al_fixtof">al_fixtof</h1>
 <div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> al_fixtof<span class="op">(</span>al_fixed x<span class="op">);</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L352">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L352">Source
 Code</a></p>
 <p>Converts fixed point to floating point.</p>
 <p>Example:</p>
@@ -356,7 +356,7 @@ href="fixed.html#al_fixtoi">al_fixtoi</a>.</p>
 <h1 id="al_fixmul">al_fixmul</h1>
 <div class="sourceCode" id="cb15"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>al_fixed al_fixmul<span class="op">(</span>al_fixed x<span class="op">,</span> al_fixed y<span class="op">);</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L364">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L364">Source
 Code</a></p>
 <p>A fixed point value can be multiplied or divided by an integer with
 the normal <code>*</code> and <code>/</code> operators. To multiply two
@@ -385,7 +385,7 @@ href="state.html#al_get_errno">al_get_errno</a>.</p>
 <h1 id="al_fixdiv">al_fixdiv</h1>
 <div class="sourceCode" id="cb17"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>al_fixed al_fixdiv<span class="op">(</span>al_fixed x<span class="op">,</span> al_fixed y<span class="op">);</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L368">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L368">Source
 Code</a></p>
 <p>A fixed point value can be divided by an integer with the normal
 <code>/</code> operator. To divide two fixed point values, though, you
@@ -417,7 +417,7 @@ href="state.html#al_get_errno">al_get_errno</a>.</p>
 <h1 id="al_fixadd">al_fixadd</h1>
 <div class="sourceCode" id="cb19"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>al_fixed al_fixadd<span class="op">(</span>al_fixed x<span class="op">,</span> al_fixed y<span class="op">);</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L356">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L356">Source
 Code</a></p>
 <p>Although fixed point numbers can be added with the normal
 <code>+</code> integer operator, that doesn’t provide any protection
@@ -443,7 +443,7 @@ href="fixed.html#al_fixdiv">al_fixdiv</a>.</p>
 <h1 id="al_fixsub">al_fixsub</h1>
 <div class="sourceCode" id="cb21"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>al_fixed al_fixsub<span class="op">(</span>al_fixed x<span class="op">,</span> al_fixed y<span class="op">);</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L360">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L360">Source
 Code</a></p>
 <p>Although fixed point numbers can be subtracted with the normal
 <code>-</code> integer operator, that doesn’t provide any protection
@@ -481,7 +481,7 @@ to a full circle.</p>
 <h2 id="al_fixtorad_r">al_fixtorad_r</h2>
 <div class="sourceCode" id="cb23"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> al_fixed al_fixtorad_r <span class="op">=</span> <span class="op">(</span>al_fixed<span class="op">)</span><span class="dv">1608</span><span class="op">;</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L290">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L290">Source
 Code</a></p>
 <p>This constant gives a ratio which can be used to convert a fixed
 point number in binary angle format to a fixed point number in
@@ -499,7 +499,7 @@ href="fixed.html#al_radtofix_r">al_radtofix_r</a>.</p>
 <h2 id="al_radtofix_r">al_radtofix_r</h2>
 <div class="sourceCode" id="cb25"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> al_fixed al_radtofix_r <span class="op">=</span> <span class="op">(</span>al_fixed<span class="op">)</span><span class="dv">2670177</span><span class="op">;</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L298">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L298">Source
 Code</a></p>
 <p>This constant gives a ratio which can be used to convert a fixed
 point number in radians to a fixed point number in binary angle
@@ -513,7 +513,7 @@ href="fixed.html#al_fixtorad_r">al_fixtorad_r</a>.</p>
 <h2 id="al_fixsin">al_fixsin</h2>
 <div class="sourceCode" id="cb27"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>al_fixed al_fixsin<span class="op">(</span>al_fixed x<span class="op">);</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L376">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L376">Source
 Code</a></p>
 <p>This function finds the sine of a value using a lookup table. The
 input value must be a fixed point binary angle.</p>
@@ -532,7 +532,7 @@ as a fixed point value.</p>
 <h2 id="al_fixcos">al_fixcos</h2>
 <div class="sourceCode" id="cb29"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>al_fixed al_fixcos<span class="op">(</span>al_fixed x<span class="op">);</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L372">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L372">Source
 Code</a></p>
 <p>This function finds the cosine of a value using a lookup table. The
 input value must be a fixed point binary angle.</p>
@@ -551,7 +551,7 @@ as a fixed point value.</p>
 <h2 id="al_fixtan">al_fixtan</h2>
 <div class="sourceCode" id="cb31"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>al_fixed al_fixtan<span class="op">(</span>al_fixed x<span class="op">);</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L380">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L380">Source
 Code</a></p>
 <p>This function finds the tangent of a value using a lookup table. The
 input value must be a fixed point binary angle.</p>
@@ -570,7 +570,7 @@ angle as a fixed point value.</p>
 <h2 id="al_fixasin">al_fixasin</h2>
 <div class="sourceCode" id="cb33"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>al_fixed al_fixasin<span class="op">(</span>al_fixed x<span class="op">);</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L388">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L388">Source
 Code</a></p>
 <p>This function finds the inverse sine of a value using a lookup table.
 The input value must be a fixed point value. The inverse sine is defined
@@ -596,7 +596,7 @@ range -64 to 64.</p>
 <h2 id="al_fixacos">al_fixacos</h2>
 <div class="sourceCode" id="cb35"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>al_fixed al_fixacos<span class="op">(</span>al_fixed x<span class="op">);</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L384">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L384">Source
 Code</a></p>
 <p>This function finds the inverse cosine of a value using a lookup
 table. The input must be a fixed point value. The inverse cosine is
@@ -614,7 +614,7 @@ to 128.</p>
 <h2 id="al_fixatan">al_fixatan</h2>
 <div class="sourceCode" id="cb37"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>al_fixed al_fixatan<span class="op">(</span>al_fixed x<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L215">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L215">Source
 Code</a></p>
 <p>This function finds the inverse tangent of a value using a lookup
 table. The input must be a fixed point value. The inverse tangent is the
@@ -629,7 +629,7 @@ measured as a fixed point binary format angle.</p>
 <h2 id="al_fixatan2">al_fixatan2</h2>
 <div class="sourceCode" id="cb39"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>al_fixed al_fixatan2<span class="op">(</span>al_fixed y<span class="op">,</span> al_fixed x<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L252">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L252">Source
 Code</a></p>
 <p>This is a fixed point version of the libc atan2() routine. It
 computes the arc tangent of <code>y / x</code>, but the signs of both
@@ -655,7 +655,7 @@ EDOM.</p>
 <h2 id="al_fixsqrt">al_fixsqrt</h2>
 <div class="sourceCode" id="cb41"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>al_fixed al_fixsqrt<span class="op">(</span>al_fixed x<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L305">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L305">Source
 Code</a></p>
 <p>This finds out the non negative square root of <code>x</code>. If
 <code>x</code> is negative, Allegro’s errno is set to EDOM and the
@@ -663,14 +663,14 @@ function returns zero.</p>
 <h2 id="al_fixhypot">al_fixhypot</h2>
 <div class="sourceCode" id="cb42"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>al_fixed al_fixhypot<span class="op">(</span>al_fixed x<span class="op">,</span> al_fixed y<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/3ec36b446b3cf4b99a6b6f67a155788a33d587a6/src/math.c#L321">Source
+href="https://github.com/liballeg/allegro5/blob/a71d1cf0435c37053e781739f6da11c9700adb64/src/math.c#L321">Source
 Code</a></p>
 <p>Fixed point hypotenuse (returns the square root of
 <code>x*x + y*y</code>). This should be better than calculating the
 formula yourself manually, since the error is much smaller.</p>
 <p class="timestamp">
 Allegro version 5.2.11 (GIT)
- - Last updated: 2025-09-27 19:13:46 UTC
+ - Last updated: 2025-10-05 05:34:59 UTC
 </p>
 </div>
 </body>
