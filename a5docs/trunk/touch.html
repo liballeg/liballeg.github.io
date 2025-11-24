@@ -205,7 +205,7 @@ id="toc-al_get_touch_input_mouse_emulation_event_source">al_get_touch_input_mous
 <h1 id="allegro_touch_input">ALLEGRO_TOUCH_INPUT</h1>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_TOUCH_INPUT ALLEGRO_TOUCH_INPUT<span class="op">;</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/include/allegro5/touch_input.h#L34">Source
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/include/allegro5/touch_input.h#L34">Source
 Code</a></p>
 <p>An abstract data type representing a physical touch screen or touch
 pad.</p>
@@ -214,14 +214,14 @@ pad.</p>
 id="allegro_touch_input_max_touch_count">ALLEGRO_TOUCH_INPUT_MAX_TOUCH_COUNT</h1>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#define ALLEGRO_TOUCH_INPUT_MAX_TOUCH_COUNT        16</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/include/allegro5/touch_input.h#L29">Source
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/include/allegro5/touch_input.h#L29">Source
 Code</a></p>
 <p>The maximum amount of simultaneous touches that can be detected.</p>
 <p>Since: 5.1.0</p>
 <h1 id="allegro_touch_state">ALLEGRO_TOUCH_STATE</h1>
 <div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_TOUCH_STATE ALLEGRO_TOUCH_STATE<span class="op">;</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/include/allegro5/touch_input.h#L44">Source
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/include/allegro5/touch_input.h#L44">Source
 Code</a></p>
 <p>This is a structure that is used to hold a “snapshot” of a touch at a
 particular instant.</p>
@@ -243,7 +243,7 @@ touched.</li>
 <h1 id="allegro_touch_input_state">ALLEGRO_TOUCH_INPUT_STATE</h1>
 <div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_TOUCH_INPUT_STATE ALLEGRO_TOUCH_INPUT_STATE<span class="op">;</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/include/allegro5/touch_input.h#L39">Source
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/include/allegro5/touch_input.h#L39">Source
 Code</a></p>
 <p>This is a structure that holds a snapshot of all simultaneous touches
 at a particular instant.</p>
@@ -256,7 +256,7 @@ href="touch.html#allegro_touch_state">ALLEGRO_TOUCH_STATE</a></li>
 <h1 id="allegro_mouse_emulation_mode">ALLEGRO_MOUSE_EMULATION_MODE</h1>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">enum</span> ALLEGRO_MOUSE_EMULATION_MODE</span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/include/allegro5/touch_input.h#L71">Source
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/include/allegro5/touch_input.h#L71">Source
 Code</a></p>
 <p>Type of mouse emulation to apply.</p>
 <dl>
@@ -290,7 +290,7 @@ different semantics compared to mouse input.</p>
 <h1 id="al_install_touch_input">al_install_touch_input</h1>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> al_install_touch_input<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/src/touch_input.c#L43">Source
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/src/touch_input.c#L43">Source
 Code</a></p>
 <p>Install a touch input driver, returning true if successful. If a
 touch input driver was already installed, returns true immediately.</p>
@@ -300,16 +300,16 @@ href="touch.html#al_uninstall_touch_input">al_uninstall_touch_input</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/examples/common.c#L18">common.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/examples/common.c#L18">common.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/examples/ex_touch_input.c#L56">ex_touch_input.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/examples/ex_touch_input.c#L56">ex_touch_input.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/examples/ex_lockbitmap.c#L165">ex_lockbitmap.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/examples/ex_lockbitmap.c#L165">ex_lockbitmap.c</a></li>
 </ul>
 <h1 id="al_uninstall_touch_input">al_uninstall_touch_input</h1>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_uninstall_touch_input<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/src/touch_input.c#L68">Source
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/src/touch_input.c#L68">Source
 Code</a></p>
 <p>Uninstalls the active touch input driver. If no touch input driver
 was active, this function does nothing.</p>
@@ -320,7 +320,7 @@ href="touch.html#al_install_touch_input">al_install_touch_input</a></p>
 <h1 id="al_is_touch_input_installed">al_is_touch_input_installed</h1>
 <div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> al_is_touch_input_installed<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/src/touch_input.c#L35">Source
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/src/touch_input.c#L35">Source
 Code</a></p>
 <p>Returns true if <a
 href="touch.html#al_install_touch_input">al_install_touch_input</a> was
@@ -329,16 +329,16 @@ called successfully.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/examples/ex_lockbitmap.c#L178">ex_lockbitmap.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/examples/ex_lockbitmap.c#L178">ex_lockbitmap.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/examples/ex_haiku.c#L973">ex_haiku.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/examples/ex_haiku.c#L973">ex_haiku.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/examples/ex_prim_shader.c#L154">ex_prim_shader.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/examples/ex_prim_shader.c#L154">ex_prim_shader.c</a></li>
 </ul>
 <h1 id="al_get_touch_input_state">al_get_touch_input_state</h1>
 <div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_get_touch_input_state<span class="op">(</span>ALLEGRO_TOUCH_INPUT_STATE <span class="op">*</span>ret_state<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/src/touch_input.c#L93">Source
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/src/touch_input.c#L93">Source
 Code</a></p>
 <p>Gets the current touch input state. The touch information is copied
 into the <a
@@ -348,7 +348,7 @@ you provide to this function.</p>
 <h1 id="al_set_mouse_emulation_mode">al_set_mouse_emulation_mode</h1>
 <div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_set_mouse_emulation_mode<span class="op">(</span><span class="dt">int</span> mode<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/src/touch_input.c#L104">Source
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/src/touch_input.c#L104">Source
 Code</a></p>
 <p>Sets the kind of mouse emulation for the touch input subsystem to
 perform.</p>
@@ -365,12 +365,12 @@ href="touch.html#al_get_mouse_emulation_mode">al_get_mouse_emulation_mode</a>.</
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/examples/ex_native_filechooser.c#L205">ex_native_filechooser.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/examples/ex_native_filechooser.c#L205">ex_native_filechooser.c</a></li>
 </ul>
 <h1 id="al_get_mouse_emulation_mode">al_get_mouse_emulation_mode</h1>
 <div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> al_get_mouse_emulation_mode<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/src/touch_input.c#L117">Source
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/src/touch_input.c#L117">Source
 Code</a></p>
 <p>Returns the kind of mouse emulation which the touch input subsystem
 is set to perform.</p>
@@ -388,7 +388,7 @@ href="touch.html#al_set_mouse_emulation_mode">al_set_mouse_emulation_mode</a>.</
 id="al_get_touch_input_event_source">al_get_touch_input_event_source</h1>
 <div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ALLEGRO_EVENT_SOURCE <span class="op">*</span>al_get_touch_input_event_source<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/src/touch_input.c#L130">Source
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/src/touch_input.c#L130">Source
 Code</a></p>
 <p>Returns the global touch input event source. This event source
 generates <a href="events.html#allegro_event_touch_begin">touch input
@@ -400,17 +400,17 @@ href="events.html#al_register_event_source">al_register_event_source</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/examples/ex_touch_input.c#L66">ex_touch_input.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/examples/ex_touch_input.c#L66">ex_touch_input.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/examples/ex_android.c#L129">ex_android.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/examples/ex_android.c#L129">ex_android.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/examples/ex_polygon.c#L387">ex_polygon.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/examples/ex_polygon.c#L387">ex_polygon.c</a></li>
 </ul>
 <h1
 id="al_get_touch_input_mouse_emulation_event_source">al_get_touch_input_mouse_emulation_event_source</h1>
 <div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ALLEGRO_EVENT_SOURCE <span class="op">*</span>al_get_touch_input_mouse_emulation_event_source<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/src/touch_input.c#L140">Source
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/src/touch_input.c#L140">Source
 Code</a></p>
 <p>Returns the global touch input event source for emulated mouse
 events. This event source generates <a
@@ -428,15 +428,15 @@ different semantics compared to mouse input.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/examples/ex_lockbitmap.c#L180">ex_lockbitmap.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/examples/ex_lockbitmap.c#L180">ex_lockbitmap.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/examples/ex_haiku.c#L975">ex_haiku.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/examples/ex_haiku.c#L975">ex_haiku.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/a3829330939260cb414f568253eae9e614c706d1/examples/ex_prim_shader.c#L156">ex_prim_shader.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/973ab120d50dfa2a20c77c93e519e64fca5845e9/examples/ex_prim_shader.c#L156">ex_prim_shader.c</a></li>
 </ul>
 <p class="timestamp">
 Allegro version 5.2.11 (GIT)
- - Last updated: 2025-11-23 07:45:24 UTC
+ - Last updated: 2025-11-24 03:03:16 UTC
 </p>
 </div>
 </body>
