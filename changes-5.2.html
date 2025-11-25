@@ -104,6 +104,98 @@ project</a></p>
 <div id="content">
 <p>These lists serve as summaries; the full histories are in the git
 repository.</p>
+<h1 id="changes-from-5.2.10.1-to-5.2.11-november-2025">Changes from
+5.2.10.1 to 5.2.11 (November 2025)</h1>
+<p>Core</p>
+<ul>
+<li>Remove tabs and trailing spaces from source files (SiegeLord)</li>
+<li>Disable DebugOutputString on windows for logs by default (#1548)
+(SiegeLord)</li>
+<li>Fixed initialization of the resize event thread when calling
+<code>al_init</code> after <code>al_uninstall_system</code> (Kevin
+Wellwood)</li>
+<li>Add “gamepad” support. This uses the community sourced SDL
+controller database. See ex_joystick_events for how to use this.
+(SiegeLord)</li>
+<li>Fix assorted issues with joystick hotplugging (SiegeLord)</li>
+<li>Add locks to avoid stale clipboard text (#1629) (Steve Fosdick)</li>
+<li>Reset the <code>GL_UNPACK_ROW_LENGTH</code> after unlocking certain
+bitmaps (SiegeLord, Alan_Roxdale)</li>
+</ul>
+<p>MacOS</p>
+<ul>
+<li>Use a faster method of scrolling to the bottom for MacOS text logs
+(#1610) (SiegeLord)</li>
+<li>Fix static linking (SiegeLord)</li>
+<li>Fix <code>al_set_mouse_xy</code> on high resolution MacOS displays
+(SiegeLord)</li>
+<li>Add partial support for OpenGL 3 displays. Bitmap drawing works, but
+primitives addon does not (j-w-c-b)</li>
+<li>Fix Segfault with Japanese keyboards (John Wood)</li>
+<li>Remove the native MacOS image loader, it had too many limitations
+(#1531) (SiegeLord)</li>
+</ul>
+<p>Windows</p>
+<ul>
+<li>Handle DSERR_NODRIVER when reporting error in DirectSound driver
+(Andrew Kravchuk)</li>
+<li>Don’t set WM_EX_TOPMOST for Direct3D FULLSCREEN windows
+(SiegeLord)</li>
+<li>Make Python binding work on Windows (Mikhail Titov)</li>
+</ul>
+<p>Linux</p>
+<ul>
+<li>Fixed memory leak (Helodity)</li>
+<li>Fix crash when using the LC_CTYPE=eo.ut8 on X11 (#1651)
+(SiegeLord)</li>
+<li>Improve behavior when the display is disconnected (SiegeLord)</li>
+</ul>
+<p>TTF addon</p>
+<ul>
+<li>Add color emoji support (Elias Pschernig)</li>
+</ul>
+<p>Audio addon</p>
+<ul>
+<li>Fix a race between detaching instances from mixers and reading from
+them (SiegeLord)</li>
+</ul>
+<p>Image addon</p>
+<ul>
+<li>Fix loading of padded PCX files (Mikhail Titov)</li>
+</ul>
+<p>Video addon</p>
+<ul>
+<li>Add <code>al_open_video_f</code> (jarroddavis68)</li>
+</ul>
+<p>Primitives addon</p>
+<ul>
+<li>Move the most of the implementation into the core. This should be
+feature-neutral, but will enable future unification (#1003)
+(SiegeLord)</li>
+<li>Populate the UV coordinates for the vertices in many high-level
+primitives which enables some shader effects. See <code>ex_prim</code>
+example for how this looks. (Helodity, SiegeLord)</li>
+</ul>
+<p>Documentation</p>
+<ul>
+<li>Document <code>ALLEGRO_MOUSE_STATE.display</code> (j-w-c-b)</li>
+<li>Remove GETTER/SETTER from generated docs (j-w-c-b)</li>
+<li>Fix the the return value of <code>al_insert_menu_item</code> (#1648)
+(SiegeLord)</li>
+</ul>
+<p>Build system</p>
+<ul>
+<li>CMake improvements (Cristian Le)</li>
+<li>Export build tree with CMake to ease debugging (Mikhail Titov)</li>
+<li>Allow using SIMD instruction sets besides SSE (Mikhail Titov)</li>
+<li>Check vcpkg locations for dependencies (Mikhail Titov)</li>
+<li>Assorted CI improvements (SiegeLord, Mikhail Titov)</li>
+</ul>
+<p>Examples</p>
+<ul>
+<li><code>ex_joystick_hotplugging</code> is now more exciting
+(SiegeLord)</li>
+</ul>
 <h1 id="changes-from-5.2.10-to-5.2.10.1-december-2024">Changes from
 5.2.10 to 5.2.10.1 (December 2024)</h1>
 <p>MacOS</p>
