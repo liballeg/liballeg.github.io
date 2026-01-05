@@ -104,6 +104,26 @@ project</a></p>
 <div id="content">
 <p>These lists serve as summaries; the full histories are in the git
 repository.</p>
+<h1 id="changes-from-5.2.11.1-to-5.2.11.2-january-2026">Changes from
+5.2.11.1 to 5.2.11.2 (January 2026)</h1>
+<p>MacOS:</p>
+<ul>
+<li>Fix HID joystick driver not recognizing triggers (Connor Clark)</li>
+</ul>
+<p>Windows:</p>
+<ul>
+<li>Prefer <code>_fseeki64</code> and <code>_ftelli64</code> if
+available (Andrew McRae)</li>
+</ul>
+<p>Primitives addon</p>
+<ul>
+<li>Re-export <code>al_draw_soft_line</code> (#1691) (SiegeLord)</li>
+<li>Initialize an uninitialized variable (Hannes Pabst)</li>
+<li>Re-enable pre-compiled shaders for D3D9X to avoid a dll dependency
+(#1694) (SiegeLord).</li>
+<li>Revert the primitives state setup/revert back to the old primitives
+addon logic (SiegeLord).</li>
+</ul>
 <h1 id="changes-from-5.2.11-to-5.2.11.1-november-2025">Changes from
 5.2.11 to 5.2.11.1 (November 2025)</h1>
 <p>Primitives addon</p>
