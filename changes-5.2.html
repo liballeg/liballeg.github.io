@@ -104,12 +104,15 @@ project</a></p>
 <div id="content">
 <p>These lists serve as summaries; the full histories are in the git
 repository.</p>
+<h1 id="changes-from-5.2.11.2-to-5.2.11.3-february-2026">Changes from
+5.2.11.2 to 5.2.11.3 (February 2026)</h1>
+<p>Core:</p>
+<ul>
+<li>Fix a backwards incompatible change to ALLEGRO_JOYSTICK_STATE
+(#1718) (SiegeLord)</li>
+</ul>
 <h1 id="changes-from-5.2.11.1-to-5.2.11.2-january-2026">Changes from
 5.2.11.1 to 5.2.11.2 (January 2026)</h1>
-<p>MacOS:</p>
-<ul>
-<li>Fix HID joystick driver not recognizing triggers (Connor Clark)</li>
-</ul>
 <p>Windows:</p>
 <ul>
 <li>Prefer <code>_fseeki64</code> and <code>_ftelli64</code> if
@@ -123,6 +126,10 @@ available (Andrew McRae)</li>
 (#1694) (SiegeLord).</li>
 <li>Revert the primitives state setup/revert back to the old primitives
 addon logic (SiegeLord).</li>
+</ul>
+<p>Examples</p>
+<ul>
+<li>Fix <code>ex_prim_wrap</code> (SiegeLord)</li>
 </ul>
 <h1 id="changes-from-5.2.11-to-5.2.11.1-november-2025">Changes from
 5.2.11 to 5.2.11.1 (November 2025)</h1>
