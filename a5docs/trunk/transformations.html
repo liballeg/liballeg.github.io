@@ -308,7 +308,7 @@ be applied first.</p>
 <h1 id="allegro_transform">ALLEGRO_TRANSFORM</h1>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">struct</span> ALLEGRO_TRANSFORM ALLEGRO_TRANSFORM<span class="op">;</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/include/allegro5/transformations.h#L12">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/include/allegro5/transformations.h#L12">Source
 Code</a></p>
 <p>Defines the generic transformation type, a 4x4 matrix. 2D transforms
 use only a small subsection of this matrix, namely the top left 2x2
@@ -320,16 +320,16 @@ matrix, and the right most 2x1 matrix, for a total of 6 values.</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_shader.cpp#L137">ex_shader.cpp</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_shader.cpp#L137">ex_shader.cpp</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_shader_target.c#L61">ex_shader_target.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_shader_target.c#L61">ex_shader_target.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_audio_timer.c#L74">ex_audio_timer.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_audio_timer.c#L74">ex_audio_timer.c</a></li>
 </ul>
 <h1 id="al_copy_transform">al_copy_transform</h1>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_copy_transform<span class="op">(</span>ALLEGRO_TRANSFORM <span class="op">*</span>dest<span class="op">,</span> <span class="dt">const</span> ALLEGRO_TRANSFORM <span class="op">*</span>src<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L30">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L30">Source
 Code</a></p>
 <p>Makes a copy of a transformation.</p>
 <p><em>Parameters:</em></p>
@@ -340,12 +340,12 @@ Code</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_shader.cpp#L138">ex_shader.cpp</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_shader.cpp#L138">ex_shader.cpp</a></li>
 </ul>
 <h1 id="al_use_transform">al_use_transform</h1>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_use_transform<span class="op">(</span><span class="dt">const</span> ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L40">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L40">Source
 Code</a></p>
 <p>Sets the transformation to be used for the the drawing operations on
 the target bitmap (each bitmap maintains its own transformation). Every
@@ -373,16 +373,16 @@ href="transformations.html#al_transform_coordinates">al_transform_coordinates</a
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_shader.cpp#L142">ex_shader.cpp</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_shader.cpp#L142">ex_shader.cpp</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_shader_target.c#L120">ex_shader_target.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_shader_target.c#L120">ex_shader_target.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_audio_timer.c#L124">ex_audio_timer.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_audio_timer.c#L124">ex_audio_timer.c</a></li>
 </ul>
 <h1 id="al_get_current_transform">al_get_current_transform</h1>
 <div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> ALLEGRO_TRANSFORM <span class="op">*</span>al_get_current_transform<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L104">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L104">Source
 Code</a></p>
 <p>Returns the transformation of the current target bitmap, as set by <a
 href="transformations.html#al_use_transform">al_use_transform</a>. If
@@ -393,16 +393,16 @@ href="transformations.html#al_get_current_projection_transform">al_get_current_p
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_shader.cpp#L138">ex_shader.cpp</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_shader.cpp#L138">ex_shader.cpp</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_emoji.c#L66">ex_emoji.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_emoji.c#L66">ex_emoji.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_color_gradient.c#L63">ex_color_gradient.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_color_gradient.c#L63">ex_color_gradient.c</a></li>
 </ul>
 <h1 id="al_use_projection_transform">al_use_projection_transform</h1>
 <div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_use_projection_transform<span class="op">(</span><span class="dt">const</span> ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L74">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L74">Source
 Code</a></p>
 <p>Sets the projection transformation to be used for the drawing
 operations on the target bitmap (each bitmap maintains its own
@@ -441,17 +441,17 @@ href="transformations.html#al_orthographic_transform">al_orthographic_transform<
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_projection.c#L79">ex_projection.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_projection.c#L79">ex_projection.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_depth_target.c#L40">ex_depth_target.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_depth_target.c#L40">ex_depth_target.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_projection2.c#L43">ex_projection2.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_projection2.c#L43">ex_projection2.c</a></li>
 </ul>
 <h1
 id="al_get_current_projection_transform">al_get_current_projection_transform</h1>
 <div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> ALLEGRO_TRANSFORM <span class="op">*</span>al_get_current_projection_transform<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L116">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L116">Source
 Code</a></p>
 <p>If there is no target bitmap, this function returns NULL.</p>
 <p><em>Returns:</em> A pointer to the current transformation.</p>
@@ -461,13 +461,13 @@ href="transformations.html#al_use_projection_transform">al_use_projection_transf
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_camera.c#L325">ex_camera.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_camera.c#L325">ex_camera.c</a></li>
 </ul>
 <h1
 id="al_get_current_inverse_transform">al_get_current_inverse_transform</h1>
 <div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> ALLEGRO_TRANSFORM <span class="op">*</span>al_get_current_inverse_transform<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L128">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L128">Source
 Code</a></p>
 <p>Returns the inverse of the current transformation of the target
 bitmap. If there is no target bitmap, this function returns NULL.</p>
@@ -482,7 +482,7 @@ correctly only with 2D transformations.</p>
 <h1 id="al_invert_transform">al_invert_transform</h1>
 <div class="sourceCode" id="cb15"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_invert_transform<span class="op">(</span>ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L273">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L273">Source
 Code</a></p>
 <p>Inverts the passed transformation. If the transformation is nearly
 singular (close to not having an inverse) then the returned
@@ -505,7 +505,7 @@ href="transformations.html#al_check_inverse">al_check_inverse</a></p>
 <h1 id="al_invert_transform_3d">al_invert_transform_3d</h1>
 <div class="sourceCode" id="cb16"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_invert_transform_3d<span class="op">(</span>ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L294">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L294">Source
 Code</a></p>
 <p>Inverts the passed transformation, like <a
 href="transformations.html#al_invert_transform">al_invert_transform</a>,
@@ -517,7 +517,7 @@ but for 3D transformations.</p>
 <h1 id="al_transpose_transform">al_transpose_transform</h1>
 <div class="sourceCode" id="cb17"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_transpose_transform<span class="op">(</span>ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L341">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L341">Source
 Code</a></p>
 <p>Transposes the matrix of the given transform. This can be used for
 inversing a rotation transform. For example:</p>
@@ -531,7 +531,7 @@ inversing a rotation transform. For example:</p>
 <h1 id="al_check_inverse">al_check_inverse</h1>
 <div class="sourceCode" id="cb19"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> al_check_inverse<span class="op">(</span><span class="dt">const</span> ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">,</span> <span class="dt">float</span> tol<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L356">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L356">Source
 Code</a></p>
 <p>Checks if the transformation has an inverse using the supplied
 tolerance. Tolerance should be a small value between 0 and 1, with 1e-7
@@ -566,7 +566,7 @@ href="transformations.html#al_invert_transform">al_invert_transform</a></p>
 <h1 id="al_identity_transform">al_identity_transform</h1>
 <div class="sourceCode" id="cb20"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_identity_transform<span class="op">(</span>ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L146">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L146">Source
 Code</a></p>
 <p>Sets the transformation to be the identity transformation. This is
 the default transformation. Use <a
@@ -588,17 +588,17 @@ href="transformations.html#al_scale_transform">al_scale_transform</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_shader.cpp#L139">ex_shader.cpp</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_shader.cpp#L139">ex_shader.cpp</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_shader_target.c#L117">ex_shader_target.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_shader_target.c#L117">ex_shader_target.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_audio_timer.c#L122">ex_audio_timer.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_audio_timer.c#L122">ex_audio_timer.c</a></li>
 </ul>
 <h1 id="al_build_transform">al_build_transform</h1>
 <div class="sourceCode" id="cb22"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_build_transform<span class="op">(</span>ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">,</span> <span class="dt">float</span> x<span class="op">,</span> <span class="dt">float</span> y<span class="op">,</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>   <span class="dt">float</span> sx<span class="op">,</span> <span class="dt">float</span> sy<span class="op">,</span> <span class="dt">float</span> theta<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L173">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L173">Source
 Code</a></p>
 <p>Builds a transformation given some parameters. This call is
 equivalent to calling the transformations in this order: make identity,
@@ -627,11 +627,11 @@ href="transformations.html#al_compose_transform">al_compose_transform</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_threads.c#L82">ex_threads.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_threads.c#L82">ex_threads.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_emoji.c#L107">ex_emoji.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_emoji.c#L107">ex_emoji.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_color_gradient.c#L173">ex_color_gradient.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_color_gradient.c#L173">ex_color_gradient.c</a></li>
 </ul>
 <h1 id="al_build_camera_transform">al_build_camera_transform</h1>
 <div class="sourceCode" id="cb23"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_build_camera_transform<span class="op">(</span>ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">,</span></span>
@@ -639,7 +639,7 @@ href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>   <span class="dt">float</span> look_x<span class="op">,</span> <span class="dt">float</span> look_y<span class="op">,</span> <span class="dt">float</span> look_z<span class="op">,</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>   <span class="dt">float</span> up_x<span class="op">,</span> <span class="dt">float</span> up_y<span class="op">,</span> <span class="dt">float</span> up_z<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L205">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L205">Source
 Code</a></p>
 <p>Builds a transformation which can be used to transform 3D coordinates
 in world space to camera space. This involves translation and a
@@ -684,12 +684,12 @@ href="transformations.html#al_compose_transform">al_compose_transform</a>,
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_camera.c#L350">ex_camera.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_camera.c#L350">ex_camera.c</a></li>
 </ul>
 <h1 id="al_translate_transform">al_translate_transform</h1>
 <div class="sourceCode" id="cb27"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_translate_transform<span class="op">(</span>ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">,</span> <span class="dt">float</span> x<span class="op">,</span> <span class="dt">float</span> y<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L375">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L375">Source
 Code</a></p>
 <p>Apply a translation to a transformation.</p>
 <p><em>Parameters:</em></p>
@@ -706,16 +706,16 @@ href="transformations.html#al_build_transform">al_build_transform</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_shader.cpp#L140">ex_shader.cpp</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_shader.cpp#L140">ex_shader.cpp</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_shader_target.c#L119">ex_shader_target.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_shader_target.c#L119">ex_shader_target.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_polygon.c#L232">ex_polygon.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_polygon.c#L232">ex_polygon.c</a></li>
 </ul>
 <h1 id="al_rotate_transform">al_rotate_transform</h1>
 <div class="sourceCode" id="cb28"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_rotate_transform<span class="op">(</span>ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">,</span> <span class="dt">float</span> theta<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L399">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L399">Source
 Code</a></p>
 <p>Apply a rotation to a transformation.</p>
 <p><em>Parameters:</em></p>
@@ -732,16 +732,16 @@ href="transformations.html#al_build_transform">al_build_transform</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_depth_mask.c#L60">ex_depth_mask.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_depth_mask.c#L60">ex_depth_mask.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_projection.c#L127">ex_projection.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_projection.c#L127">ex_projection.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_depth_target.c#L51">ex_depth_target.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_depth_target.c#L51">ex_depth_target.c</a></li>
 </ul>
 <h1 id="al_scale_transform">al_scale_transform</h1>
 <div class="sourceCode" id="cb29"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_scale_transform<span class="op">(</span>ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">,</span> <span class="dt">float</span> sx<span class="op">,</span> <span class="dt">float</span> sy<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L423">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L423">Source
 Code</a></p>
 <p>Apply a scale to a transformation.</p>
 <p><em>Parameters:</em></p>
@@ -758,16 +758,16 @@ href="transformations.html#al_build_transform">al_build_transform</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_shader_target.c#L118">ex_shader_target.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_shader_target.c#L118">ex_shader_target.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_audio_timer.c#L123">ex_audio_timer.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_audio_timer.c#L123">ex_audio_timer.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_polygon.c#L233">ex_polygon.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_polygon.c#L233">ex_polygon.c</a></li>
 </ul>
 <h1 id="al_transform_coordinates">al_transform_coordinates</h1>
 <div class="sourceCode" id="cb30"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_transform_coordinates<span class="op">(</span><span class="dt">const</span> ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">,</span> <span class="dt">float</span> <span class="op">*</span>x<span class="op">,</span> <span class="dt">float</span> <span class="op">*</span>y<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L464">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L464">Source
 Code</a></p>
 <p>Transform a pair of coordinates.</p>
 <p><em>Parameters:</em></p>
@@ -781,13 +781,13 @@ href="transformations.html#al_transform_coordinates_3d">al_transform_coordinates
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_camera.c#L110">ex_camera.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_camera.c#L110">ex_camera.c</a></li>
 </ul>
 <h1 id="al_transform_coordinates_3d">al_transform_coordinates_3d</h1>
 <div class="sourceCode" id="cb31"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_transform_coordinates_3d<span class="op">(</span><span class="dt">const</span> ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">,</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>   <span class="dt">float</span> <span class="op">*</span>x<span class="op">,</span> <span class="dt">float</span> <span class="op">*</span>y<span class="op">,</span> <span class="dt">float</span> <span class="op">*</span>z<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L479">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L479">Source
 Code</a></p>
 <p>Transform x, y, z coordinates.</p>
 <p><em>Parameters:</em></p>
@@ -806,13 +806,13 @@ href="transformations.html#al_transform_coordinates">al_transform_coordinates</a
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_camera.c#L110">ex_camera.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_camera.c#L110">ex_camera.c</a></li>
 </ul>
 <h1 id="al_transform_coordinates_4d">al_transform_coordinates_4d</h1>
 <div class="sourceCode" id="cb32"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_transform_coordinates_4d<span class="op">(</span><span class="dt">const</span> ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">,</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>   <span class="dt">float</span> <span class="op">*</span>x<span class="op">,</span> <span class="dt">float</span> <span class="op">*</span>y<span class="op">,</span> <span class="dt">float</span> <span class="op">*</span>z<span class="op">,</span> <span class="dt">float</span> <span class="op">*</span>w<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L503">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L503">Source
 Code</a></p>
 <p>Transform x, y, z, w coordinates.</p>
 <p><em>Parameters:</em></p>
@@ -831,7 +831,7 @@ id="al_transform_coordinates_3d_projective">al_transform_coordinates_3d_projecti
 <div class="sourceCode" id="cb33"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_transform_coordinates_3d_projective<span class="op">(</span><span class="dt">const</span> ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">,</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>   <span class="dt">float</span> <span class="op">*</span>x<span class="op">,</span> <span class="dt">float</span> <span class="op">*</span>y<span class="op">,</span> <span class="dt">float</span> <span class="op">*</span>z<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L530">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L530">Source
 Code</a></p>
 <p>Transform x, y, z as homogeneous coordinates. This is the same as
 using <a
@@ -876,7 +876,7 @@ href="transformations.html#al_use_projection_transform">al_use_projection_transf
 <h1 id="al_compose_transform">al_compose_transform</h1>
 <div class="sourceCode" id="cb36"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_compose_transform<span class="op">(</span>ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">,</span> <span class="dt">const</span> ALLEGRO_TRANSFORM <span class="op">*</span>other<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L542">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L542">Source
 Code</a></p>
 <p>Compose (combine) two transformations by a matrix multiplication.</p>
 <pre><code>trans := trans other</code></pre>
@@ -898,16 +898,16 @@ href="transformations.html#al_scale_transform">al_scale_transform</a></p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_emoji.c#L73">ex_emoji.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_emoji.c#L73">ex_emoji.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_color_gradient.c#L70">ex_color_gradient.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_color_gradient.c#L70">ex_color_gradient.c</a></li>
 </ul>
 <h1 id="al_orthographic_transform">al_orthographic_transform</h1>
 <div class="sourceCode" id="cb38"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_orthographic_transform<span class="op">(</span>ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">,</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>   <span class="dt">float</span> left<span class="op">,</span> <span class="dt">float</span> top<span class="op">,</span> <span class="dt">float</span> n<span class="op">,</span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>   <span class="dt">float</span> right<span class="op">,</span> <span class="dt">float</span> bottom<span class="op">,</span> <span class="dt">float</span> f<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L588">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L588">Source
 Code</a></p>
 <p>Combines the given transformation with an orthographic transformation
 which maps the screen rectangle to the given left/top and right/bottom
@@ -936,14 +936,14 @@ href="transformations.html#al_perspective_transform">al_perspective_transform</a
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_depth_target.c#L38">ex_depth_target.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_depth_target.c#L38">ex_depth_target.c</a></li>
 </ul>
 <h1 id="al_perspective_transform">al_perspective_transform</h1>
 <div class="sourceCode" id="cb39"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_perspective_transform<span class="op">(</span>ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">,</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>   <span class="dt">float</span> left<span class="op">,</span> <span class="dt">float</span> top<span class="op">,</span> <span class="dt">float</span> n<span class="op">,</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>   <span class="dt">float</span> right<span class="op">,</span> <span class="dt">float</span> bottom<span class="op">,</span> <span class="dt">float</span> f<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L649">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L649">Source
 Code</a></p>
 <p>Like <a
 href="transformations.html#al_orthographic_transform">al_orthographic_transform</a>
@@ -1017,17 +1017,17 @@ href="transformations.html#al_orthographic_transform">al_orthographic_transform<
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_projection.c#L77">ex_projection.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_projection.c#L77">ex_projection.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_projection2.c#L42">ex_projection2.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_projection2.c#L42">ex_projection2.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_camera.c#L201">ex_camera.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_camera.c#L201">ex_camera.c</a></li>
 </ul>
 <h1 id="al_translate_transform_3d">al_translate_transform_3d</h1>
 <div class="sourceCode" id="cb44"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_translate_transform_3d<span class="op">(</span>ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">,</span> <span class="dt">float</span> x<span class="op">,</span> <span class="dt">float</span> y<span class="op">,</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span> z<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L386">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L386">Source
 Code</a></p>
 <p>Combines the given transformation with a transformation which
 translates coordinates by the given vector.</p>
@@ -1037,17 +1037,17 @@ href="transformations.html#al_use_projection_transform">al_use_projection_transf
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_projection.c#L99">ex_projection.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_projection.c#L99">ex_projection.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_depth_target.c#L37">ex_depth_target.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_depth_target.c#L37">ex_depth_target.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_projection2.c#L31">ex_projection2.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_projection2.c#L31">ex_projection2.c</a></li>
 </ul>
 <h1 id="al_scale_transform_3d">al_scale_transform_3d</h1>
 <div class="sourceCode" id="cb45"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_scale_transform_3d<span class="op">(</span>ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">,</span> <span class="dt">float</span> sx<span class="op">,</span> <span class="dt">float</span> sy<span class="op">,</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span> sz<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L440">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L440">Source
 Code</a></p>
 <p>Combines the given transformation with a transformation which scales
 coordinates by the given vector.</p>
@@ -1058,7 +1058,7 @@ href="transformations.html#al_use_projection_transform">al_use_projection_transf
 <div class="sourceCode" id="cb46"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_rotate_transform_3d<span class="op">(</span>ALLEGRO_TRANSFORM <span class="op">*</span>trans<span class="op">,</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>   <span class="dt">float</span> x<span class="op">,</span> <span class="dt">float</span> y<span class="op">,</span> <span class="dt">float</span> z<span class="op">,</span> <span class="dt">float</span> angle<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L613">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L613">Source
 Code</a></p>
 <p>Combines the given transformation with a transformation which rotates
 coordinates around the given vector by the given angle in radians.</p>
@@ -1068,17 +1068,17 @@ also incur a scale).</p>
 <p>Examples:</p>
 <ul>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_projection.c#L127">ex_projection.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_projection.c#L127">ex_projection.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_depth_target.c#L51">ex_depth_target.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_depth_target.c#L51">ex_depth_target.c</a></li>
 <li><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/examples/ex_projection2.c#L30">ex_projection2.c</a></li>
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/examples/ex_projection2.c#L30">ex_projection2.c</a></li>
 </ul>
 <h1
 id="al_horizontal_shear_transform">al_horizontal_shear_transform</h1>
 <div class="sourceCode" id="cb47"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_horizontal_shear_transform<span class="op">(</span>ALLEGRO_TRANSFORM<span class="op">*</span> trans<span class="op">,</span> <span class="dt">float</span> theta<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L674">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L674">Source
 Code</a></p>
 <p>Apply a horizontal shear to the transform</p>
 <p><em>Parameters:</em></p>
@@ -1092,7 +1092,7 @@ href="transformations.html#al_vertical_shear_transform">al_vertical_shear_transf
 <h1 id="al_vertical_shear_transform">al_vertical_shear_transform</h1>
 <div class="sourceCode" id="cb48"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> al_vertical_shear_transform<span class="op">(</span>ALLEGRO_TRANSFORM<span class="op">*</span> trans<span class="op">,</span> <span class="dt">float</span> theta<span class="op">)</span></span></code></pre></div>
 <p><a
-href="https://github.com/liballeg/allegro5/blob/0a2ae9600d7a9c303c52b22ba288e4d7e39d4c20/src/transformations.c#L688">Source
+href="https://github.com/liballeg/allegro5/blob/bfc3868e05233d98c2ab54919f8e33b01ac643cd/src/transformations.c#L688">Source
 Code</a></p>
 <p>Apply a vertical shear to the transform</p>
 <p><em>Parameters:</em></p>
@@ -1105,7 +1105,7 @@ Code</a></p>
 href="transformations.html#al_horizontal_shear_transform">al_horizontal_shear_transform</a></p>
 <p class="timestamp">
 Allegro version 5.2.12 (GIT)
- - Last updated: 2026-11-06 01:12:29 UTC
+ - Last updated: 2026-11-10 04:09:46 UTC
 </p>
 </div>
 </body>
